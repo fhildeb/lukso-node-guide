@@ -1,7 +1,5 @@
 # LUKSO L16 CLI UNINSTALL
 
-REMINDER: THIS IS ONLY WORKING WITH L16 NODES RUNNING DOCKER SETUP, NOT THE CURRENT CLI TOOL. USE AT OWN RISK.
-
 The LUKSO CLI is installed within `/usr/local/bin/lukso`, and links to Docker. You will have to remove:
 
 - CLI Tool
@@ -10,14 +8,14 @@ The LUKSO CLI is installed within `/usr/local/bin/lukso`, and links to Docker. Y
 
 > Commands may need admin permission, so type `sudo` in front of them
 
-## 1. Stop Node
+## 1. Stop the Node
 
 ```bash
 $ lukso network stop validator
 $ lukso network stop
 ```
 
-## 2. Remove LUKSO CLI Installation
+## 2. Remove LUKSO CLI
 
 ```bash
 $ cd usr/local/bin
@@ -43,11 +41,11 @@ $ cd /etc/systemd/system
 $ rm -rf prometheus.service grafana.service blackbox_exporter.service
 ```
 
-## 3. Remove Docker Images and Containers
+## 3. Remove Docker Data
 
 Depending on if you want to soft-reset or hard-reset your node setup, there are two different guides. If you are not running anything else on the node, just prune your docker system to remove all data. You can also uninstall docker-compose and docker after.
 
-### Only Remove Node Data
+### Option A: Only Remove Node Data
 
 Get all the `CONTAINER_IDs` of the containers named like: `docker-geth/geth:` , `docker-prysm/beacon:` , `docker-prysm/validator:` and remove them one by one.
 
@@ -63,13 +61,18 @@ $ docker images -a
 $ docker rmi IMAGE_ID
 ```
 
-### Prune and Uninstall Docker
+###Option B: Prune Docker
 
-If you installed it via [get.docker.com](https://get.docker.com/) and curl scripts as LUKSO had it in their docs the following commands will work.
+If you installed it via [get.docker.com](https://get.docker.com/) and curl scripts as described by the old LUKSO documentation, the following commands will work.
 
 ```bash
+# Prune Docker Data
 $ docker prune -a
+
+# Remove Docker Compose
 $ rm -rf /usr/local/bin/docker-compose
+
+# Remove Docker
 $ rmdir -rf /var/lib/docker
 $ rmdir -rf /etc/docker
 ```
