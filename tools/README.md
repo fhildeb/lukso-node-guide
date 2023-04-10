@@ -14,6 +14,11 @@ lukso network stop validator
 lukso network stop
 lukso network clear
 lukso network init
+```
+
+### Get Latest Network Bootnode
+
+```bash
 lukso network update
 lukso network refresh
 ```
