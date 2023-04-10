@@ -142,21 +142,31 @@ ls -al
 ```
 
 ```bash
-configs
-data
-keystore
-keys
-lodestar-secrets
-nimbus-keys
-password.txt
-prysm
-pubkeys.json
-secrets
-teku-keys
-teku-secrets
-docker-compose.yml
-.env
-node_config.yaml
+l16-node-testnet
+├── configs
+│   ├── config.yaml
+│   ├── genesis.json
+│   └── genesis.ssz
+├── data
+│   ├── consensus_data
+│   │   ├── beaconchaindata
+│   │   ├── metaData
+│   ├── execution_data
+│   └── validator_data
+├── deposit_data.json
+├── docker-compose.yml
+├── keystore
+│   ├── keys
+│   ├── lodestar-secrets
+│   ├── nimbus-keys
+│   ├── password.txt
+│   ├── prysm
+│   ├── pubkeys.json
+│   ├── secrets
+│   ├── teku-keys
+│   └── teku-secrets
+├── node_config.yaml
+└── transaction_wallet
 ```
 
 ## 9. Update The Network Config
