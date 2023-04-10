@@ -10,7 +10,12 @@ This repo features all information needed to set up or run a node for the [LUKSO
 - [`lukso-install`](./lukso-install/): Installing the LUKSO CLI
 - [`node-setup`](./node-setup/): Setting up the Node Environment
 - [`node-uninstall`](./node-uninstall/): Uninstalling LUKSO CLI and Node Tools
+- [`notifications`](./notifications/): Image Notifications and Constant Updates
 - [`tools`](./tools/): LUKSO CLI Tooltips
+
+## Main Guides
+
+If you need proper guidance, I recommend the [Luksoverse Docs](https://docs.luksoverse.io/). Its the most comprehensive node guide out there right now and will get you covered with what you need. It even features a lot of community guides and monitory add-ons.
 
 ## Docker CLI Version
 
