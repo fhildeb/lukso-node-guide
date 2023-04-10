@@ -39,6 +39,8 @@ $ cd /etc
 $ rmdir -rf prometheus grafana blackbox_exporter
 $ cd /etc/systemd/system
 $ rm -rf prometheus.service grafana.service blackbox_exporter.service
+$ cd /lib/systemd/system
+$ rm-rf grafana-server.service grafana-server.service.old
 ```
 
 ## 3. Remove Docker Data
