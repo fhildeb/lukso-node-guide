@@ -6,16 +6,16 @@ This repo features all information needed to set up or run a node for the [LUKSO
 
 ## Description
 
-- `grafana`: Grafana Dashboard Preset
-- `lukso-install`: Installing the LUKSO CLI
-- `node-setup`: Setting up the Node Environment
-- `node-uninstall`: Uninstalling LUKSO CLI and Node Tools
-- `tools`: LUKSO CLI Tooltips
+- [`grafana`](./grafana/): Grafana Dashboard Preset
+- [`lukso-install`](./lukso-install/): Installing the LUKSO CLI
+- [`node-setup`](./node-setup/): Setting up the Node Environment
+- [`node-uninstall`](./node-uninstall/): Uninstalling LUKSO CLI and Node Tools
+- [`tools`](./tools/): LUKSO CLI Tooltips
 
 ## Docker CLI Version
 
 ```
-# Full Support with Guides and Setup
+Full Support with Guides and Setup
 LUKSO CLI v 0.1.0 - 0.4.4
 ```
 
