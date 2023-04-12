@@ -43,13 +43,13 @@ $ rm -rf node_exporter prometheus promtool blackbox_exporter
 
 # Remove libraries
 $ cd /var/lib
-$ rmdir -rf prometheus grafana
+$ rm -rf prometheus grafana
 $ cd /lib/systemd/system
 $ rm-rf grafana-server.service grafana-server.service.old
 
 # Remove config and databases
 $ cd /etc
-$ rmdir -rf prometheus grafana blackbox_exporter
+$ rm -rf prometheus grafana blackbox_exporter
 $ cd /etc/systemd/system
 $ rm -rf prometheus.service grafana.service blackbox_exporter.service
 
@@ -99,8 +99,8 @@ $ docker prune -a
 $ rm -rf /usr/local/bin/docker-compose
 
 # Remove Docker
-$ rmdir -rf /var/lib/docker
-$ rmdir -rf /etc/docker
+$ rm -rf /var/lib/docker
+$ rm -rf /etc/docker
 ```
 
 ## 4. Backup and Folder Removal
@@ -114,5 +114,5 @@ $ cd NODE_FOLDER
 $ mv keystore ~/l16-key-backup/keystore
 $ mv transaction_wallet ~/l16-key-backup/transaction_wallet
 $ cd ..
-$ rmdir -rf NODE_FOLDER
+$ rm -rf NODE_FOLDER
 ```
