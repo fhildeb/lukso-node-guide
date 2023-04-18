@@ -2,6 +2,8 @@
 
 Initial guide was from [LUKSOVERSE](https://luksoverse.io/2022/04/l16-re-spin-extra-tools-and-explanation/) written by [Rob](https://github.com/KEEZ-RobG) and [Jordy](https://github.com/JordyDutch). The guides were mainly updated to also support non-genesis validators and also use the new commands for updating the network bootnodes automatically.
 
+> **The old CLI version has been removed as an available download. If you do not have the tool already, this installation guide can not be continued.**
+
 ## 1. Retrieve LUKSO CLI
 
 Run the following command to retrieve the new LUKSO CLI script
