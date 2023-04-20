@@ -20,7 +20,7 @@ $ lukso network stop
 ## 2. Remove LUKSO CLI
 
 ```bash
-$ cd usr/local/bin
+$ cd /usr/local/bin
 $ ls -al
 $ rm -rf lukso
 ```
@@ -38,7 +38,7 @@ $ systemctl stop prometheus
 $ apt remove apt-transport-https software-properties-common wget grafana-enterprise
 
 # Remove binaries
-$ cd usr/local/bin
+$ cd /usr/local/bin
 $ rm -rf node_exporter prometheus promtool blackbox_exporter
 
 # Remove libraries
@@ -93,7 +93,7 @@ If you installed docker via [get.docker.com](https://get.docker.com/) and used c
 
 ```bash
 # Prune Docker Data
-$ docker prune -a
+$ docker system prune -a
 
 # Remove Docker Compose
 $ rm -rf /usr/local/bin/docker-compose
