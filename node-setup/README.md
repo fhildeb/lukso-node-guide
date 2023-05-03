@@ -34,16 +34,24 @@ The memory may not be sufficient for future-proof use of the node over several y
 
 I set up my machine on a small home rack and connected my machine to a 8-port switch that is connected to my router. Not being directly connected to the router not only allows more slots but also allows me to place and connect servers and other PCs individually since the internet connection is in separate rooms.
 
-#### Auto Start
+#### Optional Parts
 
-I had to manually change BIOS settings of NUC to ensure if power gets reset, NUC auto starts. A simple test is unplug and plug power cord back in.
+- **Switch**: TP-Link 8-Port Gigabit Network Switch (TL-SG108, RJ-45, IGMP-Snooping, unmanaged, fanless)
+- **Additional Storage**: Seagate Barracuda 4 TB HDD (2.5 inch, 128 MB Cache, SATA 6 Gb/s)
+- **Network Setup**: Several RJ-45 Network cables
 
-For NUC I followed following steps:
+### 1.3 BIOS Setup
 
-1. Press F2 during boot to enter BIOS setup
-2. Go to `Power` -> `Secondary Power Settings` menu
-3. Set the option for `After Power Failure` to `Power One`
-4. Press F10 to save changes and exit BIOS
+1. Connect your Bootbable USB device to the node
+2. Press `F2` during boot to enter BIOS setup
+
+#### Power Settings
+
+> Ensure that NUC auto starts after power failure.
+
+1. Go to `Power` -> `Secondary Power Settings`
+2. Set `After Power Failure` to `Power One`
+3. Set `Wake on LAN from S4/S5` to `Power On - Normal Boot`
 
 ## System Setup
 
