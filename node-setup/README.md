@@ -45,13 +45,54 @@ I set up my machine on a small home rack and connected my machine to a 8-port sw
 1. Connect your Bootbable USB device to the node
 2. Press `F2` during boot to enter BIOS setup
 
-#### Power Settings
+#### 1.3.1 Power Settings
 
 > Ensure that NUC auto starts after power failure.
 
 1. Go to `Power` -> `Secondary Power Settings`
 2. Set `After Power Failure` to `Power One`
 3. Set `Wake on LAN from S4/S5` to `Power On - Normal Boot`
+
+#### 1.3.2 CPU Settings
+
+> Adjust Cooling for fanless housing
+
+1. Go to `Cooling`
+2. Set `Fan Control Mode` to `Fanless`
+3. Go to `Performance` -> `Processor`
+4. Set `Hyper-Threading` to `Enabled`
+5. Enable `Intel Turbo Boost Technlogy`
+6. Set `Active Processor Cores` to `All`
+7. Enable `Real-Time Performance Tuning`
+
+> Adjust performance for the server's energy efficiency
+
+1. Go to `Power`
+2. Enable `Max Performance Enabled`
+3. Set `Intel Dynamic Power Technology` to `Energy Efficient Performance`
+4. Set `Package Power Limit 1 (Sustained)` to `25`
+5. Set `Package Power Limit 2 (Burst Mode)` to `25`
+6. Set `Package Power Time Window (Tau)` to `0`
+
+#### 1.3.3 LED Settings
+
+> Turn off status LED signatures for server use
+
+1. Go to `Power` -> `Secondary Power Settings`
+2. Set `S0 Indicator Brightness (%)` to `0`
+3. Set `Modern Standby Indicator Brightness (%)` to `0`
+4. Set `RGB LED` -> `Brightness (%)` to `0`
+5. Set `HDD LED` -> `Brightness (%)` to `0`
+
+#### 1.3.4 Boot Order
+
+1. Go to `Boot` -> `Boot Priority`
+2. Set `Boot Option #1` to your USB device
+3. Set `Boot Option #2` to your internal SSD
+
+### 1.4 Operating System Setup
+
+Press `F10` to save changes and exit BIOS
 
 ## System Setup
 
