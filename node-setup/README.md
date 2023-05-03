@@ -142,6 +142,24 @@ Encryption is not a must, as you could encrypt a small portion of the disk later
 
 Your validator keys are safe anyway, as they are encrypted by default. The validator also has an own encrypted wallet, thats needed to restart the client with a modified address for the fee recipient. The only risk here is physical access or modificaion- except for the keys or wallet. These could include log data, configuration files or other personal data that are stored on the node itself. If these points are not deemed to be high-risk for you, the added complexity wont be necessary.
 
+### 1.5.7 User Configuration
+
+In the next step, pick names for your user and server and choose a strong password.
+
+Continue without [Ubuntu Pro](https://ubuntu.com/pricing/pro). Its a premium version of Ubuntu and designed for enterprise use and comes with additional features, security updates, and support compared to the standard Ubuntu release. The primary target are businesses and organizations looking for a more comprehensive and secure Ubuntu experience.
+
+### 1.5.8 SSH Setup
+
+In the next step, you can already add the OpenSSH server installation for secure remote access. This will only allow the connection to the node, not the functionality for the node to also set up a client- which is lean and ideal for a node setup that only wants external devices to connect for maintanance.
+
+If you do not have an SSH configuration already, leave the SSH identity blank for now. We will configure access later on.
+
+### 1.5.9 Additional Software
+
+Its recommended to skip through the additional server snaps without enabling packages. Best practice would be to just choose the packages later on when installing or configuring specific software.
+
+Let the Ubuntu Installation process run through until fully complete. Remove the USB device and press enter to reboot the machine.
+
 ## System Setup
 
 > **_NOTE:_** Following steps are performed directly on a node machine.
