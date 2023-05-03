@@ -1,55 +1,19 @@
-# LUKSO L16 Validator Node
+# LUKSO Validator Node
 
-This is a guide to setup a Lukso validator node in home environment. The guide suggests a use of a dedicated machine to run a node with validators, separate from a personal working machine.
+This is a guide to setup a LUKSO validator node in home environment. Its recomended to choose a dedicated machine to run a node.
 
-> **_NOTE:_** Most of the steps require working in a terminal
+## 1. Prequeries
 
-- [Prerequisites](#prerequisites)
-  - [My Setup](#my-setup)
-    - [Auto Start](#auto-start)
-- [System Setup](#system-setup)
-  - [Update](#update)
-  - [Remote Access](#remote-access)
-    - [Install SSH](#install-ssh)
-    - [Configure SSH](#configure-ssh)
-    - [Configure Firewall](#configure-firewall)
-    - [Enable SSH](#enable-ssh)
-    - [Resolve Hostname](#resolve-hostname)
-    - [Disable Password Authentication](#disable-password-authentication)
-    - [Disable Non-Key Remote Access](#disable-non-key-remote-access)
-    - [Verify Remote Access](#verify-remote-access)
-  - [Keep System Up to Date](#keep-system-up-to-date)
-  - [Disable Root Access](#disable-root-access)
-  - [Block Unathorised Access](#block-unathorised-access)
-  - [Configure Firewall](#configure-firewall)
-  - [Improve SSH Connection](#improve-ssh-connection)
-- [Node Setup](#node-setup)
-- [Monitoring](#monitoring)
-  - [Prometheus](#prometheus)
-    - [Configure](#configure)
-    - [Configure Service](#configure-service)
-  - [Grafana](#grafana)
-    - [Configure Service](#configure-service-1)
-    - [Configure Dashboard](#configure-dashboard)
-      - [Data Source](#data-source)
-      - [Install Dashboard](#install-dashboard)
-      - [Enable Alerts](#enable-alerts)
-  - [Node Exporter](#node-exporter)
-    - [Configure Service](#configure-service-2)
-  - [Json Exporter](#json-exporter)
-    - [Prerequisites](#prerequisites-1)
-    - [Build and Install](#build-and-install)
-    - [Configure](#configure-1)
-    - [Configure Service](#configure-service-3)
-  - [Ping](#ping)
-    - [Configure](#configure-2)
-    - [Configure Service](#configure-service-4)
-- [Credits](#credits)
+## 1.1 Operating System Download
 
-## Prerequisites
+> You need a USB device with at least 2GB
 
-- [Ubuntu](https://ubuntu.com/)
-- Dedicated PC
+1. Download [Ubuntu 22.04.2 Server](https://ubuntu.com/download/server)
+2. Create a Bootable USB Drive
+   - Windows: [Rufus Guide for Ubuntu](https://ubuntu.com/tutorials/create-a-usb-stick-on-windows#1-overview)
+   - Linux: [Disk Creator Guide for Ubuntu](https://ubuntu.com/tutorials/create-a-usb-stick-on-ubuntu#1-overview)
+   - MacOS: [Etcher Guide for Ubuntu](https://ubuntu.com/tutorials/create-a-usb-stick-on-macos#1-overview)
+3. Disconnect the USB Drive
 
 ### My Setup
 
