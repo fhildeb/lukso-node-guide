@@ -1,8 +1,6 @@
-# LUKSO Validator Node
+# EVM Validator Node
 
-This is a guide to setup a LUKSO validator node in home environment. Its recomended to choose a dedicated machine to run a node.
-
-## 1. Prequeries
+This is a guide to setup a LUKSO or other validator node in home environment. Its recomended to choose a dedicated machine to run a node.
 
 ## 1.1 Operating System Download
 
@@ -15,7 +13,7 @@ This is a guide to setup a LUKSO validator node in home environment. Its recomen
    - MacOS: [Etcher Guide for Ubuntu](https://ubuntu.com/tutorials/create-a-usb-stick-on-macos#1-overview)
 3. Disconnect the USB Drive
 
-### 1.2 Hardware Setup
+## 1.2 Hardware Setup
 
 > I chose an expensive and professional setup because I plan to use the slasher functionality and run multiple networks from one node, partly via docker images on top of the LUKSO CLI. Please understand that this is not mandatory. The minimum requirements to run a LUKSO node can be read in the network section of the [official documentation](https://docs.lukso.tech/networks/).
 
@@ -34,18 +32,20 @@ The memory may not be sufficient for future-proof use of the node over several y
 
 I set up my machine on a small home rack and connected my machine to a 8-port switch that is connected to my router. Not being directly connected to the router not only allows more slots but also allows me to place and connect servers and other PCs individually since the internet connection is in separate rooms.
 
-#### Optional Parts
+### Optional Parts
 
 - **Switch**: TP-Link 8-Port Gigabit Network Switch (TL-SG108, RJ-45, IGMP-Snooping, unmanaged, fanless)
 - **Additional Storage**: Seagate Barracuda 4 TB HDD (2.5 inch, 128 MB Cache, SATA 6 Gb/s)
 - **Network Setup**: Several RJ-45 Network cables
 
-### 1.3 BIOS Setup
+## 1.3 BIOS Setup
+
+Connect your machine to power and attach a keyboard and monitor.
 
 1. Connect your Bootbable USB device to the node
 2. Press `F2` during boot to enter BIOS setup
 
-#### 1.3.1 Power Settings
+### 1.3.1 Power Settings
 
 > Ensure that NUC auto starts after power failure.
 
@@ -53,7 +53,7 @@ I set up my machine on a small home rack and connected my machine to a 8-port sw
 2. Set `After Power Failure` to `Power One`
 3. Set `Wake on LAN from S4/S5` to `Power On - Normal Boot`
 
-#### 1.3.2 CPU Settings
+### 1.3.2 CPU Settings
 
 > Adjust Cooling for fanless housing
 
@@ -74,7 +74,7 @@ I set up my machine on a small home rack and connected my machine to a 8-port sw
 5. Set `Package Power Limit 2 (Burst Mode)` to `25`
 6. Set `Package Power Time Window (Tau)` to `0`
 
-#### 1.3.3 LED Settings
+### 1.3.3 LED Settings
 
 > Turn off status LED signatures for server use
 
@@ -84,15 +84,18 @@ I set up my machine on a small home rack and connected my machine to a 8-port sw
 4. Set `RGB LED` -> `Brightness (%)` to `0`
 5. Set `HDD LED` -> `Brightness (%)` to `0`
 
-#### 1.3.4 Boot Order
+### 1.3.4 Boot Order
 
 1. Go to `Boot` -> `Boot Priority`
 2. Set `Boot Option #1` to your USB device
 3. Set `Boot Option #2` to your internal SSD
 
-### 1.4 Operating System Setup
+## 1.4 Operating System Setup
 
-Press `F10` to save changes and exit BIOS
+1. Press `F10` to save changes and exit BIOS
+2. Wait for the stick to boot up
+3. Choose `Try or Install Ubuntu Server`
+4. Let the installation setup run through
 
 ## System Setup
 
