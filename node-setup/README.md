@@ -109,6 +109,18 @@ First you have to choose your operating system's language. Its recommended to se
 
 Right after, define your keyboard type or click `Identify keyboard` and be led through the guide.
 
+### 1.5.3 Installation Type
+
+Choose your type of installation for the node. Its recommended to set it to `Ubuntu Server (minimized)` as it has significant advantages for security and performance. Only remote access is needed and there are no other applications and web services that could potentially harm the software. Both, desktop and non-minimized versions, also use more system resources.
+
+Do not have `Search for third-party drivers` enabled during install.
+
+### 1.5.4 Network and Access Settings
+
+Now configure your network settings to talk to the node from the outside world. Connect your node to your router our switch, then choose the network type `eth` and edit `IPv4` and `IPv6` to both set as `Automatic (DHCP)`. We will configure the static IP later on but already allow for a wide variety of connections to reach the node later on.
+
+If you do not have a proxy setup already, leave proxy address blank for now. We will update the HTTP proxy to access the node later on.
+
 ## System Setup
 
 > **_NOTE:_** Following steps are performed directly on a node machine.
