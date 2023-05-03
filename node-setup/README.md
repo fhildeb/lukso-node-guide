@@ -121,6 +121,27 @@ Now configure your network settings to talk to the node from the outside world. 
 
 If you do not have a proxy setup already, leave proxy address blank for now. We will update the HTTP proxy to access the node later on.
 
+### 1.5.5 Download and Installer
+
+Leave the official Ubuntu mirror address as it is and continue with the setup.
+
+If there is any new installer during the next step, download the latest version and you will get back to this step after is is done. Its recommended to always use the latest software releases.
+
+### 1.5.6 Storage Setup
+
+For storage, set the entire disk.
+
+**Logical Volume Manager**
+It's recommended enable the LVM group option. Its a flexible management system that allows you to easily set and resize your storage volumes. If you plan to run a blockchain node and might add another disk later on, LVM can be beneficial. If you need to add more storage space later, you can easily add a new disk to the existing LVM group and expand the logical volumes as needed. This can be done without any downtime or data loss. It also allows for resizing volumes, so you can easily resize your storage volumes on the fly, allowing to adapt to changing storage requirements of your blockchain node. Some trade-offs when using LVM are the complexity of disk management and a small performance dint in performance.
+
+Considering the benefits, LVM is generally recommended and also enabled on new [Dappnode](https://dappnode.com/) machines and set as default on Ubuntu since version 20.04.
+
+**Encryption**
+
+Encryption is not a must, as you could encrypt a small portion of the disk later on, if really needed. Encrypting the whole disk could become cumbersome for remote access, as it requires manual intervention each time the server is restarted. There are ways to automate the unlocking process, such as using a remote key server or network-bound disk encryption. However, these methods can increase complexity and may have their own security implications.
+
+Your validator keys are safe anyway, as they are encrypted by default. The validator also has an own encrypted wallet, thats needed to restart the client with a modified address for the fee recipient. The only risk here is physical access or modificaion- except for the keys or wallet. These could include log data, configuration files or other personal data that are stored on the node itself. If these points are not deemed to be high-risk for you, the added complexity wont be necessary.
+
 ## System Setup
 
 > **_NOTE:_** Following steps are performed directly on a node machine.
