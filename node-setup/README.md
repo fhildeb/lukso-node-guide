@@ -15,14 +15,24 @@ This is a guide to setup a LUKSO validator node in home environment. Its recomen
    - MacOS: [Etcher Guide for Ubuntu](https://ubuntu.com/tutorials/create-a-usb-stick-on-macos#1-overview)
 3. Disconnect the USB Drive
 
-### My Setup
+### 1.2 Hardware Setup
 
-- Ubuntu 20.04.4 LTS
-- [Intel NUC 10 Performance Kit – Intel Core i5](https://www.amazon.com/dp/B083GH1SSN/ref=cm_sw_r_cp_api_glt_i_PAVWC2JD4QTRSVHFFX10?_encoding=UTF8&psc=1)
-- [Memory Kit 16GB (8GBx2)](https://www.amazon.com/dp/B083VWCZLQ/ref=cm_sw_r_cp_api_glt_i_1YV0G8K4GAH0NYP6BN00?_encoding=UTF8&psc=1)
-- [Samsung 970 EVO Plus SSD 1TB](https://www.amazon.com/dp/B07MFZY2F2/ref=cm_sw_r_cp_api_glt_i_XF7ZS3XYJCQM5PH05P7V?_encoding=UTF8&psc=1)
+> I chose an expensive and professional setup because I plan to use the slasher functionality and run multiple networks from one node, partly via docker images on top of the LUKSO CLI. Please understand that this is not mandatory. The minimum requirements to run a LUKSO node can be read in the network section of the [official documentation](https://docs.lukso.tech/networks/).
 
-I've spent around $850. Current price seem to be less around $700. I connected my NUC with ethernet cable directly into my router.
+- Ubuntu 22.04.2 Server
+- Barebone Intel NUC 10 (NUC10i7FNHN)
+  - **Processor**: Intel Core i7-10710U (4.7 GHz, 6 Cores, 12 Threads)
+  - **Housing**: Akasa Turing FX for Intel NUC 10 (A-NUC52-M1B)
+  - **RAM**: Crucial 32GB DDR4 Kit (2x16GB, 2666MHz, CT2K16G4SFRA266)
+  - **Storage**: Samsung 970 EVO Plus M.2 NVMe SSD 2TB (PCIe 3.0, 3.500 MB/s Read, 3.300 MB/s Write, MZ-V7S2T0BW)
+
+I spent around 1100 €. The current prices should be below that at best. I assembled the node myself because I wanted to run a fanless machine. The bespoke housing improves the temperatures and reduces noise. It also eliminates the maintenance of moving parts.
+
+Note that you also need thermal paste and screwdrivers and might want to add WiFi antennas right away if the machine is ever planned to serve as a home server. It's only about 10 €, but you will save yourself a ton of work re-assembling the whole setup as they sit right behind the motherboard. The antennas can then be unscrewed from their attached base and do not bother your server setup.
+
+The memory may not be sufficient for future-proof use of the node over several years or by several chains. Here, the freezer functionality of Geth comes into play to split the network data on different disks. I plan to expand my storage and add a 4 TB 2.5 inch HDD which also fits into the housing. Therefore, make sure to keep all the accessories and frames.
+
+I set up my machine on a small home rack and connected my machine to a 8-port switch that is connected to my router. Not being directly connected to the router not only allows more slots but also allows me to place and connect servers and other PCs individually since the internet connection is in separate rooms.
 
 #### Auto Start
 
