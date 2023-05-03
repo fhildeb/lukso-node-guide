@@ -97,6 +97,18 @@ Connect your machine to power and attach a keyboard and monitor.
 3. Choose `Try or Install Ubuntu Server`
 4. Let the installation setup run through
 
+## 1.5 Ubuntu Configuration
+
+> You can have a look at [Ubuntu's Install Guide](https://ubuntu.com/tutorials/install-ubuntu-server#1-overview) for further information. However, most of it seems to be outdated for the most recent Ubuntu versions.
+
+### 1.5.1 System Language
+
+First you have to choose your operating system's language. Its recommended to set it to `English`. In case errors appear on screen, most guides and guides for fixes are stated in English if you search for them online. So it will help resolving incidents quickly.
+
+### 1.5.2 Keyboard Config
+
+Right after, define your keyboard type or click `Identify keyboard` and be led through the guide.
+
 ## System Setup
 
 > **_NOTE:_** Following steps are performed directly on a node machine.
