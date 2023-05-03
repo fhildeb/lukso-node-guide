@@ -91,9 +91,7 @@
         "justifyMode": "auto",
         "orientation": "horizontal",
         "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
+          "calcs": ["lastNotNull"],
           "fields": "",
           "values": false
         },
@@ -175,9 +173,7 @@
         "justifyMode": "auto",
         "orientation": "horizontal",
         "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
+          "calcs": ["lastNotNull"],
           "fields": "",
           "values": false
         },
@@ -234,9 +230,7 @@
         "justifyMode": "auto",
         "orientation": "auto",
         "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
+          "calcs": ["lastNotNull"],
           "fields": "",
           "values": false
         },
@@ -310,17 +304,13 @@
       "options": {
         "colorMode": "value",
         "fieldOptions": {
-          "calcs": [
-            "lastNotNull"
-          ]
+          "calcs": ["lastNotNull"]
         },
         "graphMode": "area",
         "justifyMode": "auto",
         "orientation": "horizontal",
         "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
+          "calcs": ["lastNotNull"],
           "fields": "",
           "values": false
         },
@@ -401,9 +391,7 @@
         "justifyMode": "auto",
         "orientation": "horizontal",
         "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
+          "calcs": ["lastNotNull"],
           "fields": "",
           "values": false
         },
@@ -471,9 +459,7 @@
         "justifyMode": "auto",
         "orientation": "auto",
         "reduceOptions": {
-          "calcs": [
-            "mean"
-          ],
+          "calcs": ["mean"],
           "fields": "",
           "values": false
         },
@@ -545,9 +531,7 @@
         "justifyMode": "auto",
         "orientation": "auto",
         "reduceOptions": {
-          "calcs": [
-            "last"
-          ],
+          "calcs": ["last"],
           "fields": "",
           "values": false
         },
@@ -615,9 +599,7 @@
         "justifyMode": "auto",
         "orientation": "auto",
         "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
+          "calcs": ["lastNotNull"],
           "fields": "",
           "values": false
         },
@@ -769,9 +751,7 @@
         "justifyMode": "auto",
         "orientation": "auto",
         "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
+          "calcs": ["lastNotNull"],
           "fields": "",
           "values": false
         },
@@ -874,17 +854,13 @@
       "options": {
         "colorMode": "value",
         "fieldOptions": {
-          "calcs": [
-            "lastNotNull"
-          ]
+          "calcs": ["lastNotNull"]
         },
         "graphMode": "area",
         "justifyMode": "auto",
         "orientation": "horizontal",
         "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
+          "calcs": ["lastNotNull"],
           "fields": "",
           "values": false
         },
@@ -977,17 +953,13 @@
       "options": {
         "colorMode": "value",
         "fieldOptions": {
-          "calcs": [
-            "lastNotNull"
-          ]
+          "calcs": ["lastNotNull"]
         },
         "graphMode": "area",
         "justifyMode": "auto",
         "orientation": "horizontal",
         "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
+          "calcs": ["lastNotNull"],
           "fields": "",
           "values": false
         },
@@ -1074,9 +1046,7 @@
         "justifyMode": "auto",
         "orientation": "auto",
         "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
+          "calcs": ["lastNotNull"],
           "fields": "",
           "values": false
         },
@@ -1132,9 +1102,7 @@
         "justifyMode": "center",
         "orientation": "auto",
         "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
+          "calcs": ["lastNotNull"],
           "fields": "",
           "values": false
         },
@@ -1203,9 +1171,7 @@
         "justifyMode": "center",
         "orientation": "auto",
         "reduceOptions": {
-          "calcs": [
-            "last"
-          ],
+          "calcs": ["last"],
           "fields": "",
           "values": false
         },
@@ -1298,9 +1264,7 @@
         "justifyMode": "auto",
         "orientation": "horizontal",
         "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
+          "calcs": ["lastNotNull"],
           "fields": "",
           "values": false
         },
@@ -1381,9 +1345,7 @@
         "justifyMode": "auto",
         "orientation": "horizontal",
         "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
+          "calcs": ["lastNotNull"],
           "fields": "",
           "values": false
         },
@@ -1462,9 +1424,7 @@
         "justifyMode": "auto",
         "orientation": "horizontal",
         "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
+          "calcs": ["lastNotNull"],
           "fields": "",
           "values": false
         },
@@ -1545,9 +1505,7 @@
         "justifyMode": "auto",
         "orientation": "horizontal",
         "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
+          "calcs": ["lastNotNull"],
           "fields": "",
           "values": false
         },
@@ -1627,9 +1585,7 @@
         "justifyMode": "auto",
         "orientation": "horizontal",
         "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
+          "calcs": ["lastNotNull"],
           "fields": "",
           "values": false
         },
@@ -1709,9 +1665,7 @@
         "justifyMode": "auto",
         "orientation": "horizontal",
         "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
+          "calcs": ["lastNotNull"],
           "fields": "",
           "values": false
         },
@@ -1768,9 +1722,7 @@
         "justifyMode": "center",
         "orientation": "auto",
         "reduceOptions": {
-          "calcs": [
-            "last"
-          ],
+          "calcs": ["last"],
           "fields": "",
           "values": false
         },
@@ -1971,9 +1923,7 @@
         "justifyMode": "center",
         "orientation": "auto",
         "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
+          "calcs": ["lastNotNull"],
           "fields": "",
           "values": false
         },
@@ -2060,9 +2010,7 @@
         "justifyMode": "auto",
         "orientation": "horizontal",
         "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
+          "calcs": ["lastNotNull"],
           "fields": "/^annualized hourly return$/",
           "values": false
         },
@@ -2142,9 +2090,7 @@
         "justifyMode": "auto",
         "orientation": "horizontal",
         "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
+          "calcs": ["lastNotNull"],
           "fields": "/^annualized daily return$/",
           "values": false
         },
@@ -2224,9 +2170,7 @@
         "justifyMode": "auto",
         "orientation": "horizontal",
         "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
+          "calcs": ["lastNotNull"],
           "fields": "/^annualized weekly return$/",
           "values": false
         },
@@ -2306,9 +2250,7 @@
         "justifyMode": "auto",
         "orientation": "horizontal",
         "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
+          "calcs": ["lastNotNull"],
           "fields": "",
           "values": false
         },
@@ -2387,9 +2329,7 @@
         "justifyMode": "auto",
         "orientation": "horizontal",
         "reduceOptions": {
-          "calcs": [
-            "mean"
-          ],
+          "calcs": ["mean"],
           "fields": "/^lyx$/",
           "values": false
         },
@@ -2444,9 +2384,7 @@
         "justifyMode": "center",
         "orientation": "auto",
         "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
+          "calcs": ["lastNotNull"],
           "fields": "",
           "values": false
         },
@@ -2578,11 +2516,7 @@
           "alias": "attested",
           "align": "auto",
           "colorMode": null,
-          "colors": [
-            "#F2495C",
-            "#FF9830",
-            "#73BF69"
-          ],
+          "colors": ["#F2495C", "#FF9830", "#73BF69"],
           "dateFormat": "YYYY-MM-DD HH:mm:ss",
           "decimals": 0,
           "mappingType": 1,
@@ -2595,11 +2529,7 @@
           "alias": "aggregated",
           "align": "auto",
           "colorMode": null,
-          "colors": [
-            "#F2495C",
-            "#FF9830",
-            "#73BF69"
-          ],
+          "colors": ["#F2495C", "#FF9830", "#73BF69"],
           "dateFormat": "YYYY-MM-DD HH:mm:ss",
           "decimals": 0,
           "mappingType": 1,
@@ -2612,11 +2542,7 @@
           "alias": "proposed",
           "align": "auto",
           "colorMode": null,
-          "colors": [
-            "#F2495C",
-            "#FF9830",
-            "#73BF69"
-          ],
+          "colors": ["#F2495C", "#FF9830", "#73BF69"],
           "dateFormat": "YYYY-MM-DD HH:mm:ss",
           "decimals": 0,
           "mappingType": 1,
@@ -2629,11 +2555,7 @@
           "alias": "failed attestations",
           "align": "auto",
           "colorMode": "value",
-          "colors": [
-            "#F2495C",
-            "#FF9830",
-            "#73BF69"
-          ],
+          "colors": ["#F2495C", "#FF9830", "#73BF69"],
           "dateFormat": "YYYY-MM-DD HH:mm:ss",
           "decimals": 0,
           "mappingType": 1,
@@ -2646,11 +2568,7 @@
           "alias": "failed aggregations",
           "align": "auto",
           "colorMode": "value",
-          "colors": [
-            "#F2495C",
-            "#FF9830",
-            "#73BF69"
-          ],
+          "colors": ["#F2495C", "#FF9830", "#73BF69"],
           "dateFormat": "YYYY-MM-DD HH:mm:ss",
           "decimals": 0,
           "mappingType": 1,
@@ -2663,11 +2581,7 @@
           "alias": "balance",
           "align": "auto",
           "colorMode": "value",
-          "colors": [
-            "#F2495C",
-            "#FF9830",
-            "#73BF69"
-          ],
+          "colors": ["#F2495C", "#FF9830", "#73BF69"],
           "dateFormat": "YYYY-MM-DD HH:mm:ss",
           "decimals": 4,
           "link": false,
@@ -2676,10 +2590,7 @@
           "linkUrl": "",
           "mappingType": 1,
           "pattern": "Value #F",
-          "thresholds": [
-            "165",
-            "220"
-          ],
+          "thresholds": ["165", "220"],
           "type": "number",
           "unit": "short"
         },
@@ -2687,11 +2598,7 @@
           "alias": "pubkey",
           "align": "auto",
           "colorMode": null,
-          "colors": [
-            "#F2495C",
-            "#FF9830",
-            "#73BF69"
-          ],
+          "colors": ["#F2495C", "#FF9830", "#73BF69"],
           "dateFormat": "YYYY-MM-DD HH:mm:ss",
           "decimals": 2,
           "link": true,
@@ -2708,18 +2615,12 @@
           "alias": "inactivity score",
           "align": "auto",
           "colorMode": null,
-          "colors": [
-            "#F2495C",
-            "#FF9830",
-            "#73BF69"
-          ],
+          "colors": ["#F2495C", "#FF9830", "#73BF69"],
           "dateFormat": "YYYY-MM-DD HH:mm:ss",
           "decimals": 0,
           "mappingType": 1,
           "pattern": "Value #H",
-          "thresholds": [
-            ""
-          ],
+          "thresholds": [""],
           "type": "number",
           "unit": "short"
         },
@@ -2727,11 +2628,7 @@
           "alias": "status",
           "align": "auto",
           "colorMode": null,
-          "colors": [
-            "#F2495C",
-            "#FF9830",
-            "#73BF69"
-          ],
+          "colors": ["#F2495C", "#FF9830", "#73BF69"],
           "dateFormat": "YYYY-MM-DD HH:mm:ss",
           "decimals": 0,
           "mappingType": 1,
@@ -2907,9 +2804,7 @@
         "justifyMode": "auto",
         "orientation": "horizontal",
         "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
+          "calcs": ["lastNotNull"],
           "fields": "",
           "values": false
         },
@@ -3078,17 +2973,13 @@
       "options": {
         "colorMode": "value",
         "fieldOptions": {
-          "calcs": [
-            "lastNotNull"
-          ]
+          "calcs": ["lastNotNull"]
         },
         "graphMode": "none",
         "justifyMode": "center",
         "orientation": "auto",
         "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
+          "calcs": ["lastNotNull"],
           "fields": "",
           "values": false
         },
@@ -3165,9 +3056,7 @@
         "justifyMode": "center",
         "orientation": "auto",
         "reduceOptions": {
-          "calcs": [
-            "last"
-          ],
+          "calcs": ["last"],
           "fields": "",
           "values": false
         },
@@ -3251,10 +3140,7 @@
           "id": "filterFieldsByName",
           "options": {
             "include": {
-              "names": [
-                "job",
-                "version"
-              ]
+              "names": ["job", "version"]
             }
           }
         }
@@ -3310,9 +3196,7 @@
         "justifyMode": "center",
         "orientation": "auto",
         "reduceOptions": {
-          "calcs": [
-            "last"
-          ],
+          "calcs": ["last"],
           "fields": "",
           "values": false
         },
@@ -3404,9 +3288,7 @@
         "justifyMode": "auto",
         "orientation": "horizontal",
         "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
+          "calcs": ["lastNotNull"],
           "fields": "",
           "values": false
         },
@@ -4333,9 +4215,7 @@
         "justifyMode": "auto",
         "orientation": "horizontal",
         "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
+          "calcs": ["lastNotNull"],
           "fields": "",
           "values": false
         },
@@ -4362,20 +4242,14 @@
         "conditions": [
           {
             "evaluator": {
-              "params": [
-                0.9
-              ],
+              "params": [0.9],
               "type": "lt"
             },
             "operator": {
               "type": "and"
             },
             "query": {
-              "params": [
-                "A",
-                "5m",
-                "now"
-              ]
+              "params": ["A", "5m", "now"]
             },
             "reducer": {
               "params": [],
@@ -4385,20 +4259,14 @@
           },
           {
             "evaluator": {
-              "params": [
-                0.9
-              ],
+              "params": [0.9],
               "type": "lt"
             },
             "operator": {
               "type": "or"
             },
             "query": {
-              "params": [
-                "B",
-                "5m",
-                "now"
-              ]
+              "params": ["B", "5m", "now"]
             },
             "reducer": {
               "params": [],
@@ -4540,20 +4408,14 @@
         "conditions": [
           {
             "evaluator": {
-              "params": [
-                2147483648
-              ],
+              "params": [2147483648],
               "type": "lt"
             },
             "operator": {
               "type": "and"
             },
             "query": {
-              "params": [
-                "A",
-                "30m",
-                "now"
-              ]
+              "params": ["A", "30m", "now"]
             },
             "reducer": {
               "params": [],
@@ -4689,20 +4551,14 @@
         "conditions": [
           {
             "evaluator": {
-              "params": [
-                0.1
-              ],
+              "params": [0.1],
               "type": "lt"
             },
             "operator": {
               "type": "and"
             },
             "query": {
-              "params": [
-                "A",
-                "10s",
-                "now"
-              ]
+              "params": ["A", "10s", "now"]
             },
             "reducer": {
               "params": [],
@@ -4712,20 +4568,14 @@
           },
           {
             "evaluator": {
-              "params": [
-                0.1
-              ],
+              "params": [0.1],
               "type": "lt"
             },
             "operator": {
               "type": "or"
             },
             "query": {
-              "params": [
-                "B",
-                "10s",
-                "now"
-              ]
+              "params": ["B", "10s", "now"]
             },
             "reducer": {
               "params": [],
@@ -4866,20 +4716,14 @@
         "conditions": [
           {
             "evaluator": {
-              "params": [
-                40
-              ],
+              "params": [40],
               "type": "gt"
             },
             "operator": {
               "type": "and"
             },
             "query": {
-              "params": [
-                "A",
-                "10m",
-                "now"
-              ]
+              "params": ["A", "10m", "now"]
             },
             "reducer": {
               "params": [],
@@ -5015,20 +4859,14 @@
         "conditions": [
           {
             "evaluator": {
-              "params": [
-                40
-              ],
+              "params": [40],
               "type": "lt"
             },
             "operator": {
               "type": "and"
             },
             "query": {
-              "params": [
-                "A",
-                "5m",
-                "now"
-              ]
+              "params": ["A", "5m", "now"]
             },
             "reducer": {
               "params": [],
@@ -5161,20 +4999,14 @@
         "conditions": [
           {
             "evaluator": {
-              "params": [
-                0.6
-              ],
+              "params": [0.6],
               "type": "gt"
             },
             "operator": {
               "type": "and"
             },
             "query": {
-              "params": [
-                "A",
-                "12h",
-                "now"
-              ]
+              "params": ["A", "12h", "now"]
             },
             "reducer": {
               "params": [],
@@ -5311,20 +5143,14 @@
         "conditions": [
           {
             "evaluator": {
-              "params": [
-                80
-              ],
+              "params": [80],
               "type": "lt"
             },
             "operator": {
               "type": "and"
             },
             "query": {
-              "params": [
-                "A",
-                "10s",
-                "now"
-              ]
+              "params": ["A", "10s", "now"]
             },
             "reducer": {
               "params": [],
@@ -5460,20 +5286,14 @@
         "conditions": [
           {
             "evaluator": {
-              "params": [
-                55
-              ],
+              "params": [55],
               "type": "gt"
             },
             "operator": {
               "type": "and"
             },
             "query": {
-              "params": [
-                "A",
-                "5m",
-                "now"
-              ]
+              "params": ["A", "5m", "now"]
             },
             "reducer": {
               "params": [],
@@ -5610,20 +5430,14 @@
         "conditions": [
           {
             "evaluator": {
-              "params": [
-                50
-              ],
+              "params": [50],
               "type": "gt"
             },
             "operator": {
               "type": "and"
             },
             "query": {
-              "params": [
-                "A",
-                "5m",
-                "now"
-              ]
+              "params": ["A", "5m", "now"]
             },
             "reducer": {
               "params": [],
@@ -5756,20 +5570,14 @@
         "conditions": [
           {
             "evaluator": {
-              "params": [
-                10
-              ],
+              "params": [10],
               "type": "gt"
             },
             "operator": {
               "type": "and"
             },
             "query": {
-              "params": [
-                "A",
-                "10s",
-                "now"
-              ]
+              "params": ["A", "10s", "now"]
             },
             "reducer": {
               "params": [],
@@ -5902,20 +5710,14 @@
         "conditions": [
           {
             "evaluator": {
-              "params": [
-                0.000001
-              ],
+              "params": [0.000001],
               "type": "lt"
             },
             "operator": {
               "type": "and"
             },
             "query": {
-              "params": [
-                "A",
-                "10s",
-                "now"
-              ]
+              "params": ["A", "10s", "now"]
             },
             "reducer": {
               "params": [],
@@ -5925,20 +5727,14 @@
           },
           {
             "evaluator": {
-              "params": [
-                -10
-              ],
+              "params": [-10],
               "type": "gt"
             },
             "operator": {
               "type": "and"
             },
             "query": {
-              "params": [
-                "A",
-                "10s",
-                "now"
-              ]
+              "params": ["A", "10s", "now"]
             },
             "reducer": {
               "params": [],
