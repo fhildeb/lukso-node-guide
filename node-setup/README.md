@@ -1,6 +1,6 @@
 # EVM Validator Node
 
-This is a guide to setup a LUKSO or other validator node in home environment. Its recomended to choose a dedicated machine to run a node.
+This section provides a guide to setting up a LUKSO or other validator node in the home environment. It's recommended to choose a dedicated machine to run a node.
 
 ## 1.1 Operating System Download
 
@@ -26,16 +26,16 @@ This is a guide to setup a LUKSO or other validator node in home environment. It
 
 I spent around 1100 €. The current prices should be below that at best. I assembled the node myself because I wanted to run a fanless machine. The bespoke housing improves the temperatures and reduces noise. It also eliminates the maintenance of moving parts.
 
-Note that you also need thermal paste and screwdrivers and might want to add WiFi antennas right away if the machine is ever planned to serve as a home server. It's only about 10 €, but you will save yourself a ton of work re-assembling the whole setup as they sit right behind the motherboard. The antennas can then be unscrewed from their attached base and do not bother your server setup.
+Note that you also need thermal paste and screwdrivers and might want to add WiFi antennas immediately if the machine is planned to serve as a home server. It's only about 10 €, but you will save yourself a ton of work re-assembling the whole setup as they sit right behind the motherboard. The antennas can then be unscrewed from their attached base and do not bother your server setup.
 
-The memory may not be sufficient for future-proof use of the node over several years or by several chains. Here, the freezer functionality of Geth comes into play to split the network data on different disks. I plan to expand my storage and add a 4 TB 2.5 inch HDD which also fits into the housing. Therefore, make sure to keep all the accessories and frames.
+The memory may not be sufficient for future-proof use of the node over several years or by several chains. Here, the freezer functionality of Geth comes into play to split the network data on different disks. I plan to expand my storage and add a 4 TB 2.5" HDD to fit the housing. Therefore, make sure to keep all the accessories and frames.
 
-I set up my machine on a small home rack and connected my machine to a 8-port switch that is connected to my router. Not being directly connected to the router not only allows more slots but also allows me to place and connect servers and other PCs individually since the internet connection is in separate rooms.
+I set up my machine on a small home rack and connected my node to an 8-port switch connected to my router. Not being directly connected to the router not only allows more slots but also allows me to place and connect servers and PCs in separate rooms.
 
 ### Optional Parts
 
 - **Switch**: TP-Link 8-Port Gigabit Network Switch (TL-SG108, RJ-45, IGMP-Snooping, unmanaged, fanless)
-- **Additional Storage**: Seagate Barracuda 4 TB HDD (2.5 inch, 128 MB Cache, SATA 6 Gb/s)
+- **Additional Storage**: Seagate Barracuda 4 TB HDD (2.5", 128 MB Cache, SATA 6 Gb/s)
 - **Network Setup**: Several RJ-45 Network cables
 
 ## 1.3 BIOS Setup
@@ -43,7 +43,7 @@ I set up my machine on a small home rack and connected my machine to a 8-port sw
 Connect your machine to power and attach a keyboard and monitor.
 
 1. Connect your Bootbable USB device to the node
-2. Press `F2` during boot to enter BIOS setup
+2. Press `F2` during boot to enter the BIOS setup
 
 ### 1.3.1 Power Settings
 
@@ -99,64 +99,65 @@ Connect your machine to power and attach a keyboard and monitor.
 
 ## 1.5 Ubuntu Configuration
 
-> You can have a look at [Ubuntu's Install Guide](https://ubuntu.com/tutorials/install-ubuntu-server#1-overview) for further information. However, most of it seems to be outdated for the most recent Ubuntu versions.
+> You can have a look at [Ubuntu's Install Guide](https://ubuntu.com/tutorials/install-ubuntu-server#1-overview) for further information. However, most of it seems outdated for the most recent Ubuntu versions.
 
 ### 1.5.1 System Language
 
-First you have to choose your operating system's language. Its recommended to set it to `English`. In case errors appear on screen, most guides and guides for fixes are stated in English if you search for them online. So it will help resolving incidents quickly.
+First, you have to choose your operating system's language. It's recommended to set it to `English`. In case errors appear on the screen, most guides and guides for fixes are stated in English if you search for them online. So it will help to resolve incidents quickly.
 
 ### 1.5.2 Keyboard Config
 
-Right after, define your keyboard type or click `Identify keyboard` and be led through the guide.
+Right after, define your keyboard type or click `Identify keyboard` and follow the guide.
 
 ### 1.5.3 Installation Type
 
-Choose your type of installation for the node. Its recommended to set it to `Ubuntu Server (minimized)` as it has significant advantages for security and performance. Only remote access is needed and there are no other applications and web services that could potentially harm the software. Both, desktop and non-minimized versions, also use more system resources.
+Choose your type of installation for the node. Its recommended to set it to `Ubuntu Server (minimized)` as it has significant advantages for security and performance. Only remote access is needed, and no other applications and web services could potentially harm the software. Both desktop and non-minimized versions also use more system resources.
 
-Do not have `Search for third-party drivers` enabled during install.
+Do not have `Search for third-party drivers` enabled during installation.
 
 ### 1.5.4 Network and Access Settings
 
-Now configure your network settings to talk to the node from the outside world. Connect your node to your router our switch, then choose the network type `eth` and edit `IPv4` and `IPv6` to both set as `Automatic (DHCP)`. We will configure the static IP later on but already allow for a wide variety of connections to reach the node later on.
+Now configure your network settings to talk to the node from the outside world. Connect your node to your router or switch, then choose the network type `eth` and edit `IPv4` and `IPv6` to both set as `Automatic (DHCP)`. We will configure the static IP later but allow various connections to reach the node later.
 
-If you do not have a proxy setup already, leave proxy address blank for now. We will update the HTTP proxy to access the node later on.
+If you do not already have a proxy setup, leave the proxy address blank. We will update the HTTP proxy to access the node later on.
 
 ### 1.5.5 Download and Installer
 
-Leave the official Ubuntu mirror address as it is and continue with the setup.
+Leave the official Ubuntu mirror address and continue with the setup.
 
-If there is any new installer during the next step, download the latest version and you will get back to this step after is is done. Its recommended to always use the latest software releases.
+If there is any new installer during the next step, download the latest version, and you will get back to this step after it is done. It's always recommended to use the newest software releases.
 
 ### 1.5.6 Storage Setup
 
 For storage, set the entire disk.
 
-**Logical Volume Manager**
-It's recommended enable the LVM group option. Its a flexible management system that allows you to easily set and resize your storage volumes. If you plan to run a blockchain node and might add another disk later on, LVM can be beneficial. If you need to add more storage space later, you can easily add a new disk to the existing LVM group and expand the logical volumes as needed. This can be done without any downtime or data loss. It also allows for resizing volumes, so you can easily resize your storage volumes on the fly, allowing to adapt to changing storage requirements of your blockchain node. Some trade-offs when using LVM are the complexity of disk management and a small performance dint in performance.
+#### Logical Volume Manager
 
-Considering the benefits, LVM is generally recommended and also enabled on new [Dappnode](https://dappnode.com/) machines and set as default on Ubuntu since version 20.04.
+It's recommended to enable the LVM group option. A flexible management system allows you to easily set and resize your storage volumes. If you plan to run a blockchain node and might add another disk, later on, LVM can be beneficial. If you need to add more storage space later, you can easily add a new disk to the existing LVM group and expand the logical volumes as needed. Maintenance can be done without any downtime or data loss. It also allows for resizing storage volumes, so you can easily resize them on the fly, allowing you to adapt to changing storage requirements of your blockchain node. Some trade-offs when using LVM are the complexity of disk management and a tiny performance dint in performance.
 
-**Encryption**
+Considering the benefits, LVM is generally recommended and enabled on new [Dappnode](https://dappnode.com/) machines and has been set as default on Ubuntu since version 20.04.
 
-Encryption is not a must, as you could encrypt a small portion of the disk later on, if really needed. Encrypting the whole disk could become cumbersome for remote access, as it requires manual intervention each time the server is restarted. There are ways to automate the unlocking process, such as using a remote key server or network-bound disk encryption. However, these methods can increase complexity and may have their own security implications.
+#### Encryption
 
-Your validator keys are safe anyway, as they are encrypted by default. The validator also has an own encrypted wallet, thats needed to restart the client with a modified address for the fee recipient. The only risk here is physical access or modificaion- except for the keys or wallet. These could include log data, configuration files or other personal data that are stored on the node itself. If these points are not deemed to be high-risk for you, the added complexity wont be necessary.
+Encryption is not necessary, as you could encrypt a small portion of the disk later on if needed. Encrypting the whole disk could become cumbersome for remote access, requiring manual intervention each time the server is restarted. There are ways to automate the unlocking process, such as using a remote key server or network-bound disk encryption. However, these methods can increase complexity and may have security implications.
+
+Your validator keys are safe anyway, as they are encrypted by default. The validator also has its encrypted wallet needed to restart the client with a modified address for the fee recipient. The only risk here is physical access or modification- except for the keys or wallet. These could include log data, configuration files, or other personal data stored on the node. The added complexity won't be necessary if these points are not deemed high-risk.
 
 ### 1.5.7 User Configuration
 
-In the next step, pick names for your user and server and choose a strong password.
+In the next step, pick your user and server names and choose a strong password.
 
-Continue without [Ubuntu Pro](https://ubuntu.com/pricing/pro). Its a premium version of Ubuntu and designed for enterprise use and comes with additional features, security updates, and support compared to the standard Ubuntu release. The primary target are businesses and organizations looking for a more comprehensive and secure Ubuntu experience.
+Continue without [Ubuntu Pro](https://ubuntu.com/pricing/pro). It's a premium version of Ubuntu designed for enterprise use and comes with additional features, security updates, and support compared to the standard Ubuntu release. The primary target is businesses and organizations seeking a more comprehensive and secure Ubuntu experience.
 
 ### 1.5.8 SSH Setup
 
-In the next step, you can already add the OpenSSH server installation for secure remote access. This will only allow the connection to the node, not the functionality for the node to also set up a client- which is lean and ideal for a node setup that only wants external devices to connect for maintanance.
+In the next step, you can add the OpenSSH server installation for secure remote access. The server-only variant will only allow the connection to the node, not the functionality for the node also to set up a client- which is lean and ideal for a node setup that only wants external devices to connect for maintenance.
 
-If you do not have an SSH configuration already, leave the SSH identity blank for now. We will configure access later on.
+If you do not already have an SSH configuration, leave the SSH identity blank. We will configure access later on.
 
 ### 1.5.9 Additional Software
 
-Its recommended to skip through the additional server snaps without enabling packages. Best practice would be to just choose the packages later on when installing or configuring specific software.
+It's recommended to skip through the additional server snaps without enabling packages. The best practice would be choosing the packages later when installing or configuring specific software.
 
 Let the Ubuntu Installation process run through until fully complete. Remove the USB device and press enter to reboot the machine.
 
