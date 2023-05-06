@@ -36,3 +36,8 @@ LUKSO CLI v 0.1.0 - 0.4.4
 - [Original CLI Guide](https://luksoverse.io/2022/04/l16-re-spin-extra-tools-and-explanation/)
 - [Original Node Guide](https://github.com/lykhonis/lukso-node-guide)
 - [LUKSO Documentation](https://docs.lukso.tech/networks/l16-testnet/run-node)
+
+## Credits
+
+- [Metanull Operator's ETH2 Ubuntu Guide](https://github.com/metanull-operator/eth2-ubuntu)
+- [Luksoverse](https://docs.luksoverse.io)
