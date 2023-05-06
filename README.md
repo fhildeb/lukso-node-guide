@@ -1,8 +1,6 @@
-# l16-node-guide
+# lukso-node-guide
 
-This repo features all information needed to set up or run a node for the [LUKSO L16 Testnetwork](https://docs.lukso.tech/networks/l16-testnet/parameters). The repository includes operation system setups, staking and monitoring software.
-
-> **CAUTION:** Commands are used for L16 nodes running a docker setup. Use at own risk.
+This repo features all information needed to build, set up, and run a node for EVM Proof-of-Stake blockchains such as [LUKSO](https://docs.lukso.tech/). The repository includes operation system setups, staking and monitoring software and also even features lagacy guides for the outdated L16 network of LUKSO.
 
 ## Description
 
