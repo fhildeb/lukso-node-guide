@@ -1,10 +1,12 @@
 # 1. Hardware and Build Process
 
+This section of the guide is about build your blockchain node from scratch. Building a custom node can be an exciting and rewarding experience, as it allows you to take an active part in the world of decentralized networks while tailoring the hardware to your specific needs. In this guide, I will walk you through my entire process, from selecting the components to assembling and configuring the node for optimal performance.
+
 ## 1.1 Hardware Setup
 
-![Node Parts]()
+![Node Parts](/img/build_001.png)
 
-> I chose an expensive and professional setup because I plan to use the slasher functionality and run multiple networks from one node, partly via docker images on top of the LUKSO CLI. Please understand that this is not mandatory. The minimum requirements to run a LUKSO node can be read in the network section of the [official documentation](https://docs.lukso.tech/networks/).
+I chose an expensive and professional setup because I plan to use the slasher functionality and run multiple networks from one node, partly via docker images on top of the LUKSO CLI. Please understand that this is not mandatory. The minimum requirements to run a LUKSO node can be read in the network section of the [official documentation](https://docs.lukso.tech/networks/).
 
 - Ubuntu 22.04.2 Server
 - Barebone Intel NUC 10 (NUC10i7FNHN)
