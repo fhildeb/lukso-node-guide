@@ -1,6 +1,29 @@
 # 2. BIOS Settings and Ubuntu Installation
 
-## 2.1 Operating System Download
+This section about the guide is about configuring your blockchain node's BIOS and installing the operating system. After successfully assembling your custom node, fine-tuning the BIOS settings and installing a suitable OS are crucial steps for achieving optimal performance, efficiency, and reliability
+
+Understanding and adjusting the BIOS settings can greatly reduce your node's energy consumption. The right OS can enhance speed and processing.
+
+## 2.1 Operating System
+
+Ubuntu 22.04.2 Server is the latest iteration of one of the most popular and widely-used Linux distributions in the world. Its a proven, reliable platform designed to provide you with a secure, high-performance, and low-maintenance solution tailored for the demanding world of decentralized networks.
+
+Ubuntu Server is renowned for its ease of use, flexibility, and robustness, making it an excellent choice for various server applications. An LTS version is particularly significant for those seeking a stable and reliable platform for their nodes.
+
+**Based on [Ethernodes](https://www.ethernodes.org/os) more than 97% of EVM nodes are running on Linux distributions.**
+
+#### Long-Term Support
+
+LTS refers to a version of the software that receives extended support in terms of updates, bug fixes, and security patches. For Ubuntu Server, LTS releases are maintained for a period of five years, whereas non-LTS releases are supported for only nine months. This extended support period is crucial for blockchain nodes, as it ensures that your node remains secure, stable, and compatible with the ever-evolving blockchain ecosystem.
+
+Selecting an LTS release, such as Ubuntu 22.04.2 Server, for your blockchain node offers several key advantages:
+
+- Stability: LTS releases prioritize stability and reliability, making them ideal for mission-critical applications like blockchain nodes, which require uninterrupted operation and minimal downtime.
+- Security: With an LTS release, you can be assured of regular security updates and patches, safeguarding your node from potential vulnerabilities and threats.
+- Lower maintenance overhead: The extended support period means that you won't need to upgrade your node's OS as frequently, reducing the maintenance effort and associated downtime.
+- Wider compatibility: LTS releases are often better supported by third-party software and tools, ensuring seamless integration with various blockchain networks and applications.
+
+## 2.1 Download and Preparation
 
 > You need a USB device with at least 2GB
 
