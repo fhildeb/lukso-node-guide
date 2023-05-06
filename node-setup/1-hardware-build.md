@@ -4,7 +4,7 @@ This section of the guide is about building your blockchain node from scratch. B
 
 ## 1.1 Hardware Setup
 
-![Node Parts](/img/build_001.png)
+![Node Parts](/img/build_01.png)
 
 I chose an expensive and professional setup because I plan to use the slasher functionality and run multiple networks from one node, partly via docker images on top of the LUKSO CLI. Please understand that this is not mandatory. The minimum requirements to run a LUKSO node can be read in the network section of the [official documentation](https://docs.lukso.tech/networks/).
 
