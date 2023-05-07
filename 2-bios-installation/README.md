@@ -157,7 +157,17 @@ Continue without [Ubuntu Pro](https://ubuntu.com/pricing/pro). It's a premium ve
 
 ### 1.5.8 SSH Setup
 
-In the next step, you can add the OpenSSH server installation for secure remote access. The server-only variant will only allow the connection to the node, not the functionality for the node also to set up a client- which is lean and ideal for a node setup that only wants external devices to connect for maintenance.
+In the next step, you can add the openSSH server installation for secure remote access. The Open Secure Shell is a suite of secure networking utilities. It enables encrypted communication and secure data transfer between two networked devices, providing a secure alternative to traditional, non-encrypted protocols. openSSH server is widely used for remote administration, secure file transfers, and executing commands on remote systems.
+
+The server-only variant will only allow the connection to the node, not the functionality for the node also to set up a client- which is lean and ideal for a node setup that only wants external devices to connect for maintenance.
+
+In the context of a blockchain node setup, openSSH server offers several key advantages that make it a valuable component:
+
+- **Secure remote access**: It allows you to remotely access and manage your node using a secure, encrypted connection. This is crucial for maintaining the confidentiality and integrity of your data and commands, especially when operating the node in a data center, cloud environment, or across untrusted networks.
+- **Command-line interface**: It provides a command-line interface for managing your node, which is the preferred method for administering server-based systems like Ubuntu Server. The command-line interface allows for efficient and scriptable management of your node.
+- **Key-based authentication**: It supports public key authentication, which is more secure than password-based authentication. By using key pairs, you can enhance the security of your node by ensuring that only authorized users with the correct private key can access it.
+- **Port forwarding and tunneling**: It enables port forwarding and tunneling, which can help secure other network services and create encrypted tunnels for data transfer. This can be useful for securing communication between your node and other components of the blockchain network or related services.
+- **Extensive compatibility**: openSSH server is widely supported across various platforms and operating systems, making it easy to integrate into a diverse range of node and client setups.
 
 If you do not already have an SSH configuration, leave the SSH identity blank. We will configure access later on.
 
