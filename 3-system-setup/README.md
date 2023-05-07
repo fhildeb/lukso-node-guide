@@ -63,6 +63,36 @@ Change the port number `22` to your desired one, for example, port `50022`, then
 
 In order to apply the change, we need to restart the SSH service of the node.
 
+#### Manage System Services
+
+System Control is a powerful command-line utility that serves as the primary management tool for system processes, which is widely used across modern Linux distributions. By leveraging `systemctl`, administrators can control and get insights into their system's state, enabling to fine-tune their environment for optimal performance, stability, and security. The system control command offers a unified and consistent approach to starting, stopping, enabling, disabling, and checking the status of various components.
+
+### 2.2.2 Adapt to Changes
+
+To make the SSH service use the updated config file, we need to restart the OpenSSH server using the `systemctl` command.
+
+```sh
+sudo systemctl restart ssh
+```
+
+## 2.3 Remote Access on Startup
+
+Next, we want to check if OpenSSH server starts automatically when the system boots up. Here we can also use the system control to check if it is enabled already.
+
+### 2.3.1 Check SSH on Startup
+
+```sh
+sudo systemctl is-enabled ssh
+```
+
+If it should not be enabled, we need to configure it using a symbolic link.
+
+#### Symbolic Links
+
+A symbolic link, also known as a symlink or soft link, is a special type of file in Unix-like operating systems that serves as a reference or pointer to another file or directory. It establishes a link between the path of the symbolic link and the target file or directory, allowing users and applications to access the target resource as if it were at the symlink's location.
+
+In our example, the symbolic link needs to be created between the OpenSSH service unit file and a corresponding file in the system directory meant for system services that are enabled to start at boot. This system directory is then scanned during the boot process, and all service unit files that have a symbolic link in this directory are automatically started. A smybolic link is used, so there are no duplications of the actual service.
+
 #### Resolve Hostname
 
 In order to locate a node machine in local network, it requires IP. Execute following command to resolve a node machine's IP:
