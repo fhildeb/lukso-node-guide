@@ -10,7 +10,7 @@ Ubuntu 22.04.2 Server is the latest iteration of one of the most popular and wid
 
 Ubuntu Server is renowned for its ease of use, flexibility, and robustness, making it an excellent choice for various server applications. An LTS version is particularly significant for those seeking a stable and reliable platform for their nodes.
 
-**Based on [Ethernodes](https://www.ethernodes.org/os) more than 97% of EVM nodes are running on Linux distributions.**
+_Based on [Ethernodes](https://www.ethernodes.org/os) more than 97% of EVM nodes are running on Linux distributions._
 
 ### Server Version
 
