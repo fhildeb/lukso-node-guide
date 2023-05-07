@@ -12,26 +12,25 @@ Ubuntu Server is renowned for its ease of use, flexibility, and robustness, maki
 
 **Based on [Ethernodes](https://www.ethernodes.org/os) more than 97% of EVM nodes are running on Linux distributions.**
 
-#### Server Version
+### Server Version
 
 Choosing Ubuntu Server over Ubuntu Desktop for a blockchain node offers several advantages that make it a more suitable option for running server-oriented applications, such as nodes. Some of the key reasons for selecting Ubuntu Server include:
 
-- Minimal resource usage: Ubuntu Server is designed without a graphical user interface (GUI) and comes with a minimal set of pre-installed packages. This results in lower resource consumption (CPU, memory, and storage), which is essential for optimizing the performance of a blockchain node.
-- Increased stability and reliability: The streamlined nature of Ubuntu Server, with fewer packages and no GUI, reduces the potential for software conflicts, crashes, and security vulnerabilities. This leads to a more stable and reliable environment for running a node.
-- Simplified remote administration: Ubuntu Server is primarily managed via the command line or remote administration tools, making it easier to manage and monitor the node remotely. This is particularly useful when operating multiple nodes or managing nodes in a data center or cloud environment.
-- Focus on server applications: Ubuntu Server is specifically tailored for server applications, with a selection of pre-installed packages and tools designed to support server use cases. This makes it an ideal platform for running blockchain nodes, which often require server-grade performance, networking, and security features.
-- Regular updates and security patches: Ubuntu Server receives more frequent updates and security patches, ensuring that your node remains secure and up-to-date with the latest software versions.
+- **Minimal resource usage**: Ubuntu Server is designed without a graphical user interface (GUI) and comes with a minimal set of pre-installed packages. This results in lower resource consumption (CPU, memory, and storage), which is essential for optimizing the performance of a blockchain node.
+- **Increased stability and reliability**: The streamlined nature of Ubuntu Server, with fewer packages and no GUI, reduces the potential for software conflicts, crashes, and security vulnerabilities. This leads to a more stable and reliable environment for running a node.
+- **Focus on server applications**: Ubuntu Server is specifically tailored for server applications, with a selection of pre-installed packages and tools designed to support server use cases. This makes it an ideal platform for running blockchain nodes, which often require server-grade performance, networking, and security features.
+- **Regular updates and security patches**: Ubuntu Server receives more frequent updates and security patches, ensuring that your node remains secure and up-to-date with the latest software versions.
 
-#### Long-Term Support
+### Long-Term Support
 
 LTS refers to a version of the software that receives extended support in terms of updates, bug fixes, and security patches. For Ubuntu Server, LTS releases are maintained for a period of five years, whereas non-LTS releases are supported for only nine months. This extended support period is crucial for blockchain nodes, as it ensures that your node remains secure, stable, and compatible with the ever-evolving blockchain ecosystem.
 
 Selecting an LTS release, such as Ubuntu 22.04.2 Server, for your blockchain node offers several key advantages:
 
-- Stability: LTS releases prioritize stability and reliability, making them ideal for mission-critical applications like blockchain nodes, which require uninterrupted operation and minimal downtime.
-- Security: With an LTS release, you can be assured of regular security updates and patches, safeguarding your node from potential vulnerabilities and threats.
-- Lower maintenance overhead: The extended support period means that you won't need to upgrade your node's OS as frequently, reducing the maintenance effort and associated downtime.
-- Wider compatibility: LTS releases are often better supported by third-party software and tools, ensuring seamless integration with various blockchain networks and applications.
+- **Stability**: LTS releases prioritize stability and reliability, making them ideal for mission-critical applications like blockchain nodes, which require uninterrupted operation and minimal downtime.
+- **Security**: With an LTS release, you can be assured of regular security updates and patches, safeguarding your node from potential vulnerabilities and threats.
+- **Lower maintenance overhead**: The extended support period means that you won't need to upgrade your node's OS as frequently, reducing the maintenance effort and associated downtime.
+- **Wider compatibility**: LTS releases are often better supported by third-party software and tools, ensuring seamless integration with various blockchain networks and applications.
 
 ## 2.1 Download and Preparation
 
