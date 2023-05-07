@@ -36,6 +36,33 @@ Regarding the SSH port number, the default port for openSSH server is `22`. Howe
 
 It is recommended to choose a port number higher than `1024`, as ports below this range are considered privileged and require root access to bind. The highest possible number is `65535`, as port numbers are 16-bit unsigned integers. Some administrators prefer using a port number higher than `50000` to further avoid conflicts with other services and minimize the chances of being targeted by automated scans. Ultimately, the choice of port number depends on your preferences and network configuration, but it is essential to ensure that the selected port is not already in use by another service on your system.
 
+#### Text Editor
+
+To configure files on the node, we use Ubuntus default text editor called Vi Improved. Vim is an enhanced version of the classic Unix text editor, Vi, with additional features and improved usability. Vim operates in multiple modes, primarily normal mode, insert mode, and command mode, allowing users to efficiently navigate, edit, and manipulate text files.
+
+Once the file is open in Vim, you'll start in normal mode. You navigate through files by using the arrow keys.
+
+To enter insert mode to edit the text, press `i`. You'll see `-- INSERT --`showing up at the bottom of the screen. To exit insert mode and return to normal mode, press `Esc`.
+
+To enter command mode to manage save and exit, press `:` while in normal mode. A colon will appear at the bottom of the screen.
+
+- To write and quit, type `wq` and press `Enter`.
+- To quit without saving: type `q!` and press `Enter`.
+
+### 2.2.1 Edit SSH Configuration
+
+Lets open the configuration file using Vim.
+
+```sh
+sudo vim /etc/ssh/sshd_config
+```
+
+Locate the line that starts with `#Port 22` and uncomment it by removing the `#` at the beginning, if it is present. This will activate the static port number you want to use for connecting to the node.
+
+Change the port number `22` to your desired one, for example, port `50022`, then save and exit.
+
+In order to apply the change, we need to restart the SSH service of the node.
+
 #### Resolve Hostname
 
 In order to locate a node machine in local network, it requires IP. Execute following command to resolve a node machine's IP:
