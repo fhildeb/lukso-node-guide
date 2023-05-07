@@ -93,6 +93,30 @@ A symbolic link, also known as a symlink or soft link, is a special type of file
 
 In our example, the symbolic link needs to be created between the OpenSSH service unit file and a corresponding file in the system directory meant for system services that are enabled to start at boot. This system directory is then scanned during the boot process, and all service unit files that have a symbolic link in this directory are automatically started. A smybolic link is used, so there are no duplications of the actual service.
 
+### 2.3.2 Enable SSH on Startup
+
+We call the system control with the `enable` subcommand to create a symbolic link for the SSH application.
+
+```sh
+sudo systemctl enable ssh
+```
+
+## 2.4 Configure Firewall
+
+Now we need to enable ssh in firewall by allowing incoming connections to the previous configured port.
+
+#### Uncomplicated Firewall
+
+UFW is a user-friendly command-line interface for managing firewall configurations on Linux systems. It simplifies the process of configuring and maintaining a firewall by providing an intuitive set of commands and options. UFW streamlines the process of setting up and managing firewall rules.
+
+We use UFW to allow SSH connections. Make sure to change your port number accordingly.
+
+```sh
+sudo ufw allow 50022
+```
+
+TODO:
+
 #### Resolve Hostname
 
 In order to locate a node machine in local network, it requires IP. Execute following command to resolve a node machine's IP:
