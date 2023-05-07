@@ -1,4 +1,4 @@
-## 3. System Setup
+# 3. System Setup
 
 > **_NOTE:_** The following steps are performed directly on a node machine.
 
@@ -10,7 +10,7 @@ Therefore, some commands will require superuser privileges to run. The related `
 
 **Log into the system with the previous configured user profile. Type in the specified username followed by the password.**
 
-### 2.1 Update and Core Packages
+## 2.1 Update Ubuntu
 
 First we want to update the package list on your system. When executed, it fetches the latest package information from the repositories specified in your system's sources list. This helps to keep our system informed about the latest available versions of packages.
 
@@ -24,60 +24,17 @@ After the list is up to date, we can upgrade the installed packages on our syste
 sudo apt upgrade
 ```
 
-#### Monitoring
+## 2.2 Configure Remote Access
 
-Local node monitoring is the process of observing and tracking the performance, health, and status of a blockchain validator node within a network. This monitoring ensures that the validator node is functioning correctly, efficiently, and securely. By regularly gathering and analyzing key performance metrics, such as CPU usage, memory consumption, disk space, network latency, and the number of connected peers, local node monitoring helps identify potential issues and bottlenecks, enabling prompt corrective actions. Additionally, monitoring the validator's activity, such as the number of proposed and validated blocks, can provide insights into the overall performance and contribution of the node to the blockchain network.
+Within the Ubuntu installation, we already installed openSSH server and I explained why it is an essential tool. If you did not configure it already, now is time to set it up so we can connect to our server from other devices in a secure manner.
 
-As effective node monitoring is essential for maintaining a reliable and secure distributed ledger and fostering trust within the blockchain ecosystem, we follow up with installing three core packages needed to download and execute such software:
+The `/etc/ssh/sshd_config` file is the main configuration file for openSSH server. It contains various settings and directives that control the behavior of the SSH server, such as authentication methods, listening address, port number, and other security options. By modifying this file, you can customize the openSSH server to fit your specific requirements and enhance the security of your node.
 
-- **wget**: Utility for non-interactive download of files from the Web. It supports HTTP, HTTPS, and FTP protocols, as well as retrieval through HTTP proxies. It's particularly useful for downloading files from the command line, automating downloads, or when a graphical user interface is not available, like on our server installation.
-- **make**: Build automation tool that automatically builds executable programs and libraries from source code by reading files called Makefiles, which specify how to derive the target program. It's widely used in software development for compiling and linking source code files.
-- **git**: Distributed version control system for tracking changes in source code during software development, allowing developers to collaborate, clone and manage software projects effectively. It will help us downloading code repositories.
+#### Port Number
 
-```sh
-sudo apt install wget make git
-```
+Regarding the SSH port number, the default port for openSSH server is `22`. However, it is a common practice to change the port number to a non-standard, higher value to improve security through obscurity. While changing the port number alone is not a comprehensive security solution, it can help reduce the likelihood of automated attacks and port scans targeting the default port.
 
-### Remote Access
-
-SSH is used to enable remote access from other machine using localy network through WiFi or broadband connections. This is a common practice and can be quite useful if a node machine does not have input (keyboard/mouse) nor a display. Once setup, a node machine can be placed elsewhere and only personal computer could be used to control and maintain it.
-
-#### Install SSH
-
-```shell=
-sudo apt install --assume-yes openssh-server
-```
-
-#### Confiugre SSH
-
-Choose a port number larger than `50000`. This will be used later.
-
-```shell=
-sudo vim /etc/ssh/sshd_config
-```
-
-Change and enable a port by uncommenting (removing `#`) and changing `22` to new chosen port number:
-
-```shell=
-Port 50000
-```
-
-Close editor by pressing `ctrl` + `X`, then save.
-
-#### Configure Firewall
-
-Enable ssh in firewall by replacing _replace-port_ with new port:
-
-```shell=
-sudo ufw allow replace-port
-```
-
-#### Enable SSH
-
-```shell=
-sudo systemctl start ssh
-sudo systemctl enable ssh
-```
+It is recommended to choose a port number higher than `1024`, as ports below this range are considered privileged and require root access to bind. The highest possible number is `65535`, as port numbers are 16-bit unsigned integers. Some administrators prefer using a port number higher than `50000` to further avoid conflicts with other services and minimize the chances of being targeted by automated scans. Ultimately, the choice of port number depends on your preferences and network configuration, but it is essential to ensure that the selected port is not already in use by another service on your system.
 
 #### Resolve Hostname
 
