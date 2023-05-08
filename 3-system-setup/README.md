@@ -10,7 +10,7 @@ Therefore, some commands will require superuser privileges to run. The related `
 
 **Log into the system with the previous configured user profile. Type in the specified username followed by the password.**
 
-## 2.1 Update Ubuntu
+## 3.1 Update Ubuntu
 
 First we want to update the package list on your system. When executed, it fetches the latest package information from the repositories specified in your system's sources list. This helps to keep our system informed about the latest available versions of packages.
 
@@ -24,7 +24,7 @@ After the list is up to date, we can upgrade the installed packages on our syste
 sudo apt upgrade
 ```
 
-## 2.2 Configure Remote Access
+## 3.2 Configure Remote Access
 
 Within the Ubuntu installation, we already installed openSSH server and I explained why it is an essential tool. If you did not configure it already, now is time to set it up so we can connect to our server from other devices in a secure manner.
 
@@ -49,7 +49,7 @@ To enter command mode to manage save and exit, press `:` while in normal mode. A
 - To write and quit, type `wq` and press `Enter`.
 - To quit without saving: type `q!` and press `Enter`.
 
-### 2.2.1 Edit SSH Configuration
+### 3.2.1 Edit SSH Configuration
 
 Lets open the configuration file using Vim.
 
@@ -73,7 +73,7 @@ You can use the following command to check all system services:
 systemctl list-unit-files --type=service
 ```
 
-### 2.2.2 Adapt to Changes
+### 3.2.2 Adapt to Changes
 
 To make the SSH service use the updated config file, we need to restart the OpenSSH server using the `systemctl` command.
 
@@ -95,11 +95,11 @@ If there is no output, everything is fine to run it live on the machine, affecti
 sudo systemctl restart ssh
 ```
 
-## 2.3 Remote Access on Startup
+## 3.3 Remote Access on Startup
 
 Next, we want to check if OpenSSH server starts automatically when the system boots up. Here we can also use the system control to check if it is enabled already.
 
-### 2.3.1 Check SSH on Startup
+### 3.3.1 Check SSH on Startup
 
 ```sh
 sudo systemctl is-enabled ssh
@@ -113,7 +113,7 @@ A symbolic link, also known as a symlink or soft link, is a special type of file
 
 In our example, the symbolic link needs to be created between the OpenSSH service unit file and a corresponding file in the system directory meant for system services that are enabled to start at boot. This system directory is then scanned during the boot process, and all service unit files that have a symbolic link in this directory are automatically started. A smybolic link is used, so there are no duplications of the actual service.
 
-### 2.3.2 Enable SSH on Startup
+### 3.3.2 Enable SSH on Startup
 
 We call the system control with the `enable` subcommand to create a symbolic link for the SSH application.
 
@@ -121,7 +121,7 @@ We call the system control with the `enable` subcommand to create a symbolic lin
 sudo systemctl enable ssh
 ```
 
-## 2.4 Configure Firewall
+## 3.4 Configure Firewall
 
 Now we need to enable ssh in firewall by allowing incoming connections to the previous configured port.
 
@@ -129,7 +129,7 @@ Now we need to enable ssh in firewall by allowing incoming connections to the pr
 
 UFW is a user-friendly command-line interface for managing firewall configurations on Linux systems. It simplifies the process of configuring and maintaining a firewall by providing an intuitive set of commands and options. UFW streamlines the process of setting up and managing firewall rules.
 
-### 2.4.1 General Port Locking
+### 3.4.1 General Port Locking
 
 By default, all outgoing traffic should be enabled, all incoming traffic should be disabled.
 
@@ -138,7 +138,7 @@ sudo ufw default allow outgoing
 sudo ufw default deny incoming
 ```
 
-### 2.4.2 Enable SSH Connection
+### 3.4.2 Enable SSH Connection
 
 If you allow for just the port number, both TCP and UDP protocols will be possible. However, the User Datagram Protocol is a connectionless protocol. It offers faster data transmission but does not guarantee reliable, ordered, or error-checked delivery.
 
@@ -164,7 +164,7 @@ Basic port rules without any suffix, mean that they apply to IPv4 network traffi
 
 Both are widely used. The primary differences between IPv4 and IPv6 are in their address space, addressing mechanisms, and additional features. The expanded address space in IPv6 helps accommodate the growing number of devices connected to the internet. IPv6 also introduces several enhancements over IPv4, such as built-in support for Internet Protocol Security, providing secure, encrypted communication between devices.
 
-### 2.4.3 Firewall Checkup
+### 3.4.3 Firewall Checkup
 
 After executing those firewall commands, you do not need to restart the firewall. The changes take effect immediately, and UFW will begin applying the changes according to the new default policy. However, check if the firewall is enabled:
 
@@ -178,7 +178,7 @@ If the firewall is running, you can check if the firewall is within an `active` 
 sudo ufw status
 ```
 
-### 2.4.4 Enable Firewall
+### 3.4.4 Enable Firewall
 
 If it should not be inactive, we need to configure it using a symbolic link as before:
 
@@ -186,7 +186,7 @@ If it should not be inactive, we need to configure it using a symbolic link as b
 sudo ufw enable
 ```
 
-### 2.4.5 Edit Port Rules
+### 3.4.5 Edit Port Rules
 
 If you have made some port rules you do not want, print out a list with all existing rules like before.
 
