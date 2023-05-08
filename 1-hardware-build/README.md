@@ -255,3 +255,7 @@ This is how the finished node looks when the antennas are also attached. however
 So you can leave them unscrewed and keep them until you decide to transform your node into a home server or desktop device some day.
 
 ![Assambling the Enclosure 4](/img/build_39.png)
+
+If you got everything from router, connection, and the node itself, we can start with configuring the BIOS and installing the operating system.
+
+**Continue with Section 2: [BIOS Installation](/2-bios-installation/)**

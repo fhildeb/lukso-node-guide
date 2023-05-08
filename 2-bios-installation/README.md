@@ -188,3 +188,7 @@ If you do not already have an SSH configuration, leave the SSH identity blank. W
 It's recommended to skip through the additional server snaps without enabling packages. The best practice would be choosing the packages later when installing or configuring specific software.
 
 **Let the Ubuntu Installation process run through until fully complete. Remove the USB device and press enter to reboot the machine.**
+
+If your boot was alright, we can continue with the system's core setup.
+
+**Continue with Section 3: [System Setup](/3-system-setup/)**

@@ -97,7 +97,7 @@ Apply the changes and log out of your router.
 
 If you just applied the same IP address as static property, everything should have worked on the fly.
 
-> In case of the manual input, wait for the router reboot and restart your node.
+> In case of the manual input, wait for the router reboot and restart your node. Then log in and continue.
 
 Verify that your static IP address is set up as wished using the same commands as before:
 
@@ -112,3 +112,7 @@ ip route show default
 ```sh
 ip route get 8.8.8.8 | awk '{print $7}'
 ```
+
+If the outputs contradict what we have set above, return to your router settings and repeat the last steps. If it works fine, we can continue establishing a secure connection to the node.
+
+**Continue with Section 5: [Access Connection](/5-access-connection/)**

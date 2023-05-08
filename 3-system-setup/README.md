@@ -199,3 +199,7 @@ Every row within the list has a number, stating by 1. If you want to delete the 
 ```sh
 sudo ufw delete 2
 ```
+
+If your ports are alright, we can continue setting up the router and address assignment.
+
+**Continue with Section 4: [Router Config](/4-router-config/)**
