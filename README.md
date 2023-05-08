@@ -22,6 +22,8 @@ The guides in the repository are split into multiple folders and sections.
 - [`1-hardware-build`](/1-hardware-build/): Hardware Configuration and Node Build
 - [`2-bios-installation`](/2-bios-installation/): BIOS Configuration and Ubuntu Install
 - [`3-system-setup`](/3-system-setup/): Updating and Installing Server Software
+- [`4-router-config`](/4-router-config/): Configuring the Address Reservation
+- [`5-access-connection`](/5-access-connection/): Setting up Node Access Properties
 - `...work in progress...`
 - [`8-notifications`](/8-notifications/): Image Notifications and Constant Updates
 
