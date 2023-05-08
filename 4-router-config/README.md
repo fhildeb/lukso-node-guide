@@ -101,12 +101,14 @@ If you just applied the same IP address as static property, everything should ha
 
 Verify that your static IP address is set up as wished using the same commands as before:
 
-```sh
-# Local Check
-# Look up second address
-ip route show default
+- **Local check, looking up the second address:**
 
-# Online Check
-# Fetch source address used for content request
+```sh
+ip route show default
+```
+
+- **Online check, fetching the requests source address:**
+
+```sh
 ip route get 8.8.8.8 | awk '{print $7}'
 ```
