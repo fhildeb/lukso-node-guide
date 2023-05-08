@@ -113,6 +113,16 @@ ip route show default
 ip route get 8.8.8.8 | awk '{print $7}'
 ```
 
-If the outputs contradict what we have set above, return to your router settings and repeat the last steps. If it works fine, we can continue establishing a secure connection to the node.
+If the outputs contradict what we have set above, return to your router settings and repeat the last steps.
+
+## 4.3 Switch to Terminal Usage
+
+If everything was alright, you can shutdown your node server and place it in your actual server rack or shelf.
+
+```sh
+sudo shutdown now
+```
+
+Continue to disconnect the monitor, keyboard, power and network cables from the back of your node. Afterwards, move your server to its final location and reconnect it to the power supply and a network cable. Because of our previous settings, it will restart automatically if power cable is connected. The boot process should be completed within 30-60 seconds and we will be able to reach it via the static IP if we're within the same network.
 
 **Continue with Section 5: [Access Connection](/5-access-connection/)**

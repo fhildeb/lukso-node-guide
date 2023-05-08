@@ -1,6 +1,8 @@
-TODO:
+# 5. Establishing a Secure Access Connection
 
-> **_NOTE:_** Following steps are performed a personal computer.
+> **_NOTE:_** All following steps are performed a personal computer.
+
+TODO:
 
 Verify basic access to a node machine by using ssh. SSH requires user name of a node machine, its hostname and previously chosen ssh port.
 
