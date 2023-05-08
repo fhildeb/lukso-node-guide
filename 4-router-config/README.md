@@ -5,7 +5,7 @@ TODO:
 In order to locate a node machine in local network, it requires IP. Execute following command to resolve a node machine's IP:
 
 ```shell=
-ifconfig
+ip addr show
 ```
 
 Locate IP address (`inet`) in `eno1` section, e.g. `192.168.86.29`.
