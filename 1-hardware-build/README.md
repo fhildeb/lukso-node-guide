@@ -1,6 +1,8 @@
 # 1. Hardware and Build Process
 
-This section of the guide is about building your blockchain node from scratch. Building a custom node can be an exciting and rewarding experience, as it allows you to take an active part in the world of decentralized networks while tailoring the hardware to your specific needs. In this guide, I will walk you through my entire process, from selecting the components to assembling and configuring the node for optimal performance.
+This section of the guide is about building your blockchain node from scratch. Building a custom node can be an exciting and rewarding experience, as it allows you to take an active part in the world of decentralized networks while tailoring the hardware to your specific needs.
+
+In this guide, I will walk you through my entire process, from selecting the components including router and network properties, to assembling and configuring the node for optimal performance.
 
 ## 1.1 Hardware Setup
 
@@ -46,6 +48,28 @@ There are several factors to consider when selecting a router for running a bloc
 - **IPv6 Support**: As the internet transitions from IPv4 to IPv6, it's important to have a router that supports IPv6 to ensure future compatibility and optimal performance for your blockchain node.
 - **VPN Support**: Some blockchain networks may require or recommend using a VPN for added security and privacy. Ensure that the router supports VPN connections, either through built-in functionality or compatibility with third-party VPN services.
 - **Firmware Updates and Security**: Choose a router from a reputable manufacturer that provides regular firmware updates and security patches. This ensures that your router stays up-to-date with the latest features and security improvements.
+
+In Germany, the company AVM is rated quite high in terms of quality, user interface, warranty lenght, and performance. I chose one of the higher end routers in their product lineup that comes with fiber optic support and WiFi mesh support for higher WiFi ranges.
+
+**Router**: Fritzbox 7590 AX (Gigabit LAN, Fiber Support, WiFi 6)
+
+### 1.1.3 Network Requirements
+
+Running an EVM Proof of Stake validator node at home requires a stable and reliable internet connection with sufficient network speeds and low latency. This is crucial to ensure optimal performance and maintain the validator's active status within the EVM 2.0 network. Here's why network speeds and latency are essential:
+
+- **Blockchain Synchronization**: A fast and stable internet connection is required to efficiently synchronize the blockchain data with the Ethereum network. Slow download speeds can lead to longer sync times, which may prevent your validator from actively participating in the consensus process, causing missed opportunities for rewards.
+- **Attestations and Proposals**: As a validator, your node is responsible for creating attestations and proposing blocks. A low-latency connection ensures that your attestations and proposals reach the network promptly, increasing the likelihood of inclusion in the final chain and earning rewards.
+- **Missed Events and Penalties**: In Ethereum PoS, validators can be penalized for failing to participate in the consensus process. If your network connection is slow or unstable, it could cause missed attestations or proposals, resulting in penalties and reduced rewards.
+- **Network Partition Resilience**: A reliable internet connection with low latency helps your validator node stay connected to the network and recover quickly from temporary network partitions. This reduces the risk of being isolated from the rest of the network and missing important consensus events.
+- **Security**: A stable and fast internet connection allows your validator node to stay updated with the latest security patches and software updates, reducing the risk of vulnerabilities and potential attacks.
+
+Here are the rough minimal network requirements and how it looks like on my end:
+
+- **Download speed**: A minimum download speed of `10-15 Mbps` is recommended, with higher speeds being more desirable for faster blockchain synchronization and data transfer. I got a fiber connection at home with around 100Mbps unlocked.
+- **Upload speed**: A minimum upload speed of `2-4 Mbps` is suggested to ensure your attestations and proposals can be sent to the network quickly. With my fiber connection at home I get around 70MBps.
+- **Latency**: A low-latency connection below `80-100 ms` is ideal for ensuring timely participation in the consensus process and increasing the chances of rewards.
+
+In conclusion, having sufficient network speeds and low latency is essential for running an Ethereum PoS validator node at home. It ensures optimal performance, maximizes reward potential, and minimizes the risk of penalties or missed events.
 
 ## 1.2 Node Build Process
 
