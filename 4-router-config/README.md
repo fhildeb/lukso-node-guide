@@ -1,777 +1,112 @@
-TODO:
+# 4. Router Configuration
 
-#### Resolve Hostname
+With all the changes for remote access, we must of course also configure the router. The router is the intermediary for data exchange in the home network and all data is sent or allowed through it.
 
-In order to locate a node machine in local network, it requires IP. Execute following command to resolve a node machine's IP:
+#### Internet Protocoll Addresses
 
-```shell=
-ip addr show
-```
-
-Locate IP address (`inet`) in `eno1` section, e.g. `192.168.86.29`.
-
-```
-eno1: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
-      inet 192.168.86.29  netmask 255.255.255.0  broadcast 192.168.86.255
-```
-
-Close ssh session by executing `exit`.
-
-> **_NOTE:_** Following steps are performed a personal computer.
-
-Verify basic access to a node machine by using ssh. SSH requires user name of a node machine, its hostname and previously chosen ssh port.
-
-```shell=
-vim ~/.ssh/config
-```
-
-Type in the following and replace _replace-user_, _replace-ip_, and _replace-port_:
-
-```shell=
-Host lukso
-  User replace-user
-  HostName replace-ip
-  Port replace-port
-```
-
-Attempt to connect to verify the configuration:
-
-```shell=
-ssh lukso
-```
-
-Once connected, enter a password of user on a node machine. If a connection was okay, a shell should be presented in a terminal. At this point, it could closed.
-
-#### Disable Password Authentication
-
-On a personal computer, create new key pair for ssh authentication if needed.
-
-```shell=
-ssh-keygen -t rsa -b 4096
-```
-
-Copy a generated public key **keyname.pub** to a node machine. Replace **keyname.pub** with a key in home directory.
-
-```shell=
-ssh-copy-id -i ~/.ssh/keyname.pub lukso
-```
-
-#### Disable Non-Key Remote Access
-
-On a personal computer, try to ssh again. This time it should not prompt for a password.
-
-```shell=
-ssh lukso
-```
-
-Configure SSH by opening a configuration file and modifying several options:
-
-```shell=
-sudo vim /etc/ssh/sshd_config
-```
-
-Options:
-
-```shell=
-ChallengeResponseAuthentication no
-PasswordAuthentication no
-PermitRootLogin prohibit-password
-PermitEmptyPasswords no
-```
-
-Close editor by pressing `ctrl` + `X`, then save. Validate SSH configuration and restart ssh service.
-
-```shell=
-sudo sshd -t
-sudo systemctl restart sshd
-```
-
-Close ssh session by executing `exit`.
-
-#### Verify Remote Access
-
-```shell=
-ssh lukso
-```
-
-Stay connected to a remote node machine to perform next steps.
-
-### Keep System Up to Date
-
-Update a system manually:
-
-```shell=
-sudo apt-get update -y
-sudo apt dist-upgrade -y
-sudo apt-get autoremove
-sudo apt-get autoclean
-```
-
-Keep a system up to date automatically:
-
-```shell=
-sudo apt-get install unattended-upgrades
-sudo dpkg-reconfigure -plow unattended-upgrades
-```
-
-### Disable Root Access
-
-A root access should not be used. Instead, a user should be using `sudo` to perform privilged operations on a system.
-
-```shell=
-sudo passwd -l root
-```
-
-### Block Unathorised Access
-
-Install `fail2ban` to block IP addresses that exceed failed ssh login attempts.
-
-```shell=
-sudo apt-get install fail2ban -y
-```
-
-Edit a config to monitor ssh logins
-
-```shell=
-sudo vim /etc/fail2ban/jail.local
-```
-
-Replace _replace-port_ to match the ssh port number.
-
-```shell=
-[sshd]
-enabled=true
-port=replace-port
-filter=sshd
-logpath=/var/log/auth.log
-maxretry=3
-ignoreip=
-```
-
-Close editor by pressing `ctrl` + `X`, then save. Restart `fail2ban` service:
-
-```shell=
-sudo systemctl restart fail2ban
-```
-
-### Configure Firewall
-
-By default deny all traffic:
-
-```shell=
-sudo ufw default deny incoming
-sudo ufw default allow outgoing
-```
-
-Allow P2P ports for Lukso clients:
-
-```shell=
-sudo ufw allow 30303/tcp
-sudo ufw allow 13000/tcp
-sudo ufw allow 12000/udp
-sudo ufw allow 30303/udp
-```
-
-> **_NOTE:_** make sure to open same ports on your home router
-
-Enable Firewall:
-
-```shell=
-sudo ufw enable
-```
-
-Verify firewall configuration:
-
-```shell=
-sudo ufw status
-```
-
-It should look something like this (may be missing some ports):
-
-```shell=
-Status: active
-
-To                         Action      From
---                         ------      ----
-13000/tcp                  ALLOW       Anywhere
-12000/udp                  ALLOW       Anywhere
-30303/tcp                  ALLOW       Anywhere
-ssh-port/tcp               ALLOW       Anywhere
-30303/udp                  ALLOW       Anywhere
-13000/tcp (v6)             ALLOW       Anywhere (v6)
-12000/udp (v6)             ALLOW       Anywhere (v6)
-30303/tcp (v6)             ALLOW       Anywhere (v6)
-ssh-port/tcp (v6)          ALLOW       Anywhere (v6)
-30303/udp (v6)             ALLOW       Anywhere (v6)
-```
-
-### Improve SSH Connection
-
-While setting up a system, ssh terminal may seem to be slow due wifi power management settings on a node machine. To disable it, modify a config.
-
-```shell=
-sudo vim /etc/NetworkManager/conf.d/default-wifi-powersave-on.conf
-```
-
-Config:
-
-```shell=
-[connection]
-wifi.powersave = 2
-```
-
-Close editor by pressing `ctrl` + `X`, then save. Restart `NetworkManager` service:
-
-```shell=
-sudo systemctl restart NetworkManager
-```
-
-## Node Setup
-
-> **_NOTE:_** Following steps are performed on personal machine.
-
-Access a remote node machine
-
-```shell=
-ssh lukso
-```
-
-**TBD AS LUKSO IS PREPEARING FOR L16 TESTNET**.
-In the meantime follow developments and instructions of [L16 beta](https://docs.lukso.tech/networks/l16-testnet).
+When devices connect to a home network, they are usually assigned dynamic Internet Protocol addresses by the router through a Dynamic Host Configuration Protocol. It's a network protocol that automates the process of assigning IP addresses and other network configuration information to devices connected to a network. DHCP eliminates the need for manual configuration of IP addresses, making it easier to connect devices to a network and manage them efficiently.
 
-## Monitoring
+When a device joins a network, it sends a request to the router, asking for an address and other network settings. The DHCP software on the router then assigns an available IP address from its pool to the device, along with the required network configuration. This IP address is leased to the device for a specific duration, after which the device needs to renew the lease or obtain a new IP address. However, this also means that devices can change their IP addresses over time, making it difficult to consistently access your node through SSH.
 
-Sets up a dashboard to monitor state of a node machine, node, and validators.
+## 4.1 Node Address Checkups
 
-> **_NOTE:_** Following steps are performed on personal machine.
+Since many routers use different software, we first make sure that we are reading the node's connection data correctly before making any substantial changes to the router.
 
-Access a remote node machine
+### 4.1.1 Resolve the Node's IP Address
 
-```shell=
-ssh lukso
-```
-
-### Prometheus
-
-```shell=
-sudo adduser --system prometheus --group --no-create-home
-```
-
-Identify latest version for `linux-amd64` [here](https://prometheus.io/download/), e.g. `2.34.0`. Install prometheus by replacing `{VERSION}` in the following:
-
-```shell=
-cd
-wget https://github.com/prometheus/prometheus/releases/download/v{VERSION}/prometheus-{VERSION}.linux-amd64.tar.gz
-tar xzvf prometheus-{VERSION}.linux-amd64.tar.gz
-cd prometheus-{VERSION}.linux-amd64
-sudo cp promtool /usr/local/bin/
-sudo cp prometheus /usr/local/bin/
-sudo chown root:root /usr/local/bin/promtool /usr/local/bin/prometheus
-sudo chmod 755 /usr/local/bin/promtool /usr/local/bin/prometheus
-cd
-rm prometheus-{VERSION}.linux-amd64.tar.gz
-rm -rf prometheus-{VERSION}.linux-amd64
-```
-
-#### Configure
-
-```shell=
-sudo mkdir -p /etc/prometheus/console_libraries /etc/prometheus/consoles /etc/prometheus/files_sd /etc/prometheus/rules /etc/prometheus/rules.d
-```
-
-Edit configuration file:
-
-```shell=
-sudo vim /etc/prometheus/prometheus.yml
-```
-
-The content of configuration file:
-
-```
-global:
-  scrape_interval: 15s
-  evaluation_interval: 15s
-
-scrape_configs:
-  - job_name: 'prometheus'
-    scrape_interval: 5s
-    static_configs:
-      - targets: ['127.0.0.1:9090']
-  - job_name: 'beacon node'
-    scrape_interval: 5s
-    static_configs:
-      - targets: ['127.0.0.1:8080']
-  - job_name: 'node_exporter'
-    scrape_interval: 5s
-    static_configs:
-      - targets: ['127.0.0.1:9100']
-  - job_name: 'validator'
-    scrape_interval: 5s
-    static_configs:
-      - targets: ['127.0.0.1:8081']
-  - job_name: 'ping_google'
-    metrics_path: /probe
-    params:
-      module: [icmp]
-    static_configs:
-      - targets:
-        - 8.8.8.8
-    relabel_configs:
-      - source_labels: [__address__]
-        target_label: __param_target
-      - source_labels: [__param_target]
-        target_label: instance
-      - target_label: __address__
-        replacement: 127.0.0.1:9115  # The blackbox exporter's real hostname:port.
-  - job_name: 'ping_cloudflare'
-    metrics_path: /probe
-    params:
-      module: [icmp]
-    static_configs:
-      - targets:
-        - 1.1.1.1
-    relabel_configs:
-      - source_labels: [__address__]
-        target_label: __param_target
-      - source_labels: [__param_target]
-        target_label: instance
-      - target_label: __address__
-        replacement: 127.0.0.1:9115  # The blackbox exporter's real hostname:port.
-  - job_name: json_exporter
-    static_configs:
-    - targets:
-      - 127.0.0.1:7979
-  - job_name: json
-    metrics_path: /probe
-    static_configs:
-    - targets:
-      - https://api.coingecko.com/api/v3/simple/price?ids=lukso-token&vs_currencies=usd
-    relabel_configs:
-    - source_labels: [__address__]
-      target_label: __param_target
-    - source_labels: [__param_target]
-      target_label: instance
-    - target_label: __address__
-      replacement: 127.0.0.1:7979
-```
-
-Prepare data directory for prometheus:
-
-```shell=
-sudo chown -R prometheus:prometheus /etc/prometheus
-sudo mkdir /var/lib/prometheus
-sudo chown prometheus:prometheus /var/lib/prometheus
-sudo chmod 755 /var/lib/prometheus
-```
-
-Open port to access to metrics. This is optional, only for external use:
-
-```shell=
-sudo ufw allow 9090/tcp
-```
-
-#### Configure Service
-
-```shell=
-sudo vim /etc/systemd/system/prometheus.service
-```
-
-The content of service configuration file:
-
-```
-[Unit]
-Description=Prometheus
-Wants=network-online.target
-After=network-online.target
-
-[Service]
-User=prometheus
-Group=prometheus
-Type=simple
-Restart=always
-RestartSec=5
-ExecStart=/usr/local/bin/prometheus \
-	--config.file /etc/prometheus/prometheus.yml \
-	--storage.tsdb.path /var/lib/prometheus/ \
-	--storage.tsdb.retention.time=31d \
-	--web.console.templates=/etc/prometheus/consoles \
-	--web.console.libraries=/etc/prometheus/console_libraries
-ExecReload=/bin/kill -HUP $MAINPID
-
-[Install]
-WantedBy=multi-user.target
-```
-
-Enable service:
-
-```shell=
-sudo systemctl daemon-reload
-sudo systemctl start prometheus
-sudo systemctl enable prometheus
-```
-
-### Grafana
-
-Install:
-
-```shell=
-cd
-sudo apt-get install -y apt-transport-https
-sudo apt-get install -y software-properties-common wget
-wget -q -O - https://packages.grafana.com/gpg.key | sudo apt-key add -
-sudo add-apt-repository "deb https://packages.grafana.com/oss/deb stable main"
-sudo apt-get update
-sudo apt-get install grafana-enterprise
-```
-
-#### Configure Service
-
-```shell=
-sudo vim /lib/systemd/system/grafana-server.service
-```
-
-The content of service configuration file:
-
-```
-[Unit]
-Description=Grafana instance
-Documentation=http://docs.grafana.org
-Wants=network-online.target
-After=network-online.target
-After=postgresql.service mariadb.service mysql.service
-
-[Service]
-EnvironmentFile=/etc/default/grafana-server
-User=grafana
-Group=grafana
-Type=simple
-Restart=on-failure
-WorkingDirectory=/usr/share/grafana
-RuntimeDirectory=grafana
-RuntimeDirectoryMode=0750
-ExecStart=/usr/sbin/grafana-server \
-                            --config=${CONF_FILE} \
-                            --pidfile=${PID_FILE_DIR}/grafana-server.pid \
-                            --packaging=deb \
-                            cfg:default.paths.logs=${LOG_DIR} \
-                            cfg:default.paths.data=${DATA_DIR} \
-                            cfg:default.paths.plugins=${PLUGINS_DIR} \
-                            cfg:default.paths.provisioning=${PROVISIONING_CFG_DIR}
-
-
-LimitNOFILE=10000
-TimeoutStopSec=20
-CapabilityBoundingSet=
-DeviceAllow=
-LockPersonality=true
-MemoryDenyWriteExecute=false
-NoNewPrivileges=true
-PrivateDevices=true
-PrivateTmp=true
-PrivateUsers=true
-ProtectClock=true
-ProtectControlGroups=true
-ProtectHome=true
-ProtectHostname=true
-ProtectKernelLogs=true
-ProtectKernelModules=true
-ProtectKernelTunables=true
-ProtectProc=invisible
-ProtectSystem=full
-RemoveIPC=true
-RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
-RestrictNamespaces=true
-RestrictRealtime=true
-RestrictSUIDSGID=true
-SystemCallArchitectures=native
-UMask=0027
-
-[Install]
-Alias=grafana.service
-WantedBy=multi-user.target
-```
-
-Enable service:
-
-```shell=
-sudo systemctl daemon-reload
-sudo systemctl start grafana-server
-sudo systemctl enable grafana-server
-```
-
-Open port to access to metrics. This is optional, only for external use:
-
-```shell=
-sudo ufw allow 3000/tcp
-```
-
-#### Configure Dashboard
+The `ip` command is a versatile and powerful networking tool in Linux, used to manage and display information about network interfaces, IP addresses, and other network-related configurations. We can use the command to display the default route information in the routing table of a Linux system. The default route, also known as the gateway, is the network path used by the system to send packets to destinations that are not on the local network. In simpler terms, it is the route that the system takes when it needs to send data to an IP address outside its local network.
 
-Login to grafana by navigating to webrowser `http://192.168.86.29:3000`. Replace `192.168.86.29` with IP of your node machine. This is same IP used to ssh.
-
-Default credentials are username and password `admin`. Set a new secure (long) password when prompted by grafana.
-
-##### Data Source
-
-1. On the left-hand menu, hover over the gear menu and click on `Data Sources`
-2. Then click on the Add Data Source button
-3. Hover over the Prometheus card on screen, then click on the Select button
-4. Enter http://127.0.0.1:9090/ into the URL field, then click Save & Test
-
-##### Install Dashboard
-
-1. Hover over the plus symbol icon in the left-hand menu, then click on Import
-2. Copy and paste [the dashboard](/grafana/dashboard.json) into the `Import via panel json` text box on the screen
-3. Then click the Load button
-4. Then click the Import button
-
-##### Enable Alerts
-
-1. On the left-hand menu, hover over the alarm menue and click on `Notification channels`
-2. Click on `New channel`
-3. Select `Type` and [configure](https://grafana.com/docs/grafana/latest/alerting/old-alerting/notifications/)
-
-On lukso dashboard:
-
-1. Scroll down on a dashboard to `Alerts` section
-2. Select each alert and click `Edit`
-3. In `Alert` tab, select notifications `send to`
-4. Save and repeat for each alert
-
-### Node Exporter
-
-Monitors node stats:
-
-```shell=
-sudo adduser --system node_exporter --group --no-create-home
+```sh
+ip route show default
 ```
 
-Install:
-
-```shell=
-cd
-wget https://github.com/prometheus/node_exporter/releases/download/v1.0.1/node_exporter-1.0.1.linux-amd64.tar.gz
-tar xzvf node_exporter-1.0.1.linux-amd64.tar.gz
-sudo cp node_exporter-1.0.1.linux-amd64/node_exporter /usr/local/bin/
-sudo chown node_exporter:node_exporter /usr/local/bin/node_exporter
-rm node_exporter-1.0.1.linux-amd64.tar.gz
-rm -rf node_exporter-1.0.1.linux-amd64
-```
-
-#### Configure Service
-
-```shell=
-sudo vim /etc/systemd/system/node_exporter.service
-```
-
-The content of service configuration file:
-
-```
-[Unit]
-Description=Node Exporter
-
-[Service]
-Type=simple
-Restart=always
-RestartSec=5
-User=node_exporter
-ExecStart=/usr/local/bin/node_exporter
-
-[Install]
-WantedBy=multi-user.target
-```
-
-Enable service:
+The output will look like this:
 
-```shell=
-sudo systemctl daemon-reload
-sudo systemctl start node_exporter
-sudo systemctl enable node_exporter
+```sh
+default via <GATEWAY_IP_ADDRESS> dev eno1 proto dhcp src <NODE_IP_ADDRESS> metric <ROUTING_WEIGHT>
 ```
-
-### Json Exporter
-
-#### Prerequisites
-
-Check `go` version if installed:
 
-```shell=
-go version
-```
+Alternatively you can also send an request to a commonly used and stable server IP, for instance Google. You will get back an response with your source IP address that you can filter using the text-processing tool `awk`, used for pattern scanning and processing.
 
-If it is less than `1.17.7` please install following:
-
-```shell=
-wget https://dl.google.com/go/go1.17.7.linux-amd64.tar.gz
-sudo tar -xvf go1.17.7.linux-amd64.tar.gz
-rm go1.17.7.linux-amd64.tar.gz
-sudo mv go /usr/local/go-1.17.7
-sudo ln -sf /usr/local/go-1.17.7/bin/go /usr/bin/go
-go version
+```sh
+ip route get 8.8.8.8 | awk '{print $7}'
 ```
-
-#### Build and Install
-
-User:
 
-```shell=
-sudo adduser --system json_exporter --group --no-create-home
-```
+### 4.1.2 Resolve the Node's Hardware Address
 
-Install:
-
-```shell=
-cd
-git clone https://github.com/prometheus-community/json_exporter.git
-cd json_exporter
-make build
-sudo cp json_exporter /usr/local/bin/
-sudo chown json_exporter:json_exporter /usr/local/bin/json_exporter
-cd
-rm -rf json_exporter
-```
+#### Media Access Controll
 
-#### Configure
+A MAC address is a unique identifier assigned to network interfaces for communication on a physical network segment. It is also commonly referred to as a hardware or physical address. MAC addresses are used at the data link layer, enabling network devices such as switches and routers to uniquely identify and manage devices on a local network.
 
-```shell=
-sudo mkdir /etc/json_exporter
-sudo chown json_exporter:json_exporter /etc/json_exporter
-```
+Each MAC address is a 48-bit number, usually represented in a human-readable hexadecimal format, including a specific manufacturer registration code and individual product lineup iterations by the manufacturer to ensure that each network interface produced by the company has a unique MAC address.
 
-Setup `LYX` token price:
+We can use the previous networking tool to retrieve information about the MAC addresses
 
-```shell=
-sudo vim /etc/json_exporter/json_exporter.yml
+```sh
+ip link show
 ```
 
-The content of configuration file:
+The output will list all the network interfaces on the system. Look into the interface that is used to broadcast and send information to the outside world using an Ethernet connection. The entry you're looking for looks like this:
 
+```sh
+<NETWORK_INFERFACE_NAME>: <BROADCAST,MULTICAST,UP,LOWER_UP> ...
+    link/ether <MAC_ADDRESS> brd <BROADCAST_ADDRESS>
 ```
-metrics:
-- name: lyxusd
-  path: "{.lukso-token.usd}"
-  help: Lukso (LYX) price in USD
-```
 
-Change ownership of configuration file:
-
-```shell=
-sudo chown json_exporter:json_exporter /etc/json_exporter/json_exporter.yml
-```
+**Write down or remember both names so you can check them later on and identify your device for router settings.**
 
-#### Configure Service
+## 4.2 Address Reservation
 
-```shell=
-sudo vim /etc/systemd/system/json_exporter.service
-```
+To avoid connectivity issues, it's recommended to assign a static IP address or reserve an IP address for your node in your home network. A reserved IP address ensures that the node will always use the same IP address, making it easier to configure port forwarding, firewall rules, and other networking settings.
 
-The content of service configuration file:
+> **Let the node sit aside and change back to your regular computer.**
 
-```
-[Unit]
-Description=JSON Exporter
-
-[Service]
-Type=simple
-Restart=always
-RestartSec=5
-User=json_exporter
-ExecStart=/usr/local/bin/json_exporter --config.file /etc/json_exporter/json_exporter.yml
-
-[Install]
-WantedBy=multi-user.target
-```
+### 4.2.1 Log into your Router's Web Interface
 
-Enable service:
+Open a web browser and enter the router's IP address or web address. You'll be prompted to enter your router's admin username and password. If you haven't changed them, check your router's documentation or label for the default credentials.
 
-```shell=
-sudo systemctl daemon-reload
-sudo systemctl start json_exporter
-sudo systemctl enable json_exporter
-```
+### 4.2.2 Locate the Dynamic Host Settings
 
-### Ping
+In your router's web interface, navigate to the section related to DHCP settings. This section is usually found under `LAN` or `local network` settings. In more consumer friendly machines like mine, it could be found in:
 
-Pings google and cloudflare to track latency. This is optional.
+`Home Network` > `Network` > `Connections`
 
-```shell=
-sudo adduser --system blackbox_exporter --group --no-create-home
-```
+### 4.2.3 Enter the IP Assignment Options
 
-Install:
-
-```shell=
-cd
-wget https://github.com/prometheus/blackbox_exporter/releases/download/v0.18.0/blackbox_exporter-0.18.0.linux-amd64.tar.gz
-tar xvzf blackbox_exporter-0.18.0.linux-amd64.tar.gz
-sudo cp blackbox_exporter-0.18.0.linux-amd64/blackbox_exporter /usr/local/bin/
-sudo chown blackbox_exporter:blackbox_exporter /usr/local/bin/blackbox_exporter
-sudo chmod 755 /usr/local/bin/blackbox_exporter
-rm blackbox_exporter-0.18.0.linux-amd64.tar.gz
-rm -rf blackbox_exporter-0.18.0.linux-amd64
-```
+Look for a feature that allows you to reserve or assign static IP addresses. This might be called `IP address reservation`, `Static IP assignment`, `Fixed IP assignment`, or something similar.
 
-Enable ping permissions:
+Click on the option to add a new IP address reservation or assignment. You'll be prompted to enter the device's MAC address and the desired static IP address. In modern firmwares, you can write down the IP address that is currently already picked. Just write down the addresses you've noted from the previous steps.
 
-```shell=
-sudo setcap cap_net_raw+ep /usr/local/bin/blackbox_exporter
-```
+> If you want to assign a totally new IP address, make sure to choose an IP address within your router's IP address range and outside the range of IP addresses automatically assigned by the DHCP server to prevent conflicts.
 
-#### Configure
+On my end, I found the settings within:
 
-```shell=
-sudo mkdir /etc/blackbox_exporter
-sudo chown blackbox_exporter:blackbox_exporter /etc/blackbox_exporter
-```
+`Connections` > `Device`
 
-```shell=
-sudo vim /etc/blackbox_exporter/blackbox.yml
-```
+After clicking on my node's device name, I could set a new static IP assignment by ticking the box for the `Always assign this network device the same IPv4 address` option. A new section advanced connection window appeared, that let me customize the IP address. However, I left the IP that was already assigned.
 
-The content of configuration file:
+### 4.2.4 Apply and Save
 
-```
-modules:
-        icmp:
-                prober: icmp
-                timeout: 10s
-                icmp:
-                        preferred_ip_protocol: ipv4
-```
+Make sure to double check that both, IP and MAC address are showing up correctly on the router's interface.
 
-Change ownership of configuration file:
+> If you manually entered the device's MAC address and the desired static IP address, your router may require a reboot for the changes to take effect.
 
-```shell=
-sudo chown blackbox_exporter:blackbox_exporter /etc/blackbox_exporter/blackbox.yml
-```
+Apply the changes and log out of your router.
 
-#### Configure Service
+### 4.2.5 Verify the IP Assignment
 
-```shell=
-sudo vim /etc/systemd/system/blackbox_exporter.service
-```
+If you just applied the same IP address as static property, everything should have worked on the fly.
 
-The content of service configuration file:
+> In case of the manual input, wait for the router reboot and restart your node.
 
-```
-[Unit]
-Description=Blackbox Exporter
-
-[Service]
-Type=simple
-Restart=always
-RestartSec=5
-User=blackbox_exporter
-ExecStart=/usr/local/bin/blackbox_exporter --config.file /etc/blackbox_exporter/blackbox.yml
-
-[Install]
-WantedBy=multi-user.target
-```
+Verify that your static IP address is set up as wished using the same commands as before:
 
-Enable service:
+```sh
+# Local Check
+# Look up second address
+ip route show default
 
-```shell=
-sudo systemctl daemon-reload
-sudo systemctl start blackbox_exporter
-sudo systemctl enable blackbox_exporter
+# Online Check
+# Fetch source address used for content request
+ip route get 8.8.8.8 | awk '{print $7}'
 ```
