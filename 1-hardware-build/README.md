@@ -65,9 +65,9 @@ Running an EVM Proof of Stake validator node at home requires a stable and relia
 
 Here are the rough minimal network requirements and how it looks like on my end:
 
-- **Download speed**: A minimum download speed of `10-15 Mbps` is recommended, with higher speeds being more desirable for faster blockchain synchronization and data transfer. I got a fiber connection at home with around 100Mbps unlocked.
-- **Upload speed**: A minimum upload speed of `2-4 Mbps` is suggested to ensure your attestations and proposals can be sent to the network quickly. With my fiber connection at home I get around 70MBps.
-- **Latency**: A low-latency connection below `80-100 ms` is ideal for ensuring timely participation in the consensus process and increasing the chances of rewards.
+- **Download speed**: A minimum download speed of `10-15 Mbps` is recommended, with higher speeds being more desirable for faster blockchain synchronization and data transfer. I got a fiber connection at home locked at _100 Mbps_, as it is enough for my needs.
+- **Upload speed**: A minimum upload speed of `2-4 Mbps` is suggested to ensure your attestations and proposals can be sent to the network quickly. With my fiber connection at home I get around _70 Mbps_.
+- **Latency**: A low-latency connection below `80-100 ms` is ideal for ensuring timely participation in the consensus process and increasing the chances of rewards. I usually get a latency below _10 ms_ on my end.
 
 In conclusion, having sufficient network speeds and low latency is essential for running an Ethereum PoS validator node at home. It ensures optimal performance, maximizes reward potential, and minimizes the risk of penalties or missed events.
 
