@@ -19,17 +19,35 @@ I spent around 1100€. The current prices should be below that at best. I assem
 
 Note that you also need thermal paste and screwdrivers and might want to add WiFi antennas immediately if the machine is planned to serve as a home server. It's only about 10 €, but you will save yourself a ton of work re-assembling the whole setup as they sit right behind the motherboard. The antennas can then be unscrewed from their attached base and do not bother your server setup.
 
+### 1.1.1 Optional Components
+
 The memory may not be sufficient for future-proof use of the node over several years or by several chains. Here, the freezer functionality of Geth comes into play to split the network data on different disks. I plan to expand my storage and add a 4 TB 2.5" HDD to fit the housing. Therefore, make sure to keep all the accessories and frames.
 
-I set up my machine on a small home rack and connected my node to an 8-port switch connected to my router. Not being directly connected to the router not only allows more slots but also allows me to place and connect servers and PCs in separate rooms.
+![Hardware Switch](/img/hardware-switch.png)
 
-### Optional Parts
+I set up my machine on a small home rack and connected my node to an 8-port switch connected to my router. Not being directly connected to the router not only allows more slots but also allows me to place and connect servers and PCs in separate rooms.
 
 - **Switch**: TP-Link 8-Port Gigabit Network Switch (TL-SG108, RJ-45, IGMP-Snooping, unmanaged, fanless)
 - **Additional Storage**: Seagate Barracuda 4 TB HDD (2.5", 128 MB Cache, SATA 6 Gb/s)
 - **Network Setup**: Several RJ-45 Network cables
 
-## 1.2 Build Process
+### 1.1.2 Router Properties
+
+When setting up a blockchain node, the choice of router can play a crucial role in ensuring optimal performance and reliability.
+
+> Before I wanted to set up a node system, I only used routers you can get from your network provider for free. The prior device did not work at all. The node could not connect despite proper router configuration, packets were rejected, and the bandwidth dropped so enormously that no other device could connect to the internet or the device hung up. Then I bought a professional router, and it worked immediately.
+
+There are several factors to consider when selecting a router for running a blockchain node:
+
+- **Network Stability and Performance**: A high-quality router will provide better network stability and performance, reducing the chances of dropped connections, bottlenecking, or slow data transfer speeds. This is especially important for a blockchain node, as consistent communication with other nodes is essential for maintaining the integrity of the blockchain. Choose a router with a good chipset that can cover server load.
+- **Quality of Service Support**: A router with QoS support allows you to prioritize traffic for your blockchain node over other devices on the network. This ensures that the node gets the necessary bandwidth and minimizes delays in processing transactions and communicating with other nodes.
+- **Port Forwarding and Firewall**: Blockchain nodes often require specific ports to be opened for incoming and outgoing connections. Make sure the router allows for easy configuration of port forwarding and firewall rules to accommodate the requirements of your particular blockchain network.
+- **Gigabit Ethernet Support**: Routers with Gigabit Ethernet support can provide faster wired connection speeds, which can be beneficial for a blockchain node that needs to process and transmit large amounts of data quickly.
+- **IPv6 Support**: As the internet transitions from IPv4 to IPv6, it's important to have a router that supports IPv6 to ensure future compatibility and optimal performance for your blockchain node.
+- **VPN Support**: Some blockchain networks may require or recommend using a VPN for added security and privacy. Ensure that the router supports VPN connections, either through built-in functionality or compatibility with third-party VPN services.
+- **Firmware Updates and Security**: Choose a router from a reputable manufacturer that provides regular firmware updates and security patches. This ensures that your router stays up-to-date with the latest features and security improvements.
+
+## 1.2 Node Build Process
 
 In the next sequence, I will go through all the steps I went through while building my own node.
 
