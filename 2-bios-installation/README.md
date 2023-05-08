@@ -107,6 +107,18 @@ Connect your machine to power and attach a keyboard and monitor.
 
 > You can have a look at [Ubuntu's Install Guide](https://ubuntu.com/tutorials/install-ubuntu-server#1-overview) for further information. However, most of it seems outdated for the most recent Ubuntu versions.
 
+Connect your machine to the router using an Ethernet cable to already receive updates during the install. This will also let you set up IPv4 and IPv6 addresses already.
+
+#### Ethernet Connection
+
+When setting up a node for blockchain networks, the choice of network connection can significantly impact the node's performance and reliability. Using an Ethernet connection is often the preferred method over Wi-Fi for several reasons:
+
+- **Stability**: Ethernet connections provide a more stable and consistent connection compared to Wi-Fi. Wired connections are less prone to signal interference and environmental factors that can affect Wi-Fi performance, resulting in fewer disconnections or connectivity issues.
+- **Speed**: Ethernet connections generally offer higher data transfer speeds compared to Wi-Fi. A gigabit Ethernet connection can reach speeds of up to 1000 Mbps, while most Wi-Fi connections are limited to a few hundred Mbps. This increased speed translates into better performance and reduced latency for your node, allowing for faster data processing and communication with other nodes.
+- **Security**: Ethernet connections are inherently more secure than Wi-Fi, as they require physical access to the network cable to intercept or tamper with the data being transmitted. Wi-Fi networks are susceptible to various security threats, such as eavesdropping or man-in-the-middle attacks, which could compromise the integrity and privacy of the data being processed by your node.
+- **Reduced Packet Loss**: Ethernet connections typically experience lower packet loss rates compared to Wi-Fi. Packet loss can cause delays in data transmission and affect the overall performance of your node. With a wired Ethernet connection, your node can maintain a more reliable and efficient data transfer, ensuring optimal operation.
+- **Easy Troubleshooting**: Troubleshooting connectivity issues is generally more straightforward with Ethernet connections. With fewer variables, such as signal strength, interference, or router configuration, diagnosing and resolving network issues becomes a simpler process.
+
 ### 1.5.1 System Language
 
 First, you have to choose your operating system's language. It's recommended to set it to `English`. In case errors appear on the screen, most guides and guides for fixes are stated in English if you search for them online. So it will help to resolve incidents quickly.
