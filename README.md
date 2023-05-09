@@ -25,7 +25,6 @@ The guides in the repository are split into multiple folders and sections.
 - [`4-router-config`](/4-router-config/): Configuring the Address Reservation
 - [`5-access-connection`](/5-access-connection/): Setting up Node Access Properties
 - [`6-blockchain-clients`](/6-blockchain-clients/): LUKSO Blockchain Validator Setup
-- `...work in progress...`
 - [`7-monitoring`](/7-monitoring/): Client, Validator, and Node Monitoring
 - [`8-notifications`](/8-notifications/): Image Notifications and Constant Updates
 
