@@ -315,3 +315,71 @@ sudo systemctl restart sshd
 ```
 
 **Log out of your node**
+
+### 5.5.1 Testing the password connection
+
+After these configurations were applied correctly, we want to test if we can still log in using our password. Exchange `<ssh-device-alias` with your actual SSH device name of the node.
+
+```sh
+ssh <ssh-device-alias>
+```
+
+You should not be permitted anymore and see the following output:
+
+```sh
+ssh: connect to host <ssh-device-alias> port 22: Connection refused
+```
+
+If you can still log in using your user's password, redo the previous step and make sure the SSH client is restarted properly.
+
+**To be able to connect to our node again, we need to add the SSH key to the SSH client of our personal computer.**
+
+### 5.5.2 Adding the key on the computer
+
+On your personal machine, add the RSA key as identity to your SSH connection properties by opening the configuration file.
+
+```sh
+vim ~/.ssh/config
+```
+
+Below the port of your node host, add the following line starting with two spaces. Make sure to update `<my-chosen-keyname>` with the actual name of the key.
+
+```
+  IdentityFile ~/.ssh/<my-chosen-keyname>
+```
+
+> The identity file is pointing to your private SSH key, so do not add the `.pub` file type extension behind the name.
+
+The final output should look like this:
+
+```
+Host <ssh-device-alias>
+  User <node-username>
+  HostName <node-ip>
+  Port <ssh-port>
+  IdentityFile ~/.ssh/<my-chosen-keyname>
+```
+
+Of corse, you will see your own properties:
+
+- `<ssh-device-alias>`: your nodes SSH device name
+- `<node-username>`: your node's username
+- `<node-ip-address>`: your node's static IP address
+- `<ssh-port>`: your opened port number
+- `<my-chosen-keyname>`: your SSH key.
+
+Save and close the file so we can continue to test the SSH key login.
+
+### 5.4.3 Testing the new authentification
+
+Test the new key login by starting the SSH connection to our node. This time the SSH client should not prompt for the user's password, instead it should ask to encrypt the pivate key with the passphrase.
+
+> If you did not set up any password for the key, you will connect automatically.
+
+```sh
+ssh <ssh-device-alias>
+```
+
+After entering the correct passphrase, you will end up on the nodes's welcoming printout.
+
+**Continue with Section 6: [Blockchain Client Setup](/6-blockchain-client/)**
