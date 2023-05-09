@@ -177,3 +177,32 @@ On your personal computer, create the new key pair for SSH authentication.
 ```sh
 ssh-keygen -t rsa -b 4096
 ```
+
+### 5.4.3 Defining a keyname
+
+You will be prompted to `Enter file in which to save the key`. Here, it is highly recommended to define a specific name for the key so that you can reference it at a later time, especially if you use multiple keys for different authentications. You can still use the default folder. Exchange:
+
+- `<your-username>` with the username of your personal computer
+- `<your-chosen-keyname>` with your preferred name of the key without spaces
+
+```sh
+/Users/<your-username>/.ssh/<your-chosen-keyname>
+```
+
+> If you do not want to specify a name, you can hit `Enter` to generate a random numbered file as I explained above.
+
+### 5.4.4 Adding a passphrase
+
+Now, enter a password used to encrypt the key. It is **highly recommended** to choose a strong password to raise the security level if someone gains access to your machine. This is also essential for key backups, if your working machine is demaged during a trip and you need to re-gain access from a fresh machine.
+
+> If you do not want to set up a passphrase, you can hit `Enter` to generate a key without password-encryption.
+
+### 5.4.5 Backing up the private key
+
+> Before you set up the key to your node environment, make sure to generate a backup of it.
+
+Here, you could use a container of a cloud provider to store the file, that can always be accessed even if devices get compromised or destroyed during a trip where you do not get pysical access to your node in any short time. You could also store the backup on a dedicated USB device.
+
+Because the key as a passphrase itself, noone could sign anything without also knowing it's password, in case the cloud container is compromised. You could also use a encrypted container to further improve security. Just make sure you always have secure and different passwords.
+
+**After backing up the generated key, we can continue using it in production.**
