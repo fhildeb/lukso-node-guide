@@ -108,3 +108,30 @@ exit
 ```
 
 **Make sure your're disconnected before continuing the next steps.**
+
+## 5.4 Configuring a Login Key
+
+In the next step, we will significantly increase the security of the node access flow by using SSH keys for authentication instead of the basic password.
+
+#### SSH Keys
+
+SSH keys are a widely used cryptographic method for providing secure and passwordless authentication between a client and a server. They are based on the concept of public-key cryptography, where a pair of keys is generated: one private key, which should be kept secret, and one public key, which can be freely shared.
+
+The process of using SSH keys involves generating a key pair on the client machine and then copying the public key to the server. When the client attempts to authenticate with the server, it will prove its identity by performing a cryptographic operation with the private key. The server can verify this operation using the public key without ever needing to see the private key. This method of authentication is not only more secure than using passwords but also more convenient, as it eliminates the need to remember and enter complex passwords.
+
+#### Keys in Traveling Situations
+
+When it comes to storing your private SSH key, especially while traveling or in situations where your device may be damaged or lost, it's crucial to ensure the key's safety. Here are some recommendations:
+
+- **Backup**: Always create a backup of your private key and store it in a secure and separate location. This could be an encrypted USB drive, an encrypted cloud storage service, or a hardware security device like a YubiKey.
+- **Encryption**: Ensure that your private key is protected with a strong passphrase. This adds an extra layer of security by requiring the passphrase to be entered before the key can be used, even if someone gains access to the file.
+
+If you really want to go crazy on security, the following might be something to have a look at. In my opinion, its a bit exaggerated because on your node, all keys are encrypted, and there is no critical or dangerous data on it if you chose strong passwords for your validator wallet.
+
+- **Hardware Tokens**: You could consider using hardware tokens like YubiKey or other FIDO U2F devices, which store your private key securely on a physical device. These devices are designed to protect cryptographic keys from theft or unauthorized access and can be carried with you while traveling.
+
+> Ledger supports the FIDO application and you could use your Ledger device to log into your node, not only to protect the validator's withdrawel and fee addresses.
+
+#### SSH Key Generation Tool
+
+SSH-Keygen is a widely used command-line tool for generating, managing, and converting SSH public and private key pairs. It is an integral part of the OpenSSH suite, which provides secure and encrypted communication over a network using the SSH protocol.
