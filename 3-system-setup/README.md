@@ -122,7 +122,11 @@ The purpose of this is to ensure that the `unattended-upgrades` package is set u
 sudo dpkg-reconfigure -plow unattended-upgrades
 ```
 
-**Now, package maintanance is set up and we can continue with the remote access.**
+You will get a screen prompt in the terminal. Agree with `<Yes>` and continue the setup.
+
+![Auto Update Screen](/img/setup-autoupdate.png)
+
+**Now that package maintanance is set up, we can continue with the remote access.**
 
 ## 3.3 Configure Remote Access
 
