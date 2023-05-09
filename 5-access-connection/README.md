@@ -206,3 +206,45 @@ Here, you could use a container of a cloud provider to store the file, that can 
 Because the key as a passphrase itself, noone could sign anything without also knowing it's password, in case the cloud container is compromised. You could also use a encrypted container to further improve security. Just make sure you always have secure and different passwords.
 
 **After backing up the generated key, we can continue using it in production.**
+
+### 5.4.6 Copying the public key to the node
+
+Copy a generated public key to the node machine. Make sure to replace:
+
+- `<your-chosen-keyname>` with your keyfile path
+- `<ssh-device-alias>` with your SSH node alias
+
+```sh
+ssh-copy-id -i ~/.ssh/<your-chosen-keyname>.pub <ssh-device-alias>
+```
+
+> If you set up a custom key directory, change the path as well.
+
+You will be asked to input your node's user password one last time. Then this should be your final output:
+
+```sh
+Number of key(s) added:        1
+
+Now try logging into the machine, with:   "ssh <ssh-device-alias>"
+and check to make sure that only the key(s) you wanted were added.
+```
+
+The command line tool autoimatically disconnects from your node after the key was added. Continue with testing the key login.
+
+### 5.4.7 Checking for the added keys
+
+We can check if the key was added correctly by logging into the node. It will still ask you for the regular node's user password for now.
+
+```sh
+ssh <ssh-device-alias>
+```
+
+Check if the key was added
+
+```sh
+ls -al ~/.ssh/authorized_keys
+```
+
+You should find your authentication key in the specific folder. If not, you need to redo the previous step.
+
+**Stay logged in to your node to enable secure key authentication in the following step.**
