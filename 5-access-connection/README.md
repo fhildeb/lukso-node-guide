@@ -135,3 +135,45 @@ If you really want to go crazy on security, the following might be something to 
 #### SSH Key Generation Tool
 
 SSH-Keygen is a widely used command-line tool for generating, managing, and converting SSH public and private key pairs. It is an integral part of the OpenSSH suite, which provides secure and encrypted communication over a network using the SSH protocol.
+
+## 5.4.1 Checking for existing keys
+
+In case you already created keys before, lets check the default key directory.
+
+> In case you have set up a custom key path, adjust the command accordingly.
+
+The default location is the `~/.ssh` directory in your home folder, and the default name depends on the key type are the following:
+
+- **RSA keys**: `~/.ssh/id_rsa`
+- **ECDSA keys**: `~/.ssh/id_ecdsa`
+- **Ed25519 keys**: `~/.ssh/id_ed25519`
+
+There isn't a specific command to list all SSH keys generated on the device, but you can achieve this by listing the contents of the` ~/.ssh` directory. Therefore, we use the default command-line utility `ls`, used for listing the contents of a directory. When executed, it displays files and directories within the specified directory or, if no directory is specified, within the current working directory. In our case, we specifically search for files with the `.pub` type to show all public keys in the default folder.
+
+```sh
+ls ~/.ssh/*.pub
+```
+
+> **NOTE**: If you already generated one key, you could use if for the node. However, it is strongly recommended to always have one key pair for every application, so that a potential attacker can not get access to multiple authentication systems at once.
+
+### 5.4.2 Creating a new key
+
+When generating a new SSH key pair, the `ssh-keygen` command allows you to specify various options, such as the type of key, key length, and other configurations. The following options are used to define the type and strength of the generated key:
+
+- `-t rsa`: The `-t` option is used to specify the type of key to generate. In our case, `rsa` denotes that an RSA key pair will be generated.
+- `-b 4096`: The `-b` option is used to specify the number of bits in the key. A higher number of bits usually results in a stronger key. In this case, 4096 indicates that a 4096-bit RSA key will be generated. The default key length for RSA keys is typically 2048 bits, but using a 4096-bit key provides an additional layer of security.
+
+#### RSA Cryptography
+
+RSA is a widely used public-key cryptosystem in modern computing and cryptography. The RSA algorithm is based on the mathematical properties of large prime numbers and is used for secure data transmission, digital signatures, and encryption.
+
+The main benefit for choosing it for SSH is that it is widely supported and compatible with most SSH clients and servers. RSA keys with a length of 4096 bits provide a high level of security. The only small deduction you have to make here is that RSA keys tend to be larger, and key generation and cryptographic operations can be slower compared to ECDSA and Ed25519.
+
+- ECDSA is faster and more efficient. However, not as widely supported as RSA, and its security depends on the choice of the underlying elliptic curve.
+- Ed25519 is the most current supported and highly secure elliptic curve-based algorithm with excellent performance and more prone to attacks then ECDSA. However there may be some compatibility issues in some environments.
+
+On your personal computer, create the new key pair for SSH authentication.
+
+```sh
+ssh-keygen -t rsa -b 4096
+```
