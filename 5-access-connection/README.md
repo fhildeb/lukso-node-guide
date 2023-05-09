@@ -248,3 +248,70 @@ ls -al ~/.ssh/authorized_keys
 You should find your authentication key in the specific folder. If not, you need to redo the previous step.
 
 **Stay logged in to your node to enable secure key authentication in the following step.**
+
+## 5.5 Enable Secure Authentictionon
+
+Now we need to enable key authentication on the SSH configuration of the node. Therefore we adjust the config file like we did in the systems setup.
+
+```sh
+sudo vim /etc/ssh/sshd_config
+```
+
+Within the file scroll down to the following lines:
+
+```
+#PermitRootLogin prohibit-password
+...
+#PubkeyAuthentication yes
+...
+#AuthorizedKeysFile .ssh/authorized_keys ./ssh/authored_keys2
+...
+#PasswordAuthentication yes
+#PermitEmptyPasswords no
+...
+#KbdInteractiveAuthentication no
+```
+
+Here is a descirption of what those settings are:
+
+- **PermitRootLogin**: This setting controls whether the root user is allowed to log in via SSH. The "prohibit-password" value means that the root user can log in using public key authentication but not with a password.
+- **PubkeyAuthentication**: This setting enables or disables public key authentication, which allows users to authenticate using their SSH keys instead of a password. When set to "yes," public key authentication is enabled.
+- **AuthorizedKeysFile**: This setting specifies the file(s) that contain the public keys that are authorized to log in to the system.
+- **PasswordAuthentication**: This setting enables or disables password-based authentication. When set to "no," users cannot authenticate using a password. The default value for this setting is "yes," so we want to uncomment the line and set it to "no" explicitly to disable password authentication.
+- **PermitEmptyPasswords**: This setting controls whether users with empty passwords are allowed to authenticate. When set to "no," users with empty passwords are not allowed to authenticate.
+- **KbdInteractiveAuthentication**: This setting enables or disables challenge-response authentication, which is a more interactive form of authentication that typically involves the server sending a challenge to the client, and the client responding with an appropriate answer. When set to "no," challenge-response authentication is disabled. We do not need this when we want to exclusively use our new key.
+
+Now edit the properties within the config file:
+
+- uncomment them by removing the `#` in front
+- change `PasswordAuthentication` to `no`.
+- remove the second key folder from the authorized key files
+
+The final outcome should look like this:
+
+```
+PermitRootLogin prohibit-password
+...
+PubkeyAuthentication yes
+...
+AuthorizedKeysFile .ssh/authorized_keys
+...
+PasswordAuthentication no
+PermitEmptyPasswords no
+...
+KbdInteractiveAuthentication no
+```
+
+Save and close the file. We can use the SHH deamon to validate our updated SSH configuration in a test run before we apply the change in production. This is important as we will not be able to do a regular login afterwards.
+
+```sh
+sudo sshd -t
+```
+
+If there is no output everything went alright. Restart the running SSH deamon, for the new adjustments to take affect.
+
+```sh
+sudo systemctl restart sshd
+```
+
+**Log out of your node**
