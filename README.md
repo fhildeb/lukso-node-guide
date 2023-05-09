@@ -48,7 +48,7 @@ The guides in the repository are split into multiple folders and sections.
 
 - [Luksoverse L16 CLI Guide](https://luksoverse.io/2022/04/l16-re-spin-extra-tools-and-explanation/)
 - [Vlad's Node Guide](https://github.com/lykhonis/lukso-node-guide)
-- [Metanull ETH2 Guide](https://github.com/metanull-operator/eth2-ubuntu)
+- [Metanull's ETH2 Guide](https://github.com/metanull-operator/eth2-ubuntu)
 
 ## Links
 

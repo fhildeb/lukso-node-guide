@@ -1,29 +1,111 @@
 # 5. Establishing a Secure Access Connection
 
-> **_NOTE:_** All following steps are performed a personal computer.
+> **NOTE**: All following steps are performed a personal computer.
 
-TODO:
+Before we can verify basic access to a node machine by using SSH on our personal computer, we need to check if all packages are installed correctly.
 
-Verify basic access to a node machine by using ssh. SSH requires user name of a node machine, its hostname and previously chosen ssh port.
+Open the terminal to continue.
 
-```shell=
+## 5.1 Check SSH Install
+
+On my side, Im running MacOS and SSH is installed by default in MacOS Ventura on Version `9.0`. We can check the version directly by calling the SSH software:
+
+```sh
+ssh -V
+```
+
+The Output should look like this:
+
+```sh
+OpenSSH_9.0p1, LibreSSL 3.3.6
+```
+
+If you are using another operating system or dont have SSH installed, please search on how to install the latest SSH version for your operating system accordingly. Wee need to run the SSH counterpart to establish a secure connection to our node.
+
+## 5.2 Configure SSH
+
+If you have SSH installed, we can continue with the next step. We set the connection parameters for our node, so we can communicate easily without typing the IP and Port all the time.
+
+#### SSH Configuration File
+
+Within the SSH packages, there is a global configuration file at `~/.ssh/config`. The file is a user-specific SSH configuration file used to customize various settings for the SSH client on a per-host basis. It allows you to define different options for each remote host you connect to via SSH, such as hostname, username, port, identity files, and other preferences. Using this configuration file, you can simplify the SSH command to connect to remote servers and apply specific settings for each host.
+
+The configuration file requires at least the following:
+
+- the user name of a node machine
+- the IP address
+- the previously opened SSH port
+
+Open the file using Vim as before. If you're more comfortable using your preferred text editor with a graphical user interface, go ahead now that you have the chance to do so.
+
+```sh
 vim ~/.ssh/config
 ```
 
-Type in the following and replace _replace-user_, _replace-ip_, and _replace-port_:
+All the needed properties have been determinated within the system setup and the router configuration guide. Within the file, type in the following snippet. Replace:
 
-```shell=
-Host lukso
-  User replace-user
-  HostName replace-ip
-  Port replace-port
+- <ssh-alias> with a perferred device name
+- <node-username> with your node's username
+- <node-ip-address> with your static IP address
+- <ssh-port> with your opened port number
+
+```file: ~/.ssh/config
+Host <ssh-alias>
+  User <node-username>
+  HostName <node-ip>
+  Port <ssh-port>
 ```
+
+> The property rows under _Host_ are indented by _2 Spaces_.
+
+Write to and save the file after checking the input again.
+
+## 5.3 Test the SSH Connection
+
+Verify the configuration by connecting the the node machine. Therefore, call the `SSH` application and type your preferred SSH Device Alias right after.
+
+```sh
+ssh <ssh-alias>
+```
+
+You should now be able to log into your system by typing in your password. Afterwards, you will be greeted by the server's home screen:
+
+```
+Welcome to Ubuntu 22.04.2 LTS [BUILD]
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+  System information as of [DATE]
+
+  System load:           1.0
+  Usage of /:            11.2% of 97.87GB
+  Memory usage:          1%
+  Swap usage:            0%
+  Temperature:           36.0 C
+  Processes:             219
+  Users logged in:       0
+  IPv4 address [Connection Type]: [IPv4 IP Address]
+  IPv6 address [Connection Type]: [IPv6 IP Address]
+
+[NEWS]
+
+[SECURITY_NOTICES]
+
+0 updates can be applied immediately.
+
+[EMS_NOTICE]
+
+
+Last login: [DATE] from [IP_FROM_PERSONAL_COMPUTER]
+```
+
+TODO:
+
+## 5.4 Generating the Login Key
 
 Attempt to connect to verify the configuration:
-
-```shell=
-ssh lukso
-```
 
 Once connected, enter a password of user on a node machine. If a connection was okay, a shell should be presented in a terminal. At this point, it could closed.
 
