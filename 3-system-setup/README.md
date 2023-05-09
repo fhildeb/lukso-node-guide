@@ -4,6 +4,8 @@
 
 In order to remotelly access a machine running a node, it needs to be configured with the right software tools and up to date at best.
 
+#### Super User Permission
+
 Therefore, some commands will require superuser privileges to run. The related `sudo` option, short for "superuser do", is a command-line utility that allows users to execute commands with the privileges of another user, typically the superuser or "root" user. It provides a controlled way to grant administrative access to specific users without sharing the root password. By using sudo, users can run commands that require elevated permissions
 
 > Always be cautious when using `sudo`, as there is the risk of accidentally performing potentially harmful actions on the system.
