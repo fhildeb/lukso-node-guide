@@ -14,16 +14,44 @@ Therefore, some commands will require superuser privileges to run. The related `
 
 ## 3.1 Update Ubuntu
 
+Keeping the system and it's software up to date is essential and should be done on a regular basis.
+
+#### Advanced Package Tool
+
+APT is a package management system used in Debian-based Linux distributions, such as Ubuntu, to handle the installation, upgrade, and removal of software packages. It simplifies the process of managing software on Linux systems by automatically handling dependencies and providing a user-friendly interface for software installation.
+
+Its implementation `apt` is a command-line tool and the most commonly used APT software. It provides a convenient way to interact with APT software systems, allowing users to search, install, update, and remove software packages with ease.
+
+### 3.1.1 Update Package List
+
 First we want to update the package list on your system. When executed, it fetches the latest package information from the repositories specified in your system's sources list. This helps to keep our system informed about the latest available versions of packages.
 
 ```sh
 sudo apt update
 ```
 
+### 3.1.2 Upgrade Packages
+
 After the list is up to date, we can upgrade the installed packages on our system to their latest versions. After updating the package list using `sudo apt update`, running `sudo apt upgrade` will install any newer versions of the currently installed packages, ensuring that your system is up-to-date with the latest software and security patches.
 
 ```sh
 sudo apt upgrade
+```
+
+### 3.1.3 Remove Legacy Dependencies
+
+Now we want to remove packages that were automatically installed to satisfy dependencies for other packages and are no longer needed on the system. It helps to keep your system clean from unused packages and their associated files.
+
+```sh
+sudo apt autoremove
+```
+
+### 3.1.4 Clean Local Package Cache
+
+After everything is up to date and removed, we can clean up the local cache of downloaded package files that are no longer needed. Cleaning removes the package files for older versions of installed packages and any packages that are no longer available in the repositories. It frees up disk space and keeps the system lean.
+
+```sh
+sudo apt autoclean
 ```
 
 ## 3.2 Configure Remote Access
