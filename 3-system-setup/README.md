@@ -4,15 +4,41 @@
 
 In order to remotelly access a machine running a node, it needs to be configured with the right software tools and up to date at best.
 
+## 3.1 Change Permission Set
+
+By locking the root account, we can enhance the security of the node system, as it requires users to use superuser permissions to execute commands with root privileges, which leaves an audit trail of actions performed with elevated permissions.
+
 #### Super User Permission
 
-Therefore, some commands will require superuser privileges to run. The related `sudo` option, short for "superuser do", is a command-line utility that allows users to execute commands with the privileges of another user, typically the superuser or "root" user. It provides a controlled way to grant administrative access to specific users without sharing the root password. By using sudo, users can run commands that require elevated permissions
+The root access does have unlimited rights. But as set up a regular user profile, some commands will require superuser privileges to run. The related `sudo` option, short for "superuser do", is a command-line utility that allows users to execute commands with the privileges of another user, typically the superuser or "root" user. It provides a controlled way to grant administrative access to specific users without sharing the root password. By using sudo, users can run commands that require elevated permissions
 
 > Always be cautious when using `sudo`, as there is the risk of accidentally performing potentially harmful actions on the system.
 
-**Log into the system with the previous configured user profile. Type in the specified username followed by the password.**
+Log into the system with the previous configured user profile. Type in the specified username followed by the password.
 
-## 3.1 Update Ubuntu
+#### Password Utility
+
+The `passwd` command is a fundamental utility in Unix-based operating systems, including Linux, for managing user passwords. It allows users to change their own passwords and, when executed with administrative privileges, to modify passwords for other users on the system.
+
+The command offers various options for managing passwords, such as setting password expiry, locking and unlocking user accounts, and forcing users to change their password at the next login.
+
+### 3.1.1 Disbale Root Access
+
+Using the `passwd` command, we can lock the root account on the node system, effectively disabling the ability to directly log in as the root user using a password. We use the `-l` option to lock the specified account.
+
+```sh
+sudo passwd -l root
+```
+
+The outcome should look like this:
+
+```
+passwd: password expiry information changed.
+```
+
+All commands will now always have to ask for the sudo password, as you can not log in as root account anymore.
+
+## 3.2 Update Ubuntu
 
 Keeping the system and it's software up to date is essential and should be done on a regular basis.
 
@@ -22,7 +48,7 @@ APT is a package management system used in Debian-based Linux distributions, suc
 
 Its implementation `apt` is a command-line tool and the most commonly used APT software. It provides a convenient way to interact with APT software systems, allowing users to search, install, update, and remove software packages with ease.
 
-### 3.1.1 Update Package List
+### 3.2.1 Update Package List
 
 First we want to update the package list on your system. When executed, it fetches the latest package information from the repositories specified in your system's sources list. This helps to keep our system informed about the latest available versions of packages.
 
@@ -30,7 +56,7 @@ First we want to update the package list on your system. When executed, it fetch
 sudo apt update
 ```
 
-### 3.1.2 Upgrade Packages
+### 3.2.2 Upgrade Packages
 
 After the list is up to date, we can upgrade the installed packages on our system to their latest versions. After updating the package list using `sudo apt update`, running `sudo apt upgrade` will install any newer versions of the currently installed packages, ensuring that your system is up-to-date with the latest software and security patches.
 
@@ -38,7 +64,7 @@ After the list is up to date, we can upgrade the installed packages on our syste
 sudo apt upgrade
 ```
 
-### 3.1.3 Remove Legacy Dependencies
+### 3.2.3 Remove Legacy Dependencies
 
 Now we want to remove packages that were automatically installed to satisfy dependencies for other packages and are no longer needed on the system. It helps to keep your system clean from unused packages and their associated files.
 
@@ -46,7 +72,7 @@ Now we want to remove packages that were automatically installed to satisfy depe
 sudo apt autoremove
 ```
 
-### 3.1.4 Clean Local Package Cache
+### 3.2.4 Clean Local Package Cache
 
 After everything is up to date and removed, we can clean up the local cache of downloaded package files that are no longer needed. Cleaning removes the package files for older versions of installed packages and any packages that are no longer available in the repositories. It frees up disk space and keeps the system lean.
 
@@ -54,7 +80,7 @@ After everything is up to date and removed, we can clean up the local cache of d
 sudo apt autoclean
 ```
 
-## 3.2 Configure Remote Access
+## 3.3 Configure Remote Access
 
 Within the Ubuntu installation, we already installed openSSH server and I explained why it is an essential tool. If you did not configure it already, now is time to set it up so we can connect to our server from other devices in a secure manner.
 
@@ -79,7 +105,7 @@ To enter command mode to manage save and exit, press `:` while in normal mode. A
 - To write and quit, type `wq` and press `Enter`.
 - To quit without saving: type `q!` and press `Enter`.
 
-### 3.2.1 Edit SSH Configuration
+### 3.3.1 Edit SSH Configuration
 
 Lets open the configuration file using Vim.
 
@@ -103,7 +129,7 @@ You can use the following command to check all system services:
 systemctl list-unit-files --type=service
 ```
 
-### 3.2.2 Adapt to Changes
+### 3.3.2 Adapt to Changes
 
 To make the SSH service use the updated config file, we need to restart the OpenSSH server using the `systemctl` command.
 
@@ -125,11 +151,11 @@ If there is no output, everything is fine to run it live on the machine, affecti
 sudo systemctl restart sshd
 ```
 
-## 3.3 Remote Access on Startup
+## 3.4 Remote Access on Startup
 
 Next, we want to check if OpenSSH server starts automatically when the system boots up. Here we can also use the system control to check if it is enabled already.
 
-### 3.3.1 Check SSH on Startup
+### 3.4.1 Check SSH on Startup
 
 ```sh
 sudo systemctl is-enabled ssh
@@ -143,7 +169,7 @@ A symbolic link, also known as a symlink or soft link, is a special type of file
 
 In our example, the symbolic link needs to be created between the OpenSSH service unit file and a corresponding file in the system directory meant for system services that are enabled to start at boot. This system directory is then scanned during the boot process, and all service unit files that have a symbolic link in this directory are automatically started. A smybolic link is used, so there are no duplications of the actual service.
 
-### 3.3.2 Enable SSH on Startup
+### 3.4.2 Enable SSH on Startup
 
 We call the system control with the `enable` subcommand to create a symbolic link for the SSH application.
 
@@ -151,7 +177,7 @@ We call the system control with the `enable` subcommand to create a symbolic lin
 sudo systemctl enable ssh
 ```
 
-## 3.4 Configure Firewall
+## 3.5 Configure Firewall
 
 Now we need to enable ssh in firewall by allowing incoming connections to the previous configured port.
 
@@ -159,7 +185,7 @@ Now we need to enable ssh in firewall by allowing incoming connections to the pr
 
 UFW is a user-friendly command-line interface for managing firewall configurations on Linux systems. It simplifies the process of configuring and maintaining a firewall by providing an intuitive set of commands and options. UFW streamlines the process of setting up and managing firewall rules.
 
-### 3.4.1 General Port Locking
+### 3.5.1 General Port Locking
 
 By default, all outgoing traffic should be enabled, all incoming traffic should be disabled.
 
@@ -168,7 +194,7 @@ sudo ufw default allow outgoing
 sudo ufw default deny incoming
 ```
 
-### 3.4.2 Enable SSH Connection
+### 3.5.2 Enable SSH Connection
 
 If you allow for just the port number, both TCP and UDP protocols will be possible. However, the User Datagram Protocol is a connectionless protocol. It offers faster data transmission but does not guarantee reliable, ordered, or error-checked delivery.
 
@@ -194,7 +220,7 @@ Basic port rules without any suffix, mean that they apply to IPv4 network traffi
 
 Both are widely used. The primary differences between IPv4 and IPv6 are in their address space, addressing mechanisms, and additional features. The expanded address space in IPv6 helps accommodate the growing number of devices connected to the internet. IPv6 also introduces several enhancements over IPv4, such as built-in support for Internet Protocol Security, providing secure, encrypted communication between devices.
 
-### 3.4.3 Firewall Checkup
+### 3.5.3 Firewall Checkup
 
 After executing those firewall commands, you do not need to restart the firewall. The changes take effect immediately, and UFW will begin applying the changes according to the new default policy. However, check if the firewall is enabled:
 
@@ -208,7 +234,7 @@ If the firewall is running, you can check if the firewall is within an `active` 
 sudo ufw status
 ```
 
-### 3.4.4 Enable Firewall
+### 3.5.4 Enable Firewall
 
 If it should not be inactive, we need to configure it using a symbolic link as before:
 
@@ -216,7 +242,7 @@ If it should not be inactive, we need to configure it using a symbolic link as b
 sudo ufw enable
 ```
 
-### 3.4.5 Edit Port Rules
+### 3.5.5 Edit Port Rules
 
 If you have made some port rules you do not want, print out a list with all existing rules like before.
 
