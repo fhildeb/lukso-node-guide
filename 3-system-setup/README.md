@@ -94,7 +94,7 @@ sudo sshd -t
 If there is no output, everything is fine to run it live on the machine, affecting the real service.
 
 ```sh
-sudo systemctl restart ssh
+sudo systemctl restart sshd
 ```
 
 ## 3.3 Remote Access on Startup

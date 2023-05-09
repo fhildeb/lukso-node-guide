@@ -123,6 +123,8 @@ If everything was alright, you can shutdown your node server and place it in you
 sudo shutdown now
 ```
 
-Continue to disconnect the monitor, keyboard, power and network cables from the back of your node. Afterwards, move your server to its final location and reconnect it to the power supply and a network cable. Because of our previous settings, it will restart automatically if power cable is connected. The boot process should be completed within 30-60 seconds and we will be able to reach it via the static IP if we're within the same network.
+Now we can start disconnecting the monitor, keyboard, power and network cables from the back of your node. Afterwards, move your server to its final location and reconnect it to the power supply and a network cable.
+
+Because of our previous settings, it will restart automatically if power cable is connected. The boot process should be completed within 30-60 seconds and we will be able to reach it via the static IP if we're within the same network.
 
 **Continue with Section 5: [Access Connection](/5-access-connection/)**
