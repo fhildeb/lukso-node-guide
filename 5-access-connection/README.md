@@ -272,7 +272,7 @@ Within the file scroll down to the following lines:
 #KbdInteractiveAuthentication no
 ```
 
-Here is a descirption of what those settings are:
+Here is a description of what those settings are:
 
 - **PermitRootLogin**: This setting controls whether the root user is allowed to log in via SSH. The "prohibit-password" value means that the root user can log in using public key authentication but not with a password.
 - **PubkeyAuthentication**: This setting enables or disables public key authentication, which allows users to authenticate using their SSH keys instead of a password. When set to "yes," public key authentication is enabled.
