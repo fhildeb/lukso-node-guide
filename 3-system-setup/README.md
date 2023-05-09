@@ -38,7 +38,7 @@ passwd: password expiry information changed.
 
 All commands will now always have to ask for the sudo password, as you can not log in as root account anymore.
 
-## 3.2 Update Ubuntu
+## 3.2 Ubuntu Updates
 
 Keeping the system and it's software up to date is essential and should be done on a regular basis.
 
@@ -79,6 +79,36 @@ After everything is up to date and removed, we can clean up the local cache of d
 ```sh
 sudo apt autoclean
 ```
+
+### 3.2.5 Enable Automatic Security Updates
+
+Servers have security beams and are often operated continuously, which makes it hard to install software on the fly. However, it is a must have to always be up to date.
+
+The `unattended-upgrades` package is a valuable tool for maintaining the security and stability of a Linux system. It automates the process of installing important updates, primarily focusing on security patches and critical bug fixes, ensuring that your system is up-to-date and protected against known vulnerabilities.
+
+By using unattended-upgrades, node operators can reduce the manual effort involved in monitoring and applying updates, while minimizing the risk of potential downtime or breaches caused by outdated software. The package offers various configuration options to tailor the upgrade process according to the specific needs of a system, such as the ability to select which packages to update, schedule the upgrade frequency, and control notifications.
+
+First, we have to install the package itself using APT:
+
+```sh
+sudo apt install unattended-upgrades
+```
+
+Afterwards, we can reconfigure the `unattended-upgrades` package using the package reconfigurment tool.
+
+#### Package Reconfigurment Utility
+
+The `dpkg-reconfigure` command is a utility that reconfigures an already-installed package using values provided by the user. It is part of the Debian package management system and allows you to modify the configuration of a package after its installation. This can be helpful for us to change settings or preferences for a specific package without reinstalling it.
+
+We can use it to reconfigure the `unattended-upgrades` package. Using the `-plow` flag, we are able to set the priority to "low", which means only essential questions will be asked during the reconfiguration process, and most options will be set to their default values.
+
+The purpose of this is to ensure that the `unattended-upgrades` package is set up correctly, enabling automatic security updates for your system.
+
+```sh
+sudo dpkg-reconfigure -plow unattended-upgrades
+```
+
+**Now, package maintanance is set up and we can continue with the remote access.**
 
 ## 3.3 Configure Remote Access
 
