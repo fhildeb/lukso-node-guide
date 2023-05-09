@@ -36,7 +36,21 @@ The outcome should look like this:
 passwd: password expiry information changed.
 ```
 
-All commands will now always have to ask for the sudo password, as you can not log in as root account anymore.
+### 3.1.2 Check Root Account
+
+To verify that the change was effective, use the password command again with the `-S` option, so you can see the status of the root account:
+
+```sh
+sudo passwd -S root
+```
+
+The outcome should look like this:
+
+```
+root L 02/17/2023 0 99999 7 -1
+```
+
+The uppercase `L` behind the account name means the root account has been locked successfully. If you see a uppercase `P`, it indicates that the account is not locked and still has a valid password. If the `L` shows up, all commands will now always have to ask for the sudo password, as you can not log in as root account anymore.
 
 ## 3.2 Ubuntu Updates
 
@@ -181,7 +195,7 @@ If there is no output, everything is fine to run it live on the machine, affecti
 sudo systemctl restart sshd
 ```
 
-## 3.4 Remote Access on Startup
+## 3.4 Set Remote Access on Startup
 
 Next, we want to check if OpenSSH server starts automatically when the system boots up. Here we can also use the system control to check if it is enabled already.
 
