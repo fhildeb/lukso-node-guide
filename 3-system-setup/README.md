@@ -489,10 +489,9 @@ For the blockchain node, its recommended to set properties for the SSH deamon pr
 - **findtime**: This option sets the time window in seconds, during which maxretry failed login attempts can occur before an IP address gets banned. In my case, I set to `300 seconds`, e.g., `5 minutes` but you could also reduce the number.
 - **bantime**: This option sets the duration in seconds for which an IP address will be banned after exceeding the allowed number of failed login attempts within the findtime period. In my case, it's set to `28,800 seconds`, e.g., `8 hours` before the IP address is allowed to try again.
 - **backend**: This option sets the backend used to monitor the specified log file. When set to `auto`, the service will automatically select the most appropriate backend based on your system's configuration.
+- **ignoreip**: This option allows you to specify a list of IP addresses or address ranges that should not be banned, even if they exceed the maximum number of allowed failed login attempts. You can add the local IP range `127.0.0.1/8` to prevent accidentally banning your own local connections or set single addresses.
 
-> If you only want to maintain your node from home you can also set the following `ignoreip` property.
->
-> It is not recommended by default as this will limit yourself when accessing the node from the outside world with changing IPs. You could allow connections from your VPN service's address range. But keep in mind that people with the same VPN service could still bypass the restrictions.
+> You can also add custom IP addresses to the `ignoreip` property, e.g., allow connections from your VPN service's address range. But keep in mind that people with the same VPN service could still bypass the restrictions.
 
 Open the configuration file:
 
@@ -512,6 +511,7 @@ maxretry=3
 findtime=300
 bantime=28800
 backend=auto
+ignoreip=127.0.0.1/8
 ```
 
 Please make sure to exchange `<desired-port-number>` with the port number you opened for SSH. You may want to change certain settings to personalize your setup.
