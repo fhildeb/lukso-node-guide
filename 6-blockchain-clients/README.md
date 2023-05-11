@@ -68,7 +68,7 @@ The execution client also communicates with the consensus client to receive upda
 
 #### Consensus Client
 
-The Consensus Client is responsible for participating in the consensus protocol of the blockchain. In a Proof of Stake system, this involves proposing own blocks and/or attesting to the validity of proposed blocks
+The Consensus Client, also referred to as the beacon client or beacon node is responsible for participating in the consensus protocol of the blockchain. In a Proof of Stake system, this involves proposing own blocks and/or attesting to the validity of proposed blocks
 
 Under the hood, the Consensus Client communicates with other validators to reach agreement on the state of the blockchain. It signs messages with the validator's private key as part of the consensus process, and it reads from and writes to the blockchain through the execution client.
 
@@ -80,7 +80,25 @@ The validator client only manages the validator's activities, while the consensu
 
 ## 6.3 Node Types
 
+As a validator on an EVM PoS network, you need to run a full node. This is because validators need the entire blockchain data and a real-time view of the network state to validate new blocks and transactions effectively. A light node would not have sufficient data for these operations. On top of that, you could run your validator as an archive node. Let's clarify the differences:
+
+#### Full Node
+
+A full node downloads the entire blockchain and validates all blocks and transactions against the network's consensus rules. It stores the current state of the network, including account balances, contracts, storage, and other information. However, it does not keep all historical states. If you need to check the balance of an account at a specific block height in the past, a full node cannot provide this information directly.
+
+#### Archive Node
+
+An archive node is a type of full node. It downloads the entire blockchain and validates all blocks and transactions like a full node. However, in addition to the current state of the network, it also stores all historical states since the genesis block. This makes an archive node much larger in size compared to a full node, but it allows you to query any historical state of the blockchain.
+
 ## 6.4 Supported Clients
+
+#### Storage Comparison
+
+As [analysed by QuickNode](https://www.quicknode.com/guides/infrastructure/node-setup/ethereum-full-node-vs-archive-node/), of March 2023, the storage of the clients are the following:
+
+This can be broken down to the following yearly growth:
+
+Adjust your need for storage accordingly by asking yourself how long you can get by without maintanance on the node.
 
 ## 6.5 Port Setups
 
