@@ -115,7 +115,7 @@ ip route get 8.8.8.8 | awk '{print $7}'
 
 If the outputs contradict what we have set above, return to your router settings and repeat the last steps.
 
-## 4.3 Switch to Terminal Usage
+## 4.3 Switch to Remote Connection
 
 If everything was alright, you can shutdown your node server and place it in your actual server rack or shelf.
 

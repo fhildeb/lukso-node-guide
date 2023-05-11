@@ -32,7 +32,7 @@ sudo passwd -l root
 
 The outcome should look like this:
 
-```
+```text
 passwd: password expiry information changed.
 ```
 
@@ -46,7 +46,7 @@ sudo passwd -S root
 
 The outcome should look like this:
 
-```
+```text
 root L 02/17/2023 0 99999 7 -1
 ```
 
@@ -74,7 +74,7 @@ sudo vgdisplay
 
 The output should be something like this:
 
-```
+```text
   --- Volume group ---
   VG Name               ubuntu-vg
   System ID
@@ -167,7 +167,7 @@ sudo vgdisplay
 
 The output should be something like this:
 
-```
+```text
   --- Volume group ---
   VG Name               ubuntu-vg
   System ID
@@ -501,7 +501,7 @@ sudo vim /etc/fail2ban/jail.local
 
 Input the properties into the configuration snippet:
 
-```
+```text
 [sshd]
 enabled=true
 port=<desired-port-number>
@@ -546,7 +546,7 @@ sudo systemctl status fail2ban
 
 The output should look like this:
 
-```
+```text
 ● fail2ban.service - Fail2Ban Service
      Loaded: loaded (/lib/systemd/system/fail2ban.service; enabled; vendor preset: enabled)
      Active: active (running) since [DATE]; [TIME] ago

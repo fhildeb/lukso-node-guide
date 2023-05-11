@@ -49,7 +49,7 @@ All the needed properties have been determinated within the system setup and the
 - `<node-ip-address>` with your node's static IP address
 - `<ssh-port>` with your opened port number
 
-```
+```text
 Host <ssh-device-alias>
   User <node-username>
   HostName <node-ip>
@@ -70,7 +70,7 @@ ssh <ssh-device-alias>
 
 You should now be able to log into your system by typing in your password. Afterwards, you will be greeted by the node's welcoming printout:
 
-```
+```text
 Welcome to Ubuntu 22.04.2 LTS [BUILD]
 
  * Documentation:  https://help.ubuntu.com
@@ -259,7 +259,7 @@ sudo vim /etc/ssh/sshd_config
 
 Within the file scroll down to the following lines:
 
-```
+```text
 #PermitRootLogin prohibit-password
 ...
 #PubkeyAuthentication yes
@@ -289,7 +289,7 @@ Now edit the properties within the config file:
 
 The final outcome should look like this:
 
-```
+```text
 PermitRootLogin prohibit-password
 ...
 PubkeyAuthentication yes
@@ -344,7 +344,7 @@ vim ~/.ssh/config
 
 Below the port of your node host, add the following line starting with two spaces. Make sure to update `<my-chosen-keyname>` with the actual name of the key.
 
-```
+```text
   IdentityFile ~/.ssh/<my-chosen-keyname>
 ```
 
@@ -352,7 +352,7 @@ Below the port of your node host, add the following line starting with two space
 
 The final output should look like this:
 
-```
+```text
 Host <ssh-device-alias>
   User <node-username>
   HostName <node-ip>
