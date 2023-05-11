@@ -94,11 +94,33 @@ An archive node is a type of full node. It downloads the entire blockchain and v
 
 #### Storage Comparison
 
-As [analysed by QuickNode](https://www.quicknode.com/guides/infrastructure/node-setup/ethereum-full-node-vs-archive-node/), of March 2023, the storage of the clients are the following:
+As [analysed by QuickNode](https://www.quicknode.com/guides/infrastructure/node-setup/ethereum-full-node-vs-archive-node/), [declared by Ledgerwatch](https://github.com/ledgerwatch/erigon), and [crawled by YCharts](https://ycharts.com/indicators/ethereum_chain_full_sync_data_size), the used storage of the clients for the Ethereum Blockchain as of of March 2023 can be estimated around these numbers:
 
-This can be broken down to the following yearly growth:
+```
+FULL NODE MODE
+--GETH...................................970 GB TOTAL
+--ERIGON.................................460 GB TOTAL
+
+ARCHIVE NODE MODE
+--GETH..................................13.5 TB TOTAL
+--ERIGON.................................2.4 TB TOTAL
+```
+
+The needed storage can be broken down to the following yearly growth based on an EVM network that gained significant exposure for almost a decade:
+
+```
+GROWTH OF STORAGE IN FULL NODE MODE
+--GETH...................................10.5 GB/MONTH | 120 GB/YEAR
+--ERIGON....................................5 GB/MONTH |  60 GB/YEAR
+
+GROWTH OF STORAGE IN ARCHIVE NODE MODE
+--GETH....................................145 GB/MONTH | 1.8 TB/YEAR
+--ERIGON...................................26 GB/MONTH | 320 GB/YEAR
+```
 
 Adjust your need for storage accordingly by asking yourself how long you can get by without maintanance on the node.
+
+> Be aware that these are rough numbers for a different blockchain running the supported clients. These are only for estimation purposes and may slightly differ based on the used storage format.
 
 ## 6.5 Port Setups
 
