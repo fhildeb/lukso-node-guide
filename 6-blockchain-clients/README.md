@@ -142,7 +142,7 @@ Lighthouse is written in Rust and developed by Sigma Prime. From a security pers
 
 As [analysed by QuickNode](https://www.quicknode.com/guides/infrastructure/node-setup/ethereum-full-node-vs-archive-node/), [declared by Ledgerwatch](https://github.com/ledgerwatch/erigon), and [crawled by YCharts](https://ycharts.com/indicators/ethereum_chain_full_sync_data_size), the used storage of the clients for the Ethereum Blockchain as of of March 2023 can be estimated around these numbers:
 
-```
+```text
 FULL NODE MODE
 --GETH...................................970 GB TOTAL
 --ERIGON.................................460 GB TOTAL
@@ -165,7 +165,7 @@ Geth is the initial implementation of the EVM as a blockchain protocol. In compa
 
 The needed storage can be broken down to the following yearly growth based on an EVM network that gained significant exposure for almost a decade:
 
-```
+```text
 GROWTH OF STORAGE IN FULL NODE MODE
 --GETH...................................10.5 GB/MONTH | 120 GB/YEAR
 --ERIGON....................................5 GB/MONTH |  60 GB/YEAR
@@ -194,83 +194,224 @@ In order to let the Blockchain CLients communicate correctly, the ports, e.g., d
 
 Each supported client has different ports for various purposes that have to be open for a clear connection:
 
-| CLIENT     | DESCRIPTION                              | PORT  | TCP | UDP |
-| ---------- | ---------------------------------------- | ----- | --- | --- |
-| GETH       | Execution Chain Data Channel             | 30303 | X   |     |
-| GETH       | Execution Chain Discovery                | 30303 |     | X   |
-| ERIGON     | Execution Chain Data Channel             | 30303 | X   |     |
-| ERIGON     | Execution Chain Discovery                | 30303 |     | X   |
-| LIGHTHOUSE | Beacon Gossip Request and Responses      | 9000  | X   |     |
-| LIGHTHOUSE | Beacon Discovery, Request, Data Exchange | 5052  |     | X   |
-| LIGHTHOUSE | Ethereum Blockchain JSON-RPC             | 8545  | X   |     |
-| PRYSM      | Beacon Gossip Request and Responses      | 13000 | X   |     |
-| PRYSM      | Beacon Discovery, Request, Data Exchange | 12000 |     | X   |
-| PRYSM      | Ethereum Blockchain JSON-RPC             | 8545  | X   |     |
+> To discover peers of other nodes, all outbound traffic should be allowed across all UDP and TCP ports when using Prysm and Lighthouse.
 
-To discover peers of other nodes, all outbound traffic should be
-allowed across all UDP and TCP ports when using Prysm and Lighthouse.
+| CLIENT     | DESCRIPTION                               | PORT  | TCP | UDP | OPT |
+| ---------- | ----------------------------------------- | ----- | --- | --- | --- |
+| GETH       | Execution Chain Data Channel              | 30303 | X   |     |     |
+| GETH       | Execution Chain Discovery                 | 30303 |     | X   |     |
+| ERIGON     | Execution Chain Data Channel              | 30303 | X   |     |     |
+| ERIGON     | Execution Chain Discovery                 | 30303 |     | X   |     |
+| LIGHTHOUSE | Beacon Gossip, Requests, and Responses    | 9000  | X   |     |     |
+| LIGHTHOUSE | Beacon Discovery, Requests, Data Exchange | 5052  |     | X   |     |
+| PRYSM      | Beacon Gossip, Requests, and Responses    | 13000 | X   |     |     |
+| PRYSM      | Beacon Discovery, Requests, Data Exchange | 12000 |     | X   |     |
 
-- [Prysm Network Specification](https://docs.prylabs.network/docs/prysm-usage/p2p-host-ip#configure-your-firewall)
-- [Lighthouse Network Specification]()
+> Within the [monitoring section](/7-monitoring/) of this guide you can find further internal communication channels.
 
 ## 6.6 Firewall Configuration
 
+After you have spot out which ports you need to open, we can go back to editing the firewall settings. We can do this the same way as we did before in the [system setup](/3-system-setup/) section of this guide.
+
+Log in to your node if you are not already connected:
+
+```sh
+ssh <ssh-device-alias>
+```
+
+### 6.6.1 Opening the ports on the firewall
+
+I will go ahead and open all public ports used for the Geth and Prysm clients. Prysm is needed as it is the only fully supported validator for the LUKSO CLI for now. Since I choose stability over performance, I choose Geth, based on the warning notices from Erigon's repository.
+
+```sh
+# Geth's Execution Chain Data Channel
+sudo ufw allow 30303/tcp
+
+# Geth's Execution Chain Discovery
+sudo ufw allow 30303/udp
+
+# Prysm's Beacon Gossip, Requests, and Responses
+sudo ufw allow 13000/tcp
+
+# Prysm's Beacon Discovery, Requests, Data Exchange
+sudo ufw allow 12000/udp
+```
+
+The output of each command should always show:
+
+```sh
+Rule added
+Rule added (v6)
+```
+
+### 6.6.2 Checking the configured ports
+
+Now we can verify our firewall configuration as we did previously. If something is missing or configured wrong, have a look into the system setup's [firewall section](/3-system-setup/) on how to remove them.
+
+```sh
+sudo ufw status
+```
+
+The output for Geth and Prysm should look similar to the one underneath. Please note that `<prefered-ssh-port>` will be exchanged with your actual SSH port.
+
+```text
+Status: active
+
+To                               Action      From
+--                               ------      ----
+<prefered-ssh-port>/tcp          ALLOW       Anywhere
+30303/tcp                        ALLOW       Anywhere
+30303/udp                        ALLOW       Anywhere
+13000/tcp                        ALLOW       Anywhere
+12000/udp                        ALLOW       Anywhere
+<prefered-ssh-port>/tcp (v6)     ALLOW       Anywhere (v6)
+30303/tcp (v6)                   ALLOW       Anywhere (v6)
+30303/udp (v6)                   ALLOW       Anywhere (v6)
+13000/tcp (v6)                   ALLOW       Anywhere (v6)
+12000/udp (v6)                   ALLOW       Anywhere (v6)
+```
+
+**If your client ports match, it means they are allowed from the node's point of view. In the next step, we need to enable inputs from the router's side.**
+
 ## 6.7 Router Configuration
+
+To allow external incoming communication into your home network, so they can be forwarded to your node machine with open ports, we also have to open these ports on your router, acting as a second firewall in this case.
+
+### 6.7.1 Log into your Router's Web Interface
+
+Open a web browser and enter the router's IP address or web address. You'll be prompted to enter your router's admin username and password. If you haven't changed them, check your router's documentation or label for the default credentials.
+
+### 6.7.2 Navigate to Port Forwarding Settings
+
+In your router's web interface, navigate to the section related to port forwarding settings. This section might be named something like `Port Forwarding`, `Applications`, or `Firewall`. In more consumer friendly machines like mine, it could be found in:
+
+`Internet` > `Permit Access` > `Port Sharing`
+
+### 4.7.3 Add a New Port Forwarding Rule
+
+Usually, there will be a button or link labeled `Add`, `Create`, `New Rule`, or something similar. Click on it to start creating a new port forwarding rule for a specific device.
+
+You'll be prompted to enter the device's MAC address and the static IP address you gave your device before. In modern firmwares, you can just select one of your devices that are currently connected. Choose your node device.
+
+On my end, I found the settings within:
+
+`Port Sharing` > `Add Device for Sharing`
+
+After clicking on the node's device name or clicking new rules you should be able to set a new port access rule. There are the following properties:
+
+- **Device Info/MAC Address/IP Address**: These are the fields for device information. In newer firmware, you can just select the device, on older firmware you have to manually input your devices MAC and static IP addresses you've read out before. The incoming traffic on the specified port will be forwarded to the device with this IP address. The MAC address is there for the IP to always be assigned statically.
+- **Service Name/ID/Description**: This is just a label for you to identify the rule. You can enter something like a short description of the above table, so you will associate it later. I chose `<client-name>-<2-word-description>-<port-number>` as naming convention, to always know what the port is used for.
+- **External Port**: This is the port number you want to open for incoming traffic. For Geth and Prysm, you might need to open ports such as `30303`, `13000`, `12000` for blockchain clients.
+- **Internal Port/Port to Device**: This is the port number on your local machine that will handle the incoming traffic. Usually, this will be the same as the external port. If you did not manually configure port forwarding, input the same as in the external port. If there is a second field for `through port` for advanced redirects, input the same port number again. If they are equal, no additional ruleset will apply.
+- **Protocol**: This is the network protocol used for the incoming traffic. It could be TCP, UDP, or both. Make sure to match the protocol with the requirements of your blockchain clients. Some router might not allow to set one rule for multiple protocols. If so, you have to set one rule for each protocol of the same port number.
+
+On my router, I set the following rule packages for Geth and Prysm:
+
+```text
+---------------------------------------------------------------------------------
+| DEVICE:               <node-device-name>                                      |
+| IPV4 ADDRESS:         <node-ip-address>                                       |
+| MAC ADDRESS:          <node-mac-address>                                      |
+| IPV6 INTERFACE ID:    <ipv6-interface-id>     (assigned automatically)        |
+---------------------------------------------------------------------------------
+| □ Permit independent port sharing for this device                             |
+---------------------------------------------------------------------------------
+| IPV4                                                                          |
+| □ Open this device completely for internet sharing via IPv4 (exposed host)    |
+---------------------------------------------------------------------------------
+| IPv6                                                                          |
+| Enable PING6                                                                  |
+| Open firewall for delegated IPv6 prefixes of this device                      |
+| Open this device completely for internet sharing via IPv6 (exposed host)      |
+---------------------------------------------------------------------------------
+
+SHARING RULES
+1 ---
+        -------------------------------------------------------------------------
+        | NAME:                         execution-data-30303                    |
+        | PROTOCOL:                     TCP                                     |
+        | PORT TO DEVICE:               30303   THROUGH PORT:       3030        |
+        | PORT REQUESTED EXTERNALLY:    30303                                   |
+        | (IPv4 only)                                                           |
+        -------------------------------------------------------------------------
+        | ⊠ Enable sharing                                                      |
+        -------------------------------------------------------------------------
+        | IPV4 ADDRESS IN THE INTERNET: <internet-ip-address>                   |
+        | PORT ASSIGNED EXTERNALLY:     30303   THROUGH PORT:       3030        |
+        -------------------------------------------------------------------------
+2 ---
+        -------------------------------------------------------------------------
+        | NAME:                         beacon-sync-13000                       |
+        | PROTOCOL:                     TCP                                     |
+        | PORT TO DEVICE:               13000   THROUGH PORT:       13000       |
+        | PORT REQUESTED EXTERNALLY:    13000                                   |
+        | (IPv4 only)                                                           |
+        -------------------------------------------------------------------------
+        | ⊠ Enable sharing                                                      |
+        -------------------------------------------------------------------------
+        | IPV4 ADDRESS IN THE INTERNET: <internet-ip-address>                   |
+        | PORT ASSIGNED EXTERNALLY:     13000   THROUGH PORT:       13000       |
+        -------------------------------------------------------------------------
+3 ---
+        -------------------------------------------------------------------------
+        | NAME:                         beacon-data-12000                       |
+        | PROTOCOL:                     UDP                                     |
+        | PORT TO DEVICE:               12000   THROUGH PORT:       12000       |
+        | PORT REQUESTED EXTERNALLY:    12000                                   |
+        | (IPv4 only)                                                           |
+        -------------------------------------------------------------------------
+        | ⊠ Enable sharing                                                      |
+        -------------------------------------------------------------------------
+        | IPV4 ADDRESS IN THE INTERNET: <internet-ip-address>                   |
+        | PORT ASSIGNED EXTERNALLY:     12000   THROUGH PORT:       12000       |
+        -------------------------------------------------------------------------
+4 ---
+        -------------------------------------------------------------------------
+        | NAME:                         execution-discovery-30303               |
+        | PROTOCOL:                     UDP                                     |
+        | PORT TO DEVICE:               30303   THROUGH PORT:       3030        |
+        | PORT REQUESTED EXTERNALLY:    30303                                   |
+        | (IPv4 only)                                                           |
+        -------------------------------------------------------------------------
+        | ⊠ Enable sharing                                                      |
+        -------------------------------------------------------------------------
+        | IPV4 ADDRESS IN THE INTERNET: <internet-ip-address>                   |
+        | PORT ASSIGNED EXTERNALLY:     30303   THROUGH PORT:       3030        |
+        -------------------------------------------------------------------------
+```
+
+### 4.2.4 Apply and Save
+
+Once you've filled out all fields, save the new rule. You will be asked to apply changes, which might take a few seconds until it takes effect.
+
+> **Note**: Some routers may require a reboot to apply the changes.
+
+After the rules were applied, check back to your port sharing screen of the router. You should find a list with the newly added rules to verify your previous step. On my end, the list looks like this:
+
+```text
+PORT SHARING DEVICE SCREEN
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| DEVICE / NAME      | IP ADDRESS          | SHARING                           | PORT ASSIGNED EXTERNALLY IPV4 | PORT ASSIGNED EXTERNALLY IPC6 | INDIPENDENT PORT SHARING |
+|--------------------|---------------------|-----------------------------------|-------------------------------|-------------------------------|--------------------------|
+| <node-device-name> | <node-ip-address>   | active: execution-data-30303      | 30303                         |                               | □                        |
+|                    | <ipv6-interface-id> | active: beacon-sync-13000         | 13000                         |                               | 0 enabled                |
+|                    |                     | active: beacon-data-12000         | 12000                         |                               |                          |
+|                    |                     | active: execution-discovery-30303 | 30303                         |                               |                          |
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+PORT SHARING RULES SCREEN
+
+---------------------------------------------------------------------------------------------------------
+| STATUS | NAME                      | PROTOCOL | IP ADDRESS IN THE INTERNET | PORT ASSIGNED EXTERNALLY |
+|--------|---------------------------|----------|----------------------------|--------------------------|
+| active | execution-data-30303      | TCP      | <internet-ip-address>      | 30303                    |
+| active | beacon-sync-13000         | TCP      | <internet-ip-address>      | 13000                    |
+| active | beacon-data-12000         | UDP      | <internet-ip-address>      | 12000                    |
+| active | execution-discovery-30303 | UDP      | <internet-ip-address>      | 30303                    |
+---------------------------------------------------------------------------------------------------------
+```
 
 ## 6.8 LUKSO CLI Setup
 
 ## 6.9 LUKSO Docker Setup
-
-### firewall
-
-Allow P2P ports for Lukso clients:
-
-```shell=
-sudo ufw allow 30303/tcp
-sudo ufw allow 13000/tcp
-sudo ufw allow 12000/udp
-sudo ufw allow 30303/udp
-```
-
-> **_NOTE:_** make sure to open same ports on your home router
-
-Enable Firewall:
-
-```shell=
-sudo ufw enable
-```
-
-Verify firewall configuration:
-
-```shell=
-sudo ufw status
-```
-
-It should look something like this (may be missing some ports):
-
-```shell=
-Status: active
-
-To                         Action      From
---                         ------      ----
-13000/tcp                  ALLOW       Anywhere
-12000/udp                  ALLOW       Anywhere
-30303/tcp                  ALLOW       Anywhere
-ssh-port/tcp               ALLOW       Anywhere
-30303/udp                  ALLOW       Anywhere
-13000/tcp (v6)             ALLOW       Anywhere (v6)
-12000/udp (v6)             ALLOW       Anywhere (v6)
-30303/tcp (v6)             ALLOW       Anywhere (v6)
-ssh-port/tcp (v6)          ALLOW       Anywhere (v6)
-30303/udp (v6)             ALLOW       Anywhere (v6)
-```
-
-## Node Setup
-
-> **_NOTE:_** Following steps are performed on personal machine.
-
-Access a remote node machine
-
-```shell=
-ssh lukso
-```
