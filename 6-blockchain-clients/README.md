@@ -74,7 +74,7 @@ Under the hood, the Consensus Client communicates with other validators to reach
 
 #### Validator Client
 
-The Validator Client is often a part of the Consensus Client software. It manages the validator's keypairs and performs the duties assigned by the consensus protocol: proposing blocks and making attestations. The validator client often interacts with a beacon node that is connected to the rest of the EVM network.
+The Validator Client is often a part of the Consensus Client software. It manages the validator's keypairs and performs the duties assigned by the consensus protocol: proposing blocks and making attestations.
 
 The validator client only manages the validator's activities, while the consensus client implements the consensus protocol and communicates with the rest of the network.
 
