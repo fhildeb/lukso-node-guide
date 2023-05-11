@@ -181,6 +181,13 @@ Adjust your need for storage accordingly by asking yourself how long you can get
 
 #### Client Diversity
 
+Client diversity refers to the utilization of different software clients in a blockchain network developed by different teams and in different programming languages. Having a diversity of clients in a blockchain network is critically important:
+
+- **Security and Resilience**: Client diversity increases the robustness of the network. If there's a bug in one client, it doesn't bring down the entire network because other clients can continue to operate. This decentralization and redundancy is a fundamental aspect of blockchain security and resilience.
+- **Decentralization and Governance**: Client diversity promotes decentralization in the development and governance of the Ethereum network. It prevents any single team or entity from having too much influence over the network's development.
+
+> We should make sure that we can split our client usage evenly to the extend of officially supported clients and validators.
+
 ## 6.5 Port Setups
 
 In order to let the Blockchain CLients communicate correctly, the ports, e.g., data communication channels, have to be enabled on the node and the router. For each supported blockchain client, there are different ports to open.
