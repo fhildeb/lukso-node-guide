@@ -28,6 +28,15 @@ Access a remote node machine
 ssh lukso
 ```
 
+## Monitoring Port Setup
+
+| CLIENT     | DESCRIPTION | DEFAULT TCP PORT |
+| ---------- | ----------- | ---------------- |
+| LIGHTHOUSE | Prometheus  | 9090             |
+| LIGHTHOUSE | Grafana     | not built-in     |
+| PRYSM      | Prometheus  | 9090             |
+| PRYSM      | Grafana     | 8080             |
+
 ### Prometheus
 
 ```shell=

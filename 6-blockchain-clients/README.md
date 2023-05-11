@@ -188,9 +188,30 @@ Client diversity refers to the utilization of different software clients in a bl
 
 > We should make sure that we can split our client usage evenly to the extend of officially supported clients and validators.
 
-## 6.5 Port Setups
+## 6.5 Open Port Setup
 
 In order to let the Blockchain CLients communicate correctly, the ports, e.g., data communication channels, have to be enabled on the node and the router. For each supported blockchain client, there are different ports to open.
+
+Each supported client has different ports for various purposes that have to be open for a clear connection:
+
+| CLIENT     | DESCRIPTION                              | PORT  | TCP | UDP |
+| ---------- | ---------------------------------------- | ----- | --- | --- |
+| GETH       | Execution Chain Data Channel             | 30303 | X   |     |
+| GETH       | Execution Chain Discovery                | 30303 |     | X   |
+| ERIGON     | Execution Chain Data Channel             | 30303 | X   |     |
+| ERIGON     | Execution Chain Discovery                | 30303 |     | X   |
+| LIGHTHOUSE | Beacon Gossip Request and Responses      | 9000  | X   |     |
+| LIGHTHOUSE | Beacon Discovery, Request, Data Exchange | 5052  |     | X   |
+| LIGHTHOUSE | Ethereum Blockchain JSON-RPC             | 8545  | X   |     |
+| PRYSM      | Beacon Gossip Request and Responses      | 13000 | X   |     |
+| PRYSM      | Beacon Discovery, Request, Data Exchange | 12000 |     | X   |
+| PRYSM      | Ethereum Blockchain JSON-RPC             | 8545  | X   |     |
+
+To discover peers of other nodes, all outbound traffic should be
+allowed across all UDP and TCP ports when using Prysm and Lighthouse.
+
+- [Prysm Network Specification](https://docs.prylabs.network/docs/prysm-usage/p2p-host-ip#configure-your-firewall)
+- [Lighthouse Network Specification]()
 
 ## 6.6 Firewall Configuration
 
