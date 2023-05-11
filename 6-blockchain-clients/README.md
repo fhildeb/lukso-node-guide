@@ -39,6 +39,26 @@ One of the main advantages of PoS over PoW is its energy efficiency. While PoW r
 
 Another advantage of PoS is the security it provides. Since validators have a significant investment in the network, they are incentivized to act honestly. If a validator tries to manipulate the system or validate fraudulent transactions, they risk losing their stake, making attacks on the network costly and therefore less likely.
 
+#### Network Operations
+
+The Ethereum Virtual Machine is a crucial part of the Ethereum ecosystem and each full node running the Ethereum software has its own instance of it. This is because every full node validates every transaction and smart contract execution independently. The EVM is isolated from the network, filesystem, and other processes of the node's computer system, which makes it a sandboxed environment for smart contract execution.
+
+When a node receives a new block, it executes all transactions in that block in its own EVM to validate the correctness of the transaction results and the final state of the block. This is a fundamental part of the Ethereum network's decentralized nature: every node independently verifies the validity of every block and every transaction.
+
+#### Computation Measures
+
+Each operation in the EVM requires a certain amount of gas, which is paid for in the chains coin. The cost of gas is a crucial part of Ethereum's incentive structure, deterring spam on the network and incentivizing miners to confirm transactions.
+
+Since the [London Update](https://eips.ethereum.org/EIPS/eip-1559) Ethereum has a predictable fee system with two parts: a base fee and a tip. The base fee is burned and adjusts up or down depending on network congestion. This means that when the network is busy, the base fee increases, and when the network is less busy, the base fee decreases. The tip, also called priority fee, is given to the miner as an incentive to include the transaction in the block.
+
+Gas plays a crucial role in the execution of transactions. If a transaction or smart contract operation does not have enough gas, it runs out of gas and fails, but the gas used up to that point is not returned as the computation was finished up to this point.
+
+#### Tokenomics
+
+A large portion of the transaction fee is burned, i.e., permanently removed from circulation. This burning mechanism effectively reduces the supply of Ether over time, which can exert upward pressure on the price, assuming demand remains constant or increases, making EVM PoS blockchain coins a semi-deflationary asset.
+
+Therefore, validators only receive the block rewards and tips as fees.
+
 #### Earnings
 
 When it comes to withdrawels and returns, there are certain wallet addresses to maintain: the withdrawal and the recipient address. They could be the same address, but different actions are bind to them:
