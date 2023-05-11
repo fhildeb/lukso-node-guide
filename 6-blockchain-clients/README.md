@@ -100,16 +100,23 @@ As of version `0.6.0` of the LUKSO CLI, the following clients are officially sup
 
 #### Geth
 
+Geth is the most popular and widely used Ethereum client. It's written in the Go programming language. Geth can be used for a variety of tasks, including creating smart contracts, transferring tokens, mining ether, and exploring block history. It's developed and maintained by the Ethereum Foundation.
+
 #### Erigon
 
-Erigon is designed to be a more efficient and faster version of Geth. It achieves this efficiency through several optimizations:
+Erigon is an Ethereum client that aims to offer a more efficient and faster alternative to Geth. It's written in Go and includes several optimizations to reduce the amount of data stored and improve processing speed. However, these optimizations can make Erigon more complex to maintain and update.
 
-- **Database Schema**: Erigon uses a more optimized database schema that reduces the amount of data that needs to be stored.
-- **State Trie Pruning**: Erigon implements more aggressive state trie pruning, which means it removes more unnecessary data from the state trie.
-- **Data Compression**: Erigon uses advanced data compression techniques to reduce the size of stored blockchain data.
-- **Code Optimization**: Erigon includes various code-level optimizations that make it run more efficiently, requiring less storage and processing power.
+> **CAUTION:** The current version of Erigon states that it is a tech preview and that things can and will break. It comes with several optimizations but is only suggested for tech-savvy people who know exactly what they are doing and are able to act quickly when the service stalls or need to be manually rebooted.
 
-> If you want to run your node as a validator, make sure to choose the Prysm consensus client as it is the only supported validator client right now.
+#### Prysm
+
+Prysm is written in Go and developed by Prysmatic Labs. It's widely used by validators. Performance-wise, Prysm leverages optimized processes and data structures, offering a smooth experience for validators. The client had rigorous testing and auditing processes to ensure the client is secure against potential threats. It also comes with a nice user-friendly terminal interface.
+
+#### Lighthouse
+
+Lighthouse is written in Rust and developed by Sigma Prime. From a security perspective, Lighthouse leverages Rust's safety features and also undergoes regular security audits to protect against potential vulnerabilities. In terms of efficiency, Lighthouse is designed to perform well even on low-spec hardware, making it accessible to a wide range of users
+
+> Both consensus clients, Prysm and Lighthouse are known to be extremely secure and reliable. If you want to run your node as a validator on LUKSO however, make sure to choose the Prysm consensus client as it is the only supported validator client right now.
 
 #### Storage Comparison
 
@@ -151,6 +158,8 @@ GROWTH OF STORAGE IN ARCHIVE NODE MODE
 Adjust your need for storage accordingly by asking yourself how long you can get by without maintanance on the node.
 
 > Be aware that these are rough numbers for a different blockchain running the supported clients. These are only for estimation purposes and may slightly differ based on the used storage format.
+
+#### Client Diversity
 
 ## 6.5 Port Setups
 
