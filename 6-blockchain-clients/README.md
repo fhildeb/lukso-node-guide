@@ -92,6 +92,25 @@ An archive node is a type of full node. It downloads the entire blockchain and v
 
 ## 6.4 Supported Clients
 
+As of version `0.6.0` of the LUKSO CLI, the following clients are officially supported:
+
+- **Execution Clients:** Geth, Erigon
+- **Consensus Clients:** Prysm, Lighthouse
+- **Validator Clients:** Prysm
+
+#### Geth
+
+#### Erigon
+
+Erigon is designed to be a more efficient and faster version of Geth. It achieves this efficiency through several optimizations:
+
+- **Database Schema**: Erigon uses a more optimized database schema that reduces the amount of data that needs to be stored.
+- **State Trie Pruning**: Erigon implements more aggressive state trie pruning, which means it removes more unnecessary data from the state trie.
+- **Data Compression**: Erigon uses advanced data compression techniques to reduce the size of stored blockchain data.
+- **Code Optimization**: Erigon includes various code-level optimizations that make it run more efficiently, requiring less storage and processing power.
+
+> If you want to run your node as a validator, make sure to choose the Prysm consensus client as it is the only supported validator client right now.
+
 #### Storage Comparison
 
 As [analysed by QuickNode](https://www.quicknode.com/guides/infrastructure/node-setup/ethereum-full-node-vs-archive-node/), [declared by Ledgerwatch](https://github.com/ledgerwatch/erigon), and [crawled by YCharts](https://ycharts.com/indicators/ethereum_chain_full_sync_data_size), the used storage of the clients for the Ethereum Blockchain as of of March 2023 can be estimated around these numbers:
@@ -105,6 +124,17 @@ ARCHIVE NODE MODE
 --GETH..................................13.5 TB TOTAL
 --ERIGON.................................2.4 TB TOTAL
 ```
+
+#### Size Differences
+
+Geth is the initial implementation of the EVM as a blockchain protocol. In comparison, erigon is designed to be a more efficient execution client and achieves this efficiency through several optimizations:
+
+- **Database Schema**: Erigon uses a more optimized database schema that reduces the amount of data that needs to be stored.
+- **State Trie Pruning**: Erigon implements more aggressive state trie pruning, which means it removes more unnecessary data from the state trie.
+- **Data Compression**: Erigon uses advanced data compression techniques to reduce the size of stored blockchain data.
+- **Code Optimization**: Erigon includes various code-level optimizations that make it run more efficiently, requiring less storage and processing power.
+
+#### Expected Growth
 
 The needed storage can be broken down to the following yearly growth based on an EVM network that gained significant exposure for almost a decade:
 
