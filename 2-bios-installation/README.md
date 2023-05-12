@@ -129,9 +129,43 @@ Right after, define your keyboard type or click `Identify keyboard` and follow t
 
 ### 1.5.3 Installation Type
 
-Choose your type of installation for the node. Its recommended to set it to `Ubuntu Server (minimized)` as it has significant advantages for security and performance. Only remote access is needed, and no other applications and web services could potentially harm the software. Both desktop and non-minimized versions also use more system resources.
+Choose your type of installation for the node. There are two types of installations:
 
-Do not have `Search for third-party drivers` enabled during installation.
+- `Ubuntu Server`
+- `Ubuntu Server (minimized)`
+
+Here are some of the [core differences](https://ubuntuforums.org/showthread.php?t=2474104):
+
+```text
+Minimized has 420 packages installed.
+Normal has 606 packages installed.
+That is a 31% reduction.
+
+Minimized takes up ~4,200 MB storage when initially installed
+Normal takes up ~4,600 MB storage when initially installed
+That is a difference of 400 MB in size, reduction of 11%.
+
+Minimized uses ~180,000 KB of RAM
+Normal uses ~197,000 KB of RAM
+That is a difference of 17,000 KB of RAM, reduction of 9%.
+
+User Interaction on Minimized:
+- No text editor (vi, vim, nano)
+- No ufw nor iptables command
+- No man pages (documentation)
+```
+
+As the installation screen states, `Ubuntu Server (minimized)` is designed for automated deployment at scale for cloud substrates without user interaction. They use the optimised kernels, optimised boot process, and greatly reduced default packages in order to be smaller, boot faster, and require fewer security updates over time. This might be important if you're maintaining multiple VMs or containers. In our case, it would mean that you have to manually install every single tool package during the node setup.
+
+While `Ubuntu Server (minimized)` boils down to saving packets and having a slightly faster system, it can be a hazard for our node maintenance.
+
+> During some test-runs using the minimal version, it occured that this also affected some internal processes without throwing errors. Because there is no documentation and some logging processes are missing on the core system, checking the status of external software did not work. Here, I had to manually create and adjust certain files that should've been created and updated automatically.
+
+Its recommended to install the `Ubuntu Server` version, as we want to do all user interaction ourselves and need text editors, firewall configuration, and most importantly all available backend processes that might break some autmation.
+
+> Shoutout to Lumenous who helped me clarifying these differences
+
+Do not have `Search for third-party drivers` enabled. Only remote access is needed, which will be installed later during the install process. Other applications and web services could potentially harm the software, security and ease of software maintenance in the long run.
 
 ### 1.5.4 Network and Access Settings
 
@@ -169,7 +203,7 @@ Continue without [Ubuntu Pro](https://ubuntu.com/pricing/pro). It's a premium ve
 
 ### 1.5.8 SSH Setup
 
-In the next step, you can add the openSSH server installation for secure remote access. The Open Secure Shell is a suite of secure networking utilities. It enables encrypted communication and secure data transfer between two networked devices, providing a secure alternative to traditional, non-encrypted protocols. openSSH server is widely used for remote administration, secure file transfers, and executing commands on remote systems.
+In the next step, add the openSSH server installation for secure remote access. The Open Secure Shell is a suite of secure networking utilities. It enables encrypted communication and secure data transfer between two networked devices, providing a secure alternative to traditional, non-encrypted protocols. openSSH server is widely used for remote administration, secure file transfers, and executing commands on remote systems.
 
 The server-only variant will only allow the connection to the node, not the functionality for the node also to set up a client- which is lean and ideal for a node setup that only wants external devices to connect for maintenance.
 
