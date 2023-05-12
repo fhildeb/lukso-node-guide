@@ -155,11 +155,11 @@ User Interaction on Minimized:
 - No man pages (documentation)
 ```
 
-As the installation screen states, `Ubuntu Server (minimized)` is designed for automated deployment at scale for cloud substrates without user interaction. They use the optimised kernels, optimised boot process, and greatly reduced default packages in order to be smaller, boot faster, and require fewer security updates over time. This might be important if you're maintaining multiple VMs or containers. In our case, it would mean that you have to manually install every single tool package during the node setup.
+As the installation screen states, `Ubuntu Server (minimized)` is designed for automated deployment at scale for cloud substrates without user interaction. They use the optimised kernels, optimised boot process, and greatly reduced default packages in order to be smaller, boot faster, and require fewer security updates over time. This might be important if you're maintaining multiple VMs or containers.
 
-While `Ubuntu Server (minimized)` boils down to saving packets and having a slightly faster system, it can be a hazard for our node maintenance.
+While `Ubuntu Server (minimized)` boils down to saving packets and having a slightly faster system, it can be a hazard for our node maintenance, as it would mean that you have to manually install every single tool package during the node setup.
 
-> During some test-runs using the minimal version, it occured that this also affected some internal processes without throwing errors. Because there is no documentation and some logging processes are missing on the core system, checking the status of external software did not work. Here, I had to manually create and adjust certain files that should've been created and updated automatically.
+> During some test-runs using the minimal version, it occured that this also affected some internal processes without throwing errors during run time. Because of the lack of documentation for processes, some logging services are not triggered on the core system. This affects checking the status of external software, which expects the creation of log or configuration data. Here, certain files had to be created and adjusted manually in order for status commands to work.
 
 Its recommended to install the `Ubuntu Server` version, as we want to do all user interaction ourselves and need text editors, firewall configuration, and most importantly all available backend processes that might break some autmation.
 
