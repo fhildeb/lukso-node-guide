@@ -196,18 +196,24 @@ Each supported client has different ports for various purposes that have to be o
 
 > To discover peers of other nodes, all outbound traffic should be allowed across all UDP and TCP ports when using Prysm and Lighthouse.
 
-| CLIENT     | DESCRIPTION                               | PORT  | TCP | UDP | OPT |
-| ---------- | ----------------------------------------- | ----- | --- | --- | --- |
-| GETH       | Execution Chain Data Channel              | 30303 | X   |     |     |
-| GETH       | Execution Chain Discovery                 | 30303 |     | X   |     |
-| ERIGON     | Execution Chain Data Channel              | 30303 | X   |     |     |
-| ERIGON     | Execution Chain Discovery                 | 30303 |     | X   |     |
-| LIGHTHOUSE | Beacon Gossip, Requests, and Responses    | 9000  | X   |     |     |
-| LIGHTHOUSE | Beacon Discovery, Requests, Data Exchange | 5052  |     | X   |     |
-| PRYSM      | Beacon Gossip, Requests, and Responses    | 13000 | X   |     |     |
-| PRYSM      | Beacon Discovery, Requests, Data Exchange | 12000 |     | X   |     |
+| CLIENT     | DESCRIPTION                               | PORT  | TCP | UDP |
+| ---------- | ----------------------------------------- | ----- | --- | --- |
+| GETH       | Execution Chain Data Channel              | 30303 | X   |     |
+| GETH       | Execution Chain Discovery                 | 30303 |     | X   |
+| ERIGON     | Execution Chain Data Channel              | 30303 | X   |     |
+| ERIGON     | Execution Chain Discovery                 | 30303 |     | X   |
+| LIGHTHOUSE | Beacon Communication and Data             | 9000  | X   | X   |
+| PRYSM      | Beacon Gossip, Requests, and Responses    | 13000 | X   |     |
+| PRYSM      | Beacon Discovery, Requests, Data Exchange | 12000 |     | X   |
 
 > Within the [monitoring section](/7-monitoring/) of this guide you can find further internal communication channels.
+
+References:
+
+- [Lighthouse Port Specification](https://lighthouse-book.sigmaprime.io/faq.html?highlight=9000#do-i-need-to-set-up-any-port-mappings)
+- [Prysm Port Specification](https://docs.prylabs.network/docs/prysm-usage/p2p-host-ip#configure-your-firewall)
+- [Geth Port Specification](https://github.com/ethereum/go-ethereum#configuration)
+- [Erigon Port Specification](https://github.com/ledgerwatch/erigon#default-ports-and-firewalls)
 
 ## 6.6 Firewall Configuration
 
@@ -277,17 +283,54 @@ To                               Action      From
 
 To allow external incoming communication into your home network, so they can be forwarded to your node machine with open ports, we also have to open these ports on your router, acting as a second firewall in this case.
 
-### 6.7.1 Log into your Router's Web Interface
+### 6.7.1 Resolve the Node's IP Address
+
+Resolve the nodes IP address again as we already did and explained in detail on the [router config](/4-router-config/) section of the guide:
+
+```sh
+ip route show default
+```
+
+The output will look like this:
+
+```sh
+default via <GATEWAY_IP_ADDRESS> dev eno1 proto dhcp src <NODE_IP_ADDRESS> metric <ROUTING_WEIGHT>
+```
+
+Alternatively you can also send an request to the Google server and filter their response:
+
+```sh
+ip route get 8.8.8.8 | awk '{print $7}'
+```
+
+### 6.7.2 Resolve the Node's Hardware Address
+
+Now we can retrieve the information about the MAC addresses
+
+```sh
+ip link show
+```
+
+The output will list all the network interfaces on the system. Look into the interface that is used to broadcast and send information to the outside world using an Ethernet connection. The entry you're looking for looks like this:
+
+```sh
+<NETWORK_INFERFACE_NAME>: <BROADCAST,MULTICAST,UP,LOWER_UP> ...
+    link/ether <MAC_ADDRESS> brd <BROADCAST_ADDRESS>
+```
+
+**Write down or remember both names so you can check them later on and identify your device for router settings.**
+
+### 6.7.3 Log into your Router's Web Interface
 
 Open a web browser and enter the router's IP address or web address. You'll be prompted to enter your router's admin username and password. If you haven't changed them, check your router's documentation or label for the default credentials.
 
-### 6.7.2 Navigate to Port Forwarding Settings
+### 6.7.4 Navigate to Port Forwarding Settings
 
 In your router's web interface, navigate to the section related to port forwarding settings. This section might be named something like `Port Forwarding`, `Applications`, or `Firewall`. In more consumer friendly machines like mine, it could be found in:
 
 `Internet` > `Permit Access` > `Port Sharing`
 
-### 4.7.3 Add a New Port Forwarding Rule
+### 4.7.5 Add a New Port Forwarding Rule
 
 Usually, there will be a button or link labeled `Add`, `Create`, `New Rule`, or something similar. Click on it to start creating a new port forwarding rule for a specific device.
 
@@ -380,7 +423,7 @@ SHARING RULES
         -------------------------------------------------------------------------
 ```
 
-### 4.2.4 Apply and Save
+### 6.7.6 Apply and Save
 
 Once you've filled out all fields, save the new rule. You will be asked to apply changes, which might take a few seconds until it takes effect.
 
@@ -411,6 +454,8 @@ PORT SHARING RULES SCREEN
 | active | execution-discovery-30303 | UDP      | <internet-ip-address>      | 30303                    |
 ---------------------------------------------------------------------------------------------------------
 ```
+
+**After we opened all required ports, we're able to set up and sync the blockchain clients.**
 
 ## 6.8 LUKSO CLI Setup
 
