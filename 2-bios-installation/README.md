@@ -185,15 +185,37 @@ For storage, set the entire disk.
 
 #### Logical Volume Manager
 
-It's recommended to enable the LVM group option. A flexible management system allows you to easily set and resize your storage volumes. If you plan to run a blockchain node and might add another disk, later on, LVM can be beneficial. If you need to add more storage space later, you can easily add a new disk to the existing LVM group and expand the logical volumes as needed. Maintenance can be done without any downtime or data loss. It also allows for resizing storage volumes, so you can easily resize them on the fly, allowing you to adapt to changing storage requirements of your blockchain node. Some trade-offs when using LVM are the complexity of disk management and a tiny performance dint in performance.
+It's generally recommended to enable the LVM group option. A flexible management system allows you to easily set and resize your storage volumes. If you plan to run multiple blockchain nodes or might add another disk, later on, LVM can be beneficial. If you need to add more storage space later, you can easily add a new disk to the existing LVM group and expand the logical volumes as needed. This would mean that you do not have to split your data folders across multiple storage devices. Maintenance can be done without any true downtime, re-sync or data loss. It also allows for resizing storage volumes, so you can easily resize them on the fly, allowing you to adapt to changing storage requirements of your blockchain node.
 
-Considering the benefits, LVM is generally recommended and enabled on new [Dappnode](https://dappnode.com/) machines and has been set as default on Ubuntu since version 20.04.
+> Considering the benefits, LVM is also enabled on new [Dappnode](https://dappnode.com/) machines and has been set as default on Ubuntu since version 20.04.
+
+Some trade-offs when using LVM are the complexity of disk management and a tiny performance dint in performance. If you have lots of SSD space and want to run everything on the main physical partition, this might not be needed. If you are unsure, simply activate the option- maybe you run out of storage space at some point and do not want to re-sync or configure data folders of blockchain data.
 
 #### Encryption
 
 Encryption is not necessary, as you could encrypt a small portion of the disk later on if needed. Encrypting the whole disk could become cumbersome for remote access, requiring manual intervention each time the server is restarted. There are ways to automate the unlocking process, such as using a remote key server or network-bound disk encryption. However, these methods can increase complexity and may have security implications.
 
 Your validator keys are safe anyway, as they are encrypted by default. The validator also has its encrypted wallet needed to restart the client with a modified address for the fee recipient. The only risk here is physical access or modification- except for the keys or wallet. These could include log data, configuration files, or other personal data stored on the node. The added complexity won't be necessary if these points are not deemed high-risk.
+
+#### Storage Configuration
+
+On the storage configuration screen you will see your available physical disks with their physically available storage and mount points. If you enabled LVM, you will see that it automatically created a volume group with a logical volume inside.
+
+The volume group can be seen as parent container of multiple digital storage partitions, so called logical volumes. These groups can extend across multiple physical disks.
+
+By default, the logical volume will have the size of `100GB` to allow flexibility of partitions. To change properties, you can select `ubuntu-lv` under `ubuntu-vg (new)` in the `USED DEVICES` section to adjust the name, size and format of the logical volume in a pop-up window.
+
+If you are certain that you want to use the whole disk space available, set the `Size` property of the logical volume to the maximum value that is shown in front of the input field of the logical volumes pop-up window.
+
+> Within the [system setup](/3-system-setup/) section of the guide there is also whole chapter about extending the the LVM storage of a logical volume later on and how new disks can be added to your system.
+
+#### Partition Naming
+
+The name of the volume group `ubuntu-vg` and logical volumes, e.g., `ubuntu-lv` can be changed. If you do not plan to have different partitions for different blockchain networks, its recommended to just leave the default names. Keeping the default naming is highly recommended and helps to not create confusion later and find help quickly online when you post logs- since everyone can associate the default names with the LVM setup.
+
+#### Storage Formats
+
+The same rule about going with the default values also applies to the default storage format `ext4`. Storage formats like, `ext2`, `ext3`, and `ext4` are all part of the same family of Linux filesystems, but each brings improvements and added features over the previous. The type `ext4` is the most common used as it comes with support for files up to 16TB, faster and more efficient allocation of disk space and lots of other convinience features.
 
 ### 1.5.7 User Configuration
 
