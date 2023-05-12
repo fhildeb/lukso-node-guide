@@ -14,7 +14,7 @@ As effective node monitoring is essential for maintaining a reliable and secure 
 sudo apt install wget make git
 ```
 
-TODO: Work in Progress until here
+TODO:
 
 ## Monitoring
 
