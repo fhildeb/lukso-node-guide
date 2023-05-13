@@ -38,6 +38,11 @@ The guides in the repository are split into multiple folders and sections.
 - [`l16-tooltips`](/l16-tooltips/): Tooltips for L16 LUKSO CLI
 - [`l16-uninstall`](/l16-uninstall/): Uninstalling L16 Testnet Software
 
+### Validator Setup
+
+- [`validatork-key-generation`](/validator-key-generation/): Create Validator Deposit Keys
+- [`validator-key-stake`](/validator-key-stake/): Deposit Stake to Validator Keys
+
 ## Tools
 
 - [Prometheus](https://prometheus.io/)
