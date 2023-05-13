@@ -28,6 +28,8 @@ Selecting an LTS release, such as Ubuntu 22.04.2 Server, for your blockchain nod
 - **Lower maintenance overhead**: The extended support period means that you won't need to upgrade your node's OS as frequently, reducing the maintenance effort and associated downtime.
 - **Wider compatibility**: LTS releases are often better supported by third-party software and tools, ensuring seamless integration with various blockchain networks and applications.
 
+> **If you want to become a validator and have no other computer at home that can be flashed and used to safely generate your validator keys offline, head over to the [Key Generation](/key-generation/) section and continue to use your node for it. After you received your validator keys, you can continue with this guide, effectively flashing your machine again.**
+
 ### 2.1.2 Download and Preparation
 
 After understanding operating system properties and considerations, download the official Ubuntu server version from `ubuntu.com/download/server`. You need a USB device with at least 2GB that you can use to install the firmware on the node's storage disk.
