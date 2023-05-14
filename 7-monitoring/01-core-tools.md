@@ -55,7 +55,7 @@ Log into your node machine, if you are not signed in already.
 ssh <ssh-device-alias>
 ```
 
-Then continue with installing the following 6 tools that we will need to set up Prometheus, Grafana, and all the Exporters:
+Then continue with installing the following six tools that we will need to set up Prometheus, Grafana, and all the Exporters:
 
 ```sh
 sudo apt install wget make git apt-transport-https software-properties-common
