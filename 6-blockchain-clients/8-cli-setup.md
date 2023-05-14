@@ -277,7 +277,7 @@ Afterwards, import your keys within the LUKSO CLI. You will be asked for your fo
 > If you have multiple key folders, make sure to run the `lukso validator import` command multiple times.
 
 ```sh
-# Import validator keys for mainnet
+# Import validator keys for testnet
 lukso validator import --testnet
 ```
 
