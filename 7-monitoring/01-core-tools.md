@@ -26,7 +26,20 @@ By leveraging the right mix of exporters, the node can create a comprehensive mo
 - **JSON Exporter**: Exporter to scrape data from JSON endpoints and expose it as Prometheus. In our case, it's being used to scrape LUKSO price information from CoinGecko. This is important because it enables us to monitor LUKSO's market performance directly from your Prometheus and Grafana setup, providing a unified view of both your node's performance and the associated token's market performance. It saves time and provides convenience, eliminating the need to check this information on separate platforms.
 - **Blackbox Exporter**: Exporter that probes endpoints over a series of protocols such as HTTP, HTTPS, DNS, TCP, and ICMP, and provides detailed metrics on the results. In our case, it's used to monitor the ping time between the node machine and two DNS servers. This information can be crucial in diagnosing network-related issues. If the ping time is too long or the connection fails altogether, it could indicate network problems affecting your node's performance or its ability to stay in sync with the rest of the blockchain network.
 
-### 7.1.2 Installing Core Tools
+### 7.1.3 Default Monitoring Ports
+
+Our Blockchain Clients have various default ports over which certain monitoring can take place. We already used `8545` within the CLI setup to check the status of the execution client. Prometheus will to the similar steps in a more advanced and automated way to generate metrics.
+
+| CLIENT     | DESCRIPTION       | TCP PORT     |
+| ---------- | ----------------- | ------------ |
+| LIGHTHOUSE | Prometheus        | 9090         |
+| LIGHTHOUSE | Grafana           | not built-in |
+| LIGHTHOUSE | Ethereum JSON-RPC | 8545         |
+| PRYSM      | Prometheus        | 9090         |
+| PRYSM      | Grafana           | 8080         |
+| PRYSM      | Ethereum JSON-RPC | 8545         |
+
+### 7.1.4 Installing Core Tools
 
 Effective node monitoring is essential for maintaining a reliable and secure node and fostering trust within the blockchain ecosystem. Let's follow up with explaining the different tools and installing some core packages needed to download and execute such software.
 
@@ -35,6 +48,14 @@ Effective node monitoring is essential for maintaining a reliable and secure nod
 - **git**: Distributed version control system for tracking changes in source code during software development, allowing developers to collaborate, clone and manage software projects effectively. It will help us downloading code repositories.
 - **apt-transport-https**: Service that allows the package management utility apt to retrieve files over the https protocol. Once it's installed, it allows APT to retrieve packages from HTTPS URLs using the `deb` keyword.
 - **software-properties-common**: Software package that provides some useful tools for adding and managing software repositories. The most common tool it offers is the `add-apt-repository` command to add package archivesto the node.
+
+Log into your node machine, if you are not signed in already.
+
+```sh
+ssh <ssh-device-alias>
+```
+
+Then continue with installing the following 6 tools that we will need to set up Prometheus, Grafana, and all the Exporters:
 
 ```sh
 sudo apt install wget make git apt-transport-https software-properties-common
