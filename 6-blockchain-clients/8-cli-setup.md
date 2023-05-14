@@ -39,7 +39,7 @@ mkdir <your-node-folder>
 cd ./<your-node-folder>
 ```
 
-#### 6.8.5 Initialize the Node's Working Directory
+#### 6.8.4 Initialize the Node's Working Directory
 
 > **CAUTION**: Genesis files are not released yet. Any created node working directory before the geneis data release has to be re-initialized. If you dont want to run a testnet node before becoming a validator on mainnet, stop here and come back later when it's officially announced on [LUKSO's Twitter Account](https://twitter.com/lukso_io?s=20).
 
@@ -78,7 +78,7 @@ lukso-node
 └───cli-config.yaml                         // Global CLI Configuration
 ```
 
-### 6.8.4 Installing the Blockchain Clients
+### 6.8.5 Installing the Blockchain Clients
 
 Afterwards you can install the clients that you wish to run. They will install globally but are set as default clients within your working directories config.
 
@@ -90,7 +90,7 @@ lukso install
 
 All clients will be installed within the `/usr/local/bin/` folder.
 
-### 6.8.5 Starting and Stopping the Node
+### 6.8.6 Starting and Stopping the Node
 
 The following command will spin up your execution and consensus client and connect to the mainnet by default, but you can input the testnet or devnet flag so it connects to one of the other networks as well.
 
@@ -124,7 +124,7 @@ lukso-node
 ...
 ```
 
-### 6.8.6 Checking the Node's Status
+### 6.8.7 Checking the Node's Status
 
 There are multiple ways of checking the node's status. The LUKSO CLI already comes with a bunch of them to check which clients are running, and to look at the logs. These logs are then not only printed onto the screen, but can also be saved as log files:
 
@@ -183,7 +183,7 @@ If you are listening to the port, you can check the clients:
 > exit
 ```
 
-### 6.8.7 Importing the Validator Keys
+### 6.8.8 Importing the Validator Keys
 
 If the the network started correctly and was syncing, you could continue setting up your validator if you would like to participate in the consensus of the blockchain too. There are different processes of becoming a validator for mainnet and testnet:
 
@@ -313,7 +313,7 @@ lukso validator list --testnet
 validator accounts list --wallet-dir "testnet-keystore"
 ```
 
-### 6.8.8 Removing Original Key Folder
+### 6.8.9 Removing Original Key Folder
 
 If your imported keys match the ones in the original folder you used to import, you can delete the folder used for it. You wont need the original files anymore.
 
@@ -323,7 +323,7 @@ You can use the `rm` command, used to remove files and directories while using t
 rm -rf ./<validator-key-folder>
 ```
 
-### 6.8.9 Starting the Validator
+### 6.8.10 Starting the Validator
 
 After importing your keys you can start the node with the validator functionality. If the node is already synced and running, the `lukso start` command will do a restart automatically.
 
