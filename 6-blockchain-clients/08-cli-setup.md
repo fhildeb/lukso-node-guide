@@ -29,11 +29,19 @@ sudo curl https://install.lukso.network | sh
 
 ### 6.8.3 Creating the Working Directory
 
-Create and move into a working directory for your node's data. This is where everything regarding your blockchain node will be stored. Make sure to choose a proper name for your node folder.
+Its recommended to create the node's working directory in the homepath:
+
+```sh
+cd
+```
+
+Create a working directory for your node's data. This is where everything regarding your blockchain node will be stored. Make sure to choose a proper name for your node folder.
 
 ```sh
 mkdir <your-node-folder>
 ```
+
+Move into the working directory to initialize your node clients:
 
 ```sh
 cd ./<your-node-folder>
