@@ -39,7 +39,7 @@ mkdir <your-node-folder>
 cd ./<your-node-folder>
 ```
 
-#### 6.8.4 Initialize the Node's Working Directory
+### 6.8.4 Initialize the Node's Working Directory
 
 > **CAUTION**: Genesis files are not released yet. Any created node working directory before the geneis data release has to be re-initialized. If you dont want to run a testnet node before becoming a validator on mainnet, stop here and come back later when it's officially announced on [LUKSO's Twitter Account](https://twitter.com/lukso_io?s=20).
 
@@ -105,7 +105,7 @@ lukso start --testnet
 lukso stop
 ```
 
-### Startup Folder Structure
+#### Startup Folder Structure
 
 After first starting the LUKSO CLI there will be new folders added to the node's working directory that stora all your blockchain dat for the corresponding network type:
 
