@@ -1,41 +1,10 @@
 # 7. Node Monitoring
 
-Local node monitoring is the process of observing and tracking the performance, health, and status of a blockchain validator node within a network. This monitoring ensures that the validator node is functioning correctly, efficiently, and securely. By regularly gathering and analyzing key performance metrics, such as CPU usage, memory consumption, disk space, network latency, and the number of connected peers, local node monitoring helps identify potential issues and bottlenecks, enabling prompt corrective actions. Additionally, monitoring the validator's activity, such as the number of proposed and validated blocks, can provide insights into the overall performance and contribution of the node to the blockchain network.
-
-TODO:
-
-## Monitoring
-
-Sets up a dashboard to monitor state of a node machine, node, and validators.
-
-> **_NOTE:_** Following steps are performed on personal machine.
-
-Access a remote node machine
-
-```shell=
-ssh lukso
-```
-
-## Monitoring Port Setup
-
-| CLIENT     | DESCRIPTION       | TCP PORT     |
-| ---------- | ----------------- | ------------ |
-| LIGHTHOUSE | Prometheus        | 9090         |
-| LIGHTHOUSE | Grafana           | not built-in |
-| LIGHTHOUSE | Ethereum JSON-RPC | 8545         |
-| PRYSM      | Prometheus        | 9090         |
-| PRYSM      | Grafana           | 8080         |
-| PRYSM      | Ethereum JSON-RPC | 8545         |
-
 ### Prometheus
-
-```shell=
-sudo adduser --system prometheus --group --no-create-home
-```
 
 Identify latest version for `linux-amd64` [here](https://prometheus.io/download/), e.g. `2.34.0`. Install prometheus by replacing `{VERSION}` in the following:
 
-```shell=
+```sh
 cd
 wget https://github.com/prometheus/prometheus/releases/download/v{VERSION}/prometheus-{VERSION}.linux-amd64.tar.gz
 tar xzvf prometheus-{VERSION}.linux-amd64.tar.gz
@@ -51,13 +20,13 @@ rm -rf prometheus-{VERSION}.linux-amd64
 
 #### Configure
 
-```shell=
+```sh
 sudo mkdir -p /etc/prometheus/console_libraries /etc/prometheus/consoles /etc/prometheus/files_sd /etc/prometheus/rules /etc/prometheus/rules.d
 ```
 
 Edit configuration file:
 
-```shell=
+```sh
 sudo vim /etc/prometheus/prometheus.yml
 ```
 
@@ -133,7 +102,7 @@ scrape_configs:
 
 Prepare data directory for prometheus:
 
-```shell=
+```sh
 sudo chown -R prometheus:prometheus /etc/prometheus
 sudo mkdir /var/lib/prometheus
 sudo chown prometheus:prometheus /var/lib/prometheus
@@ -142,13 +111,13 @@ sudo chmod 755 /var/lib/prometheus
 
 Open port to access to metrics. This is optional, only for external use:
 
-```shell=
+```sh
 sudo ufw allow 9090/tcp
 ```
 
 #### Configure Service
 
-```shell=
+```sh
 sudo vim /etc/systemd/system/prometheus.service
 ```
 
@@ -180,7 +149,7 @@ WantedBy=multi-user.target
 
 Enable service:
 
-```shell=
+```sh
 sudo systemctl daemon-reload
 sudo systemctl start prometheus
 sudo systemctl enable prometheus
@@ -190,7 +159,7 @@ sudo systemctl enable prometheus
 
 Install:
 
-```shell=
+```sh
 cd
 wget -q -O - https://packages.grafana.com/gpg.key | sudo apt-key add -
 sudo add-apt-repository "deb https://packages.grafana.com/oss/deb stable main"
@@ -199,7 +168,7 @@ sudo apt-get install grafana-enterprise
 
 #### Configure Service
 
-```shell=
+```sh
 sudo vim /lib/systemd/system/grafana-server.service
 ```
 
@@ -266,7 +235,7 @@ WantedBy=multi-user.target
 
 Enable service:
 
-```shell=
+```sh
 sudo systemctl daemon-reload
 sudo systemctl start grafana-server
 sudo systemctl enable grafana-server
@@ -274,7 +243,7 @@ sudo systemctl enable grafana-server
 
 Open port to access to metrics. This is optional, only for external use:
 
-```shell=
+```sh
 sudo ufw allow 3000/tcp
 ```
 
@@ -313,27 +282,9 @@ On lukso dashboard:
 
 ### Node Exporter
 
-Monitors node stats:
-
-```shell=
-sudo adduser --system node_exporter --group --no-create-home
-```
-
-Install:
-
-```shell=
-cd
-wget https://github.com/prometheus/node_exporter/releases/download/v1.0.1/node_exporter-1.0.1.linux-amd64.tar.gz
-tar xzvf node_exporter-1.0.1.linux-amd64.tar.gz
-sudo cp node_exporter-1.0.1.linux-amd64/node_exporter /usr/local/bin/
-sudo chown node_exporter:node_exporter /usr/local/bin/node_exporter
-rm node_exporter-1.0.1.linux-amd64.tar.gz
-rm -rf node_exporter-1.0.1.linux-amd64
-```
-
 #### Configure Service
 
-```shell=
+```sh
 sudo vim /etc/systemd/system/node_exporter.service
 ```
 
@@ -356,7 +307,7 @@ WantedBy=multi-user.target
 
 Enable service:
 
-```shell=
+```sh
 sudo systemctl daemon-reload
 sudo systemctl start node_exporter
 sudo systemctl enable node_exporter
@@ -368,13 +319,13 @@ sudo systemctl enable node_exporter
 
 Check `go` version if installed:
 
-```shell=
+```sh
 go version
 ```
 
 If it is less than `1.17.7` please install following:
 
-```shell=
+```sh
 wget https://dl.google.com/go/go1.17.7.linux-amd64.tar.gz
 sudo tar -xvf go1.17.7.linux-amd64.tar.gz
 rm go1.17.7.linux-amd64.tar.gz
@@ -387,13 +338,13 @@ go version
 
 User:
 
-```shell=
+```sh
 sudo adduser --system json_exporter --group --no-create-home
 ```
 
 Install:
 
-```shell=
+```sh
 cd
 git clone https://github.com/prometheus-community/json_exporter.git
 cd json_exporter
@@ -406,14 +357,14 @@ rm -rf json_exporter
 
 #### Configure
 
-```shell=
+```sh
 sudo mkdir /etc/json_exporter
 sudo chown json_exporter:json_exporter /etc/json_exporter
 ```
 
 Setup `LYX` token price:
 
-```shell=
+```sh
 sudo vim /etc/json_exporter/json_exporter.yml
 ```
 
@@ -428,13 +379,13 @@ metrics:
 
 Change ownership of configuration file:
 
-```shell=
+```sh
 sudo chown json_exporter:json_exporter /etc/json_exporter/json_exporter.yml
 ```
 
 #### Configure Service
 
-```shell=
+```sh
 sudo vim /etc/systemd/system/json_exporter.service
 ```
 
@@ -457,7 +408,7 @@ WantedBy=multi-user.target
 
 Enable service:
 
-```shell=
+```sh
 sudo systemctl daemon-reload
 sudo systemctl start json_exporter
 sudo systemctl enable json_exporter
@@ -467,13 +418,13 @@ sudo systemctl enable json_exporter
 
 Pings google and cloudflare to track latency. This is optional.
 
-```shell=
+```sh
 sudo adduser --system blackbox_exporter --group --no-create-home
 ```
 
 Install:
 
-```shell=
+```sh
 cd
 wget https://github.com/prometheus/blackbox_exporter/releases/download/v0.18.0/blackbox_exporter-0.18.0.linux-amd64.tar.gz
 tar xvzf blackbox_exporter-0.18.0.linux-amd64.tar.gz
@@ -486,18 +437,18 @@ rm -rf blackbox_exporter-0.18.0.linux-amd64
 
 Enable ping permissions:
 
-```shell=
+```sh
 sudo setcap cap_net_raw+ep /usr/local/bin/blackbox_exporter
 ```
 
 #### Configure
 
-```shell=
+```sh
 sudo mkdir /etc/blackbox_exporter
 sudo chown blackbox_exporter:blackbox_exporter /etc/blackbox_exporter
 ```
 
-```shell=
+```sh
 sudo vim /etc/blackbox_exporter/blackbox.yml
 ```
 
@@ -514,13 +465,13 @@ modules:
 
 Change ownership of configuration file:
 
-```shell=
+```sh
 sudo chown blackbox_exporter:blackbox_exporter /etc/blackbox_exporter/blackbox.yml
 ```
 
 #### Configure Service
 
-```shell=
+```sh
 sudo vim /etc/systemd/system/blackbox_exporter.service
 ```
 
@@ -543,7 +494,7 @@ WantedBy=multi-user.target
 
 Enable service:
 
-```shell=
+```sh
 sudo systemctl daemon-reload
 sudo systemctl start blackbox_exporter
 sudo systemctl enable blackbox_exporter
