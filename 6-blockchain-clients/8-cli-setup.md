@@ -19,7 +19,7 @@ In the background, the blockchain clients run directly on the operating system, 
 
 > Please see the [Docker Setup](./9-docker-setup.md) guide if you want to run multiple networks simultaneously or need to have your application separated from the rest of service running on your node machine.
 
-### 6.8.2 Installing the CLI
+### 6.8.2 Installing the LUKSO CLI
 
 Download and execute the LUKSO CLI installation script from the official URL. The CLI will be installed within the `/usr/local/bin/lukso` directory
 
@@ -27,7 +27,7 @@ Download and execute the LUKSO CLI installation script from the official URL. Th
 sudo curl https://install.lukso.network | sh
 ```
 
-### 6.8.3 Create the Working Directory
+### 6.8.3 Creating the Working Directory
 
 Create and move into a working directory for your node's data. This is where everything regarding your blockchain node will be stored. Make sure to choose a proper name for your node folder.
 
@@ -45,7 +45,7 @@ cd ./<your-node-folder>
 
 If you're ready, we can continue initializing the working directory using the LUKSO CLI. It will download all dependencies and configuration files for all network types. It will create a `cli-config.yaml` and an `config` folder holding the genesis files, network properties as well as client-specific configurations for the bootnodes.
 
-#### What is a bootnode?
+#### What is a Bootnode?
 
 When a new node connects to the Ethereum network, it needs to know the IP addresses of other nodes on the network so that it can start communicating with them. However, it may not have any prior information about the network, making it difficult to establish these connections.
 
@@ -57,7 +57,7 @@ If the network is just starting and everyone is a genesis validator, your node w
 lukso init
 ```
 
-#### Folder Structure
+#### Initial Folder Structure
 
 The folder structure after the initialization will look like this. For each network type there are separate configurations files:
 
@@ -78,7 +78,7 @@ lukso-node
 └───cli-config.yaml                         // Global CLI Configuration
 ```
 
-### 6.8.4 Installing the blockchain clients
+### 6.8.4 Installing the Blockchain Clients
 
 Afterwards you can install the clients that you wish to run. They will install globally but are set as default clients within your working directories config.
 
@@ -105,7 +105,7 @@ lukso start --testnet
 lukso stop
 ```
 
-### Folder structure
+### Startup Folder Structure
 
 After first starting the LUKSO CLI there will be new folders added to the node's working directory that stora all your blockchain dat for the corresponding network type:
 
@@ -187,14 +187,14 @@ If you are listening to the port, you can check the clients:
 
 If the the network started correctly and was syncing, you could continue setting up your validator if you would like to participate in the consensus of the blockchain too. There are different processes of becoming a validator for mainnet and testnet:
 
-### Import and Key Setup for Mainnet
+### a) Import and Key Setup for Mainnet
 
 Only validators that deposited LYXe to the [Genesis Deposit Contract](https://etherscan.io/address/0x42000421dd80D1e90E56E87e6eE18D7770b9F8cC#code) before it was frozen on May 9th 2023 can run the back structure of the network until the LYXe Migration is live on the LUKSO blockchain. The migration is [expected](https://medium.com/lukso/its-happening-the-genesis-validators-are-coming-ce5e07935df6) around one month after the initial network start.
 
 Visit the official [Deposit Launchpad](https://deposit.mainnet.lukso.network/) and cautiously go through the process of generating keys and depositing stake to them, in case you have not already.
 
-1. Guide: [Generating deposit keys](/validator-key-generation/).
-2. Guide: [Depositing your LYXe](/validator-key-stake/).
+1. Guide: [Generate Deposit Keys](/validator-key-generation/).
+2. Guide: [Deposit Stake in LYXe](/validator-key-stake/).
 
 Copy your folder(s) of your deposit keys from your personal computer into the working directory of your node. Its recommended to use the secure copy protocol.
 
@@ -217,6 +217,8 @@ Afterwards, import your keys within the LUKSO CLI. You will be asked for your fo
 lukso validator import
 ```
 
+#### Validator Folder Structure
+
 The import command will generate two new folders within the working directory: The keystore and the validator wallet.
 
 ```text
@@ -232,7 +234,10 @@ lukso-node
 |
 ├───mainnet-wallet                          // Mainnet Transaction Data
 |
+...
 ```
+
+#### List Imported Accounts
 
 After importing one or multiple folders, you can check your imported keys:
 
@@ -244,16 +249,16 @@ lukso validator list --mainnet
 validator accounts list --wallet-dir "mainnet-keystore"
 ```
 
-### Import and Key Setup for Testnet
+### b) Import and Key Setup for Testnet
 
 Testnet validators need to be whitelisted as they are seen as core members and organizations wanting to run and maintain their LUKSO Testnet node in a stable environment over a long period to ensure healthy uptimes, stability, and quick response times from clients as demand from developers rises.
 
-If you want to become a whitelisted validator on our testnet, prepare your validator keys, set up your node environment, and contact `testnet-validators@lukso.network`. You will have to send your Ethereum address and some more details about your setup and involvement in the developer/network community. If you get whitelisted, you will also get a certain amount of LYXt to deposit your keys
+If you want to become a whitelisted validator on our testnet, prepare your validator keys, set up your node environment, and contact `testnet-validators@lukso.network`. You will have to send your Ethereum address and some more details about your setup and involvement in the developer/network community. If you get whitelisted, you will also get a certain amount of LYXt to deposit your keys.
 
 Visit the official [Testnet Deposit Launchpad](https://deposit.testnet.lukso.network/) and cautiously go through the process of generating keys and depositing stake to them, in case you have not already.
 
-1. Guide: [Generating deposit keys](/validator-key-generation/).
-2. Guide: [Depositing your LYXe](/validator-key-stake/).
+1. Guide: [Generate Deposit Keys](/validator-key-generation/).
+2. Guide: [Deposit Stake in LYXt](/validator-key-stake/).
 
 Copy your folder(s) of your deposit keys from your personal computer into the working directory of your node. Its recommended to use the secure copy protocol.
 
@@ -276,6 +281,8 @@ Afterwards, import your keys within the LUKSO CLI. You will be asked for your fo
 lukso validator import --testnet
 ```
 
+#### Validator Folder Structure
+
 The import command will generate two new folders within the working directory: The keystore and the validator wallet.
 
 ```text
@@ -291,7 +298,10 @@ lukso-node
 |
 ├───testnet-wallet                          // Testnet Transaction Data
 |
+...
 ```
+
+#### List Imported Accounts
 
 After importing one or multiple folders, you can check your imported keys:
 
