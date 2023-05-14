@@ -2,6 +2,11 @@
 
 We will start the monitoring by setting up the three node exporter services before we manage the core Prometheus connection to them. Here, everything will be set in place and load when we configure the Dashboard later on.
 
+This has the following benefits:
+
+- **Problem Encapsulation**: Installing exporters first, allows you to ensure that the necessary metrics are being exposed by the services you want to monitor. By installing and configuring exporters beforehand, you can verify that the metrics are accessible and correctly exposed. This helps in troubleshooting any potential issues with the exporters or the services themselves.
+- **No Idle Rotation Problems**: With the exporters already installed and configured, Prometheus can immediately start scraping the endpoints and collecting metrics. This ensures that you have data available for monitoring as soon as Prometheus is up and running, which excludes errors where configurations would need to be reloaded and updated.
+
 ### 7.2.1 Creating a new User
 
 In the context of setting up a Prometheus Node Exporter, we will create a system user specifically to run the Node Exporter service. Running services as a system user with minimal privileges is a common security best practice. It limits the potential damage if the service is somehow compromised. For example, the node exporter user won't be able to write to most directories on the system or execute commands as other users. We will use the system's own user creation tool:
