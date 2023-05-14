@@ -107,7 +107,7 @@ The configuration file is split between multiple sections: `[Unit]`, `[Service]`
 - **PrivateTmp**: Set to allow the service to generate a private `/tmp` directory that other processes can't access.
 - **WantedBy**: This option creates a small dependency and makes the service get started at boot time. If we input `multi-user.target` we can specify that the service will start when the system is set up for multiple users. In our case, every explorer service will have its own user, kinda fitting the description.
 
-##### Logging
+#### Logging
 
 By default, the service will write journal logs into the `/var/log/journal/` folder using the `journald` service. But you can also configure it to use system logs that are written into the `/var/log/syslog` folder by the `syslog` process. Here is a quick rundown:
 
