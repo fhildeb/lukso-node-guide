@@ -9,7 +9,8 @@ This section of the node guide covers a range of topics that provide the foundat
 5. [Open Network Ports](./5-network-ports.md)
 6. [Firewall Settings](./6-firewall-settings.md)
 7. [Router Configuration](./7-router-config.md)
-8. [LUKSO CLI Setup](./8-cli-setup.md)
-9. [LUKSO Docker Setup](./9-docker-setup.md)
+8. [LUKSO CLI Node Setup](./8-cli-setup.md)
+9. [LUKSO CLI Validator Setup](./9-validator-setup.md)
+10. [LUKSO Docker Setup](./10-docker-setup.md)
 
 **Continue with Section 7: [Node Monitoring](/7-monitoring/)**
