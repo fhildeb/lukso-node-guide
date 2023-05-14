@@ -280,38 +280,7 @@ On lukso dashboard:
 3. In `Alert` tab, select notifications `send to`
 4. Save and repeat for each alert
 
-### Node Exporter
-
-#### Configure Service
-
-```sh
-sudo vim /etc/systemd/system/node_exporter.service
-```
-
-The content of service configuration file:
-
-```
-[Unit]
-Description=Node Exporter
-
-[Service]
-Type=simple
-Restart=always
-RestartSec=5
-User=node_exporter
-ExecStart=/usr/local/bin/node_exporter
-
-[Install]
-WantedBy=multi-user.target
-```
-
-Enable service:
-
-```sh
-sudo systemctl daemon-reload
-sudo systemctl start node_exporter
-sudo systemctl enable node_exporter
-```
+TODO:
 
 ### Json Exporter
 
