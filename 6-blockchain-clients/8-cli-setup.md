@@ -1,4 +1,4 @@
-## 6.8 LUKSO CLI Setup
+## 6.8 LUKSO CLI Node Setup
 
 Now that we have prepared all ports, the firewall and the router, we can actually install the blockchain clients used to participate in the network intself using the LUKSO CLI.
 
@@ -105,6 +105,30 @@ lukso start --testnet
 lukso stop
 ```
 
+#### Custom Flags
+
+There is a whole suite of flags that can be added to the clients while starting the service. By using the flags `--geth-[COMMAND]`, `--prysm-[COMMAND]`, `--validator-[COMMAND]`, `--erigon-[COMMAND]`, or `--lighthouse-[COMMAND]` you can pass through any available flag of the underlying client.
+
+Have a look at their specifications if you like:
+
+- [Geth Parameters](https://geth.ethereum.org/docs/fundamentals/command-line-options)
+- [Prysm Parameters](https://docs.prylabs.network/docs/prysm-usage/parameters)
+- [Lighthouse Parameters](https://lighthouse-book.sigmaprime.io/advanced-datadir.html)
+- [Erigon Parameters](https://github.com/ledgerwatch/erigon)
+
+#### Setting the Graffiti
+
+Using custom flags, we can set up our Graffiti. The graffiti is a term that refers to a customizable field that validators can use when they propose a new block. This field allows validators to inscribe a short message up to 32 bytes into the metadata of the block. These messages are permanently stored on the blockchain and can be publicly viewed.
+
+The ability to add graffiti to a block gives validators a unique way to mark their contributions to the network. The content of the graffiti can vary greatly. Some validators might use this space to include their validator's name or identifier, while others might use it for fun.
+
+> It's important to note, however, that the graffiti field should be used responsibly. Although it allows for freedom of expression, it's part of the Ethereum blockchain's permanent record, so the community generally encourages respectful and appropriate usage.
+
+```sh
+# Starting testnet with graffiti
+lukso start --testnet --validator-graffiti "I'm a graffiti!"
+```
+
 #### Startup Folder Structure
 
 After first starting the LUKSO CLI there will be new folders added to the node's working directory that stora all your blockchain dat for the corresponding network type:
@@ -181,165 +205,4 @@ If you are listening to the port, you can check the clients:
 
 # Quick listening to port
 > exit
-```
-
-### 6.8.8 Importing the Validator Keys
-
-If the the network started correctly and was syncing, you could continue setting up your validator if you would like to participate in the consensus of the blockchain too. There are different processes of becoming a validator for mainnet and testnet:
-
-### a) Import and Key Setup for Mainnet
-
-Only validators that deposited LYXe to the [Genesis Deposit Contract](https://etherscan.io/address/0x42000421dd80D1e90E56E87e6eE18D7770b9F8cC#code) before it was frozen on May 9th 2023 can run the back structure of the network until the LYXe Migration is live on the LUKSO blockchain. The migration is [expected](https://medium.com/lukso/its-happening-the-genesis-validators-are-coming-ce5e07935df6) around one month after the initial network start.
-
-Visit the official [Deposit Launchpad](https://deposit.mainnet.lukso.network/) and cautiously go through the process of generating keys and depositing stake to them, in case you have not already.
-
-1. Guide: [Generate Deposit Keys](/validator-key-generation/).
-2. Guide: [Deposit Stake in LYXe](/validator-key-stake/).
-
-Copy your folder(s) of your deposit keys from your personal computer into the working directory of your node.
-
-#### Secure Copy Protocol
-
-SCP is a network protocol that enables secure file transfers between hosts on a network. It uses SSH for data transfer and utilizes the same mechanisms for authentication, thereby ensuring the authenticity and confidentiality of the data in transit.
-
-For secure data transfer over the internet or within unsecured networks, SCP is a reliable and secure choice due to its underlying SSH protocol which encrypts the data in transit.
-
-```sh
-scp -i ~/.ssh/<ssh-key> -r <local-path-to-key-folder> <user-name>@<node-ip-address>:<node-path-to-node-folder>/<keyfolder-name>
-```
-
-Afterwards, import your keys within the LUKSO CLI. You will be asked for your folder with your validator keys and a new password for your validator node, needed to secure the wallet and restart the validator later on.
-
-> If you have multiple key folders, make sure to run the `lukso validator import` command multiple times.
-
-```sh
-# Import validator keys for mainnet
-lukso validator import
-```
-
-#### Validator Folder Structure
-
-The import command will generate two new folders within the working directory: The keystore and the validator wallet.
-
-```text
-lukso-node
-...
-|
-├───mainnet-keystore                        // Mainnet Validator Data
-│   ├───keys                                // Encrypted Private Keys
-│   ├───...                                 // Files for Signature Creation
-|   ├───pubkeys.json                        // Validator Public Keys
-|   ├───deposit_data.json                   // Deposit JSON for Validators
-|   └───node_config.yaml                    // Node Configuration File
-|
-├───mainnet-wallet                          // Mainnet Transaction Data
-|
-...
-```
-
-#### List Imported Accounts
-
-After importing one or multiple folders, you can check your imported keys:
-
-```sh
-# LUKSO CLI v. 0.6.0+
-lukso validator list --mainnet
-
-# Lukso CLI <0.6.0
-validator accounts list --wallet-dir "mainnet-keystore"
-```
-
-### b) Import and Key Setup for Testnet
-
-Testnet validators need to be whitelisted as they are seen as core members and organizations wanting to run and maintain their LUKSO Testnet node in a stable environment over a long period to ensure healthy uptimes, stability, and quick response times from clients as demand from developers rises.
-
-If you want to become a whitelisted validator on our testnet, prepare your validator keys, set up your node environment, and contact `testnet-validators@lukso.network`. You will have to send your Ethereum address and some more details about your setup and involvement in the developer/network community. If you get whitelisted, you will also get a certain amount of LYXt to deposit your keys.
-
-Visit the official [Testnet Deposit Launchpad](https://deposit.testnet.lukso.network/) and cautiously go through the process of generating keys and depositing stake to them, in case you have not already.
-
-1. Guide: [Generate Deposit Keys](/validator-key-generation/).
-2. Guide: [Deposit Stake in LYXt](/validator-key-stake/).
-
-Copy your folder(s) of your deposit keys from your personal computer into the working directory of your node.
-
-#### Secure Copy Protocol
-
-SCP is a network protocol that enables secure file transfers between hosts on a network. It uses SSH for data transfer and utilizes the same mechanisms for authentication, thereby ensuring the authenticity and confidentiality of the data in transit.
-
-For secure data transfer over the internet or within unsecured networks, SCP is a reliable and secure choice due to its underlying SSH protocol which encrypts the data in transit.
-
-```sh
-scp -i ~/.ssh/<ssh-key> -r <local-path-to-key-folder> <user-name>@<node-ip-address>:<node-path-to-node-folder>/<keyfolder-name>
-```
-
-Afterwards, import your keys within the LUKSO CLI. You will be asked for your folder with your validator keys and a new password for your validator node, needed to secure the wallet and restart the validator later on.
-
-> If you have multiple key folders, make sure to run the `lukso validator import` command multiple times.
-
-```sh
-# Import validator keys for testnet
-lukso validator import --testnet
-```
-
-#### Validator Folder Structure
-
-The import command will generate two new folders within the working directory: The keystore and the validator wallet.
-
-```text
-lukso-node
-...
-|
-├───testnet-keystore                        // Testnet Validator Data
-│   ├───keys                                // Encrypted Private Keys
-│   ├───...                                 // Files for Signature Creation
-|   ├───pubkeys.json                        // Validator Public Keys
-|   ├───deposit_data.json                   // Deposit JSON for Validators
-|   └───node_config.yaml                    // Node Configuration File
-|
-├───testnet-wallet                          // Testnet Transaction Data
-|
-...
-```
-
-#### List Imported Accounts
-
-After importing one or multiple folders, you can check your imported keys:
-
-```sh
-# LUKSO CLI v. 0.6.0+
-lukso validator list --testnet
-
-# Lukso CLI <0.6.0
-validator accounts list --wallet-dir "testnet-keystore"
-```
-
-### 6.8.9 Removing the Key Folder
-
-If your imported keys match the ones in the original folder you used to import, you can delete the folder used for it. You wont need the original files anymore.
-
-You can use the `rm` command, used to remove files and directories while using the `-r` recursive method. It will assure to remove directories and their contents within the pointed folder. You can also skip the confirmation questions or file errors using `-rf` instead. Make sure to adjust the path to your key-folder.
-
-```sh
-rm -rf ./<validator-key-folder>
-```
-
-### 6.8.10 Starting the Validator
-
-After importing your keys you can start the node with the validator functionality. If the node is already synced and running, the `lukso start` command will do a restart automatically.
-
-In order to start the validator, you have to pass a minimum fo two flags:
-
-- `--validator`: Not only (re-)starts the installed and configured clients including the validator
-- `transaction-fee-recipient`: Your transaction fee recipient address, which will receive all block rewards and tips from transactions. This could be any Ethereum address you have control over: MetaMask, Ledger, or any other wallet that has the functionality to connect with LUKSO or custom networks. Ledger accounts, for instance, are secure and can be imported into MetaMask to send transactions on custom networks.
-
-##### Starting up mainnet validator
-
-```sh
-lukso validator start --validator --transaction-fee-recipient "<transaction-fee-recipient-address>"
-```
-
-##### Starting up testnet validator
-
-```sh
-lukso validator start --validator --transaction-fee-recipient "<transaction-fee-recipient-address>" --testnet
 ```

@@ -1,8 +1,8 @@
-# 6.1 Network Theory
+## 6.2 Network Theory
 
 Let's also clear up the blockchain network we're going to run with this setup and how the compensation works for providing the piece of backend infrastructure. Its important to know the basics of how we will participate.
 
-#### Proof of Stake
+### 6.2.1 Proof of Stake
 
 PoS is a consensus mechanism used in many blockchain networks to validate and add new transactions to the blockchain. Unlike Proof of Work on Bitcoin, which requires miners to solve complex mathematical problems to add new blocks to the blockchain, PoS relies on the amount of cryptocurrency a person holds and is willing to stake as collateral.
 
@@ -12,13 +12,13 @@ One of the main advantages of PoS over PoW is its energy efficiency. While PoW r
 
 Another advantage of PoS is the security it provides. Since validators have a significant investment in the network, they are incentivized to act honestly. If a validator tries to manipulate the system or validate fraudulent transactions, they risk losing their stake, making attacks on the network costly and therefore less likely.
 
-#### Network Operations
+### 6.2.2 Network Operations
 
 The Ethereum Virtual Machine is a crucial part of the Ethereum ecosystem and each full node running the Ethereum software has its own instance of it. This is because every full node validates every transaction and smart contract execution independently. The EVM is isolated from the network, filesystem, and other processes of the node's computer system, which makes it a sandboxed environment for smart contract execution.
 
 When a node receives a new block, it executes all transactions in that block in its own EVM to validate the correctness of the transaction results and the final state of the block. This is a fundamental part of the Ethereum network's decentralized nature: every node independently verifies the validity of every block and every transaction.
 
-#### Computation Measures
+### 6.2.3 Computation Measures
 
 Each operation in the EVM requires a certain amount of gas, which is paid for in the chains coin. The cost of gas is a crucial part of Ethereum's incentive structure, deterring spam on the network and incentivizing miners to confirm transactions.
 
@@ -26,13 +26,13 @@ Since the [London Update](https://eips.ethereum.org/EIPS/eip-1559) Ethereum has 
 
 Gas plays a crucial role in the execution of transactions. If a transaction or smart contract operation does not have enough gas, it runs out of gas and fails, but the gas used up to that point is not returned as the computation was finished up to this point.
 
-#### Tokenomics
+### 6.2.4 Tokenomics
 
 A large portion of the transaction fee is burned, i.e., permanently removed from circulation. This burning mechanism effectively reduces the supply of Ether over time, which can exert upward pressure on the price, assuming demand remains constant or increases, making EVM PoS blockchain coins a semi-deflationary asset.
 
 Therefore, validators only receive the block rewards and tips as fees.
 
-#### Earnings
+### 6.2.5 Earnings & Withdrawals
 
 When it comes to withdrawels and returns, there are certain wallet addresses to maintain: the withdrawal and the recipient address. They could be the same address, but different actions are bind to them:
 

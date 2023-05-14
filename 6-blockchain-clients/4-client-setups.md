@@ -1,4 +1,4 @@
-## 6.4 Client Setups
+# 6.4 Client Setups
 
 As a validator on an EVM PoS network, you need to run a full node. This is because validators need the entire blockchain data and a real-time view of the network state to validate new blocks and transactions effectively. A light node would not have sufficient data for these operations. On top of that, you could run your validator as an archive node. Let's clarify the differences:
 
@@ -10,7 +10,7 @@ A full node downloads the entire blockchain and validates all blocks and transac
 
 An archive node is a type of full node. It downloads the entire blockchain and validates all blocks and transactions like a full node. However, in addition to the current state of the network, it also stores all historical states since the genesis block. This makes an archive node much larger in size compared to a full node, but it allows you to query any historical state of the blockchain.
 
-## 6.4 Supported Clients
+### 6.4.1 Supported Clients
 
 As of version `0.6.0` of the LUKSO CLI, the following clients are officially supported:
 
@@ -38,7 +38,7 @@ Lighthouse is written in Rust and developed by Sigma Prime. From a security pers
 
 > Both consensus clients, Prysm and Lighthouse are known to be extremely secure and reliable. If you want to run your node as a validator on LUKSO however, make sure to choose the Prysm consensus client as it is the only supported validator client right now.
 
-#### Storage Comparison
+### 6.4.2 Storage Comparison
 
 As [analysed by QuickNode](https://www.quicknode.com/guides/infrastructure/node-setup/ethereum-full-node-vs-archive-node/), [declared by Ledgerwatch](https://github.com/ledgerwatch/erigon), and [crawled by YCharts](https://ycharts.com/indicators/ethereum_chain_full_sync_data_size), the used storage of the clients for the Ethereum Blockchain as of of March 2023 can be estimated around these numbers:
 
@@ -79,7 +79,7 @@ Adjust your need for storage accordingly by asking yourself how long you can get
 
 > Be aware that these are rough numbers for a different blockchain running the supported clients. These are only for estimation purposes and may slightly differ based on the used storage format.
 
-#### Client Diversity
+### 6.4.3 Client Diversity
 
 Client diversity refers to the utilization of different software clients in a blockchain network developed by different teams and in different programming languages. Having a diversity of clients in a blockchain network is critically important:
 
@@ -87,3 +87,11 @@ Client diversity refers to the utilization of different software clients in a bl
 - **Decentralization and Governance**: Client diversity promotes decentralization in the development and governance of the Ethereum network. It prevents any single team or entity from having too much influence over the network's development.
 
 > We should make sure that we can split our client usage evenly to the extend of officially supported clients and validators.
+
+#### Ethereum's History
+
+Ethereum client diversity has indeed proven important in maintaining the network's robustness during several incidents. One of the most notable incidents:
+
+- **Shanghai DoS Attacks, 2016**: During the Devcon2 conference, the Ethereum network was targeted by a series of denial-of-service attacks. The attacker exploited several vulnerabilities in the Ethereum protocol, which resulted in a slowdown of block propagation times and disrupted the network. The main client at the time, Geth, was particularly affected. However, the Parity client had a different implementation and wasn't affected in the same way. This allowed the network to continue to operate.
+- **OpenEthereum Consensus Bug, 2020**: There have been several instances where a bug in one client could have led to a network fork, but the diversity of clients prevented this from happening. In 2020, a bug in the OpenEthereum client led to some nodes getting stuck at a particular block, but because many nodes were running other clients, the network as a whole continued to function.
+- **Prysm Client Incident, 2023**: Prysm nodes were burdened by a flood of attestations pertaining to older, outdated transactions. This phenomenon led to an excessive usage of system resources in an attempt to update the transaction record, causing slowdowns and system failures. This was due to an error in the transaction organization mechanism, causing the system to sort transactions using incorrect information. This error further exacerbated the strain on the system, complicating its ability to effectively manage and update the transaction record. During this time, Lighthouse was the only client not effected. However, due to the amount of clients that were vulnerable during this time, the Ethereum network stalled for 25 minutes and continued with tremendous workloads for several days.
