@@ -196,7 +196,7 @@ Visit the official [Deposit Launchpad](https://deposit.mainnet.lukso.network/) a
 1. Guide: [Generate Deposit Keys](/validator-key-generation/).
 2. Guide: [Deposit Stake in LYXe](/validator-key-stake/).
 
-Copy your folder(s) of your deposit keys from your personal computer into the working directory of your node. Its recommended to use the secure copy protocol.
+Copy your folder(s) of your deposit keys from your personal computer into the working directory of your node.
 
 #### Secure Copy Protocol
 
@@ -260,7 +260,7 @@ Visit the official [Testnet Deposit Launchpad](https://deposit.testnet.lukso.net
 1. Guide: [Generate Deposit Keys](/validator-key-generation/).
 2. Guide: [Deposit Stake in LYXt](/validator-key-stake/).
 
-Copy your folder(s) of your deposit keys from your personal computer into the working directory of your node. Its recommended to use the secure copy protocol.
+Copy your folder(s) of your deposit keys from your personal computer into the working directory of your node.
 
 #### Secure Copy Protocol
 
@@ -313,7 +313,7 @@ lukso validator list --testnet
 validator accounts list --wallet-dir "testnet-keystore"
 ```
 
-### 6.8.9 Removing Original Key Folder
+### 6.8.9 Removing the Key Folder
 
 If your imported keys match the ones in the original folder you used to import, you can delete the folder used for it. You wont need the original files anymore.
 
