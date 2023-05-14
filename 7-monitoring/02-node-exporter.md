@@ -48,10 +48,10 @@ wget https://github.com/prometheus/node_exporter/releases/download/v1.5.0/node_e
 
 #### Extract the Archive
 
-After it has been downloaded, we can extract the tape archive using the related Ubuntu tool. We're going to extract (`e`) and compress (`z`) it into its packaged files (`f`) using verbose mode (`v`).
+After it has been downloaded, we can extract the tape archive using the related Ubuntu tool. We're going to extract (`x`) and compress (`z`) the archive into its previous packaged files (`f`) using verbose mode (`v`) to dodge empty file warnings.
 
 ```sh
-tar xzvf node_exporter-1.5.0.linux-amd64.tar.gz
+tar xzfv node_exporter-1.5.0.linux-amd64.tar.gz
 ```
 
 #### Copy the Service Binaries into the System's Path
