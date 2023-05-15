@@ -6,10 +6,10 @@ If you have SSH installed, we can continue with the next step. We set the connec
 
 Within the SSH packages, there the global configuration files should be sitting at `~/.ssh/config`. The file is a user-specific SSH configuration file used to customize various settings for the SSH client on a per-host basis. It allows you to define different options for each remote host you connect to via SSH, such as hostname, username, port, identity files, and other preferences. Using this configuration file, you can simplify the SSH command to connect to remote servers and apply specific settings for each host.
 
-Start by creating the folder:
+Start by checking if the folder already exists using the directory test. We can use the `-p` option during the process to create the directory and any necessary parent directories. Therefore it will not display an error if the directory already exists.
 
 ```sh
-mkdir ~/.ssh/
+mkdir -p ~/.ssh/
 ```
 
 The configuration file requires at least the following:
