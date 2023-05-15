@@ -32,3 +32,5 @@ I set up my machine on a small home rack and connected my node to an 8-port swit
 - **Switch**: TP-Link 8-Port Gigabit Network Switch (TL-SG108, RJ-45, IGMP-Snooping)
 - **Additional Storage**: Seagate Barracuda 4 TB HDD (2.5", 128 MB Cache, SATA 6 Gb/s)
 - **Network Setup**: Several RJ-45 Network cables
+
+GitHub tutorial
