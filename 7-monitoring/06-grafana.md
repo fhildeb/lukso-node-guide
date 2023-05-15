@@ -297,4 +297,21 @@ Now we have to add the running Prometheus service to the Grafana Dashboard so we
 6. Enter `http://127.0.0.1:9090/` as URL
 7. Click `Save & Test` before continuing with the setup
 
-### 7.6.7 Import
+### 7.6.7 Import Dashboard
+
+Chose a dashboard preset you want to load for the LUKSO mainnet and testnet. Within this guide there are two main templates:
+
+- [LUKSO Dashboard EUR](/grafana/lukso-dashboard-eur.json)
+- [LUKSO Dashboard USD](/grafana/lukso-dashboard-eur.json)
+
+> Make sure the file matches with the [JSON Exporter](./03-json-exporter.md) External Data Configuration file. You could also specify your own dashboard by adjusting the contents and jobs.
+
+1. Copy the raw contents of the file you want
+2. Return to the Grafana page within your web browser
+3. Click the plus icon on the top right
+4. Click on `Import`
+5. Paste in the raw contents to the `Import via panel json` text box
+6. Click the `Load` button
+7. Click the `Import` button
+
+You should now have your Dashboard set up and running.
