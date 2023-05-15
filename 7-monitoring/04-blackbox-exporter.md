@@ -6,7 +6,7 @@ After installing the Node and JSON Exporters, we will move on with the last expo
 
 ### 7.4.1 Creating a new User
 
-Like explained and done [previously](./02-node-exporter.md), we will create a new user to specifically to run the JSON Exporter service. Running services as a system user with minimal privileges is a common security best practice.
+Like explained and done [previously](./02-node-exporter.md), we will create a new user to specifically to run the Blackbox Exporter service. Running services as a system user with minimal privileges is a common security best practice.
 
 - `--system`: This flag indicates that a system user should be created. System users are used to run services and daemons, rather than for people to log in with.
 - `--group`: This flag instructs the user tool to to create a new group with the same name as the user.
@@ -18,8 +18,7 @@ sudo adduser --system blackbox-exporter-worker --group --no-create-home
 
 Once we configured the exporter, the node will run the service as this user, by specifying the user in our system deamon service file.
 
-If you want to confirm that the user has been created, you can search for it within the password file `/etc/passwd`, that houses all essential information for each user account. Using `grep`,
-a powerful command-line tool fror global expression search within files or text, we can check if the user exists within the file.
+If you want to confirm that the user has been created, you can search for it within the password file `/etc/passwd`, that houses all essential information for each user account. Using `grep`, a powerful command-line tool fror global expression search within files or text, we can check if the user exists within the file.
 
 ```sh
 grep "blackbox-exporter-worker" /etc/passwd
@@ -86,7 +85,7 @@ sudo chmod 755 /usr/local/bin/blackbox_exporter
 
 #### Cleaning up Install Files
 
-After we copied the executable file into the system's program path and gave it the appropriate user rights, we can remove the extracted folder.
+After we copied the executable file into the system's program path and gave it the appropriate user rights, we can remove the extracted folders.
 
 ```sh
 rm -rf blackbox_exporter-0.23.0.linux-amd64.tar.gz
