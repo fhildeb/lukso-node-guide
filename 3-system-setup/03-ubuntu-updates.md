@@ -4,7 +4,7 @@ Keeping the system and it's software up to date is essential and should be done 
 
 #### Advanced Package Tool
 
-APT is a package management system used in Debian-based Linux distributions, such as Ubuntu, to handle the installation, upgrade, and removal of software packages. It simplifies the process of managing software on Linux systems by automatically handling dependencies and providing a user-friendly interface for software installation.
+APT is a permission management system used in Debian-based Linux distributions, such as Ubuntu, to handle the installation, upgrade, and removal of software packages. It simplifies the process of managing software on Linux systems by automatically handling dependencies and providing a user-friendly interface for software installation.
 
 Its implementation `apt` is a command-line tool and the most commonly used APT software. It provides a convenient way to interact with APT software systems, allowing users to search, install, update, and remove software packages with ease.
 
