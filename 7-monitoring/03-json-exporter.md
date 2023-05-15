@@ -143,6 +143,12 @@ sudo chown json-exporter-worker:json-exporter-worker /usr/local/bin/json_exporte
 
 #### Cleaning up Install Files
 
+Move back into the home directory:
+
+```sh
+cd
+```
+
 After we copied the executable file into the system's program path and gave it the appropriate user rights, we can remove the original repository folder we've downloaded.
 
 ```sh
@@ -175,9 +181,20 @@ Write the following properties into is file:
 modules:
   default:
     metrics:
-    - name: lyxusd
+    - name: lyx-in-eur
+      path: "{.lukso-token.eur}"
+      help: LUKSO (LYX) Price in EUR
+```
+
+In case you want to change the currency to something else, this is how it would look like in `USD`:
+
+```text
+modules:
+  default:
+    metrics:
+    - name: lyx-in-usd
       path: "{.lukso-token.usd}"
-      help: Lukso (LYX) price in USD
+      help: LUKSO (LYX) Price in USD
 ```
 
 > Be cautious: When creating new rules or modifying existing ones, it's essential to follow the correct syntax and structure to ensure that the JSON Exporter functions properly and provides the desired level of security. Verify that you always use 2 spaces for each indentation and that the hyphen.
