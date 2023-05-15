@@ -45,13 +45,22 @@ Our Blockchain Clients have various default ports over which certain monitoring 
 | NODE             | Prometheus Exporter Job | 9100         |
 | BLACKBOX         | Prometheus Exporter Job | 9115         |
 | JSON             | Prometheus Exporter Job | 7979         |
+| Grafana          | Monitoring Dashboard    | 3000         |
 
 #### Prometheus
 
 Opening the Prometheus port allows access to the service's metrics in the web browser of you personal computer. You can do this by adding the port to your firewall as previously done in the [Firewall Config](/3-system-setup/06-firewall-config.md):
 
+Opening Prometheus Port:
+
 ```sh
 sudo ufw allow 9090/tcp
+```
+
+Opening Grafana Port:
+
+```sh
+sudo ufw allow 3000/tcp
 ```
 
 ```sh
@@ -66,12 +75,14 @@ Status: active
 To                               Action      From
 --                               ------      ----
 <prefered-ssh-port>/tcp          ALLOW       Anywhere
+3000/tcp                         ALLOW       Anywhere
 9090/tcp                         ALLOW       Anywhere
 30303/tcp                        ALLOW       Anywhere
 30303/udp                        ALLOW       Anywhere
 13000/tcp                        ALLOW       Anywhere
 12000/udp                        ALLOW       Anywhere
 <prefered-ssh-port>/tcp (v6)     ALLOW       Anywhere (v6)
+3000/tcp                         ALLOW       Anywhere (v6)
 9090/tcp                         ALLOW       Anywhere (v6)
 30303/tcp (v6)                   ALLOW       Anywhere (v6)
 30303/udp (v6)                   ALLOW       Anywhere (v6)
