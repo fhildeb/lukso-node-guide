@@ -1,5 +1,7 @@
 # 7. Node Monitoring
 
+TODO:
+
 ### Prometheus
 
 Identify latest version for `linux-amd64` [here](https://prometheus.io/download/), e.g. `2.34.0`. Install prometheus by replacing `{VERSION}` in the following:
@@ -279,91 +281,3 @@ On lukso dashboard:
 2. Select each alert and click `Edit`
 3. In `Alert` tab, select notifications `send to`
 4. Save and repeat for each alert
-
-TODO:
-
-### Ping
-
-Pings google and cloudflare to track latency. This is optional.
-
-```sh
-sudo adduser --system blackbox_exporter --group --no-create-home
-```
-
-Install:
-
-```sh
-cd
-wget https://github.com/prometheus/blackbox_exporter/releases/download/v0.18.0/blackbox_exporter-0.18.0.linux-amd64.tar.gz
-tar xvzf blackbox_exporter-0.18.0.linux-amd64.tar.gz
-sudo cp blackbox_exporter-0.18.0.linux-amd64/blackbox_exporter /usr/local/bin/
-sudo chown blackbox_exporter:blackbox_exporter /usr/local/bin/blackbox_exporter
-sudo chmod 755 /usr/local/bin/blackbox_exporter
-rm blackbox_exporter-0.18.0.linux-amd64.tar.gz
-rm -rf blackbox_exporter-0.18.0.linux-amd64
-```
-
-Enable ping permissions:
-
-```sh
-sudo setcap cap_net_raw+ep /usr/local/bin/blackbox_exporter
-```
-
-#### Configure
-
-```sh
-sudo mkdir /etc/blackbox_exporter
-sudo chown blackbox_exporter:blackbox_exporter /etc/blackbox_exporter
-```
-
-```sh
-sudo vim /etc/blackbox_exporter/blackbox.yml
-```
-
-The content of configuration file:
-
-```
-modules:
-        icmp:
-                prober: icmp
-                timeout: 10s
-                icmp:
-                        preferred_ip_protocol: ipv4
-```
-
-Change ownership of configuration file:
-
-```sh
-sudo chown blackbox_exporter:blackbox_exporter /etc/blackbox_exporter/blackbox.yml
-```
-
-#### Configure Service
-
-```sh
-sudo vim /etc/systemd/system/blackbox_exporter.service
-```
-
-The content of service configuration file:
-
-```
-[Unit]
-Description=Blackbox Exporter
-
-[Service]
-Type=simple
-Restart=always
-RestartSec=5
-User=blackbox_exporter
-ExecStart=/usr/local/bin/blackbox_exporter --config.file /etc/blackbox_exporter/blackbox.yml
-
-[Install]
-WantedBy=multi-user.target
-```
-
-Enable service:
-
-```sh
-sudo systemctl daemon-reload
-sudo systemctl start blackbox_exporter
-sudo systemctl enable blackbox_exporter
-```
