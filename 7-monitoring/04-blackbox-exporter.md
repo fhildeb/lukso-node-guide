@@ -190,7 +190,7 @@ The configuration file is split between multiple sections: `[Unit]`, `[Service]`
 - **After**: Ensures that the service is started after the network has been set up.
 - **User**: Specifies under which user the service will run. In this case, it will be `blackbox-exporter-worker`.
 - **Type**: This option configures the process start-up type for this service unit. The `simple` value means the exec command configured will be the main process of the service.
-- **ExecStart**: Specifies the command to run when the service starts. In this case, it's `/usr/local/bin/blackbox_exporter` as program folder of the Blackbox Exporter.
+- **ExecStart**: Specifies the command to run when the service starts. In this case, it's `/usr/local/bin/blackbox_exporter` as program folder of the Blackbox Exporter. It will also load the configuration file on startup
 - **Restart**: Configures whether the service shall be restarted when the service process exits, is killed, or a timeout is reached. The `always` value means the service will be restarted regardless of whether it exited cleanly or not.
 - **RestartSec**: This option configures the time to sleep before restarting a service. The value `5` means the service will wait for 5 seconds before it restarts. It is a common default value and a balance between trying to restart the service quickly after a failure and not restarting it so rapidly that you could exacerbate problems.
 - **StandardOutput**: Logfile where output from the Blackbox Exporter will be logged.
