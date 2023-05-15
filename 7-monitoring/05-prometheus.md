@@ -28,7 +28,7 @@ Before downloading or installing anything, make sure you are in the home directo
 cd
 ```
 
-We can then continue to download this version using the previous installed `wget` tool. In this case, we're downloading the service directly from GitHub. Check the official [Prometheus Download Page](https://prometheus.io/download/) and look at the latest LTS version. Make sure to update your version if there is a newer release.
+We can then continue to download the current version of Prometheus using the previous installed `wget` tool. In this case, we're downloading the service directly from GitHub. Check the official [Prometheus Download Page](https://prometheus.io/download/) and look at the latest LTS version. Make sure to update your version if there is a newer release.
 
 ```sh
 wget https://github.com/prometheus/prometheus/releases/download/v2.37.8/prometheus-2.37.8.linux-amd64.tar.gz
