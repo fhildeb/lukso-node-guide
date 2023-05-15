@@ -277,8 +277,24 @@ http://<static-node-ip>:3000
 The default credentials will be the following:
 
 ```text
+DEFAULT CREDENTIALS
+-------------------
 username: admin
 password: admin
 ```
 
 Set a new secure and long password when prompted by Grafana. This is important as this page might be accessed through the external internet in later steps so you can access it from everywhere.
+
+### 7.6.6 Add Prometheus Data Source
+
+Now we have to add the running Prometheus service to the Grafana Dashboard so we can utilize all the great metrics we collected over from all the Prometheus jobs we've set up.
+
+1. On the left-hand menu, hover over the gear menu
+2. Click on the `Data Sources` popup
+3. Click the `Add Data Source` button
+4. Hover over the Prometheus card on screen
+5. Click the `Select` button
+6. Enter `http://127.0.0.1:9090/` as URL
+7. Click `Save & Test` before continuing with the setup
+
+### 7.6.7 Import
