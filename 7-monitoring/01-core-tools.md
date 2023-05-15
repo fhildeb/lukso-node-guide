@@ -30,14 +30,21 @@ By leveraging the right mix of exporters, the node can create a comprehensive mo
 
 Our Blockchain Clients have various default ports over which certain monitoring can take place. We already used `8545` within the CLI setup to check the status of the execution client. Prometheus will to the similar steps in a more advanced and automated way to generate metrics.
 
-| CLIENT     | DESCRIPTION       | TCP PORT     |
-| ---------- | ----------------- | ------------ |
-| LIGHTHOUSE | Prometheus        | 9090         |
-| LIGHTHOUSE | Grafana           | not built-in |
-| LIGHTHOUSE | Ethereum JSON-RPC | 8545         |
-| PRYSM      | Prometheus        | 9090         |
-| PRYSM      | Grafana           | 8080         |
-| PRYSM      | Ethereum JSON-RPC | 8545         |
+#### Blockchain Clients
+
+| CLIENT / SERVICE | DESCRIPTION             | TCP PORT     |
+| ---------------- | ----------------------- | ------------ |
+| LIGHTHOUSE       | Prometheus              | 9090         |
+| LIGHTHOUSE       | Grafana                 | not built-in |
+| LIGHTHOUSE       | Ethereum JSON-RPC       | 8545         |
+| PRYSM            | Prometheus              | 9090         |
+| PRYSM            | Grafana                 | 8080         |
+| PRYSM            | Ethereum JSON-RPC       | 8545         |
+| PRYSM            | Validator               | 8081         |
+| ---------------  | ----------------------- | --------     |
+| NODE             | Prometheus Exporter Job | 9100         |
+| BLACKBOX         | Prometheus Exporter Job | 9115         |
+| JSON             | Prometheus Exporter Job | 7979         |
 
 ### 7.1.4 Installing Core Tools
 
