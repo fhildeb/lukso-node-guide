@@ -26,7 +26,7 @@ By leveraging the right mix of exporters, the node can create a comprehensive mo
 - **JSON Exporter**: Exporter to scrape data from JSON endpoints and expose it as Prometheus. In our case, it's being used to scrape LUKSO price information from CoinGecko. This is important because it enables us to monitor LUKSO's market performance directly from your Prometheus and Grafana setup, providing a unified view of both your node's performance and the associated token's market performance. It saves time and provides convenience, eliminating the need to check this information on separate platforms.
 - **Blackbox Exporter**: Exporter that probes endpoints over a series of protocols such as HTTP, HTTPS, DNS, TCP, and ICMP, and provides detailed metrics on the results. In our case, it's used to monitor the ping time between the node machine and two DNS servers. This information can be crucial in diagnosing network-related issues. If the ping time is too long or the connection fails altogether, it could indicate network problems affecting your node's performance or its ability to stay in sync with the rest of the blockchain network.
 
-### 7.1.3 Default Monitoring Ports
+### 7.1.3 Opening Default Monitoring Ports
 
 Our Blockchain Clients have various default ports over which certain monitoring can take place. We already used `8545` within the CLI setup to check the status of the execution client. Prometheus will to the similar steps in a more advanced and automated way to generate metrics.
 
@@ -45,6 +45,39 @@ Our Blockchain Clients have various default ports over which certain monitoring 
 | NODE             | Prometheus Exporter Job | 9100         |
 | BLACKBOX         | Prometheus Exporter Job | 9115         |
 | JSON             | Prometheus Exporter Job | 7979         |
+
+#### Prometheus
+
+Opening the Prometheus port allows access to the service's metrics in the web browser of you personal computer. You can do this by adding the port to your firewall as previously done in the [Firewall Config](/3-system-setup/06-firewall-config.md):
+
+```sh
+sudo ufw allow 9090/tcp
+```
+
+```sh
+sudo ufw status
+```
+
+The output for Geth and Prysm should look similar to the one underneath. Please note that `<prefered-ssh-port>` will be exchanged with your actual SSH port.
+
+```text
+Status: active
+
+To                               Action      From
+--                               ------      ----
+<prefered-ssh-port>/tcp          ALLOW       Anywhere
+9090/tcp                         ALLOW       Anywhere
+30303/tcp                        ALLOW       Anywhere
+30303/udp                        ALLOW       Anywhere
+13000/tcp                        ALLOW       Anywhere
+12000/udp                        ALLOW       Anywhere
+<prefered-ssh-port>/tcp (v6)     ALLOW       Anywhere (v6)
+9090/tcp                         ALLOW       Anywhere (v6)
+30303/tcp (v6)                   ALLOW       Anywhere (v6)
+30303/udp (v6)                   ALLOW       Anywhere (v6)
+13000/tcp (v6)                   ALLOW       Anywhere (v6)
+12000/udp (v6)                   ALLOW       Anywhere (v6)
+```
 
 ### 7.1.4 Installing Core Tools
 
