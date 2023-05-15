@@ -20,7 +20,7 @@ Understanding and adjusting the BIOS settings can greatly reduce your node's ene
 
 ### 1.2.3 CPU Settings
 
-> Adjust Cooling for fanless housing
+> Adjust Cooling for fanless housing (Skip this step if your machine uses fans for cooling).
 
 1. Go to `Cooling`
 2. Set `Fan Control Mode` to `Fanless`
@@ -41,7 +41,7 @@ Understanding and adjusting the BIOS settings can greatly reduce your node's ene
 
 ### 1.2.4 LED Settings
 
-> Turn off status LED signatures for server use
+> Turn off status LED signatures for server use. (This step is optional)
 
 1. Go to `Power` -> `Secondary Power Settings`
 2. Set `S0 Indicator Brightness (%)` to `0`
