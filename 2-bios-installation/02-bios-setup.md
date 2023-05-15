@@ -2,6 +2,8 @@
 
 Understanding and adjusting the BIOS settings can greatly reduce your node's energy consumption. The right OS can enhance speed and processing.
 
+**Please note that your BIOS might have a other layout or settings regarding performance and energy consumption. This is completely normal and changes with the CPU you have installed on your device.**
+
 ### 1.2.1 Enter BIOS
 
 > Connect your machine to power and attach a keyboard and monitor.
