@@ -57,9 +57,7 @@ If you're ready, we can continue initializing the working directory using the LU
 
 When a new node connects to the Ethereum network, it needs to know the IP addresses of other nodes on the network so that it can start communicating with them. However, it may not have any prior information about the network, making it difficult to establish these connections.
 
-This is where the bootnode comes in. A bootnode is a publicly accessible node that has a fixed IP address and is always available to accept incoming connections from new nodes. When a new node connects to the bootnode, it sends a message requesting a list of IP addresses of other nodes on the network. The bootnode responds with a list of IP addresses of other nodes it knows about, which the new node can then use to establish connections.
-
-If the network is just starting and everyone is a genesis validator, your node wouldn't initially use bootnodes. But once the network is up and running, bootnodes could be designated to help new nodes join the network. This is the case for the LUKSO testnetworks.
+This is where the bootnode comes in. A bootnode is a publicly accessible node that has a fixed IP address and is always available to accept incoming connections from new nodes. When a new node connects to the bootnode, it sends a message requesting a list of IP addresses of other nodes on the network. The bootnode responds with a list of IP addresses of other nodes it knows about, which the new node can then use to establish connections. When the network is starting, LUKSO will initialize the first bootnode connections.
 
 ```sh
 lukso init
