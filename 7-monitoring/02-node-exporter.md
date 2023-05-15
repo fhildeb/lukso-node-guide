@@ -30,6 +30,8 @@ grep "node-exporter-worker" /etc/passwd
 
 ### 7.2.2 Installing the Node Exporter
 
+> If you need an explanation of what the Node Exporter does, please have a look at the [Core Tools](./01-core-tools.md) section.
+
 When it comes to the Installation of the Node Explorer, we first have to get the latest version from the official [Prometheus Webpage](https://prometheus.io/download/#node_exporter). As of `May 2023`, the only listed version is `1.5.0`.
 
 #### Download Github Package
@@ -48,7 +50,7 @@ wget https://github.com/prometheus/node_exporter/releases/download/v1.5.0/node_e
 
 #### Extract the Archive
 
-After it has been downloaded, we can extract the tape archive using the related Ubuntu tool. We're going to extract (`x`) and compress (`z`) the archive into its previous packaged files (`f`) using verbose mode (`v`) to dodge empty file warnings.
+After it has been downloaded, we can extract the tape archive using the related Ubuntu tool. We're going to extract (`x`) and compress (`z`) the archive into its previous packaged files (`f`) using verbose mode (`v`) to list all files being processed during the extraction and compression.
 
 ```sh
 tar xzfv node_exporter-1.5.0.linux-amd64.tar.gz
@@ -128,7 +130,7 @@ Documentation=https://github.com/prometheus/node_exporter
 After=network.target
 
 [Service]
-User=node_exporter
+User=node-exporter-worker
 Type=simple
 ExecStart=/usr/local/bin/node_exporter
 Restart=always
