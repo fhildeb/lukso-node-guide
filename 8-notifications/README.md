@@ -1,6 +1,6 @@
 # 8 Grafana Notifications
 
-This section of the guide is about setting up Grafana notifications for your node metrics for various platforms.
+This section of the guide is about setting up Grafana notifications for your node metrics via Telegram Images.
 
-1. [Setting up Grafana Alerts](./1-alerts.md)
-2. [Telegram Node Bot](./2-telegram.md)
+1. [Setting up Telegram Alerts](./1-telegram-alerts.md)
+2. [Enable Image Alerts](./2-image-alerts.md)
