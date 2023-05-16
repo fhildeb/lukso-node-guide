@@ -12,6 +12,8 @@ Validator nodes play a crucial role in the blockchain network, participating in 
 
 ## Download and Preparation
 
+> I will use Ubuntu as its the quickest and easiest setup for an offline machine using USB.
+
 Download the latest official Ubuntu version from `ubuntu.com/download/desktop`. You need a USB device with at least 4GB that you can use to install the firmware on the storage disk. Ideally, the operating system is the latest LTS build so there are no errors with dependencies that could not load for the key gen services.
 
 1. Download [Ubuntu 22.04.2 LTS](https://ubuntu.com/download/desktop)
