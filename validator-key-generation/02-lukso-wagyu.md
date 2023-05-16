@@ -56,6 +56,8 @@ Continue clicking on `CHECK`.
 You will have to provide the number of new keys to generate, your password that will be used for encrypting the deposit keys you generate and your withdrawal address for all the keys. You can read more about the withdrawal address within the [Earnings & Withdrawals](/6-blockchain-clients/02-network-theory.md) section of the guide.
 Then click `NEXT` to continue.
 
+> You can generate more keys than you actually want to fund right now. These will spin up in idle mode and wont be activated until they have enough funds on them.
+
 ![GUI Keygen](/img/gui_keygen_7.png)
 
 Click on `BROWSE` to specify the folder that will be used to generate the files. Afterwards click `CREATE` to generate your keys.
@@ -74,3 +76,25 @@ Check out the files in your folder. You should have two types of files:
 
 - `deposit_data.json` The file you will use to make deposit transactions in order to activate the keys. You will have to use this file during the [Deposit Launchpad](/validator-key-stake/) process.
 - `keystore.json`: One keystore file for every validator key you generated. Those files will have to be impoorted into your node as described in the [Validator Setup](/6-blockchain-clients/09-validator-setup.md) section.
+
+### Generate Additional Keys
+
+If you want to add additional keys to your validator, click on `USE EXISTING SECRET RECOVERY PHRASE` on the starting screen. You will be prompted to select the right network afterwards.
+
+![GUI Keygen](/img/gui_keygen_1.png)
+
+Enter your validator seed again and press `IMPORT` to start the importing process.
+
+![GUI Keygen](/img/gui_keygen_11.png)
+
+Now choose the amount of keys that you want to additionally create for this validator, and how many keys you already got in another folder. Also define your withdrawal address for all the additional keys. You can read more about the withdrawal address within the [Earnings & Withdrawals](/6-blockchain-clients/02-network-theory.md) section of the guide.
+
+If you want to create a folder with all the keys again, in case you want to update the withdrawal address before deposit or recreate the validator key passwords, you can select `0` for the amount of existing keys (starting index) and the total amount of all your deposit keys as the number of keys to create. This will recreate all your keys for the validator.
+
+> If you use it as a backup, make sure you use the same validator address than before.
+
+![GUI Keygen](/img/gui_keygen_12.png)
+
+Afterwards, continue with the regular setup as before. Input your password, select your folder in which the new `deposit:data.json` and `keygen.json` files will be stored.
+
+![GUI Keygen](/img/gui_keygen_10.png)
