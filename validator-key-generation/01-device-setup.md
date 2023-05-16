@@ -24,6 +24,8 @@ Download the latest official Ubuntu version from `ubuntu.com/download/desktop`. 
 3. Disconnect the USB drive
 4. Connect the USB drive it to your machine
 
+> Having an up-to-date system is especially important if you want to use the Deposit CLI tool.
+
 ## System Installation
 
 After getting the boot device ready, we can coninue with the installation.

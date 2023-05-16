@@ -2,6 +2,12 @@
 
 This section will cover the setup of the Validator keys using the [LUKSO Wagyu Key Gen](https://github.com/lukso-network/tools-wagyu-key-gen) tool.
 
+### What is Wagyu
+
+Wagyu is a tool that aims to simplify the process of staking Ethereum-based blockchains. It provides a user-friendly graphical interface that guides users through the process.
+
+On the other hand, you could also choose to generate deposit keys using the [LUKSO Key Gen CLI](./03-lukso-deposit-cli.md) tool.
+
 ### Download the Software
 
 > The following steps will be performed on your personal machine and prepare the files for Linux 22.04.2 Desktop. If you use another operating system to generate keys on, use the DMG (Mac) or EXE (Windows) files instead.
@@ -69,7 +75,7 @@ In case you have multiple wallets to make deposits from, you could either:
 
 In both cases, you will have to go through the launchpad process 3 times, as the launchpad will check if your wallets have enough balance, before you can continue to the deposit screen.
 
-> If you only have one deposit file, just run through the process once.
+> If you only want to create deposits from one wallet, just run through the process once.
 
 ![Wagyu Password Reenter](/img/gui_keygen_7.png)
 
@@ -104,7 +110,7 @@ Now choose the amount of keys that you want to additionally create for this vali
 
 If you want to create a folder with all the keys again, in case you want to update the withdrawal address before deposit or recreate the validator key passwords, you can select `0` for the amount of existing keys (starting index) and the total amount of all your deposit keys as the number of keys to create. This will recreate all your keys for the validator.
 
-> If you use it as a backup, make sure you use the same validator address than before.
+> If you use it as a backup, make sure you use the same withdrawal address as before.
 
 ![Wagyu Key Screen](/img/gui_keygen_12.png)
 
