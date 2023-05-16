@@ -27,19 +27,19 @@ This section will cover the setup of the Validator keys using the [LUKSO Wagyu K
 
 Now we can start up the application to generate our keys with a graphical interface. Open the explorer in your home directory and execute the LUKSO Wagyu Keygen Application.
 
-![GUI Keygen](/img/gui_keygen_1.png)
+![Wagyu Starting Screen](/img/gui_keygen_1.png)
 
 In the upper right, choose between testnet and mainnet by clicking on the `LUKSO` button.
 
-![GUI Keygen](/img/gui_keygen_2.png)
+![Wagyu Network Select](/img/gui_keygen_2.png)
 
 Select `CREATE NEW SECRET RECIVERY PHRASE`
 
-![GUI Keygen](/img/gui_keygen_3.png)
+![Wagyu Security Notice](/img/gui_keygen_3.png)
 
-Click `CREATE` to generate a fresh mnemonic like this one:
+Carefully read the text and check out the links. Then click `CREATE` to generate a fresh mnemonic like this one:
 
-![GUI Keygen](/img/gui_keygen_4.png)
+![Wagyu Secret Creation](/img/gui_keygen_4.png)
 
 Write it down on paper and make sure it is backed up in a save way. Do not save this as plain text file anywhere digitally. You will be responsible to keep the seedphrase secure. Do not share it with anyone. Anyone that gains access to the mnemonic can control your deposits or slash you.
 
@@ -47,30 +47,30 @@ Write it down on paper and make sure it is backed up in a save way. Do not save 
 
 Click `NEXT` to retype your saved mnemonic seed
 
-![GUI Keygen](/img/gui_keygen_5.png)
+![Wagyu Secret Confirmation](/img/gui_keygen_5.png)
 
 Continue clicking on `CHECK`.
 
-![GUI Keygen](/img/gui_keygen_6.png)
+![Wagyu Key Screen](/img/gui_keygen_6.png)
 
 You will have to provide the number of new keys to generate, your password that will be used for encrypting the deposit keys you generate and your withdrawal address for all the keys. You can read more about the withdrawal address within the [Earnings & Withdrawals](/6-blockchain-clients/02-network-theory.md) section of the guide.
 Then click `NEXT` to continue.
 
 > You can generate more keys than you actually want to fund right now. These will spin up in idle mode and wont be activated until they have enough funds on them.
 
-![GUI Keygen](/img/gui_keygen_7.png)
+![Wagyu Password Reenter](/img/gui_keygen_7.png)
 
 Click on `BROWSE` to specify the folder that will be used to generate the files. Afterwards click `CREATE` to generate your keys.
 
-![GUI Keygen](/img/gui_keygen_8.png)
+![Wagyu Folder Select](/img/gui_keygen_8.png)
 
 Wait for all the keys to be generated.
 
-![GUI Keygen](/img/gui_keygen_9.png)
+![Wagyu Creation Screen](/img/gui_keygen_9.png)
 
 The final screen will be shown afterwards
 
-![GUI Keygen](/img/gui_keygen_10.png)
+![Wagyu Final Screen](/img/gui_keygen_10.png)
 
 Check out the files in your folder. You should have two types of files:
 
@@ -81,11 +81,11 @@ Check out the files in your folder. You should have two types of files:
 
 If you want to add additional keys to your validator, click on `USE EXISTING SECRET RECOVERY PHRASE` on the starting screen. You will be prompted to select the right network afterwards.
 
-![GUI Keygen](/img/gui_keygen_1.png)
+![Wagyu Starting Screen](/img/gui_keygen_1.png)
 
 Enter your validator seed again and press `IMPORT` to start the importing process.
 
-![GUI Keygen](/img/gui_keygen_11.png)
+![Wagyu Seed Import](/img/gui_keygen_11.png)
 
 Now choose the amount of keys that you want to additionally create for this validator, and how many keys you already got in another folder. Also define your withdrawal address for all the additional keys. You can read more about the withdrawal address within the [Earnings & Withdrawals](/6-blockchain-clients/02-network-theory.md) section of the guide.
 
@@ -93,8 +93,8 @@ If you want to create a folder with all the keys again, in case you want to upda
 
 > If you use it as a backup, make sure you use the same validator address than before.
 
-![GUI Keygen](/img/gui_keygen_12.png)
+![Wagyu Key Screen](/img/gui_keygen_12.png)
 
 Afterwards, continue with the regular setup as before. Input your password, select your folder in which the new `deposit:data.json` and `keygen.json` files will be stored.
 
-![GUI Keygen](/img/gui_keygen_10.png)
+![Wagyu Final Screen](/img/gui_keygen_10.png)
