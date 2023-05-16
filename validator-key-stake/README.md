@@ -86,8 +86,10 @@ Initially, the deposit keys will show `Ready`. The status will change to `Transa
 
 ![Deposit Launchpad](/img/launchpad_11.png)
 
-After everything went through, go back to the homescreen and check your progress in the deposit file. If they are all green, your good to go. If not, repeat the process with only those keys that have remained gray. Do not forget to make a copy beforehand.
-
-If you have a deposit file with all validator keys, after the first successful deposit as many deposits should be green as were listed in the first smaller deposit file.
+After everything went through, go back to the homescreen and check your progress in the deposit file.
 
 ![Deposit Launchpad](/img/launchpad_12.png)
+
+If they are all green, your good to go. If not, repeat the process with only those keys that have remained gray. Do not forget to make a copy beforehand.
+
+If you have a deposit file with all validator keys, after the first successful deposit as many deposits should be green as were listed in the first smaller deposit file.
