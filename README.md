@@ -45,8 +45,8 @@ The guides in the repository are split into multiple folders and sections.
 
 ### Validator Setup
 
-- [`validatork-key-generation`](/validator-key-generation/): Create Validator Deposit Keys
-- [`validator-key-stake`](/validator-key-stake/): Deposit Stake to Validator Keys
+- [`validatork-key-generation`](/validator-key-generation/): Device Setup, Key Generation for CLI and Wagyu
+- [`validator-key-stake`](/validator-key-stake/): Genesis Startup, Launchpad Walkthrough, GasHawk Guide
 
 ## Tools
 
