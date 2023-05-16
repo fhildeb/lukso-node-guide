@@ -1,4 +1,4 @@
-# CLI Validator Key Generation
+## CLI Validator Key Generation
 
 This section will cover the setup of the Validator keys using the [LUKSO Key Gen CLI](https://github.com/lukso-network/tools-key-gen-cli) tool.
 
@@ -142,7 +142,7 @@ Verifying your deposits:	  [####################################]  10/10
 Success!
 ```
 
-The deposit files will be saved within the same folder. Press any key to exit the CLI tool.
+The deposit files will be saved within the same folder at `./validator_keys`. Press any key to exit the CLI tool.
 
 Check out the files in your folder. You should have two types of files:
 
@@ -241,4 +241,4 @@ Verifying your deposits:	  [####################################]  10/10
 Success!
 ```
 
-The deposit files will be saved within the same folder. Press any key to exit the CLI tool.
+The deposit files will be saved within the same folder at `./validator_keys`. Press any key to exit the CLI tool.

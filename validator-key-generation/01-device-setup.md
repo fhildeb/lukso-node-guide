@@ -1,4 +1,4 @@
-# Validator Key Gen: Device Setup
+## Validator Key Gen: Device Setup
 
 Validator nodes play a crucial role in the blockchain network, participating in the consensus mechanism to validate transactions and create new blocks. As such, the security of these validator nodes and the keys associated with them is of utmost importance. Generating your validator keys on a clean, offline device that has never touched the internet during setup is an ideal practice. Here's why:
 
@@ -10,7 +10,7 @@ Validator nodes play a crucial role in the blockchain network, participating in 
 
 **Therefore, please make sure you have a machine that can be flashed or used as a key-generation device. In case you only have your node, please do the key generation process on your node first, flash the system again, and continue with setting up the node's operating system.**
 
-## Download and Preparation
+### Download and Preparation
 
 > I will use Ubuntu as its the quickest and easiest setup for an offline machine using USB.
 
@@ -26,13 +26,13 @@ Download the latest official Ubuntu version from `ubuntu.com/download/desktop`. 
 
 > Having an up-to-date system is especially important if you want to use the Deposit CLI tool.
 
-## System Installation
+### System Installation
 
 After getting the boot device ready, we can coninue with the installation.
 
 **Make sure to never connect to the internet. Do not connect an Ethernet Cable.**
 
-### Enter BIOS
+#### Enter BIOS
 
 > Connect your machine to power and attach a keyboard and monitor.
 
@@ -40,13 +40,13 @@ After getting the boot device ready, we can coninue with the installation.
 2. Turn on the node using the power button
 3. Press `F2` on your keyboard during boot to enter the BIOS setup
 
-### Change Boot Order
+#### Change Boot Order
 
 1. Go to `Boot` -> `Boot Priority`
 2. Set `Boot Option #1` to your USB device
 3. Set `Boot Option #2` to your internal SSD
 
-### Operating System Startup
+#### Operating System Startup
 
 Now that we configured the BIOS correctly, we can exit and start up the node from the defined boot device.
 
@@ -54,9 +54,13 @@ Now that we configured the BIOS correctly, we can exit and start up the node fro
 2. Wait for the stick to boot up
 3. Choose `Try or Install Ubuntu Server`
 
-## Ubuntu Installation
+### Ubuntu Installation
+
+You will be left with the following screen:
 
 ![Try or Install Ubuntu Server](/img/validator_install_1.png)
+
+Afterwards, the initial Ubuntu setup screen will come up.
 
 #### Setup Process
 
