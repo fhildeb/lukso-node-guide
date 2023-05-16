@@ -11,6 +11,7 @@ This section of the node guide covers a range of topics that provide the foundat
 7. [Router Configuration](./07-router-config.md)
 8. [LUKSO CLI Node Setup](./08-cli-setup.md)
 9. [LUKSO CLI Validator Setup](./09-validator-setup.md)
-10. [LUKSO Docker Setup](./10-docker-setup.md)
+10. [Peer Modification](./10-peer-modification.md)
+11. [LUKSO Docker Setup](./11-docker-setup.md)
 
 **Continue with Section 7: [Node Monitoring](/7-monitoring/)**
