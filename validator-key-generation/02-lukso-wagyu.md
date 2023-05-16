@@ -58,6 +58,13 @@ Then click `NEXT` to continue.
 
 > You can generate more keys than you actually want to fund right now. These will spin up in idle mode and wont be activated until they have enough funds on them.
 
+In case you have multiple wallets to make deposits from, you could either:
+
+- **Generate batches** with the same seed. Therefore just create the keys for the first wallet now and redo the process by importing an existing seed afterwards. This way, you will have multiple `deposit_data.json` files for each wallet. For instance: if you have 30 validators and 3 different wallets with 320 LYXe/LYX each, create 10 validators each during the process using the same seed, or even the same withdrawal address. In the second run, specify you already have 10 keys. In the 3rd run, specify you already have 20 keys. You will end up with 3 different folders.
+- **Modify the deposit file** after you generated your total amount of keys in one folder. Here, create duplicates of the `deposit_data.json` file. Open it up using a JSON Editor and remove as many `pubkey` elements as you want. For instance: if you have 30 validators and 3 different wallets with 320 LYXe/LYX each, generate 30 validators now. Afterwards make three copies of the deposit file. In the 1st copy, delete everything after your 10th `pubkey` (validator 1-10), in the 2nd copy, delete the first and last ten `pubkey` elements (validator 11-20), in the 3rd copy, delete the first 20 `pubkey` elements (validator 21-30.) You will end up with one folder but 3 deposit files.
+
+In both cases, you will have to go through the launchpad process 3 times, As the launchpad will check if your wallets have enough balance, before you can continue to the deposit screen.
+
 ![Wagyu Password Reenter](/img/gui_keygen_7.png)
 
 Click on `BROWSE` to specify the folder that will be used to generate the files. Afterwards click `CREATE` to generate your keys.
