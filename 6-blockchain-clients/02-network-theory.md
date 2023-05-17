@@ -58,7 +58,7 @@ The slashing conditions include:
 
 Without the slasher, slashed validators that have committed offenses might not be promptly removed from the validator set, which could theoretically affect network operation in certain situations. Running a slasher service can be resource-intensive. The slasher service needs to keep track of a significant amount of historical data to detect slashable offences, which can require substantial storage space and processing power.
 
-### 6.2.7 Panelties
+### 6.2.7 Penalties
 
 In Proof of Stake, validators can be penalized for being offline, technically different as loosing stake due to slashing. Instead, it's considered inactivity leakage or an inactivity penalty. The exact penalties for an offline validator are dynamically adjusted based on the total amount of offline validators and the duration they've been offline.
 
@@ -70,14 +70,14 @@ It's important to note that these penalties are only applied during periods wher
 
 The design intention is to ensure that validators have a strong incentive to remain online and participate in the consensus process, but without making the penalties so severe that minor issues could result in significant losses. This balance aims to encourage a secure and decentralized network.
 
-#### Panelty Estimation
+#### Penalty Estimation
 
 The exact calculation of these penalties can be complex due to these variables, but here are rough estimates:
 
 ```text
-For being offline for 5 hours:    0.01 LYX/LYXt panelty
-For being offline for 1 day:      0.10 LYX/LYXt panelty
-For being offline for 7 days:     1.00 LYX/LYXt panelty
+For being offline for 5 hours:    0.01 LYX/LYXt penalty
+For being offline for 1 day:      0.10 LYX/LYXt penalty
+For being offline for 7 days:     1.00 LYX/LYXt penalty
 ```
 
 > Remember, these are rough estimates and the actual penalties could be different based on the network conditions. If the network is not finalizing, e.g., more than one-third of the network is offline, penalties can ramp up significantly.
