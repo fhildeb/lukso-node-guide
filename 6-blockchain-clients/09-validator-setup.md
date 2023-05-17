@@ -56,7 +56,7 @@ lukso-node
 
 #### List Imported Mainnet Accounts
 
-After importing one or multiple folders, you can check your imported keys:
+After importing one or multiple folders, you can check your imported keys. Adjust the flag to the network network's validator key folder.
 
 ```sh
 # LUKSO CLI v. 0.6.0+
@@ -163,4 +163,28 @@ lukso start --validator --transaction-fee-recipient "<transaction-fee-recipient-
 
 ```sh
 lukso start --validator --transaction-fee-recipient "<transaction-fee-recipient-address>" --testnet
+```
+
+### 6.9.6 Slasher Config
+
+Implementing and running the slasher service is included in the consensus client by default. It actively watches for slashable offenses on the network and can be quite resource-intensive. It's generally beneficial for network security if the majority of nodes are independently checking for slashing conditions, however, if you have a low performance node it could lead to the following problems:
+
+- The slasher service could lag behind the head of the chain, making it ineffective at detecting slashable offences in a timely manner.
+- The node could become unstable and crash due to running out of resources, which could disrupt its participation in the consensus process and potentially lead to penalties if it's also running a validator client.
+- The service could slow down other processes running on the same node, such as if it's also running a beacon node or validator client.
+
+Typical requirements for the slasher service are a modern multi-core CPU, 16GB or RAM and an SSD with decent size. Have a look at the [Storage Comparison](./03-client-theory.md) section for more details on the disk usage.
+
+In case you can not keep up or have an old machine not able to run the slasher functionalty, you can disable it using a CLI flag. Make sure you use your own transaction fee recipient address.
+
+##### Starting up mainnet validator without slasher
+
+```sh
+lukso start --validator --transaction-fee-recipient "<transaction-fee-recipient-address>" --no-slasher
+```
+
+##### Starting up testnet validator without slasher
+
+```sh
+lukso start --validator --transaction-fee-recipient "<transaction-fee-recipient-address>" --testnet --no-slasher
 ```

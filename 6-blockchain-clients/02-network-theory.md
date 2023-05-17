@@ -52,7 +52,7 @@ The slashing conditions include:
 - **Double Proposal**: If a validator proposes two different blocks during the same time slot.
 - **Surround Vote**: If a validator makes attestations that surround each other, meaning a later vote contradicts an earlier one in a way that isn't just an update.
 
-Without the slasher, slashed validators that have committed offenses might not be promptly removed from the validator set, which could theoretically affect network operation in certain situations.
+Without the slasher, slashed validators that have committed offenses might not be promptly removed from the validator set, which could theoretically affect network operation in certain situations. Running a slasher service can be resource-intensive. The slasher service needs to keep track of a significant amount of historical data to detect slashable offences, which can require substantial storage space and processing power.
 
 ### 6.2.7 Panelties
 
