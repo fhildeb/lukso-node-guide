@@ -185,7 +185,7 @@ When using Geth, seach for the `[Node]` section and then add the Identity proper
 
 ```text
 [Node]
-Identity = "<your-node-name>"
+UserIdent = "<your-node-name>"
 ```
 
 If you are running on Erigon, enter the following line at the end of the config:
