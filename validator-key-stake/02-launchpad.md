@@ -32,7 +32,7 @@ In both cases, you will have to go through the launchpad process 3 times, as the
 
 > If you only have one wallet, just run through the process once.
 
-### Checking Deposit Files
+### Checking Deposits for Genesis Validators
 
 To verify if your deposit file is valid and can be used, upload it to the front page of the launchpad.
 
@@ -49,6 +49,14 @@ During the further process of depositing, its recommended to always have a secon
 In case of the genesis validator page, you can also have a look at the current votes for the initial coin supply of the network.
 
 ![Deposit Launchpad](/img/launchpad_4.png)
+
+### Checking Deposits for Testnet Validators
+
+For Testnet depositors, you can instead check your address and it will show the amount of validators you have still left. Each wallet will have a amount of validators they are allowed to deposit in total.
+
+![Whitelist Checkup](/img/whitelist-check.png)
+
+> Note that the whitelisting only affects making deposits, not becoming a validator. If you get removed from the whitelist before you deposited all your validators, you will no longer be able to proceed.
 
 ### Starting the Deposit Process
 
@@ -92,8 +100,28 @@ Initially, the deposit keys will show `Ready`. The status will change to `Transa
 
 After everything went through, go back to the homescreen and check your progress in the deposit file.
 
+### Checking Deposits
+
+After the transaction was send, you can click on on the `Transaction` or `Beaconchain Transaction` button based on if you are using the Launchpad for Testnet, Genesis Mainnet or Regular Mainnet.
+
+#### Genesis Validators
+
+For Genesis Depositors, the Blockchain Explorer for Ethereum will show up, as the locking is done using the Ethereum-based representation of LYX:
+
+![Genesis Execution Chain Deposit](/img/genesis-deposit-screen.png)
+
+You can also check the deposit files on the main page of the launchpod again:
+
 ![Deposit Launchpad](/img/launchpad_12.png)
 
 If they are all green, your good to go. If not, repeat the process with only those keys that have remained gray. Do not forget to make a copy beforehand.
 
 If you have a deposit file with all validator keys, after the first successful deposit as many deposits should be green as were listed in the first smaller deposit file.
+
+#### Testnet and Mainnet Validators
+
+For the Testnet and regular validators it will open up the beacon chain explorers as everything was done natively on the blockchain:
+
+![Testnet Beacon Chain Deposit](/img/testnet-deposit-screen.png)
+
+It will take up to 24 hours for the validator to get activated by the consensus of the network.
