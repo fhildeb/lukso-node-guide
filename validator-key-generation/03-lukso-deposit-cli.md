@@ -57,8 +57,6 @@ Now we can start up the application to generate our initial keys using the `new-
 ./lukso-key-gen new-mnemonic --eth1_withdrawal_address 0x42000421dd80D1e90E56E87e6eE18D7770b9F8cC
 ```
 
-> _Note as of May 2023:_ `Version 2.5.3` changed some dependency management that potentially results in the keygen tool not being able to be executed. In this case, switch back one version and use `Version 2.5.2` instead.
-
 The initial startup will take some time, do not close the terminal window.
 
 Chose your language by typing the related number into the input prompt. If you press `Enter` it will select English as default.
