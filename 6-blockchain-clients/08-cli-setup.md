@@ -92,6 +92,8 @@ Afterwards you can install the clients that you wish to run. They will install g
 lukso install
 ```
 
+> It seems there sometimes is an HTTP error during install. If you encounter that the download did not complete, re-run the installation once again and you should be good.
+
 All clients will be installed within the `/usr/local/bin/` folder.
 
 ### 6.8.6 Starting and Stopping the Node
