@@ -124,6 +124,8 @@ Have a look at their specifications if you like:
 
 #### Changing your Node's Name
 
+You can change your node's name to change the appearence to other nodes in the network or on stats pages, it doesn't affect the node's operation or performance.
+
 You can change your node's name, you can do so by:
 
 - passing down the `identity` flag
