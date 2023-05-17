@@ -49,8 +49,6 @@ cd ./<your-node-folder>
 
 ### 6.8.4 Initialize the Node's Working Directory
 
-> **CAUTION**: Genesis files are not released yet. Any created node working directory before the geneis data release has to be re-initialized. If you dont want to run a testnet node before becoming a validator on mainnet, stop here and come back later when it's officially announced on [LUKSO's Twitter Account](https://twitter.com/lukso_io?s=20).
-
 If you're ready, we can continue initializing the working directory using the LUKSO CLI. It will download all dependencies and configuration files for all network types. It will create a `cli-config.yaml` and an `config` folder holding the genesis files, network properties as well as client-specific configurations for the bootnodes.
 
 #### What is a Bootnode?
