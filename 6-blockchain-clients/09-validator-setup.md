@@ -2,7 +2,7 @@
 
 If the the network started correctly and was syncing, we are able to continue setting up your validator if you would like to participate in the consensus of the blockchain.
 
-#### Validator Credentials
+### 6.9.1 Validator Credentials
 
 When becoming a validator, you will have to manage some passwords, addresses and keys. Let's clear them up once again before we start the CLI process:
 
@@ -14,7 +14,7 @@ When becoming a validator, you will have to manage some passwords, addresses and
 - **Validator Withdrawal Address**: This is the Ethereum address where your funds will be sent when you decide to stop validating and withdraw your staked LYX. You can check the [Withdrawals and Earnings](02-network-theory.md) section of the guide for more information.
 - **Validator Recipient Fee Address**: This is the Ethereum address where the transaction fees you earn as a validator will be sent. Depending on your setup, this might be the same as your withdrawal address. You can check the [Withdrawals and Earnings](02-network-theory.md) section of the guide for more information.
 
-### 6.9.1 Import Mainnet Keys
+### 6.9.2 Import Mainnet Keys
 
 > If you want to import testnet validator keys, have a look at the [Importing Testnet Keys](#692-import-testnet-keys) guide.
 
@@ -78,7 +78,7 @@ lukso validator list --mainnet
 validator accounts list --wallet-dir "mainnet-keystore"
 ```
 
-### 6.9.2 Import Testnet Keys
+### 6.9.3 Import Testnet Keys
 
 > If you want to import testnet validator keys, have a look at the [Importing Mainnet Keys](#691-import-mainnet-keys) guide.
 
@@ -132,7 +132,7 @@ lukso-node
 ...
 ```
 
-### 6.9.3 List Imported Testnet Accounts
+### 6.9.4 List Imported Testnet Accounts
 
 After importing one or multiple folders, you can check your imported keys:
 
@@ -144,7 +144,7 @@ lukso validator list --testnet
 validator accounts list --wallet-dir "testnet-keystore"
 ```
 
-### 6.9.4 Removing the Key Folder
+### 6.9.5 Removing the Key Folder
 
 If your imported keys match the ones in the original folder you used to import, you can delete the folder used for it. You wont need the original files anymore.
 
@@ -154,7 +154,7 @@ You can use the `rm` command, used to remove files and directories while using t
 rm -rf ./<validator-key-folder>
 ```
 
-### 6.9.5 Starting the Validator
+### 6.9.6 Starting the Validator
 
 After importing your keys you can start the node with the validator functionality. If the node is already synced and running, the `lukso start` command will do a restart automatically.
 
@@ -177,7 +177,7 @@ lukso start --validator --transaction-fee-recipient "<transaction-fee-recipient-
 lukso start --validator --transaction-fee-recipient "<transaction-fee-recipient-address>" --testnet
 ```
 
-### 6.9.6 Slasher Config
+### 6.9.7 Slasher Config
 
 Implementing and running the slasher service is included in the consensus client by default. It actively watches for slashable offenses on the network and can be quite resource-intensive. It's generally beneficial for network security if the majority of nodes are independently checking for slashing conditions, however, if you have a low performance node it could lead to the following problems:
 
