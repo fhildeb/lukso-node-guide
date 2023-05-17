@@ -33,8 +33,18 @@ SCP is a network protocol that enables secure file transfers between hosts on a 
 
 For secure data transfer over the internet or within unsecured networks, SCP is a reliable and secure choice due to its underlying SSH protocol which encrypts the data in transit.
 
+> For this command huge command, its recommended to open up a text editor and copy the contents in. If you're using Unix (Linux or Mac) you can follow these steps to get the data quickly:
+
+- `<ssh-key>`: On your personal machine check your SSH keys within the SSH folder by using `ls ~/.ssh/` from the terminal. Search for your generated keyfile and write down the name.
+- `<local-path-to-key-folder>`: On your personal machine, open your file explorer and localize the keystore folder with all your validator keys in it. Right click and `Copy Path`. Then copy it to your editor.
+- `<your-ssh-port>`, `<user-name>` and `<node-ip-address>`: Open your SSH configuration file on your personal computer using `vim ~/.ssh/config`. Write down the Port, IP, and the User of your node.
+- `<node-path-to-node-folder>`: Open your node folder on your node machine any type `pwd`. Then copy the full path.
+- `<keyfolder-name>`: Define a new name for the validator folder folder. It can be the same as on your personal machine.
+
+> Build the full command and copy it to your personal computer's terminal. You will be promted to log in again.
+
 ```sh
-scp -i ~/.ssh/<ssh-key> -r <local-path-to-key-folder> <user-name>@<node-ip-address>:<node-path-to-node-folder>/<keyfolder-name>
+scp -P <your-ssh-port> -i ~/.ssh/<ssh-key> -r <local-path-to-key-folder> <user-name>@<node-ip-address>:<node-path-to-node-folder>/<keyfolder-name>
 ```
 
 Afterwards, import your keys within the LUKSO CLI. You will be asked for your folder with your validator keys and a new password for your validator node, needed to secure the wallet and restart the validator later on.
