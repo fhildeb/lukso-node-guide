@@ -80,6 +80,10 @@ During the genesis deposit time, the final page will show a selection of initial
 
 Choose your wished coin supply during network launch and continue sending the transaction by either using the `Confirm deposit` or `Send X deposits` button. The second choice will switch transactions in series, however, you will still be promted to confirm every single one of them.
 
+**If you are doing deposits on Testnet, make sure to clean your MetaMask activity and nonce before you make deposits. Otherwise they might get stuck if you have multiple networks set with the same ID or URL.**
+
+![MetaMask Clear Activity](/img/metamask-clear.png)
+
 Initially, the deposit keys will show `Ready`. The status will change to `Transaction pending`, `Deposited`, or `Error` depending on the state of the transaction on the mainnet. If there should be an error, you have the change to resend the transaction.
 
 > In case there is an error and you are not able to resend the transaction from the final screen, please move to the homescreen and check your deposit file again. Create another copy, remove all the paydata entries that already have been successful, and reenter the launchpad process again using only the deposit keys marked in grey.
