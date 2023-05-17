@@ -31,7 +31,7 @@ Afterwards, import your keys within the LUKSO CLI. You will be asked for your fo
 
 ```sh
 # Import validator keys for mainnet
-lukso validator import
+lukso validator import --validator-keys "./<key-folder-name>"
 ```
 
 #### Validator Folder Structure
@@ -97,7 +97,7 @@ Afterwards, import your keys within the LUKSO CLI. You will be asked for your fo
 
 ```sh
 # Import validator keys for testnet
-lukso validator import --testnet
+lukso validator import --testnet --validator-keys "./<key-folder-name>"
 ```
 
 #### Validator Folder Structure

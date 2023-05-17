@@ -131,6 +131,9 @@ The ability to add graffiti to a block gives validators a unique way to mark the
 > It's important to note, however, that the graffiti field should be used responsibly. Although it allows for freedom of expression, it's part of the Ethereum blockchain's permanent record, so the community generally encourages respectful and appropriate usage.
 
 ```sh
+# Starting mainnet with graffiti
+lukso start --validator-graffiti "I'm a graffiti!"
+
 # Starting testnet with graffiti
 lukso start --testnet --validator-graffiti "I'm a graffiti!"
 ```
