@@ -77,7 +77,7 @@ The change owner tool `chown` on Ubuntu will take the following arguments:
 In our case, we are setting both the user owner and the group owner to the specified user `node-exporter-worker`.
 
 ```sh
-sudo chown node-exporter-worker:node-exporter-worker /usr/local/bin/node_exporter/
+sudo chown node-exporter-worker:node-exporter-worker /usr/local/bin/node_exporter
 ```
 
 #### Cleaning up Install Files
@@ -85,13 +85,13 @@ sudo chown node-exporter-worker:node-exporter-worker /usr/local/bin/node_exporte
 After we copied the executable file into the system's program path and gave it the appropriate user rights, we can remove the extracted folder.
 
 ```sh
-rm -rf node_exporter-1.0.1.linux-amd64
+rm -rf node_exporter-1.5.0.linux-amd64
 ```
 
 The same applies to the tape archive, which we have previously downloaded:
 
 ```sh
-rm node_exporter-1.0.1.linux-amd64.tar.gz
+rm node_exporter-1.5.0.linux-amd64.tar.gz
 ```
 
 ### 7.2.3 Configuring the Service
