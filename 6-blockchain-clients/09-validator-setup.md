@@ -84,7 +84,7 @@ After importing one or multiple folders, you can check your imported keys. Adjus
 # LUKSO CLI v. 0.6.0+
 lukso validator list --mainnet
 
-# Lukso CLI <0.6.0
+# Lukso CLI v. <0.6.0
 validator accounts list --wallet-dir "mainnet-keystore"
 ```
 
@@ -160,7 +160,7 @@ After importing one or multiple folders, you can check your imported keys:
 # LUKSO CLI v. 0.6.0+
 lukso validator list --testnet
 
-# Lukso CLI <0.6.0
+# Lukso CLI v. <0.6.0
 validator accounts list --wallet-dir "testnet-keystore"
 ```
 
