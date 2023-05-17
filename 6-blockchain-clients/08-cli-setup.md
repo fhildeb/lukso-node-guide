@@ -122,6 +122,55 @@ Have a look at their specifications if you like:
 - [Lighthouse Parameters](https://lighthouse-book.sigmaprime.io/advanced-datadir.html)
 - [Erigon Parameters](https://github.com/ledgerwatch/erigon)
 
+#### Changing your Node's Name
+
+You can change your node's name, you can do so by:
+
+- passing down the `identity` flag
+- configuring your `toml` files
+
+If you want to set a temporary name, just pass down the identity flag when starting up your execution client. For Geth, it will look like this:
+
+```sh
+# When using Geth
+lukso start --geth-identity "<your-node-name>"
+```
+
+For Erigon, it will look like this:
+
+```sh
+lukso start --erigon-identity "<your-node-name>"
+```
+
+If you want a permanant naming, even when restarting your node without passing the flag, go ahead and edit your `geth.toml` or `erigon.toml` files within `/config/<network>/geth/` or `/config/<network>/erigon/` of the working directory.
+
+Make sure to be in the node folder:
+
+```sh
+cd
+```
+
+Navigate into your node's config folder of your network you want to set the name for. Make sure to adjust the `your-node-folder` and `<network>` `your-execution-client` properties with the actual folder names.
+
+```
+cd <your-node-folder>/configs/<network>/<your-execution-client>
+```
+
+Then open up the file
+
+```
+vim <your-execution-client>.toml
+```
+
+Seach for the `[Node]` section and then add the Identity property right under it:
+
+```text
+[Node]
+Identity = "<your-node-name>"
+```
+
+Make sure to adjust `<your-node-name>` to your actual name. Also be careful when editing your config files. Make sure you are not deleting anything and that there are spaces in front and behind the `=` symbol.
+
 #### Setting the Graffiti
 
 Using custom flags, we can set up our Graffiti. The graffiti is a term that refers to a customizable field that validators can use when they propose a new block. This field allows validators to inscribe a short message up to 32 bytes into the metadata of the block. These messages are permanently stored on the blockchain and can be publicly viewed.
