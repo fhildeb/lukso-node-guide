@@ -10,9 +10,13 @@ Regarding the SSH port number, the default port for openSSH server is `22`. Howe
 
 It is recommended to choose a port number higher than `1024`, as ports below this range are considered privileged and require root access to bind. The highest possible number is `65535`, as port numbers are 16-bit unsigned integers. Some administrators prefer using a port number higher than `50000` to further avoid conflicts with other services and minimize the chances of being targeted by automated scans. Ultimately, the choice of port number depends on your preferences and network configuration, but it is essential to ensure that the selected port is not already in use by another service on your system.
 
-#### Text Editor
+#### Text Editors
 
-To configure files on the node, we use Ubuntus default text editor called Vi Improved. Vim is an enhanced version of the classic Unix text editor, Vi, with additional features and improved usability. Vim operates in multiple modes, primarily normal mode, insert mode, and command mode, allowing users to efficiently navigate, edit, and manipulate text files.
+To configure files on the node, we can use various terminal text editors. Ubuntus default text editor is called called Vi Improved. I will use the default editor `vim` in this guide. However, you can also choose a more user-friendly one like `nano`. Here is a description of the two:
+
+#### Vim
+
+Vim is an enhanced version of the classic Unix text editor Vi, with additional features and improved usability. Vim operates in multiple modes, primarily normal mode, insert mode, and command mode, allowing users to efficiently navigate, edit, and manipulate text files.
 
 Once the file is open in Vim, you'll start in normal mode. You navigate through files by using the arrow keys.
 
@@ -22,6 +26,19 @@ To enter command mode to manage save and exit, press `:` while in normal mode. A
 
 - To write and quit, type `wq` and press `Enter`.
 - To quit without saving: type `q!` and press `Enter`.
+
+#### Nano
+
+Nano is a beginner-friendly text editor on Ubuntu. Nano is a simple, modeless, command-line text editor included in most Linux distributions. It is designed to be easy to use and suitable for editing system configuration files, writing programming scripts, and other text editing tasks.
+
+Once you've opened a file in Nano, you can begin editing immediately. Navigation through the file is accomplished using the arrow keys.
+
+Unlike Vim, Nano doesn't have different modes like normal or insert mode. As soon as the file is open, you're in editing mode and can start making changes to the text.
+
+At the bottom of the Nano screen, you'll see a row of commands, each represented by a caret symbol (`^`) and a letter. The caret symbol represents the `Ctrl` key.
+
+- To save changes, press `Ctrl + O`, and press `Enter`.
+- To exit, press `Ctrl + X`. If you've made changes, will be asked to save them. You can press `Y` for Yes or `N` for No.
 
 ### 3.4.1 Edit SSH Configuration
 
