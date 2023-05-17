@@ -82,6 +82,14 @@ For being offline for 7 days:     1.00 LYX/LYXt penalty
 
 > Remember, these are rough estimates and the actual penalties could be different based on the network conditions. If the network is not finalizing, e.g., more than one-third of the network is offline, penalties can ramp up significantly.
 
+If your validator's balance goes below 32 ETH due to penalties or slashing events, it will continue validating. However, dropping below 32 ETH is not desirable because it indicates that your validator is either underperforming or misbehaving.
+
+Underperforming could be due to being offline frequently or having a poor network connection, causing your validator to miss attestations or block proposals. Misbehaving, on the other hand, could be due to double voting or other slashable offenses.
+
+If your validator's balance falls significantly and remains consistently low, it could eventually be forcefully exited during the next validator registry update. This is a safeguard to keep the network healthy and ensure that only active and correctly-functioning validators are participating in consensus.This is to ensure the overall health and stability of the network, as validators with very low balances might not have the same incentives to behave correctly.
+
+Forceful exits will happen if your validator balance falls below 16 LYX/LYXt. Once a validator has been exited, it can no longer participate in consensus and earn rewards. When a validator is ejected, it is placed in a queue to be exited from the active set of consensus participants.
+
 ### 6.2.8 Participation Rate
 
 In Proof of Stake consensus, for the chain to finalize blocks, at least two-thirds of the validators need to be online and actively participating. Network stalls can occur due to various reasons, such as network partitions or a significant number of other validators also being offline or not participating effectively around the same time.
