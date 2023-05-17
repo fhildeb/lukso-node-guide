@@ -96,6 +96,24 @@ lukso install
 
 All clients will be installed within the `/usr/local/bin/` folder.
 
+You can check if they were installed correctly with the following commands. They will all print out their currently installed version numbers.
+
+```sh
+# Check Geth
+geth --version
+
+# Check Erigon
+erigon --version
+
+# Check Prysm
+prysm --version
+
+# Check Prysm Validator
+validator --version
+```
+
+If you encounter errors during checkups, redo the installation process.
+
 ### 6.8.6 Starting and Stopping the Node
 
 The following command will spin up your execution and consensus client and connect to the mainnet by default, but you can input the testnet or devnet flag so it connects to one of the other networks as well.
