@@ -29,3 +29,11 @@ The [LUKSO Genesis Deposit Contract](https://etherscan.io/address/0x42000421dd80
 Instead of just requiring a smaller amount of coins that can be transferred to the validator key step by step until 32 coins are reached, LUKSO's deposit contract required a fixed amount of 32 LYXe. This was mandatory to prepare the genesis files for the LUKSO mainnet after the contract was frozen. Thus, checks were applied if a public key is registered, preventing duplicate deposits.
 
 This freezing involved additional storage and logic but is required to launch with a fixed amount of validators. On top, LUKSO's deposit function stored the votes for the initial coin supply of the mainnet. Every vote can still be fetched on the Ethereum blockchain. Everything had to be publicly verifiable as the LYX supply was set in stone to 42 million LYX when the contract closed.
+
+### LUKSO Testnet
+
+The testnet exists parallel to the mainnet with all updates and features.
+
+Only whitelisted addresses are able to become validators, as it is mainly there to test smart contracts and forks.
+
+Many temporary or changing validators could lead to a significant number of unstable validators and slashes in the long run, which might compromise the integrity of the network. Testnet validators are core members and organizations wanting to run and maintain their LUKSO Testnet node in a stable environment over a long period, as they assure healthy uptimes, stability, and quick response times from clients as demand from developers rises.
