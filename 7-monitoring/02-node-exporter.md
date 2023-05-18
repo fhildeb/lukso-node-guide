@@ -146,16 +146,16 @@ The configuration file is split between multiple sections: `[Unit]`, `[Service]`
 
 #### Node Exporter Logging
 
-By default, the service will write journal logs into the `/var/log/journal/` folder using the `journald` service. But you can also configure it to use system logs that are written into the `/var/log/syslog` folder by the `syslog` process. Here is a quick rundown:
+By default, the service will write journal logs into the `/var/log/journal/` folder using the `journal` service. But you can also configure it to use system logs that are written into the `/var/log/syslog` folder by the `syslog` process. Here is a quick rundown:
 
-- `journald`: The logs are structured and include metadata about each log entry, which can make them easier to filter and analyze, but harder to read our bugfix. The service includes rate limiting and log rotation by default, which can help keep log sizes small. It also stores logs in a binary format, which can be more space-efficient and faster to process than text-based logs
+- `journal`: The logs are structured and include metadata about each log entry, which can make them easier to filter and analyze, but harder to read our bugfix. The service includes rate limiting and log rotation by default, which can help keep log sizes small. It also stores logs in a binary format, which can be more space-efficient and faster to process than text-based logs
 - `syslog`: System logs are text-based logs, which is easier to read, bugfix, and process with traditional command-line tools. It also has a network protocol, so it could send logs to remote servers, if thats something you need.
 
 I will keep the default journald for now. Therefore, the content of the Node Exporter service configuration should look like the one below.
 
 #### Process Ownership
 
-Make sure that you change the `User` and `Group` property if you've previously changed the name, as it will otherwise fall back to `root` and could cause security risks.
+Make sure that you change the `User` and `Group` property if you've previously changed the name, as it will otherwise fall back to `root` and could cause security risks. This is our final configuration file:
 
 ```text
 [Unit]
