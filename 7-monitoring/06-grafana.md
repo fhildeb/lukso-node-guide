@@ -20,6 +20,12 @@ If you want to confirm that the user has been created, you can search for it wit
 grep "grafana-server-worker" /etc/passwd
 ```
 
+The output should look similar to this:
+
+```text
+grafana-server-worker:x:118:124::/home/grafana-server-worker:/usr/sbin/nologin
+```
+
 ### 7.6.2 Installation
 
 Before downloading or installing anything, make sure you are in the home directory so everything is in one place:
@@ -28,20 +34,45 @@ Before downloading or installing anything, make sure you are in the home directo
 cd
 ```
 
-First we should download the GPG key for the Grafana repository and adds it to the list of trusted keys in apt to ensure that the packages you download from the Grafana repository are authentic.
+First we should download the GPG key for the Grafana repository and adds it to the list of trusted keys in apt to ensure that the packages you download from the Grafana repository are authentic. We will add the key to the system's shared keyring folder.
 
 - `-q`: The flag specifies that the output of the command does not show any status and progress as we want to add the exact hey using the `apt-key` afterwards
 - `-O`: The output flag assures that the fetched key is output to the terminal
 - `|`: The pipe is used to use the output of the first command as an input for the second command, affectively adding the key to the trusted software keys using the `apt-key add` command.
+- `gpg --dearmor`: Converts the key from the armored PGP format to the binary format that APT requires.
+- `tee`: Writes the output to a file in the `/usr/share/keyrings` directory that is used as shared keyring folder.
 
 ```sh
-wget -q -O - https://packages.grafana.com/gpg.key | sudo apt-key add -
+wget -q -O - https://packages.grafana.com/gpg.key | gpg --dearmor | sudo tee /usr/share/keyrings/grafana-archive-keyring.gpg >/dev/null
 ```
 
-We can then add the Grafana repository to your list of repositories, allowing apt to install packages from it using the previous installed `software-properties-common` service that comes with the tool `add-apt-repository`. Its the standard way to add additional repositories to your sources in Ubuntu and many other Debian-based systems.
+You can verify the added key with the `gpg` command.
+
+- `--no-default-keyring`: Tells GPG not to use the default keyring. By default, gpg uses the keyring stored in `~/.gnupg/pubring.gpg` used for GNU Packages of Ubuntu.
+- `--keyring`: This specifies the keyring file to use. Instead of using the default keyring, gpg will use the specified file. In our case, it's `/usr/share/keyrings/grafana-archive-keyring.gpg`.
+- `--list-keys`: List the public keys in the specified keyring.
+
+Continue using this:
 
 ```sh
-sudo add-apt-repository "deb https://packages.grafana.com/oss/deb stable main"
+gpg --no-default-keyring --keyring /usr/share/keyrings/grafana-archive-keyring.gpg --list-keys
+```
+
+You will find the enty of the `Grafana Labs` key similar to this one:
+
+```text
+----------------------------------------------------------------
+pub   rsa3072 2023-01-06 [SC] [expires: DATE]
+      0E22EB88E39E12277A7760AE9E439B102CF3C0C6
+uid           [ unknown] Grafana Labs <engineering@grafana.com>
+sub   rsa3072 2023-01-06 [E] [expires: DATE]
+----------------------------------------------------------------
+```
+
+We can then add the Grafana repository to your list of repositories, allowing apt to install packages from it using the previous installed `software-properties-common` service that comes with the tool `add-apt-repository`. Its the standard way to add additional repositories to your sources in Ubuntu and many other Debian-based systems. We will have to add the previously added key from the keyring to it. Same as previously, we use a `pipe` and `tee` to write the outputs into the package list.
+
+```sh
+echo "deb [signed-by=/usr/share/keyrings/grafana-archive-keyring.gpg] https://packages.grafana.com/oss/deb stable main" | sudo tee /etc/apt/sources.list.d/grafana.list
 ```
 
 Afterwards, we can update the package list and download the official [Grafana](https://grafana.com/) software. It will check the GPG key underneath.
