@@ -297,7 +297,7 @@ sudo chown -R prometheus-worker:prometheus-worker /etc/prometheus
 Last but not least, we change the owner of the database files within `/var/lib/prometheus` that are created and managed by Prometheus while it's running.
 
 ```sh
-sudo chown prometheus-worker:prometheus-worker /var/lib/prometheus
+sudo chown -R prometheus-worker:prometheus-worker /var/lib/prometheus
 ```
 
 Not only do we need to change the owner this time, but we also need to change the access mode of the executable. We need to allow the owner to read, write, and execute the file, while the group and all other services can only read from it.
@@ -422,3 +422,43 @@ The output should look similar to this:
 [DATE] [TIME] [USER] prometheus[29468]: ts=2023-05-18T09:43:54.539Z caller=head.go:536 level=info > ...
 ...
 ```
+
+### 7.5.8 Optional User Removal
+
+If you ever want to remove the user or something went wrong do the following steps:
+
+Change the owner of prometheus back to root:
+
+```sh
+sudo chown -R root:root /usr/local/bin/prometheus
+```
+
+The same applies to the CLI tool:
+
+```sh
+sudo chown -R root:root /usr/local/bin/promtool
+```
+
+We can also change the owner for the configuration folder:
+
+```sh
+sudo chown -R root:root /etc/prometheus
+```
+
+Last but not least, we change the owner of the database files:
+
+```sh
+sudo chown -R root:root /var/lib/prometheus
+```
+
+Remove the user and all the files, so there are no orphant data blobs on your system:
+
+```sh
+sudo deluser --remove-all-files prometheus-worker
+```
+
+```sh
+sudo delgroup prometheus-worker
+```
+
+Afterwards, you can redo the Prometheus guide and either set up a new user or remove the `User` and `Group` property from the configuration in `7.5.6`. By default, the process will run as `root`. Also make sure to go through every step in `7.5.7` once again.
