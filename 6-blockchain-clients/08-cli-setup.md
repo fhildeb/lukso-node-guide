@@ -94,6 +94,8 @@ lukso install
 
 > It seems there sometimes is an HTTP error during install. If you encounter that the download did not complete, re-run the installation once again and you should be good.
 
+> With CLI 0.6.0, Erigon seems not to work properly on Intel Chips. Installing Geth is recommended as long as the compatability errors are fixed.
+
 All clients will be installed within the `/usr/local/bin/` folder.
 
 You can check if they were installed correctly with the following commands. They will all print out their currently installed version numbers.
