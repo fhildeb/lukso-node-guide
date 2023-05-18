@@ -357,11 +357,11 @@ After=network-online.target
 User=prometheus-worker
 Group=prometheus-worker
 Type=simple
-ExecStart=/usr/local/bin/prometheus \
-    --config.file /etc/prometheus/prometheus.yaml \
-    --storage.tsdb.path /var/lib/prometheus/ \
-    --storage.tsdb.retention.time=31d \
-    --web.console.templates=/etc/prometheus/consoles \
+ExecStart=/usr/local/bin/prometheus                               \
+    --config.file /etc/prometheus/prometheus.yaml                 \
+    --storage.tsdb.path /var/lib/prometheus/                      \
+    --storage.tsdb.retention.time=31d                             \
+    --web.console.templates=/etc/prometheus/consoles              \
     --web.console.libraries=/etc/prometheus/console_libraries
 ExecReload=/bin/kill -HUP $MAINPIDRestart=always
 RestartSec=5
