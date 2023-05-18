@@ -453,7 +453,7 @@ Proper maintenance ensures that all the components are working as intended, can 
 If `journal` is your logging tool, you can access the full logs with the journal control tool
 
 - `-f`: Logging in follow mode displays the most recent journal entries and then updates in real time as new entries are added.
-- `-u`: In unit mode, it filters the log to show only entries for the specified systemd service, this time prometheus
+- `-u`: In unit mode, it filters the log to show only entries for the specified systemd service, this time `prometheus`.
 
 ```sh
 sudo journalctl -f -u prometheus
