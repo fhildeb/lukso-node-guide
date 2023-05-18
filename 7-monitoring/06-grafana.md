@@ -4,9 +4,31 @@ As the final step within the monitoring, we will set up a Grafana Dashboard to h
 
 Grafana is usually installed within the system binaries that contain executable binaries for system administration. The utilities in this directory are used for system maintenance and are usually executed by the `root` user. They're generally not intended to be used by normal users. Thats why we do not add a special user for this service.
 
-The
+### 7.6.1 Creating a new User
 
-### 7.6.1 Installation
+Like explained and done [previously](./02-node-exporter.md), we will create a new user to specifically to run the JSON Exporter service. Running services as a system user with minimal privileges is a common security best practice.
+
+- `--system`: This flag indicates that a system user should be created. System users are used to run services and daemons, rather than for people to log in with.
+- `--group`: This flag instructs the user tool to to create a new group with the same name as the user.
+- `--no-create-home`: By default, the user tool will create a home directory for each new user. This flag prevents that from happening, as we do not need different user directories if ye do not set the user up with an login. The option is typically used for users that are only meant to run a specific service and don't need a home directory. In this case, I'm naming the user `node-exporter-worker` so we can differenciate the service, that is often using the exact name of the program written in underscores, and the user account related to it. Feel free to come up with your own name, but bare in mind that you will have to change future commands.
+
+```sh
+sudo adduser --system grafana-server-worker --group --no-create-home
+```
+
+If you want to confirm that the user has been created, you can search for it within the password file `/etc/passwd`, that houses all essential information for each user account. Using `grep`, a powerful command-line tool fror global expression search within files or text, we can check if the user exists within the file.
+
+```sh
+grep "grafana-server-worker" /etc/passwd
+```
+
+The output should look similar to this:
+
+```text
+prometheus-worker:x:117:123::/home/prometheus-worker:/usr/sbin/nologin
+```
+
+### 7.6.2 Installation
 
 Before downloading or installing anything, make sure you are in the home directory so everything is in one place:
 
@@ -70,11 +92,69 @@ sudo apt install grafana
 
 Whenever you update your ubuntu packages using APT, it will automatically fetch the latest Grafana updates.
 
-### 7.6.2 Configuring the Service
+### 7.6.3 Set Grafana Permissionsets
+
+Now we can change the owner of the software applications. This is commonly done for security reasons. By giving root ownership to these binary files, you prevent non-root users or exporter workers from modifying or replacing these important executables, which could lead to unauthorized or unexpected behavior.
+
+Like previously explained in the [Node Exporter](./02-node-exporter.md) section of the guide, we can set both, the user and group to the specified user of the service.
+
+```sh
+sudo chown -R grafana-server-worker:grafana-server-worker /usr/sbin/grafana
+```
+
+The same applies to the server itself:
+
+```sh
+sudo chown -R grafana-server-worker:grafana-server-worker /usr/sbin/grafana-server
+```
+
+We do the same for all configuration folders that need to be loaded
+
+```sh
+sudo chown -R grafana-server-worker:grafana-server-worker /etc/grafana
+```
+
+Another permission is needed for the database:
+
+```sh
+sudo chown -R grafana-server-worker:grafana-server-worker /var/lib/grafana
+```
+
+The same applies to the log files that are generated:
+
+```sh
+sudo chown -R grafana-server-worker:grafana-server-worker /var/log/grafana
+```
+
+Not only do we need to change the owner this time, but we also need to change the access mode of the executable. We need to allow the owner to read, write, and execute the file, while the group and all other services can only read from it.
+
+We can use the change mode tool `chmod` like we did it already within the [Node Exporter](./02-node-exporter.md) section of the guide.
+
+```sh
+sudo chmod 755 /usr/sbin/grafana
+```
+
+We do the same for the server again
+
+```sh
+sudo chmod 755 /usr/sbin/grafana-server
+```
+
+The grafana database also needs privilages:
+
+```sh
+sudo chmod 755 /var/lib/grafana
+```
+
+### 7.6.4 Configuring the Service
 
 Within Ubuntu, the `/etc/systemd/system/` directory is where system service unit files are stored and used to configure services to start automatically at boot. A service file is generally used to define how a deamon processes should be started. In our case, we create the file with the exact name of the Prometheus service that also stored within the system directory, in order to modify Prometheus' startup process. We can use Vim, as we did before on various other files.
 
-**After installation, Grafana's configuration data is already set within `grafana-server.service`.**
+**After installation, Grafana's configuration data is already set within `grafana-server.service`. However, we will add and edit some properties.**
+
+```sh
+sudo vim /lib/systemd/system/grafana-server.service
+```
 
 The configuration file is split between multiple sections: `[Unit]`, `[Service]`, and `[Install]`. The unit contains generic options that are not dependent on the type of service and provide documentation. The service and install section is where we will house our configuration properties:
 
@@ -117,17 +197,22 @@ The configuration file is split between multiple sections: `[Unit]`, `[Service]`
 - **WantedBy**: This option creates a small dependency and makes the service get started at boot time. If we input `multi-user.target` we can specify that the service will start when the system is set up for multiple users. In our case, every Exporter service will have its own user, kinda fitting the description.
 - **RestartSec**: This option configures the time to sleep before restarting a service. The value `5` means the service will wait for 5 seconds before it restarts. It is a common default value and a balance between trying to restart the service quickly after a failure and not restarting it so rapidly that you could exacerbate problems.
 - **SyslogIdentifier**: Sets the program name used when messages are logged to the system log.
-- **PrivateUsers**: This setting controls whether to run the service in its own user namespace. If set, all users and groups will be mapped to `nobody` or `nogroup`, except for root.
+- **PrivateUsers**: This setting controls whether to run the service in its own user namespace. If set, all users and groups will be mapped to `nobody` or `nogroup`, except for root. As Grafana is exposed, this should be activated.
 
-We can further modify the configuration file by setting the `RestartSec`, `SyslogIdentifier`, and `PrivateUsers` properties at the end of the `[SERVICE]` section.
+#### Grafana Logging
 
-```sh
-sudo vim /lib/systemd/system/grafana-server.service
-```
+By default, the service will write journal logs into the `/var/log/journal/` folder using the `journal` service. But you can also configure it to use system logs that are written into the `/var/log/syslog` folder by the `syslog` process. Here is a quick rundown:
 
-The final file should look like the following:
+- `journal`: The logs are structured and include metadata about each log entry, which can make them easier to filter and analyze, but harder to read our bugfix. The service includes rate limiting and log rotation by default, which can help keep log sizes small. It also stores logs in a binary format, which can be more space-efficient and faster to process than text-based logs
+- `syslog`: System logs are text-based logs, which is easier to read, bugfix, and process with traditional command-line tools. It also has a network protocol, so it could send logs to remote servers, if thats something you need.
 
-> Please note, that you do not have to copy and paste the file all these are default values.
+#### Process Ownership
+
+Make sure that you change the `User` and `Group` property if you've previously changed the name, as it will otherwise fall back to `root` and could cause security risks.
+
+We can further modify the configuration file by setting the `RestartSec`, `SyslogIdentifier`, and `PrivateUsers` properties at the end of the `[SERVICE]` section. This is our final configuration file:
+
+> Please note, that you do not have to copy and paste the file. Just edit User and Group, and add the 3 properties to the bottom of the Service section.
 
 ```text
 [Unit]
@@ -139,8 +224,8 @@ After=postgresql.service mariadb.service mysql.service influxdb.service
 
 [Service]
 EnvironmentFile=/etc/default/grafana-server
-User=grafana
-Group=grafana
+User=grafana-server-worker
+Group=grafana-server-worker
 Type=simple
 Restart=on-failure
 WorkingDirectory=/usr/share/grafana
@@ -190,7 +275,7 @@ WantedBy=multi-user.target
 
 > Be cautious: When creating new rules or modifying existing ones, it's essential to follow the correct syntax and structure to ensure that the Prometheus functions properly and provides the desired level of security. Verify that you do not use spaces between properties and their values.
 
-### 7.6.3 Start the Grafana Service
+### 7.6.5 Start the Grafana Service
 
 First we need to reload the system manager configuration. It is used when making changes to service configuration files or create new service files, ensuring that systemd is aware of the changes like before.
 
@@ -242,80 +327,141 @@ The output should look similar to this:
 ...
 ```
 
-### 7.6.4 Dashboard Setup
+### 7.6.6 Maintenace
 
-If you opened the port as stated within the [Core Tools](./01-core-tools.md) section of the guide, you will now have access to the web interface.
+Proper maintenance ensures that all the components are working as intended, can be updated on the fly and that software can be kept up-to-date and secure. Its also important identifying and fixing errors quickly.
 
-Fetch your node's IP address so you can use it on your personal machine as it is described within the [Address Check](/4-router-config/01-address-check.md) section of the guide:
+#### Logging
 
-```sh
-ip route show default
-```
+If `journal` is your logging tool, you can access the full logs with the journal control tool
 
-The output will look like this:
-
-```sh
-default via <GATEWAY_IP_ADDRESS> dev eno1 proto dhcp src <NODE_IP_ADDRESS> metric <ROUTING_WEIGHT>
-```
-
-Alternatively you can also send an request to a commonly used and stable server IP, for instance Google. You will get back an response with your source IP address that you can filter using the text-processing tool `awk`, used for pattern scanning and processing.
+- `-f`: Logging in follow mode displays the most recent journal entries and then updates in real time as new entries are added.
+- `-u`: In unit mode, it filters the log to show only entries for the specified systemd service, this time `grafana-server`.
 
 ```sh
-ip route get 8.8.8.8 | awk '{print $7}'
+sudo journalctl -f -u grafana-server
 ```
 
-Log out of your node and continue using your personal machine's webbrowser.
+#### Restarting
+
+If you did any changes to configuration files, reload the system deamon:
 
 ```sh
-exit
+sudo systemctl daemon-reload
 ```
 
-#### Web Interface
+Then, restart the service using the system control:
 
-Open your browser at the following address. Make sure to use the node IP you gathered in the previous step.
-
-```text
-http://<static-node-ip>:3000
+```sh
+sudo systemctl restart grafana-server
 ```
 
-The default credentials will be the following:
+#### Stopping
 
-```text
-DEFAULT CREDENTIALS
--------------------
-username: admin
-password: admin
+You can stop the service using the system control:
+
+```sh
+sudo systemctl stop grafana-server
 ```
 
-Set a new secure and long password when prompted by Grafana. This is important as this page might be accessed through the external internet in later steps so you can access it from everywhere.
+### 7.6.7 Optional User Removal
 
-### 7.6.5 Add Prometheus Data Source
+If you ever want to remove the user or something went wrong do the following steps:
 
-Now we have to add the running Prometheus service to the Grafana Dashboard so we can utilize all the great metrics we collected over from all the Prometheus jobs we've set up.
+Change the owner of Grafana back to root:
 
-1. On the left-hand menu, hover over the gear menu
-2. Click on the `Data Sources` popup
-3. Click the `Add Data Source` button
-4. Hover over the Prometheus card on screen
-5. Click the `Select` button
-6. Enter `http://127.0.0.1:9090/` as URL
-7. Click `Save & Test` before continuing with the setup
+```sh
+sudo chown -R root:root /usr/sbin/grafana
+```
 
-### 7.6.6 Import Dashboard
+The same applies to the server itself:
 
-Chose a dashboard preset you want to load for the LUKSO mainnet and testnet. Within this guide there are two main templates:
+```sh
+sudo chown -R root:root /usr/sbin/grafana-server
+```
 
-- [LUKSO Dashboard EUR](/grafana/lukso-dashboard-eur.json)
-- [LUKSO Dashboard USD](/grafana/lukso-dashboard-eur.json)
+We do the same for all configuration folders that need to be loaded
 
-> Make sure the file matches with the [JSON Exporter](./03-json-exporter.md) External Data Configuration file. You could also specify your own dashboard by adjusting the contents and jobs.
+```sh
+sudo chown -R root:root /etc/grafana
+```
 
-1. Copy the raw contents of the file you want
-2. Return to the Grafana page within your web browser
-3. Click the plus icon on the top right
-4. Click on `Import`
-5. Paste in the raw contents to the `Import via panel json` text box
-6. Click the `Load` button
-7. Click the `Import` button
+Another permission is needed for the database:
 
-You should now have your Dashboard set up and running.
+```sh
+sudo chown -R root:root /var/lib/grafana
+```
+
+The same applies to the log files that are generated:
+
+```sh
+sudo chown -R root:root /var/log/grafana
+```
+
+Remove the user and all the files, so there are no orphant data blobs on your system:
+
+```sh
+sudo deluser --remove-all-files grafana-server-worker
+```
+
+```sh
+sudo delgroup grafana-server-worker
+```
+
+Afterwards, you can redo the Grafana guide and either set up a new user or remove the `User` and `Group` property from the configuration in `7.6.4`. By default, the process will run as `root`. Also make sure to go through every step in `7.6.5` once again.
+
+### 7.6.8 Optional Software Removal
+
+If you want to remove the Grafana software, stop the running service:
+
+```sh
+sudo systemctl stop grafana-server
+```
+
+Disable the service:
+
+```sh
+sudo systemctl disable grafana-server
+```
+
+Remove the service file:
+
+```sh
+sudo rm /etc/systemd/system/grafana-server.service
+```
+
+Reload the system service deamon to get the service file change:
+
+```sh
+sudo systemctl daemon-reload
+```
+
+Then continue deleting the configuration folders
+
+```sh
+sudo rm -rf /etc/grafana
+```
+
+Remove the Prometheus database:
+
+```sh
+sudo rm -rf /var/lib/grafana
+```
+
+Remove the server's log folder:
+
+```sh
+sudo rm -rf /var/log/grafana
+```
+
+Remove the Promtool executable:
+
+```sh
+sudo rm -rf /usr/sbin/grafana-server
+```
+
+In the last step, remove the unlisted Prometheus executable itself:
+
+```sh
+sudo rm -rf /usr/sbin/grafana
+```
