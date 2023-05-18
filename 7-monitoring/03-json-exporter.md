@@ -25,6 +25,12 @@ a powerful command-line tool fror global expression search within files or text,
 grep "json-exporter-worker" /etc/passwd
 ```
 
+The output should look similar to this:
+
+```text
+json-exporter-worker:x:115:121::/home/json-exporter-worker:/usr/sbin/nologin
+```
+
 ### 7.3.2 Installing the Dependencies
 
 For the JSON Exporter we will need the programming language Go, as the JSON Exporter is a tool written in the Go programming language, to produce the executable.
@@ -39,12 +45,21 @@ Before downloading anything, make sure you are in the home directory so everythi
 cd
 ```
 
-As first step we download Go from the official [Go Webpage](https://go.dev/dl/). Make sure to look up and download the latest supported one and no archived version. In my case, it is `v1.20.4` as of May 2023.
+As first step we download Go from the official [Go Webpage](https://go.dev/dl/). Make sure to look up the latest supported one and no archived version. In my case, it is `v1.20.4` as of May 2023.
+
+Install the current version using the Google provider. This build is specialized for server operating systems. Make sure to adjust your version within the file, in case there is a newer build ready to be installed.
 
 > Always download the current version.
 
 ```sh
-wget https://go.dev/dl/go1.20.4.linux-arm64.tar.gz
+wget https://dl.google.com/go/go1.20.4.linux-amd64.tar.gz
+```
+
+The output should look similar to this:
+
+```text
+...
+[DATE] [TIME] (12.2 MB/s) - ‘go1.20.4.linux-amd64.tar.gz’ saved [100148454/100148454]
 ```
 
 #### Extract the Go Archive
@@ -82,7 +97,7 @@ go version
 The output should look similar to the one below. Versions could change based on when you did the installation.
 
 ```text
-TODO:
+go version go1.20.4 linux/amd64
 ```
 
 #### Cleanup Dependency Download
@@ -123,6 +138,8 @@ Now lets build the applciation from it's source code. We use the previously down
 make build
 ```
 
+Let the process run through, it might take half a minute.
+
 #### Copy the Service Binaries into the System's Path
 
 After extraction we can copy the exporter binaries to the system's path so they show up as installed dependencies and can be properly used and linked within services.
@@ -138,7 +155,7 @@ Now we can change the owner of the JSON Exporter service to the one that we crea
 Like previously explained in the [Node Exporter](./02-node-exporter.md) section of the guide, we can set both, the user and group to the specified user of the service.
 
 ```sh
-sudo chown json-exporter-worker:json-exporter-worker /usr/local/bin/json_exporter/
+sudo chown json-exporter-worker:json-exporter-worker /usr/local/bin/json_exporter
 ```
 
 #### Cleaning up Install Files
@@ -161,12 +178,6 @@ After installation, we want to create a separate configuration file to fetch ext
 
 ```sh
 sudo mkdir /etc/json_exporter/
-```
-
-Afterwards, we can change the owner of the service to the specific exporter user:
-
-```sh
-sudo chown json-exporter-worker:json-exporter-worker /etc/json_exporter/
 ```
 
 Now we can create a new config file within this folder:
@@ -201,10 +212,10 @@ modules:
 
 Those properties will later on be used within the Grafana Dashboard to fetch the token prices and build metrics based on our validator service.
 
-Save and exit the file. As a final step, we give the exporter worker permissions to this file:
+Save and exit the file. As a final step, we give the exporter worker permissions to this configuration folder and all files:
 
 ```sh
-sudo chown json-exporter-worker:json-exporter-worker /etc/json_exporter/json_exporter.yaml
+sudo -R chown json-exporter-worker:json-exporter-worker /etc/json_exporter/
 ```
 
 We can now continue the service configuration and link our external metrics there.
