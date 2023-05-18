@@ -283,3 +283,25 @@ The output should look similar to this:
 May 18 09:11:09 turtle-node systemd[1]: Started Blackbox Exporter.
 May 18 09:11:09 turtle-node blackbox_exporter[27272]: ts=2023-05-18T09:11:09.531Z caller=main.go:78 >
 ```
+
+### 7.4.7 Optional User Removal
+
+If you ever want to remove the user or something went wrong do the following steps:
+
+Change the owner back to root:
+
+```sh
+sudo chown -R root:root /etc/blackbox_exporter/
+```
+
+Remove the user and all the files, so there are no orphant data blobs on your system:
+
+```sh
+sudo deluser --remove-all-files blackbox-exporter-worker
+```
+
+```sh
+sudo delgroup blackbox-exporter-worker
+```
+
+Afterwards, you can redo the Blackbox Exporter guide and either set up a new user or remove the `User` property from the configuration in `7.4.5`. By default, the process will run as `root`. Also make sure to go through every step in `7.4.6` once again.
