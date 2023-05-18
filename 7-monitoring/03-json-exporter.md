@@ -212,10 +212,10 @@ modules:
 
 Those properties will later on be used within the Grafana Dashboard to fetch the token prices and build metrics based on our validator service.
 
-Save and exit the file. As a final step, we give the exporter worker permissions to this configuration folder and all files:
+Save and exit the file. As a final step, we give the exporter worker permissions to this configuration folder and the config file:
 
 ```sh
-sudo -R chown json-exporter-worker:json-exporter-worker /etc/json_exporter/
+sudo chown -R json-exporter-worker:json-exporter-worker /etc/json_exporter/
 ```
 
 We can now continue the service configuration and link our external metrics there.
@@ -241,10 +241,6 @@ The configuration file is split between multiple sections: `[Unit]`, `[Service]`
 - **RestartSec**: This option configures the time to sleep before restarting a service. The value `5` means the service will wait for 5 seconds before it restarts. It is a common default value and a balance between trying to restart the service quickly after a failure and not restarting it so rapidly that you could exacerbate problems.
 - **SyslogIdentifier**: Sets the program name used when messages are logged to the system log.
 - **WantedBy**: This option creates a small dependency and makes the service get started at boot time. If we input `multi-user.target` we can specify that the service will start when the system is set up for multiple users. In our case, every Exporter service will have its own user, kinda fitting the description.
-
-#### Logging
-
-By default, the service will write journal logs into the `/var/log/journal/` folder using the `journald` service. But you can also configure it to use system logs that are written into the `/var/log/syslog` folder by the `syslog` process. You can find a full explanation within the [first exporter installation](./02-node-exporter.md).
 
 ```text
 [Unit]
@@ -316,7 +312,7 @@ If you ever want to remove the user or something went wrong do the following ste
 Change the owner back to root:
 
 ```sh
-sudo -R chown root:root /etc/json_exporter/
+sudo chown -R root:root /etc/json_exporter/
 ```
 
 Remove the user and all the files, so there are no orphant data blobs on your system:
