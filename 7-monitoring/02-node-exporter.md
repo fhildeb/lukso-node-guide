@@ -193,7 +193,7 @@ The output should look similar to this:
 ```text
 ● node_exporter.service - Node Exporter
      Loaded: loaded (/etc/systemd/system/node_exporter.service; enabled; >
-     Active: active (running) since Thu 2023-05-18 07:51:17 UTC; 1min 21s>
+     Active: active (running) since [DATE] UTC; [TIME] ago
        Docs: https://github.com/prometheus/node_exporter
    Main PID: 22812 (node_exporter)
       Tasks: 5 (limit: 38043)

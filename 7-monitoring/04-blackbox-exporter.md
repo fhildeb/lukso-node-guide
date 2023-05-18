@@ -271,7 +271,7 @@ The output should look similar to this:
 ```text
 ● blackbox_exporter.service - Blackbox Exporter
      Loaded: loaded (/etc/systemd/system/blackbox_exporter.service; enabled; vendor preset: enabled)
-     Active: active (running) since Thu 2023-05-18 09:11:09 UTC; 46s ago
+     Active: active (running) since [DATE] UTC; [TIME] ago
        Docs: https://github.com/prometheus/blackbox_exporter
    Main PID: 27272 (blackbox_export)
       Tasks: 7 (limit: 38043)
