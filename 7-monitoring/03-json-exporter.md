@@ -188,7 +188,7 @@ Write the following properties into is file:
 modules:
   default:
     metrics:
-    - name: lyx-in-eur
+    - name: lyxeur
       path: "{.lukso-token.eur}"
       help: LUKSO (LYX) Price in EUR
 ```
@@ -199,7 +199,7 @@ In case you want to change the currency to something else, this is how it would 
 modules:
   default:
     metrics:
-    - name: lyx-in-usd
+    - name: lyxusd
       path: "{.lukso-token.usd}"
       help: LUKSO (LYX) Price in USD
 ```

@@ -761,11 +761,11 @@
         "pluginVersion": "8.2.3",
         "targets": [
           {
-            "expr": "lyx-in-usd ",
+            "expr": "lyxusd",
             "hide": false,
             "instant": true,
             "interval": "",
-            "legendFormat": "lyx-in-usd",
+            "legendFormat": "lyxusd",
             "refId": "A"
           },
           {
@@ -786,7 +786,7 @@
             "options": {
               "alias": "total_validator_value",
               "binary": {
-                "left": "lyx-in-usd",
+                "left": "lyxusd",
                 "operator": "*",
                 "reducer": "sum",
                 "right": "balance"
@@ -877,10 +877,10 @@
             "refId": "A"
           },
           {
-            "expr": "lyx-in-usd",
+            "expr": "lyxusd",
             "instant": true,
             "interval": "",
-            "legendFormat": "lyx-in-usd",
+            "legendFormat": "lyxusd",
             "refId": "B"
           }
         ],
@@ -896,7 +896,7 @@
                 "left": "total_balance",
                 "operator": "*",
                 "reducer": "sum",
-                "right": "lyx-in-usd"
+                "right": "lyxusd"
               },
               "mode": "binary",
               "reduce": {
@@ -970,10 +970,10 @@
         "targets": [
           {
             "exemplar": true,
-            "expr": "lyx-in-usd",
+            "expr": "lyxusd",
             "instant": true,
             "interval": "",
-            "legendFormat": "lyx-in-usd",
+            "legendFormat": "lyxusd",
             "refId": "B"
           }
         ],
@@ -989,7 +989,7 @@
                 "left": "total_balance",
                 "operator": "*",
                 "reducer": "sum",
-                "right": "lyx-in-usd"
+                "right": "lyxusd"
               },
               "mode": "binary",
               "reduce": {

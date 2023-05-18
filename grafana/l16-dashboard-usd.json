@@ -761,7 +761,7 @@
       "pluginVersion": "8.2.3",
       "targets": [
         {
-          "expr": "lyxusd ",
+          "expr": "lyxusd",
           "hide": false,
           "instant": true,
           "interval": "",
