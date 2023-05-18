@@ -280,8 +280,9 @@ The output should look similar to this:
      CGroup: /system.slice/blackbox_exporter.service
              └─27272 /usr/local/bin/blackbox_exporter --config.file /etc/blackbox_exporter/blackbox.>
 
-May 18 09:11:09 turtle-node systemd[1]: Started Blackbox Exporter.
-May 18 09:11:09 turtle-node blackbox_exporter[27272]: ts=2023-05-18T09:11:09.531Z caller=main.go:78 >
+[DATE] [USER] systemd[1]: Started Blackbox Exporter.
+[DATE] [USER] blackbox_exporter[27272]: ts=2023-05-18T09:11:09.531Z caller=main.go:78 >...
+...
 ```
 
 ### 7.4.7 Optional User Removal
