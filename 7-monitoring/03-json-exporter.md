@@ -342,7 +342,7 @@ Proper maintenance ensures that all the components are working as intended, can 
 If `journal` is your logging tool, you can access the full logs with the journal control tool
 
 - `-f`: Logging in follow mode displays the most recent journal entries and then updates in real time as new entries are added.
-- `-u`: In unit mode, it filters the log to show only entries for the specified systemd service, this time node_exporter
+- `-u`: In unit mode, it filters the log to show only entries for the specified systemd service, this time json_exporter
 
 ```sh
 sudo journalctl -f -u json_exporter
@@ -394,7 +394,7 @@ Afterwards, you can redo the JSON Exporter guide and either set up a new user or
 
 ### 7.3.9 Optional Software Removal
 
-If you want to remove the JSON exporter tool, stop the running service:
+If you want to remove the JSON Exporter tool, stop the running service:
 
 ```sh
 sudo systemctl stop json_exporter
