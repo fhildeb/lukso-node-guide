@@ -24,6 +24,12 @@ If you want to confirm that the user has been created, you can search for it wit
 grep "blackbox-exporter-worker" /etc/passwd
 ```
 
+The output should look similar to this:
+
+```text
+blackbox-exporter-worker:x:116:122::/home blackbox-exporter-worker:/usr/sbin/nologin
+```
+
 ### 7.4.2 Installing the Blackbox Exporter
 
 When it comes to the Installation of the Blackbox Exporter, we first have to get the latest version from the official [Prometheus Webpage](https://prometheus.io/download/#blackbox_exporter). As of `May 2023`, the only listed version is `0.23.0`.
@@ -42,12 +48,32 @@ We can then continue to download this version using the previous installed `wget
 wget wget https://github.com/prometheus/blackbox_exporter/releases/download/v0.23.0/blackbox_exporter-0.23.0.linux-amd64.tar.gz
 ```
 
+The output should look similar to this:
+
+```text
+[DATE] [TIME] (12.5 MB/s) - ‘blackbox_exporter-0.23.0.linux-amd64.tar.gz’ saved [10831812/10831812]
+
+FINISHED --[DATE] [TIME]--
+Total wall clock time: 1.4s
+Downloaded: 1 files, 10M in 0.8s (12.5 MB/s)
+```
+
 #### Extract the Archive
 
 After it has been downloaded, we can extract the tape archive using the related Ubuntu tool. We're going to extract (`x`) and compress (`z`) the archive into its previous packaged files (`f`) using verbose mode (`v`) to list all files being processed during the extraction and compression.
 
 ```sh
 tar xzfv blackbox_exporter-0.23.0.linux-amd64.tar.gz
+```
+
+The output should look similar to this:
+
+```text
+blackbox_exporter-0.23.0.linux-amd64/
+blackbox_exporter-0.23.0.linux-amd64/blackbox.yml
+blackbox_exporter-0.23.0.linux-amd64/LICENSE
+blackbox_exporter-0.23.0.linux-amd64/NOTICE
+blackbox_exporter-0.23.0.linux-amd64/blackbox_exporter
 ```
 
 #### Copy the Service Binaries into the System's Path
@@ -65,7 +91,7 @@ Now we can change the owner of the Blackbox Exporter service to the one that we 
 Like previously explained in the [Node Exporter](./02-node-exporter.md) section of the guide, we can set both, the user and group to the specified user of the service.
 
 ```sh
-sudo chown blackbox-exporter-worker:blackbox-exporter-worker /usr/local/bin/blackbox_exporter/
+sudo chown blackbox-exporter-worker:blackbox-exporter-worker /usr/local/bin/blackbox_exporter
 ```
 
 Not only do we need to change the owner this time, but we also need to change the access mode of the executable. We need to allow the owner to read, write, and execute the file, while the group and all other services can only read from it.
@@ -88,13 +114,13 @@ sudo chmod 755 /usr/local/bin/blackbox_exporter
 After we copied the executable file into the system's program path and gave it the appropriate user rights, we can remove the extracted folders.
 
 ```sh
-rm -rf blackbox_exporter-0.23.0.linux-amd64.tar.gz
+rm -rf blackbox_exporter-0.23.0.linux-amd64
 ```
 
 The same applies to the tape archive, which we have previously downloaded:
 
 ```sh
-rm blackbox_exporter-0.23.0.linux-amd64gz
+rm blackbox_exporter-0.23.0.linux-amd64.tar.gz
 ```
 
 ### 7.4.3 Extend Network Capabilities
@@ -123,12 +149,6 @@ We will create our own folder for the applciation's configuration files within `
 
 ```sh
 sudo mkdir /etc/blackbox_exporter/
-```
-
-Afterwards, we can change the owner of the service to the specific exporter user:
-
-```sh
-sudo chown blackbox-exporter-worker:blackbox-exporter-worker /etc/blackbox_exporter/
 ```
 
 Now we can create a new config file within this folder:
@@ -165,10 +185,10 @@ modules:
 
 Those properties will later on be used within the Grafana Dashboard to fetch the token prices and build metrics based on our validator service.
 
-Save and exit the file. As a final step, we give the exporter worker permissions to this file:
+Save and exit the file. As a final step, we give the exporter worker permissions to the configuration folder and the config file:
 
 ```sh
-sudo chown blackbox-exporter-worker:blackbox-exporter-worker /etc/blackbox_exporter/blackbox.yaml
+sudo chown -R blackbox-exporter-worker:blackbox-exporter-worker /etc/blackbox_exporter/
 ```
 
 We can now continue the service configuration and link our external metrics there.
@@ -187,34 +207,18 @@ The configuration file is split between multiple sections: `[Unit]`, `[Service]`
 
 - **Description**: Provides a concise but meaningful explanation of the service used in the configuration
 - **Documentation**: Provides a URL where more information to the program can be found
-- **After**: Ensures that the service is started after the network has been set up.
 - **User**: Specifies under which user the service will run. In this case, it will be `blackbox-exporter-worker`.
 - **Type**: This option configures the process start-up type for this service unit. The `simple` value means the exec command configured will be the main process of the service.
 - **ExecStart**: Specifies the command to run when the service starts. In this case, it's `/usr/local/bin/blackbox_exporter` as program folder of the Blackbox Exporter. It will also load the configuration file on startup
 - **Restart**: Configures whether the service shall be restarted when the service process exits, is killed, or a timeout is reached. The `always` value means the service will be restarted regardless of whether it exited cleanly or not.
 - **RestartSec**: This option configures the time to sleep before restarting a service. The value `5` means the service will wait for 5 seconds before it restarts. It is a common default value and a balance between trying to restart the service quickly after a failure and not restarting it so rapidly that you could exacerbate problems.
-- **StandardOutput**: Logfile where output from the Blackbox Exporter will be logged.
-- **StandardError**: Logfile where errors from the Blackbox Exporter will be logged.
 - **SyslogIdentifier**: Sets the program name used when messages are logged to the system log.
-- **ProtectSystem**: Protection rules to specify where the service can write files to the disk. If set to `full` it will limit the areas of the file system that the Exporter can write outside of his regular application folder. This works best as we are just using it for logging.
-- **NoNewPrivileges**: Prevent the Blackbox Exporter service and its children from gaining new service privileges on its own.
-- **PrivateTmp**: Set to allow the service to generate a private `/tmp` directory that other processes can't access.
 - **WantedBy**: This option creates a small dependency and makes the service get started at boot time. If we input `multi-user.target` we can specify that the service will start when the system is set up for multiple users. In our case, every Exporter service will have its own user, kinda fitting the description.
-
-#### Logging
-
-By default, the service will write journal logs into the `/var/log/journal/` folder using the `journald` service. But you can also configure it to use system logs that are written into the `/var/log/syslog` folder by the `syslog` process. Here is a quick rundown:
-
-- `journald`: The logs are structured and include metadata about each log entry, which can make them easier to filter and analyze, but harder to read our bugfix. The service includes rate limiting and log rotation by default, which can help keep log sizes small. It also stores logs in a binary format, which can be more space-efficient and faster to process than text-based logs
-- `syslog`: System logs are text-based logs, which is easier to read, bugfix, and process with traditional command-line tools. It also has a network protocol, so it could send logs to remote servers, if thats something you need.
-
-I will keep the default journald for now. Therefore, the content of the Blackbox Exporter service configuration should look like the one below. Make sure that you change the `User` property if you've previously changed the name. Feel free to make any adjustments that better suite your environment.
 
 ```text
 [Unit]
 Description=Blackbox Exporter
 Documentation=https://github.com/prometheus/blackbox_exporter
-After=network.target
 
 [Service]
 User=blackbox-exporter-worker
@@ -222,12 +226,7 @@ Type=simple
 ExecStart=/usr/local/bin/blackbox_exporter --config.file /etc/blackbox_exporter/blackbox.yaml
 Restart=always
 RestartSec=5
-StandardOutput=journald
-StandardError=journald
 SyslogIdentifier=blackbox_exporter
-ProtectSystem=full
-NoNewPrivileges=true
-PrivateTmp=true
 
 [Install]
 WantedBy=multi-user.target
@@ -255,6 +254,12 @@ To enable the Blackbox Exporter service to start automatically when the system b
 sudo systemctl enable blackbox_exporter
 ```
 
+The output should look similar to this:
+
+```text
+Created symlink /etc/systemd/system/multi-user.target.wants/blackbox_exporter.service → /etc/systemd/system/blackbox_exporter.service.
+```
+
 To check if the Blackbox Exporter service is running and configured properly, we can fetch the current status from the system control. It will display whether it is active, enabled, or disabled, and show any recent log entries.
 
 ```sh
@@ -264,5 +269,17 @@ sudo systemctl status blackbox_exporter
 The output should look similar to this:
 
 ```text
-TODO:
+● blackbox_exporter.service - Blackbox Exporter
+     Loaded: loaded (/etc/systemd/system/blackbox_exporter.service; enabled; vendor preset: enabled)
+     Active: active (running) since Thu 2023-05-18 09:11:09 UTC; 46s ago
+       Docs: https://github.com/prometheus/blackbox_exporter
+   Main PID: 27272 (blackbox_export)
+      Tasks: 7 (limit: 38043)
+     Memory: 2.4M
+        CPU: 8ms
+     CGroup: /system.slice/blackbox_exporter.service
+             └─27272 /usr/local/bin/blackbox_exporter --config.file /etc/blackbox_exporter/blackbox.>
+
+May 18 09:11:09 turtle-node systemd[1]: Started Blackbox Exporter.
+May 18 09:11:09 turtle-node blackbox_exporter[27272]: ts=2023-05-18T09:11:09.531Z caller=main.go:78 >
 ```
