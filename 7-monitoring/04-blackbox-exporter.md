@@ -94,16 +94,7 @@ Like previously explained in the [Node Exporter](./02-node-exporter.md) section 
 sudo chown blackbox-exporter-worker:blackbox-exporter-worker /usr/local/bin/blackbox_exporter
 ```
 
-Not only do we need to change the owner this time, but we also need to change the access mode of the executable. We need to allow the owner to read, write, and execute the file, while the group and all other services can only read from it.
-
-We can use the change mode tool `chmod` from Ubuntu. The permissions you can input are represented in octal, and each digit is the sum of its component bits:
-
-- 4 stands for "read",
-- 2 stands for "write", and
-- 1 stands for "execute".
-
-We can add the values together in order to combine functionality. The oder in which those access rules are written down for a file are `user`, `group`, and `others`. Because we set the user before, the user `blackbox-exporter-worker` will have full access rights.
-In our case the outcome will be `7 (user), 5 (group), 5 (others)`:
+Let's also make sure the user can execute the file by changing the permissions as described in the [Node Exporter](./02-node-exporter.md) section:
 
 ```sh
 sudo chmod 755 /usr/local/bin/blackbox_exporter
@@ -207,26 +198,51 @@ The configuration file is split between multiple sections: `[Unit]`, `[Service]`
 
 - **Description**: Provides a concise but meaningful explanation of the service used in the configuration
 - **Documentation**: Provides a URL where more information to the program can be found
+- **After**: Ensures that the service is started after a specific service, in this case, that the network has been set up, as we will need a network connection for this exporter to succeed.
 - **User**: Specifies under which user the service will run. In this case, it will be `blackbox-exporter-worker`.
+- **Group**: Specifies under which user group the service will run. In this case, it will be `blackbox-exporter-worker`.
 - **Type**: This option configures the process start-up type for this service unit. The `simple` value means the exec command configured will be the main process of the service.
 - **ExecStart**: Specifies the command to run when the service starts. In this case, it's `/usr/local/bin/blackbox_exporter` as program folder of the Blackbox Exporter. It will also load the configuration file on startup
 - **Restart**: Configures whether the service shall be restarted when the service process exits, is killed, or a timeout is reached. The `always` value means the service will be restarted regardless of whether it exited cleanly or not.
 - **RestartSec**: This option configures the time to sleep before restarting a service. The value `5` means the service will wait for 5 seconds before it restarts. It is a common default value and a balance between trying to restart the service quickly after a failure and not restarting it so rapidly that you could exacerbate problems.
 - **SyslogIdentifier**: Sets the program name used when messages are logged to the system log.
+- **StandardOutput**: Logfile where output from the Blackbox Exporter will be logged.
+- **StandardError**: Logfile where errors from the Blackbox Exporter will be logged.
+- **ProtectSystem**: Protection rules to specify where the service can write files to the disk. If set to `full` it will limit the areas of the file system that the Exporter can write outside of his regular application folder. This works best as we are just using it for logging.
+- **NoNewPrivileges**: Prevent the Blackbox Exporter service and its children from gaining new service privileges on its own.
+- **PrivateTmp**: Set to allow the service to generate a private `/tmp` directory that other processes can't access.
 - **WantedBy**: This option creates a small dependency and makes the service get started at boot time. If we input `multi-user.target` we can specify that the service will start when the system is set up for multiple users. In our case, every Exporter service will have its own user, kinda fitting the description.
+
+#### JSON Exporter Logging
+
+By default, the service will write journal logs into the `/var/log/journal/` folder using the `journal` service. But you can also configure it to use system logs that are written into the `/var/log/syslog` folder by the `syslog` process. Here is a quick rundown:
+
+- `journal`: The logs are structured and include metadata about each log entry, which can make them easier to filter and analyze, but harder to read our bugfix. The service includes rate limiting and log rotation by default, which can help keep log sizes small. It also stores logs in a binary format, which can be more space-efficient and faster to process than text-based logs
+- `syslog`: System logs are text-based logs, which is easier to read, bugfix, and process with traditional command-line tools. It also has a network protocol, so it could send logs to remote servers, if thats something you need.
+
+#### Process Ownership
+
+Make sure that you change the `User` and `Group` property if you've previously changed the name, as it will otherwise fall back to `root` and could cause security risks. This is our final configuration file:
 
 ```text
 [Unit]
 Description=Blackbox Exporter
 Documentation=https://github.com/prometheus/blackbox_exporter
+After=network.target
 
 [Service]
 User=blackbox-exporter-worker
+Group=blackbox-exporter-worker
 Type=simple
 ExecStart=/usr/local/bin/blackbox_exporter --config.file /etc/blackbox_exporter/blackbox.yaml
 Restart=always
 RestartSec=5
 SyslogIdentifier=blackbox_exporter
+StandardOutput=journal
+StandardError=journal
+ProtectSystem=full
+NoNewPrivileges=true
+PrivateTmp=true
 
 [Install]
 WantedBy=multi-user.target
@@ -285,7 +301,44 @@ The output should look similar to this:
 ...
 ```
 
-### 7.4.7 Optional User Removal
+### 7.4.7 Maintenace
+
+Proper maintenance ensures that all the components are working as intended, can be updated on the fly and that software can be kept up-to-date and secure. Its also important identifying and fixing errors quickly.
+
+#### Logging
+
+If `journal` is your logging tool, you can access the full logs with the journal control tool
+
+- `-f`: Logging in follow mode displays the most recent journal entries and then updates in real time as new entries are added.
+- `-u`: In unit mode, it filters the log to show only entries for the specified systemd service, this time node_exporter
+
+```sh
+sudo journalctl -f -u blackbox_exporter
+```
+
+#### Restarting
+
+If you did any changes to configuration files, reload the system deamon:
+
+```sh
+sudo systemctl daemon-reload
+```
+
+Then, restart the service using the system control:
+
+```sh
+sudo systemctl restart blackbox_exporter
+```
+
+#### Stopping
+
+You can stop the service using the system control:
+
+```sh
+sudo systemctl stop blackbox_exporter
+```
+
+### 7.4.8 Optional User Removal
 
 If you ever want to remove the user or something went wrong do the following steps:
 
@@ -306,3 +359,41 @@ sudo delgroup blackbox-exporter-worker
 ```
 
 Afterwards, you can redo the Blackbox Exporter guide and either set up a new user or remove the `User` property from the configuration in `7.4.5`. By default, the process will run as `root`. Also make sure to go through every step in `7.4.6` once again.
+
+### 7.4.9 Optional Software Removal
+
+If you want to remove the JSON exporter tool, stop the running service:
+
+```sh
+sudo systemctl stop blackbox_exporter
+```
+
+Disable the service:
+
+```sh
+sudo systemctl disable blackbox_exporter
+```
+
+Remove the service file:
+
+```sh
+sudo rm /etc/systemd/system/blackbox_exporter.service
+```
+
+Reload the system service deamon to get the service file change:
+
+```sh
+sudo systemctl daemon-reload
+```
+
+Then continue deleting the configuration file folder
+
+```sh
+sudo rm -rf /etc/blackbox_exporter
+```
+
+In the last step, remove the unlisted executable itself:
+
+```sh
+sudo rm -rf /usr/local/bin/blackbox_exporter
+```
