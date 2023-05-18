@@ -1,6 +1,6 @@
 ## 7.7 Dashboard Setup
 
-The next section will configure the Grafana Dashboard.
+The next section will configure the Grafana Dashboard after all exporter services and grafana server are up and running on the node itself.
 
 ### 7.7.1 Get Node IP Address
 
@@ -66,7 +66,7 @@ Now we have to add the running Prometheus service to the Grafana Dashboard so we
 Chose a dashboard preset you want to load for the LUKSO mainnet and testnet. Within this guide there are two main templates:
 
 - [LUKSO Dashboard EUR](/grafana/lukso-dashboard-eur.json)
-- [LUKSO Dashboard USD](/grafana/lukso-dashboard-eur.json)
+- [LUKSO Dashboard USD](/grafana/lukso-dashboard-usd.json)
 
 > Make sure the file matches with the [JSON Exporter](./03-json-exporter.md) External Data Configuration file. You could also specify your own dashboard by adjusting the contents and jobs.
 
