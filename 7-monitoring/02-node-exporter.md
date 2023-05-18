@@ -291,7 +291,7 @@ Afterwards, you can redo the Node Exporter guide and either set up a new user or
 
 ### 7.2.6 Optional Software Removal
 
-If you want to remove the node exporter tool, stop the running node exporter:
+If you want to remove the Node Exporter tool, stop the running service:
 
 ```sh
 sudo systemctl stop node_exporter
