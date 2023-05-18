@@ -17,7 +17,13 @@ sudo adduser --system prometheus-worker --group --no-create-home
 If you want to confirm that the user has been created, you can search for it within the password file `/etc/passwd`, that houses all essential information for each user account. Using `grep`, a powerful command-line tool fror global expression search within files or text, we can check if the user exists within the file.
 
 ```sh
-grep "blackbox-exporter-worker" /etc/passwd
+grep "prometheus-worker" /etc/passwd
+```
+
+The output should look similar to this:
+
+```text
+prometheus-worker:x:117:123::/home/prometheus-worker:/usr/sbin/nologin
 ```
 
 ### 7.5.2 Installing Prometeus
@@ -34,12 +40,40 @@ We can then continue to download the current version of Prometheus using the pre
 wget https://github.com/prometheus/prometheus/releases/download/v2.37.8/prometheus-2.37.8.linux-amd64.tar.gz
 ```
 
+The output should look similar to this:
+
+```text
+[DATE] [TIME] (12.6 MB/s) - ‘prometheus-2.37.8.linux-amd64.tar.gz’ saved [83345655/83345655]
+```
+
 #### Extract the Archive
 
 After it has been downloaded, we can extract the tape archive using the related Ubuntu tool. We're going to extract (`x`) and compress (`z`) the archive into its previous packaged files (`f`) using verbose mode (`v`) to list all files being processed during the extraction and compression.
 
 ```sh
-tar xzvf prometheus-2.37.8.linux-amd64.tar.gz
+tar xzfv prometheus-2.37.8.linux-amd64.tar.gz
+```
+
+The output should look similar to this:
+
+```text
+prometheus-2.37.8.linux-amd64/
+prometheus-2.37.8.linux-amd64/console_libraries/
+prometheus-2.37.8.linux-amd64/console_libraries/menu.lib
+prometheus-2.37.8.linux-amd64/console_libraries/prom.lib
+prometheus-2.37.8.linux-amd64/prometheus.yml
+prometheus-2.37.8.linux-amd64/consoles/
+prometheus-2.37.8.linux-amd64/consoles/node-disk.html
+prometheus-2.37.8.linux-amd64/consoles/index.html.example
+prometheus-2.37.8.linux-amd64/consoles/node.html
+prometheus-2.37.8.linux-amd64/consoles/prometheus-overview.html
+prometheus-2.37.8.linux-amd64/consoles/node-overview.html
+prometheus-2.37.8.linux-amd64/consoles/node-cpu.html
+prometheus-2.37.8.linux-amd64/consoles/prometheus.html
+prometheus-2.37.8.linux-amd64/promtool
+prometheus-2.37.8.linux-amd64/NOTICE
+prometheus-2.37.8.linux-amd64/prometheus
+prometheus-2.37.8.linux-amd64/LICENSE
 ```
 
 #### Copy the Service Binaries into the System's Path
@@ -69,37 +103,13 @@ Then continue with copying the CLI tool:
 sudo cp promtool /usr/local/bin/
 ```
 
-### 7.5.3 Set Prometheus Permissionsets
+### 7.5.3 Cleaning up Install Files
 
-Now we can change the owner of the software applications to admin access. This is commonly done for security reasons. By giving root ownership to these binary files, you prevent non-root users or exporter workers from modifying or replacing these important executables, which could lead to unauthorized or unexpected behavior.
-
-Like previously explained in the [Node Exporter](./02-node-exporter.md) section of the guide, we can set both, the user and group to the specified user of the service.
+Before we clean up any files, make sure to move back into the home directory:
 
 ```sh
-sudo chown root:root /usr/local/bin/prometheus
+cd
 ```
-
-The same applies to the CLI tool:
-
-```sh
-sudo chown root:root /usr/local/bin/promtool
-```
-
-Not only do we need to change the owner this time, but we also need to change the access mode of the executable. We need to allow the owner to read, write, and execute the file, while the group and all other services can only read from it.
-
-We can use the change mode tool `chmod` like we did it already within the [Blackbox Exporter](./04-blackbox-exporter.md) section of the guide.
-
-```sh
-sudo chmod 755 /usr/local/bin/prometheus
-```
-
-We do the same for the CLI tool again
-
-```sh
-sudo chmod 755 /usr/local/bin/promtool
-```
-
-### 7.5.4 Cleaning up Install Files
 
 After we copied the executable file into the system's program path and gave it the appropriate user rights, we can remove the extracted folders.
 
@@ -113,7 +123,7 @@ The same applies to the tape archive, which we have previously downloaded:
 rm prometheus-2.37.8.linux-amd64.tar.gz
 ```
 
-### 7.5.5 Configuring External Datasets
+### 7.5.4 Configuring External Datasets
 
 After installation, we want to create a separate configuration file for the Prometheus server that will collect all the information from the exporters. It will tell Prometheus where to scrape data from, how often to scrape it, and how to handle the scraped data.
 
@@ -246,33 +256,71 @@ scrape_configs:
 If you want the LYX price showing up in a different currency than `EUR`, please change the `vs_currencies` property of the taget URL for the `lyx-price-job`. For USD, it would look like the following:
 
 ```text
+  - job_name: 'lyx-price-job'
+    metrics_path: /probe
+    static_configs:
     - targets:
-      - https://api.coingecko.com/api/v3/simple/price?ids=lukso-token&vs_currencies=usd
+      - https://api.coingecko.com/api/v3/simple/price?ids=lukso-token&vs_currencies=eur
+    relabel_configs:
+    - source_labels: [__address__]
+      target_label: __param_target
+    - source_labels: [__param_target]
+      target_label: instance
+    - target_label: __address__
+      replacement: 127.0.0.1:7979
 ```
 
 Those properties will later on be used within the Grafana Dashboard to fetch the token prices and build metrics based on our validator service.
 
-### 7.5.6 Add Data Directory and Permissions
+### 7.5.5 Set Prometheus Permissionsets
 
-After the main configuration file and all main service folders are set up, we can continue to give the Prometheus application special user rights for security reasons. Using the `-R` flag, we can assure that the new owner is applied to all files and subfolders accordingly.
+Now we can change the owner of the software applications to admin access. This is commonly done for security reasons. By giving root ownership to these binary files, you prevent non-root users or exporter workers from modifying or replacing these important executables, which could lead to unauthorized or unexpected behavior.
+
+Like previously explained in the [Node Exporter](./02-node-exporter.md) section of the guide, we can set both, the user and group to the specified user of the service.
+
+```sh
+sudo chown -R prometheus-worker:prometheus-worker /usr/local/bin/prometheus
+```
+
+The same applies to the CLI tool:
+
+```sh
+sudo chown -R prometheus-worker:prometheus-worker /usr/local/bin/promtool
+```
+
+We can also change the owner for the configuration folder:
 
 ```sh
 sudo chown -R prometheus-worker:prometheus-worker /etc/prometheus
 ```
 
-As the Prometheus time-series database files within `/var/lib/prometheus` are created and managed by Prometheus while it's running, we will also need to adjust owner and access permissions on this end. First lets change the owner:
+Last but not least, we change the owner of the database files within `/var/lib/prometheus` that are created and managed by Prometheus while it's running.
 
 ```sh
 sudo chown prometheus-worker:prometheus-worker /var/lib/prometheus
 ```
 
-Afterwards we can change the permissions itself, like we did previously:
+Not only do we need to change the owner this time, but we also need to change the access mode of the executable. We need to allow the owner to read, write, and execute the file, while the group and all other services can only read from it.
+
+We can use the change mode tool `chmod` like we did it already within the [Blackbox Exporter](./04-blackbox-exporter.md) section of the guide.
+
+```sh
+sudo chmod 755 /usr/local/bin/prometheus
+```
+
+We do the same for the CLI tool again
+
+```sh
+sudo chmod 755 /usr/local/bin/promtool
+```
+
+Afterwards we can change it for the database folder:
 
 ```sh
 sudo chmod 755 /var/lib/prometheus
 ```
 
-### 7.5.7 Configuring the Service
+### 7.5.6 Configuring the Service
 
 After installation and job configuration, we want to define how the Prometheus service should be run itself. Within Ubuntu, the `/etc/systemd/system/` directory is where system service unit files are stored and used to configure services to start automatically at boot.
 
@@ -295,22 +343,8 @@ The configuration file is split between multiple sections: `[Unit]`, `[Service]`
 - **ExecReload**: Specifies the command to execute when the systemd service is reloaded. In our case, the `kill` command is used to send a signal (HUP) to the main process of the service, indicated by the main process ID. It will cause the process to restart and re-read its configuration files. Therefore, this will apply changes without fully stopping the service.
 - **Restart**: Configures whether the service shall be restarted when the service process exits, is killed, or a timeout is reached. The `always` value means the service will be restarted regardless of whether it exited cleanly or not.
 - **RestartSec**: This option configures the time to sleep before restarting a service. The value `5` means the service will wait for 5 seconds before it restarts. It is a common default value and a balance between trying to restart the service quickly after a failure and not restarting it so rapidly that you could exacerbate problems.
-- **StandardOutput**: Logfile where output from the Blackbox Exporter will be logged.
-- **StandardError**: Logfile where errors from the Blackbox Exporter will be logged.
 - **SyslogIdentifier**: Sets the program name used when messages are logged to the system log.
-- **ProtectSystem**: Protection rules to specify where the service can write files to the disk. If set to `full` it will limit the areas of the file system that the Exporter can write outside of his regular application folder. This works best as we are just using it for logging.
-- **NoNewPrivileges**: Prevent the Prometheus service and its children from gaining new service privileges on its own.
-- **PrivateTmp**: Set to allow the service to generate a private `/tmp` directory that other processes can't access.
 - **WantedBy**: This option creates a small dependency and makes the service get started at boot time. If we input `multi-user.target` we can specify that the service will start when the system is set up for multiple users. In our case, every Exporter service will have its own user, kinda fitting the description.
-
-#### Logging
-
-By default, the service will write journal logs into the `/var/log/journal/` folder using the `journald` service. But you can also configure it to use system logs that are written into the `/var/log/syslog` folder by the `syslog` process. Here is a quick rundown:
-
-- `journald`: The logs are structured and include metadata about each log entry, which can make them easier to filter and analyze, but harder to read our bugfix. The service includes rate limiting and log rotation by default, which can help keep log sizes small. It also stores logs in a binary format, which can be more space-efficient and faster to process than text-based logs
-- `syslog`: System logs are text-based logs, which is easier to read, bugfix, and process with traditional command-line tools. It also has a network protocol, so it could send logs to remote servers, if thats something you need.
-
-I will keep the default journald for now. Therefore, the content of the Prometheus service configuration should look like the one below. Make sure that you change the `User` property if you've previously changed the name. Feel free to make any adjustments that better suite your environment.
 
 ```text
 [Unit]
@@ -331,12 +365,7 @@ ExecStart=/usr/local/bin/prometheus \
     --web.console.libraries=/etc/prometheus/console_libraries
 ExecReload=/bin/kill -HUP $MAINPIDRestart=always
 RestartSec=5
-StandardOutput=journald
-StandardError=journald
-SyslogIdentifier=blackbox_exporter
-ProtectSystem=full
-NoNewPrivileges=true
-PrivateTmp=true
+SyslogIdentifier=prometheus
 
 [Install]
 WantedBy=multi-user.target
@@ -344,7 +373,7 @@ WantedBy=multi-user.target
 
 > Be cautious: When creating new rules or modifying existing ones, it's essential to follow the correct syntax and structure to ensure that the Prometheus functions properly and provides the desired level of security. Verify that you do not use spaces between properties and their values.
 
-### 7.5.8 Start the Prometheus Service
+### 7.5.7 Start the Prometheus Service
 
 First we need to reload the system manager configuration. It is used when making changes to service configuration files or create new service files, ensuring that systemd is aware of the changes like before.
 
@@ -364,6 +393,12 @@ To enable the Prometheus service to start automatically when the system boots we
 sudo systemctl enable prometheus
 ```
 
+The output should look similar to this:
+
+```text
+Created symlink /etc/systemd/system/multi-user.target.wants/prometheus.service → /etc/systemd/system/prometheus.service.
+```
+
 To check if the Prometheus service is running and configured properly, we can fetch the current status from the system control. It will display whether it is active, enabled, or disabled, and show any recent log entries.
 
 ```sh
@@ -373,5 +408,17 @@ sudo systemctl status prometheus
 The output should look similar to this:
 
 ```text
-TODO:
+● prometheus.service - Prometheus
+     Loaded: loaded (/etc/systemd/system/prometheus.service; enabled; vendor preset: enabled)
+     Active: active (running) since [DATE] UTC; [TIME] ago
+       Docs: https://github.com/prometheus/prometheus
+   Main PID: 29468 (prometheus)
+      Tasks: 17 (limit: 38043)
+     Memory: 27.4M
+        CPU: 293ms
+     CGroup: /system.slice/prometheus.service
+             └─29468 /usr/local/bin/prometheus --config.file /etc/prometheus/prometheus.yaml --storage.ts>
+
+[DATE] [TIME] [USER] prometheus[29468]: ts=2023-05-18T09:43:54.539Z caller=head.go:536 level=info > ...
+...
 ```
