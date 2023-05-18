@@ -253,7 +253,7 @@ Type=simple
 ExecStart=/usr/local/bin/json_exporter ----config.file /etc/json_exporter/json_exporter.yaml
 Restart=always
 RestartSec=5
-SyslogIdentifier=node_exporter
+SyslogIdentifier=json_exporter
 
 [Install]
 WantedBy=multi-user.target
