@@ -148,16 +148,6 @@ After extraction we can copy the exporter binaries to the system's path so they 
 sudo cp json_exporter /usr/local/bin/
 ```
 
-#### Set JSON Exporter Permissionsets
-
-Now we can change the owner of the JSON Exporter service to the one that we created especially for this purpose:
-
-Like previously explained in the [Node Exporter](./02-node-exporter.md) section of the guide, we can set both, the user and group to the specified user of the service.
-
-```sh
-sudo chown json-exporter-worker:json-exporter-worker /usr/local/bin/json_exporter
-```
-
 #### Cleaning up Install Files
 
 Move back into the home directory:
@@ -212,7 +202,9 @@ modules:
 
 Those properties will later on be used within the Grafana Dashboard to fetch the token prices and build metrics based on our validator service.
 
-Save and exit the file. As a final step, we give the exporter worker permissions to this configuration folder and the config file:
+#### Set JSON Exporter Permissionsets
+
+Like previously explained in the [Node Exporter](./02-node-exporter.md) section of the guide, we can set both, the user and group to the specified user of the service. Save and exit the file, then give the exporter worker permissions to this configuration folder and the config file:
 
 ```sh
 sudo chown -R json-exporter-worker:json-exporter-worker /etc/json_exporter/
@@ -234,26 +226,51 @@ The configuration file is split between multiple sections: `[Unit]`, `[Service]`
 
 - **Description**: Provides a concise but meaningful explanation of the service used in the configuration
 - **Documentation**: Provides a URL where more information to the program can be found
+- **After**: Ensures that the service is started after a specific service, in this case, that the network has been set up, as we will need a network connection for this exporter to succeed.
 - **User**: Specifies under which user the service will run. In this case, it will be `json-exporter-worker`.
 - **Type**: This option configures the process start-up type for this service unit. The `simple` value means the exec command configured will be the main process of the service.
 - **ExecStart**: Specifies the command to run when the service starts. In this case, it's `/usr/local/bin/json_exporter` as program folder of the JSON Exporter. We will also start it with our previously set up external data config file by passing it through the service using the `--config.file` flag.
 - **Restart**: Configures whether the service shall be restarted when the service process exits, is killed, or a timeout is reached. The `always` value means the service will be restarted regardless of whether it exited cleanly or not.
 - **RestartSec**: This option configures the time to sleep before restarting a service. The value `5` means the service will wait for 5 seconds before it restarts. It is a common default value and a balance between trying to restart the service quickly after a failure and not restarting it so rapidly that you could exacerbate problems.
 - **SyslogIdentifier**: Sets the program name used when messages are logged to the system log.
+- **StandardOutput**: Logfile where output from the JSON Exporter will be logged.
+- **StandardError**: Logfile where errors from the JSON Exporter will be logged.
+- **ProtectSystem**: Protection rules to specify where the service can write files to the disk. If set to `full` it will limit the areas of the file system that the Exporter can write outside of his regular application folder. This works best as we are just using it for logging.
+- **NoNewPrivileges**: Prevent the JSON Exporter service and its children from gaining new service privileges on its own.
+- **PrivateTmp**: Set to allow the service to generate a private `/tmp` directory that other processes can't access.
 - **WantedBy**: This option creates a small dependency and makes the service get started at boot time. If we input `multi-user.target` we can specify that the service will start when the system is set up for multiple users. In our case, every Exporter service will have its own user, kinda fitting the description.
+
+#### JSON Exporter Logging
+
+By default, the service will write journal logs into the `/var/log/journal/` folder using the `journal` service. But you can also configure it to use system logs that are written into the `/var/log/syslog` folder by the `syslog` process. Here is a quick rundown:
+
+- `journal`: The logs are structured and include metadata about each log entry, which can make them easier to filter and analyze, but harder to read our bugfix. The service includes rate limiting and log rotation by default, which can help keep log sizes small. It also stores logs in a binary format, which can be more space-efficient and faster to process than text-based logs
+- `syslog`: System logs are text-based logs, which is easier to read, bugfix, and process with traditional command-line tools. It also has a network protocol, so it could send logs to remote servers, if thats something you need.
+
+I will keep the default journald for now. Therefore, the content of the Node Exporter service configuration should look like the one below.
+
+#### Process Ownership
+
+Make sure that you change the `User` and `Group` property if you've previously changed the name, as it will otherwise fall back to `root` and could cause security risks. This is our final configuration file:
 
 ```text
 [Unit]
 Description=JSON Exporter
 Documentation=https://github.com/prometheus-community/json_exporter
+After=network.target
 
 [Service]
 User=json-exporter-worker
 Type=simple
-ExecStart=/usr/local/bin/json_exporter ----config.file /etc/json_exporter/json_exporter.yaml
+ExecStart=/usr/local/bin/json_exporter --config.file /etc/json_exporter/json_exporter.yaml
 Restart=always
 RestartSec=5
 SyslogIdentifier=json_exporter
+StandardOutput=journal
+StandardError=journal
+ProtectSystem=full
+NoNewPrivileges=true
+PrivateTmp=true
 
 [Install]
 WantedBy=multi-user.target
@@ -297,15 +314,57 @@ The output should look similar to this:
 
 ```text
 ● json_exporter.service - JSON Exporter
-     Loaded: loaded (/etc/systemd/system/json_exporter.service; enabled; >
-     Active: activating (auto-restart) (Result: exit-code) since Thu 2023>
+     Loaded: loaded (/etc/systemd/system/json_exporter.service; enabled; vendor preset: enab>
+     Active: active (running) since [DATE] UTC; [TIME] ago
        Docs: https://github.com/prometheus-community/json_exporter
-    Process: 25408 ExecStart=/usr/local/bin/json_exporter ----config.file>
-   Main PID: 25408 (code=exited, status=1/FAILURE)
-        CPU: 8ms
+   Main PID: 88174 (json_exporter)
+      Tasks: 14 (limit: 38043)
+     Memory: 7.6M
+        CPU: 139ms
+     CGroup: /system.slice/json_exporter.service
+             └─88174 /usr/local/bin/json_exporter --config.file /etc/json_exporter/json_expo>
+
+[DATE] [TIME] [USER] json_exporter[88174]: net/http.HandlerFunc.ServeHTTP(0xc00002408>...
 ```
 
-### 7.3.7 Optional User Removal
+### 7.3.7 Maintenace
+
+Proper maintenance ensures that all the components are working as intended, can be updated on the fly and that software can be kept up-to-date and secure. Its also important identifying and fixing errors quickly.
+
+#### Logging
+
+If `journal` is your logging tool, you can access the full logs with the journal control tool
+
+- `-f`: Logging in follow mode displays the most recent journal entries and then updates in real time as new entries are added.
+- `-u`: In unit mode, it filters the log to show only entries for the specified systemd service, this time node_exporter
+
+```sh
+sudo journalctl -f -u json_exporter
+```
+
+#### Restarting
+
+If you did any changes to configuration files, reload the system deamon:
+
+```sh
+sudo systemctl daemon-reload
+```
+
+Then, restart the service using the system control:
+
+```sh
+sudo systemctl restart json_exporter
+```
+
+#### Stopping
+
+You can stop the service using the system control:
+
+```sh
+sudo systemctl stop json_exporter
+```
+
+### 7.3.8 Optional User Removal
 
 If you ever want to remove the user or something went wrong do the following steps:
 
@@ -326,3 +385,41 @@ sudo delgroup json-exporter-worker
 ```
 
 Afterwards, you can redo the JSON Exporter guide and either set up a new user or remove the `User` property from the configuration in `7.3.5`. By default, the process will run as `root`. Also make sure to go through every step in `7.3.6` once again.
+
+### 7.3.9 Optional Software Removal
+
+If you want to remove the JSON exporter tool, stop the running service:
+
+```sh
+sudo systemctl stop json_exporter
+```
+
+Disable the service:
+
+```sh
+sudo systemctl disable json_exporter
+```
+
+Remove the service file:
+
+```sh
+sudo rm /etc/systemd/system/json_exporter.service
+```
+
+Reload the system service deamon to get the service file change:
+
+```sh
+sudo systemctl daemon-reload
+```
+
+Then continue deleting the configuration file folder
+
+```sh
+sudo rm -rf /etc/json_exporter/
+```
+
+In the last step, remove the unlisted executable itself:
+
+```sh
+sudo rm /usr/local/bin/json_exporter
+```
