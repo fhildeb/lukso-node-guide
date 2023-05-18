@@ -247,8 +247,6 @@ By default, the service will write journal logs into the `/var/log/journal/` fol
 - `journal`: The logs are structured and include metadata about each log entry, which can make them easier to filter and analyze, but harder to read our bugfix. The service includes rate limiting and log rotation by default, which can help keep log sizes small. It also stores logs in a binary format, which can be more space-efficient and faster to process than text-based logs
 - `syslog`: System logs are text-based logs, which is easier to read, bugfix, and process with traditional command-line tools. It also has a network protocol, so it could send logs to remote servers, if thats something you need.
 
-I will keep the default journald for now. Therefore, the content of the Node Exporter service configuration should look like the one below.
-
 #### Process Ownership
 
 Make sure that you change the `User` and `Group` property if you've previously changed the name, as it will otherwise fall back to `root` and could cause security risks. This is our final configuration file:
@@ -415,11 +413,11 @@ sudo systemctl daemon-reload
 Then continue deleting the configuration file folder
 
 ```sh
-sudo rm -rf /etc/json_exporter/
+sudo rm -rf /etc/json_exporter
 ```
 
 In the last step, remove the unlisted executable itself:
 
 ```sh
-sudo rm /usr/local/bin/json_exporter
+sudo rm -rf /usr/local/bin/json_exporter
 ```
