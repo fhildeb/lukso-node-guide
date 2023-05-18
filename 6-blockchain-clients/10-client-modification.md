@@ -1,4 +1,4 @@
-## 6.9 Client Modifications
+## 6.10 Client Modifications
 
 There is a whole suite of flags that can be added to the clients while starting the service. By using the flags `--geth-[COMMAND]`, `--prysm-[COMMAND]`, `--validator-[COMMAND]`, `--erigon-[COMMAND]`, or `--lighthouse-[COMMAND]` you can pass through any available flag of the underlying client.
 
@@ -9,7 +9,7 @@ Have a look at their specifications if you like:
 - [Lighthouse Parameters](https://lighthouse-book.sigmaprime.io/advanced-datadir.html)
 - [Erigon Parameters](https://github.com/ledgerwatch/erigon)
 
-### 6.9.1 Changing your Node's Name
+### 6.10.1 Changing your Node's Name
 
 You can change your node's name to change the appearence to other nodes in the network or on stats pages, it doesn't affect the node's operation or performance.
 
@@ -65,7 +65,7 @@ If you are running on Erigon, enter the following line at the end of the config:
 
 Make sure to adjust `<your-node-name>` to your actual name. Also be careful when editing your config files. Make sure you are not deleting anything and that there are spaces in front and behind the `=` symbol.
 
-### 6.9.2 Setting the Graffiti
+### 6.10.2 Setting the Graffiti
 
 The graffiti is a term that refers to a customizable field that validators can use when they propose a new block. This field allows validators to inscribe a short message up to 32 bytes into the metadata of the block. These messages are permanently stored on the blockchain and can be publicly viewed.
 
@@ -112,7 +112,7 @@ graffiti: '<your-graffiti>'
 
 Make sure to adjust `<your-graffiti>` to your actual graffiti. Also be careful when editing your config files. Make sure you are not deleting anything.
 
-### 6.9.3 IP Settings
+### 6.10.3 IP Settings
 
 Usually, there seem to be issues with finding peers. Check if you have issues on your side:
 
