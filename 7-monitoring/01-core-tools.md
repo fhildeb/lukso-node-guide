@@ -53,6 +53,12 @@ Opening the Prometheus port allows access to the service's metrics in the web br
 
 > Opening these ports allows access to them if you personal is connected to the local network. For external access, you would need advanced configurations on your router.
 
+Log into your node machine, if you are not signed in already.
+
+```sh
+ssh <ssh-device-alias>
+```
+
 Opening Prometheus Port:
 
 ```sh
@@ -74,22 +80,22 @@ The output for Geth and Prysm should look similar to the one underneath. Please 
 ```text
 Status: active
 
-To                               Action      From
---                               ------      ----
-<prefered-ssh-port>/tcp          ALLOW       Anywhere
-3000/tcp                         ALLOW       Anywhere
-9090/tcp                         ALLOW       Anywhere
-30303/tcp                        ALLOW       Anywhere
-30303/udp                        ALLOW       Anywhere
-13000/tcp                        ALLOW       Anywhere
-12000/udp                        ALLOW       Anywhere
-<prefered-ssh-port>/tcp (v6)     ALLOW       Anywhere (v6)
-3000/tcp                         ALLOW       Anywhere (v6)
-9090/tcp                         ALLOW       Anywhere (v6)
-30303/tcp (v6)                   ALLOW       Anywhere (v6)
-30303/udp (v6)                   ALLOW       Anywhere (v6)
-13000/tcp (v6)                   ALLOW       Anywhere (v6)
-12000/udp (v6)                   ALLOW       Anywhere (v6)
+To                         Action      From
+--                         ------      ----
+62222/tcp                  ALLOW       Anywhere
+30303/tcp                  ALLOW       Anywhere
+30303/udp                  ALLOW       Anywhere
+13000/tcp                  ALLOW       Anywhere
+12000/udp                  ALLOW       Anywhere
+9090/tcp                   ALLOW       Anywhere
+3000/tcp                   ALLOW       Anywhere
+62222/tcp (v6)             ALLOW       Anywhere (v6)
+30303/tcp (v6)             ALLOW       Anywhere (v6)
+30303/udp (v6)             ALLOW       Anywhere (v6)
+13000/tcp (v6)             ALLOW       Anywhere (v6)
+12000/udp (v6)             ALLOW       Anywhere (v6)
+9090/tcp  (v6)             ALLOW       Anywhere (v6)
+3000/tcp  (v6)             ALLOW       Anywhere (v6)
 ```
 
 ### 7.1.4 Installing Core Tools
@@ -102,13 +108,7 @@ Effective node monitoring is essential for maintaining a reliable and secure nod
 - **apt-transport-https**: Service that allows the package management utility apt to retrieve files over the https protocol. Once it's installed, it allows APT to retrieve packages from HTTPS URLs using the `deb` keyword.
 - **software-properties-common**: Software package that provides some useful tools for adding and managing software repositories. The most common tool it offers is the `add-apt-repository` command to add package archivesto the node.
 
-Log into your node machine, if you are not signed in already.
-
-```sh
-ssh <ssh-device-alias>
-```
-
-Then continue with installing the following six tools that we will need to set up Prometheus, Grafana, and all the Exporters:
+Install the following six tools that we will need to set up Prometheus, Grafana, and all the Exporters:
 
 ```sh
 sudo apt install wget make git apt-transport-https software-properties-common
