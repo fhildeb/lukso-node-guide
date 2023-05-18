@@ -206,7 +206,7 @@ May 18 07:51:17 turtle-node node_exporter[22812]: ts=2023-05-18T07:51:17.> ...
 ...
 ```
 
-### 7.2.5 Optional Remove User
+### 7.2.5 Optional User Removal
 
 If you ever want to remove the user or something went wrong do the following steps:
 
@@ -216,7 +216,7 @@ Change the owner back to root:
 sudo chown root:root /usr/local/bin/node_exporter
 ```
 
-Remove the user:
+Remove the user and all the files, so there are no orphant data blobs on your system:
 
 ```sh
 sudo deluser --remove-all-files node-exporter-worker
@@ -226,4 +226,4 @@ sudo deluser --remove-all-files node-exporter-worker
 sudo delgroup node-exporter-worker
 ```
 
-Afterwards, you can redo the the Node Exporter guide and either set up a new user or remove the `User` property from the configuration in `7.2.3`. By default, the process will run as `root`. Also make sure to go through every step in `7.2.4` once again.
+Afterwards, you can redo the Node Exporter guide and either set up a new user or remove the `User` property from the configuration in `7.2.3`. By default, the process will run as `root`. Also make sure to go through every step in `7.2.4` once again.

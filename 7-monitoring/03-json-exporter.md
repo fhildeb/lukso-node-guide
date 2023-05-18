@@ -308,3 +308,25 @@ The output should look similar to this:
    Main PID: 25408 (code=exited, status=1/FAILURE)
         CPU: 8ms
 ```
+
+### 7.3.7 Optional User Removal
+
+If you ever want to remove the user or something went wrong do the following steps:
+
+Change the owner back to root:
+
+```sh
+sudo -R chown root:root /etc/json_exporter/
+```
+
+Remove the user and all the files, so there are no orphant data blobs on your system:
+
+```sh
+sudo deluser --remove-all-files json-exporter-worker
+```
+
+```sh
+sudo delgroup json-exporter-worker
+```
+
+Afterwards, you can redo the JSON Exporter guide and either set up a new user or remove the `User` property from the configuration in `7.3.5`. By default, the process will run as `root`. Also make sure to go through every step in `7.3.6` once again.
