@@ -734,7 +734,7 @@
                 }
               ]
             },
-            "unit": "currencyUSD"
+            "unit": "currencyEUR"
           },
           "overrides": []
         },
@@ -837,7 +837,7 @@
                 }
               ]
             },
-            "unit": "currencyUSD"
+            "unit": "currencyEUR"
           },
           "overrides": []
         },
@@ -936,7 +936,7 @@
                 }
               ]
             },
-            "unit": "currencyUSD"
+            "unit": "currencyEUR"
           },
           "overrides": []
         },
