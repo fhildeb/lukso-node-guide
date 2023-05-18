@@ -234,18 +234,12 @@ The configuration file is split between multiple sections: `[Unit]`, `[Service]`
 
 - **Description**: Provides a concise but meaningful explanation of the service used in the configuration
 - **Documentation**: Provides a URL where more information to the program can be found
-- **After**: Ensures that the service is started after the network has been set up.
 - **User**: Specifies under which user the service will run. In this case, it will be `json-exporter-worker`.
 - **Type**: This option configures the process start-up type for this service unit. The `simple` value means the exec command configured will be the main process of the service.
 - **ExecStart**: Specifies the command to run when the service starts. In this case, it's `/usr/local/bin/json_exporter` as program folder of the JSON Exporter. We will also start it with our previously set up external data config file by passing it through the service using the `--config.file` flag.
 - **Restart**: Configures whether the service shall be restarted when the service process exits, is killed, or a timeout is reached. The `always` value means the service will be restarted regardless of whether it exited cleanly or not.
 - **RestartSec**: This option configures the time to sleep before restarting a service. The value `5` means the service will wait for 5 seconds before it restarts. It is a common default value and a balance between trying to restart the service quickly after a failure and not restarting it so rapidly that you could exacerbate problems.
-- **StandardOutput**: Logfile where output from the JSON Exporter will be logged.
-- **StandardError**: Logfile where errors from the JSON Exporter will be logged.
 - **SyslogIdentifier**: Sets the program name used when messages are logged to the system log.
-- **ProtectSystem**: Protection rules to specify where the service can write files to the disk. If set to `full` it will limit the areas of the file system that the Exporter can write outside of his regular application folder. This works best as we are just using it for logging.
-- **NoNewPrivileges**: Prevent the JSON Exporter service and its children from gaining new service privileges on its own.
-- **PrivateTmp**: Set to allow the service to generate a private `/tmp` directory that other processes can't access.
 - **WantedBy**: This option creates a small dependency and makes the service get started at boot time. If we input `multi-user.target` we can specify that the service will start when the system is set up for multiple users. In our case, every Exporter service will have its own user, kinda fitting the description.
 
 #### Logging
@@ -256,7 +250,6 @@ By default, the service will write journal logs into the `/var/log/journal/` fol
 [Unit]
 Description=JSON Exporter
 Documentation=https://github.com/prometheus-community/json_exporter
-After=network.target
 
 [Service]
 User=json-exporter-worker
@@ -264,12 +257,7 @@ Type=simple
 ExecStart=/usr/local/bin/json_exporter ----config.file /etc/json_exporter/json_exporter.yaml
 Restart=always
 RestartSec=5
-StandardOutput=journald
-StandardError=journald
 SyslogIdentifier=node_exporter
-ProtectSystem=full
-NoNewPrivileges=true
-PrivateTmp=true
 
 [Install]
 WantedBy=multi-user.target
@@ -297,6 +285,12 @@ To enable the JSON Exporter service to start automatically when the system boots
 sudo systemctl enable json_exporter
 ```
 
+The output should be the following:
+
+```text
+Created symlink /etc/systemd/system/multi-user.target.wants/json_exporter.service → /etc/systemd/system/json_exporter.service.
+```
+
 To check if the JSON Exporter service is running and configured properly, we can fetch the current status from the system control. It will display whether it is active, enabled, or disabled, and show any recent log entries.
 
 ```sh
@@ -306,5 +300,11 @@ sudo systemctl status json_exporter
 The output should look similar to this:
 
 ```text
-TODO:
+● json_exporter.service - JSON Exporter
+     Loaded: loaded (/etc/systemd/system/json_exporter.service; enabled; >
+     Active: activating (auto-restart) (Result: exit-code) since Thu 2023>
+       Docs: https://github.com/prometheus-community/json_exporter
+    Process: 25408 ExecStart=/usr/local/bin/json_exporter ----config.file>
+   Main PID: 25408 (code=exited, status=1/FAILURE)
+        CPU: 8ms
 ```
