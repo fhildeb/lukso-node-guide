@@ -260,7 +260,7 @@ If you want the LYX price showing up in a different currency than `EUR`, please 
     metrics_path: /probe
     static_configs:
     - targets:
-      - https://api.coingecko.com/api/v3/simple/price?ids=lukso-token&vs_currencies=eur
+      - https://api.coingecko.com/api/v3/simple/price?ids=lukso-token&vs_currencies=usd
     relabel_configs:
     - source_labels: [__address__]
       target_label: __param_target
