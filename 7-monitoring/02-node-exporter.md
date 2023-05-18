@@ -153,8 +153,8 @@ The configuration file is split between multiple sections: `[Unit]`, `[Service]`
 - **Restart**: Configures whether the service shall be restarted when the service process exits, is killed, or a timeout is reached. The `always` value means the service will be restarted regardless of whether it exited cleanly or not.
 - **RestartSec**: This option configures the time to sleep before restarting a service. The value `5` means the service will wait for 5 seconds before it restarts. It is a common default value and a balance between trying to restart the service quickly after a failure and not restarting it so rapidly that you could exacerbate problems.
 - **SyslogIdentifier**: Sets the program name used when messages are logged to the system log.
-- **StandardOutput**: Logfile where output from the node Exporter will be logged.
-- **StandardError**: Logfile where errors from the node Exporter will be logged.
+- **StandardOutput**: Logfile where output from the Node Exporter will be logged.
+- **StandardError**: Logfile where errors from the Node Exporter will be logged.
 - **ProtectSystem**: Protection rules to specify where the service can write files to the disk. If set to `full` it will limit the areas of the file system that the Exporter can write outside of his regular application folder. This works best as we are just using it for logging.
 - **NoNewPrivileges**: Prevent the Node Exporter service and its children from gaining new service privileges on its own.
 - **PrivateTmp**: Set to allow the service to generate a private `/tmp` directory that other processes can't access.
