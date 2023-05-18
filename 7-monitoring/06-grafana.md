@@ -34,16 +34,17 @@ Before downloading or installing anything, make sure you are in the home directo
 cd
 ```
 
-First we should download the GPG key for the Grafana repository and adds it to the list of trusted keys in apt to ensure that the packages you download from the Grafana repository are authentic. We will add the key to the system's shared keyring folder.
+First we should download the GPG key for the Grafana repository and adds it to the list of trusted keys in apt to ensure that the packages you download from the Grafana repository are authentic. We will add the key to the system's shared keyring folder. We use `curl` for getting or sending data using URL syntax and `gpg` to encrypt the key.
 
-- `-q`: The flag specifies that the output of the command does not show any status and progress as we want to add the exact hey using the `apt-key` afterwards
-- `-O`: The output flag assures that the fetched key is output to the terminal
-- `|`: The pipe is used to use the output of the first command as an input for the second command, affectively adding the key to the trusted software keys using the `apt-key add` command.
-- `gpg --dearmor`: Converts the key from the armored PGP format to the binary format that APT requires.
-- `tee`: Writes the output to a file in the `/usr/share/keyrings` directory that is used as shared keyring folder.
+- `-fsS`: The `f` option tells curl to fail silently on server errors as well as hide regular progress outputs with `s`. It is mainly done to better enable scripts etc to better deal with failed attempts as we are using a pipe.
+- `-S`: The `S` option is used with the silent mode and will show an error message if it fails to cancel the pipe action.
+- `-L`: If the server reports that the requested page has moved to a different location, this option will make curl redo the request on the new updated URL location of the key.
+- `pipe` The `|` specifies a pipe that takes the output from the first command and uses it as input to the second command.
+- `--dearmor`: Converts the ASCII armored key from the left side of the pipe into a binary format GPG can use for the package list.
+- `-o`: Specifies where the output will be saved. In this case, it's writing to the trusted package list `/etc/apt/trusted.gpg.d`
 
 ```sh
-wget -q -O - https://packages.grafana.com/gpg.key | gpg --dearmor | sudo tee /usr/share/keyrings/grafana-archive-keyring.gpg >/dev/null
+curl -fsSL https://packages.grafana.com/gpg.key|sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/grafana.gpg
 ```
 
 You can verify the added key with the `gpg` command.
@@ -55,27 +56,27 @@ You can verify the added key with the `gpg` command.
 Continue using this:
 
 ```sh
-gpg --no-default-keyring --keyring /usr/share/keyrings/grafana-archive-keyring.gpg --list-keys
+gpg --no-default-keyring --keyring /etc/apt/trusted.gpg.d/grafana.gpg --list-keys
 ```
 
 You will find the enty of the `Grafana Labs` key similar to this one:
 
 ```text
-----------------------------------------------------------------
+/etc/apt/trusted.gpg.d/grafana.gpg
+----------------------------------
 pub   rsa3072 2023-01-06 [SC] [expires: DATE]
       0E22EB88E39E12277A7760AE9E439B102CF3C0C6
 uid           [ unknown] Grafana Labs <engineering@grafana.com>
 sub   rsa3072 2023-01-06 [E] [expires: DATE]
-----------------------------------------------------------------
 ```
 
-We can then add the Grafana repository to your list of repositories, allowing apt to install packages from it using the previous installed `software-properties-common` service that comes with the tool `add-apt-repository`. Its the standard way to add additional repositories to your sources in Ubuntu and many other Debian-based systems. We will have to add the previously added key from the keyring to it. Same as previously, we use a `pipe` and `tee` to write the outputs into the package list.
+We can then add the Grafana repository to your list of repositories, allowing apt to install packages from it using the previous installed `software-properties-common` service that comes with the tool `add-apt-repository`. Its the standard way to add additional repositories to your sources in Ubuntu and many other Debian-based systems.
 
 ```sh
-echo "deb [signed-by=/usr/share/keyrings/grafana-archive-keyring.gpg] https://packages.grafana.com/oss/deb stable main" | sudo tee /etc/apt/sources.list.d/grafana.list
+sudo add-apt-repository "deb https://packages.grafana.com/oss/deb stable main"
 ```
 
-Afterwards, we can update the package list and download the official [Grafana](https://grafana.com/) software. It will check the GPG key underneath.
+Press `Enter` to continue with fetching the packages. Afterwards, we can update the package list and download the official [Grafana](https://grafana.com/) software. It will check the GPG key underneath.
 
 ```sh
 sudo apt update
@@ -84,7 +85,7 @@ sudo apt update
 Now we can download the latest Grafana build:
 
 ```sh
-sudo apt install grafana-enterprise
+sudo apt install grafana
 ```
 
 Whenever you update your ubuntu packages using APT, it will automatically fetch the latest Grafana updates.

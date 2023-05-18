@@ -107,9 +107,10 @@ Effective node monitoring is essential for maintaining a reliable and secure nod
 - **git**: Distributed version control system for tracking changes in source code during software development, allowing developers to collaborate, clone and manage software projects effectively. It will help us downloading code repositories.
 - **apt-transport-https**: Service that allows the package management utility apt to retrieve files over the https protocol. Once it's installed, it allows APT to retrieve packages from HTTPS URLs using the `deb` keyword.
 - **software-properties-common**: Software package that provides some useful tools for adding and managing software repositories. The most common tool it offers is the `add-apt-repository` command to add package archivesto the node.
+- **gnupg2**: OpenPGP standard for encrypting and signing data and communication. It is used to receive and install signed software packages.
 
 Install the following six tools that we will need to set up Prometheus, Grafana, and all the Exporters:
 
 ```sh
-sudo apt install wget make git apt-transport-https software-properties-common
+sudo apt install wget make git apt-transport-https software-properties-common gnupg2
 ```
