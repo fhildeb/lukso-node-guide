@@ -148,6 +148,12 @@ After extraction we can copy the exporter binaries to the system's path so they 
 sudo cp json_exporter /usr/local/bin/
 ```
 
+Let's also make sure the user can execute the file by changing the permissions as described in the [Node Exporter](./02-node-exporter.md) section:
+
+```sh
+sudo chmod 755 /usr/local/bin/json_exporter
+```
+
 #### Cleaning up Install Files
 
 Move back into the home directory:
@@ -228,6 +234,7 @@ The configuration file is split between multiple sections: `[Unit]`, `[Service]`
 - **Documentation**: Provides a URL where more information to the program can be found
 - **After**: Ensures that the service is started after a specific service, in this case, that the network has been set up, as we will need a network connection for this exporter to succeed.
 - **User**: Specifies under which user the service will run. In this case, it will be `json-exporter-worker`.
+- **Group**: Specifies under which user group the service will run. In this case, it will be `json-exporter-worker`.
 - **Type**: This option configures the process start-up type for this service unit. The `simple` value means the exec command configured will be the main process of the service.
 - **ExecStart**: Specifies the command to run when the service starts. In this case, it's `/usr/local/bin/json_exporter` as program folder of the JSON Exporter. We will also start it with our previously set up external data config file by passing it through the service using the `--config.file` flag.
 - **Restart**: Configures whether the service shall be restarted when the service process exits, is killed, or a timeout is reached. The `always` value means the service will be restarted regardless of whether it exited cleanly or not.
@@ -259,6 +266,7 @@ After=network.target
 
 [Service]
 User=json-exporter-worker
+Group=json-exporter-worker
 Type=simple
 ExecStart=/usr/local/bin/json_exporter --config.file /etc/json_exporter/json_exporter.yaml
 Restart=always

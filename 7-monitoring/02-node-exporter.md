@@ -102,6 +102,21 @@ In our case, we are setting both the user owner and the group owner to the speci
 sudo chown node-exporter-worker:node-exporter-worker /usr/local/bin/node_exporter
 ```
 
+Not only do we need to change the owner this time, but we also need to assure the right access mode of the executable. We need to allow the owner to read, write, and execute the file, while the group and all other services can only read from it.
+
+We can use the change mode tool `chmod` from Ubuntu. The permissions you can input are represented in octal, and each digit is the sum of its component bits:
+
+- 4 stands for "read",
+- 2 stands for "write", and
+- 1 stands for "execute".
+
+We can add the values together in order to combine functionality. The oder in which those access rules are written down for a file are `user`, `group`, and `others`. Because we set the user before, the user `blackbox-exporter-worker` will have full access rights.
+In our case the outcome will be `7 (user), 5 (group), 5 (others)`:
+
+```sh
+sudo chmod 755 /usr/local/bin/node_exporter
+```
+
 #### Cleaning up Install Files
 
 After we copied the executable file into the system's program path and gave it the appropriate user rights, we can remove the extracted folder.
@@ -132,6 +147,7 @@ The configuration file is split between multiple sections: `[Unit]`, `[Service]`
 - **Documentation**: Provides a URL where more information to the program can be found
 - **After**: Ensures that the service is started after the network has been set up.
 - **User**: Specifies under which user the service will run. In this case, it will be `node-exporter-worker`.
+- **Group**: Specifies under which user group the service will run. In this case, it will be `node-exporter-worker`.
 - **Type**: This option configures the process start-up type for this service unit. The `simple` value means the exec command configured will be the main process of the service.
 - **ExecStart**: Specifies the command to run when the service starts. In this case, it's `/usr/local/bin/node_exporter` as program folder of the node Exporter.
 - **Restart**: Configures whether the service shall be restarted when the service process exits, is killed, or a timeout is reached. The `always` value means the service will be restarted regardless of whether it exited cleanly or not.
