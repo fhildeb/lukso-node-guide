@@ -14,6 +14,21 @@ Here's how it works:
 - **Zero Configuration**: Tailscale takes care of configuring the IP addresses and managing the routing tables. This means you can create a secure, peer-to-peer network without needing to manually configure each device.
 - **Central Control Panel**: You can monitor and manage your network from a centralized control panel, allowing you to see what devices are connected, manage access rights, and more.
 
+### Virtual Private Networks
+
+A VPN, is a technology that creates a secure and encrypted connection over a less secure network, such as the internet. VPNs are used to protect your internet traffic from snooping, interference, and censorship but can also help building secure connections between devices or institutions.
+
+VPNs work by establishing a secure "tunnel" through which your data passes back and forth between your device and the VPN server. This server can be located anywhere in the world. All data passing through the tunnel is encrypted to ensure it remains confidential, even if intercepted.
+
+### WireGuard
+
+WireGuard is an open-source VPN protocol designed for simplicity and speed using state-of-the-art cryptography. Some key advantages of the WireGuard protocol over others include:
+
+- **Simplicity**: WireGuard aims to be as easy to configure and deploy as SSH. Its codebase is much smaller than that of most other VPN protocols, making it easier to audit for security vulnerabilities.
+- **Speed**: WireGuard has been designed to offer high speeds. It uses modern, high-speed cryptographic primitives.
+- **Security**: WireGuard uses modern and secure cryptographic algorithms. It also includes a number of features to enhance security, such as perfect forward secrecy, which ensures that past communication cannot be decrypted, even if a private key is compromised in the future.
+- **Compatibility**: WireGuard can be used on various operating systems, including Windows, MacOS, Linux, iOS, and Android.
+
 ## Setup
 
 Visit [Tailscale](https://tailscale.com/) and register for the service. It is an free service for a limited amount of users and devices. After logging in with your favorite identity provider, you will be promted to connect your first two devices. Click on `Linux` to connect your node. On your node, install the Tailscale package using `curl`. The `-fsSL` options instruct curl to silently follow HTTP redirects, not output any content for error HTTP codes, but still display error messages if the operation fails. This is needed for the pipe, as the script gets executed right after it is fetched.
