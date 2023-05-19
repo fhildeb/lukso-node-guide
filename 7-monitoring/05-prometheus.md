@@ -175,11 +175,11 @@ Let's walk through each of the job we want to set up for Prometheus. Please note
 - **prometheus-job**: This job is for scraping metrics from the Prometheus server itself. It will scrape every `5` seconds from the address `127.0.0.1:9090`, which is the default address and port for a locally running Prometheus server as described within the [Monitoring Port](./01-core-tools.md) section of the guide.
 - **consensus-client-job**: This job scrapes metrics from a the consensus node running locally at the address `127.0.0.1:8080`. The scrape interval is set to `5` seconds.
 - **node-exporter-job**: The Node Exporter is a Prometheus exporter for hardware and OS metrics. This job scrapes metrics from the Node Exporter service running locally at the address `127.0.0.1:9100` every `5` seconds.
-- **validator-job**: This job is set to scrape metrics from the validator client running locally at `127.0.0.1:8081` every `5` seconds.
+- **validator-client-job**: This job is set to scrape metrics from the validator client running locally at `127.0.0.1:8081` every `5` seconds.
 - **google-ping-job**: This jobs uses the Blackbox Exporter to probe the Google DNS server at '8.8.8.8' using `ICMP` echo requests, also called pings. The metrics will be available at the `/probe` endpoint on the Blackbox Exporter, which is running locally at `127.0.0.1:9115`. The relabeling configurations are used to properly label these targets for Prometheus.
 - **cloudflare-ping-job**: This job uses the Blackbox Exporter to probe the Cloudflares DNS server at `1.1.1.1` using `ICMP` echo requests, also called pings. The metrics will be available at the `/probe` endpoint on the Blackbox Exporter, which is running locally at `127.0.0.1:9115`. The relabeling configurations are used to properly label these targets for Prometheus.
 - **json-exporter-job**: This job is for scraping metrics from the JSON Exporter running locally at `127.0.0.1:7979`. This service is used for converting JSON data into a format that Prometheus can scrape.
-- **lyx-price-job**: This job is set to scrape metrics LYX price information from the GoinGecko API using the JSON Exporter. The metrics will be available at the `/probe` endpoint on the JSON Exporter, which is running locally at `127.0.0.1:7979`. The relabeling configurations are used to properly label these targets for Prometheus.
+- **json**: This job is set to scrape metrics LYX price information from the GoinGecko API using the JSON Exporter. The metrics will be available at the `/probe` endpoint on the JSON Exporter, which is running locally at `127.0.0.1:7979`. The relabeling configurations are used to properly label these targets for Prometheus.
 
 The configuration file looks like the following. Its recommended to leave the job names like that so we can easily easily associate them with the corresponding services underneath.
 
@@ -237,7 +237,7 @@ scrape_configs:
     static_configs:
     - targets:
       - 127.0.0.1:7979
-  - job_name: 'lyx-price-job'
+  - job_name: 'json'
     metrics_path: /probe
     static_configs:
     - targets:
@@ -253,10 +253,10 @@ scrape_configs:
 
 > Be cautious: When creating new rules or modifying existing ones, it's essential to follow the correct syntax and structure to ensure that the Prometheus server functions properly.
 
-If you want the LYX price showing up in a different currency than `EUR`, please change the `vs_currencies` property of the taget URL for the `lyx-price-job`. For USD, it would look like the following:
+If you want the LYX price showing up in a different currency than `EUR`, please change the `vs_currencies` property of the taget URL for the `json`. For USD, it would look like the following:
 
 ```text
-  - job_name: 'lyx-price-job'
+  - job_name: 'json'
     metrics_path: /probe
     static_configs:
     - targets:

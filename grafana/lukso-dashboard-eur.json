@@ -719,7 +719,7 @@
       },
       {
         "datasource": "Prometheus",
-        "description": "Sum of all validator balances multiplied by the price of LYX in USD.",
+        "description": "Sum of all validator balances multiplied by the price of LYX in EUR.",
         "fieldConfig": {
           "defaults": {
             "decimals": 2,
@@ -779,7 +779,7 @@
         ],
         "timeFrom": null,
         "timeShift": null,
-        "title": "Total Validator Balance (USD)",
+        "title": "Total Validator Balance (EUR)",
         "transformations": [
           {
             "id": "calculateField",
@@ -804,7 +804,7 @@
       {
         "cacheTimeout": null,
         "datasource": null,
-        "description": "Total earnings in USD.",
+        "description": "Total earnings in EUR.",
         "fieldConfig": {
           "defaults": {
             "decimals": 2,
@@ -886,12 +886,12 @@
         ],
         "timeFrom": null,
         "timeShift": null,
-        "title": "Total Earnings (USD)",
+        "title": "Total Earnings (EUR)",
         "transformations": [
           {
             "id": "calculateField",
             "options": {
-              "alias": "Total Earnings (USD)",
+              "alias": "Total Earnings (EUR)",
               "binary": {
                 "left": "total_balance",
                 "operator": "*",
@@ -911,7 +911,7 @@
       {
         "cacheTimeout": null,
         "datasource": null,
-        "description": "Price of Lyx in USD.",
+        "description": "Price of Lyx in EUR.",
         "fieldConfig": {
           "defaults": {
             "decimals": 2,
@@ -979,12 +979,12 @@
         ],
         "timeFrom": null,
         "timeShift": null,
-        "title": "LYX Price (USD)",
+        "title": "LYX Price (EUR)",
         "transformations": [
           {
             "id": "calculateField",
             "options": {
-              "alias": "Total Earnings (USD)",
+              "alias": "Total Earnings (EUR)",
               "binary": {
                 "left": "total_balance",
                 "operator": "*",
