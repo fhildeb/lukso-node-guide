@@ -12,6 +12,7 @@ This section of the node guide covers a range of topics that provide the foundat
 8. [LUKSO CLI Node Setup](./08-cli-setup.md)
 9. [LUKSO CLI Validator Setup](./09-validator-setup.md)
 10. [Client Modifications: Name, Graffiti, Peers](./10-client-modification.md)
-11. [LUKSO Docker Setup](./11-docker-setup.md)
+11. [Peer Discovery](./11-peer-discovery.md)
+12. [LUKSO Docker Setup](./12-docker-setup.md)
 
 **Continue with Section 7: [Node Monitoring](/7-monitoring/)**

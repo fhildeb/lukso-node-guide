@@ -111,13 +111,3 @@ graffiti: '<your-graffiti>'
 ```
 
 Make sure to adjust `<your-graffiti>` to your actual graffiti. Also be careful when editing your config files. Make sure you are not deleting anything.
-
-### 6.10.3 IP Settings
-
-Usually, there seem to be issues with finding peers. Check if you have issues on your side:
-
-TODO:
-
-If you can not find enough inbound and outbound peers, continue with modifying your config files:
-
-TODO:
