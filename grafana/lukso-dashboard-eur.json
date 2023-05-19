@@ -240,7 +240,7 @@
         "pluginVersion": "8.2.3",
         "targets": [
           {
-            "expr": "sum(validator_balance{job=\"validator-job\"})",
+            "expr": "sum(validator_balance{job=\"validator-client-job\"})",
             "instant": true,
             "interval": "",
             "legendFormat": "vbal",
@@ -321,7 +321,7 @@
         "targets": [
           {
             "exemplar": true,
-            "expr": "sum(validator_balance{job=\"validator-job\"})-(count(validator_balance{job=\"validator-job\"} > 16 and validator_statuses{job=\"validator-job\"} == 3)*32)",
+            "expr": "sum(validator_balance{job=\"validator-client-job\"})-(count(validator_balance{job=\"validator-client-job\"} > 16 and validator_statuses{job=\"validator-client-job\"} == 3)*32)",
             "instant": true,
             "interval": "",
             "legendFormat": "",
@@ -401,7 +401,7 @@
         "pluginVersion": "8.2.3",
         "targets": [
           {
-            "expr": "(sum(validator_balance{job=\"validator-job\"}) - (count(validator_balance{job=\"validator-job\"} > 16 and validator_statuses{job=\"validator-job\"} == 3)*32))/(count(validator_balance{job=\"validator-job\"} > 16 and validator_statuses{job=\"validator-job\"} == 3)*32)  ",
+            "expr": "(sum(validator_balance{job=\"validator-client-job\"}) - (count(validator_balance{job=\"validator-client-job\"} > 16 and validator_statuses{job=\"validator-client-job\"} == 3)*32))/(count(validator_balance{job=\"validator-client-job\"} > 16 and validator_statuses{job=\"validator-client-job\"} == 3)*32)  ",
             "instant": true,
             "interval": "",
             "legendFormat": "",
@@ -769,7 +769,7 @@
             "refId": "A"
           },
           {
-            "expr": "sum(validator_balance{job=\"validator-job\"})",
+            "expr": "sum(validator_balance{job=\"validator-client-job\"})",
             "hide": false,
             "instant": true,
             "interval": "",
@@ -870,7 +870,7 @@
         "pluginVersion": "8.2.3",
         "targets": [
           {
-            "expr": "sum(validator_balance{job=\"validator-job\"})-(count(validator_balance{job=\"validator-job\"} > 16 and validator_statuses{job=\"validator-job\"} == 3)*32)",
+            "expr": "sum(validator_balance{job=\"validator-client-job\"})-(count(validator_balance{job=\"validator-client-job\"} > 16 and validator_statuses{job=\"validator-client-job\"} == 3)*32)",
             "instant": true,
             "interval": "",
             "legendFormat": "total_balance",
@@ -1434,7 +1434,7 @@
         "pluginVersion": "8.2.3",
         "targets": [
           {
-            "expr": "sum(validator_balance{job=\"validator-job\"}) - sum(validator_balance{job=\"validator-job\"} offset 1h != 0) - (32 * count(validator_balance{job=\"validator-job\"} > 16)) + (32 * count(validator_balance{job=\"validator-job\"} offset 1h > 16))",
+            "expr": "sum(validator_balance{job=\"validator-client-job\"}) - sum(validator_balance{job=\"validator-client-job\"} offset 1h != 0) - (32 * count(validator_balance{job=\"validator-client-job\"} > 16)) + (32 * count(validator_balance{job=\"validator-client-job\"} offset 1h > 16))",
             "instant": false,
             "interval": "",
             "intervalFactor": 3,
@@ -1515,7 +1515,7 @@
         "pluginVersion": "8.2.3",
         "targets": [
           {
-            "expr": "sum(validator_balance{job=\"validator-job\"}) - sum(validator_balance{job=\"validator-job\"} offset 1d != 0) - (32 * count(validator_balance{job=\"validator-job\"} > 16)) + (32 * count(validator_balance{job=\"validator-job\"} offset 1d > 16))",
+            "expr": "sum(validator_balance{job=\"validator-client-job\"}) - sum(validator_balance{job=\"validator-client-job\"} offset 1d != 0) - (32 * count(validator_balance{job=\"validator-client-job\"} > 16)) + (32 * count(validator_balance{job=\"validator-client-job\"} offset 1d > 16))",
             "instant": false,
             "interval": "",
             "legendFormat": "",
@@ -1595,7 +1595,7 @@
         "pluginVersion": "8.2.3",
         "targets": [
           {
-            "expr": "sum(validator_balance{job=\"validator-job\"}) - sum(validator_balance{job=\"validator-job\"} offset 7d != 0) - (32 * count(validator_balance{job=\"validator-job\"} > 16)) + (32 * count(validator_balance{job=\"validator-job\"} offset 7d > 16))",
+            "expr": "sum(validator_balance{job=\"validator-client-job\"}) - sum(validator_balance{job=\"validator-client-job\"} offset 7d != 0) - (32 * count(validator_balance{job=\"validator-client-job\"} > 16)) + (32 * count(validator_balance{job=\"validator-client-job\"} offset 7d > 16))",
             "instant": false,
             "interval": "",
             "legendFormat": "",
@@ -1675,7 +1675,7 @@
         "pluginVersion": "8.2.3",
         "targets": [
           {
-            "expr": "sum(validator_balance{job=\"validator-job\"}) - sum(validator_balance{job=\"validator-job\"} offset 30d != 0) - (32 * count(validator_balance{job=\"validator-job\"} > 16)) + (32 * count(validator_balance{job=\"validator-job\"} offset 30d > 16))",
+            "expr": "sum(validator_balance{job=\"validator-client-job\"}) - sum(validator_balance{job=\"validator-client-job\"} offset 30d != 0) - (32 * count(validator_balance{job=\"validator-client-job\"} > 16)) + (32 * count(validator_balance{job=\"validator-client-job\"} offset 30d > 16))",
             "instant": false,
             "interval": "",
             "legendFormat": "",
@@ -2020,7 +2020,7 @@
         "pluginVersion": "8.2.3",
         "targets": [
           {
-            "expr": "((sum(validator_balance{job=\"validator-job\"}) - sum(validator_balance{job=\"validator-job\"} offset 1h != 0) - (32 * count(validator_balance{job=\"validator-job\"} > 16)) +\t(32 * count(validator_balance{job=\"validator-job\"} offset 1h > 16)))/(32 * avg_over_time(count(validator_balance{job=\"validator-job\"} > 16)[1h:]))) * 365 * 24",
+            "expr": "((sum(validator_balance{job=\"validator-client-job\"}) - sum(validator_balance{job=\"validator-client-job\"} offset 1h != 0) - (32 * count(validator_balance{job=\"validator-client-job\"} > 16)) +\t(32 * count(validator_balance{job=\"validator-client-job\"} offset 1h > 16)))/(32 * avg_over_time(count(validator_balance{job=\"validator-client-job\"} > 16)[1h:]))) * 365 * 24",
             "hide": false,
             "interval": "",
             "legendFormat": "annualized hourly return",
@@ -2100,7 +2100,7 @@
         "pluginVersion": "8.2.3",
         "targets": [
           {
-            "expr": "((sum(validator_balance{job=\"validator-job\"}) - sum(validator_balance{job=\"validator-job\"} offset 1d != 0) - (32 * count(validator_balance{job=\"validator-job\"} > 16)) +\t(32 * count(validator_balance{job=\"validator-job\"} offset 1d > 16)))/(32 * avg_over_time(count(validator_balance{job=\"validator-job\"} > 16)[1d:]))) * 365",
+            "expr": "((sum(validator_balance{job=\"validator-client-job\"}) - sum(validator_balance{job=\"validator-client-job\"} offset 1d != 0) - (32 * count(validator_balance{job=\"validator-client-job\"} > 16)) +\t(32 * count(validator_balance{job=\"validator-client-job\"} offset 1d > 16)))/(32 * avg_over_time(count(validator_balance{job=\"validator-client-job\"} > 16)[1d:]))) * 365",
             "hide": false,
             "interval": "",
             "legendFormat": "annualized daily return",
@@ -2180,7 +2180,7 @@
         "pluginVersion": "8.2.3",
         "targets": [
           {
-            "expr": "((sum(validator_balance{job=\"validator-job\"}) - sum(validator_balance{job=\"validator-job\"} offset 7d != 0) - (32 * count(validator_balance{job=\"validator-job\"} > 16)) +\t(32 * count(validator_balance{job=\"validator-job\"} offset 7d > 16)))/(32 * avg_over_time(count(validator_balance{job=\"validator-job\"} > 16)[7d:]))) * (365/7)",
+            "expr": "((sum(validator_balance{job=\"validator-client-job\"}) - sum(validator_balance{job=\"validator-client-job\"} offset 7d != 0) - (32 * count(validator_balance{job=\"validator-client-job\"} > 16)) +\t(32 * count(validator_balance{job=\"validator-client-job\"} offset 7d > 16)))/(32 * avg_over_time(count(validator_balance{job=\"validator-client-job\"} > 16)[7d:]))) * (365/7)",
             "hide": false,
             "interval": "",
             "legendFormat": "annualized weekly return",
@@ -2260,7 +2260,7 @@
         "pluginVersion": "8.2.3",
         "targets": [
           {
-            "expr": "((sum(validator_balance{job=\"validator-job\"}) - sum(validator_balance{job=\"validator-job\"} offset 30d != 0) - (32 * count(validator_balance{job=\"validator-job\"} > 16)) +\t(32 * count(validator_balance{job=\"validator-job\"} offset 30d > 16)))/(32 * avg_over_time(count(validator_balance{job=\"validator-job\"} > 16)[30d:]))) * (365/30)",
+            "expr": "((sum(validator_balance{job=\"validator-client-job\"}) - sum(validator_balance{job=\"validator-client-job\"} offset 30d != 0) - (32 * count(validator_balance{job=\"validator-client-job\"} > 16)) +\t(32 * count(validator_balance{job=\"validator-client-job\"} offset 30d > 16)))/(32 * avg_over_time(count(validator_balance{job=\"validator-client-job\"} > 16)[30d:]))) * (365/30)",
             "hide": false,
             "interval": "",
             "legendFormat": "annualized monthly return",
@@ -2670,7 +2670,7 @@
         ],
         "targets": [
           {
-            "expr": "label_replace(max by(pubkey) (validator_statuses{job=\"validator-job\"}), \"pubkey_short\", \"$1\", \"pubkey\", \"(.{10}).*\")  ",
+            "expr": "label_replace(max by(pubkey) (validator_statuses{job=\"validator-client-job\"}), \"pubkey_short\", \"$1\", \"pubkey\", \"(.{10}).*\")  ",
             "format": "table",
             "instant": true,
             "interval": "",
@@ -2678,7 +2678,7 @@
             "refId": "J"
           },
           {
-            "expr": "label_replace(max by(pubkey) (validator_balance{job=\"validator-job\"}), \"pubkey_short\", \"$1\", \"pubkey\", \"(.{10}).*\") ",
+            "expr": "label_replace(max by(pubkey) (validator_balance{job=\"validator-client-job\"}), \"pubkey_short\", \"$1\", \"pubkey\", \"(.{10}).*\") ",
             "format": "table",
             "instant": true,
             "interval": "",
@@ -2686,7 +2686,7 @@
             "refId": "F"
           },
           {
-            "expr": "label_replace(max by(pubkey) (validator_successful_proposals{job=\"validator-job\"}), \"pubkey_short\", \"$1\", \"pubkey\", \"(.{10}).*\")  ",
+            "expr": "label_replace(max by(pubkey) (validator_successful_proposals{job=\"validator-client-job\"}), \"pubkey_short\", \"$1\", \"pubkey\", \"(.{10}).*\")  ",
             "format": "table",
             "instant": true,
             "interval": "",
@@ -2694,7 +2694,7 @@
             "refId": "E"
           },
           {
-            "expr": "label_replace(max by(pubkey) (validator_successful_attestations{job=\"validator-job\"}), \"pubkey_short\", \"$1\", \"pubkey\", \"(.{10}).*\")  ",
+            "expr": "label_replace(max by(pubkey) (validator_successful_attestations{job=\"validator-client-job\"}), \"pubkey_short\", \"$1\", \"pubkey\", \"(.{10}).*\")  ",
             "format": "table",
             "instant": true,
             "interval": "",
@@ -2702,7 +2702,7 @@
             "refId": "A"
           },
           {
-            "expr": "label_replace(max by(pubkey) (validator_successful_aggregations{job=\"validator-job\"}), \"pubkey_short\", \"$1\", \"pubkey\", \"(.{10}).*\") ",
+            "expr": "label_replace(max by(pubkey) (validator_successful_aggregations{job=\"validator-client-job\"}), \"pubkey_short\", \"$1\", \"pubkey\", \"(.{10}).*\") ",
             "format": "table",
             "instant": true,
             "interval": "",
@@ -2710,7 +2710,7 @@
             "refId": "C"
           },
           {
-            "expr": "label_replace(max by(pubkey) (validator_failed_attestations{job=\"validator-job\"}), \"pubkey_short\", \"$1\", \"pubkey\", \"(.{10}).*\") ",
+            "expr": "label_replace(max by(pubkey) (validator_failed_attestations{job=\"validator-client-job\"}), \"pubkey_short\", \"$1\", \"pubkey\", \"(.{10}).*\") ",
             "format": "table",
             "instant": true,
             "interval": "",
@@ -2718,7 +2718,7 @@
             "refId": "B"
           },
           {
-            "expr": "label_replace(max by(pubkey) (validator_failed_aggregations{job=\"validator-job\"}), \"pubkey_short\", \"$1\", \"pubkey\", \"(.{10}).*\") ",
+            "expr": "label_replace(max by(pubkey) (validator_failed_aggregations{job=\"validator-client-job\"}), \"pubkey_short\", \"$1\", \"pubkey\", \"(.{10}).*\") ",
             "format": "table",
             "instant": true,
             "interval": "",
@@ -2726,7 +2726,7 @@
             "refId": "D"
           },
           {
-            "expr": "label_replace(max by(pubkey) (validator_inactivity_score{job=\"validator-job\"}), \"pubkey_short\", \"$1\", \"pubkey\", \"(.{10}).*\")  ",
+            "expr": "label_replace(max by(pubkey) (validator_inactivity_score{job=\"validator-client-job\"}), \"pubkey_short\", \"$1\", \"pubkey\", \"(.{10}).*\")  ",
             "format": "table",
             "instant": true,
             "interval": "",
@@ -2996,7 +2996,7 @@
             "refId": "A"
           },
           {
-            "expr": "(time()-process_start_time_seconds{job=\"validator-job\"})/3600",
+            "expr": "(time()-process_start_time_seconds{job=\"validator-client-job\"})/3600",
             "instant": true,
             "interval": "",
             "legendFormat": "validator",
@@ -3206,14 +3206,14 @@
         "pluginVersion": "8.2.3",
         "targets": [
           {
-            "expr": "sum(rate(log_entries_total{job=\"validator-job\", level=\"error\"}[$__range]))*3600",
+            "expr": "sum(rate(log_entries_total{job=\"validator-client-job\", level=\"error\"}[$__range]))*3600",
             "instant": false,
             "interval": "",
             "legendFormat": "errors",
             "refId": "B"
           },
           {
-            "expr": "sum(rate(log_entries_total{job=\"validator-job\", level=\"warning\"}[$__range]))*3600",
+            "expr": "sum(rate(log_entries_total{job=\"validator-client-job\", level=\"warning\"}[$__range]))*3600",
             "interval": "",
             "legendFormat": "warnings",
             "refId": "A"
@@ -3382,7 +3382,7 @@
             "refId": "F"
           },
           {
-            "expr": "process_resident_memory_bytes{job=\"validator-job\"}",
+            "expr": "process_resident_memory_bytes{job=\"validator-client-job\"}",
             "interval": "",
             "legendFormat": "validator memory",
             "refId": "G"
@@ -4344,7 +4344,7 @@
             "refId": "A"
           },
           {
-            "expr": "up{job=\"validator-job\"}",
+            "expr": "up{job=\"validator-client-job\"}",
             "interval": "",
             "legendFormat": "validator",
             "refId": "B"
@@ -4651,7 +4651,7 @@
             "refId": "A"
           },
           {
-            "expr": "(time()-process_start_time_seconds{job=\"validator-job\"})/3600",
+            "expr": "(time()-process_start_time_seconds{job=\"validator-client-job\"})/3600",
             "interval": "",
             "legendFormat": "",
             "refId": "B"
