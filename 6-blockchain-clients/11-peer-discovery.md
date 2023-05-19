@@ -157,7 +157,7 @@ This helps to maintain the health and connectivity of the P2P network by making 
 
 #### Installing NOIP
 
-There are lots of service providers you can choose, some of them provide paid services for advanced features. But since we only need a simple record, I went with [`no-ip`](https://www.noip.com/). At the point of writing this guide, there are 2 models:
+There are lots of service providers you can choose, some of them provide paid services for advanced features. But since we only need a simple record, I went with [NO-IP](https://www.noip.com/). At the point of writing this guide, there are 2 models:
 
 - `free`: You must confirm your Dynamic DNS hostname every month, in order to keep it. You will receive emails with an link to extend the hostname prior to the expiration date. If you do not confirm the link in the mail, your record will be reset.
 - `paid`: You get your hostname forever
@@ -180,7 +180,7 @@ Afterwards, we can install the package:
 sudo apt install build-essential
 ```
 
-Get the newest build from `no-ip`. Do not use any beta tools that may be advertised as current version and sick to stable software releases. As of May 2023, `Version 2.1.9-1` is the latest stable release.
+Get the newest build from NO-IP. Do not use any beta tools that may be advertised as current version and sick to stable software releases. As of May 2023, `Version 2.1.9-1` is the latest stable release.
 
 Move into the source directory:
 
