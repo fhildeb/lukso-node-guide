@@ -1,102 +1,95 @@
-## 1.5 Component Installation
+## 1.4 Mainboard Swapping
 
-In this sequence, I will go through all the steps I went through while installing the hardware components while building my own node.
+In the following sequence, I will go through all the first steps I went through while building my node.
 
 > Before you start building, ground yourself. Grounding can be done, for example, by reaching for the heater.
 
-I've split the process into multiple sections to make navigation all pictures easier. We will go over how to install memory, storage, antennas, hard disks.
+I've split the process into multiple sections to simplify the navigation of pictures. As the first step, we have to disassemble the motherboard and mount it into the new housing, acting as a cooler.
 
-### 1.5.1 Attaching the Components
+### 1.4.1 Disassembling the Motherboard
 
-Unpack the memory bars.
+Remove the screws from the bottom of the NUC and open the case.
 
-![Attaching the Components 1](/img/build_23.png)
+![Disassembling the Motherboard 1](/img/build_02.png)
 
-Click them one on top of the other into the holder provided.
+Unscrew the motherboard from the case.
 
-![Attaching the Components 2](/img/build_24.png)
+![Disassembling the Motherboard 2](/img/build_03.png)
 
-If you want to optionally pre-equip for WiFi as mentioned above, now is the time. Get the connection cables.
+Remove the cables from the motherboard, which is responsible for grounding and optional antennas. Use a narrow wrench for a better lever effect.
 
-![Attaching the Components 3](/img/build_25.png)
-press one at a time into the edge provided in front of it. be careful and make sure they are seated properly, as they tend to pop out.
+![Disassembling the Motherboard 3](/img/build_04.png)
 
-![Attaching the Components 4](/img/build_26.png)
+Be careful with moving the motherboard out of the case. You don't want to destroy tiny cables or bend data slots.
 
-In the next step, the hard disk is inserted above the antenna connection.
+![Disassembling the Motherboard 4](/img/build_05.png)
 
-![Attaching the Components 5](/img/build_27.png)
+Since you have removed the motherboard, securely put the old housing to the side.
 
-Click it in diagonally from above and screw it tight at the rear end.
+![Disassembling the Motherboard 5](/img/build_06.png)
 
-### 1.5.2 Adding Aditional Storage
+Turn the motherboard to access the fan and its frame.
 
-If you have another large hard drive that connects with a hard drive label, get the appropriate frame that is included in the package and mount the 2.5" hard drive onto it. The frame is then screwed into the housing.
+![Disassembling the Motherboard 6](/img/build_07.png)
 
-In the next step, connect the hard drive to the center of the mainboard using the related cable that came with the NUC's package.
+Remove the screws holding the fan in place to cool the processor.
 
-> There is only one hard drive connector on the mainboard.
+![Disassembling the Motherboard 7](/img/build_08.png)
 
-After attaching the cable, screw the frame to the top of the case so that the hard drive is facing down. It will sit right under the edge of the case, leaving enough room for attaching the backplage.
+Carefully unplug the thin 4-pin fan cables.
 
-![Attaching the Components 6](/img/build_28.png)
+![Disassembling the Motherboard 8](/img/build_09.png)
 
-### 1.5.3 Attaching the Backplate
+The screws used for the fan also held the old cooler in place.
 
-Hold the motherboard against the back of the case and check if it fits properly. If you have antenna connectors, screw them to the back panel.
+![Disassembling the Motherboard 9](/img/build_10.png)
 
-![Attaching the Backplate 1](/img/build_29.png)
+Remove the processor cooler by gently pulling it upwards and placing it upside down on the table so you don't smear the heat-conductive paste.
 
-Make sure the panel is seated directly with the motherboard connectors and nothing is pressed down on the inside. If it is, the motherboard must be slightly readjusted again, as the fittings have a millimeter of clearance.
+![Disassembling the Motherboard 10](/img/build_11.png)
 
-![Attaching the Backplate 2](/img/build_30.png)
+Wipe off the heat conductive paste.
 
-When everything fits correctly, screw in the back panel of the motherboard.
+![Disassembling the Motherboard 11](/img/build_12.png)
 
-![Attaching the Backplate 3](/img/build_31.png)
+### 1.4.2 Swapping the Enclosure
 
-### 1.5.4 Adding the Storage Cooler
+Grab the new fanless housing, which also acts as a cooling block.
 
-The next step is to install the hard disk cooler.
+![Swapping the Enclosure 1](/img/build_13.png)
 
-![Adding the Storage Cooler 1](/img/build_32.png)
+Unscrew the back panel for the motherboard connection possibilities.
 
-Remove the protective foil and place the heat-conducting rubber mass on the hard disk.
+![Swapping the Enclosure 2](/img/build_14.png)
 
-> The sticker of the hard disk does not need to be removed, as it is made of thermally conductive film and adhesive. If you remove it, you will lose your warranty.
+Put the parts aside and turn the case around.
 
-![Adding the Storage Cooler 2](/img/build_33.png)
+![Swapping the Enclosure 3](/img/build_15.png)
 
-Clean the metal piece with an alcohol wipe and reapply thermal paste to the strip that will be directly connected to the housing. Also, try to clean the inner housing part where the cooler will be placed with a cotton swap and alcohol.
+Remove the screws holding the bottom panel in place.
 
-![Adding the Storage Cooler 3](/img/build_34.png)
+![Swapping the Enclosure 4](/img/build_16.png)
 
-Insert the cooler slowly from the top without smearing heat-conducting paste. Be careful, because the rubber mass sticks and it is difficult to move once it sticks.
+Please return to the motherboard and clean it with an appropriate alcoholic cloth.
 
-![Adding the Storage Cooler 4](/img/build_35.png)
+![Swapping the Enclosure 5](/img/build_17.png)
 
-### 1.5.5 Assambling the Enclosure
+Apply fresh thermal paste again and spread it as well as possible. Use only a thin layer. Otherwise, it will be pressed out the sides and stain the motherboard when screwed down.
 
-Screw on the last side of the housing without bending the cable.
+![Swapping the Enclosure 6](/img/build_18.png)
 
-> If you have a second hard drive, make sure the frame sits evenly without touching the lid.
+In the next step, the motherboard must be screwed into the housing. Clean the cooling counterpart to the processor.
 
-![Assambling the Enclosure 1](/img/build_36.png)
+![Swapping the Enclosure 7](/img/build_19.png)
 
-Depending on whether you want to place the case upright or lying down, you can now install covers and stands.
+Search for the appropriate screws and spacers.
 
-![Assambling the Enclosure 2](/img/build_37.png)
+![Swapping the Enclosure 8](/img/build_20.png)
 
-I decided to use the upright placement because it saves me space to the sides in my server shelf.
+Insert the motherboard slowly and accurately from above. No thermal paste should be smeared but placed precisely on the intended surface.
 
-> If you have a professional server rack, the horizontal position is probably more suitable, since you can add more levels and switch frames above and below.
+![Swapping the Enclosure 9](/img/build_21.png)
 
-![Assambling the Enclosure 3](/img/build_38.png)
+Screw in the motherboard. Always tighten the screws for the motherboard in opposite directions and small increments. The motherboard should be pressed down evenly from all sides.
 
-This is how the finished node looks when the antennas are also attached. however, these are not used in regular server use, as there should always be a wired internet connection.
-
-So you can leave them unscrewed and keep them until you decide to transform your node into a home server or desktop device some day.
-
-![Assambling the Enclosure 4](/img/build_39.png)
-
-If you got everything from router, connection, and the node itself, we can start with configuring the BIOS and installing the operating system.
+![Swapping the Enclosure 10](/img/build_22.png)
