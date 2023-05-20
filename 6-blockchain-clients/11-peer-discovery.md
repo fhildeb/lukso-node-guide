@@ -8,7 +8,7 @@ The process of peers communicating with each other is known as peer-to-peer netw
 
 In the context of a blockchain network like Ethereum, peers validate transactions and blocks, ensuring they comply with network rules before they are added to the blockchain. Peers propagate valid transactions and blocks to other peers in the network, ensuring all peers have the same data and maintain the consensus of the network. They play an integral role in the decentralized and trustless nature of blockchain technology.
 
-### 6.11.1 Resolve Low Consensus Peer Count
+### 6.11.1 Resolve Low Execution Peer Count
 
 You can check your execution client's peer connections by running the following command:
 
@@ -36,9 +36,71 @@ Type `exit` to close the JSON interface.
 
 If your execution peer count is not improving when running the node for around 4h, check that all the necessary ports are open. You can find a guide within the [Firewall Settings](./06-firewall-settings.md).
 
-> You should always have more than 30 stable peers after a setup time of 4h to 6h.
+> You should always have more than 25 stable peers after a setup time of 4h to 6h.
 
 After opening the port, wait some minutes check your peer count again. You should see it rise. After some hours, you should have a stable connection.
+
+In case your ports are already open, there also seems to be a threshhold on your peer count setting. You might want to raise this number. However, I can still not explain what might cause this difference there exactly.
+
+Open your node's working directory:
+
+```sh
+cd <your-node-directory>
+```
+
+Stop your currently running clients:
+
+```sh
+lukso stop
+```
+
+The output should be the following:
+
+```text
+# INFO[0000] PID ----- - Execution (geth): Stopped 🔘
+# INFO[0000] PID ----- - Consensus (prysm): Stopped 🔘
+# INFO[0000] PID ----- - Validator (validator): Stopped 🔘
+```
+
+Open your execution client's configuration file:
+
+```sh
+### Geth Mainnet Configuration
+vim /configs/mainnet/geth/geth.yaml
+
+### Geth Testnet Configuration
+vim /configs/testnet/geth/geth.yaml
+
+### Erigon Mainnet Configuration
+vim /configs/mainnet/erigon/erigon.yaml
+
+### Erigon Testnet Configuration
+vim /configs/testnet/erigon/erigon.yaml
+```
+
+For Geth, raise the maximum peer connection count like this:
+
+```text
+MaxPeers = 250
+```
+
+For Erigon, you can do the same like this:
+
+```text
+"maxpeers" = 250
+```
+
+Restart the client again:
+
+```sh
+# Restart Mainnet Validator
+lukso start --validator --transaction-fee-recipient "0x1234..."
+
+# Restart Testnet Validator
+lukso start --validator --transaction-fee-recipient "0x1234..." --testnet
+```
+
+After setting your public address, wait some minutes check your execution peer count again. You should see it rise. After some hours, you should have a stable connection.
 
 ### 6.11.2 Resolve Low Consensus Peer Count
 
@@ -135,7 +197,7 @@ lukso start --validator --transaction-fee-recipient "0x1234..."
 lukso start --validator --transaction-fee-recipient "0x1234..." --testnet
 ```
 
-After setting your public address, wait some minutes check your peer count again. You should see it rise. After some hours, you should have a stable connection.
+After setting your public address, wait some minutes check your consensus peer count again. You should see it rise. After some hours, you should have a stable connection.
 
 ### 6.11.3 Configure Dynamic DNS
 
