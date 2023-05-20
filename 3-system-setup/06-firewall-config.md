@@ -1,14 +1,14 @@
 ## 3.6 Configure Firewall
 
-Now we need to enable ssh in firewall by allowing incoming connections to the previous configured port.
+Now we need to enable ssh in the firewall by allowing incoming connections to the previously configured port.
 
 #### Uncomplicated Firewall
 
-UFW is a user-friendly command-line interface for managing firewall configurations on Linux systems. It simplifies the process of configuring and maintaining a firewall by providing an intuitive set of commands and options. UFW streamlines the process of setting up and managing firewall rules.
+UFW is a user-friendly command-line interface for managing firewall configurations on Linux systems. It simplifies configuring and maintaining a firewall by providing intuitive commands and options. UFW streamlines the process of setting up and managing firewall rules.
 
 ### 3.6.1 General Port Locking
 
-By default, all outgoing traffic should be enabled, all incoming traffic should be disabled.
+All outgoing traffic should be enabled by default, as the node should send data packages into the network. However, all incoming traffic should be disabled as we do not know who wants to connect with the node.
 
 ```sh
 sudo ufw default allow outgoing
@@ -17,13 +17,13 @@ sudo ufw default deny incoming
 
 ### 3.6.2 Enable SSH Connection
 
-If you allow for just the port number, both TCP and UDP protocols will be possible. However, the User Datagram Protocol is a connectionless protocol. It offers faster data transmission but does not guarantee reliable, ordered, or error-checked delivery.
+If you allow for just the port number, both TCP and UDP protocols will be possible. However, the User Datagram Protocol is connectionless. It offers faster data transmission but does not guarantee reliable, ordered, or error-checked delivery.
 
 #### TCP Forcing
 
-For SSH connections, it is recommended to only allow TCP. SSH uses the TCP protocol for its connections because it relies on a reliable and error-checked data transmission. Therefore, TCP is more secure and appropriate for SSH connections, instead of leaving the port open to all protocols.
+For SSH connections, it is recommended only to allow TCP. SSH uses the TCP protocol for its connections because it relies on reliable and error-checked data transmission. Therefore, TCP is more secure and appropriate for SSH connections instead of leaving the port open to all protocols.
 
-We use UFW to allow SSH connections and make sure to change `<desired-port-number>` to your actual port.
+We use UFW to allow SSH connections and change `<desired-port-number>` to your port.
 
 ```sh
 sudo ufw allow <desired-port-number>/tcp
@@ -31,15 +31,13 @@ sudo ufw allow <desired-port-number>/tcp
 
 #### Internet Protocol Versioning
 
-The Internet Protocol is responsible for identifying and locating devices on networks and routing traffic across the internet.
+The Internet Protocol is responsible for identifying and locating network devices and routing traffic across the internet.
 
-If you enabled both, IPv6 and IPv4 during the installation of your node, the command will print out that a rule was added for `v6` connections.
+If you enabled both IPv6 and IPv4 during the installation of your node, the command would print out that a rule was added for `v6` connections.
 
-The `v6` suffix in the UFW rules indicates that the rule is applied to IPv6 network traffic. The Internet Protocol version 6 is the most recent version of the Internet Protocol.
+The `v6` suffix in the UFW rules indicates that the rule is applied to IPv6 network traffic. Internet Protocol version 6 is the most recent version of the Internet Protocol. Basic port rules, without any suffix, apply to IPv4 network traffic, the previous version 4.
 
-Basic port rules without any suffix, mean that they apply to IPv4 network traffic, the previous version 4.
-
-Both are widely used. The primary differences between IPv4 and IPv6 are in their address space, addressing mechanisms, and additional features. The expanded address space in IPv6 helps accommodate the growing number of devices connected to the internet. IPv6 also introduces several enhancements over IPv4, such as built-in support for Internet Protocol Security, providing secure, encrypted communication between devices.
+Both are widely used. The primary differences between IPv4 and IPv6 are their address space, addressing mechanisms, and additional features. The expanded address space in IPv6 helps accommodate the growing number of devices connected to the internet. IPv6 also introduces several enhancements over IPv4, such as built-in support for Internet Protocol Security, providing secure, encrypted communication between devices.
 
 ### 3.6.3 Firewall Checkup
 
@@ -55,7 +53,7 @@ If the firewall is running, you can check if the firewall is within an `active` 
 sudo ufw status
 ```
 
-### 3.6.4 Enable Firewall
+### 3.6.4 Enable firewall
 
 If it should not be inactive, we need to configure it using a symbolic link as before:
 
@@ -71,10 +69,10 @@ If you have made some port rules you do not want, print out a list with all exis
 sudo ufw status
 ```
 
-Every row within the list has a number, stating by 1. If you want to delete the rule in the second row, type:
+Every row within the list has a number, starting with 1. If you want to delete the rule in the second row, type:
 
 ```sh
 sudo ufw delete 2
 ```
 
-If your ports are alright, we can continue setting up the brute force protection that will utilize the firewall.
+If your ports are alright, we can continue setting up the brute force protection to utilize the firewall.

@@ -2,7 +2,7 @@
 
 > **_NOTE:_** The following steps are performed directly on a node machine.
 
-In order to remotelly access a machine running a node, it needs to be configured with the right software tools and up to date at best.
+To remotely access a machine running a node, it needs to be configured with the right software tools and up to date.
 
 1. [Permission Settings](./01-permissions.md)
 2. [Storage Volume Management](./02-disk-volumes.md)
