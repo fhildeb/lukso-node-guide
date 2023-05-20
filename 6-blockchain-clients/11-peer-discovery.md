@@ -155,6 +155,8 @@ That's where dynamic DNS comes in. With dynamic DNS, a node can register a domai
 
 This helps to maintain the health and connectivity of the P2P network by making sure that nodes can always find each other, even when their IP addresses are constantly changing.
 
+> There are lots of solutions to handle or manage the topic. You could either use your own domain and deploy a script there to handle the record for the device. Another option would be hosting your own Dynamic DNS Service and configuring it via the Cloudflare API on your own router. You could also combine those two variants in different ways. However, all those solutions require good technical understanding and the router to support such functionality. I will use a simple and free Dynamic DNS provider.
+
 #### Installing NOIP
 
 There are lots of service providers you can choose, some of them provide paid services for advanced features. But since we only need a simple record, I went with [NO-IP](https://www.noip.com/). At the point of writing this guide, there are 2 models:
