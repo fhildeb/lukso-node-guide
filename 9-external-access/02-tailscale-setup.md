@@ -73,9 +73,19 @@ Host <ssh-device-alias-for-home-environment>
 
 Host <ssh-device-alias-for-tailscale-environment>
   User <node-username>
-  HostName <node-ip>
+  HostName <tailscale-node-ip>
   Port <ssh-port>
   IdentityFile ~/.ssh/<my-chosen-keyname>
 ```
 
 Save and exit. You will have successfully configured your external remote access. Try to connect to your node.
+
+## 9.2.4 Update Grafana Dashboard
+
+In case you want to visit your Grafana Dashboard outside your home network using Tailscale, you will also need to adjust the IP. As you did with SSH, its recommended to have two different browser bookmarks- one for your home network and one for the Tailscale address.
+
+Within your browser, you can find Grafana at the following address, in case your VPN is activated:
+
+```text
+http://<tailscale-node-ip>:3000/login
+```
