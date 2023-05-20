@@ -38,9 +38,9 @@ If your execution peer count is not improving when running the node for around 4
 
 > You should always have more than 25 stable peers after a setup time of 4h to 6h.
 
-After opening the port, wait some minutes check your peer count again. You should see it rise. After some hours, you should have a stable connection.
+After opening the port, wait some minutes check your peer count again.
 
-In case your ports are already open, there also seems to be a threshhold on your peer count setting. You might want to raise this number. However, I can still not explain what might cause this difference there exactly.
+In case your ports are already open, there also seems to be a threshhold on your peer count setting. You might want to raise this number. However, I can not explain what might cause this difference of maximum peer count and actual apprearing peers.
 
 Open your node's working directory:
 
@@ -78,7 +78,7 @@ vim /configs/mainnet/erigon/erigon.yaml
 vim /configs/testnet/erigon/erigon.yaml
 ```
 
-For Geth, raise the maximum peer connection count like this:
+For Geth, raise the value of the maximum peer connection count like this:
 
 ```text
 MaxPeers = 250
@@ -100,7 +100,7 @@ lukso start --validator --transaction-fee-recipient "0x1234..."
 lukso start --validator --transaction-fee-recipient "0x1234..." --testnet
 ```
 
-After setting your public address, wait some minutes check your execution peer count again. You should see it rise. After some hours, you should have a stable connection.
+Wait some minutes check your execution peer count again. You should see it rise. After some hours, you should have a stable connection.
 
 ### 6.11.2 Resolve Low Consensus Peer Count
 
