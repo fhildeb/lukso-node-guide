@@ -1,8 +1,8 @@
 ## 1.2 BIOS Setup
 
-Understanding and adjusting the BIOS settings can greatly reduce your node's energy consumption. The right OS can enhance speed and processing.
+Understanding and adjusting the BIOS settings can significantly reduce your node's energy consumption. The correct OS can enhance speed and processing.
 
-**Please note that your BIOS might have a other layout or settings regarding performance and energy consumption. This is completely normal and changes with the CPU you have installed on your device.**
+**Please note that your BIOS might have another layout or settings regarding performance and energy consumption. Settings differences are entirely normal and change with the CPU you have installed on your device.**
 
 ### 1.2.1 Enter BIOS
 
@@ -59,7 +59,7 @@ Understanding and adjusting the BIOS settings can greatly reduce your node's ene
 
 ### 1.2.6 Operating System Startup
 
-Now that we configured the BIOS correctly, we can exit and start up the node from the defined boot device.
+Now that we have configured the BIOS correctly, we can exit and start the node from the defined boot device.
 
 1. Press `F10` to save changes and exit BIOS
 2. Wait for the stick to boot up
