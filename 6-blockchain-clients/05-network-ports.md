@@ -1,6 +1,6 @@
 ## 6.5 Open Network Ports
 
-In order to let the Blockchain CLients communicate correctly, the ports, e.g., data communication channels, have to be enabled on the node and the router. For each supported blockchain client, there are different ports to open.
+To let the Blockchain CLients communicate correctly, the ports, e.g., data communication channels, must be enabled on the node and the router. For each supported blockchain client, there are different ports to open.
 
 Each supported client has different ports for various purposes that have to be open for a clear connection:
 
@@ -16,7 +16,7 @@ Each supported client has different ports for various purposes that have to be o
 | PRYSM      | Beacon Gossip, Requests, and Responses    | 13000 | X   |     |
 | PRYSM      | Beacon Discovery, Requests, Data Exchange | 12000 |     | X   |
 
-> Within the [monitoring section](/7-monitoring/01-core-tools.md) of this guide you can find further internal communication channels.
+> Within the [monitoring section](/7-monitoring/01-core-tools.md) of this guide, you can find other internal communication channels that will be used for monitoring.
 
 References:
 

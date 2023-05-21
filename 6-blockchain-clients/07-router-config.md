@@ -4,7 +4,7 @@ To allow external incoming communication into your home network, so they can be 
 
 ### 6.7.1 Resolve the Node's IP Address
 
-Resolve the nodes IP address again as we already did and explained in detail on the [router config](/4-router-config/) section of the guide:
+Resolve the nodes IP address again as we already did and explained in detail in the [router config](/4-router-config/) section of the guide:
 
 ```sh
 ip route show default
@@ -16,7 +16,7 @@ The output will look like this:
 default via <GATEWAY_IP_ADDRESS> dev eno1 proto dhcp src <NODE_IP_ADDRESS> metric <ROUTING_WEIGHT>
 ```
 
-Alternatively you can also send an request to the Google server and filter their response:
+Alternatively, you can also send a request to the Google server and filter their response:
 
 ```sh
 ip route get 8.8.8.8 | awk '{print $7}'
@@ -24,13 +24,13 @@ ip route get 8.8.8.8 | awk '{print $7}'
 
 ### 6.7.2 Resolve the Node's Hardware Address
 
-Now we can retrieve the information about the MAC addresses
+Now we can retrieve the information about the MAC addresses.
 
 ```sh
 ip link show
 ```
 
-The output will list all the network interfaces on the system. Look into the interface that is used to broadcast and send information to the outside world using an Ethernet connection. The entry you're looking for looks like this:
+The output will list all the network interfaces on the system. Look into the interface used to broadcast and send information to the outside world using an Ethernet connection. The entry you're looking for looks like this:
 
 ```sh
 <NETWORK_INFERFACE_NAME>: <BROADCAST,MULTICAST,UP,LOWER_UP> ...
@@ -41,31 +41,31 @@ The output will list all the network interfaces on the system. Look into the int
 
 ### 6.7.3 Log into your Router's Web Interface
 
-Open a web browser and enter the router's IP address or web address. You'll be prompted to enter your router's admin username and password. If you haven't changed them, check your router's documentation or label for the default credentials.
+Open a web browser and enter the router's IP address or web address. You'll be prompted to enter your router's admin username and password. Check your router's documentation or label for the default credentials if you haven't changed them.
 
 ### 6.7.4 Navigate to Port Forwarding Settings
 
-In your router's web interface, navigate to the section related to port forwarding settings. This section might be named something like `Port Forwarding`, `Applications`, or `Firewall`. In more consumer friendly machines like mine, it could be found in:
+In your router's web interface, navigate to the section related to port forwarding settings. This section might be named as `Port Forwarding`, `Applications`, or `Firewall`. In more consumer-friendly machines like mine, it could be found in:
 
 `Internet` > `Permit Access` > `Port Sharing`
 
 ### 4.7.5 Add a New Port Forwarding Rule
 
-Usually, there will be a button or link labeled `Add`, `Create`, `New Rule`, or something similar. Click on it to start creating a new port forwarding rule for a specific device.
+Usually, a button or link will be labeled `Add`, `Create`, `New Rule`, or something similar. Click on it to create a new port forwarding rule for a specific device.
 
-You'll be prompted to enter the device's MAC address and the static IP address you gave your device before. In modern firmwares, you can just select one of your devices that are currently connected. Choose your node device.
+You'll be prompted to enter the device's MAC address and the static IP address you gave your device before. You can select one of your currently connected devices in more modern firmware. Choose your node device.
 
 On my end, I found the settings within:
 
 `Port Sharing` > `Add Device for Sharing`
 
-After clicking on the node's device name or clicking new rules you should be able to set a new port access rule. There are the following properties:
+After clicking on the node's device name or clicking new rules, you should be able to set a new port access rule. There are the following properties:
 
-- **Device Info/MAC Address/IP Address**: These are the fields for device information. In newer firmware, you can just select the device, on older firmware you have to manually input your devices MAC and static IP addresses you've read out before. The incoming traffic on the specified port will be forwarded to the device with this IP address. The MAC address is there for the IP to always be assigned statically.
-- **Service Name/ID/Description**: This is just a label for you to identify the rule. You can enter something like a short description of the above table, so you will associate it later. I chose `<client-name>-<2-word-description>-<port-number>` as naming convention, to always know what the port is used for.
+- **Device Info/MAC Address/IP Address**: These are the fields for device information. In more modern firmware, you can select the device. On older router devices, you have to manually input your device's MAC and static IP addresses you've read out before. The incoming traffic on the specified port will be forwarded to the device with this IP address. The MAC address is there for the IP always to be assigned statically.
+- **Service Name/ID/Description**: This is just a label identifying the rule. You can enter something like a short description of the above table so that you will associate it later. I chose `<client-name>-<2-word-description>-<port-number>` as the naming convention to always know what the port is used for.
 - **External Port**: This is the port number you want to open for incoming traffic. For Geth and Prysm, you might need to open ports such as `30303`, `13000`, `12000` for blockchain clients.
-- **Internal Port/Port to Device**: This is the port number on your local machine that will handle the incoming traffic. Usually, this will be the same as the external port. If you did not manually configure port forwarding, input the same as in the external port. If there is a second field for `through port` for advanced redirects, input the same port number again. If they are equal, no additional ruleset will apply.
-- **Protocol**: This is the network protocol used for the incoming traffic. It could be TCP, UDP, or both. Make sure to match the protocol with the requirements of your blockchain clients. Some router might not allow to set one rule for multiple protocols. If so, you have to set one rule for each protocol of the same port number.
+- **Internal Port/Port to Device**: This port number on your local machine will handle the incoming traffic. Usually, this will be the same as the external port. If you did not manually configure port forwarding, input the same as in the defined external port. If there is a second field for `through port` for advanced redirects, input the same port number again. If they are equal, no additional ruleset will apply.
+- **Protocol**: This network protocol is used for incoming traffic. It could be TCP, UDP, or both. Make sure to match the protocol with the requirements of your blockchain clients. Some routers might not allow setting one rule for multiple protocols. If so, you must select one rule for each protocol of the same port number.
 
 On my router, I set the following rule packages for Geth and Prysm:
 
@@ -148,7 +148,7 @@ Once you've filled out all fields, save the new rule. You will be asked to apply
 
 > **Note**: Some routers may require a reboot to apply the changes.
 
-After the rules were applied, check back to your port sharing screen of the router. You should find a list with the newly added rules to verify your previous step. On my end, the list looks like this:
+After the rules are applied, check back to your port sharing screen of the router. You should find a list with the newly added rules to verify your previous step. On my end, the list looks like this:
 
 ```text
 PORT SHARING DEVICE SCREEN
@@ -174,4 +174,4 @@ PORT SHARING RULES SCREEN
 ---------------------------------------------------------------------------------------------------------
 ```
 
-**After we opened all required ports, we're able to set up and sync the blockchain clients.**
+**After we have opened all required ports, we can set up and sync the blockchain clients.**
