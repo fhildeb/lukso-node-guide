@@ -1,12 +1,12 @@
 ## 5.3 Test the SSH Connection
 
-Verify the configuration by connecting the the node machine. Therefore, call the `SSH` application and type your preferred SSH device alias right after.
+Verify the configuration by connecting the node machine. Therefore, immediately call the `SSH` application and type your preferred SSH device alias.
 
 ```sh
 ssh <ssh-device-alias>
 ```
 
-You should now be able to log into your system by typing in your password. Afterwards, you will be greeted by the node's welcoming printout:
+You should now be able to log into your system by typing in your password. Afterward, you will be greeted by the node's welcoming printout:
 
 ```text
 Welcome to Ubuntu 22.04.2 LTS [BUILD]
@@ -39,10 +39,10 @@ Welcome to Ubuntu 22.04.2 LTS [BUILD]
 Last login: [DATE] from [IP_FROM_PERSONAL_COMPUTER]
 ```
 
-If it worked correctly, you can close the connection without shutting down the node.
+If it works correctly, you can close the connection without shutting down the node.
 
 ```sh
 exit
 ```
 
-**Make sure your're disconnected before continuing the next steps.**
+**Make sure you're disconnected before continuing the next steps.**

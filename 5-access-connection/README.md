@@ -1,6 +1,6 @@
 # 5. Establishing a Secure Access Connection
 
-Before we can verify basic access to a node machine by using SSH on our personal computer, we need to check if all packages are installed correctly.
+Given the decentralized and transparent nature of blockchain technology, the security of your node is paramount. This section will focus on establishing a secure access connection with your node.
 
 1. [Check SSH Install](./01-ssh-check.md)
 2. [Configure SSH](./02-ssh-config.md)
