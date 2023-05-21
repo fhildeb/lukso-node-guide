@@ -67,7 +67,7 @@ Make sure to adjust `<your-node-name>` to your actual name. Also, be careful whe
 
 ### 6.10.2 Setting the Graffiti
 
-Graffiti is a term that refers to a customizable field that validators can use when they propose a new block. This field allows validators to inscribe a short message of up to 32 bytes into the block's metadata. These messages are permanently stored on the blockchain and can be publicly viewed.
+Graffiti is a term that refers to a customizable field that validators can use when they propose a new block. This field allows validators to inscribe a short message of up to 32 bytes into the block's metadata. These messages are permanently stored on the blockchain and can be publicly viewed. Each ASCII character uses 1 byte, but special characters or emojis can take more. Definitely check if your message is within the limit before you start your validator.
 
 Adding graffiti to a block gives validators a unique way to mark their contributions to the network. The content of the graffiti can vary greatly. Some validators might use this space to include their validator name or identifier, while others might use it for fun.
 
