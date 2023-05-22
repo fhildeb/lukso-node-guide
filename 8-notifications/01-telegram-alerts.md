@@ -1,8 +1,8 @@
 ## 8.1 Enable Alerts
 
-When unregular behaviour in metrics or reading from Prometheus is recognized, Grafana can send alerts through various types of channels, such as Discord, Telegram, or Email. The following will guide will configure Grafana notification for Telegram.
+Grafana can send alerts through various channels, such as Discord, Telegram, or Email when unregular behavior in metrics or reading from Prometheus is recognized. The following will guide will configure Grafana notifications for Telegram.
 
-> It is convenient to have a text editor open to temporarily store information needed for these steps.
+> It is convenient to temporarily open a text editor to store information needed for these steps.
 
 ### 8.1.1 Create Telegram Bot
 
@@ -16,16 +16,16 @@ When unregular behaviour in metrics or reading from Prometheus is recognized, Gr
 6. Choose a full name for your bot.
 7. Choose a user name for your bot. The name must end with `bot`
 8. A message will appear with information about your bot.
-9. Highlight and copy the API token, then paste into your text editor.
+9. Highlight and copy the API token, then paste it into your text editor.
 
 ### 8.1.2 Create a Group
 
 1. Open the Telegram menu.
-2. Setup a new group.
+2. Set up a new group.
 3. Choose a name for the group.
 4. Add your bot to the group by typing the exact _username_
-5. Select the user when it appears in the list and click `create`.
-6. In the newly created group, type and send at least one random text message.
+5. Select the user when it appears in the list and click `create`
+6. Send at least one random text message to the newly created group.
 7. Copy `https://api.telegram.org/bot<your-bot-api-token>/getUpdates` to a text document.
 8. Replace `<your-bot-api-token>` with your token ID of the bot
 
@@ -38,7 +38,7 @@ When unregular behaviour in metrics or reading from Prometheus is recognized, Gr
 ### 8.1.4 Add Telegram to Grafana
 
 1. Return to Grafana
-2. Log in using your credentials
+2. Login using your credentials
 3. On the left-hand menu, click the alarm icon
 4. Click the `Notification channels` tab at the top
 5. Click on `Add channel`
@@ -47,7 +47,7 @@ When unregular behaviour in metrics or reading from Prometheus is recognized, Gr
    - `Name`: Your Notification Channel Name
    - `Type:` Telegram
    - `BOT API Token:` Your copied BOT API Token
-   - `Chat ID:` Your copied Chat ID
+   - `Chat ID:` The copied Chat ID
 
 7. Click `send test`.
 8. Wait until you see a new message in Telegram.
@@ -62,8 +62,8 @@ When unregular behaviour in metrics or reading from Prometheus is recognized, Gr
 5. Within the `Alert` tab, select `Notifications`.
 6. Click `send to` and choose your notification channel.
 7. Click the back arrow on the top left of the Grafana screen.
-8. Repeat for each alert.
+8. Repeat the above steps for each alert.
 9. When finished, click on `apply`.
-10. Click `save changes` on the top right corner.
+10. Click `save changes` in the top right corner.
 11. Specify a message for the update.
 12. Click on `save`.
