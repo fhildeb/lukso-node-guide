@@ -1,22 +1,22 @@
 ## 9.2 Tailscale Setup
 
-Now that we spoke about VPN services and the benefits of Tailscale, we can continue with the installation. If you want to use a different software service to set up a tunnel connection to your node, feel free to do so.
+Now that we have spoken about VPN services and the benefits of Tailscale, we can continue with the installation. If you want to use a different software service to set up a tunnel connection to your node, feel free to do so.
 
 ### 9.2.1 Installation
 
-Visit [Tailscale](https://tailscale.com/) and register for the service. It is an free service for a limited amount of users and devices. After logging in with your favorite identity provider, you will be promted to connect your first two devices. Click on `Linux` to connect your node. On your node, install the Tailscale package using `curl`. The `-fsSL` options instruct curl to silently follow HTTP redirects, not output any content for error HTTP codes, but still display error messages if the operation fails. This is needed for the pipe, as the script gets executed right after it is fetched.
+Visit [Tailscale](https://tailscale.com/) and register for the service. It is a free service for a limited amount of users and devices. After logging in with your favorite identity provider, you will be prompted to connect your first two devices. Click on `Linux` to connect your node. On your node, install the Tailscale package using `curl`. The `-fsSL` options instruct curl to silently follow HTTP redirects, not output any content for error HTTP codes, but still display error messages if the operation fails. The silent mode is needed for the pipe, as the script gets executed right after it is fetched.
 
 ```sh
 curl -fsSL https://tailscale.com/install.sh | sh
 ```
 
-You will receive a printed out link that you will have to copy and paste into the address bar of your personal machine. Do so and connect with your previously created account. Your first device has been added.
+You will receive a printed-out link that you must copy and paste into the address bar of your machine. Do so and connect with your previously created account. Your first device has been added.
 
-Now continue with the second device. The Guide on the Tailscale screen will give you a selection of possible installations. Install the software on your main device and go through the minimal setup to log in. Now, everything should already be set up in place. In the guide section, you can try it out by pinging each device over the VPN.
+Now continue with the second device. The Guide on the Tailscale screen will give you a selection of possible installations. Install the software on your primary computer and go through the minimal setup to log in. Now, everything should already be set up in place. You can try it out in the guide section by pinging each device over the VPN.
 
 ### 9.2.2 Configure Auto Startup
 
-Tailscale comes with its own CLI tool called `tailscaled`. By default, it will automatically list itself as an system service. We can check the status of Tailscale with the following command:
+Tailscale comes with its own CLI tool called `tailscaled`. By default, it will automatically list itself as a system service. We can check the status of Tailscale with the following command:
 
 ```sh
 systemctl status tailscaled
@@ -40,27 +40,27 @@ The output should be something similar to the following:
 [DATE] [TIME] [USER] tailscaled[4974]: control: NetInfo: NetInfo{varies=false hairpin=false ipv6=true ipv>...
 ```
 
-It should already be configured to start up on boot or failure but we can check once again:
+It should already be configured to start up on boot or failure, but we can check once again:
 
 ```sh
 sudo systemctl enable tailscale
 ```
 
-In case it was not properly set up, it should've created a `symlink` and printed out the filenames.
+If it was not correctly set up, it should've created a `symlink` and printed out the filenames.
 
-You should be set and can turn off the VPN service until you need to connect with your node from outside your home environment.
+You should be set and can turn off the VPN service until you need to connect with your node outside your home environment.
 
 ## 9.2.3 Update SSH Config
 
-As Tailscale uses internal static IP addresses on both ends of the tunnel, we also need to update our SSH configuration file that we use to connect to the IP. On your personal computer, open up the file:
+As Tailscale uses internal static IP addresses on both ends of the tunnel, we must also update the SSH configuration file to connect to the IP. On your personal computer, open up the file:
 
 ```sh
 vim ~/.ssh/config
 ```
 
-Then Copy your node Host entry of your node device. Only change the `HostName` address and the `Host`. If you want to connect to your node via Tailscale, you will need to use the new name.
+Then Copy the node Host entry of your node device. Only change the `HostName` address and the `Host`. If you want to connect to your node via Tailscale, you must use the new name.
 
-You will find the new static internal IP of the node device on the Tailscales Device Dashboard. You can just copy it over.
+You will find the new static internal IP of the node device on the Tailscales Device Dashboard. You can copy it over.
 
 The final entry should look like this:
 
@@ -82,9 +82,9 @@ Save and exit. You will have successfully configured your external remote access
 
 ## 9.2.4 Update Grafana Dashboard
 
-In case you want to visit your Grafana Dashboard outside your home network using Tailscale, you will also need to adjust the IP. As you did with SSH, its recommended to have two different browser bookmarks- one for your home network and one for the Tailscale address.
+If you want to visit your Grafana Dashboard outside your home network using Tailscale, you will need to adjust the IP. As you did with SSH, having two different browser bookmarks is recommended- one for your home network and one for the Tailscale address.
 
-Within your browser, you can find Grafana at the following address, in case your VPN is activated:
+Within your browser, you can find Grafana at the following address in case your VPN is activated:
 
 ```text
 http://<tailscale-node-ip>:3000/login
