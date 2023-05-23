@@ -78,16 +78,16 @@ Open your execution client's configuration file:
 
 ```sh
 ### Geth Mainnet Configuration
-vim /configs/mainnet/geth/geth.yaml
+vim /configs/mainnet/geth/geth.toml
 
 ### Geth Testnet Configuration
-vim /configs/testnet/geth/geth.yaml
+vim /configs/testnet/geth/geth.toml
 
 ### Erigon Mainnet Configuration
-vim /configs/mainnet/erigon/erigon.yaml
+vim /configs/mainnet/erigon/erigon.toml
 
 ### Erigon Testnet Configuration
-vim /configs/testnet/erigon/erigon.yaml
+vim /configs/testnet/erigon/erigon.toml
 ```
 
 For Geth, raise the value of the maximum peer connection count like this:
