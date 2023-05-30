@@ -312,7 +312,13 @@ Choose your default Ethernet connection, usually `eno1`. Also, choose an update 
 New configuration file '/tmp/no-ip2.conf' created.
 ```
 
-To configure the client globally, we must run the built executable with the `-C` flag again. The application will create a default config file within the user directory. The final output will look like this:
+To configure the client globally, we must run the built executable with the `-C` flag again. It is needed for our service to find the right config file after automatic startups.
+
+```sh
+sudo make install -C
+```
+
+The application will create a default config file within the user directory. The final output will look like this:
 
 ```text
 New configuration file '/usr/local/etc/no-ip2.conf' created.
