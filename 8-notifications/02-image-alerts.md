@@ -5,13 +5,13 @@
 If you want pictures or graphs added to your regular notifications, you can install the Grafana Image Renderer. It can be installed via the built-in Grafana CLI:
 
 ```sh
-grafana-cli plugins install grafana-image-renderer
+sudo grafana-cli plugins install grafana-image-renderer
 ```
 
 Afterward, restart Grafana for the dependency to show up:
 
 ```sh
-systemctl restart grafana-server
+sudo systemctl restart grafana-server
 ```
 
 Check the status of the Grafana Server:
@@ -24,8 +24,23 @@ systemctl status grafana-server
 The output should look similar to this:
 
 ```text
-TODO:
+● grafana-server.service - Grafana instance
+     Loaded: loaded (/lib/systemd/system/grafana-server.service; enabled; vendo>
+     Active: active (running) since [DATE] UTC; [TIME] ago
+       Docs: http://docs.grafana.org
+   Main PID: 28472 (grafana)
+      Tasks: 30 (limit: 38043)
+     Memory: 150.4M
+        CPU: 6min 59.027s
+     CGroup: /system.slice/grafana-server.service
+             ├─28472 /usr/share/grafana/bin/grafana server --config=/etc/grafan>
+             └─28490 /var/lib/grafana/plugins/grafana-image-renderer/plugin_sta>
+
+[DATE] [TIME] [USER] grafana-server[28472]: logger=context userId=1 orgI>...
+...
 ```
+
+> **WARNING**: The following section is still Work in Progress for Grafana 9, as windows and settings have changed in terms of names, behavior, and placement.
 
 ### 8.2.2 Apply Notification Settings
 
