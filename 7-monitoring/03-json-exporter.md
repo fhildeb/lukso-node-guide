@@ -333,7 +333,7 @@ The output should look similar to this:
 [DATE] [TIME] [USER] json_exporter[88174]: net/http.HandlerFunc.ServeHTTP(0xc00002408>...
 ```
 
-### 7.3.7 Maintenace
+### 7.3.7 Maintenance
 
 Proper maintenance ensures that all the components are working as intended, can be updated on the fly, and that software can be kept up-to-date and secure. It's also essential to identify and fix errors quickly.
 

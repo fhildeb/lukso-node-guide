@@ -23,7 +23,7 @@ grep "grafana-server-worker" /etc/passwd
 The output should look similar to this:
 
 ```text
-prometheus-worker:x:117:123::/home/prometheus-worker:/usr/sbin/nologin
+grafana-server-worker:x:117:123::/home/grafana-server-worker:/usr/sbin/nologin
 ```
 
 ### 7.6.2 Installation
@@ -327,7 +327,7 @@ The output should look similar to this:
 ...
 ```
 
-### 7.6.6 Maintenace
+### 7.6.6 Maintenance
 
 Proper maintenance ensures that all the components are working as intended, can be updated on the fly, and that software can be kept up-to-date and secure. It's also essential to identify and fix errors quickly.
 

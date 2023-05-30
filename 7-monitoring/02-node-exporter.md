@@ -216,6 +216,8 @@ To enable the Node Exporter service to start when the system boots, we can use t
 sudo systemctl enable node_exporter
 ```
 
+The output should look similar to this:
+
 ```text
 Created symlink /etc/systemd/system/multi-user.target.wants/node_exporter.service → /etc/systemd/system/node_exporter.service.
 ```
@@ -244,7 +246,7 @@ The output should look similar to this:
 ...
 ```
 
-### 7.2.5 Maintenace
+### 7.2.5 Maintenance
 
 Proper maintenance ensures that all the components are working as intended, can be updated on the fly, and that software can be kept up-to-date and secure. It's also essential to identify and fix errors quickly.
 

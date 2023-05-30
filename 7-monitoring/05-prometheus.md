@@ -444,7 +444,7 @@ The output should look similar to this:
 ...
 ```
 
-### 7.5.8 Maintenace
+### 7.5.8 Maintenance
 
 Proper maintenance ensures that all the components are working as intended, can be updated on the fly, and that software can be kept up-to-date and secure. It's also essential to identify and fix errors quickly.
 
