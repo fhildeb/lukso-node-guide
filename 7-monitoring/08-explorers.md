@@ -58,13 +58,30 @@ Then head over to your node's log directory. Exchange `<node-working-directory>`
 cd <node-working-directory>/<network-type>-logs/
 ```
 
-Next, we need to find the latest validator log file created for the node's network to get the total amount of imported validators. You can either check that manually or use the following script to automatically search for the validator logs, sort them by creation date and output the most recent filename to the terminal. I've used the `find` tool:
+Next, we need to find the latest validator log file created for the node's network to get the total amount of imported validators. You can either check that manually or use the following script to automatically search for the validator logs, sort them by creation date and output the most recent filename to the terminal. I've used the `find` tool that is used to search for files and directories within a specified location and further used pipes as we already did plenty of times before. Here is a description of the script:
+
+- `.`: Represents the current directory.
+- `type f`: Specifies that only regular files should be considered, excluding directories and other types of files.
+- `name "*validator*"`: Sets the pattern to match filenames containing "validator" anywhere within the name.
+- `printf "%T@ %p\n"`: Specifies the format for the output of the found files. `%T@` represents the file's last modification time in seconds since the epoch, and `%p` represents the file path.
+- `sort -n`: Sorts the output in ascending order based on the file's modification time.
+- `tail -1`: Selects the last line from the sorted output, which corresponds to the file with the latest creation time.
+- `awk '{print $2}'`: Extracts the second column from the output, which contains the file path, and prints it.
 
 ```sh
 find . -type f -name "*validator*" -printf "%T@ %p\n" | sort -n | tail -1 | awk '{print $2}'
 ```
 
-Now we can search this log file to get all the index properties of each validator imported to the node. The script will fetch all indexes and build the link of the consensus page so that you can copy/paste it into the browser of your choice. Make sure to exchange `<recent-validator-logs.log>` with the actual filename from the previous step.
+Now we can search this log file to get all the index properties of each validator imported to the node. The script will fetch all indexes and build the link of the consensus page so that you can copy/paste it into the browser of your choice. Here is a description of the script:
+
+- `cat file`: The cat command is used to concatenate and display the contents of a file, in our case the latest validator log.
+- `grep -o 'index=[0-9]* '`: Searches for the pattern `index=` followed by a sequence of digits, and outputs only the matching parts. The `-o` flag tells grep to output only the matching index numbers, not the entire line.
+- `awk -F'=' '{printf "%s,", $2}'`: Uses the equals sign `=` as the field separator `-F` for the output of the `grep` command. It then only prints the numbers after the equals sign, which corresponds to the validator index, separated by a comma.
+- `sed 's/,$//'`: Removes the trailing comma from the output.
+- `tr -d ' '`: Deletes any remaining spaces from the index list.
+- `awk '{print URL $0}'`: Prepends the extracted validator index numbers to the URL, creating a complete link for all validator index numbers, represented by `$0`.
+
+Make sure to exchange `<recent-validator-logs.log>` with the actual filename from the previous step.
 
 ```sh
 cat <recent-validator-logs.log> | grep -o 'index=[0-9]* ' | awk -F'=' '{printf "%s,", $2}' | sed 's/,$//' | tr -d ' ' | awk '{print "https://explorer.consensus.mainnet.lukso.network/dashboard?validators=" $0}'
