@@ -172,7 +172,7 @@ probe_duration_seconds{job="google-ping-job"}
 ![Participation Rate below 80% Metric](/img/grafana-alerts-12.png)
 
 ```text
-topk(1, beacon_prev_epoch_target_gwei / beacon_prev_epoch_active_gwei * 100)
+beacon_prev_epoch_target_gwei / beacon_prev_epoch_active_gwei * 100
 ```
 
 ### 8.1.8 Configuring Notfication Intervals
