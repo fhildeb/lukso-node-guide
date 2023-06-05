@@ -41,3 +41,39 @@ If you need more information about slots, epochs, and their status types, look i
 
 - [Mainnet Consensus Stats](https://stats.consensus.mainnet.lukso.network/)
 - [Testnet Consensus Stats](https://stats.consensus.testnet.lukso.network/)
+
+### 7.8.5 External Node Validator Checks
+
+As the **Consensus Explorer** is the main page for every information that is going on with the consensus and single validators that propose and participate in the consensus, we can also set up a link for this page that gathers consensus information for every validator of our node at once.
+
+First, log on to your node machine:
+
+```sh
+ssh <ssh-device-alias>
+```
+
+Then head over to your node's log directory. Exchange `<node-working-directory>` with the actual folder name and `<network-type>` with `mainnet` or `testnet` depending on your node's network.
+
+```sh
+cd <node-working-directory>/<network-type>-logs/
+```
+
+Next we need to find the latest validator log file that was created for the node's network to get the total amount of imported validators. You can either do check that manually, or use the following script that will automatically search for the validator logs, sort them by creation date and output the most recent filename to the terminal. I've used the `find` tool:
+
+```sh
+find . -type f -name "*validator*" -printf "%T@ %p\n" | sort -n | tail -1 | awk '{print $2}'
+```
+
+Now we can search this log file to get all the index properties of each validator that was imported to the node. The script will fetch all indexes and build the link of the consensus page, so you can copy/paste it into the browser of your choice. Make sure to exchange `<recent-validator-logs.log>` with the actual file-name from the previous step.
+
+```sh
+cat <recent-validator-logs.log> | grep -o 'index=[0-9]* ' | awk -F'=' '{printf "%s,", $2}' | sed 's/,$//' | tr -d ' ' | awk '{print "https://explorer.consensus.mainnet.lukso.network/dashboard?validators=" $0}'
+```
+
+The link can then be saved as bookmark.
+
+> The consensus explorer only supports up to 100 validators by default. If you have more validators, you need to split your validator index numbers across multiple links. Therefore, past the generated link into a text editor and split the indexes so there is no duplicated index across the generated links.
+
+The page will look like the following. It shows the status and uptime of your validators that are run on your node.
+
+![Validator Overview](/img/explorer-pages-5.png)
