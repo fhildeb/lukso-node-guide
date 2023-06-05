@@ -11,7 +11,7 @@ When becoming a validator, you must manage passwords, addresses, and keys. Let's
 - **Validator Deposit Key**: A keystore file encrypts your private key using the _Validator Key Password_. It is generated for each potential deposit you want to make. It can be used to import your validator key into a validator client. It's important to store your keystore files securely, as anyone with access to your keystore file and its password would have access to your validator key. If you lose your keystore file, you can regenerate it using your _Validator Mnemonic Seed_, assuming you have also stored it securely. With it, the client can verify if you deposited the required 32 LYX/LYXe to become an active validator.
 - **Deposit Data**: This is a JSON file generated when you set up your validator using your _Validator Mnemonic Seed_. The JSON file includes various essential pieces of information, such as your public key and a signature. This file is used as part of the process to register your validator on the blockchain using transactions.
 - **Validator Wallet Password**: This password is used to secure the wallet holding your _Validator Deposit Keys_. The wallet password should be strong, unique, and known only to you. This password will be needed every time you start your validator client.
-- **Validator Withdrawal Address**: This is the Ethereum address where your funds will be sent when you stop validating and withdrawing your staked LYX. For more information, you can check the [Withdrawals and Earnings](02-network-theory.md) section of the guide.
+- **Validator Withdrawal Address**: This is the Ethereum address where your funds will be sent when you stop validating and withdrawing your staked LYX. It's important that you always have control over it as it can not be updated. For more information, you can check the [Withdrawals and Earnings](02-network-theory.md) section of the guide.
 - **Validator Recipient Fee Address**: This is the Ethereum address where the transaction fees you earn as a validator will be sent. Depending on your setup, this might be the same as your withdrawal address. For more information, you can check the [Withdrawals and Earnings](02-network-theory.md) section of the guide.
 
 ### 6.9.2 Import Mainnet Keys
@@ -185,7 +185,7 @@ lukso start --validator --transaction-fee-recipient "<transaction-fee-recipient-
 lukso start --validator --transaction-fee-recipient "<transaction-fee-recipient-address>" --testnet
 ```
 
-### 6.9.7 Slasher Config
+### 6.9.7 Optional Slasher Config
 
 Implementing and running the slasher service is included in the consensus client by default. It actively watches for slashable offenses on the network and can be resource-intensive. It's generally beneficial for network security if most nodes independently check for slashing conditions. However, if you have a low-performance node, it could lead to the following problems:
 
