@@ -420,10 +420,10 @@ The output should look similar to this:
      CGroup: /system.slice/noip2.service
              └─4387 /usr/local/bin/noip2
 
-[DATE] [DATE] [USER] systemd[1]:  Starting No-ip.com Dynamic DNS
-[DATE] [DATE] [USER] noip2[4387]: v2.1.9 daemon started with NAT enabled
-[DATE] [DATE] [USER] systemd[1]:  Started No-ip.com Dynamic DNS.
-[DATE] [DATE] [USER] noip2[4387]: [DYN_DNS_NAME] was already set to [PUBLIC_IP].
+[DATE] [TIME] [USER] systemd[1]:  Starting No-ip.com Dynamic DNS
+[DATE] [TIME] [USER] noip2[4387]: v2.1.9 daemon started with NAT enabled
+[DATE] [TIME] [USER] systemd[1]:  Started No-ip.com Dynamic DNS.
+[DATE] [TIME] [USER] noip2[4387]: [DYN_DNS_NAME] was already set to [PUBLIC_IP].
 ...
 ```
 
