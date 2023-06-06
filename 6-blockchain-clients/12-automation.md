@@ -1,7 +1,5 @@
 ## 6.12 Service Automation
 
-> **THIS PAGE IS WORK IN PROGRESS. DO NOT USE IN PRODUCTION AS IT IS TESTED PROPERLY.**
-
 By default, the blockchain clients are not automatically starting whenever there has been a power outage on your system. However, this means additional manual work by logging into the node again after a power outage.
 
 As the CLI maintains all blockchain clients, we can add a script run every time on boot. However, managing individual services is not possible within this setup, as it requires the professional configuration of each client. Here, Grafana Alerts are helping out, as they will inform if a validator can not connect to the execution client anymore or if the validator is not reachable.
@@ -200,8 +198,10 @@ To enable the validator client to start when the system boots, we can use the sy
 sudo systemctl enable validator
 ```
 
+The output should look similar to this:
+
 ```text
-TODO:
+Created symlink /etc/systemd/system/multi-user.target.wants/validator.service → /etc/systemd/system/validator.service.
 ```
 
 We can fetch the current status from the system control to check if the Node Exporter service is running and configured correctly. It will display whether it is active, enabled, or disabled and show any recent log entries.
@@ -213,8 +213,51 @@ sudo systemctl status validator
 The output should look similar to this:
 
 ```text
-TODO:
+● validator.service - LUKSO Validator Node
+     Loaded: loaded (/etc/systemd/system/validator.service; enabled; vendor preset: enabled)
+     Active: active (exited) since [DATE] UTC; [TIME] ago
+       Docs: https://github.com/lukso-network/tools-lukso-cli
+   Main PID: 9096 (code=exited, status=0/SUCCESS)
+      Tasks: 26 (limit: 4694)
+     Memory: 1.1G
+     CGroup: /system.slice/validator.service
+             [PID] geth --config=./configs/testnet/geth/geth.toml
+             ├─[PID] prysm --log-file=./testnet-logs/prysm_2023-06-06_14-43-01.log --accept-terms-of-use --config-file=./configs/testn>
+             └─[PID] validator --accept-terms-of-use --config-file=./configs/testnet/prysm/validator.yaml --log-file=./testnet-logs/va>
+
+[DATE] [TIME] [USER] validator[9096]: time="2023-06-06T14:43:13Z" level=info msg="✅  Validator started! Use 'luk>
+[DATE] [TIME] [USER] validator[9096]: time="2023-06-06T14:43:13Z" level=info msg="🎉  Clients have been started. >
+...
+[DATE] [TIME] [USER] systemd[1]: Finished LUKSO Validator Node.
 ```
+
+You can still check the status of the node, however, you always have to use the superuser permission to do so:
+
+Navigate into your home directory
+
+```sh
+cd
+```
+
+Move into your working directory of your node. Make sure to change `<your-working-directory>` within your command.
+
+```sh
+cd <your-working-directory>
+```
+
+```sh
+sudo lukso status
+```
+
+The output should look similar to this:
+
+```sh
+INFO[0000] PID 9409 - Execution (geth): Running 🟢
+INFO[0000] PID 9419 - Consensus (prysm): Running 🟢
+INFO[0000] PID 9426 - Validator (validator): Running 🟢
+```
+
+> If you are not using `sudo`, the default value will show all processes as stopped even if they are running!
 
 ### 6.9.10 Maintenance
 
@@ -247,7 +290,7 @@ sudo systemctl restart validator
 
 #### Stopping
 
-You can stop the service using the system control:
+You can stop the service using the system control. Make sure to always use the
 
 ```sh
 sudo systemctl stop validator
@@ -255,8 +298,46 @@ sudo systemctl stop validator
 
 ### 6.9.12 Optional User Removal
 
-TODO:
+If you ever want to remove the user or something went wrong, do the following steps:
 
-### 6.9.13 Optional Software Removal
+Change the owner back to your regular node user. Make sure to update the `<your-node-user>` and `<your-working-directory>` properties within the command.
 
-TODO:
+```sh
+sudo chown -R <your-node-user>:<your-node-user> /home/<your-node-user>/<your-working-directory>
+```
+
+Remove the user and all the files, so there are no orphaned data blobs on your system:
+
+```sh
+sudo deluser --remove-all-files validator-node-worker
+```
+
+```sh
+sudo delgroup validator-node-worker
+```
+
+### 6.9.13 Optional Service Removal
+
+If you want to remove the automation tool, stop the service:
+
+```sh
+sudo systemctl stop validator
+```
+
+Disable the service:
+
+```sh
+sudo systemctl disable validator
+```
+
+Remove the service file:
+
+```sh
+sudo rm /etc/systemd/system/validator.service
+```
+
+Reload the system service daemon to get the service file change:
+
+```sh
+sudo systemctl daemon-reload
+```
