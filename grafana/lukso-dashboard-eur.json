@@ -4256,23 +4256,6 @@
               "type": "avg"
             },
             "type": "query"
-          },
-          {
-            "evaluator": {
-              "params": [0.9],
-              "type": "lt"
-            },
-            "operator": {
-              "type": "or"
-            },
-            "query": {
-              "params": ["B", "5m", "now"]
-            },
-            "reducer": {
-              "params": [],
-              "type": "avg"
-            },
-            "type": "query"
           }
         ],
         "executionErrorState": "alerting",
@@ -4559,23 +4542,6 @@
             },
             "query": {
               "params": ["A", "10s", "now"]
-            },
-            "reducer": {
-              "params": [],
-              "type": "last"
-            },
-            "type": "query"
-          },
-          {
-            "evaluator": {
-              "params": [0.1],
-              "type": "lt"
-            },
-            "operator": {
-              "type": "or"
-            },
-            "query": {
-              "params": ["B", "10s", "now"]
             },
             "reducer": {
               "params": [],
