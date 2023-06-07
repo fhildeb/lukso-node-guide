@@ -336,6 +336,12 @@ Remove the service file:
 sudo rm /etc/systemd/system/validator.service
 ```
 
+Now, remove password file and its folder. You may need to adjust the names in case you stored the password file in a different position.
+
+```sh
+rm -rf <node-working-directory>/static
+```
+
 Reload the system service daemon to get the service file change:
 
 ```sh
