@@ -364,7 +364,24 @@ You can stop the service using the system control:
 sudo systemctl stop grafana-server
 ```
 
-### 7.6.7 Optional User Removal
+### 7.6.7 Adjusting the Time Zone
+
+In some cases, there are issues when having different timezones set on your system and your personal computer when accessing Grafana. On the other hand, metrics might also show the wrong timestamps. You can check if the wanted timezone is correct by typing:
+
+```sh
+timedatectl
+```
+
+In case there is an offset, you can set a new timezone. This will automatically take effect for all applications and log files created on your node machine. Make sure you check online which timezone you are in and whats the correct naming.
+
+```sh
+sudo timedatectl set-timezone <your-time-zone>
+
+# Example for Berlin Time
+sudo timedatectl set-timezone Europe/Berlin
+```
+
+### 7.6.8 Optional User Removal
 
 If you ever want to remove the user or something went wrong, do the following steps:
 
@@ -410,7 +427,7 @@ sudo delgroup grafana-server-worker
 
 Afterward, you can redo the Grafana guide and either set up a new user or remove the `User` and `Group` properties from the configuration in `7.6.4`. By default, the process will run as `root`. Also, go through every step in `7.6.5` once again.
 
-### 7.6.8 Optional Software Removal
+### 7.6.9 Optional Software Removal
 
 If you want to remove the Grafana software, stop the running service:
 
