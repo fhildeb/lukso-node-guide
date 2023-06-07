@@ -80,6 +80,8 @@ For being offline for 1 day:      0.10 LYX/LYXt penalty
 For being offline for 7 days:     1.00 LYX/LYXt penalty
 ```
 
+Based on the [panalty research](https://alonmuroch-65570.medium.com/how-long-will-it-take-an-inactive-eth2-validator-to-get-ejected-a6ce8f98fd1c), a validator will lose roughly 60% of their staked LYX after 18 days of inactivity, meaning `4096` epochs. It takes around 3 weeks or roughly `4686` epochs for the effective balance to fall to around 16 LYX, which will cause the validator to be ejected from the PoS protocol. An explanation of epochs can be found [below](#6210-epochs).
+
 > Remember, these are rough estimates, and the penalties could differ based on the network conditions. If the network is not finalizing, e.g., over one-third of the network is offline, penalties can ramp up significantly.
 
 ### 6.2.8 Network Exits
