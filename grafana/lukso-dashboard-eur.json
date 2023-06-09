@@ -5543,7 +5543,7 @@
         "for": "5m",
         "frequency": "1m",
         "handler": 1,
-        "name": "CPU Temperature above 55 °C",
+        "name": "CPU Temperature above 75 °C",
         "noDataState": "no_data",
         "notifications": [
           {
@@ -5621,7 +5621,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "CPU Temperature above 55 °C",
+      "title": "CPU Temperature above 75 °C",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -5827,7 +5827,7 @@
         "for": "0m",
         "frequency": "1m",
         "handler": 1,
-        "name": "Google Ping above 10ms",
+        "name": "Google Ping above 30ms",
         "noDataState": "no_data",
         "notifications": []
       },
@@ -5901,7 +5901,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Google Ping above 10ms",
+      "title": "Google Ping above 30ms",
       "tooltip": {
         "shared": true,
         "sort": 0,
