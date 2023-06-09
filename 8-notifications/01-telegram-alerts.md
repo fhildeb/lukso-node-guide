@@ -72,8 +72,8 @@ Grafana can send alerts through various channels, such as Discord, Telegram, or 
 4. Select each alert and click `Edit` on the 3-dot-menu.
 5. Within the `Alert` tab, select `Create alert rule from this panel` if you do not already see a alert panel on the page that you can click on. Do not worry if you need to create it first, as this is the default behavior since you will have to create folders and groups first.
 6. Click `Preview` to print out the graph to evaluate metric numbers.
-7. Adjust the Graph to be a `Time series` if the metric shows an outdated warning.
-8. Adjust the `Threshold` section to your likings on when the alert should happen.
+7. Adjust the `Threshold` section to your likings on when the alert should happen.
+8. In case the `Reduce` section is showing multiple lines and one of them is `NaN`, set `Replace Non-numeric Values` with a custom number. For the Participation Rate Metric, it should be replaced with `100` or above to not accidently trigger any alerts below the threshold.
 9. Within the `Alert evaluation behavior` section, add a `node-alerts` folder where all the alert data will be stored. If it is already existing, select it from the panel. You can change the name of the folder of your likings, it is just to group alert's data. Its recommended to always choose the same name for one network, node or validator, so you do not mix up various targets and dashboards.
 10. Within the `Evaluation group` selection, add a `node-group`. If it is already existing, select it from the panel. You can change the name of the group of your likings, it is just to group alert's data. Its recommended to always choose the same name for one network, node or validator, so you do not mix up various targets and dashboards.
 11. Scroll up and click `Save`
