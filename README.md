@@ -10,14 +10,17 @@ This repository features all information needed to build, set up, and run a node
 
 The repository includes a pictured guide of the node build and components, the proper BIOS and operation system setup, installation of the blockchain clients, the configuration of staking and monitoring software, and even includes lagacy guides for the outdated L16 network of LUKSO.
 
-> _In addition to this repository, I recommend having a look into the [Luksoverse Docs](https://docs.luksoverse.io/). Its the most comprehensive node guide page for LUKSO. It's likely that even my extended explanations and descriptions of terminal commands will end up there at some point. For now, I wanted to gather things on my own end._
+> _**Publication:** This guide is live on [Luksoverse Docs](https://docs.luksoverse.io/). Please note, that this GitHub repository is always the latest version, as the website is updated manually by an external party._
 
 ## CLI Support
 
 - Legacy Software: `LUKSO CLI v 0.1.0 - 0.4.4`
 - Full Node Setup: `LUKSO CLI v 0.5.0 +`
+- Service Automation: `LUKSO CLI v 0.6.1 +`
 
 ## Description
+
+> _**Disclaimer**: This guide is for informational purposes only. We do not warrant its accuracy or completeness and shall not be liable for any direct, indirect, incidental, or consequential damages arising out of or in connection with the use of this guide. The disclaimed warranty also applies to business interruption, data loss, or financial loss._
 
 The guides in the repository are split into multiple folders and sections.
 
