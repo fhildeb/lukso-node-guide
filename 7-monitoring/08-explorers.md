@@ -83,6 +83,14 @@ Now we can search this log file to get all the index properties of each validato
 
 Make sure to exchange `<recent-validator-logs.log>` with the actual filename from the previous step.
 
+#### Testnet Validator Script
+
+```sh
+cat <recent-validator-logs.log> | grep -o 'index=[0-9]* ' | awk -F'=' '{printf "%s,", $2}' | sed 's/,$//' | tr -d ' ' | awk '{print "https://explorer.consensus.testnet.lukso.network/dashboard?validators=" $0}'
+```
+
+#### Mainnet Validator Script
+
 ```sh
 cat <recent-validator-logs.log> | grep -o 'index=[0-9]* ' | awk -F'=' '{printf "%s,", $2}' | sed 's/,$//' | tr -d ' ' | awk '{print "https://explorer.consensus.mainnet.lukso.network/dashboard?validators=" $0}'
 ```
