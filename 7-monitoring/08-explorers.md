@@ -87,7 +87,13 @@ Make sure to exchange `<recent-validator-logs.log>` with the actual filename fro
 cat <recent-validator-logs.log> | grep -o 'index=[0-9]* ' | awk -F'=' '{printf "%s,", $2}' | sed 's/,$//' | tr -d ' ' | awk '{print "https://explorer.consensus.mainnet.lukso.network/dashboard?validators=" $0}'
 ```
 
-The link can then be saved as a bookmark.
+The output will look similar to this one, having all your index numbers:
+
+```text
+https://explorer.consensus.mainnet.lukso.network/dashboard?validators=1,2,3
+```
+
+The link can then be copied from the terminal and saved as a bookmark in your browser.
 
 > The consensus explorer only supports up to 100 validators by default. You need to split your validator index numbers across multiple links if you have more validators. Therefore, past the generated link into a text editor and split the indexes so there is no duplicated index across the generated links.
 
