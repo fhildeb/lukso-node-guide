@@ -142,6 +142,12 @@ You can see, that the lukso-validator-worker is owner of the node folder and can
 sudo chmod 755 /home/<user-name>
 ```
 
+If you run the command again, you should see the change took effect.
+
+```sh
+namei -l /home/<user-name>/<your-node-folder>
+```
+
 The output will look like the following:
 
 ```text
