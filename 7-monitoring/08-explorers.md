@@ -103,8 +103,6 @@ https://explorer.consensus.mainnet.lukso.network/dashboard?validators=1,2,3
 
 The link can then be copied from the terminal and saved as a bookmark in your browser.
 
-> The consensus explorer only supports up to 100 validators by default. You need to split your validator index numbers across multiple links if you have more validators. Therefore, past the generated link into a text editor and split the indexes so there is no duplicated index across the generated links.
-
-The page will look like the following. It shows the status and uptime of your validators that are run on your node.
+The page will look like the one below. It shows the status and uptime of your validators that are run on your node:
 
 ![Validator Overview](/img/explorer-pages-5.png)
