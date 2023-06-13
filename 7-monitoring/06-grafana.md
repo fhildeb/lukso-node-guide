@@ -459,7 +459,7 @@ Then continue deleting the configuration folders:
 sudo rm -rf /etc/grafana
 ```
 
-Remove the Prometheus database:
+Remove the Grafana database:
 
 ```sh
 sudo rm -rf /var/lib/grafana
