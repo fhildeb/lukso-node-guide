@@ -18,6 +18,8 @@ As of version `0.6.0` of the LUKSO CLI, the following clients are officially sup
 - **Consensus Clients:** Prysm, Lighthouse
 - **Validator Clients:** Prysm
 
+You can find a list of all EVM Clients, their current development and status, plus supported operating at the [Client Diversity Webpage](https://clientdiversity.org/#clients). The data is updated frequently and charts feature metrics that are fetched on a daily basis.
+
 #### Geth
 
 Geth is the most popular and widely used Ethereum client. It's written in the Go programming language. Geth can be used for various tasks, including creating smart contracts, transferring tokens, mining ether, and exploring block history. It's developed and maintained by the Ethereum Foundation.
@@ -88,7 +90,7 @@ Client diversity refers to utilizing different software clients in a blockchain 
 - **Security and Resilience**: Client diversity increases the robustness of the network. If there's a bug in one client, it doesn't bring down the entire network because other clients can continue to operate. This decentralization and redundancy is a fundamental aspect of blockchain security and resilience.
 - **Decentralization and Governance**: Client diversity promotes decentralization in the development and governance of the Ethereum network. It prevents any team or entity from having too much influence over the network's growth.
 
-> We should ensure that we can split our client usage evenly to the extent of officially supported clients and validators.
+Operators of validators and nodes should ensure that we can split our client usage evenly to the extent of officially supported clients and validators. You can find metrics about the diversity on Ethereum at the [Client Diversity Webpage](https://clientdiversity.org/#distribution). The charts for consensus and execution clients are updated on a daily basis.
 
 #### Ethereum's History
 
