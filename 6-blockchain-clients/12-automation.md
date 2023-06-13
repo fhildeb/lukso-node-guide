@@ -263,8 +263,10 @@ sudo systemctl enable lukso-validator
 The output should look similar to this:
 
 ```text
-Created symlink /etc/systemd/system/multi-user.target.wants/validator.service → /etc/systemd/system/validator.service.
+Created symlink /etc/systemd/system/multi-user.target.wants/validator-validator.service → /etc/systemd/system/lukso-validator.service.
 ```
+
+### 6.12.8 Checking the Service Status
 
 We can fetch the current status from the system control to check if the Node Exporter service is running and configured correctly. It will display whether it is active, enabled, or disabled and show any recent log entries.
 
@@ -293,7 +295,11 @@ The output should look similar to this:
 [DATE] [TIME] [USER] systemd[1]: Finished LUKSO Validator Node.
 ```
 
-You can still check the status of the node, however, you always have to use the superuser permission to do so:
+You can still check the status of the node, however, you always have to use the superuser permission to do so.
+
+#### Permission Disclaimer
+
+As we are having a separate user to run the service, we now need to execute all `lukso` commands using super user permission. If you are not using super user permission, `lukso status` will show all processes as stopped even if they are running! The same goes for `lukso logs`, as it will show that there are no logs found, even if the process is generating them in the background.
 
 Navigate into your home directory
 
@@ -307,8 +313,6 @@ Move into your working directory of your node. Make sure to change `<your-workin
 cd <your-working-directory>
 ```
 
-> **Permission Disclaimer**: As we are having a separate user to run the service, we now need to execute all `lukso` commands using super user permission. If you are not using super user permission, `lukso status` will show all processes as stopped even if they are running! The same goes for `lukso logs`, as it will show that there are no logs found, even if the process is generating them in the background.
-
 ```sh
 sudo lukso status
 ```
@@ -321,9 +325,19 @@ INFO[0000] PID 9419 - Consensus (prysm): Running 🟢
 INFO[0000] PID 9426 - Validator (validator): Running 🟢
 ```
 
-### 6.12.8 Maintenance
+### 6.12.9 Maintenance
 
-Proper maintenance ensures that all the components are working as intended, can be updated on the fly, and that software can be kept up-to-date and secure. It's also essential to identify and fix errors quickly.
+Proper maintenance ensures that all the components are working as intended, can be updated on the fly, and that software can be kept up-to-date and secure. It's also essential to identify and fix errors quickly. There are some things to clarify first about how the node clients should be maintained and why:
+
+#### Manual CLI Starts
+
+Within the service, we configured the LUKSO CLI to run as a specific user with only the necessary permissions to the node folder and its exclusive rights to view the password file. Separate permissions are a preventative measure against potential security threats. If you start and stop the CLI with `sudo` manually, it will be run with superuser privileges as root, meaning it will have complete access to the system. The entire system could be at risk if the service or application is compromised or has a potentially undiscovered exploit. Therefore, always use the system control so it is run from a specific user, limiting its access and reducing risk.
+
+In addition, using the system management tool for controlling your services is beneficial for maintenance. The configured service provides a standard method to start, stop, and restart applications. It manages service dependencies and can automatically restart services if they crash. Systemd also logs service outputs and monitors their process IDs, which aids in monitoring and troubleshooting. All the convenience and automation would not be done if started manually!
+
+#### Service Management
+
+The service file simulates the start command as if it is run directly within your node's working directory, meaning executing `sudo lukso stop` and `sudo lukso start` will work as before. The LUKSO CLI can not be started two times simultaneously if it is already running on the system. So there is no risk of accidentally being slashed or duplicating the clients. However, if it was started as a service before, and you would execute the command `sudo lukso start` manually, it would restart the node clients as root with full access rights, which should be avoided, as stated above.
 
 #### Logging
 
@@ -358,7 +372,7 @@ You can stop the service using the system control. Make sure to always use the
 sudo systemctl stop lukso-validator
 ```
 
-### 6.12.9 Optional User Removal
+### 6.12.10 Optional User Removal
 
 If you ever want to remove the user or something went wrong, do the following steps:
 
@@ -390,7 +404,7 @@ sudo deluser --remove-all-files lukso-validator-worker
 sudo delgroup lukso-validator-worker
 ```
 
-### 6.12.10 Optional Service Removal
+### 6.12.11 Optional Service Removal
 
 If you want to remove the automation tool, stop the service:
 
