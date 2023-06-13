@@ -26,7 +26,9 @@ Geth is the most popular and widely used Ethereum client. It's written in the Go
 
 Erigon is an Ethereum client that aims to offer a more efficient and faster alternative to Geth. It's written in Go and includes several optimizations to reduce the amount of data stored and improve processing speed. However, these optimizations can make Erigon more complex to maintain and update.
 
-> **CAUTION:** The current version of Erigon states that it is a tech preview and that things can and will break. It comes with several optimizations but is only suggested for tech-savvy people who know what they are doing and can act quickly when the service stalls or need to be manually rebooted.
+> **Disclaimer**: The current version of Erigon states that it is a tech preview and that things can and will break. It comes with several optimizations but is only suggested for tech-savvy people who know what they are doing and can act quickly when the service stalls or needs to be manually rebooted.
+
+Erigon is stably working on [Debian 11 Bullseye](https://www.debian.org/download). However frequently crashes on [Ubuntu 22](https://ubuntu.com/download/server). You can read more about it within the [Operating System](/2-bios-installation/01-operating-system.md) section of the guide. Make sure to have Debian installed if you want to use Erigon on your validator setup.
 
 #### Prysm
 

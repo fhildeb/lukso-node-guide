@@ -185,6 +185,8 @@ If you're running an Ethereum node on your computer, it will typically expose a 
 
 The `attach` command can interact with a running execution instance. Attaching the console to a particular port will open up a JavaScript console where you can execute JavaScript commands and interact with the Ethereum blockchain via your own node.
 
+> **Note**: If you are using another client as Geth, please look at their documentation on configuring the JSON RPC endpoint! For Erigon, it's similar to Geth. However, there might be an error about the address already being used by the client, so you have to configure it first.
+
 ```sh
 # Geth interface
 geth attach http://localhost:8545
