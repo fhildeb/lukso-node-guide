@@ -187,24 +187,48 @@ lukso start --validator --transaction-fee-recipient "<transaction-fee-recipient-
 
 ### 6.9.7 Optional Slasher Config
 
-Implementing and running the slasher service is included in the consensus client by default. It actively watches for slashable offenses on the network and can be resource-intensive. It's generally beneficial for network security if most nodes independently check for slashing conditions. However, if you have a low-performance node, it could lead to the following problems:
+#### Slasher Functionality
+
+Slasher is the name of software that can detect slashable events from validators and report them to the protocol. You can think of a slasher as the network's police. Running a slasher is optional. In order to detect slashable messages, the slasher records the attesting and proposing history for every validator on the network, then cross references this history with what has been broadcasted to find slashable messages such as double blocks or surrounding votes.
+
+In theory all the network needs is 1 honest, properly functioning slasher to monitor the network because any slashings found are propagated to the entire network for it to be put into a block as soon as possible.
+
+> Due to uptime reasons, there should be multiple backups in different areas and networks. It's generally beneficial for network security if a handful of nodes independently check for slashing conditions.
+
+Running a slasher is not meant to be profitable and whistleblower rewards are purposefully low as slashing happens rarely.
+
+#### Additional Rewards
+
+Running a slasher may offer some profits to your validators given certain conditions. If the slasher detects a slashable condition, it will broadcast it to the network by default. Some lucky validator will then package this slashing evidence into a block and be rewarded for doing so. This validator might be your own one. By running only a one or two digit validator amount, chances are super low and do not keep up with the potential rewards.
+
+> **Note**: If there is no cheating behavior within the network, there is nothing to be slashed. Regular penalties are applied from the consensus.
+
+#### Requirements
+
+The [hardware requirements](https://docs.prylabs.network/docs/prysm-usage/slasher) for the slasher service can be seen below. It needs more system resources, namely more than 1GB of additional RAM and significantly more storage space. However, there is not a particular number
+
+- Processor: Intel Core i7–4770 or AMD FX-8310 or better
+- Memory: 16GB RAM
+- Storage: 1TB available space SSD
+- Internet: Broadband connection
+
+> All these specifications come on top of your regular node requirements. If you want 1TB of storage for your slasher node, you should calculate another 1TB just for the slasher service to have enough headspace over the years. If you want to know more about how much storage the node will need, have a look at the [Client Setup](04-client-setups.md) section.
+
+If you run the slasher on a low-performance node or can not keep up with the requirements, it could lead to the following problems:
 
 - The slasher service could lag behind the head of the chain, making it ineffective at timely detecting slashable offenses.
 - The node could become unstable and crash due to running out of resources, disrupting its participation in the consensus process and potentially leading to penalties if it's also running a validator client.
 - The service could slow down other processes running on the same node, such as if it's also running a beacon node or validator client.
 
-Typical requirements for the slasher service are a modern multi-core CPU, 16GB of RAM, and an SSD with a decent size. Look at the [Storage Comparison](./03-client-theory.md) section for more details on disk usage.
+If you are operating a **staking pool** or **data center**, you should be fine with the requirements. However, the slasher process is likely to overwhelm most home validator setups. The incentives for running a slasher accumulate irregularly, at great cost, so home stakers are advised to run their beacon node without it. It is an entirely optional process.
 
-If you can not keep up or have an old machine unable to run the slasher functionality, you can disable it using a CLI flag. Make sure you use your transaction fee recipient address.
+#### Running the Slasher
 
-##### Starting up mainnet validator without a slasher
+Implementing and running the slasher service can be done from the CLI by passing down the slasher flag. It actively watches for slashable offenses on the network and broadcasts them to the network.
 
-```sh
-lukso start --validator --transaction-fee-recipient "<transaction-fee-recipient-address>" --no-slasher
-```
-
-##### Starting up testnet validator without a slasher
+Make sure to add your transaction fee recipient address within the command.
 
 ```sh
-lukso start --validator --transaction-fee-recipient "<transaction-fee-recipient-address>" --testnet --no-slasher
+# Slasher for Prysm Consensus Client
+lukso start --validator --transaction-fee-recipient "<transaction-fee-recipient-address>" --testnet --prysm-slasher
 ```
