@@ -96,15 +96,15 @@ Write your password into this file and save it. Afterward we will have to give p
 
 ### 6.12.5 Adding Startup Script
 
-The system service file we're going to create later is able to execute a program and check if the network is online before starting it up. However, it's important to understand that these system checks does not necessarily imply that you have a working internet connection! It's mainly designed to indicate that the network is set up, which doesn't always guarantee a full-fledged working internet connection.
+The system service file we will create later can execute a program and check if the network is online before starting it up. However, it's essential to understand that these **system checks do not necessarily imply that you have a working internet connection**! It's mainly designed to indicate that the network is set up, which doesn't always guarantee a full-fledged active internet connection.
 
-Fr the LUKSO CLI to start up correctly without stalling, an internet connection needs to be established before. In case you face a power outage at home, and your node resumes the work before the router could reconnect, you would stil have to manually restart the system service.
+For the LUKSO CLI to start correctly without stalling, an internet connection must be established before starting the clients. If you face a power outage at home, and your node resumes work before the router can reconnect, you would still have to restart the system service manually.
 
-To solve this issue, we can call an external script instead of the CLI directly. This script then tries to ping Google first. If the node has an external IP and the ping was successful, it will continue to start up the LUKSO CLI. If not, it will wait for 1 second and retry to ping Google again until it was successful.
+To solve this issue, we can call an external script instead of starting the CLI directly. This script then tries to ping Google first, before continuing the node start. If the internet connection is up and could ping Google successful, it will start up the LUKSO CLI. If not, it will wait for 1 second and retry to ping Google again until it is successful.
 
-> The external script will guarantee a healthy startup of the clients
+> The external script will guarantee a healthy startup for the clients.
 
-First, we are going to create a new file within the same folder as the password file.
+First, we will create a new file within the same folder as the password file.
 
 ```sh
 vim ./lukso_startup.sh
@@ -112,10 +112,10 @@ vim ./lukso_startup.sh
 
 To ping Google, we can define the following options:
 
-- `c1`: Specifies the number of packets to send before stopping. In our case, it tells ping to only send one packet. This is often used in scripts or when testing connectivity because it stops ping after one successful or unsuccessful try, rather than continuing indefinitely as it does by default.
-- `&>/dev/null`: Redirects both errors and outputs to `/dev/null`, effectively discarding them. This is useful because we don't care about the output and just want to use the ping utility for our script.
+- `c1`: Specifies the number of packets to send before stopping. In our case, it tells ping only to send one package. The parameter is often used in scripts or when testing connectivity because it prevents other pings after one successful or unsuccessful try rather than continuing indefinitely.
+- `&>/dev/null`: Redirects errors and outputs to `/dev/null`, effectively discarding them. The discard is helpful because we don't care about the output and just want to use the ping utility for our script.
 
-The working directory will be our regular node folder, so we can use dynamic file paths. However, make sure that you exchange the placeholders with your own input:
+The working directory will be our regular node folder so that we can use dynamic file paths. However, make sure that you exchange the placeholders with your own input:
 
 - `<your-generic-password-file>`: The name of your password file
 - `<your-fee-recipient-address>`: Your EOA address to receive recipient fees.
