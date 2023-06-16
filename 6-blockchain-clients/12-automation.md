@@ -77,7 +77,7 @@ Create a new directory to store the file in. This is just so it does not directl
 
 ```sh
 # Create the folder
-sudo mkdir static
+mkdir static
 
 # Move into it
 cd static
