@@ -227,6 +227,9 @@ Implementing and running the slasher service can be done from the CLI by passing
 Make sure to add your transaction fee recipient address within the command.
 
 ```sh
-# Slasher for Prysm Consensus Client
-lukso start --validator --transaction-fee-recipient "<transaction-fee-recipient-address>" --testnet --prysm-slasher
+# Slasher for Prysm Consensus Client on Mainnet
+lukso start --validator --transaction-fee-recipient "<transaction-fee-recipient-address>" --prysm-slasher
+
+# Slasher for Prysm Consensus Client on Testnet
+lukso start --testnet --validator --transaction-fee-recipient "<transaction-fee-recipient-address>" --prysm-slasher
 ```
