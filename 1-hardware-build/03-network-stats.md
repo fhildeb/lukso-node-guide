@@ -14,4 +14,23 @@ Running an EVM Proof of Stake validator node at home requires a stable and relia
 - **Upload speed**: A minimum upload speed of `2-4 Mbps` is suggested to ensure your attestations and proposals can be sent to the network quickly. With my fiber connection at home, I get around _70 Mbps_.
 - **Latency**: A low-latency connection below `30-100 ms` is ideal for ensuring timely participation in the consensus process and increasing the chances of rewards. I usually get a latency below _15 ms_ on my end.
 
+Based on research within the community, the node itself will fetch similar network traffic amounts when running as validator fullnode: The archive nodes will get similar numbers but store data more consistently and in more detail.
+
+```text
+--AVERAGE DAILY UPLOAD....................45 GB
+--AVERAGE DAILY DOWNLOAD..................43 GB
+-----------------------------------------------------
+--AVERAGE DAILY DATA......................88 GB TOTAL
+
+--AVERAGE WEEKLY UPLOAD..................330 GB
+--AVERAGE WEEKLY DOWNLOAD................300 GB
+-----------------------------------------------------
+--AVERAGE WEEKLY DATA....................630 GB TOTAL
+
+--AVERAGE MONTHLY UPLOAD................1400 GB
+--AVERAGE MONTHLY DOWNLOAD..............1330 GB
+-----------------------------------------------------
+--AVERAGE MONTHLY DATA..................2730 GB TOTAL
+```
+
 In conclusion, having sufficient network speeds and low latency is essential for running an Ethereum PoS validator node at home. It ensures optimal performance, maximizes reward potential, and minimizes the risk of penalties or missed events.
