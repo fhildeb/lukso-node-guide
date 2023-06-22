@@ -96,6 +96,8 @@ Write your password into this file and save it. Afterward we will have to give p
 
 ### 6.12.5 Adding Startup Script
 
+> **Permission Notice**: In case you are updating or creating a startup script, make sure to also redo the permissions within step 6.12.6 as the user wont have access to it.
+
 The system service file we will create later can execute a program and check if the network is online before starting it up. However, it's essential to understand that these **system checks do not necessarily imply that you have a working internet connection**! It's mainly designed to indicate that the network is set up, which doesn't always guarantee a full-fledged active internet connection.
 
 For the LUKSO CLI to start correctly without stalling, an internet connection must be established before starting the clients. If you face a power outage at home, and your node resumes work before the router can reconnect, you would still have to restart the system service manually.
