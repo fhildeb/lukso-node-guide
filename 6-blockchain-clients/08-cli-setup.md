@@ -15,6 +15,15 @@ The [LUKSO CLI](https://github.com/lukso-network/tools-lukso-cli) is a command l
 
 You can control configurations to events, the testnet, and the mainnet in one working directory- depending on which one you want to synchronize and use. The CLI is not limiting your capabilities of running the client manually- as all flags and configurations can be passed down to the services.
 
+##### Supported Platforms
+
+The LUKSO CLI is officially supported on Mac, Ubuntu, and Debian with the following architectures:
+
+- `x86`/`x86_64`: Intel and AMD Processors
+- `ARM`/`aarch64`: Single-Board Computers as M1 or Raspberry
+
+> The experience might differ with other setups or versions of these operating systems.
+
 In the background, the blockchain clients run directly on the operating system, i.e., in the user directory `/usr/local/` of the Ubuntu Server installation.
 
 > Please see the [Docker Setup](./13-docker-setup.md) guide if you want to run multiple networks simultaneously or need to have your application separated from the rest of the service running on your node machine.
