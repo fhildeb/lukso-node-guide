@@ -28,10 +28,6 @@ Geth is the most popular and widely used Ethereum client. It's written in the Go
 
 Erigon is an Ethereum client that aims to offer a more efficient and faster alternative to Geth. It's written in Go and includes several optimizations to reduce the amount of data stored and improve processing speed. However, these optimizations can make Erigon more complex to maintain and update.
 
-> **Disclaimer**: The current version of Erigon states that it is a tech preview and that things can and will break. It comes with several optimizations but is only suggested for tech-savvy people who know what they are doing and can act quickly when the service stalls or needs to be manually rebooted.
-
-Erigon is stably working on [Debian 11 Bullseye](https://www.debian.org/download). However frequently crashes on [Ubuntu 22](https://ubuntu.com/download/server). You can read more about it within the [Operating System](/2-bios-installation/01-operating-system.md) section of the guide. Make sure to have Debian installed if you want to use Erigon on your validator setup.
-
 #### Prysm
 
 Prysm is written in Go and developed by Prysmatic Labs. Validators widely use it. Performance-wise, Prysm leverages optimized processes and data structures, offering a smooth experience for validators. The client had rigorous testing and auditing processes to ensure the client was secure against potential threats. It also comes with an excellent user-friendly terminal interface.
@@ -40,7 +36,7 @@ Prysm is written in Go and developed by Prysmatic Labs. Validators widely use it
 
 Lighthouse is written in Rust and developed by Sigma Prime. From a security perspective, Lighthouse leverages Rust's safety features and undergoes regular security audits to protect against potential vulnerabilities. Regarding efficiency, Lighthouse is designed to perform well even on low-spec hardware, making it accessible to a wide range of users with different skill levels.
 
-> Both consensus clients, Prysm and Lighthouse, are known to be highly secure and reliable. If you want to run your node as a validator on LUKSO, choose the Prysm consensus client, as it is the only supported validator client right now.
+> Both consensus clients, Prysm and Lighthouse, are known to be highly secure and reliable.
 
 ### 6.4.2 Storage Comparison
 

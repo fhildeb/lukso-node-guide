@@ -11,8 +11,6 @@ Ubuntu 22.04.2 Server is the latest iteration of one of the world's most popular
   **Release Cycle**: Ubuntu follows a six-month release cycle for new versions, with Long Term Support (LTS) versions released every two years. This regular release schedule can mean more frequent updates and access to newer software.
 - **Software Compatibility**: Ubuntu often provides more up-to-date software packages.
 
-> **Client Note**: Software Compatability can be an advantage if you plan on running the most recent version of execution clients like [_Geth_](https://github.com/ethereum/go-ethereum) or [_Parity_](https://github.com/openethereum/parity-ethereum). Read more within the [Client Setup](/6-blockchain-clients/04-client-setups.md) section of the guide.
-
 ### 2.1.2 Debian Focus Points
 
 Debian 11 Bullyeye is the most recent stable release of one of the pioneering and deeply respected Linux distributions. It's a tried-and-true platform engineered to deliver a secure, high-performing, and low-maintenance solutions. Debian is celebrated for its commitment to stability, reliability, and its broad software library.
@@ -21,8 +19,6 @@ Debian 11 Bullyeye is the most recent stable release of one of the pioneering an
 - **Security**: Debian has a strong emphasis on security, with a dedicated security team and a rigorous testing process for new software packages. For a critical application like an node, this can be a significant advantage.
 - **Resource Usage**: Debian generally uses fewer system resources than Ubuntu, which can be a benefit if you're running an node on a system with limited resources.
 - **Advanced Users**: Debian is often seen as a distribution for more experienced Linux users. If you're comfortable digging into the command line and solving problems independently, Debian can offer a powerful, stable platform for an node.
-
-> **Client Note**: Stability can be an advantage if you plan on running the most recent version of execution clients like [_Erigon_](https://github.com/ledgerwatch/erigon). Read more within the [Client Setup](/6-blockchain-clients/04-client-setups.md) section of the guide.
 
 ### 2.1.3 System Decision
 
