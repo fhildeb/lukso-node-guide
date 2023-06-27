@@ -129,12 +129,41 @@ If you encounter errors during checkups, redo the installation process.
 
 The following command will spin up your execution and consensus client and connect to the mainnet by default, but you can input the testnet or devnet flag so it relates to one of the other networks as well.
 
+#### Regular Synchronization
+
+Without specifying any flags, the node starts its normal synchronization process.
+
 ```sh
 # Starting mainnet
 lukso start
 
 # Starting testnet
 lukso start --testnet
+
+# Stopping the running network
+lukso stop
+```
+
+#### Checkpoint Synchronization
+
+If you want more convenience and your validator to operate quickly, you can also use checkpoints. Checkpoint synchronization is a feature that significantly speeds up the initial sync time of the consensus client. If enabled, your node will begin syncing from a recently finalized consensus checkpoint instead of genesis.
+
+> The shortcut is ideal for making installation, validator migration, or recovery much faster.
+
+There are different checkpoint commands for each network and consensus file:
+
+```sh
+# Starting Mainnet with Checkpoint for Prysm Consensus Client
+$ lukso start --prysm-checkpoint-sync-url=https://checkpoints.mainnet.lukso.network
+
+# Starting Mainnet with Checkpoint for Lighthouse Consensus Client
+$ lukso start --lighthouse-checkpoint-sync-url=https://checkpoints.mainnet.lukso.network
+
+# Starting Testnet with Checkpoint for Prysm Consensus Client
+$ lukso start --testnet --prysm-checkpoint-sync-url=https://checkpoints.testnet.lukso.network
+
+# Starting Testnet with Checkpoint for Lighthouse Consensus Client
+$ lukso start --testnet --lighthouse-checkpoint-sync-url=https://checkpoints.testnet.lukso.network
 
 # Stopping the running network
 lukso stop
