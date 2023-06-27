@@ -444,7 +444,7 @@ sudo systemctl disable grafana-server
 Remove the service file:
 
 ```sh
-sudo rm /etc/systemd/system/grafana-server.service
+sudo rm /lib/systemd/system/grafana-server.service
 ```
 
 Reload the system service daemon to get the service file change:
