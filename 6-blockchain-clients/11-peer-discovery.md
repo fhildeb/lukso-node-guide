@@ -310,7 +310,7 @@ sudo wget http://www.noip.com/client/linux/noip-duc-linux.tar.gz
 The output should be similar to this:
 
 ```sh
-[DATE] [TIME] (11.8 MB/s) - ‘noip-duc_3.0.0-beta.6.tar.gz’ saved [2529997/2529997]
+[DATE] [TIME] (11.8 MB/s) - ‘noip-duc-linux.tar.gz’ saved [2529997/2529997]
 ```
 
 After downloading it, we can extract the tape archive using the Ubuntu tool. We will extract (`x`) the tape archive into its previous packaged files (`f`).
