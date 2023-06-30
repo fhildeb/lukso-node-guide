@@ -12,11 +12,11 @@ An archive node is a type of full node. It downloads the entire blockchain and v
 
 ### 6.4.1 Supported Clients
 
-As of version `0.6.0` of the LUKSO CLI, the following clients are officially supported:
+As of version `0.7.0` of the LUKSO CLI, the following clients are officially supported:
 
 - **Execution Clients:** Geth, Erigon
 - **Consensus Clients:** Prysm, Lighthouse
-- **Validator Clients:** Prysm
+- **Validator Clients:** Prysm, Lighthouse
 
 You can find a list of all EVM Clients, their current development and status, plus supported operating at the [Client Diversity Webpage](https://clientdiversity.org/#clients). The data is updated frequently and charts feature metrics that are fetched on a daily basis.
 
