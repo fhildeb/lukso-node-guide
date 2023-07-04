@@ -236,4 +236,10 @@ lukso start --validator --transaction-fee-recipient "<transaction-fee-recipient-
 
 # Slasher for Prysm Consensus Client on Testnet
 lukso start --testnet --validator --transaction-fee-recipient "<transaction-fee-recipient-address>" --prysm-slasher
+
+# Slasher for Lighthouse Consensus Client on Mainnet
+lukso start --validator --transaction-fee-recipient "<transaction-fee-recipient-address>" --lighthouse-slasher
+
+# Slasher for Lighthouse Consensus Client on Testnet
+lukso start --testnet --validator --transaction-fee-recipient "<transaction-fee-recipient-address>" --lighthouse-slasher
 ```
