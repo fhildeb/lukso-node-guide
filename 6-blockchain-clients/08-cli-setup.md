@@ -146,27 +146,34 @@ lukso stop
 
 #### Checkpoint Synchronization
 
-If you want more convenience and your validator to operate quickly, you can also use checkpoints. Checkpoint synchronization is a feature that significantly speeds up the initial sync time of the consensus client. If enabled, your node will begin syncing from a recently finalized consensus checkpoint instead of genesis.
+If you want more convenience and your validator to operate quickly, you can also use checkpoints. Checkpoint synchronization is a feature that significantly speeds up the initial sync time of the consensus client. If enabled, your node will begin syncing from a recently finalized consensus checkpoint instead of genesis. It will then download the rest of the blockchain data while your consensus is already running.
 
-> The shortcut is ideal for making installation, validator migration, or recovery much faster.
+> After the synchronization is finalized, You will end up with the equal blockchain data. You can use the flag on every startup. However, it shows the most significant effect when synchronizing from scratch or after an extended downtime. The shortcut is ideal for fresh installations, validator migration, or recovery.
 
-There are different checkpoint commands for each network and consensus file:
+If you are using the LUKSO CLI Version 0.8 or above, checkpoint synchronization is built in:
+
+```sh
+# Starting Mainnet with Checkpoint
+lukso start --checkpoint-sync
+
+# Starting Testnet with Checkpoint
+lukso start --testnet --checkpoint-sync
+```
+
+If you are using an older version, you can pass down the checkpoint flag to the consensus clients directly:
 
 ```sh
 # Starting Mainnet with Checkpoint for Prysm Consensus Client
-$ lukso start --prysm-checkpoint-sync-url=https://checkpoints.mainnet.lukso.network
+lukso start --prysm-checkpoint-sync-url=https://checkpoints.mainnet.lukso.network
 
 # Starting Mainnet with Checkpoint for Lighthouse Consensus Client
-$ lukso start --lighthouse-checkpoint-sync-url=https://checkpoints.mainnet.lukso.network
+lukso start --lighthouse-checkpoint-sync-url=https://checkpoints.mainnet.lukso.network
 
 # Starting Testnet with Checkpoint for Prysm Consensus Client
-$ lukso start --testnet --prysm-checkpoint-sync-url=https://checkpoints.testnet.lukso.network
+lukso start --testnet --prysm-checkpoint-sync-url=https://checkpoints.testnet.lukso.network
 
 # Starting Testnet with Checkpoint for Lighthouse Consensus Client
-$ lukso start --testnet --lighthouse-checkpoint-sync-url=https://checkpoints.testnet.lukso.network
-
-# Stopping the running network
-lukso stop
+lukso start --testnet --lighthouse-checkpoint-sync-url=https://checkpoints.testnet.lukso.network
 ```
 
 #### Startup Folder Structure
