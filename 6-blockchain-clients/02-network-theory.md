@@ -98,7 +98,7 @@ Forceful exits will happen if your validator balance falls below 16 LYX/LYXt. On
 
 In Proof of Stake consensus, at least two-thirds of the validators must be online and actively participating for the chain to finalize blocks. Network stalls can occur for various reasons, such as network partitions or a significant number of other validators offline, or not participating effectively around the same time.
 
-#### 6.2.10 Epochs
+### 6.2.10 Epochs
 
 An epoch in PoS is a fixed period during which slots occur. It is a larger time frame that helps to organize the work of validators who propose and attest to blocks. An epoch is comprised of 32 slots, which means an epoch lasts for about 6.4 minutes, given that each slot is about 12 seconds.
 
@@ -108,7 +108,7 @@ Epochs provide several key functions:
 - **Rewards and Penalties**: At the end of each epoch, rewards and penalties are calculated for validators. Validators that correctly proposed and attested to blocks receive rewards, while those who behaved maliciously or were offline are penalized.
 - **Finality**: An epoch also plays a role in achieving finality. In simple terms, finality refers to the point at which a block cannot be changed or removed from the blockchain. The finality is achieved every epoch.
 
-#### 6.2.11 Slots
+### 6.2.11 Slots
 
 A slot in PoS, is a time period within an epoch that lasts for about 12 seconds. During a slot, a randomly chosen validator has the right to propose a new block to the blockchain.
 
