@@ -6,7 +6,6 @@ Running an EVM Proof of Stake validator node at home requires a stable and relia
 - **Attestations and Proposals**: As a validator, your node creates attestations and proposes blocks. A low-latency connection ensures that your attestations and proposals reach the network promptly, increasing the likelihood of inclusion in the final chain and earning rewards.
 - **Missed Events and Penalties**: In Ethereum PoS, validators can be penalized for failing to participate in the consensus process. If your network connection is slow or unstable, it could cause missed attestations or proposals, resulting in penalties and reduced rewards.
 - **Network Resilience**: A reliable internet connection with low latency helps your validator node stay connected to the network and recover quickly from temporary network outages. Strength reduces the risk of being isolated from the rest of the network and missing important consensus events.
-- **Security**: A stable and fast internet connection lets your validator node stay updated with the latest security patches and software updates, reducing the risk of vulnerabilities and potential attacks.
 
 #### Minimal Network Speeds
 
