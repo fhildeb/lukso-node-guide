@@ -207,14 +207,14 @@ Running a slasher may offer some profits to your validators given certain condit
 
 #### Requirements
 
-The [hardware requirements](https://docs.prylabs.network/docs/prysm-usage/slasher) for the slasher service can be seen below. It needs more system resources, namely more than 1GB of additional RAM and significantly more storage space. However, there is not a particular number
+The [hardware requirements](https://docs.prylabs.network/docs/prysm-usage/slasher) for the slasher service can be seen below. It needs more system resources, namely more than 1GB of additional RAM and more storage space. However, there is not a particular number.
 
 - Processor: Intel Core i7–4770 or AMD FX-8310 or better
 - Memory: 16GB RAM
 - Storage: 1TB available space SSD
 - Internet: Broadband connection
 
-> All these specifications come on top of your regular node requirements. If you want 1TB of storage for your slasher node, you should calculate another 1TB just for the slasher service to have enough headspace over the years. If you want to know more about how much storage the node will need, have a look at the [Client Setup](04-client-setups.md) section.
+> The slasher database will take additional space on your hard disk, up to hundreds of GBs. If you want to know more about how much storage the node will need, have a look at the [Client Setup](04-client-setups.md) section.
 
 If you run the slasher on a low-performance node or can not keep up with the requirements, it could lead to the following problems:
 
@@ -222,24 +222,36 @@ If you run the slasher on a low-performance node or can not keep up with the req
 - The node could become unstable and crash due to running out of resources, disrupting its participation in the consensus process and potentially leading to penalties if it's also running a validator client.
 - The service could slow down other processes running on the same node, such as if it's also running a beacon node or validator client.
 
-If you are operating a **staking pool** or **data center**, you should be fine with the requirements. However, the slasher process is likely to overwhelm most home validator setups. The incentives for running a slasher accumulate irregularly, at great cost, so home stakers are advised to run their beacon node without it. It is an entirely optional process.
+If you are operating an **advanced hardware setup**, **staking pool** or **data center**, you should be fine with the requirements. Still, it is an entirely optional process.
 
 #### Running the Slasher
 
-Implementing and running the slasher service can be done from the CLI by passing down the slasher flag.
+If you are using the LUKSO CLI with Prysm, the slasher is already activated by default. This is done for security reasons to increase watchers for malicious events during network downtimes of bigger services. If you are runnning on lower hardware, you can disable it using the commands below.
 
 Make sure to add your transaction fee recipient address within the command.
 
 ```sh
-# Slasher for Prysm Consensus Client on Mainnet
-lukso start --validator --transaction-fee-recipient "<transaction-fee-recipient-address>" --prysm-slasher
+# Disable Slasher for Prysm Consensus Client on Mainnet
+lukso start --validator --transaction-fee-recipient "<transaction-fee-recipient-address>" --prysm-no-slasher
 
-# Slasher for Prysm Consensus Client on Testnet
-lukso start --testnet --validator --transaction-fee-recipient "<transaction-fee-recipient-address>" --prysm-slasher
+# Disable Slasher for Prysm Consensus Client on Testnet
+lukso start --testnet --validator --transaction-fee-recipient "<transaction-fee-recipient-address>" --prysm-no-slasher
 
-# Slasher for Lighthouse Consensus Client on Mainnet
+# Disable Slasher for Lighthouse Consensus Client on Mainnet
+lukso start --validator --transaction-fee-recipient "<transaction-fee-recipient-address>" --lighthouse-no-slasher
+
+# Disable Slasher for Lighthouse Consensus Client on Testnet
+lukso start --testnet --validator --transaction-fee-recipient "<transaction-fee-recipient-address>" --lighthouse-no-slasher
+```
+
+For Lighthouse, you can enable it manually:
+
+```sh
+# Enable Slasher for Lighthouse Consensus Client on Mainnet
 lukso start --validator --transaction-fee-recipient "<transaction-fee-recipient-address>" --lighthouse-slasher
 
-# Slasher for Lighthouse Consensus Client on Testnet
+# Enable Slasher for Lighthouse Consensus Client on Testnet
 lukso start --testnet --validator --transaction-fee-recipient "<transaction-fee-recipient-address>" --lighthouse-slasher
 ```
+
+In case you are running custom setups with the CLI, you can pass the `--prysm-slasher` flag to enable the Geth client' slasher manually. The command will effectively pass down the `--slasher` flag to the client.
