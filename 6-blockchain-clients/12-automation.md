@@ -4,7 +4,7 @@ By default, the blockchain clients are not automatically starting whenever there
 
 As the CLI maintains all blockchain clients, we can add a script run every time on boot. However, managing or restarting individual services is not possible within this setup, as it requires the professional configuration of each client. Here, [Grafana Alerts](/8-notifications/01-telegram-alerts.md) are helping out, as they will inform you if singular processes can not be reached anymore.
 
-> **Version Disclaimer**: Automation is only possible from `LUKSO CLI Version 0.6.1` onwards. Make sure you have the latest version installed using the `lukso version` command.
+> **Version Disclaimer**: Automation is only possible from `LUKSO CLI Version 0.8.1` onwards. Make sure you have the latest version installed using the `lukso version` command.
 
 If you have an outdated version, install the latest one:
 
@@ -139,7 +139,8 @@ exec /usr/local/bin/lukso start \
         --genesis-json ./configs/mainnet/shared/genesis_42.json \
         --genesis-ssz ./configs/mainnet/shared/genesis_42.ssz \
         --validator-wallet-password ./static/<your-generic-password-file> \
-        --transaction-fee-recipient "<your-fee-recipient-address>"
+        --transaction-fee-recipient "<your-fee-recipient-address>" \
+        --checkpoint-sync
 ```
 
 This is how the script looks for testnet startup:
@@ -158,8 +159,11 @@ exec /usr/local/bin/lukso start \
         --testnet \
         --validator \
         --validator-wallet-password ./static/<your-generic-password-file> \
-        --transaction-fee-recipient "<your-fee-recipient-address>"
+        --transaction-fee-recipient "<your-fee-recipient-address>" \
+        --checkpoint-sync
 ```
+
+> **Additional Flags**: You can also add more flags (using `--`) like `--prysm-no-slasher`. Please keep in mind that you will also have to add another backslash `\` to the previous line.
 
 ### 6.12.6 Change User Access Rights
 
