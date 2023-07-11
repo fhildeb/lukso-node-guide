@@ -11,7 +11,7 @@ Running an EVM Proof of Stake validator node at home requires a stable and relia
 
 - **Download speed**: A minimum download speed of `10-15 Mbps` is recommended, with higher rates being more desirable for faster blockchain synchronization and data transfer. I got a fiber connection at home locked at _100 Mbps_, which is enough for my needs.
 - **Upload speed**: A minimum upload speed of `2-4 Mbps` is suggested to ensure your attestations and proposals can be sent to the network quickly. With my fiber connection at home, I get around _70 Mbps_.
-- **Latency**: A low-latency connection below `30-100 ms` is ideal for ensuring timely participation in the consensus process and increasing the chances of rewards. I usually get a latency below _15 ms_ on my end.
+- **Latency**: A low-latency connection below `30-100 ms` is ideal for guaranteeing timely participation in the consensus process and reducing the risk of missing attestations or proposals. While the block time of 12 seconds defines the average time for new block proposals, having good latency remains important for timely synchronization, data propagation, and network participation. I usually get a latency below _15 ms_ on my end.
 
 Based on research within the community, the node itself will fetch similar network traffic amounts when running as validator fullnode: The archive nodes will get similar numbers but store data more consistently and in more detail.
 
