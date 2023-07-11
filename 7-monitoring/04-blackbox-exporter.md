@@ -45,7 +45,7 @@ cd
 We can then continue downloading this version using the previously installed `wget` tool. In this case, we're downloading the service directly from GitHub. Make sure to update your understanding if there is a newer release.
 
 ```sh
-wget wget https://github.com/prometheus/blackbox_exporter/releases/download/v0.23.0/blackbox_exporter-0.23.0.linux-amd64.tar.gz
+wget https://github.com/prometheus/blackbox_exporter/releases/download/v0.23.0/blackbox_exporter-0.23.0.linux-amd64.tar.gz
 ```
 
 The output should look similar to this:
