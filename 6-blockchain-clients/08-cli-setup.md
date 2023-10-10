@@ -216,6 +216,26 @@ lukso logs execution -- testnet
 lukso logs consensus -- testnet
 ```
 
+#### Log File Search
+
+The logging commands of the LUKSO CLI can also be used to search the logging files for warnings or errors. Checkups should be done regularly to be up to date with any upcoming connection, storage, or runtime issues. We can check if the user exists within the log files using `grep`, a powerful command-line tool for global expression search within files or text.
+
+```sh
+# Fetch all execution warnings
+lukso logs execution | grep "warning"
+# Fetch all validator warnings
+lukso logs validator | grep "warning"
+# Fetch all consensus warnings
+lukso logs consensus | grep "warning"
+
+# Fetch all execution errors
+lukso logs execution | grep "error"
+# Fetch all validator errors
+lukso logs validator | grep "error"
+# Fetch all consensus errors
+lukso logs consensus | grep "error"
+```
+
 In addition, Geth and Erigon clients provide their own default JSON-RPC interface that is enabled internally. Here, clients are listening for incoming JSON-RPC requests.
 
 #### JSON-RPC
