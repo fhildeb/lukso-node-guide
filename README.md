@@ -35,6 +35,7 @@ The guides in the repository are split into multiple folders and sections.
 - [`7-monitoring`](/7-monitoring/): Node Monitoring for Hardware, Software Clients, and Connections
 - [`8-notifications`](/8-notifications/): Image Notifications and Constant Mobile Device Updates
 - [`9-external-access`](/8-notifications/): Secure External Node Access Configuration
+- [`tooltips`](/tooltips/): Tips for Finding and Resolving Node Errors
 
 ### Monitoring Presets
 
