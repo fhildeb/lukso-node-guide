@@ -62,7 +62,7 @@ You should be set and can turn off the VPN service until you need to connect wit
 As Tailscale uses internal static IP addresses on both ends of the tunnel, we must also update the SSH configuration file to connect to the IP. On your personal computer, open up the file:
 
 ```sh
-nano ~/.ssh/config
+vim ~/.ssh/config
 ```
 
 Then Copy the node Host entry of your node device. Only change the `HostName` address and the `Host`. If you want to connect to your node via Tailscale, you must use the new name.
