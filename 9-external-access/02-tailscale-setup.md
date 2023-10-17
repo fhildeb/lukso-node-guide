@@ -10,9 +10,16 @@ Visit [Tailscale](https://tailscale.com/) and register for the service. It is a 
 curl -fsSL https://tailscale.com/install.sh | sh
 ```
 
-You will receive a printed-out link that you must copy and paste into the address bar of your machine. Do so and connect with your previously created account. Your first device has been added.
+After you have installed Tailscale run the following command to start Tailscale
 
+```sh
+tailscale up
+```
+
+You will receive a printed-out link that you must copy and paste into the address bar of your machine. Do so and connect with your previously created account. Your first device has been added.
+:::info
 Now continue with the second device. The Guide on the Tailscale screen will give you a selection of possible installations. Install the software on your primary computer and go through the minimal setup to log in. Now, everything should already be set up in place. You can try it out in the guide section by pinging each device over the VPN.
+:::
 
 ### 9.2.2 Configure Auto Startup
 
@@ -43,7 +50,7 @@ The output should be something similar to the following:
 It should already be configured to start up on boot or failure, but we can check once again:
 
 ```sh
-sudo systemctl enable tailscale
+sudo systemctl enable tailscaled
 ```
 
 If it was not correctly set up, it should've created a `symlink` and printed out the filenames.

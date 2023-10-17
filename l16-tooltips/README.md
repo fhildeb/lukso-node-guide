@@ -26,7 +26,7 @@ lukso network refresh
 ### Redo Node Config
 
 ```bash
-nano node_config.yaml
+vim node_config.yaml
 ```
 
 Change your node name to this format, replacing XX with the validator number on your ZIP file: `beta-genesis-validator_XX`

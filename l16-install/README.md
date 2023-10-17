@@ -52,7 +52,7 @@ lukso network init
 > Make sure not to remove quotation marks in the .env file
 
 ```bash
-nano .env
+vim .env
 ```
 
 Change your node name. In case you are running a genesis validator, replace XX with the validator number on your ZIP file. `beta-genesis-validator_XX`
@@ -60,7 +60,7 @@ Change your node name. In case you are running a genesis validator, replace XX w
 > Use control + X to close the file and save it
 
 ```bash
-nano node_config.yaml
+vim node_config.yaml
 ```
 
 Change your node name. In case you are running a genesis validator, replace XX with the validator number on your ZIP file. `beta-genesis-validator_XX`
@@ -95,7 +95,7 @@ lukso network validator setup
 Open your node_config.yaml, copy your mnemonics and store them somewhere safe and offline.
 
 ```bash
-nano node_config.yaml
+vim node_config.yaml
 ```
 
 > Use control + X to close the file and save it
