@@ -160,14 +160,20 @@ lukso start --checkpoint-sync
 lukso start --testnet --checkpoint-sync
 ```
 
-If you are using an older version, you can pass down the checkpoint flag to the consensus clients directly:
+If your clients are not starting up or if you are using an older versions of the CLI, you can manually pass down the checkpoint flag to the consensus clients:
+
+Visit the [Mainnet Checkpoint Explorer](https://checkpoints.mainnet.lukso.network/) and get the latest block root and epoch. Then input both values into the commands.
 
 ```sh
 # Starting Mainnet with Checkpoint for Prysm Consensus Client
-lukso start --prysm-checkpoint-sync-url=https://checkpoints.mainnet.lukso.network
+lukso start --prysm-checkpoint-sync-url=https://checkpoints.mainnet.lukso.network \
+--prysm-genesis-beacon-api-url=https://checkpoints.mainnet.lukso.network/ \
+--prysm-weak-subjectivity-checkpoint=$<BLOCK_ROOT>:$<EPOCH>
 
 # Starting Mainnet with Checkpoint for Lighthouse Consensus Client
-lukso start --lighthouse-checkpoint-sync-url=https://checkpoints.mainnet.lukso.network
+lukso start --lighthouse-checkpoint-sync-url=https://checkpoints.mainnet.lukso.network \
+--lighthouse-genesis-beacon-api-url=https://checkpoints.mainnet.lukso.network/ \
+--lighthouse-weak-subjectivity-checkpoint=$<BLOCK_ROOT>:$<EPOCH>
 
 # Starting Testnet with Checkpoint for Prysm Consensus Client
 lukso start --testnet --prysm-checkpoint-sync-url=https://checkpoints.testnet.lukso.network
