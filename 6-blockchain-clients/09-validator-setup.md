@@ -226,32 +226,16 @@ If you are operating an **advanced hardware setup**, **staking pool** or **data 
 
 #### Running the Slasher
 
-If you are using the LUKSO CLI with Prysm, the slasher is already activated by default. This is done for security reasons to increase watchers for malicious events during network downtimes of bigger services. If you are runnning on lower hardware, you can disable it using the commands below.
+If you are running a **validator** using the LUKSO CLI, the slasher is activated by default. This is done for security reasons to increase watchers for malicious events during network downtimes of bigger services. If you are runnning on lower hardware, you can disable it using the commands below.
 
 Make sure to add your transaction fee recipient address within the command.
 
 ```sh
 # Disable Slasher for Prysm Consensus Client on Mainnet
-lukso start --validator --transaction-fee-recipient "<transaction-fee-recipient-address>" --prysm-no-slasher
+lukso start --validator --transaction-fee-recipient "<transaction-fee-recipient-address>" --no-slasher
 
 # Disable Slasher for Prysm Consensus Client on Testnet
-lukso start --testnet --validator --transaction-fee-recipient "<transaction-fee-recipient-address>" --prysm-no-slasher
-
-# Disable Slasher for Lighthouse Consensus Client on Mainnet
-lukso start --validator --transaction-fee-recipient "<transaction-fee-recipient-address>" --lighthouse-no-slasher
-
-# Disable Slasher for Lighthouse Consensus Client on Testnet
-lukso start --testnet --validator --transaction-fee-recipient "<transaction-fee-recipient-address>" --lighthouse-no-slasher
+lukso start --testnet --validator --transaction-fee-recipient "<transaction-fee-recipient-address>" --no-slasher
 ```
 
-For Lighthouse, you can enable it manually:
-
-```sh
-# Enable Slasher for Lighthouse Consensus Client on Mainnet
-lukso start --validator --transaction-fee-recipient "<transaction-fee-recipient-address>" --lighthouse-slasher
-
-# Enable Slasher for Lighthouse Consensus Client on Testnet
-lukso start --testnet --validator --transaction-fee-recipient "<transaction-fee-recipient-address>" --lighthouse-slasher
-```
-
-In case you are running custom setups with the CLI, you can pass the `--prysm-slasher` flag to enable the Geth client' slasher manually. The command will effectively pass down the `--slasher` flag to the client.
+In case you are running a **regular node** or **custom setups** with the CLI, slashers are disabled by default, you can pass the `--prysm-slasher` or `--lighthouse-slasher` flag to enable it manually. The command will manually pass down the `--slasher` flag to the clients.
