@@ -136,8 +136,6 @@ echo "Internet up. Starting the LUKSO Validator."
 # If internet is up, continue with next command
 exec /usr/local/bin/lukso start \
         --validator \
-        --genesis-json ./configs/mainnet/shared/genesis_42.json \
-        --genesis-ssz ./configs/mainnet/shared/genesis_42.ssz \
         --validator-wallet-password ./static/<your-generic-password-file> \
         --transaction-fee-recipient "<your-fee-recipient-address>" \
         --checkpoint-sync
