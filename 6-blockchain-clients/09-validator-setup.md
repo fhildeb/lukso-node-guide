@@ -246,8 +246,8 @@ In case you are running short on storage, you can delete the the slasher databas
 
 ```sh
 # Remove Slasher Database for Mainnet Node
-rm -rf /mainnet-data/consensus/slasher.db
+rm -rf /mainnet-data/consensus/beaconchaindata/slasher.db
 
 # Remove Slasher Database for Testnet Node
-rm -rf /testnet-data/consensus/slasher.db
+rm -rf /testnet-data/consensus/beaconchaindata/slasher.db
 ```
