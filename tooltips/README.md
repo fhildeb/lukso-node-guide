@@ -77,12 +77,14 @@ prysm --version
 # erigon --version
 ```
 
-### Optional: Update Network Configs
+### Optional: Update Client Configs
 
-If you do `lukso update configs`, only the files within the `/configs/<network>/shared` folders will be updated.
-If you do `lukso init`, only missing `/configs/` files will be added
+If you update your network configs using `lukso init` or `lukso update configs`, **none of your own configurations are overwritten**:
 
-Therefore, **none of your own configurations are overwritten**. However, LUKSO recently introduced some optional changes to the client configurations. If you want, you can update them accordingly. However, this is not mandatory.
+- If you do `lukso update configs`, only the files within the `/configs/<network>/shared` folders will be updated.
+- If you do `lukso init`, only missing `/configs/` files will be added
+
+However, LUKSO recently introduced some optional changes to the client configurations. If you want, you can update them accordingly. However, this is not mandatory.
 
 > Changes introduced since network launch in May 2023. Last checked on 1st March 2024
 
