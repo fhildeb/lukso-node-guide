@@ -82,10 +82,20 @@ Press `Enter` to continue fetching the packages. Afterward, we can update the pa
 sudo apt update
 ```
 
-Now we can download the latest Grafana build:
+Now we can download the latest supported Grafana build:
 
 ```sh
-sudo apt install grafana
+# Check for all available versions
+apt list -a grafana
+
+# Install Version 9.5.2
+sudo apt install grafana=9.5.2
+
+# If you have a own Grafana board, you can also install the latest version
+# sudo apt install grafana
+
+# Put Grafana Updates on hold so its not updated automatically
+sudo apt-mark hold grafana
 ```
 
 Whenever you update your Ubuntu packages using APT, it will automatically fetch the latest Grafana updates.
