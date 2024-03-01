@@ -152,7 +152,7 @@ metrics-port=5057                           --> added onhttps://github.com/lukso
 
 ### Optional: Remove Genesis Flags
 
-In case you were a genesis validator, make sure to **remove** the following lines from your startup script:
+In case you were a genesis validator using an automation script on your node, make sure to **remove the following lines** from your startup script:
 
 ```sh
 cd <lukso-working-directory>/static/
@@ -166,8 +166,10 @@ sudo vim ./lukso_startup.sh
 
 ### 3. Restart the Node
 
+After all updates have been applied to configuration files and clients, you can restart your node.
+
 ```sh
-## If you have automation, re-apply all rights to service
+## If you have automation, re-apply all rights to the service
 sudo chown -R lukso-validator-worker:lukso-validator-worker /home/<user-name>/<lukso-working-directory>
 sudo chown lukso-validator-worker:lukso-validator-worker /usr/local/bin/lukso
 sudo chmod -R 755 /home/<user-name>/<lukso-working-directory>
@@ -180,6 +182,9 @@ sudo systemctl start lukso-validator
 # Restart Node Service without Automation
 # cd <lukso-working-directory>
 # lukso start --validator --transaction-fee-recipient "<your-fee-recipient-address>" --checkpoint-sync
+
+# Check if all clients are working
+sudo lukso status
 ```
 
 ## Scan for Warnings and Errors
