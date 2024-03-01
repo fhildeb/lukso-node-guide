@@ -172,7 +172,8 @@ After all updates have been applied to configuration files and clients, you can 
 ## If you have automation, re-apply all rights to the service
 sudo chown -R lukso-validator-worker:lukso-validator-worker /home/<user-name>/<lukso-working-directory>
 sudo chown lukso-validator-worker:lukso-validator-worker /usr/local/bin/lukso
-sudo chmod -R 755 /home/<user-name>/<lukso-working-directory>
+sudo chmod -R 750 /home/<user-name>/<your-node-folder>
+sudo chmod 755 /home/<user-name>/<your-node-folder>
 sudo chmod 400 /home/<user-name>/<lukso-working-directory>/static/<your-generic-password-file>
 sudo chmod 500 /home/<user-name>/<lukso-working-directory>/static/lukso_startup.sh
 

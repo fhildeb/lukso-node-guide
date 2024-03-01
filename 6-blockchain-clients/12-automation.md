@@ -180,7 +180,8 @@ sudo chown lukso-validator-worker:lukso-validator-worker /usr/local/bin/lukso
 In order to still be able to access our logs and working directory as regular user, we need to change the permissions:
 
 ```sh
-sudo chmod -R 755 /home/<user-name>/<your-node-folder>
+sudo chmod -R 750 /home/<user-name>/<your-node-folder>
+sudo chmod 755 /home/<user-name>/<your-node-folder>
 ```
 
 The same goes for the read access of the password file, so only the owner of the validator client can read it. Groups and others won't see anything.
