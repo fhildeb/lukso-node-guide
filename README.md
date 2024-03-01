@@ -18,6 +18,8 @@ The repository includes a pictured guide of the node build and components, the p
 - Full Node Setup: `LUKSO CLI v 0.5.0 +`
 - Service Automation: `LUKSO CLI v 0.6.1 +`
 
+> All scripts were tested on 1st March 2024 using `LUKSO CLI v 0.16` (Grafana 9)
+
 ## Description
 
 > _**Disclaimer**: This guide is for informational purposes only. We do not warrant its accuracy or completeness and shall not be liable for any direct, indirect, incidental, or consequential damages arising out of or in connection with the use of this guide. The disclaimed warranty also applies to business interruption, data loss, or financial loss._
