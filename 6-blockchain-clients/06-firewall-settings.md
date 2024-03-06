@@ -48,12 +48,12 @@ Status: active
 
 To                               Action      From
 --                               ------      ----
-<preferred-ssh-port>/tcp          ALLOW       Anywhere
+<preferred-ssh-port>/tcp         ALLOW       Anywhere
 30303/tcp                        ALLOW       Anywhere
 30303/udp                        ALLOW       Anywhere
 13000/tcp                        ALLOW       Anywhere
 12000/udp                        ALLOW       Anywhere
-<preferred-ssh-port>/tcp (v6)     ALLOW       Anywhere (v6)
+<preferred-ssh-port>/tcp (v6)    ALLOW       Anywhere (v6)
 30303/tcp (v6)                   ALLOW       Anywhere (v6)
 30303/udp (v6)                   ALLOW       Anywhere (v6)
 13000/tcp (v6)                   ALLOW       Anywhere (v6)

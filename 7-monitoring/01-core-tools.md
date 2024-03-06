@@ -75,27 +75,27 @@ sudo ufw allow 3000/tcp
 sudo ufw status
 ```
 
-The output for Geth and Prysm should look similar to the one underneath. Please note that `<prefered-ssh-port>` will be exchanged with your actual SSH port.
+The output for Geth and Prysm should look similar to the one underneath. Please note that `<preferred-ssh-port>` will be exchanged with your actual SSH port.
 
 ```text
 Status: active
 
 To                         Action      From
 --                         ------      ----
-62222/tcp                  ALLOW       Anywhere
-30303/tcp                  ALLOW       Anywhere
-30303/udp                  ALLOW       Anywhere
-13000/tcp                  ALLOW       Anywhere
-12000/udp                  ALLOW       Anywhere
-9090/tcp                   ALLOW       Anywhere
-3000/tcp                   ALLOW       Anywhere
-62222/tcp (v6)             ALLOW       Anywhere (v6)
-30303/tcp (v6)             ALLOW       Anywhere (v6)
-30303/udp (v6)             ALLOW       Anywhere (v6)
-13000/tcp (v6)             ALLOW       Anywhere (v6)
-12000/udp (v6)             ALLOW       Anywhere (v6)
-9090/tcp  (v6)             ALLOW       Anywhere (v6)
-3000/tcp  (v6)             ALLOW       Anywhere (v6)
+<preferred-ssh-port>/tcp        ALLOW       Anywhere
+30303/tcp                       ALLOW       Anywhere
+30303/udp                       ALLOW       Anywhere
+13000/tcp                       ALLOW       Anywhere
+12000/udp                       ALLOW       Anywhere
+9090/tcp                        ALLOW       Anywhere
+3000/tcp                        ALLOW       Anywhere
+<preferred-ssh-port>/tcp (v6)   ALLOW       Anywhere (v6)
+30303/tcp (v6)                  ALLOW       Anywhere (v6)
+30303/udp (v6)                  ALLOW       Anywhere (v6)
+13000/tcp (v6)                  ALLOW       Anywhere (v6)
+12000/udp (v6)                  ALLOW       Anywhere (v6)
+9090/tcp  (v6)                  ALLOW       Anywhere (v6)
+3000/tcp  (v6)                  ALLOW       Anywhere (v6)
 ```
 
 ### 7.1.4 Installing Core Tools
