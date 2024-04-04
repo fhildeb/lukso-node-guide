@@ -208,6 +208,8 @@ lukso logs validator | grep "error"
 lukso logs consensus | grep "error"
 ```
 
+> After executing the command, the terminal is waiting for an input to show the log file. You will have to press the ENTER key in order to see the related logs you searched for.
+
 ## Downgrade or Change Client Versions
 
 The client version can be changed manually, in case there are some issues with the data folder.

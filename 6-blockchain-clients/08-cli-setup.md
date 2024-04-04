@@ -242,6 +242,8 @@ lukso logs validator | grep "error"
 lukso logs consensus | grep "error"
 ```
 
+> After executing the command, the terminal is waiting for an input to show the log file. You will have to press the ENTER key in order to see the related logs you searched for.
+
 In addition, Geth and Erigon clients provide their own default JSON-RPC interface that is enabled internally. Here, clients are listening for incoming JSON-RPC requests.
 
 #### JSON-RPC
