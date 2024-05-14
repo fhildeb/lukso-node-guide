@@ -7,10 +7,21 @@ Now that we have spoken about VPN services and the benefits of Tailscale, we can
 Visit [Tailscale](https://tailscale.com/) and register for the service. It is a free service for a limited amount of users and devices. After logging in with your favorite identity provider, you will be prompted to connect your first two devices. Click on `Linux` to connect your node. On your node, install the Tailscale package using `curl`. The `-fsSL` options instruct curl to silently follow HTTP redirects, not output any content for error HTTP codes, but still display error messages if the operation fails. The silent mode is needed for the pipe, as the script gets executed right after it is fetched.
 
 ```sh
+# install tailscale configs
 curl -fsSL https://tailscale.com/install.sh | sh
+
+# set up the service itself
+sudo apt-get update
+sudo apt-get install tailscale
 ```
 
-After you have installed Tailscale run the following command to start Tailscale
+You can enable auto-updates for tailscale using the following commend. This step is not mandatory.
+
+```sh
+tailscale set --auto-update
+```
+
+After Tailscale is installed, run the following command to start Tailscale
 
 ```sh
 tailscale up
@@ -96,3 +107,8 @@ Within your browser, you can find Grafana at the following address in case your 
 ```text
 http://<tailscale-node-ip>:3000/login
 ```
+
+## 9.2.5 Disable Key Expiry
+
+By default, Tailscale keys from devices expire after 180 days of being unused. If you want to raise the limit or turn it
+off completely, for your main devices- you can do so by navigating into the **Devices Menu** within the Tailscale service and clicking the three dots behind the IP. You can either select "Disable Expiry Date" or come up with your own preference in the device-specific setting.
