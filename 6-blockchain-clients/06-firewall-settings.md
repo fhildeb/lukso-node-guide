@@ -13,17 +13,21 @@ ssh <ssh-device-alias>
 I will open all public ports used for the Geth and Prysm clients. Prysm is needed as it is the only fully supported validator for the LUKSO CLI for now. Since I choose stability over performance, I choose Geth, based on the warning notices from Erigon's repository.
 
 ```sh
-# Geth's Execution Chain Data Channel
+# Geth or Erigon Execution Chain Data Channel
 sudo ufw allow 30303/tcp
 
-# Geth's Execution Chain Discovery
+# Geth or Erigon Execution Chain Discovery
 sudo ufw allow 30303/udp
 
-# Prysm's Beacon Gossip, Requests, and Responses
+# Prysm Beacon Gossip, Requests, and Responses
 sudo ufw allow 13000/tcp
 
-# Prysm's Beacon Discovery, Requests, Data Exchange
+# Prysm Beacon Discovery, Requests, Data Exchange
 sudo ufw allow 12000/udp
+
+# Lighthouse or Teku Beacon Communication and Data
+sudo ufw allow 9000/tcp
+sudo ufw allow 9000/udp
 ```
 
 The output of each command should always show:
