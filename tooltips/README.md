@@ -81,6 +81,11 @@ prysm --version
 
 If you update your network configs using `lukso init` or `lukso update configs`, **none of your own configurations are overwritten**:
 
+```sh
+sudo lukso init
+sudo lukso update configs
+```
+
 - If you do `lukso update configs`, only the files within the `/configs/<network>/shared` folders will be updated.
 - If you do `lukso init`, only missing `/configs/` files will be added
 
@@ -192,20 +197,22 @@ sudo lukso status
 
 The logging commands of the LUKSO CLI can also be used to search the logging files for warnings or errors.
 
+> Administrative rights are only needed if you are using secure service automation
+
 ```sh
 # Fetch all execution warnings
-lukso logs execution | grep "warning"
+sudo lukso logs execution | grep "warning"
 # Fetch all validator warnings
-lukso logs validator | grep "warning"
+sudo lukso logs validator | grep "warning"
 # Fetch all consensus warnings
-lukso logs consensus | grep "warning"
+sudo lukso logs consensus | grep "warning"
 
 # Fetch all execution errors
-lukso logs execution | grep "error"
+sudo lukso logs execution | grep "error"
 # Fetch all validator errors
-lukso logs validator | grep "error"
+sudo lukso logs validator | grep "error"
 # Fetch all consensus errors
-lukso logs consensus | grep "error"
+sudo lukso logs consensus | grep "error"
 ```
 
 > After executing the command, the terminal is waiting for an input to show the log file. You will have to press the ENTER key in order to see the related logs you searched for.
@@ -239,4 +246,43 @@ lukso install ---erigon-tag 2.52.1
 # Manually overwrite Teku Version
 # https://github.com/ConsenSys/teku/releases
 lukso install ---teku-tag v23.10.0
+```
+
+## Reset Blockchain State
+
+When updating execution client versions, you might run into errors with the existing state. To resolve issues, remove the data folder containing the blockchain database.
+
+```sh
+# Move into the node directory
+cd <lukso-working-directory>
+
+# Remove blockchain data
+rm -rf <network>-data
+
+# Remove old logs
+rm -rf <network>-logs
+
+# Re-init the folder
+sudo lukso init
+```
+
+## Restart Monitoring
+
+Monitoring system services are restarting during boot time, however, it might happen that you have to manually restart or trigger them.
+
+```sh
+# System & Hardware Metrics
+sudo systemctl restart node_exporter
+
+# LYX Price Metrics
+sudo systemctl restart json_exporter
+
+# Ping Metrics
+sudo systemctl restart blackbox_exporter
+
+# Node Client Metrics
+sudo systemctl restart prometheus
+
+# Grafana Dashboard
+sudo systemctl restart grafana-server
 ```
