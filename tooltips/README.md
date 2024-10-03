@@ -91,7 +91,18 @@ sudo lukso update configs
 
 However, LUKSO recently introduced some optional changes to the client configurations. If you want, you can update them accordingly. However, this is not mandatory.
 
-> Changes introduced since network launch in May 2023. Last checked on 1st March 2024
+> Changes introduced since network launch in May 2023. Last checked on 3rd October 2024
+
+#### Geth Changes
+
+```sh
+cd <lukso-working-directory>/configs/<network>
+vim geth/geth.toml
+```
+
+```text
+GasPrice = 1000000000                       --> updated on https://github.com/lukso-network/network-configs/pull/132/files
+```
 
 #### Prysm Changes
 
@@ -107,6 +118,8 @@ minimum-peers-per-subnet: 1                 --> updated on https://github.com/lu
 block-batch-limit: 512                      --> removed on https://github.com/lukso-network/network-configs/pull/131/files
 block-batch-limit-burst-factor: 10          --> removed on https://github.com/lukso-network/network-configs/pull/131/files
 contract-deployment-block: 0                --> added on https://github.com/lukso-network/network-configs/pull/117/files
+subscribe-all-subnets: true                 --> removed on https://github.com/lukso-network/network-configs/pull/135/files
+p2p-max-peers: 70                           --> added on https://github.com/lukso-network/network-configs/pull/138/files
 ```
 
 #### Erigon Changes
@@ -124,7 +137,7 @@ vim erigon/erigon.toml
 "private.api.addr" = "127.0.0.1:9098"       --> added on https://github.com/lukso-network/network-configs/pull/118/files
 
 "db.size.limit" = "8TB"                     --> added on https://github.com/lukso-network/network-configs/pull/129/files
-
+"maxpeers" = 100                            --> added on https://github.com/lukso-network/network-configs/pull/138/files
 ```
 
 #### Teku Changes
@@ -136,6 +149,13 @@ vim teku/config.yaml
 
 ```text
 MIN_EPOCHS_FOR_BLOCK_REQUESTS: 33024        --> added on https://github.com/lukso-network/network-configs/pull/128/files
+MAX_PER_EPOCH_ACTIVATION_CHURN_LIMIT: 8     --> added on https://github.com/lukso-network/network-configs/pull/134/files
+DENEB_FORK_EPOCH: 123075                    --> updated on https://github.com/lukso-network/network-configs/pull/142/files
+MAX_PER_EPOCH_ACTIVATION_CHURN_LIMIT: 8     --> updated on https://github.com/lukso-network/network-configs/pull/142/files
+MAX_REQUEST_BLOCKS_DENEB: 128               --> added on https://github.com/lukso-network/network-configs/pull/142/files
+MAX_REQUEST_BLOB_SIDECARS: 768              --> added on https://github.com/lukso-network/network-configs/pull/142/files
+MIN_EPOCHS_FOR_BLOB_SIDECARS_REQUESTS: 4096 --> added on https://github.com/lukso-network/network-configs/pull/142/files
+BLOB_SIDECAR_SUBNET_COUNT: 6                --> added on https://github.com/lukso-network/network-configs/pull/142/files
 ```
 
 #### Lighthouse Changes
@@ -227,7 +247,6 @@ Custom client versions can be installed using the `lukso install` command by pro
 
 ```bash
 # Manually overwrite Geth Version
-lukso install --geth-tag v1.12
 # https://github.com/ethereum/go-ethereum/releases
 lukso install --geth-tag 1.12.2 --geth-commit-hash bed84606
 
