@@ -18,7 +18,7 @@ The repository includes a pictured guide of the node build and components, the p
 - Full Node Setup: `LUKSO CLI v 0.5.0 +`
 - Service Automation: `LUKSO CLI v 0.6.1 +`
 
-> All scripts were tested on 1st March 2024 using `LUKSO CLI v 0.16` using `Grafana v 9.5.2`
+> All scripts were tested on 1st March 2025 using `LUKSO CLI v 0.24.1` using `Grafana v 9.5.2`
 
 ## Description
 
@@ -54,8 +54,32 @@ The guides in the repository are split into multiple folders and sections.
 - [`validatork-key-generation`](/validator-key-generation/): Device Setup, Key Generation for CLI and Wagyu
 - [`validator-key-stake`](/validator-key-stake/): Genesis Startup, Launchpad Walkthrough, GasHawk Guide
 
+## Development
+
+```sh
+# Installation
+yarn
+
+# Live Runtime
+yarn start
+```
+
+## Deployment
+
+```sh
+# Local Build
+yarn build
+
+# SSH Deployment
+USE_SSH=true yarn deploy
+
+# GitHub Pages Branch Deployment
+GIT_USER=<Your GitHub username> yarn deploy
+```
+
 ## Tools
 
+- [Docusaurus](https://docusaurus.io/)
 - [Prometheus](https://prometheus.io/)
 - [Docker Compose](https://docs.docker.com/compose/)
 - [Grafana Monitoring](https://grafana.com/)
@@ -66,8 +90,3 @@ The guides in the repository are split into multiple folders and sections.
 - [Luksoverse L16 CLI Guide](https://luksoverse.io/2022/04/l16-re-spin-extra-tools-and-explanation/)
 - [Vlad's Node Guide](https://github.com/lykhonis/lukso-node-guide)
 - [Metanull's ETH2 Guide](https://github.com/metanull-operator/eth2-ubuntu)
-
-## Links
-
-- [Luksoverse Docs](https://docs.luksoverse.io)
-- [LUKSO Docs](https://docs.lukso.tech/networks/l16-testnet/run-node)
