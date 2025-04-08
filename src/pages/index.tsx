@@ -28,6 +28,108 @@ function HomepageHeader() {
   );
 }
 
+// Progress bar displaying client name and percentage
+function ProgressBar({
+  label,
+  targetPercentage,
+}: {
+  label: string;
+  targetPercentage: number;
+}) {
+  const [progress, setProgress] = useState(0);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setProgress(targetPercentage);
+    }, 100);
+    return () => clearTimeout(timer);
+  }, [targetPercentage]);
+
+  // Coloring logic
+  const progressColor =
+    targetPercentage > 50
+      ? "#6b8e9e"
+      : targetPercentage < 33
+      ? "#a7c6d3"
+      : "#7c9ead";
+
+  return (
+    <div className={styles.progressBar}>
+      <div className={styles.progressWrapper}>
+        <div
+          className={styles.progressFill}
+          style={{ width: `${progress}%`, backgroundColor: progressColor }}
+        ></div>
+        <span className={styles.progressText}>
+          {label} {progress}%
+        </span>
+      </div>
+    </div>
+  );
+}
+
+// Status panel showing client distribution and news
+function StatusPanel() {
+  // TODO: Dummy Client Data
+  const executionClients = [
+    { label: "Prysm", value: 75 },
+    { label: "Lighthouse", value: 80 },
+    { label: "Teku", value: 50 },
+    { label: "Others", value: 30 },
+  ];
+
+  const consensusClients = [
+    { label: "Geth", value: 65 },
+    { label: "Erigon", value: 70 },
+    { label: "Besu", value: 40 },
+    { label: "Others", value: 20 },
+  ];
+
+  // TODO: Dummy Blogpost Data
+  const blogPost = {
+    title: "Dummy Blog Post Title",
+    excerpt:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi. Curabitur ac consectetur lorem. Praesent imperdiet.",
+    date: "2025-04-08",
+  };
+
+  // Shorten text for blogpost preview
+  const trimmedExcerpt =
+    blogPost.excerpt.length > 110
+      ? blogPost.excerpt.substring(0, 110) + "..."
+      : blogPost.excerpt;
+
+  return (
+    <div className={styles.statusPanel}>
+      <div className={styles.statusColumn}>
+        {executionClients.map((bar, idx) => (
+          <ProgressBar
+            key={idx}
+            label={bar.label}
+            targetPercentage={bar.value}
+          />
+        ))}
+      </div>
+      <div className={styles.statusColumn}>
+        {consensusClients.map((bar, idx) => (
+          <ProgressBar
+            key={idx}
+            label={bar.label}
+            targetPercentage={bar.value}
+          />
+        ))}
+      </div>
+      <div className={styles.statusColumn}>
+        <div className={styles.blogPost}>
+          <h4 className={styles.blogTitle}>{blogPost.title}</h4>
+          <p className={styles.blogExcerpt}>{trimmedExcerpt}</p>
+          <p className={styles.blogDate}>{blogPost.date}</p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 // Grid to render individual chapters in multi-columns for masonry layout
 function SectionGrid({
   chapters,
@@ -190,6 +292,7 @@ export default function Home(): ReactNode {
   return (
     <Layout title={siteConfig.title} description={siteConfig.tagline}>
       <HomepageHeader />
+      <StatusPanel />
       <main>
         <LandingPageContent />
       </main>
