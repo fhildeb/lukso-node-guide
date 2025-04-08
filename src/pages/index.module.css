@@ -1,10 +1,6 @@
-/**
- * CSS files with the .module.css suffix will be treated as CSS modules
- * and scoped locally.
- */
-
+/* Header-Styling */
 .heroBanner {
-  padding: 4rem 0;
+  padding: 2rem 0;
   text-align: center;
   position: relative;
   overflow: hidden;
@@ -16,8 +12,102 @@
   }
 }
 
-.buttons {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+/**
+ * Landing-Page-Layout
+ * 
+ * Three columns distributed in a 3:1:1 ratio
+ * with maximum card width of 1/5
+ */
+.landingGrid {
+  display: grid;
+  grid-template-columns: 3fr 1fr 1fr;
+  gap: 1rem;
+  padding: 2rem;
 }
+
+.leftColumn,
+.centerColumn,
+.rightColumn {
+  display: flex;
+  flex-direction: column;
+}
+
+.sectionContainer {
+  margin-bottom: 1rem;
+}
+
+.sectionTitle {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  padding-left: 1rem;
+}
+
+.emoji {
+  margin-right: 0.5rem;
+}
+
+/**
+ * Masonry Guide Layout:
+ * 
+ * Multi-column layout of 3 columns and a maximum 
+ * column width of 1/5 of the total page width
+ */
+.guidesGrid {
+  column-count: 3;
+  column-gap: 1rem;
+}
+
+/* Single-column sections */
+.theoryGrid,
+.singleGrid {
+  column-count: 1;
+  column-gap: 1rem;
+}
+
+.card {
+  display: inline-block;
+  width: 100%;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 1rem;
+  break-inside: avoid;
+}
+
+.cardTitle {
+  margin: 0;
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.numbering {
+  font-weight: bold;
+}
+
+.pageList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.pageList li {
+  margin-bottom: 0.25rem;
+}
+
+/** 
+ * If screen width is smaller, layout is 
+ * changed to single-column display. 
+ * 
+ * Column-count is reduced to 1 for 100% of page width. 
+ */
+@media (max-width: 1200px) {
+  .landingGrid {
+    grid-template-columns: 1fr;
+  }
+  /* TODO: More Gradient Styling + Max Width */
+  .guidesGrid {
+    column-count: 1;
+  }
+}
+
+/* TODO: Add media styling for single-column sections */
