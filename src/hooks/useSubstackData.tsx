@@ -7,6 +7,7 @@ export interface BlogData {
   link: string;
 }
 
+// Hook to retrieve latest LUKSO Substack post
 export function useSubstackData() {
   const staticData: BlogData = {
     title: "LUKSO Dencun Hard Fork - MAINNET",
