@@ -2,22 +2,31 @@ import { useEffect, useState } from "react";
 
 export interface BlogData {
   title: string;
-  caption: string;
   date: string;
   link: string;
 }
 
 // Hook to retrieve latest LUKSO Substack post
 export function useSubstackData() {
-  const staticData: BlogData = {
-    title: "LUKSO Dencun Hard Fork - MAINNET",
-    caption:
-      "🚨 ACTION REQUIRED by node operators and validators of the LUKSO Mainnet",
-    date: "Oct 3, 2024",
-    link: "https://luksovalidators.substack.com/p/lukso-dencun-hard-fork-mainnet",
-  };
+  const staticData: BlogData[] = [
+    {
+      title: "LUKSO Dencun Hard Fork - MAINNET",
+      date: "Oct 3, 2024",
+      link: "https://luksovalidators.substack.com/p/lukso-dencun-hard-fork-mainnet",
+    },
+    {
+      title: "LUKSO Dencun Hard Fork - TESTNET",
+      date: "Sep 2, 2024",
+      link: "https://luksovalidators.substack.com/p/lukso-dencun-hard-fork-testnet",
+    },
+    {
+      title: "Status Update on the Dencun Hard Fork",
+      date: "Jun 4, 2024",
+      link: "https://luksovalidators.substack.com/p/status-update-on-the-dencun-hard",
+    },
+  ];
 
-  const [data, setData] = useState<BlogData | null>(null);
+  const [data, setData] = useState<BlogData[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 

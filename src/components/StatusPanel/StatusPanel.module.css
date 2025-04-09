@@ -68,17 +68,11 @@
 
 .blogTitle {
   font-size: 1.2rem;
-  margin: 0 0 0.5rem 0;
-}
-
-.blogExcerpt {
-  font-size: 0.9rem;
-  margin: 0 0 0.5rem 0;
-  padding-top: 0.3rem;
+  margin: 0 0 0.6rem 0;
 }
 
 .blogDate {
-  font-size: 0.6rem;
+  font-size: 0.8rem;
   color: #666;
 }
 

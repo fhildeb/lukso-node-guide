@@ -104,17 +104,19 @@ export function StatusPanel() {
         <h3 className={styles.sectionHeading}>Latest News</h3>
         <div className={styles.blogContainer}>
           <div className={styles.blogPost}>
-            {!blogLoading && !blogError && blogData ? (
-              <>
-                <h4 className={styles.blogTitle}>
-                  <a href={blogData.link} target="_blank" rel="noreferrer">
-                    {blogData.title}
-                  </a>
-                </h4>
-                <p className={styles.blogExcerpt}>{blogData.caption}</p>
-                <p className={styles.blogDate}>{blogData.date}</p>
-              </>
-            ) : null}
+            {!blogLoading && !blogError && blogData && blogData.length > 0
+              ? blogData.map((blog) => (
+                  <>
+                    <h2 className={styles.blogTitle}>
+                      <span className={styles.blogDate}> {blog.date}: </span>
+
+                      <a href={blog.link} target="_blank" rel="noreferrer">
+                        {blog.title}
+                      </a>
+                    </h2>
+                  </>
+                ))
+              : null}
           </div>
         </div>
         <div className={styles.statusMessage}>
