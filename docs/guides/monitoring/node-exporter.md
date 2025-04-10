@@ -1,3 +1,10 @@
+---
+sidebar_label: "8.3 Node Exporter"
+sidebar_position: 3
+---
+
+# 8.3 Node Exporter
+
 ## 7.2 Node Exporter Setup
 
 We will start the monitoring by setting up the three Node Exporter services before we manage the core Prometheus connection to them. Everything will be set in place and loaded when we configure the Dashboard later.

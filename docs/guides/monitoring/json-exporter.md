@@ -1,12 +1,23 @@
+---
+sidebar_label: "8.4 JSON Exporter"
+sidebar_position: 4
+---
+
+# 8.4 JSON Exporter
+
 ## 7.3 JSON Exporter Setup
 
-After installing the JSON Exporter, we will move on with the second exporter service for Prometheus: the JSON Exporter, as it's common practice to install the exporters before starting the main Prometheus service, as [explained before](./02-node-exporter.md).
+After installing the JSON Exporter, we will move on with the second exporter service for Prometheus: the JSON Exporter, as it's common practice to install the exporters before starting the main Prometheus service, as [explained before](#).
+
+<!--TODO: ./02-node-exporter.md-->
 
 > The JSON Exporter fetches data from JSON endpoints and exposes it as Prometheus. In our case, it's being used to convey LUKSO price information from CoinGecko. Price discovery is important because it enables us to monitor LUKSO's market performance directly from your Prometheus and Grafana setup, providing a unified view of both your node's performance and the associated token's market performance. It saves time and provides convenience, eliminating the need to check this information on separate platforms.
 
 ### 7.3.1 Creating a New User
 
-As explained and done [previously](./02-node-exporter.md), we will create a new user to to run the JSON Exporter service specifically. Running services as a system user with minimal privileges is a common security best practice.
+As explained and done [previously](#), we will create a new user to to run the JSON Exporter service specifically. Running services as a system user with minimal privileges is a common security best practice.
+
+<!--TODO: ./02-node-exporter.md-->
 
 - `--system`: This flag indicates that a system user should be created. System users are used to run services and daemons rather than for people to log in with.
 - `--group`: This flag instructs the user tool to create a new group with the same name as the user.
@@ -148,7 +159,9 @@ After extraction, we can copy the exporter binaries to the system's path so they
 sudo cp json_exporter /usr/local/bin/
 ```
 
-Let's also make sure the user can execute the file by changing the permissions as described in the [Node Exporter](./02-node-exporter.md) section:
+Let's also make sure the user can execute the file by changing the permissions as described in the [Node Exporter](#) section:
+
+<!--TODO: ./02-node-exporter.md-->
 
 ```sh
 sudo chmod 755 /usr/local/bin/json_exporter
@@ -210,7 +223,9 @@ Those properties will, later on, be used within the Grafana Dashboard to fetch t
 
 #### Set JSON Exporter Permissions
 
-As previously explained in the [Node Exporter](./02-node-exporter.md) section of the guide, we can set both the user and group to the specified service user. Save and exit the file, then give the exporter worker permissions to this configuration folder and the config file:
+As previously explained in the [Node Exporter](#) section of the guide, we can set both the user and group to the specified service user. Save and exit the file, then give the exporter worker permissions to this configuration folder and the config file:
+
+<!--TODO: ./02-node-exporter.md-->
 
 ```sh
 sudo chown -R json-exporter-worker:json-exporter-worker /etc/json_exporter/

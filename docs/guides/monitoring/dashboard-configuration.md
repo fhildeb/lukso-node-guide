@@ -1,12 +1,23 @@
+---
+sidebar_label: "8.8 Dashboard Configuration"
+sidebar_position: 8
+---
+
+# 8.8 Dashboard Configuration
+
 ## 7.7 Dashboard Setup
 
 The following section will configure the Grafana Dashboard after all exporter services and the Grafana Server are up and running on the node.
 
 ### 7.7.1 Get Node IP Address
 
-If you opened the port as stated within the [Core Tools](./01-core-tools.md) section of the guide, you would now have access to the web interface.
+If you opened the port as stated within the [Core Tools](#) section of the guide, you would now have access to the web interface.
 
-Fetch your node's IP address so you can use it on your machine as it is described within the [Address Check](/4-router-config/01-address-check.md) section of the guide:
+<!--TODO: ./01-core-tools.md-->
+
+Fetch your node's IP address so you can use it on your machine as it is described within the [Address Check](#) section of the guide:
+
+<!--TODO: /4-router-config/01-address-check.md-->
 
 ```sh
 ip route show default
@@ -70,7 +81,9 @@ Choose a dashboard preset you want to load for the LUKSO mainnet and testnet. Wi
 - [LUKSO Dashboard EUR](/grafana/lukso-dashboard-eur.json)
 - [LUKSO Dashboard USD](/grafana/lukso-dashboard-usd.json)
 
-> Make sure the file matches with the [JSON Exporter](./03-json-exporter.md) External Data Configuration file. You could also specify your dashboard by adjusting the contents and jobs.
+> Make sure the file matches with the [JSON Exporter](#) External Data Configuration file. You could also specify your dashboard by adjusting the contents and jobs.
+
+<!--TODO: ./03-json-exporter.md-->
 
 1. Copy the raw contents of the file you want
 2. Return to the Grafana starting page

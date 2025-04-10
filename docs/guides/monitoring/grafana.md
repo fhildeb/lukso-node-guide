@@ -1,10 +1,19 @@
+---
+sidebar_label: "8.7 Grafana"
+sidebar_position: 7
+---
+
+# 8.7 Grafana
+
 ## 7.6 Grafana Dashboard
 
 As the final step within the monitoring, we will set up a Grafana Dashboard to gather all metrics in one place.
 
 ### 7.6.1 Creating a New User
 
-As explained and done [previously](./02-node-exporter.md), we will create a new user to run the Grafana service specifically. Running services as a system user with minimal privileges is a common security best practice.
+As explained and done [previously](#), we will create a new user to run the Grafana service specifically. Running services as a system user with minimal privileges is a common security best practice.
+
+<!--TODO: ./02-node-exporter.md-->
 
 - `--system`: This flag indicates that a system user should be created. System users are used to run services and daemons rather than for people to log in with.
 - `--group`: This flag instructs the user tool to create a new group with the same name as the user.
@@ -104,7 +113,9 @@ Whenever you update your Ubuntu packages using APT, it will automatically fetch 
 
 Now we can change the owner of the software applications. Ownership changes are commonly done for security reasons. Giving root ownership to these binary files prevents non-root users or exporter workers from modifying or replacing these important executables, which could lead to unauthorized or unexpected behavior.
 
-As previously explained in the [Node Exporter](./02-node-exporter.md) section of the guide, we can set both the user and group to the specified service user.
+As previously explained in the [Node Exporter](#) section of the guide, we can set both the user and group to the specified service user.
+
+<!--TODO: ./02-node-exporter.md-->
 
 ```sh
 sudo chown -R grafana-server-worker:grafana-server-worker /usr/sbin/grafana
@@ -136,7 +147,9 @@ sudo chown -R grafana-server-worker:grafana-server-worker /var/log/grafana
 
 Not only do we need to change the owner this time, but we also need to change the access mode of the executable. We must allow the owner to read, write, and execute the file while the group and all other services can only read from it.
 
-We can use the change mode tool `chmod` as we already did within the [Node Exporter](./02-node-exporter.md) section of the guide.
+We can use the change mode tool `chmod` as we already did within the [Node Exporter](#) section of the guide.
+
+<!--TODO: ./02-node-exporter.md-->
 
 ```sh
 sudo chmod 755 /usr/sbin/grafana

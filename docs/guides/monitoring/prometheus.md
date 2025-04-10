@@ -1,10 +1,19 @@
+---
+sidebar_label: "8.6 Prometheus"
+sidebar_position: 6
+---
+
+# 8.6 Prometheus
+
 ## 7.5 Prometheus Setup
 
 Now that all exporters are installed and running, we can set up the main application.
 
 ### 7.5.1 Creating a New User
 
-As explained and done [previously](./02-node-exporter.md), we will create a new user to run the Prometheus service specifically. Running services as a system user with minimal privileges is a typical security best practice.
+As explained and done [previously](#), we will create a new user to run the Prometheus service specifically. Running services as a system user with minimal privileges is a typical security best practice.
+
+<!--TODO: ./02-node-exporter.md-->
 
 - `--system`: This flag indicates that a system user should be created. System users are used to run services and daemons rather than for people to log in with.
 - `--group`: This flag instructs the user tool to create a new group with the same name as the user.
@@ -136,7 +145,9 @@ Here is a brief description of the needed folders:
 - `/etc/prometheus/rules.d`: This directory organizes rules files for individual services, keeping them separate from general rules in the primary directory. Splitting is helpful in large setups where you have many rules related to different services or components and want to keep them in separate files for better management.
 - `/var/lib/prometheus`: This directory typically stores the Prometheus time-series database files. Prometheus creates and manages these files while it's running to hold all the samples it collects from the targets it scrapes.
 
-For this configuration, we will check that all needed Prometheus folders are there, so no error will appear while running it. If they should already exist, we leave them as they are, if not, we will create empty folders. The logic can be quickly done using the parent `-p` flag, as already described before within the [SSH Config](/5-access-connection/02-ssh-config.md) section of the guide.
+For this configuration, we will check that all needed Prometheus folders are there, so no error will appear while running it. If they should already exist, we leave them as they are, if not, we will create empty folders. The logic can be quickly done using the parent `-p` flag, as already described before within the [SSH Config](#) section of the guide.
+
+<!--TODO: /5-access-connection/02-ssh-config.md-->
 
 ```sh
 sudo mkdir -p /etc/prometheus/console_libraries /etc/prometheus/consoles /etc/prometheus/files_sd /etc/prometheus/rules /etc/prometheus/rules.d /var/lib/prometheus
@@ -172,7 +183,7 @@ This section is a list of jobs that Prometheus will monitor. Each job can have i
 
 Let's walk through each job we want to set up for Prometheus. Please note that the ports are configured for use within Geth and Prysm. If you are using other clients, make sure to adjust some properties.
 
-- **prometheus-job**: This job is for scraping metrics from the Prometheus server itself. It will scrape every `5` seconds from the address `127.0.0.1:9090`, which is the default address and port for a locally running Prometheus server as described within the [Monitoring Port](./01-core-tools.md) section of the guide.
+- **prometheus-job**: This job is for scraping metrics from the Prometheus server itself. It will scrape every `5` seconds from the address `127.0.0.1:9090`, which is the default address and port for a locally running Prometheus server as described within the [Monitoring Port](#) section of the guide.
 - **consensus-client-job**: This job scrapes metrics from the local consensus node at the address `127.0.0.1:8080`. The scrape interval is set to `5` seconds.
 - **node-exporter-job**: The Node Exporter is a Prometheus exporter for hardware and OS metrics. This job scrapes metrics from the Node Exporter service running locally at `127.0.0.1:9100` every `5` seconds.
 - **validator-client-job**: This job is set to scrape metrics from the validator client running locally at `127.0.0.1:8081` every `5` seconds.
@@ -180,6 +191,8 @@ Let's walk through each job we want to set up for Prometheus. Please note that t
 - **cloudflare-ping-job**: This job uses the Blackbox Exporter to probe the Cloudflare's DNS server at `1.1.1.1` using `ICMP` echo requests, also called pings. The metrics will be available at the `/probe` endpoint on the Blackbox Exporter, which runs locally at `127.0.0.1:9115`. The relabeling configurations are used to properly label these targets for Prometheus.
 - **json-exporter-job**: This job is for scraping metrics from the JSON Exporter running locally at `127.0.0.1:7979`. This service converts JSON data into a format that Prometheus can scrape.
 - **json**: This job is set to scrape metrics LYX price information from the GoinGecko API using the JSON Exporter. The metrics will be available at the `/probe` endpoint on the JSON Exporter, which is running locally at `127.0.0.1:7979`. The relabeling configurations are used to tag these targets for Prometheus properly.
+
+<!--TODO: ./01-core-tools.md-->
 
 The configuration file looks like the following. It's recommended to leave the job names like that so we can easily associate them with the corresponding services underneath.
 
@@ -276,7 +289,9 @@ Those properties will, later on, be used within the Grafana Dashboard to fetch t
 
 Now we can change the owner of the software applications to admin access. Owner changes are commonly done for security reasons. Giving root ownership to these binary files prevents non-root users or exporter workers from modifying or replacing these essential executables, which could lead to unauthorized or unexpected behavior.
 
-As previously explained in the [Node Exporter](./02-node-exporter.md) section of the guide, we can set both the user and group to the specified service user.
+As previously explained in the [Node Exporter](#) section of the guide, we can set both the user and group to the specified service user.
+
+<!--TODO: ./02-node-exporter.md-->
 
 ```sh
 sudo chown -R prometheus-worker:prometheus-worker /usr/local/bin/prometheus
@@ -302,7 +317,9 @@ sudo chown -R prometheus-worker:prometheus-worker /var/lib/prometheus
 
 Not only do we need to change the owner this time, but we also need to change the access mode of the executable. We must allow the owner to read, write, and execute the file while the group and all other services can only read from it.
 
-We can use the change mode tool `chmod` as we already did within the [Node Exporter](./02-node-exporter.md) section of the guide.
+We can use the change mode tool `chmod` as we already did within the [Node Exporter](#) section of the guide.
+
+<!--TODO: ./02-node-exporter.md-->
 
 ```sh
 sudo chmod 755 /usr/local/bin/prometheus

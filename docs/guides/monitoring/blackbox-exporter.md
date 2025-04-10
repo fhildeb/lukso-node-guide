@@ -1,12 +1,23 @@
+---
+sidebar_label: "8.5 Blackbox Exporter"
+sidebar_position: 5
+---
+
+# 8.5 Blackbox Exporter
+
 ## 7.4 Blackbox Exporter Setup
 
-After installing the Node and JSON Exporters, we will move on with the last exporter service for Prometheus: the Blackbox Exporter, as it's common practice to install the exporters before the main Prometheus service, as [explained before](./02-node-exporter.md).
+After installing the Node and JSON Exporters, we will move on with the last exporter service for Prometheus: the Blackbox Exporter, as it's common practice to install the exporters before the main Prometheus service, as [explained before](#).
+
+<!--TODO: ./02-node-exporter.md-->
 
 > The Blackbox Exporter probes endpoints over protocols such as HTTP, HTTPS, DNS, TCP, and ICMP and provides detailed metrics on the results. In our case, it monitors the ping time between the node machine and two DNS servers. This information can be crucial in diagnosing network-related issues. If the ping time is too long or the connection fails, it could indicate network problems affecting your node's performance or ability to stay in sync with the rest of the blockchain network.
 
 ### 7.4.1 Creating a New User
 
-As explained and done [previously](./02-node-exporter.md), we will create a new user to run the Blackbox Exporter service specifically. Running services as a system user with minimal privileges is a typical security best practice.
+As explained and done [previously](#), we will create a new user to run the Blackbox Exporter service specifically. Running services as a system user with minimal privileges is a typical security best practice.
+
+<!--TODO: ./02-node-exporter.md-->
 
 - `--system`: This flag indicates that a system user should be created. System users are used to run services and daemons rather than for people to log in with.
 - `--group`: This flag instructs the user tool to create a new group with the same name as the user.
@@ -88,13 +99,17 @@ sudo cp blackbox_exporter-0.23.0.linux-amd64/blackbox_exporter /usr/local/bin/
 
 Now we can change the owner of the Blackbox Exporter service to the one that we created especially for this purpose:
 
-As previously explained in the [Node Exporter](./02-node-exporter.md) section of the guide, we can set both the user and group to the specified service user.
+As previously explained in the [Node Exporter](#) section of the guide, we can set both the user and group to the specified service user.
+
+<!--TODO: ./02-node-exporter.md-->
 
 ```sh
 sudo chown blackbox-exporter-worker:blackbox-exporter-worker /usr/local/bin/blackbox_exporter
 ```
 
-Let's also make sure the user can execute the file by changing the permissions as described in the [Node Exporter](./02-node-exporter.md) section:
+Let's also make sure the user can execute the file by changing the permissions as described in the [Node Exporter](#) section:
+
+<!--TODO: ./02-node-exporter.md-->
 
 ```sh
 sudo chmod 755 /usr/local/bin/blackbox_exporter
