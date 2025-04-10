@@ -1,12 +1,19 @@
+---
+sidebar_label: "2.6 Ubuntu Configuration"
+sidebar_position: 6
+---
+
+# 2.6 Ubuntu Configuration
+
 ## 1.3 Ubuntu Configuration
 
 > You can have a look at [Ubuntu's Install Guide](https://ubuntu.com/tutorials/install-ubuntu-server#1-overview) for further information. However, most of it seems outdated for the most recent Ubuntu versions. Therefore, I will document the whole process and considerations.
 
 #### Starting Point
 
-Coming from the [BIOS Setup](./2-bios-setup.md) section, we are left at the beginning of the Ubuntu configuration after selecting `Try or Install Ubuntu Server`.
+Coming from the [BIOS Setup](./bios-setup.md) section, we are left at the beginning of the Ubuntu configuration after selecting `Try or Install Ubuntu Server`.
 
-![Try or Install Ubuntu Server](/img/install_01.png)
+![Try or Install Ubuntu Server](/img/guides/hardware-setup/install_01.png)
 
 Connect your machine to the router using an Ethernet cable to receive updates during installation. An established internet connection will also let you set up IPv4 and IPv6 addresses for the setup.
 
@@ -22,19 +29,19 @@ When setting up a node for blockchain networks, the choice of network connection
 
 ### 1.3.1 System Language
 
-![Ubuntu System Language](/img/install_02.png)
+![Ubuntu System Language](/img/guides/hardware-setup/install_02.png)
 
 First, you have to choose your operating system's language. It's recommended to set it to `English`. In case errors appear on the screen, most guides and guides for fixes are stated in English if you search for them online. So it will help to resolve incidents quickly.
 
 ### 1.3.2 Keyboard Config
 
-![Ubuntu Keyboard Config](/img/install_03.png)
+![Ubuntu Keyboard Config](/img/guides/hardware-setup/install_03.png)
 
 Right after, define your keyboard type or click `Identify keyboard` and follow the guide.
 
 ### 1.3.3 Installation Type
 
-![Ubuntu Installation Type](/img/install_04.png)
+![Ubuntu Installation Type](/img/guides/hardware-setup/install_04.png)
 
 Choose your type of installation for the node:
 
@@ -76,17 +83,17 @@ Do not have `Search for third-party drivers` enabled. Only remote access is need
 
 ### 1.3.4 Network and Access Settings
 
-![Ubuntu Network and Access Settings](/img/install_05.png)
+![Ubuntu Network and Access Settings](/img/guides/hardware-setup/install_05.png)
 
 Now configure your network settings to talk to the node from the outside world. If your node is connected via Ethernet, choose the network type `eth` and edit `IPv4` and `IPv6` to both set as `Automatic (DHCP)`. We will configure the static IP later but allow various connections to reach the node later.
 
-![Ubuntu Proxy Setup](/img/install_06.png)
+![Ubuntu Proxy Setup](/img/guides/hardware-setup/install_06.png)
 
 If you do not already have a proxy setup, leave the proxy address blank. We will update the HTTP proxy to access the node later on.
 
 ### 1.3.5 Download and Installer
 
-![Ubuntu Download and Installer](/img/install_07.png)
+![Ubuntu Download and Installer](/img/guides/hardware-setup/install_07.png)
 Leave the official Ubuntu mirror address and continue with the setup.
 
 If there is any new installer during the next step, download the latest version, and you will get back to this step after it is done. It's always recommended to use the newest software releases.
@@ -121,7 +128,7 @@ If you are sure you want to use the whole disk space available, set the `Size` p
 
 > Within the [system setup](/3-system-setup/) section of the guide, there is also a whole chapter about extending the LVM storage of a logical volume later on and how new disks can be added to your system.
 
-![Ubuntu Partition Config](/img/install_08.png)
+![Ubuntu Partition Config](/img/guides/hardware-setup/install_08.png)
 
 #### Partition Naming
 
@@ -135,7 +142,7 @@ The same default values rule also applies to the default storage format `ext4`. 
 
 In the next step, pick your user and server names and choose a strong password.
 
-![Ubuntu User Config](/img/install_09.png)
+![Ubuntu User Config](/img/guides/hardware-setup/install_09.png)
 
 Continue without [Ubuntu Pro](https://ubuntu.com/pricing/pro). It's a premium version of Ubuntu designed for enterprise use and comes with additional features, security updates, and support compared to the standard Ubuntu release. The primary target is businesses and organizations seeking a more comprehensive and secure Ubuntu experience.
 
@@ -143,7 +150,7 @@ Continue without [Ubuntu Pro](https://ubuntu.com/pricing/pro). It's a premium ve
 
 Add the openSSH server installation for secure remote access in the next step. The Open Secure Shell is a suite of safe networking utilities. It enables encrypted communication and fast data transfer between two networked devices, providing a secure alternative to traditional, non-encrypted protocols. openSSH server is widely used for remote administration, secure file transfers, and executing commands on remote systems.
 
-![Ubuntu SSH Install](/img/install_10.png)
+![Ubuntu SSH Install](/img/guides/hardware-setup/install_10.png)
 
 The server-only variant will only allow the connection to the node, not the functionality for the node also to set up a client- which is lean and ideal for a node setup that only wants external devices to connect for maintenance.
 
@@ -161,10 +168,10 @@ If you do not have an SSH configuration, leave the SSH identity blank. We will c
 
 It's recommended to skip through the additional server snaps without enabling packages. The best practice would be choosing the packages later when installing or configuring specific software.
 
-![Ubuntu Additional Software](/img/install_11.png)
+![Ubuntu Additional Software](/img/guides/hardware-setup/install_11.png)
 
 Let the Ubuntu Installation process run through until fully complete. Remove the USB device and press enter to reboot the machine.
 
-![Ubuntu Additional Software](/img/install_12.png)
+![Ubuntu Additional Software](/img/guides/hardware-setup/install_12.png)
 
 If your boot process has been alright, we can continue with the system's core setup.
