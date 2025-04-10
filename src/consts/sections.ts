@@ -115,7 +115,7 @@ const sections = [
     emoji: "🧠",
     chapters: [
       {
-        title: "Hardware Preparation",
+        title: "Preparations",
         pages: [
           "Node Specification",
           "Router Requirements",
