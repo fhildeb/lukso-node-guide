@@ -67,19 +67,19 @@ const config: Config = {
       items: [
         {
           type: "docSidebar",
-          sidebarId: "tutorialSidebar",
-          position: "left",
-          label: "Guides",
-        },
-        {
-          type: "docSidebar",
-          sidebarId: "tutorialSidebar",
+          sidebarId: "theorySidebar",
           position: "left",
           label: "Theory",
         },
         {
           type: "docSidebar",
-          sidebarId: "tutorialSidebar",
+          sidebarId: "guidesSidebar",
+          position: "left",
+          label: "Guides",
+        },
+        {
+          type: "docSidebar",
+          sidebarId: "archiveSidebar",
           position: "left",
           label: "Archive",
         },
