@@ -1,3 +1,10 @@
+---
+sidebar_label: "7.2 Peer Verification"
+sidebar_position: 2
+---
+
+# 7.2 Peer Verification
+
 ### 6.11 Peer Discovery
 
 In a blockchain network, peers are individual nodes participating and playing a crucial role in its functioning. These nodes can have different roles depending on the type of blockchain, but they all work collectively to maintain and validate the shared ledger.
@@ -46,7 +53,9 @@ The output should look similar to this:
 
 Type `exit` to close the JSON interface.
 
-If your execution peer count is not improving when running the node for around 4h, check that all the ports are open. You can find a guide within the [Firewall Settings](./06-firewall-settings.md).
+If your execution peer count is not improving when running the node for around 4h, check that all the ports are open. You can find a guide within the [Firewall Settings](#).
+
+<!--TODO: ./06-firewall-settings.md-->
 
 > You should always have more than 25 stable peers after a setup time of 4h to 6h.
 

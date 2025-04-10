@@ -1,3 +1,10 @@
+---
+sidebar_label: "7.1 Client Name and Graffiti"
+sidebar_position: 1
+---
+
+# 7.1 Client Name and Graffiti
+
 ## 6.10 Client Modifications
 
 A whole suite of flags can be added to the clients while starting the service. By using the flags `--geth-[COMMAND]`, `--prysm-[COMMAND]`, `--validator-[COMMAND]`, `--erigon-[COMMAND]`, or `--lighthouse-[COMMAND]` you can pass through any available flag of the underlying client.

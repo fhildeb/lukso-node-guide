@@ -1,8 +1,17 @@
+---
+sidebar_label: "7.3 Service Automation"
+sidebar_position: 3
+---
+
+# 7.3 Service Automation
+
 ## 6.12 Service Automation
 
 By default, the blockchain clients are not automatically starting whenever there has been a power outage or crash on your node system. This means additional manual work by logging into the node again after a power outage and restarting the clients.
 
-As the CLI maintains all blockchain clients, we can add a script run every time on boot. However, managing or restarting individual services is not possible within this setup, as it requires the professional configuration of each client. Here, [Grafana Alerts](/8-notifications/01-telegram-alerts.md) are helping out, as they will inform you if singular processes can not be reached anymore.
+As the CLI maintains all blockchain clients, we can add a script run every time on boot. However, managing or restarting individual services is not possible within this setup, as it requires the professional configuration of each client. Here, [Grafana Alerts](#) are helping out, as they will inform you if singular processes can not be reached anymore.
+
+<!--TODO: /8-notifications/01-telegram-alerts.md-->
 
 > **Version Disclaimer**: Automation is only possible from `LUKSO CLI Version 0.8.1` onwards. Make sure you have the latest version installed using the `lukso version` command.
 
