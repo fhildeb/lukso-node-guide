@@ -1,3 +1,10 @@
+---
+sidebar_label: "3.7 Bruteforce Protection"
+sidebar_position: 7
+---
+
+# 3.7 Bruteforce Protection
+
 ## 3.7 Set Bruteforce Protection
 
 Brute force protection is a critical aspect of securing blockchain nodes and servers. As these systems often manage valuable assets and sensitive information, they are prime targets for attackers seeking unauthorized access. Brute force attacks involve systematically attempting various combinations of ports, usernames, and passwords to gain access to a target system. Implementing robust security measures on blockchain nodes and servers is essential, so brute force attacks can not target them.

@@ -1,3 +1,10 @@
+---
+sidebar_label: "3.5 Startup Utility"
+sidebar_position: 5
+---
+
+# 3.5 Startup Utility
+
 ## 3.5 Set Remote Access on Startup
 
 Next, we want to check if the OpenSSH server starts automatically when the system boots up. Here we can also use the system control to check if it is enabled already.

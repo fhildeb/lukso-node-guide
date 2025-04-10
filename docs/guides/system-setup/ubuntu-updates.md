@@ -1,4 +1,9 @@
-## 3.3 Ubuntu Updates
+---
+sidebar_label: "3.3 Ubuntu Updates"
+sidebar_position: 3
+---
+
+# 3.3 Ubuntu Updates
 
 Keeping the system and its software up to date is essential and should be done regularly.
 
@@ -70,6 +75,6 @@ sudo dpkg-reconfigure -plow unattended-upgrades
 
 You will get a screen prompt in the terminal. Agree with `<Yes>` and continue the setup.
 
-![Auto Update Screen](/img/setup-autoupdate.png)
+![Auto Update Screen](/img/guides/system-setup/setup-autoupdate.png)
 
 **Now that package maintenance is set up, we can continue with the remote access.**

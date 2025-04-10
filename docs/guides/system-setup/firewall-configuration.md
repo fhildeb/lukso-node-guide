@@ -1,3 +1,10 @@
+---
+sidebar_label: "3.6 Firewall Configuration"
+sidebar_position: 6
+---
+
+# 3.6 Firewall Configuration
+
 ## 3.6 Configure Firewall
 
 Now we need to enable ssh in the firewall by allowing incoming connections to the previously configured port.

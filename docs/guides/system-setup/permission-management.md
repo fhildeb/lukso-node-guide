@@ -1,3 +1,10 @@
+---
+sidebar_label: "3.1 Permission Management"
+sidebar_position: 1
+---
+
+# 3.1 Permission Management
+
 ## 3.1 Change Permission Set
 
 By locking the root account, we can enhance the security of the node system, as it requires users to use superuser permissions to execute commands with root privileges, which leaves an audit trail of actions performed with elevated permissions.

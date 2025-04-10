@@ -1,4 +1,9 @@
-## 3.4 Configure Remote Access
+---
+sidebar_label: "3.4 Remote Access"
+sidebar_position: 4
+---
+
+# 3.4 Configure Remote Access
 
 We already installed the OpenSSH server within the Ubuntu installation, and I explained why it is an essential tool. If you did not configure it already, now is the time to set it up so we can securely connect to our server from other devices.
 
