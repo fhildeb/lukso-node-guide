@@ -1,3 +1,41 @@
+---
+sidebar_label: "6.1 Firewall Settings"
+sidebar_position: 1
+---
+
+<!--TODO: Previous: All blockchain knowledge chapters-->
+
+# 6.1 Firewall Settings
+
+## 6.5 Open Network Ports
+
+To let the Blockchain CLients communicate correctly, the ports, e.g., data communication channels, must be enabled on the node and the router. For each supported blockchain client, there are different ports to open.
+
+Each supported client has different ports for various purposes that have to be open for a clear connection:
+
+> To discover peers of other nodes, all outbound traffic should be allowed across all UDP and TCP ports when using Prysm and Lighthouse.
+
+| CLIENT     | DESCRIPTION                               | PORT  | TCP | UDP |
+| ---------- | ----------------------------------------- | ----- | --- | --- |
+| GETH       | Execution Chain Data Channel              | 30303 | X   |     |
+| GETH       | Execution Chain Discovery                 | 30303 |     | X   |
+| ERIGON     | Execution Chain Data Channel              | 30303 | X   |     |
+| ERIGON     | Execution Chain Discovery                 | 30303 |     | X   |
+| LIGHTHOUSE | Beacon Communication and Data             | 9000  | X   | X   |
+| PRYSM      | Beacon Gossip, Requests, and Responses    | 13000 | X   |     |
+| PRYSM      | Beacon Discovery, Requests, Data Exchange | 12000 |     | X   |
+
+> Within the [monitoring section](#) of this guide, you can find other internal communication channels that will be used for monitoring.
+
+<!--TODO: 7-monitoring/01-core-tools.md-->
+
+References:
+
+- [Lighthouse Port Specification](https://lighthouse-book.sigmaprime.io/faq.html?highlight=9000#do-i-need-to-set-up-any-port-mappings)
+- [Prysm Port Specification](https://docs.prylabs.network/docs/prysm-usage/p2p-host-ip#configure-your-firewall)
+- [Geth Port Specification](https://github.com/ethereum/go-ethereum#configuration)
+- [Erigon Port Specification](https://github.com/ledgerwatch/erigon#default-ports-and-firewalls)
+
 ## 6.6 Firewall Settings
 
 We can edit the firewall settings after you spot which ports you need to open. We can do this the same way as in this guide's [system setup](/3-system-setup/) section.

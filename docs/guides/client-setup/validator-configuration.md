@@ -1,3 +1,10 @@
+---
+sidebar_label: "6.4 Validator Configuration"
+sidebar_position: 4
+---
+
+# 6.4 Validator Configuration
+
 ## 6.9 LUKSO CLI Validator Setup
 
 If the network started correctly and was syncing, we can continue setting up your validator if you would like to participate in the blockchain consensus.
@@ -11,8 +18,11 @@ When becoming a validator, you must manage passwords, addresses, and keys. Let's
 - **Validator Deposit Key**: A keystore file encrypts your private key using the _Validator Key Password_. It is generated for each potential deposit you want to make. It can be used to import your validator key into a validator client. It's important to store your keystore files securely, as anyone with access to your keystore file and its password would have access to your validator key. If you lose your keystore file, you can regenerate it using your _Validator Mnemonic Seed_, assuming you have also stored it securely. With it, the client can verify if you deposited the required 32 LYX/LYXe to become an active validator.
 - **Deposit Data**: This is a JSON file generated when you set up your validator using your _Validator Mnemonic Seed_. The JSON file includes various essential pieces of information, such as your public key and a signature. This file is used as part of the process to register your validator on the blockchain using transactions.
 - **Validator Wallet Password**: This password is used to secure the wallet holding your _Validator Deposit Keys_. The wallet password should be strong, unique, and known only to you. This password will be needed every time you start your validator client.
-- **Validator Withdrawal Address**: This is the Ethereum address where your funds will be sent when you stop validating and withdrawing your staked LYX. It's important that you always have control over it as it can not be updated. For more information, you can check the [Withdrawals and Earnings](02-network-theory.md) section of the guide.
-- **Validator Recipient Fee Address**: This is the Ethereum address where the transaction fees you earn as a validator will be sent. Depending on your setup, this might be the same as your withdrawal address. For more information, you can check the [Withdrawals and Earnings](02-network-theory.md) section of the guide.
+- **Validator Withdrawal Address**: This is the Ethereum address where your funds will be sent when you stop validating and withdrawing your staked LYX. It's important that you always have control over it as it can not be updated. For more information, you can check the [Withdrawals and Earnings](#) section of the guide.
+- **Validator Recipient Fee Address**: This is the Ethereum address where the transaction fees you earn as a validator will be sent. Depending on your setup, this might be the same as your withdrawal address. For more information, you can check the [Withdrawals and Earnings](#) section of the guide.
+
+<!--TODO: 02-network-theory.md-->
+<!--TODO: 02-network-theory.md-->
 
 ### 6.9.2 Import Mainnet Keys
 
@@ -214,7 +224,9 @@ The [hardware requirements](https://docs.prylabs.network/docs/prysm-usage/slashe
 - Storage: 1TB available space SSD
 - Internet: Broadband connection
 
-> The slasher database will take additional space on your hard disk, up to hundreds of GBs. If you want to know more about how much storage the node will need, have a look at the [Client Setup](04-client-setups.md) section.
+> The slasher database will take additional space on your hard disk, up to hundreds of GBs. If you want to know more about how much storage the node will need, have a look at the [Client Setup](#) section.
+
+<!--TODO: 04-client-setups.md-->
 
 If you run the slasher on a low-performance node or can not keep up with the requirements, it could lead to the following problems:
 
