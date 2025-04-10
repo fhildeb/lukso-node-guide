@@ -6,7 +6,9 @@ There are a few theoretical things to understand about making deposits and putti
 
 LUKSO started as PoS Blockchain with an initial genesis validator set. These validators deposited on the Ethereum blockchain and locked their LYXe, to start and run their validators on the LUKSO mainnet with equal staking amounts.
 
-> More about the Network, Tokenomics, Withdrawals, and Earnings can be found in the [Network Theory](/6-blockchain-clients/02-network-theory.md) section of this guide.
+> More about the Network, Tokenomics, Withdrawals, and Earnings can be found in the [Network Theory](#) section of this guide.
+
+<!-- TODO: /6-blockchain-clients/02-network-theory.md-->
 
 ### Initial Deposits
 
@@ -22,7 +24,7 @@ After the discovery month of about 4 weeks, LUKSO opened up the migration of LYX
 
 ### LUKSO Genesis Deposit Contract
 
-![Genesis Contract](/img/genesis-contract.png)
+![Genesis Contract](/img/theory/node-operation/genesis-contract.png)
 
 The [LUKSO Genesis Deposit Contract](https://etherscan.io/address/0x42000421dd80D1e90E56E87e6eE18D7770b9F8cC#code) had to do calls to the external LYXe ERC20-compatible token instead of doing it on the native chain with primary deposits.
 

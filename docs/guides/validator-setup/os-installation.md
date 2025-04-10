@@ -1,3 +1,8 @@
+---
+sidebar_label: "1.1 OS Installation"
+sidebar_position: 1
+---
+
 ## Validator Key Gen: Device Setup
 
 Validator nodes play a crucial role in the blockchain network, participating in the consensus mechanism to validate transactions and create new blocks. As such, the security of these validator nodes and their associated keys is of utmost importance. Generating your validator keys on a clean, offline device that has never touched the internet during setup is an ideal practice. Here's why:
@@ -58,13 +63,13 @@ Now that we configured the BIOS correctly, we can exit and start up the node fro
 
 You will be left with the following screen:
 
-![Try or Install Ubuntu Server](/img/validator_install_1.png)
+![Try or Install Ubuntu Server](/img/guides/validator-setup/validator_install_1.png)
 
 Afterward, the initial Ubuntu setup screen will come up.
 
 #### Setup Process
 
-![Initial Setup Screen](/img/validator_install_2.png)
+![Initial Setup Screen](/img/guides/validator-setup/validator_install_2.png)
 
 1. **System Language**: Choose your operating system's language.
 2. **Keyboard Configuration**: Specify your keyboard layout and language.

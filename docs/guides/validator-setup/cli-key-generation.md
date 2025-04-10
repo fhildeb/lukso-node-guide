@@ -1,3 +1,8 @@
+---
+sidebar_label: "1.3 CLI Key Generation"
+sidebar_position: 3
+---
+
 ## CLI Validator Key Generation
 
 This section will cover the setup of the Validator keys using the [LUKSO Key Gen CLI](https://github.com/lukso-network/tools-key-gen-cli) tool.
@@ -6,7 +11,9 @@ This section will cover the setup of the Validator keys using the [LUKSO Key Gen
 
 The LUKSO Key Gen is a command-line interface tool that helps generate the necessary keys for becoming a validator on Ethereum-based blockchains.
 
-On the other hand, you could also choose to generate deposit keys using the [LUKSO Deposit CLI](./03-lukso-deposit-cli.md) tool.
+On the other hand, you could also choose to generate deposit keys using the [LUKSO Deposit CLI](#) tool.
+
+<!-- TODO: ./03-lukso-deposit-cli.md-->
 
 ### Download the Software
 
@@ -37,7 +44,9 @@ cd
 
 ### Setup the Executable
 
-After downloading, we need to unpack the file. A description of the tape archive tool can be found within the [Node Exporter](/7-monitoring/02-node-exporter.md) section for monitoring. Please note that the filenames might change due to the versioning.
+After downloading, we need to unpack the file. A description of the tape archive tool can be found within the [Node Exporter](#) section for monitoring. Please note that the filenames might change due to the versioning.
+
+<!-- TODO: /7-monitoring/02-node-exporter.md -->
 
 ```sh
 tar xzfv lukso-key-gen-cli-v2.5.3-linux.tar.gz
@@ -51,7 +60,9 @@ cd lukso-key-gen-cli-v2.5.3-linux
 
 ### Generate the Initial Keys
 
-Now we can start the application to generate our initial keys using the `new-mnemonic` option. Setting a withdrawal address is necessary as you can withdraw your deposits later on, as described in the [Earnings & Withdrawals](/6-blockchain-clients/02-network-theory.md) section of the guide.
+Now we can start the application to generate our initial keys using the `new-mnemonic` option. Setting a withdrawal address is necessary as you can withdraw your deposits later on, as described in the [Earnings & Withdrawals](#) section of the guide.
+
+<!-- TODO: /6-blockchain-clients/02-network-theory.md-->
 
 ```sh
 ./lukso-key-gen new-mnemonic --eth1_withdrawal_address 0x42000421dd80D1e90E56E87e6eE18D7770b9F8cC
@@ -145,7 +156,9 @@ The deposit files will be saved within the same folder at `./validator_keys`. Pr
 Check out the files in your folder. You should have two types of files:
 
 - `deposit_data.json`: The file you will use to make deposit transactions to activate the keys. You must use this file during the [Deposit Launchpad](/validator-key-stake/) process.
-- `keystore.json`: One keystore file for every validator key you generated. Those files must be imported into your node as described in the [Validator Setup](/6-blockchain-clients/09-validator-setup.md) section.
+- `keystore.json`: One keystore file for every validator key you generated. Those files must be imported into your node as described in the [Validator Setup](#) section.
+
+<!-- TODO: /6-blockchain-clients/09-validator-setup.md-->
 
 ### Generate Additional Keys
 
@@ -161,7 +174,9 @@ If you want to add keys to your validator, rename your folder of the first creat
 mv validator_keys <new-folder-name>
 ```
 
-Start up the tool with an existing mnemonic. Again, setting a withdrawal address is necessary as you can withdraw your deposits later on, as described in the [Earnings & Withdrawals](/6-blockchain-clients/02-network-theory.md) section of the guide.
+Start up the tool with an existing mnemonic. Again, setting a withdrawal address is necessary as you can withdraw your deposits later on, as described in the [Earnings & Withdrawals](#) section of the guide.
+
+<!-- TODO: /6-blockchain-clients/02-network-theory.md-->
 
 > If you use it as a backup, use the same withdrawal address as you did on the initial generation process of the keys.
 
