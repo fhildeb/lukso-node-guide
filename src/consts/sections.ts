@@ -126,7 +126,6 @@ const sections = [
       {
         title: "Blockchain Knowledge",
         pages: [
-          "Operation Types",
           "Network Introduction",
           "Client Operations",
           "Client Differentiations",
@@ -136,6 +135,7 @@ const sections = [
       {
         title: "Node Operation",
         pages: [
+          "Client Options",
           "Staking",
           "Validator Credentials",
           "Peer Discovery",

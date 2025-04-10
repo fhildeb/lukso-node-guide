@@ -1,6 +1,6 @@
 ---
 sidebar_label: "Client Differentiations"
-sidebar_position: 4
+sidebar_position: 3
 ---
 
 # Client Differentiations
