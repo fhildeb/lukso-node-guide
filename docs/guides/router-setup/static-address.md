@@ -1,3 +1,10 @@
+---
+sidebar_label: "4.2 Static IP Layout"
+sidebar_position: 2
+---
+
+# 4.2 Static IP Layout
+
 ## 4.2 Address Reservation
 
 You can avoid connectivity issues by assigning a static IP address or reserving an IP address for your node in your home network. A dedicated IP address ensures that the node will always use the same IP address, making configuring port forwarding, firewall rules, and other networking settings easier.
@@ -57,3 +64,15 @@ ip route get 8.8.8.8 | awk '{print $7}'
 ```
 
 If the outputs contradict what we have set above, return to your router settings and repeat the last steps.
+
+## 4.3 Switch to Remote Connection
+
+If everything is alright, you can shut down your node server and place it in your server rack or onto the shelf.
+
+```sh
+sudo shutdown now
+```
+
+Now we can start disconnecting the monitor, keyboard, power, and network cables from the back of your node. Afterward, move your server to its final location and reconnect it to the power supply and a network cable.
+
+Because of our previous settings, it will restart automatically if the power cable is connected. The boot process should be completed within 30-60 seconds, and we can reach it via the static IP if we're within the same network.

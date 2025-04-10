@@ -1,3 +1,10 @@
+---
+sidebar_label: "4.1 Address Checkup"
+sidebar_position: 1
+---
+
+# 4.1 Address Checkup
+
 ## 4.1 Node Address Checkups
 
 Since many routers use different software, we first ensure that we read the node's connection data correctly before making any substantial changes to the router.
