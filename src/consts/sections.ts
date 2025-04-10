@@ -17,6 +17,7 @@ const sections = [
       {
         title: "Hardware Setup",
         pages: [
+          "Introduction",
           "Mainboard Swap",
           "Component Assembly",
           "OS Installation",
@@ -115,7 +116,12 @@ const sections = [
     chapters: [
       {
         title: "Hardware Preparation",
-        pages: ["Node Requirements", "Router and Network", "Operation Systems"],
+        pages: [
+          "Node Specification",
+          "Router Requirements",
+          "Network Demand",
+          "Operation Systems",
+        ],
       },
       {
         title: "Blockchain Knowledge",

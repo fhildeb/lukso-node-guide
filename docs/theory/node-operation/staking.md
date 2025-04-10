@@ -1,3 +1,10 @@
+---
+sidebar_label: "Staking"
+sidebar_position: 1
+---
+
+# Staking
+
 ## Deposit Theory
 
 There are a few theoretical things to understand about making deposits and putting your stake at risk. Most of these facts will be LUKSO-specific.
