@@ -1,3 +1,10 @@
+---
+sidebar_label: "5.3 Trial Connection"
+sidebar_position: 3
+---
+
+# 5.3 Trial Connection
+
 ## 5.3 Test the SSH Connection
 
 Verify the configuration by connecting the node machine. Therefore, immediately call the `SSH` application and type your preferred SSH device alias.

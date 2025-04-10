@@ -1,3 +1,10 @@
+---
+sidebar_label: "5.1 Installation"
+sidebar_position: 1
+---
+
+# 5.1 Installation
+
 ## 5.1 Check SSH Install
 
 Before verifying basic access to a node machine using SSH on our personal computer, we must check if all packages are installed correctly.

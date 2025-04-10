@@ -1,3 +1,10 @@
+---
+sidebar_label: "5.2 Configuration"
+sidebar_position: 2
+---
+
+# 5.2 Configuration
+
 ## 5.2 Configure SSH
 
 If you have SSH installed, we can continue with the next step. We set the connection parameters for our node, so we can communicate easily without constantly typing the IP and Port.

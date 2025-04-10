@@ -1,3 +1,10 @@
+---
+sidebar_label: "5.4 Key Usage"
+sidebar_position: 4
+---
+
+# 5.4 Key Usage
+
 ## 5.4 Configuring a Login Key
 
 In the next step, we will significantly increase the security of the node access flow by using SSH keys for authentication instead of the direct password.
