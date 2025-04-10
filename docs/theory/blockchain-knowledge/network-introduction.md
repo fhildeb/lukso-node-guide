@@ -1,3 +1,10 @@
+---
+sidebar_label: "Network Introduction"
+sidebar_position: 2
+---
+
+# Network Introduction
+
 ## 6.2 Network Theory
 
 Let's also clear up the blockchain network we will run with this setup and how the compensation works for providing the backend infrastructure. It's essential to know the basics of how we will participate.

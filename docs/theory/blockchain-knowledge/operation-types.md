@@ -1,3 +1,10 @@
+---
+sidebar_label: "Operation Types"
+sidebar_position: 1
+---
+
+# Operation Types
+
 ## 6.1 LUKSO Blockchain Setup Types
 
 Regarding the Blockchain Client Setup, there will be multiple ways of running the blockchain clients for LUKSO:
@@ -24,3 +31,17 @@ The setup is more complex and uses more system resources but provides excellent 
 > DappNode is a platform that utilizes Docker containers to run decentralized applications and blockchain nodes. It provides a user-friendly interface and automates many complexities of running nodes in Docker containers. DappNode not only has its software but also comes with pre-configured node machines.
 
 It's also planned to have LUKSO officially supported on the DappNode suite. However, this will come after the mainnet is released.
+
+## 6.13 LUKSO Docker Setup
+
+> **WARNING**: The Modular Docker Images from LUKSO are not released yet. The guide will continue once they are publically available for both validator and non-validator setups.
+
+Currently, only two repositories are provided:
+
+- [Mainnet Geth-Prsym Docker Validator](https://github.com/lukso-network/network-docker-containers)
+- [Mainnet Geth-Prsym Docker Monitoring](https://github.com/lukso-network/network-docker-monitoring)
+
+You can look up their individual documentation if you are willing to use them. They are ready to use but not finalized.
+
+<!-- TODO: Add Dappnode + Link-->
+<!--TODO: Add Docker Factory: https://docker-factory.lukso.tech/-->
