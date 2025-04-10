@@ -3,6 +3,8 @@ sidebar_label: "1.1 OS Installation"
 sidebar_position: 1
 ---
 
+# 1.1 OS Installation
+
 ## Validator Key Gen: Device Setup
 
 Validator nodes play a crucial role in the blockchain network, participating in the consensus mechanism to validate transactions and create new blocks. As such, the security of these validator nodes and their associated keys is of utmost importance. Generating your validator keys on a clean, offline device that has never touched the internet during setup is an ideal practice. Here's why:

@@ -1,3 +1,10 @@
+---
+sidebar_label: "2.1 Introduction"
+sidebar_position: 1
+---
+
+# Introduction
+
 ## 1.1 Hardware Setup
 
 I chose an expensive and professional setup because I plan to use the slasher functionality and run multiple networks from one node, partly via docker images on top of the LUKSO CLI. Please understand that this is not mandatory. The minimum requirements to run a LUKSO node can be read in the network section of the [official documentation](https://docs.lukso.tech/networks/). You can get an entry-level computer to run a validator node for around 600€. You can further trim down the hardware requirements by running the node without the slasher functionality. You can read more about the slasher within the [Blockchain Client Chapter](/6-blockchain-client/).
@@ -13,7 +20,7 @@ I chose an expensive and professional setup because I plan to use the slasher fu
 - **RAM**: Crucial 32GB DDR4 Kit (2x16GB, 2666MHz, CT2K16G4SFRA266)
 - **Storage**: Samsung 970 EVO Plus M.2 NVMe SSD 2TB (PCIe 3.0, 3.500 MB/s Read, 3.300 MB/s Write, MZ-V7S2T0BW)
 
-![Node Parts](/img/build_01.png)
+![Node Parts](/img/guides/hardware-setup/build_01.png)
 
 I spent around 1100€. The current prices should be below that at best. I assembled the node myself because I wanted to run a fanless machine. The bespoke housing improves the temperatures and reduces noise. It also eliminates the maintenance of moving parts.
 
@@ -25,7 +32,7 @@ The storage may not be sufficient for future-proof use of the node over several 
 
 > **NOTE:** Have a look into the [Blockchain Clients](/6-blockchain-clients/) section of the guide to determine how much storage you will need without doing maintenance to your node.
 
-![Hardware Switch](/img/hardware-switch.png)
+![Hardware Switch](/img/guides/hardware-setup/hardware-switch.png)
 
 I set up my machine on a small home rack and connected my node to an 8-port switch connected to my router. Not being directly connected to the router not only allows more slots but also allows me to place and connect servers and PCs in separate rooms.
 

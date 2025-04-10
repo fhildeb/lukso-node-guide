@@ -3,6 +3,8 @@ sidebar_label: "1.2 Wagyu Key Generation"
 sidebar_position: 2
 ---
 
+# 1.2 Wagyu Key Generation
+
 ## GUI Validator Key Generation
 
 This section will cover the setup of the Validator keys using the [LUKSO Wagyu Key Gen](https://github.com/lukso-network/tools-wagyu-key-gen) tool.

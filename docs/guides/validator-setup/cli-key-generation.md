@@ -3,6 +3,8 @@ sidebar_label: "1.3 CLI Key Generation"
 sidebar_position: 3
 ---
 
+# 1.3 CLI Key Generation
+
 ## CLI Validator Key Generation
 
 This section will cover the setup of the Validator keys using the [LUKSO Key Gen CLI](https://github.com/lukso-network/tools-key-gen-cli) tool.

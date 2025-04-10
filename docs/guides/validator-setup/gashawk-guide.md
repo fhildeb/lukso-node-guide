@@ -3,6 +3,8 @@ sidebar_label: "1.5 GasHawk Guide"
 sidebar_position: 5
 ---
 
+# 1.5 GasHawk Guide
+
 ## Genesis Deposits using GasHawk
 
 As genesis deposits on Ethereum were quite expensive, reaching from 25 to 70 dollars per validator deposit, many people used the tool [GasHawk](https://gashawk.io/). It's an off-chain buffer system where you send your transaction to an off-chain server instead of using the Mainnet RPC connection directly. The service will delay these transactions to find the sweet spot and save gas for you based on [ERC1559](https://eips.ethereum.org/EIPS/eip-1559) metrics.

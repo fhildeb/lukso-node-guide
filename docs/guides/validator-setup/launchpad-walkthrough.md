@@ -3,6 +3,10 @@ sidebar_label: "1.4 Launchpad Walkthrough"
 sidebar_position: 4
 ---
 
+# 1.4 Launchpad Walkthrough
+
+<!--TODO: Previous content was moved to Theory/Node-Operation/Staking-->
+
 # Validator Deposit Launchpad
 
 After you generated the deposit keys, you can visit the _LUKSO Validator Deposit Launchpads_ for the LUKSO Blockchain to put a stake in them:
