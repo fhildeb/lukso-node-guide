@@ -16,7 +16,11 @@ export function ChapterCard({
       {chapter.title && (
         <h3 className={styles.cardTitle}>
           {sectionName.toLowerCase() === "guides" && `${chapterIndex}. `}
-          <Link to={`/docs/${toKebabCase(chapter.title)}`}>
+          <Link
+            to={`/docs/${toKebabCase(sectionName)}/${toKebabCase(
+              chapter.title
+            )}`}
+          >
             {chapter.title}
           </Link>
         </h3>
@@ -31,8 +35,8 @@ export function ChapterCard({
               </span>
             )}
             <Link
-              to={`/docs/${toKebabCase(
-                chapter.title || sectionName
+              to={`/docs/${toKebabCase(sectionName)}/${toKebabCase(
+                chapter.title
               )}/${toKebabCase(page)}`}
             >
               {page}
