@@ -1,6 +1,7 @@
 import sections from "@site/src/consts/sections";
 import styles from "./PageRegistry.module.css";
 import { SectionGrid } from "../SectionGrid/SectionGrid";
+import { StatusCard } from "../StatusCard/StatusCard";
 
 /**
  * Landing page layout in 3 main columns and 1/5-sized cards
@@ -56,21 +57,13 @@ export function PageRegistry() {
         )}
       </div>
       <div className={styles.rightColumn}>
-        {archiveSection && (
-          <div className={styles.sectionContainer}>
-            <h2 className={styles.sectionTitle}>
-              {archiveSection.emoji && (
-                <span className={styles.emoji}>{archiveSection.emoji} </span>
-              )}
-              {archiveSection.name}
-            </h2>
-            <SectionGrid
-              chapters={archiveSection.chapters}
-              gridClass={styles.singleGrid}
-              sectionName={archiveSection.name}
-            />
-          </div>
-        )}
+        <div className={styles.sectionContainer}>
+          <h2 className={styles.sectionTitle}>
+            {templatesSection.emoji && <span className={styles.emoji}>⏱️</span>}
+            Software
+          </h2>
+          <StatusCard />
+        </div>
         {templatesSection && (
           <div className={styles.sectionContainer}>
             <h2 className={styles.sectionTitle}>
