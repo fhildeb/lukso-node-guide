@@ -168,11 +168,11 @@ const sections = [
       {
         title: "",
         pages: [
-          "L16 Grafana Dashboard USD",
-          "Mainnet Grafana 7 Dashboard EUR",
-          "Mainnet Grafana 7 Dashboard USD",
-          "Mainnet Grafana 9 Dashboard EUR",
-          "Mainnet Grafana 9 Dashboard USD",
+          "L16 Dashboard USD",
+          "Grafana 9 Dashboard EUR",
+          "Grafana 9 Dashboard USD",
+          "Grafana 11 Dashboard EUR",
+          "Grafana 11 Dashboard USD",
         ],
       },
     ],
