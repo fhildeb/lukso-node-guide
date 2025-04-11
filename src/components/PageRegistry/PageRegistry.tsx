@@ -22,23 +22,6 @@ export function PageRegistry() {
   return (
     <div className={styles.landingGrid}>
       <div className={styles.leftColumn}>
-        {guidesSection && (
-          <div className={styles.sectionContainer}>
-            <h2 className={styles.sectionTitle}>
-              {guidesSection.emoji && (
-                <span className={styles.emoji}>{guidesSection.emoji} </span>
-              )}
-              {guidesSection.name}
-            </h2>
-            <SectionGrid
-              chapters={guidesSection.chapters}
-              gridClass={styles.guidesGrid}
-              sectionName={guidesSection.name}
-            />
-          </div>
-        )}
-      </div>
-      <div className={styles.centerColumn}>
         {theorySection && (
           <div className={styles.sectionContainer}>
             <h2 className={styles.sectionTitle}>
@@ -51,6 +34,23 @@ export function PageRegistry() {
               chapters={theorySection.chapters}
               gridClass={styles.theoryGrid}
               sectionName={theorySection.name}
+            />
+          </div>
+        )}
+      </div>
+      <div className={styles.centerColumn}>
+        {guidesSection && (
+          <div className={styles.sectionContainer}>
+            <h2 className={styles.sectionTitle}>
+              {guidesSection.emoji && (
+                <span className={styles.emoji}>{guidesSection.emoji} </span>
+              )}
+              {guidesSection.name}
+            </h2>
+            <SectionGrid
+              chapters={guidesSection.chapters}
+              gridClass={styles.guidesGrid}
+              sectionName={guidesSection.name}
             />
           </div>
         )}
