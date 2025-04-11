@@ -22,13 +22,12 @@ export function ChapterCard({
       : "";
 
   if (sectionName.toLowerCase() === "templates") {
-    // For Templates, ignore chapter title; render each page as an item with a download icon and link to the .json file.
     return (
       <div className={styles.card}>
         <ul className={styles.pageList}>
           {chapter.pages.map((page: string) => (
             <li key={page}>
-              <span className={styles.downloadIcon}>⬇️</span>{" "}
+              <span className={styles.downloadIcon}>↓</span>{" "}
               <a
                 href={`/templates/${toKebabCase(page)}.json`}
                 download
