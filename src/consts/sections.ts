@@ -126,9 +126,11 @@ const sections = [
       {
         title: "Blockchain Knowledge",
         pages: [
-          "Network Introduction",
-          "Client Operations",
-          "Client Differentiations",
+          "Proof of Stake",
+          "Tokenomics",
+          "Slashing and Panelties",
+          "Client Types",
+          "Client Providers",
           "Client Diversity",
         ],
       },

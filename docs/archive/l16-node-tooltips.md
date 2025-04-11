@@ -1,3 +1,10 @@
+---
+sidebar_label: "L16 Node Tooltips"
+sidebar_position: 2
+---
+
+# L16 Node Tooltips
+
 # LUKSO CLI Tooltips
 
 ## 1. Stopping the Node

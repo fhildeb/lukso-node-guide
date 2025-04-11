@@ -1,9 +1,9 @@
 ---
-sidebar_label: "7.3 Service Automation"
-sidebar_position: 3
+sidebar_label: "7.4 Service Automation"
+sidebar_position: 4
 ---
 
-# 7.3 Service Automation
+# 7.4 Service Automation
 
 ## 6.12 Service Automation
 

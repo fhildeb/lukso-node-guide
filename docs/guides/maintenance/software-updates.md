@@ -1,3 +1,10 @@
+---
+sidebar_label: "11.1 Software Updates"
+sidebar_position: 1
+---
+
+# 11.1 Software Updates
+
 # General Tooltips
 
 The following file features small help snippets in case there are any issues with the LUKSO CLI

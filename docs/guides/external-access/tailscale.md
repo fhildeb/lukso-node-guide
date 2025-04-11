@@ -1,3 +1,10 @@
+---
+sidebar_label: "10.1 Tailscale"
+sidebar_position: 1
+---
+
+# 10.1 Tailscale
+
 <!--TODO: Link to Theory VPN Tunnels-->
 
 ## 9.2 Tailscale Setup

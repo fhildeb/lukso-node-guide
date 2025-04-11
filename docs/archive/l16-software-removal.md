@@ -1,4 +1,11 @@
-# ## LUKSO CLI Uninstall
+---
+sidebar_label: "L16 Software Removal"
+sidebar_position: 3
+---
+
+# L16 Software Removal
+
+## LUKSO CLI Uninstall
 
 > This guide is suited for L16 nodes running a docker installation up to the `LUKSO CLI Version 4.9.0`. If you are using an newer version, paths and tools might not fully align. Use the uninstall commands at own risk.
 

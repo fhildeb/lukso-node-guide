@@ -1,9 +1,9 @@
 ---
-sidebar_label: "6.2 Router Configuration"
+sidebar_label: "6.2 Router Port Arrangement"
 sidebar_position: 2
 ---
 
-# 6.2 Router Configuration
+# 6.2 Router Port Arrangement
 
 ## 6.7 Router Configuration
 

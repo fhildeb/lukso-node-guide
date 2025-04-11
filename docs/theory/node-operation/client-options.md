@@ -1,9 +1,9 @@
 ---
-sidebar_label: "Operation Types"
+sidebar_label: "Client Options"
 sidebar_position: 1
 ---
 
-# Operation Types
+# Client Options
 
 ## 6.1 LUKSO Blockchain Setup Types
 

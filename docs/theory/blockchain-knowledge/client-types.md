@@ -1,9 +1,9 @@
 ---
-sidebar_label: "Client Operations"
-sidebar_position: 2
+sidebar_label: "Client Types"
+sidebar_position: 4
 ---
 
-# Client Operations
+# Client Types
 
 ## 6.3 Client Theory
 

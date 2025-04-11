@@ -1,3 +1,10 @@
+---
+sidebar_label: "VPN Tunnel"
+sidebar_position: 7
+---
+
+# VPN Tunnel
+
 # 9.1 VPN Theory
 
 For External Access to my node, I'm using Tailscale. Tailscale is a technology that creates a secure network of your devices with an internet connection. It works as if they were all connected on the same local network utilizing [WireGuard](https://www.wireguard.com/).
