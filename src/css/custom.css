@@ -17,6 +17,16 @@
   --ifm-color-primary-lightest: #7e98a5;
   --ifm-code-font-size: 95%;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+
+  /* Custom Elements */
+  --button-bg: #f5f6f7;
+  --button-bg-hover: #dddddd;
+  --status-container-bg: #f8f8f8;
+  --section-heading-color: #666;
+  --blog-container-bg: #f4f2f2;
+  --blog-container-border: #dddddd;
+  --progress-wrapper-bg: #ddd;
+  --progress-text-color: #285060;
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
@@ -29,4 +39,14 @@
   --ifm-color-primary-lighter: #9fb2bc;
   --ifm-color-primary-lightest: #b9c7ce;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+
+  /* Custom Elements */
+  --button-bg: #2e2e2e;
+  --button-bg-hover: #3a3a3a;
+  --status-container-bg: #1c1e21;
+  --section-heading-color: #aaa;
+  --blog-container-bg: #2e2e2e;
+  --blog-container-border: #595959;
+  --progress-wrapper-bg: #2e2e2e;
+  --progress-text-color: #e3e3e3;
 }
