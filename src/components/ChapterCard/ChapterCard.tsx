@@ -16,6 +16,11 @@ export function ChapterCard({
       ? `/${toKebabCase(chapter.title)}`
       : "";
 
+  const firstPagePath =
+    chapter.pages && chapter.pages.length > 0
+      ? `/${toKebabCase(chapter.pages[0])}`
+      : "";
+
   if (sectionName.toLowerCase() === "templates") {
     // For Templates, ignore chapter title; render each page as an item with a download icon and link to the .json file.
     return (
@@ -44,9 +49,9 @@ export function ChapterCard({
           <h3 className={styles.cardTitle}>
             {sectionName.toLowerCase() === "guides" && `${chapterIndex}. `}
             <Link
-              to={`/docs/${toKebabCase(sectionName)}${""}/${toKebabCase(
-                chapter.title + "/"
-              )}`}
+              to={`/docs/${toKebabCase(
+                sectionName
+              )}${chapterPath}${firstPagePath}`}
             >
               {chapter.title}
             </Link>
