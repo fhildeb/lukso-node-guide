@@ -22,7 +22,6 @@
   display: flex;
   flex-wrap: wrap;
   gap: 0.7rem;
-  padding-top: 0.5rem;
 }
 
 .softwareButton {
@@ -48,10 +47,13 @@
 }
 
 .categorySection {
-  margin-top: 1.5rem;
+  margin-top: 1rem;
 }
 
 .categoryHeading {
-  margin-bottom: 0.5rem;
   font-size: 1.2rem;
+}
+
+button:hover {
+  background-color: #dddddd;
 }
