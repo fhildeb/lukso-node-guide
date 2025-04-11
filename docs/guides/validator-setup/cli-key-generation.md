@@ -1,9 +1,9 @@
 ---
-sidebar_label: "1.3 CLI Key Generation"
-sidebar_position: 3
+sidebar_label: "1.4 CLI Key Generation"
+sidebar_position: 4
 ---
 
-# 1.3 CLI Key Generation
+# 1.4 CLI Key Generation
 
 ## CLI Validator Key Generation
 

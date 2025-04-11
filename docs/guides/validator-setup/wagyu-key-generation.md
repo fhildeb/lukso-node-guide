@@ -1,9 +1,9 @@
 ---
-sidebar_label: "1.2 Wagyu Key Generation"
-sidebar_position: 2
+sidebar_label: "1.3 Wagyu Key Generation"
+sidebar_position: 3
 ---
 
-# 1.2 Wagyu Key Generation
+# 1.3 Wagyu Key Generation
 
 ## GUI Validator Key Generation
 

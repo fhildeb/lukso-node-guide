@@ -1,9 +1,9 @@
 ---
-sidebar_label: "1.5 GasHawk Guide"
-sidebar_position: 5
+sidebar_label: "1.6 GasHawk Guide"
+sidebar_position: 6
 ---
 
-# 1.5 GasHawk Guide
+# 1.6 GasHawk Guide
 
 ## Genesis Deposits using GasHawk
 

@@ -1,9 +1,9 @@
 ---
-sidebar_label: "1.4 Launchpad Walkthrough"
-sidebar_position: 4
+sidebar_label: "1.5 Launchpad Walkthrough"
+sidebar_position: 5
 ---
 
-# 1.4 Launchpad Walkthrough
+# 1.5 Launchpad Walkthrough
 
 <!--TODO: Previous content was moved to Theory/Node-Operation/Staking-->
 
