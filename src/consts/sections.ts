@@ -7,6 +7,7 @@ const sections = [
       {
         title: "Validator Setup",
         pages: [
+          "Precautions",
           "OS Installation",
           "Wagyu Key Generation",
           "CLI Key Generation",
