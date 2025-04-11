@@ -1,0 +1,57 @@
+.card {
+  display: inline-block;
+  width: 100%;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 1rem;
+  break-inside: avoid;
+}
+
+.version {
+  background-color: #ddd;
+  border-radius: 1rem;
+  padding-left: 0.3rem;
+  padding-right: 0.3rem;
+  background-color: #5c7784;
+  color: white;
+  font-size: 0.7rem;
+}
+
+.softwareList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  padding-top: 0.5rem;
+}
+
+.softwareButton {
+  background-color: #f5f6f7;
+  border: none;
+  border-radius: 2rem;
+  padding: 0.5rem 0.5rem;
+  cursor: pointer;
+  text-align: center;
+  display: inline-block;
+}
+
+.toolName {
+  display: block;
+  font-size: 0.9rem;
+  padding-left: 0.3rem;
+}
+
+.toolInfo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.categorySection {
+  margin-top: 1.5rem;
+}
+
+.categoryHeading {
+  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+}
