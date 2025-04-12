@@ -1,9 +1,11 @@
 ---
-sidebar_label: "1.6 GasHawk Guide"
-sidebar_position: 6
+sidebar_label: "GasHawk Deposits"
+sidebar_position: 4
 ---
 
-# 1.6 GasHawk Guide
+<!--Add general info about eth costs during that time period-->
+
+# 1.6 GasHawk Deposits
 
 ## Genesis Deposits using GasHawk
 

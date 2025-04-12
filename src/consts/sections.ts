@@ -12,7 +12,6 @@ const sections = [
           "Wagyu Key Generation",
           "CLI Key Generation",
           "Launchpad Walkthrough",
-          "GasHawk Guide",
         ],
       },
       {
@@ -160,6 +159,7 @@ const sections = [
           "L16 Client Installation",
           "L16 Node Tooltips",
           "L16 Software Removal",
+          "GasHawk Deposits",
         ],
       },
     ],

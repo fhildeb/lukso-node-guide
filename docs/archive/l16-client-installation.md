@@ -3,6 +3,8 @@ sidebar_label: "L16 Client Installation"
 sidebar_position: 1
 ---
 
+<!--Add general info about setup and testing community-->
+
 # L16 Client Installation
 
 # LUKSO CLI Installation
