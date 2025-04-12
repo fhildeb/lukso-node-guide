@@ -6,6 +6,11 @@
  * https://docusaurus.io/docs/styling-layout
  */
 
+.markdown img,
+.theme-doc-content img {
+  border-radius: 1rem;
+}
+
 /* You can override the default Infima variables here. */
 :root {
   --ifm-color-primary: #5c7784;
