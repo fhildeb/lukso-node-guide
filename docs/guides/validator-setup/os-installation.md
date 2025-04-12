@@ -5,67 +5,99 @@ sidebar_position: 2
 
 # 1.2 OS Installation
 
-### Download and Preparation
+This section covers the installation of the operating system on your offline machine and is a critical preliminary step before generating the validator keys.
 
-> I will use Ubuntu as it's the quickest and easiest setup for an offline machine using USB.
+:::info
 
-Download the latest official Ubuntu version from `ubuntu.com/download/desktop`. You need a USB device with at least 4GB that you can use to install the firmware on the storage disk. Ideally, the operating system is the latest LTS build, so there are no errors with dependencies that could not load for the generation software for the keys.
+The guide uses the latest Ubuntu LTS release to ensure compatibility with the key generation tools and provides a stable, secure environment for generating your validator keys. It’s the quickest and easiest setup for an offline machine using a USB drive. However, you could also use MacOS or Windows.
 
-1. Download [Ubuntu 22.04.2 LTS](https://ubuntu.com/download/desktop)
-2. Create a Bootable USB Drive with the ISO file
-   - Windows: [Rufus Guide for Ubuntu](https://ubuntu.com/tutorials/create-a-usb-stick-on-windows#1-overview)
-   - Linux: [Disk Creator Guide for Ubuntu](https://ubuntu.com/tutorials/create-a-usb-stick-on-ubuntu#1-overview)
-   - MacOS: [Etcher Guide for Ubuntu](https://ubuntu.com/tutorials/create-a-usb-stick-on-macos#1-overview)
-3. Disconnect the USB drive
-4. Connect the USB drive to your machine
+:::
 
-> An up-to-date system is essential to use the Deposit CLI tool.
+## 1. Download and Preparation
 
-### System Installation
+Follow these steps to prepare your bootable USB device from a machine that connected to the internet:
 
-After getting the boot device ready, we can continue with the installation.
+1. **Download Ubuntu**: Get the latest official Ubuntu version from [Ubuntu 22.04.2 LTS](https://ubuntu.com/download/desktop).
+2. **Create a Bootable USB Drive**: Use the ISO file to create a bootable device:
 
-**Make sure to never connect to the internet. Do not connect an Ethernet Cable.**
+- Windows: [Rufus Guide for Ubuntu](https://ubuntu.com/tutorials/create-a-usb-stick-on-windows#1-overview)
+- Linux: [Disk Creator Guide for Ubuntu](https://ubuntu.com/tutorials/create-a-usb-stick-on-ubuntu#1-overview)
+- macOS [Etcher Guide for Ubuntu](https://ubuntu.com/tutorials/create-a-usb-stick-on-macos#1-overview)
 
-#### Enter BIOS
+3. **Finalize USB Preparation**:
 
-> Connect your machine to power and attach a keyboard and monitor.
+- Disconnect the USB drive from your current computer.
+- Reconnect the USB drive to your offline machine when ready.
 
-1. Connect your Bootbable USB device to the node
-2. Turn on the node using the power button
-3. Press `F2` on your keyboard during boot to enter the BIOS setup
+## 2. System Installation
 
-#### Change Boot Order
+In this phase, Ubuntu will be installed on your offline machine. Keeping the system offline is crucial for ensuring the security and integrity of the key generation process as outlined in detail within the previous [Precautions](./precautions.md) page.
 
-1. Go to `Boot` -> `Boot Priority`
-2. Set `Boot Option #1` to your USB device
-3. Set `Boot Option #2` to your internal SSD
+:::caution
 
-#### Operating System Startup
+Make sure to never connect to the internet during the installation process. Do not connect an Ethernet cable.
 
-Now that we configured the BIOS correctly, we can exit and start up the node from the defined boot device.
+:::
 
-1. Press `F10` to save changes and exit BIOS
-2. Wait for the stick to boot up
-3. Choose `Try or Install Ubuntu Server`
+### 2.1 Enter BIOS
 
-### Ubuntu Installation
+:::info
 
-You will be left with the following screen:
+The following steps have been done on an Intel NUC. Key combinations or commands may be different across devices.
+
+:::
+
+:::note
+
+Connect your machine to power and attach a keyboard and monitor.
+
+:::
+
+Follow these steps to enter the BIOS setup:
+
+1. Connect your bootable USB device to the machine.
+2. Turn on the machine using the power button.
+3. Press `F2` on your keyboard during boot to enter the BIOS setup.
+
+### 2.2 Change Boot Order
+
+Adjust the boot priority to ensure the machine boots from the USB drive:
+
+1. Navigate to `Boot` -> `Boot Priority` in the BIOS.
+2. Set `Boot Option #1` to your USB device.
+3. Set `Boot Option #2` to your internal SSD.
+
+### 2.3 Operating System Startup
+
+After configuring the BIOS settings, start the OS from the bootable USB device:
+
+1. Press `F10` to save changes and exit the BIOS.
+2. Wait for the system to boot from the USB drive.
+3. Select **Try or Install Ubuntu Server** from the boot menu.
 
 ![Try or Install Ubuntu Server](/img/guides/validator-setup/validator_install_1.png)
 
-Afterward, the initial Ubuntu setup screen will come up.
+## 3. Ubuntu Installation
 
-#### Setup Process
+Once the machine boots from the USB drive, the Ubuntu installation environment will launch. Follow these steps to ensure a minimal and secure installation without unneccesary software bloating the system or previous data still being on the device.
+
+1. System Language: Choose your preferred language for the operating system.
+2. Keyboard Configuration: Select the appropriate keyboard layout.
+3. Updates and Software: Choose **Minimal Installation** to reduce setup time and unnecessary software.
+
+:::caution
+
+- Do not **download updates while installing Ubuntu** since the device is offline.
+- Do not **install third-party software for graphics and Wi-Fi hardware** as additional features cant be loaded.
+
+:::
+
+4. Installation Type: Select **Erase disk and install Ubuntu** to ensure a clean installation.
+5. Time Zones: Choose any time zone; this sets the default system clock.
+6. Login Data: Enter your name, username, and password for the system.
 
 ![Initial Setup Screen](/img/guides/validator-setup/validator_install_2.png)
 
-1. **System Language**: Choose your operating system's language.
-2. **Keyboard Configuration**: Specify your keyboard layout and language.
-3. **Updates and Software**: Choose `Minimal Installation` to reduce installation time and program scope, to reduce potential bugs or leaks. Remove the tick from `Download updates while installing Ubuntu` as it won't work on an offline device. Also, ensure there is no tick at `Install third-party software for graphics and Wi-Fi hardware and additional media formats`. We don't need all those things as the system will never be used as a regular pc for this installation. As this device will be flashed right after, we do not need encryption.
-4. **Installation Type**: Choose `Erase disk and install Ubuntu`. The machine's storage will be formatted, erasing the previous data. When prompted with a pop-up, click on `Continue`.
-5. **Time Zones**: Choose any timezone you like. It will be the default time configured on the clock.
-6. **Login Data**: Define a name, username, and password.
-
-> Finish the setup and remove the bootable USB stick when prompted.
+:::note
+Finish the setup and remove the bootable USB stick when prompted.
+:::
