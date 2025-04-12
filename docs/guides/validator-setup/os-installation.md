@@ -33,7 +33,7 @@ Follow these steps to prepare your bootable USB device from a machine that conne
 
 In this phase, Ubuntu will be installed on your offline machine. Keeping the system offline is crucial for ensuring the security and integrity of the key generation process as outlined in detail within the previous [Precautions](./precautions.md) page.
 
-:::caution
+:::warning
 
 Make sure to never connect to the internet during the installation process. Do not connect an Ethernet cable.
 
@@ -85,7 +85,7 @@ Once the machine boots from the USB drive, the Ubuntu installation environment w
 2. Keyboard Configuration: Select the appropriate keyboard layout.
 3. Updates and Software: Choose **Minimal Installation** to reduce setup time and unnecessary software.
 
-:::caution
+:::warning
 
 - Do not **download updates while installing Ubuntu** since the device is offline.
 - Do not **install third-party software for graphics and Wi-Fi hardware** as additional features cant be loaded.
