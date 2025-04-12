@@ -8,11 +8,15 @@ sidebar_position: 1
 The **Validator Setup** is the first step for anyone aspiring to participate in a blockchain consensus. In this section, we cover the initial processes for securely generating validator keys and the launchpad walkthrough. Before setting up your node, regardless of which [Client Options](#) you choose or whether you are running the software on a dedicated server or at home, it’s crucial to prepare thoroughly.
 
 :::tip
+
 If you're not quite sure about [hardware preparations](/docs/theory/preparations/node-specification.md), [blockchain fundamentals](/docs/theory/blockchain-knowledge/proof-of-stake.md), or the theoretical basics of [node operations](/docs/theory/node-operation/client-options.md), please refer to the [**🧠 Theory**](/docs/theory/preparations/node-specification.md) section first to build a solid foundation.
+
 :::
 
 :::info
+
 In case you dont want to participate in the staking process and just intend to setup a regular node or archive for accessing the blockchain data, you can skip this step and move to the [Hardware Setup](#) or [Client Setup](#) sections.
+
 :::
 
 Validator nodes play a crucial role in the blockchain network, participating in the consensus mechanism to validate transactions and create new blocks. As such, the security of these validator nodes and their associated keys is of utmost importance. Generating your validator keys on a clean, offline device that has never touched the internet during setup is an ideal practice. Here's why:
@@ -24,5 +28,7 @@ Validator nodes play a crucial role in the blockchain network, participating in 
 - **Enhanced Privacy**: Offline key generation ensures that no traces of your keys are left online, thereby providing maximum privacy.
 
 :::warning
+
 For the above reasons, please ensure you have a machine that can be flashed or used as a key-generation device. In case you only have your node device, please perform the **key generation** on your node **before** flashing the system and setting up the node's operating system.
+
 :::

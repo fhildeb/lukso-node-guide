@@ -99,5 +99,7 @@ Once the machine boots from the USB drive, the Ubuntu installation environment w
 ![Initial Setup Screen](/img/guides/validator-setup/validator_install_2.png)
 
 :::note
+
 Finish the setup and remove the bootable USB stick when prompted.
+
 :::
