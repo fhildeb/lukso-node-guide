@@ -12,7 +12,7 @@ This section explains how to generate your validator keys using the [LUKSO Wagyu
 
 You will generate your validator keys using a graphical user interface. The following steps walk you through downloading the software, preparing a USB device, and running the key generation process on your designated keygen computer.
 
-## 1.3.1 Software Comparison
+## 1. Software Comparison
 
 The table below compares the two available tools for generating validator keys:
 
@@ -27,7 +27,7 @@ If you prefer a command-line approach, switch to the [LUKSO Key Gen CLI](./cli-k
 
 :::
 
-## 1.3.2 Download the Software
+## 2. Download the Software
 
 This step prepares the key generation tool. You need to chose the correct download file for the **operating system** on your **offline machine** where you are **going to generate the keys on**, not the operating system of your personal computer.
 
@@ -74,7 +74,7 @@ The following steps are performed on your 💻 **personal computer**.
   </TabItem>
 </Tabs>
 
-## 1.3.3 Connect to Keygen Computer
+## 3. Connect to Keygen Computer
 
 :::info
 
@@ -85,7 +85,7 @@ The following steps are performed on your 🖥️ **offline computer**.
 1. Connect the prepared USB device to the computer designated for key generation.
 2. Copy the AppImage file from the USB device to your home directory.
 
-## 1.3.4 Generate the Initial Keys
+## 4. Generate the Initial Keys
 
 Follow these numbered steps to generate your validator keys using the Wagyu application:
 
@@ -198,7 +198,7 @@ Please ensure that your destination folder contains the following files:
 
 :::
 
-## 1.3.5 Generate Additional Keys
+## 5. Generate Additional Keys
 
 If you need to add more keys to your validator setup, follow these steps:
 
