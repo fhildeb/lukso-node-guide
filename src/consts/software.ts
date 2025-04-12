@@ -25,6 +25,16 @@ const software = {
       link: "https://www.noip.com/de-DE/download?page=linux",
       version: "3.3.0",
     },
+    {
+      name: "LUKSO Wagyu Key Gen",
+      link: "https://github.com/lukso-network/tools-wagyu-key-gen/releases/",
+      version: "1.8.4",
+    },
+    {
+      name: "LUKSO Key Gen CLI",
+      link: "https://github.com/lukso-network/tools-key-gen-cli/releases",
+      version: "2.5.8",
+    },
   ],
   "Blockchain Clients": [
     {
