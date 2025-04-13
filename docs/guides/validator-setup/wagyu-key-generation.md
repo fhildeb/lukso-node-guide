@@ -85,7 +85,7 @@ The following steps are performed on your 🖥️ **offline computer**.
 1. Connect the prepared USB device to the computer designated for key generation.
 2. Copy the AppImage file from the USB device to your home directory.
 
-## 4. Generate the Initial Keys
+## 4. Generate Initial Keys
 
 Follow these numbered steps to generate your validator keys using the Wagyu application:
 
@@ -127,7 +127,7 @@ Write down your mnemonic on paper and store it securely. Do not save it digitall
 
 **7. Enter Key Generation Details**: Provide the amount, password and withdrawal address.
 
-:::tip
+:::note
 
 You can generate more keys than you immediately fund. These keys will remain inactive until they are sufficiently funded.
 
@@ -135,7 +135,7 @@ You can generate more keys than you immediately fund. These keys will remain ina
 
 :::info
 
-If you are uncertain about the withdrawal address, please refer to the [Tokenomics](/docs/theory/blockchain-knowledge/tokenomics.md) chapter within the [**🧠 Theory**](/docs/theory/preparations/node-specification.md) section.
+You can use the same withdrawal address multiple times, meaning all validator revenues go to the same account. If you are uncertain about the withdrawal address, please refer to the [Tokenomics](/docs/theory/blockchain-knowledge/tokenomics.md) chapter within the [**🧠 Theory**](/docs/theory/preparations/node-specification.md) section.
 
 :::
 
@@ -167,6 +167,8 @@ If you only require deposits from a single wallet, simply complete the process o
 - _Keept the first 10 `pubkey` entries for wallet one. (validators 1-10)_
 - _Removed the first and last 10 `pubkey` entries for wallet two. (validators 11–20)_
 - _Removed the first 20 for wallet three. (keeping validators 21–30)_
+
+In both cases, you will have to go through the [Launchpad Process](./launchpad-walkthrough.md) 3 times, as the launchpad will check if your wallets have enough balance before you can continue to the deposit screen.
 
 :::
 
@@ -216,15 +218,21 @@ If you need to add more keys to your validator setup, follow these steps:
 - Indicate how many keys have already been generated in a previous run.
 - Provide your withdrawal address.
 
+:::note
+
+You can use the same withdrawal address multiple times, meaning all validator revenues go to the same account.
+
+:::
+
 :::tip
 
-To regenerate keys for **backup** or **withdrawal address updates**, you can set the **starting index** to **0** and specify the total number of all your previously generated keys. The new files can then be re-used to setup a new node once the original one stopped operating.
+To regenerate keys for **a backup** or **updating** the **withdrawal address** or **password**, you can set the **starting index** to **0** and specify the total number of all your previously generated keys. The new files can then be re-used to setup a new node once the original one stopped operating.
 
 :::
 
 :::info
 
-If you are uncertain about the withdrawal address, please refer to the [Tokenomics](/docs/theory/blockchain-knowledge/tokenomics.md) chapter within the [**🧠 Theory**](/docs/theory/preparations/node-specification.md) section.
+You can use the same withdrawal address multiple times, meaning all validator revenues go to the same account. If you are uncertain about the withdrawal address, please refer to the [Tokenomics](/docs/theory/blockchain-knowledge/tokenomics.md) chapter within the [**🧠 Theory**](/docs/theory/preparations/node-specification.md) section.
 
 :::
 
@@ -238,7 +246,5 @@ Always ensure that your destination folder contains the following files:
 
 - `deposit_data.json`: This file is used to make deposit transactions during the [Deposit Launchpad](./launchpad-walkthrough.md) process.
 - `keystore.json`: Each validator key has a corresponding keystore file, later used in the [Validator Setup](/docs/guides/client-setup/validator-configuration.md).
-
-It might happen that the password was invalid and generation stopped.
 
 :::
