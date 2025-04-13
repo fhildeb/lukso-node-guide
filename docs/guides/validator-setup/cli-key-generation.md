@@ -177,9 +177,9 @@ If you only require deposits from a single wallet, simply complete the process o
 
 🙇🏻‍♂️ _Example: 30 validators across 3 wallets, generated 3 file copies and removed pubkey entries manually:_
 
-- _Keept the first 10 `pubkey` entries for wallet one. (validators 1-10)_
+- _Kept the first 10 `pubkey` entries for wallet one. (validators 1-10)_
 - _Removed the first and last 10 `pubkey` entries for wallet two. (validators 11–20)_
-- _Removed the first 20 for wallet three. (keeping validators 21–30)_
+- _Removed the first 20 `pubkey` elements for wallet three. (keeping validators 21–30)_
 
 In both cases, you will have to go through the [Launchpad Process](./launchpad-walkthrough.md) 3 times, as the launchpad will check if your wallets have enough balance before you can continue to the deposit screen.
 
