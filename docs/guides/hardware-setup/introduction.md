@@ -3,39 +3,86 @@ sidebar_label: "2.1 Introduction"
 sidebar_position: 1
 ---
 
-# Introduction
+# 2.1 Introduction
 
-## 1.1 Hardware Setup
+While LUKSO is an independent blockchain, it leverages the [Ethereum Virtual Machine](https://ethereum.org/de/developers/docs/evm/) (EVM) for executing smart contracts. This compatibility means that LUKSO benefits from many of the robust practices established for Ethereum validators. Whether you’re setting up a modest homestaking server or a professionally managed staking environment, you’ll notice that hardware and networking recommendations overlap with those for Ethereum nodes.
 
-I chose an expensive and professional setup because I plan to use the slasher functionality and run multiple networks from one node, partly via docker images on top of the LUKSO CLI. Please understand that this is not mandatory. The minimum requirements to run a LUKSO node can be read in the network section of the [official documentation](https://docs.lukso.tech/networks/). You can get an entry-level computer to run a validator node for around 600€. You can further trim down the hardware requirements by running the node without the slasher functionality. You can read more about the slasher within the [Blockchain Client Chapter](/6-blockchain-client/).
+:::tip
 
-> _For more information, read the official [Hardware Requirements of Geth](https://geth.ethereum.org/docs/getting-started/hardware-requirements) on the Ethereum Page or the [Requirements of Erigon](https://github.com/ledgerwatch/erigon#system-requirements) as one of the most widely used clients in the Ethereumverse._
+Detailed information about minimal hardware specifications, storage recommendations, router requirements, or network demands can be gathered from the [Node Specification](/docs/theory/preparations/node-specification.md) and [Network Demand](/docs/theory/preparations/network-demand.md) pages on the [🧠 **Theory**](/docs/theory/preparations/node-specification.md) section.
 
-#### Node Components
+:::
 
-- **Operating System**: Ubuntu 22.04.2 Server
-- **Motherboard**: Barebone Intel NUC 10 (NUC10i7FNHN)
-- **Processor**: Intel Core i7-10710U (4.7 GHz, 6 Cores, 12 Threads)
-- **Housing**: Akasa Turing FX for Intel NUC 10 (A-NUC52-M1B)
-- **RAM**: Crucial 32GB DDR4 Kit (2x16GB, 2666MHz, CT2K16G4SFRA266)
-- **Storage**: Samsung 970 EVO Plus M.2 NVMe SSD 2TB (PCIe 3.0, 3.500 MB/s Read, 3.300 MB/s Write, MZ-V7S2T0BW)
+## Hardware Setup
+
+I opted for an expensive and professional setup because I plan to use the slasher functionality and run multiple networks from one node—partly by deploying Docker images on top of the LUKSO CLI. Please understand that this advanced configuration is not mandatory. You can get started with an entry-level computer for around 600€ and further trim down the hardware specifications by running the node without the slasher functionality.
+
+:::info
+
+More details about the slasher can be found in the [Validator Configuration](/docs/guides/client-setup/validator-configuration.md) or the [Slashing and Panelties](/docs/theory/blockchain-knowledge/slashing-and-panelties.md) chapters.
+
+:::
+
+- **Operating System**: Ubuntu 22.04.2 Server - _A stable choice known for long-term support and security updates._
+- **Motherboard**: Barebone Intel NUC 10 - _Compact yet powerful, ideal for a home or small office environment._
+- **Processor**: Intel Core i7-10710U - _Provides robust multitasking for node operations and concurrent network tasks._
+- **Housing**: Akasa Turing FX for Intel NUC 10 - _A fanless solution to reduce noise and ensure efficient thermal management._
+- **RAM**: Crucial 32GB DDR4 Kit - _Sufficient memory for high-performance workloads and multiple network instances._
+- **Storage**: Samsung 970 EVO Plus M.2 NVMe SSD 2TB - _Offers fast data access and demands of EVM-based blockchains._
 
 ![Node Parts](/img/guides/hardware-setup/build_01.png)
 
-I spent around 1100€. The current prices should be below that at best. I assembled the node myself because I wanted to run a fanless machine. The bespoke housing improves the temperatures and reduces noise. It also eliminates the maintenance of moving parts.
+I spent around 1100€ on this setup in 2021. Current prices might be even lower. I assembled the node myself to achieve a fanless, quiet operation with minimal moving parts, reducing both maintenance and thermal issues.
 
-Note that you also need thermal paste and screwdrivers and might want to add WiFi antennas immediately if the machine is planned to serve as a home server. It's only about 10 €, but you will save yourself a ton of work re-assembling the whole setup as they sit right behind the motherboard. The antennas can then be unscrewed from their attached base and do not bother your server setup.
+:::tip
 
-#### Optional Components
+If you dont want to built your own homestaking node, you can aquire pre-built servers specifically designed for the use as Ethereum node that even come with preinstalled operating systems. 🎨 [**DAppNode**](https://dappnode.com/) and 🌐 [**Avado**](https://ava.do/) are good examples.
 
-The storage may not be sufficient for future-proof use of the node over several years or by several chains. Here, the freezer functionality of Geth comes into play to split the network data on different disks. I plan to expand my storage and add a 4 TB 2.5" HDD to fit the housing. Therefore, make sure to keep all the accessories and frames.
+:::
 
-> **NOTE:** Have a look into the [Blockchain Clients](/6-blockchain-clients/) section of the guide to determine how much storage you will need without doing maintenance to your node.
+## Optional Components
+
+Depending on your long-term plans, you may need to expand the storage capacity, for example, if you plan to support multiple blockchains or require a future-proof solution. The freezer functionality available in clients like Geth can partition network data across different disks.
+
+:::info Storage
+
+I personally plan to add a second 2 TB or 4 TB 2.5" HDD from to accommodate future growth. If you plan to run your node for more than a decade or run an archive or slasher service on top, be sure to keep accessories and mounting frames handy.
+
+:::
+
+:::info Accessories
+
+- **Thermal Paste & Tools:** Remember to have thermal paste and the correct screwdrivers ready for the built.
+- **WiFi Antennas:** If planning to use the machine as a home server or personal computer at some point down the line, consider installing WiFi antennas right from the start. These small additions cost around 10€ but can save you significant time later. The anchoring can be crewed in without attaching the antennas, so you dont lose any space.
+
+:::
+
+:::tip
+
+Further storage details can be found on the [Client Providers](/docs/theory/blockchain-knowledge/client-providers.md) page within the [🧠 **Theory**](/docs/theory/preparations/node-specification.md) section of the guide.
+
+:::
+
+## Secondary Devices
+
+I installed my machine in a small home rack and connected the node to an 8-port switch, which in turn is linked to my router. This arrangement not only increases the number of available network ports but also allows for separation of servers and PCs across different rooms for improved network organization.
 
 ![Hardware Switch](/img/guides/hardware-setup/hardware-switch.png)
 
-I set up my machine on a small home rack and connected my node to an 8-port switch connected to my router. Not being directly connected to the router not only allows more slots but also allows me to place and connect servers and PCs in separate rooms.
+- **Switch:** TP-Link 8-Port Gigabit Network Switch - _Provides reliable connectivity and efficient data routing._
+- **Network Setup:** Several RJ-45 Network cables - _Ensure high-quality, secure connections across your network._
+- **Router**: Fritzbox 7590 AX - _Provides great bandwith, port configurations, and performance with fiber optic support_
 
-- **Switch**: TP-Link 8-Port Gigabit Network Switch (TL-SG108, RJ-45, IGMP-Snooping)
-- **Additional Storage**: Seagate Barracuda 4 TB HDD (2.5", 128 MB Cache, SATA 6 Gb/s)
-- **Network Setup**: Several RJ-45 Network cables
+:::tip
+
+Further router and network information can be found in the [Router Requirements](/docs/theory/preparations/router-requirements.md) page in the [🧠 **Theory**](/docs/theory/preparations/node-specification.md) section.
+
+:::
+
+## Additional Considerations
+
+This section provides additional strategies to ensure your node setup remains robust, efficient, and scalable. These considerations help you plan for future upgrades and safeguard your system against common challenges as your needs evolve.
+
+- **Energy Efficiency & UPS:** For uninterrupted node operation, especially during power fluctuations or outages, consider investing in an Uninterruptible Power Supply (UPS). A UPS not only keeps your system running long enough to perform a safe shutdown but also protects against data corruption during sudden power loss. They generally range from 50€ to 150€ and should be chosen based on your node’s power consumption.
+- **Cooling & Ventilation:** Even with a fanless design, ambient temperature control plays a crucial role in preserving hardware longevity. Ensure your node is positioned in a well-ventilated area to prevent heat build-up. In warmer climates or under heavy workload, additional passive cooling solutions or repositioning the device can significantly reduce the risk of overheating.
+- **Future Upgrades:** Keep in mind that while this guide outlines a high-performance configuration, entry-level setups are also possible. It’s important to match your hardware investment with your operational goals and growth plans. After all, you want to reach the point of break even with staking quite quickly.
