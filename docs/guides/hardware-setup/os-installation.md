@@ -3,34 +3,67 @@ sidebar_label: "2.4 OS Installation"
 sidebar_position: 4
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 # 2.4 OS Installation
 
-<!-- TODO: Link to Theory/Preparations/Operation Systems-->
+Installing the right operating system is crucial for your node's stability and performance. In the blockchain space, almost every node is either run using Ubuntu or Debian under the hood.
+They're open-source and flexible, provide excellent stability, extensive community support, and seamless integration with software automation.
 
-### 2.1.5 Validator Preparation
+:::tip
 
-If you want to become a validator and have no other computer at home that can be flashed and used to safely generate your validator keys offline, head over to the [Key Generation](/validator-key-generation/) section and continue to use your node for it. After you receive your validator keys, you can continue with this guide, effectively flashing your machine again.
+If you are uncertain about which operating system and version to choose, you can find further details and comparisons in the [Operating Systems](/docs/theory/preparations/operation-systems.md) chapter of the [**🧠 Theory**](/docs/theory/preparations/node-specification.md) section.
 
-### 2.1.6 Ubuntu Download
+:::
 
-After understanding operating system properties and considerations, download the official Ubuntu Server LTS version from `ubuntu.com/download/server`. You need a USB device with at least 2GB that you can use to install the firmware on the node's storage disk.
+:::warning
 
-1. Download [Ubuntu 22.04.2 Server](https://ubuntu.com/download/server)
-2. Create a Bootable USB Drive with the ISO file
-   - Windows: [Rufus Guide for Ubuntu](https://ubuntu.com/tutorials/create-a-usb-stick-on-windows#1-overview)
-   - Linux: [Disk Creator Guide for Ubuntu](https://ubuntu.com/tutorials/create-a-usb-stick-on-ubuntu#1-overview)
-   - MacOS: [Etcher Guide for Ubuntu](https://ubuntu.com/tutorials/create-a-usb-stick-on-macos#1-overview)
-3. Disconnect the USB drive
-4. Connect the USB drive to your node
+If you plan to become a validator and do not have a separate computer available to safely generate your validator keys offline, head over to the [Key Generation](/validator-key-generation/) section and generate your keys using your current node first. Then reflash your machine to continue with the OS installation.
 
-### 2.1.7 Debian Download
+:::
 
-After understanding the properties and considerations of the operating system, download the official Debian server version from `debian.org/distrib/`. You will require a USB device with a minimum of 2GB capacity to install the firmware on the node's storage disk.
+## Creating a Bootable Device
 
-1. Download [Debian 11 Bullseye](https://www.debian.org/distrib/)
-2. Create a Bootable USB Drive with the ISO file as if you would do with Ubuntu.
-   - Windows: [Rufus Guide for Debian](https://rufus.ie/)
-   - Linux: [Ethcher Guide for Debian](https://etcher.balena.io/#download-etcher)
-   - MacOS: [Etcher Guide for Debian](https://etcher.balena.io/#download-etcher)
-3. Safely remove the USB drive
-4. Connect the USB drive to your node
+Both Ubuntu and Debian require a USB device with at least 2GB of capacity to create a bootable installer. Once downloaded, the bootable USB device is created on your personal computer. Once the update is complete, the USB device can be removed and inserted to your node to install the operation system on it's primary storage disk.
+
+<Tabs>
+  <TabItem value="ubuntu" label="Ubuntu">
+  
+1. **Download the Ubuntu Server LTS**  
+   Download [Ubuntu 22.04.2 Server](https://ubuntu.com/download/server) from the official website.
+
+2. **Create a Bootable USB Drive**  
+   Use the ISO file to create a bootable USB drive:
+
+   - **Windows:** Follow the [Rufus Guide for Ubuntu](https://ubuntu.com/tutorials/create-a-usb-stick-on-windows#1-overview).
+   - **Linux:** Use the [Disk Creator Guide for Ubuntu](https://ubuntu.com/tutorials/create-a-usb-stick-on-ubuntu#1-overview).
+   - **MacOS:** Refer to the [Etcher Guide for Ubuntu](https://ubuntu.com/tutorials/create-a-usb-stick-on-macos#1-overview).
+
+3. **Prepare the Installer**  
+   Safely remove the USB drive from your current computer once the bootable USB drive is created.
+
+4. **Connect to Your Node**  
+   Insert the USB drive into your node to install Ubuntu Server on its storage disk.
+
+</TabItem>
+  <TabItem value="debian" label="Debian">
+  
+1. **Download the Debian Server Version**  
+   Download [Debian 11 Bullseye](https://www.debian.org/distrib/) from the official Debian website.
+
+2. **Create a Bootable USB Drive**  
+   Use the ISO file to create a bootable USB drive:
+
+   - **Windows:** Follow the [Rufus Guide for Debian](https://rufus.ie/).
+   - **Linux:** Use the [Etcher Guide for Debian](https://etcher.balena.io/#download-etcher).
+   - **MacOS:** Refer to the [Etcher Guide for Debian](https://etcher.balena.io/#download-etcher).
+
+3. **Prepare the Installer**  
+   Safely remove the USB drive from your current computer once the bootable USB drive is created.
+
+4. **Connect to Your Node**  
+   Insert the USB drive into your node to install Debian on its storage disk.
+
+</TabItem>
+</Tabs>
