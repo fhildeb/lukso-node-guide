@@ -3,6 +3,22 @@ sidebar_label: "VPN Tunnel"
 sidebar_position: 7
 ---
 
+<!--TODO: Rewrite SSH chapter-->
+
+### 1.3.8 SSH Setup
+
+Add the openSSH server installation for secure remote access in the next step. The Open Secure Shell is a suite of safe networking utilities. It enables encrypted communication and fast data transfer between two networked devices, providing a secure alternative to traditional, non-encrypted protocols. openSSH server is widely used for remote administration, secure file transfers, and executing commands on remote systems.
+
+The server-only variant will only allow the connection to the node, not the functionality for the node also to set up a client- which is lean and ideal for a node setup that only wants external devices to connect for maintenance.
+
+In the context of a blockchain node setup, an OpenSSH server offers several key advantages that make it a valuable component:
+
+- **Secure remote access**: It allows you to remotely access and manage your node using a secure, encrypted connection. Remote access is crucial for maintaining the confidentiality and integrity of your data and commands, mainly when operating the node in a data center, cloud environment, or across untrusted networks.
+- **Command-line interface**: It provides a command-line interface for managing your node, which is the preferred method for administering server-based systems like Ubuntu Server. The command-line interface allows for efficient and scriptable management of your node.
+- **Key-based authentication**: It supports public key authentication, which is more secure than password-based authentication. By using key pairs, you can enhance the security of your node by ensuring that only authorized users with the correct private key can access it.
+- **Port forwarding and tunneling**: It enables port forwarding and tunneling, which can help secure other network services and create encrypted data-transfer tunnels. Such external software can ensure secure communication between your node and other components of the blockchain network or related services.
+- **Extensive compatibility**: openSSH server is widely supported across various platforms and operating systems, making integrating into a diverse range of node and client setups easy.
+
 # VPN Tunnel
 
 # 9.1 VPN Theory

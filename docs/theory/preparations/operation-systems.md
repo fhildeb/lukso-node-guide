@@ -61,3 +61,58 @@ Selecting an LTS release for Ubuntu 22 or Debian 11 offers several key advantage
 - **Greater Security**: With an LTS release, you can be assured of regular security updates and patches, safeguarding your node from potential vulnerabilities and threats.
 - **Lower Maintenance Overhead**: The extended support period means you won't need to upgrade your node's OS as frequently, reducing the maintenance effort and associated downtime.
 - **Wider Compatibility**: LTS releases are often better supported by third-party software and tools, ensuring seamless integration with various blockchain networks and applications.
+
+#### Installation Types
+
+<!--TODO: reorg and rewrite-->
+
+Choose your type of installation for the node:
+
+- `Ubuntu Server`
+- `Ubuntu Server (minimized)`
+
+Here are some of the [core differences](https://ubuntuforums.org/showthread.php?t=2474104):
+
+```text
+Minimized Ubuntu Server has 420 packages installed.
+Regular Ubuntu Server has 606 packages installed.
+That is a 31% reduction.
+
+Minimized Ubuntu Server takes up ~4,200 MB storage when initially installed
+Regular Ubuntu Server takes up ~4,600 MB storage when initially installed
+That is a difference of 400 MB in size, a reduction of 11%.
+
+Minimized Ubuntu Server uses ~180,000 KB of RAM
+Regular Ubuntu Server uses ~197,000 KB of RAM
+That is a difference of 17,000 KB of RAM, a reduction of 9%.
+
+User Interaction on Minimized Ubuntu Server:
+- No text editor (vi, vim, nano)
+- No `ufw` nor `iptables` commands
+- No man pages (documentation)
+```
+
+As the installation screen states, `Ubuntu Server (minimized)` is designed for automated deployment at scale for cloud substrates without user interaction. They use the optimized kernels, optimized boot process, and significantly reduced default packages to be smaller, boot faster, and require fewer security updates over time. All those properties might be vital if you're maintaining multiple VMs or containers.
+
+While `Ubuntu Server (minimized)` boils down to saving packets and having a slightly faster system, it can be a hazard for our node maintenance, as it would mean that you have to install every tool package during the node setup manually.
+
+> During some minimal version test runs, this also affected some internal processes without throwing errors during run time. Because of the lack of process documentation, some logging services are not triggered on the core system. The reduced logging affects checking the status of external software, which expects log or configuration data creation. Here, specific files had to be manually created and adjusted for status commands to work.
+
+Installing the `Ubuntu Server` version is recommended, as we want to do all user interaction ourselves and need text editors, firewall configuration, and, most importantly, all available backend processes that might break some automation.
+
+> Shoutout to Lumenous, who helped me clarify these differences
+
+:::info
+
+The minimized version is designed for automated deployment at scale (primarily for cloud setups) and is optimized for speed and smaller footprint. However, for a blockchain node where manual maintenance, logging, and configuration are important, we recommend installing the full **Ubuntu Server** version.
+
+:::
+
+Below is a table outlining the core differences between these two options:
+
+| Feature                                 | Ubuntu Server          | Ubuntu Server (minimized)                                     |
+| --------------------------------------- | ---------------------- | ------------------------------------------------------------- |
+| **Installed Packages**                  | ~606 packages          | ~420 packages (31% reduction)                                 |
+| **Storage Footprint (Initial Install)** | ~4,600 MB              | ~4,200 MB (11% reduction)                                     |
+| **RAM Usage (Initial Install)**         | ~197,000 KB            | ~180,000 KB (9% reduction)                                    |
+| **User Interaction**                    | Full interactive setup | Minimal; lacks text editors, firewall commands, and man pages |

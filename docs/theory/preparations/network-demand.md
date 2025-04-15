@@ -5,6 +5,16 @@ sidebar_position: 3
 
 # Network Demand
 
+#### Ethernet Connection
+
+When setting up a node for blockchain networks, the choice of network connection can significantly impact the node's performance and reliability. Using an Ethernet connection is often the preferred method over Wi-Fi for several reasons:
+
+- **Stability**: Ethernet connections provide a more stable and consistent connection than Wi-Fi. Wired connections are less prone to signal interference and environmental factors affecting Wi-Fi performance, resulting in fewer disconnections or connectivity issues.
+- **Speed**: Ethernet connections generally offer higher data transfer speeds than Wi-Fi. A gigabit Ethernet connection can reach up to 1000 Mbps, while most Wi-Fi connections are limited to a few hundred Mbps. This increased speed translates into better performance and reduced latency for your node, allowing for faster data processing and communication with other nodes.
+- **Security**: Ethernet connections are inherently more secure than Wi-Fi, as they require physical access to the network cable to intercept or tamper with the transmitted data. Wi-Fi networks are susceptible to various security threats, such as eavesdropping or man-in-the-middle attacks, which could compromise the integrity and privacy of the data being processed by your node.
+- **Reduced Packet Loss**: Ethernet connections typically experience lower packet loss rates than Wi-Fi. Packet loss can cause delays in data transmission and affect the overall performance of your node. With a wired Ethernet connection, your node can maintain a more reliable and efficient data transfer, ensuring optimal operation.
+- **Easy Troubleshooting**: Troubleshooting connectivity issues is generally more straightforward with Ethernet connections. Diagnosing and resolving network issues becomes more precise with fewer variables, such as signal strength, interference, or router configuration.
+
 ## 1.3 Network Stats
 
 Running an EVM Proof of Stake validator node at home requires a stable and reliable internet connection with sufficient network speeds and low latency. A stable internet connection is crucial to ensure optimal performance and maintain the validator's active status within the EVM 2.0 network. Here's why network speeds and latency are essential:

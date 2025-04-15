@@ -121,6 +121,7 @@ const sections = [
           "Router Requirements",
           "Network Demand",
           "Operation Systems",
+          "Storage Specification",
         ],
       },
       {
@@ -143,7 +144,7 @@ const sections = [
           "Peer Discovery",
           "Dynamic DNS",
           "Monitoring Tools",
-          "VPN Tunnel",
+          "SSH and VPN Tunnel",
           "Network Updates",
         ],
       },
