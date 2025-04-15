@@ -5,29 +5,29 @@ sidebar_position: 2
 
 # 3.2 Disk Volumes
 
-## 3.2 Manage Storage Volumes
+This section explains how to manage and extend your disk volumes using the Logical Volume Manager (LVM). By default, during installation, LVM allocates only a conservative 100 GB for the logical volume. The process ensures that the node utilizes the entire disk space without getting interruptions once the storage cap is hit.
 
-As described in the previous guide on the system installation, the LVM is a flexible and powerful storage management system. It delivers excellent functionality. However, by default, it initially only allocates `100GB` of storage for the logical volume.
+:::tip
 
-The default allocation ensures ample storage for basic system functionality without consuming the entire available storage capacity. This approach allows users to extend the storage volumes as needed based on their specific requirements and the growth of their data.
+It is common practice to extend the default allocation to match the physical storage before new hard disks become necessary.
 
-One of the main reasons for this conservative allocation is that it is much easier to extend storage volumes than shrink them. Shrinking volumes can be more complicated and time-consuming, often requiring unmounting and remounting of the filesystems and a greater risk of data loss. By starting with a smaller allocation, LVM allows you to manage your storage more efficiently.
+:::
 
-> As we use the server as the primary node machine, we want to extend the capacity of `100 GB` to the total size of the physical storage before even the physical storage space is no longer sufficient and new hard disks must be added.
+:::warning
 
-**Before we add or extend any storage volumes, we have to check the volume group's status.**
+This page is only relevant if you set up the recommended logical disk management for your volume.
 
-If you already set your logical volume to the maximum capacity during the installation, looking at the following section is still recommended. You will learn the basics about LVM when adding a new storage device.
+:::
 
-### 3.2.1 Checking the volume group
+## 1. Checking the Volume Group
 
-Using the volume group and logical volume display commands, we can track information about the existing volume groups of LVM and their logical volumes on these groups. It provides details on the properties, such as the VG name, total size, free size, and the number of physical and logical volumes it contains.
+LVM provides a flexible and powerful method for managing your disk storage. This subsection covers the basics of inspecting your volume groups, physical extents, and current disk usage. Before adding or extending any storage volumes, check the current status of your volume group. Use the following command to display details about your volume groups:
 
 ```sh
 sudo vgdisplay
 ```
 
-If you never changed the LVM settings during installation, the output and volume group name should look similar to this:
+If you have not changed the LVM settings during installation, the output should be similar to:
 
 ```text
   --- Volume group ---
@@ -52,31 +52,43 @@ If you never changed the LVM settings during installation, the output and volume
   VG UUID               [VOLUME_GROUP_UNIVERSALLY_UNIQUE_IDENTIFIER]
 ```
 
-Remember that the `VG Name` property might differ if you gave a custom name during the installation. If you did not create a second one during the installation, there should only be one volume group for now.
+:::tip
 
-#### Physical Extents
+If you are uncertain about storage, logical disk management, volume groups, or physical extents, please have a look at the [Storage Specification](/docs/theory/preparations/storage-specification.md) page in the [**🧠 Theory**](/docs/theory/preparations/node-specification.md) section to ensure you have the fundamental knowledge.
 
-When a physical volume is added to a volume group, the disk space in the physical volume is divided into Physical Extents. The size of the physical extent is determined when the volume group is created, and all extents within a group are the same size.
+:::
 
-They are portions of disk space on a physical volume, usually several megabytes.
+When a physical disk is added to an LVM group, it is divided into physical extents, which are uniform chunks of disk space, typically several megabytes each. The critical properties to monitor are:
 
-- `Total Physical Extents`: Total Number of Physical Extents allocated or free across all volumes.
-- `Alloc Physical Extents / Size`: displays how much space has been allocated by the logical volume.
-- `Free Physical Extents / Size`: displays how much accessible space units are left on the physical volume. If it is already zero, no more physical free disk space is left.
+- Total Physical Extents: The overall number of PEs allocated or available.
+- Allocated PE / Size: How much space is currently used by the logical volume.
+- Free PE / Size: The remaining unallocated space that is available for extension.
 
 Check the amount of free disk space left on the physical volume. If you did not already extend the disk size during the installation, there should be plenty of storage left that we can add to the logical volume of the group.
 
-**If you extended your logical volume to the maximum available capacity during installation, the** `Free PE / Size` **property will show** `0 / 0` **, meaning no more unreserved storage is left on the volume group for any partition to utilize.**
+:::info
 
-#### Checking disk usage
+If you have customized your installation, the `VG Name` may differ. Even if you extended your logical volume during installation, checking the volume group gives you useful insight into the available free physical extents, short `PE`.
 
-You can use the disk filesystem command to check your disk usage on the logical volume. The `-h` flag will print the outcomes in a human-readable format.
+If you extended your logical volume to the maximum available capacity during installation, the `Free PE / Size` property will show `0 / 0`, meaning no more unreserved storage is left on the volume group for any partition to utilize.
+
+:::
+
+## 2. Checking Mounted Volumes
+
+Additionally, you can check how the logical volume is mounted and used by running.
+
+:::tip
+
+You can use the disk filesystem command `df` using the `-h` flag to print the outcomes in a human-readable format.
+
+:::
 
 ```sh
 df -h
 ```
 
-The outcome should look similar to the following. Keep in mind sizes can be different on your end. Check the size of your volume group mounted on `/`. If you did not extend your logical volume size yet, the size of it would show as `100G`. The node install takes up about `11GB` for now.
+A typical output might look like:
 
 ```sh
 Filesystem                         Size  Used Avail Use% Mounted on
@@ -89,21 +101,35 @@ tmpfs                              5.0M     0  5.0M   0% /run/lock
 tmpfs                              3.2G  4.0K  3.2G   1% /run/user/1000
 ```
 
-**If your storage is getting full or you want to allocate more space to your main disk, you can add a new disk or extend the main logical volume in the next steps.**
+:::info
 
-### 3.2.2 Adding a new disk to the group
+Check the size of your volume group that is `Mounted On` the root `/` directory. If you did not extend your logical volume, the size of it will show as `100G`. The Ubuntu installation itself therefore takes up around `11%` of the volume.
 
-If you have a second storage device, like a 2.5" HHD, that you want to add to your node, you can do this by extending the logical volume and the volume group across multiple physical devices. Look into the [hardware build](/1-hardware-build/) section for more information about adding the HHD to your file.
+:::
 
-If you add more storage after the node is running, stop all blockchain processes and shut down the node properly using the `sudo shutdown now` command. Then open the case and connect your new storage on the corresponding frame.
+## 3. Adding a New Disk
 
-First, we have to get the identifier of your newly added device. We can use the list block command tool. It displays information about all block devices, which are particular files representing storage devices that handle data as blocks, such as hard drives, SSDs, and optical drives.
+If you have a second storage device that you want to add to your node, you can extend your volume group across multiple physical disks. Before proceeding, shut down your node properly using:
+
+```sh
+sudo shutdown now
+```
+
+Then, install the new disk into the appropriate frame.
+
+:::tip
+
+Further information about adding a hard drive to your node can be found in the [Component Assambly](/docs/guides/hardware-setup/component-assembly.md) page.
+
+:::
+
+Once your node is powered up, we have to determine the identifier of the new device. We can use the list block command tool to display information about all block device files, which specify storage devices such as hard drives, SSDs, and optical drives.
 
 ```sh
 lsblk
 ```
 
-The output should look similar if you have an NVM SSD and a 2.5" HDD. Keep in mind that the numbers of storage will be different. You can add any storage you like.
+The output should look similar if you have an NVM SSD and a 2.5" HDD, but sizes might differ to your build.
 
 ```text
 NAME                      MAJ:MIN RM   SIZE RO TYPE MOUNTPOINTS
@@ -120,34 +146,38 @@ nvme0n1                   259:0    0   1.8T  0 disk
 sda                         8:0    0   7.8T  0 disk
 ```
 
-For the above example:
+:::info
 
 - `nvme0n1` is the disk identifier of the SSD used as the primary storage
 - `sda` is the disk identifier of the HDD used as additional storage
 
-#### Initializing the disk
+:::
 
-To initialize the new disk so that it can be used as a physical volume, we can use the LVM tool to create physical volumes:
+**3.1 Initializing the disk**: _Use the LVM tool to create a new physical volume._
 
 ```sh
 sudo pvcreate /dev/<disk-identifier>
 ```
 
-#### Creating a multi-device volume group
+**3.2 Extend the Volume Group**: _Add the new disk to your existing volume group._
 
-Afterward, we can extend our existing volume group to include this new physical volume on top of the initial SSD's space. Therefore, we can use the volume group extension tool. We will have to input the volume group's name and the path to the newly added physical volume that we want to add.
+:::info
+
+We can extend the existing volume group to include this new physical volume on top of the initial SSD's space. Therefore, we can use the volume group extension tool. We will have to input the volume group's name and the path to the newly added physical volume that we want to add.
+
+:::
 
 ```sh
 sudo vgextend <volume-group-name> /dev/<disk-identifier>
 ```
 
-Next, we can recheck the volume group to verify if the group grew in storage size:
+**3.3 Verify the Extension**: _Check the updated volume group size and details._
 
 ```sh
 sudo vgdisplay
 ```
 
-If you never changed the LVM settings during installation, the output and volume group name should look similar to this:
+The output and volume group name should look similar to this:
 
 ```text
   --- Volume group ---
@@ -172,9 +202,15 @@ If you never changed the LVM settings during installation, the output and volume
   VG UUID               [VOLUME_GROUP_UNIVERSALLY_UNIQUE_IDENTIFIER]
 ```
 
-**After extending the group to use the space on the newly added physical volume, the** `Free PE / Size` **property should have plenty of free extents to add to our logical volume so we can use the space on our node.**
+:::info
 
-### 3.2.3 Checking the logical volumes
+The `Free PE / Size` should now reflect the additional capacity from the new disk.
+
+:::
+
+The capacity now has to be added to our logical volume to use in on our node.
+
+## 4. Checking Logical Volumes
 
 Before adding space to our logical volume, we have to check the properties of the logical volumes available on the device.
 
@@ -203,19 +239,35 @@ If you never changed the LVM settings during installation, the output and volume
   Block device           253:0
 ```
 
-Remember that the `LV Path`, `LV Name`, and `VG Name` properties might differ if you have been given a custom name during installation. If you did not create a second one during the installation, there should only be one logical volume for now.
+:::info
 
-**If you extended your logical volume to the maximum available capacity on the main storage device during installation, the** `LV Size` **property will be similar to the size of your first physical disk.**
+Remember that the `LV Path`, `LV Name`, and `VG Name` properties might differ if you have been given a custom name during installation. If you previously extended your volume, the `LV Size` will match your initial physical disk size.
 
-### 3.2.4 Extending a logical volume
+:::
 
-LVM itself comes with its toolkit on Unix-like operating systems used to increase the size of a logical volume. We can pass the following arguments:
+## 5. Extending a Logical Volume
 
-- `-l`: the flag specifies the size that should be given to the logical volume in extent. We can use the `+100%FREE` parameter to tell the extension tool to use all the free Physical Extents in the volume group. It will then effectively extend the logical volume to use the remaining free space in the volume group. Use a lower amount to expand a volume group by a lower percentage.
-- `-L`: the flag specifies the size that should be given to the logical volume in gigabytes. We can use the `+50G` parameter to tell the extension tool to add 50 GB to the volume group. It will then effectively extend the logical volume to use the remaining free space in the volume group. Change the number before the `G` to expand a volume group by a different amount. For extending smaller or more significant amounts, you can use `M` for megabytes and `T` for terabytes.
-- `path`: the parameter defines the logical volume you want to extend on the volume group. Update the `<logical-volume-path>` with the `LV Path` property from the previous `lvdisplay` command.
+LVM itself comes with its own toolkit to increase the size of a logical volume.
 
-**If you did not extend the storage to the physically available space during installation but want to configure it now, you can use the following command. The expansion can be done for the main storage device and the newly added logical volume of the secondary storage disk.**
+:::note Toolkit Parameters
+
+- `-l`: specifies the **size** that should be given to the logical volume **in extents**. We can use `+100%FREE` to tell the extension tool to use all the free Physical Extents in the volume group. It will then effectively extend the logical volume to use the remaining free space in the volume group. Use a lower amount to expand a volume group by a lower percentage.
+- `-L`: specifies the **size** that should be given to the logical volume **in gigabytes**. We can use `+100G` to tell the extension tool to add 100 GB to the volume group. It will then effectively extend the logical volume to use the remaining free space in the volume group. You can change the number for different amounts or extend smaller amounts using `M` for megabytes and `T` for terabytes.
+- `path`: defines the logical volume you want to extend on the volume group.
+
+:::
+
+:::info
+
+Update the `<logical-volume-path>` with the `LV Path` property from the previous `lvdisplay` command.
+
+:::
+
+:::tip
+
+If you did not extend the storage before but want to configure it now, you can use the following command. The expansion can be done for the main storage device and the newly added logical volume.
+
+:::
 
 ```sh
 sudo lvextend -l +100%FREE <logical-volume-path>
@@ -228,17 +280,21 @@ The output should look like the following:
   Logical volume <volume-group-name>/<logical-volume-name> successfully resized.
 ```
 
-**After running this command, the file system on the logical volume needs to be resized to take advantage of the newly added space.**
+After running this command, the file system on the logical volume needs to be resized to take advantage of the newly added space.
 
-### 3.2.5 Resizing a volume group
+## 6. Resizing a Volume Group
 
-LVM itself has a utility that allows you to resize Linux file systems. It can be used to increase or decrease the size of an existing file system. We can pass the device file representing the logical volume we want to resize.
+LVM itself has a utility for resizing file systems. We can pass the device file representing the logical volume we want to resize.
 
 ```sh
 sudo resize2fs /dev/mapper/ubuntu--vg-ubuntu--lv
 ```
 
-> When `resize2fs` command is called without specifying a new size, it will default to resizing the file system to take up all available space on the device we extended before.
+:::info
+
+When `resize2fs` command will add the available space on the previously extended devices without a defined size.
+
+:::
 
 The output should look like the following:
 
@@ -249,18 +305,15 @@ old_desc_blocks = [DESC_BLOCKS], new_desc_blocks = [NEW_DESC_BLOCKS]
 The filesystem on /dev/mapper/ubuntu--vg-ubuntu--lv is now [TOTAL_BLOCKS] ([BLOCK_NUMBER]) blocks long.
 ```
 
-#### Descriptor Blocks Usage
+:::tip
 
-File systems have two key components: index nodes and descriptor blocks.
+Further details about blocks and resizing can be found on the [Storage Specification](/docs/theory/preparations/storage-specification.md) page of the [**🧠 Theory Section**](/docs/theory/preparations/node-specification.md) section.
 
-- **Index Nodes** are data structures within a filesystem that contain information about a file or directory, such as its size, owner, and access rights. Every file or directory has an associated inode, which essentially serves as a table of contents for the file's data.
-- **Descriptor Blocks** are part of the filesystem's metadata. They contain information about where the file data is located on the disk and keep track of arrangement information, such as the number of free index nodes, when new files are created.
+:::
 
-In resizing, new descriptor blocks have been created to map the file metadata to the actual physical counterpart.
+## 6. Verifying Storage Space
 
-### 3.2.6 Verifying the added storage space
-
-After extending and resizing the volumes, we must ensure everything was correctly executed. Run the volume group display to check the current setup:
+Finally, verify that the volume group and logical volume have been updated correctly:
 
 ```sh
 sudo vgdisplay
@@ -291,19 +344,20 @@ The output should be something like this:
   VG UUID               [UNIVERSALLY_UNIQUE_IDENTIFIER]
 ```
 
-During the checkup, look out for the following values:
+:::info
+During the checkup, ensure that:
 
-- `[VOLUME_GROUP_SIZE]` should be equal to `[FULL_DISK_SPACE]`
-- `[ALLOCATED_PE]` should be equal to `[TOTAL_PE]`
-- `Free PE / Size` should be `0 / 0`
+- The group covers the whole disk space: `[VOLUME_GROUP_SIZE]` equals `[FULL_DISK_SPACE]`
+- All physical extends got added to the volumes: `[ALLOCATED_PE]` equals `[TOTAL_PE]`
+- All physical extends are registered: `Free PE / Size` is `0 / 0`
 
-We can also recheck the disk usage:
+:::
+
+You can also recheck the disk usage:
 
 ```sh
 df -h
 ```
-
-The storage mounted on `/` should've increased. The percentage usage should have been decreased depending on how much storage you added. Keep in mind your numbers will be different:
 
 ```text
 Filesystem                         Size  Used Avail Use% Mounted on
@@ -316,4 +370,9 @@ tmpfs                              5.0M     0  5.0M   0% /run/lock
 tmpfs                              3.2G  4.0K  3.2G   1% /run/user/1000
 ```
 
-**If the logical storage volumes are extended correctly, we can continue configuring our software updates.**
+:::info
+
+- The storage `Mounted On` the `/` root directory should have increased
+- The percentage of `Use` should have decreased relative to the increased size
+
+:::

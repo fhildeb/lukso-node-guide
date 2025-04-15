@@ -44,3 +44,41 @@ The name of the volume group `ubuntu-vg` and logical volumes, e.g., `ubuntu-lv` 
 #### Storage Formats
 
 The same default values rule also applies to the default storage format `ext4`. Storage formats like `ext2`, `ext3`, and `ext4` are all part of the same family of Linux filesystems, but each brings improvements and added features over the previous. The type `ext4` is the most commonly used as it supports files up to 16TB, faster and more efficient disk space allocation, and many other convenience features.
+
+## 3.2 Manage Storage Volumes
+
+As described in the previous guide on the system installation, the LVM is a flexible and powerful storage management system. It delivers excellent functionality. However, by default, it initially only allocates `100GB` of storage for the logical volume.
+
+The default allocation ensures ample storage for basic system functionality without consuming the entire available storage capacity. This approach allows users to extend the storage volumes as needed based on their specific requirements and the growth of their data.
+
+One of the main reasons for this conservative allocation is that it is much easier to extend storage volumes than shrink them. Shrinking volumes can be more complicated and time-consuming, often requiring unmounting and remounting of the filesystems and a greater risk of data loss. By starting with a smaller allocation, LVM allows you to manage your storage more efficiently.
+
+> As we use the server as the primary node machine, we want to extend the capacity of `100 GB` to the total size of the physical storage before even the physical storage space is no longer sufficient and new hard disks must be added.
+
+**Before we add or extend any storage volumes, we have to check the volume group's status.**
+
+If you already set your logical volume to the maximum capacity during the installation, looking at the following section is still recommended. You will learn the basics about LVM when adding a new storage device.
+
+#### Physical Extents
+
+When a physical volume is added to a volume group, the disk space in the physical volume is divided into Physical Extents. The size of the physical extent is determined when the volume group is created, and all extents within a group are the same size.
+
+They are portions of disk space on a physical volume, usually several megabytes.
+
+- `Total Physical Extents`: Total Number of Physical Extents allocated or free across all volumes.
+- `Alloc Physical Extents / Size`: displays how much space has been allocated by the logical volume.
+- `Free Physical Extents / Size`: displays how much accessible space units are left on the physical volume. If it is already zero, no more physical free disk space is left.
+
+Check the amount of free disk space left on the physical volume. If you did not already extend the disk size during the installation, there should be plenty of storage left that we can add to the logical volume of the group.
+
+## Resizing
+
+<!--TODO: explain lvm groups, logical and physical volumes and the order (1. adding disk, 2. extending logical volume, 3. extending group)-->
+
+:::note
+File systems have two key components: index nodes and descriptor blocks. When resizing, new descriptor blocks will be created to map the file metadata to the actual physical counterpart.
+
+- **Index Nodes** are data structures within a filesystem that contain information about a file or directory, such as its size and owner. Every file or directory has an associated inode, which essentially serves as a table of contents for it's data.
+- **Descriptor Blocks** are part of the filesystem's metadata. They contain information about where the file data is located on the disk and keep track of arrangement information, such as the number of free index nodes, when new files are created.
+
+:::
