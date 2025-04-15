@@ -5,27 +5,35 @@ sidebar_position: 1
 
 # 3.1 Permission Management
 
-## 3.1 Change Permission Set
+Managing user permissions is a critical component for securing your node system. By locking direct root access and enforcing the use of superuser privileges, you create an auditable environment that minimizes the risk of accidental or malicious system changes. This guide explains how to disable direct root login and manage user passwords for better security.
 
-By locking the root account, we can enhance the security of the node system, as it requires users to use superuser permissions to execute commands with root privileges, which leaves an audit trail of actions performed with elevated permissions.
+## Super User Permissions
 
-#### Super User Permission
+When the system is set up with a regular user account, certain commands require elevated privileges. The _sudo_ command, allows a user to run commands with the privileges of another user, usually the root user, without exposing the root password. This controlled mechanism is essential for maintaining system security and accountability.
 
-The root access does have unlimited rights. But as a regular user profile is set up, some commands will require superuser privileges to run. The related `sudo` option, short for "superuser do," is a command-line utility that allows users to execute commands with the privileges of another user, typically the superuser or "root" user. It provides a controlled way to grant administrative access to specific users without sharing the root password. By using sudo, users can run commands that require elevated permissions.
+:::warning
 
-> Always be cautious when using `sudo`, as there is the risk of accidentally performing potentially harmful actions on the system.
+Always be cautious when using _sudo_, as executing commands with root privileges can inadvertently harm your system.
 
-Log into the system with the previously configured user profile and type in the specified username followed by the password.
+:::
 
-#### Password Utility
+Log in with your previously configured user profile. When prompted for elevated commands, you will be asked to enter your password.
 
-The `passwd` command is an essential utility in Unix-based operating systems, including Linux, for managing user passwords. It allows users to change their passwords and, when executed with administrative privileges, modify passwords for other users on the system.
+## Password Utility
 
-The command offers various options for managing passwords, such as setting password expiry, locking and unlocking user accounts, and forcing users to change their password at the next login.
+The _passwd_ command is a fundamental utility in Unix-based operating systems for managing user passwords. With administrative rights, you can use _passwd_ to change passwords for any account on the system. Options include setting password expiry, locking/unlocking accounts, and forcing password resets on next login. This is essential for ensuring that only authorized users can access critical system functions.
 
-### 3.1.1 Disable Root Access
+## 1. Disabling Root Access
 
-Using the `passwd` command, we can lock the root account on the node system, effectively disabling the ability to log in directly as the root user using a password. We use the `-l` option to lock the specified account.
+To improve system security, it is best practice to disable direct root login Locking the root account prevents unauthorized direct access, forcing all administrative commands to go through superuser permissions, ensuring that no one can bypass the security policies of elevated privileges.
+
+:::info
+
+Using the `passwd` command with the lock `-l` option, disables the root account's ability to log in with a password.
+
+:::
+
+Open a terminal and type the following command:
 
 ```sh
 sudo passwd -l root
@@ -37,18 +45,31 @@ The outcome should look like this:
 passwd: password expiry information changed.
 ```
 
-### 3.1.2 Check Root Account
+### 2. Check Root Account
 
-To verify that the change was effective, use the password command again with the `-S` option so that you can see the status of the root account:
+After locking the root account, you should verify the change. With the root account locked, any command requiring administrative rights will prompt you for your user password through superuser permissions.
+
+:::info
+
+Using the `passwd` command with the status `-S` option prints the current settings.
+
+:::
+
+In the terminal, type:
 
 ```sh
 sudo passwd -S root
 ```
 
-The outcome should look like this:
+You should see an output similar to:
 
 ```text
-root L 02/17/2023 0 99999 7 -1
+root L [DATE] 0 99999 7 -1
 ```
 
-The uppercase `L` behind the account name means the root account has been locked successfully. If you see an uppercase `P`, it indicates that the account is not locked and still has a valid password. If the `L` shows up, all commands will always have to ask for the sudo password, as you can no longer log in as the root account.
+:::tip
+
+- Uppercase `L` signifies that the root account has been locked.
+- Uppercase `P`, means that the account is still active with a valid password.
+
+:::
