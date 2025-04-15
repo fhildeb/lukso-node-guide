@@ -5,76 +5,83 @@ sidebar_position: 3
 
 # 3.3 Ubuntu Updates
 
-Keeping the system and its software up to date is essential and should be done regularly.
+Keeping your Ubuntu system up to date is essential for security, stability, and performance. Regular updates ensure that all software packages and security patches are current, reducing vulnerabilities and maintaining optimal performance of your node. This section details how to update the package list, upgrade installed packages, remove obsolete dependencies, clean the package cache, and enable automatic security updates.
 
-#### Advanced Package Tool
+## Advanced Package Tool
 
-APT is a package management system used in Debian-based Linux distributions, such as Ubuntu, to handle installing, upgrading, and removing software packages. It simplifies managing software on Linux systems by automatically taking dependencies and providing a user-friendly interface for software installation.
+APT is the package management system used in Ubuntu and other Debian-based distributions to install, upgrade, and remove software packages. Its command-line tool _apt_ handles dependencies automatically and provides a user-friendly way to manage software on your system.
 
-Its implementation `apt` is a command-line tool and the most commonly used APT software. It provides a convenient way to interact with APT software systems, allowing users to quickly search, install, update, and remove software packages.
+:::tip
 
-### 3.3.1 Update Package List
+APT also ensures that your system receives timely security patches and performance improvements.
 
-First, we want to update the package list on your system. When executed, it fetches the latest package information from the repositories specified in your system's sources list. List updates help to keep our system informed about the latest available versions of packages.
+:::
+
+## 1. Updating the Package List
+
+Updating the package list fetches the latest package information from the repositories defined in your system's sources list. This step is crucial to ensure that you’re installing the most recent versions of software. Without an updated package list, your system cannot identify new updates or security fixes available from the Ubuntu repositories.
 
 ```sh
 sudo apt update
 ```
 
-### 3.3.2 Upgrade Packages
+## 2. Upgrading Packages
 
-After the list is up to date, we can upgrade the installed packages on our system to their latest versions. After updating the package list using `sudo apt update`, running `sudo apt upgrade` will install any newer versions of the currently installed packages, ensuring that your system is up-to-date with the latest software and security patches.
+After updating the package list, you can upgrade the installed packages on your system to their latest versions. This ensures that you benefit from recent updates, security patches, and performance improvements. Keeping packages upgraded minimizes vulnerabilities and ensures the system is running the most efficient versions of all software components.
 
 ```sh
 sudo apt upgrade
 ```
 
-### 3.3.3 Remove Legacy Dependencies
+## 3. Removing Legacy Dependencies
 
-Now we want to remove packages that were automatically installed to satisfy dependencies for other packages and are no longer needed on the system. It helps to keep your system clean from unused packages and their associated files.
+Over time, the system may accumulate packages that were automatically installed as dependencies but are no longer required. Removing these legacy dependencies frees up disk space, reduces the risk of conflicts, and simplifies system maintenance.
 
 ```sh
 sudo apt autoremove
 ```
 
-### 3.3.4 Clean Local Package Cache
+## 4. Cleaning Local Package Cache
 
-After everything is up to date and removed, we can clean up the local cache of downloaded package files that are no longer needed. Cleaning eliminates the package files for older versions of installed packages and any packages no longer available in the repositories. It frees up disk space and keeps the system lean.
+Cleaning the local package cache removes outdated package files that are no longer needed after installation. This step helps reclaim disk space and keeps your system lean. Regularly cleaning the cache prevents the build-up of obsolete cache files.
 
 ```sh
 sudo apt autoclean
 ```
 
-### 3.3.5 Enable Automatic Security Updates
+## 5. Enable Automatic Security Updates
 
-Servers have security beams and are often operated continuously, making installing software on the fly hard. However, it is a must-have to always be up to date.
+For a secure and stable server environment, it is important to apply critical updates automatically. It's possible to automate the installation of security updates and essential patches to ensure your system is up-to-date and protected against known vulnerabilities.
 
-The `unattended-upgrades` package is a valuable tool for maintaining the security and stability of a Linux system. It automates installing important updates, primarily focusing on security patches and critical bug fixes, ensuring your system is up-to-date and protected against known vulnerabilities.
+:::info
 
 Using the `unattended-upgrades` package, node operators can reduce the manual effort involved in monitoring and applying updates while minimizing the risk of potential downtime or breaches caused by outdated software. The package offers various configuration options to tailor the upgrade process according to the specific needs of a system, such as the ability to select which packages to update, schedule the upgrade frequency, and control notifications.
 
-First, we have to install the package itself using APT:
+:::
+
+**1. Install Unattended Upgrades**: _Download the package using APT_
 
 ```sh
 sudo apt install unattended-upgrades
 ```
 
-Afterward, we can reconfigure the `unattended-upgrades` package using the package reconfiguring tool.
-
-#### Package Reconfigurment Utility
-
-The `dpkg-reconfigure` command is a utility that reconfigures an already-installed package using values provided by the user. It is part of the Debian package management system and allows you to modify a package's configuration after its installation. Automated reconfigurations can be helpful for us to change settings or preferences for a specific package without reinstalling it.
-
-We can use it to reconfigure the `unattended-upgrades` package. Using the `-plow` flag, we can set the priority to "low," meaning only essential questions will be asked during the reconfiguration process, and most options will be charged to their default values.
-
-Low priorities aim to ensure that the `unattended-upgrades` package is set up correctly, enabling automatic security updates for your system.
+**2. Configure Unattended Upgrades**: _Reconfigure the package to enable automatic updates._
 
 ```sh
 sudo dpkg-reconfigure -plow unattended-upgrades
 ```
 
-You will get a screen prompt in the terminal. Agree with `<Yes>` and continue the setup.
+:::tip
+
+Setting the priority to low using `plow` ensures that only essential questions are asked, and default options are applied.
+
+:::
+
+:::info
+
+The `dpkg-reconfigure` command is a utility that reconfigures an already-installed package using user-provided values.
+:::
+
+You will get a screen prompt in the terminal. Agree with \<Yes\> and continue the setup.
 
 ![Auto Update Screen](/img/guides/system-setup/setup-autoupdate.png)
-
-**Now that package maintenance is set up, we can continue with the remote access.**

@@ -42,6 +42,12 @@ sudo apt upgrade
 
 # Reboot the System to update remaining packages
 sudo reboot
+
+# Clean unused packages
+sudo apt autoremove
+
+# Remove package cache
+sudo apt autoclean
 ```
 
 > You will be logged out of the machine and have to log back in using SSH
