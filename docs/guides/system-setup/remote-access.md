@@ -3,6 +3,9 @@ sidebar_label: "3.4 Remote Access"
 sidebar_position: 4
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 # 3.4 Remote Access
 
 Establishing secure remote access to your node is essential for system maintenance and monitoring. In this guide, we focus on configuring the OpenSSH Server by editing its main configuration file, selecting a non-standard port for added security, and verifying that the changes have been applied correctly.
@@ -31,9 +34,22 @@ The default port number is `22`. It is recommended to choose a port number highe
 
 Use your preferred text editor to open the SSH configuration file:
 
+<Tabs>
+  <TabItem value="vim" label="Vim" default>
+
 ```sh
 sudo vim /etc/ssh/sshd_config
 ```
+
+  </TabItem>
+  <TabItem value="nano" label="Nano">
+
+```sh
+sudo nano /etc/ssh/sshd_config
+```
+
+  </TabItem>
+</Tabs>
 
 1. Locate the line `#Port 22`.
 2. Remove the `#` in front to uncomment the line.
