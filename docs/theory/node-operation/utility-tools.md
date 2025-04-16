@@ -14,6 +14,8 @@ Used for:
 ```sh
 sudo systemctl restart sshd
 systemctl list-unit-files --type=service
+sudo systemctl enable ssh
+sudo systemctl is-enabled ssh
 ```
 
 #### Text Editors

@@ -80,7 +80,7 @@ If no output is returned, the configuration is valid.
 sudo systemctl restart sshd
 ```
 
-:::info
+:::info Daemon Services
 
 Daemon services, like `sshd` are background processes that run continuously on Unix-like operating systems, including Linux. These services perform various tasks and provide essential functionalities without direct user interaction.
 
