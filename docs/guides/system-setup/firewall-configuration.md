@@ -5,81 +5,83 @@ sidebar_position: 6
 
 # 3.6 Firewall Configuration
 
-## 3.6 Configure Firewall
+A properly configured firewall is essential for protecting your node from unwanted network access while allowing legitimate traffic, such as remote SSH connections. In this section, we will configure an firewall to secure your node by restricting incoming connections, enabling SSH over a specified TCP port, and managing firewall rules.
 
-Now we need to enable ssh in the firewall by allowing incoming connections to the previously configured port.
+:::info Uncomplicated Firewall
 
-#### Uncomplicated Firewall
+The UFW is the name of a user-friendly command-line interface for managing firewall configurations on Linux systems. It simplifies configuring and maintaining a firewall by providing intuitive commands and options. UFW streamlines the process of setting up and managing firewall rules such as enforcing strict controls on incoming and outgoing network traffic.
 
-UFW is a user-friendly command-line interface for managing firewall configurations on Linux systems. It simplifies configuring and maintaining a firewall by providing intuitive commands and options. UFW streamlines the process of setting up and managing firewall rules.
+:::
 
-### 3.6.1 General Port Locking
+## 1. General Port Locking
 
-All outgoing traffic should be enabled by default, as the node should send data packages into the network. However, all incoming traffic should be disabled as we do not know who wants to connect with the node.
+The first step is to set up default rules. All outgoing traffic should be allowed because the node needs to send data out to the network. Conversely, all incoming traffic should be denied by default to block unwanted connection attempts.
 
 ```sh
 sudo ufw default allow outgoing
 sudo ufw default deny incoming
 ```
 
-### 3.6.2 Enable SSH Connection
+## 2. SSH Port Configuration
 
-If you allow for just the port number, both TCP and UDP protocols will be possible. However, the User Datagram Protocol is connectionless. It offers faster data transmission but does not guarantee reliable, ordered, or error-checked delivery.
+For secure remote access, you need to allow SSH connections through the firewall by opening the port. However, if you allow just the port number, both TCP and UDP protocol connections would be possible. By default, SSH only uses the TCP protocol, which is preferred due to its reliability and error-checking capabilities.
 
-#### TCP Forcing
+:::tip
 
-For SSH connections, it is recommended only to allow TCP. SSH uses the TCP protocol for its connections because it relies on reliable and error-checked data transmission. Therefore, TCP is more secure and appropriate for SSH connections instead of leaving the port open to all protocols.
+Allow SSH connections on your desired port and replace `<desired-port-number>` with your actual port number.
 
-We use UFW to allow SSH connections and change `<desired-port-number>` to your port.
+:::
 
 ```sh
 sudo ufw allow <desired-port-number>/tcp
 ```
 
-#### Internet Protocol Versioning
+:::info Internet Protocol Versioning
 
-The Internet Protocol is responsible for identifying and locating network devices and routing traffic across the internet.
+The Internet Protocol is responsible for identifying and locating network devices and routing traffic across the internet. If your node supports both `IPv4` and `IPv6`, `UFW` automatically manages rules for both protocols.
 
-If you enabled both IPv6 and IPv4 during the installation of your node, the command would print out that a rule was added for `v6` connections.
+`IPv6` provides an expanded address space that helps accommodate the growing number of devices connected to the internet. On top, it has built-in security enhancements like encrypted communication. When you add a firewall rule, you might see confirmations for both `IPv4` and `IPv6`, ensuring comprehensive network protection.
 
-The `v6` suffix in the UFW rules indicates that the rule is applied to IPv6 network traffic. Internet Protocol version 6 is the most recent version of the Internet Protocol. Basic port rules, without any suffix, apply to IPv4 network traffic, the previous version 4.
+:::
 
-Both are widely used. The primary differences between IPv4 and IPv6 are their address space, addressing mechanisms, and additional features. The expanded address space in IPv6 helps accommodate the growing number of devices connected to the internet. IPv6 also introduces several enhancements over IPv4, such as built-in support for Internet Protocol Security, providing secure, encrypted communication between devices.
+## 3. Firewall Checkup
 
-### 3.6.3 Firewall Checkup
+After applying your firewall rules, you can verify their status. The changes take effect immediately, so there is no need to restart UFW manually.
 
-After executing those firewall commands, you do not need to restart the firewall. The changes take effect immediately, and UFW will begin applying the changes according to the new default policy. However, check if the firewall is enabled:
+**1. Verify whether the firewall is enabled**:
 
 ```sh
 sudo systemctl is-enabled ufw
 ```
 
-If the firewall is running, you can check if the firewall is within an `active` or `inactive` status:
+**2. Verify if the firewall is active and the rules are in place**:
 
 ```sh
 sudo ufw status
 ```
 
-### 3.6.4 Enable firewall
-
-If it should not be inactive, we need to configure it using a symbolic link as before:
+**3. If the UFW is not enabled, activate the process**:
 
 ```sh
 sudo ufw enable
 ```
 
-### 3.6.5 Edit Port Rules
+Afterward, restart your node.
 
-If you have made some port rules you do not want, print out a list with all existing rules like before.
+## 3. Port Rule Removal
+
+If you need to modify the firewall rules, such as removing an unwanted port rule, you can list them all.
 
 ```sh
 sudo ufw status
 ```
 
-Every row within the list has a number, starting with 1. If you want to delete the rule in the second row, type:
+:::info
+
+To `delete` a specific port rule using `UFW`, type the `<rule-number>` that is no longer required.
+
+:::
 
 ```sh
-sudo ufw delete 2
+sudo ufw delete <rule-number>
 ```
-
-If your ports are alright, we can continue setting up the brute force protection to utilize the firewall.
