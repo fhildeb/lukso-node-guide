@@ -23,7 +23,7 @@ Connect your machine to the router using an Ethernet cable so that the installer
 
 :::info
 
-More details about network usage and connections can be found on the [Network Demand](/docs/theory/preparations/network-demand.md) page of the [🧠 **Theory**](/docs/theory/preparations/node-specification.md) section.
+More details about network usage and connections can be found on the [Network Demand](/docs/theory/preparations/network-demand.md) page of the [**🧠 Theory**](/docs/theory/preparations/node-specification.md) section.
 
 :::
 

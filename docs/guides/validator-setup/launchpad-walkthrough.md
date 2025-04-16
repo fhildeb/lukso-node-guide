@@ -81,7 +81,7 @@ If you're a Genesis or Testnet Validator, the prepared deposit files can be chec
 
 :::info
 
-If you want to know more about validator differentiations, have a look into the [Staking](/docs/theory/node-operation/staking.md) chapter of the [🧠 **Theory**](/docs/theory/preparations/node-specification.md) section.
+If you want to know more about validator differentiations, have a look into the [Staking](/docs/theory/node-operation/staking.md) chapter of the [**🧠 Theory**](/docs/theory/preparations/node-specification.md) section.
 
 :::
 

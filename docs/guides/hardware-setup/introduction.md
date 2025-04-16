@@ -59,7 +59,7 @@ I personally plan to add a second 2 TB or 4 TB 2.5" HDD from to accommodate futu
 
 :::tip
 
-Further storage details can be found on the [Client Providers](/docs/theory/blockchain-knowledge/client-providers.md) page within the [🧠 **Theory**](/docs/theory/preparations/node-specification.md) section of the guide.
+Further storage details can be found on the [Client Providers](/docs/theory/blockchain-knowledge/client-providers.md) page within the [**🧠 Theory**](/docs/theory/preparations/node-specification.md) section of the guide.
 
 :::
 
@@ -75,7 +75,7 @@ I installed my machine in a small home rack and connected the node to an 8-port 
 
 :::tip
 
-Further router and network information can be found in the [Router Requirements](/docs/theory/preparations/router-requirements.md) page in the [🧠 **Theory**](/docs/theory/preparations/node-specification.md) section.
+Further router and network information can be found in the [Router Requirements](/docs/theory/preparations/router-requirements.md) page in the [**🧠 Theory**](/docs/theory/preparations/node-specification.md) section.
 
 :::
 

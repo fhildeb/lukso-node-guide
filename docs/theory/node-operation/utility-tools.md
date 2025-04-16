@@ -5,6 +5,10 @@ sidebar_position: 3
 
 # Utility Tools
 
+### System Control
+
+System Control is a powerful command-line utility that is the primary management tool for system processes, widely used across modern Linux distributions. By leveraging `systemctl`, administrators can control and get insights into their system's state, enabling them to fine-tune their environment for optimal performance, stability, and security. The system control command offers a unified and consistent approach to starting, stopping, enabling, disabling, and checking the status of various components.
+
 #### Text Editors
 
 We can use various terminal text editors to configure files on the node. Ubuntus's default text editor is called Vi Improved. I will use the default editor `vim` in this guide. However, you can also choose a more user-friendly one like `nano`. Here is a description of the two:

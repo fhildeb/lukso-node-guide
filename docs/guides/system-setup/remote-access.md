@@ -3,90 +3,90 @@ sidebar_label: "3.4 Remote Access"
 sidebar_position: 4
 ---
 
-# 3.4 Configure Remote Access
+# 3.4 Remote Access
 
-We already installed the OpenSSH server within the Ubuntu installation, and I explained why it is an essential tool. If you did not configure it already, now is the time to set it up so we can securely connect to our server from other devices.
+Establishing secure remote access to your node is essential for system maintenance and monitoring. In this guide, we focus on configuring the OpenSSH Server by editing its main configuration file, selecting a non-standard port for added security, and verifying that the changes have been applied correctly.
 
-The `/etc/ssh/sshd_config` file is the main configuration file for the OpenSSH server. It contains various settings and directives that control the behavior of the SSH server, such as authentication methods, listening address, port number, and other security options. By modifying this file, you can customize the openSSH server to fit your specific requirements and enhance the security of your node.
+:::info
 
-#### Port Number
+OpenSSH Server was installed during the operation system setup, is located at `/etc/ssh/sshd_config`, and controls key parameters such as authentication methods, the listening port, and security directives. In comparison to the OpenSSH Client, which allows you tio connect and use a certain system, its a more lightway version simply granting access to a remote system.
 
-Regarding the SSH port number, the default port for the OpenSSH server is `22`. However, it is a common practice to change the port number to a non-standard, higher value to improve security through obscurity. While changing the port number alone is not a comprehensive security solution, it can help reduce the likelihood of automated attacks and port scans targeting the default port.
+:::
 
-Choosing a port number higher than `1024` is recommended, as ports below this range are considered privileged and require root access to bind. The highest possible number is `65535`, as port numbers are 16-bit unsigned integers. Some administrators prefer using a port number higher than `50000` to avoid conflicts with other services further and minimize the chances of being targeted by automated scans. Ultimately, the choice of port number depends on your preferences and network configuration. Still, ensuring that the selected port is not already used by another service on your system is essential.
+:::tip
 
-#### Text Editors
+Unlike the OpenSSH Client, which allows you to connect to and use a particular remote system, its server variant is a lighter tool only granting access. In this regard, the node cannot act as an active part.
 
-We can use various terminal text editors to configure files on the node. Ubuntus's default text editor is called Vi Improved. I will use the default editor `vim` in this guide. However, you can also choose a more user-friendly one like `nano`. Here is a description of the two:
+:::
 
-#### Vim
+## 1. SSH Port Configuration
 
-Vim is an enhanced version of the classic Unix text editor Vi, with additional features and improved usability. Vim operates in multiple modes: normal mode, insert mode, and command mode, allowing users to navigate, edit, and manipulate text files efficiently.
+Changing the SSH port from its defaul to a non-standard port can reduce the risk of automated attacks and port scanning. Although changing the port is not a comprehensive security solution, it adds an extra layer of obscurity.
 
-You'll start in normal mode once the file is open in Vim. You navigate through files by using the arrow keys.
+:::info
 
-To enter insert mode to edit the text, press `i`. You'll see `-- INSERT --` at the bottom of the screen- press `Esc` to exit insert mode and return to normal mode.
+The default port number is `22`. It is recommended to choose a port number higher than `1024`, often above `50000`, to avoid conflicts with standard services. Always ensure the chosen port is not used by any other service on your system. The highest possible number is `65535`, as port numbers are 16-bit unsigned integers.
 
-To enter command mode to manage to save and exit, press `:` while in normal mode. A colon will appear at the bottom of the screen.
+:::
 
-- To write and quit, type `wq` and press `Enter`.
-- To quit without saving: type `q!` and press `Enter`.
-
-#### Nano
-
-Nano is a beginner-friendly text editor on Ubuntu. Nano is a simple, modeless, command-line text editor in most Linux distributions. It is designed to be easy to use and suitable for editing system configuration files, writing programming scripts, and other text editing tasks.
-
-Once you've opened a file in Nano, you can edit it immediately. Navigation through the file is accomplished using the arrow keys.
-
-Unlike Vim, Nano doesn't have different modes like normal or insert mode. You're in editing mode as soon as the file opens and can start changing the text.
-
-At the bottom of the Nano screen, you'll see a row of commands, each represented by a caret symbol (`^`) and a letter. The caret symbol represents the `Ctrl` key.
-
-- To save changes, press `Ctrl + O`, and press `Enter`.
-- To exit, press `Ctrl + X`. If you've made changes, you will be asked to save them- press `Y` for Yes or `N` for No.
-
-### 3.4.1 Edit SSH Configuration
-
-Let's open the configuration file using Vim.
+Use your preferred text editor to open the SSH configuration file:
 
 ```sh
 sudo vim /etc/ssh/sshd_config
 ```
 
-Locate the line that starts with `#Port 22` and uncomment it by removing the `#` at the beginning if it is present. Removing the hash will activate the static port number you want to use for connecting to the node.
+1. Locate the line `#Port 22`.
+2. Remove the `#` in front to uncomment the line.
+3. Change the number to your desired port value.
+4. Save the file and exit the editor.
 
-Change the port number `22` to your desired one, for example, port `50022`, then save and exit.
+:::tip
 
-To apply the change, we need to restart the SSH service of the node.
+This change instructs SSH to listen on the new port. You will need to specify this port number when connecting remotely. For example you could change it to `50022` or `60022`, both fulfilling all requirements of the numerical range.
 
-#### Manage System Services
+:::
 
-System Control is a powerful command-line utility that is the primary management tool for system processes, widely used across modern Linux distributions. By leveraging `systemctl`, administrators can control and get insights into their system's state, enabling them to fine-tune their environment for optimal performance, stability, and security. The system control command offers a unified and consistent approach to starting, stopping, enabling, disabling, and checking the status of various components.
+## 2. Managing the SSH Service
 
-You can use the following command to check all system services:
+After modifying the configuration file, restart the SSH service to apply the changes.
 
-```sh
-systemctl list-unit-files --type=service
-```
-
-### 3.4.2 Adapt to Changes
-
-We need to restart the OpenSSH server using the `systemctl` command to make the SSH service use the updated config file.
-
-#### Daemon Processes
-
-As you saw in the system service list, both `ssh` and `sshd` services refer to the SSH processes.
-
-Daemon services are background processes that run continuously on Unix-like operating systems, including Linux. These services perform various tasks and provide essential functionalities without direct user interaction.
-
-In our case, `sshd` is the SSH daemon managed by the `ssh` service. We can use it to validate our updated SSH configuration in a test run.
+**2.1 Verify the Configuration**: _Before restarting, test the updated configuration._
 
 ```sh
 sudo sshd -t
 ```
 
-If there is no output, everything is fine to run it live on the machine, affecting the global service.
+If no output is returned, the configuration is valid.
+
+**2.2 Restart the SSH Service**: _Restart the SSH daemon._
 
 ```sh
 sudo systemctl restart sshd
 ```
+
+:::info
+
+Daemon services, like `sshd` are background processes that run continuously on Unix-like operating systems, including Linux. These services perform various tasks and provide essential functionalities without direct user interaction.
+
+:::
+
+:::tip
+
+Further information about system control commands can be found on the [Utility Tools](/docs/theory/node-operation/utility-tools.md) page of the [**🧠 Theory**](/docs/theory/preparations/node-specification.md) section.
+
+:::
+
+**2.3 Check System Services**: _Inspect all system services to ensure SSH is running._
+
+```sh
+systemctl list-unit-files --type=service
+```
+
+:::info
+
+- The command provides a list of services along with their status.
+- Both `ssh` and `sshd` services should be active enabled.
+
+:::
+
+With these changes, remote access to your node will be securely configured with a custom port, and you can now connect to your node using your preferred SSH client.
