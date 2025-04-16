@@ -54,7 +54,7 @@ If you have not changed the LVM settings during installation, the output should 
 
 :::tip
 
-If you are uncertain about storage, logical disk management, volume groups, or physical extents, please have a look at the [Storage Specification](/docs/theory/preparations/storage-specification.md) page in the [**🧠 Theory**](/docs/theory/preparations/node-specification.md) section to ensure you have the fundamental knowledge.
+If you are uncertain about storage, logical disk management, volume groups, or physical extents, please have a look at the [Storage Specification](/docs/theory/node-operation/storage-specification.md) page in the [**🧠 Theory**](/docs/theory/preparations/node-specification.md) section to ensure you have the fundamental knowledge.
 
 :::
 
@@ -307,7 +307,7 @@ The filesystem on /dev/mapper/ubuntu--vg-ubuntu--lv is now [TOTAL_BLOCKS] ([BLOC
 
 :::tip
 
-Further details about blocks and resizing can be found on the [Storage Specification](/docs/theory/preparations/storage-specification.md) page of the [**🧠 Theory Section**](/docs/theory/preparations/node-specification.md) section.
+Further details about blocks and resizing can be found on the [Storage Specification](/docs/theory/node-operation/storage-specification.md) page of the [**🧠 Theory Section**](/docs/theory/preparations/node-specification.md) section.
 
 :::
 

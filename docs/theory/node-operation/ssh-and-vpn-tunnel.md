@@ -1,6 +1,6 @@
 ---
 sidebar_label: "VPN Tunnel"
-sidebar_position: 7
+sidebar_position: 10
 ---
 
 <!--TODO: Rewrite SSH chapter-->

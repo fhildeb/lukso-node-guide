@@ -1,6 +1,6 @@
 ---
 sidebar_label: "Storage Specification"
-sidebar_position: 5
+sidebar_position: 2
 ---
 
 # Storage Specification

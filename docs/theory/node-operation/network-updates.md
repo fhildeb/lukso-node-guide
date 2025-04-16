@@ -1,6 +1,6 @@
 ---
 sidebar_label: "Network Updates"
-sidebar_position: 8
+sidebar_position: 11
 ---
 
 # Network Updates

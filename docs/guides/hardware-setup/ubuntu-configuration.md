@@ -51,7 +51,7 @@ The correct configuration ensures that your command-line entries during setup an
 
 :::info
 
-Detailed differences of a minimal or regular installation can be found in the [Operation Systems](/docs/theory/preparations/operation-systems.md) page of the [**🧠 Theory Section**](/docs/theory/preparations/node-specification.md).
+Detailed differences of a minimal or regular installation can be found in the [Operation Systems](/docs/theory/node-operation/operation-systems.md) page of the [**🧠 Theory Section**](/docs/theory/preparations/node-specification.md).
 
 :::
 
@@ -121,7 +121,7 @@ On the storage screen, you will see your available disks along with their mount 
 
 :::tip
 
-Further details about disks and volume management can be found on the [Storage Specification](/docs/theory/preparations/storage-specification.md) page in the [**🧠 Theory**](/docs/theory/preparations/node-specification.md) section.
+Further details about disks and volume management can be found on the [Storage Specification](/docs/theory/node-operation/storage-specification.md) page in the [**🧠 Theory**](/docs/theory/preparations/node-specification.md) section.
 
 :::
 

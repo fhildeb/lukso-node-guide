@@ -116,13 +116,7 @@ const sections = [
     chapters: [
       {
         title: "Preparations",
-        pages: [
-          "Node Specification",
-          "Router Requirements",
-          "Network Demand",
-          "Operation Systems",
-          "Storage Specification",
-        ],
+        pages: ["Node Specification", "Router Requirements", "Network Demand"],
       },
       {
         title: "Blockchain Knowledge",
@@ -138,6 +132,9 @@ const sections = [
       {
         title: "Node Operation",
         pages: [
+          "Operation Systems",
+          "Storage Specification",
+          "Utility Tools",
           "Client Options",
           "Staking",
           "Validator Credentials",
