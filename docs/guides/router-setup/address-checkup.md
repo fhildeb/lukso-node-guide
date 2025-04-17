@@ -5,19 +5,33 @@ sidebar_position: 1
 
 # 4.1 Address Checkup
 
-## 4.1 Node Address Checkups
+Since many routers use different software, it’s important to know the device's network identifiers before setting up static access.
 
-Since many routers use different software, we first ensure that we read the node's connection data correctly before making any substantial changes to the router.
+:::info
 
-#### Internet Protocol Addresses
+Home networks typically assign **dynamic IP addresses** via DHCP, a protocol designed for automated device registering. Once a device boots, it requests and leases an IP address from the router’s DHCP address pool.
 
-When devices connect to a home network, the router usually assigns dynamic Internet Protocol addresses through a Dynamic Host Configuration Protocol. It's a network protocol that automates assigning IP addresses and other network configuration information to devices connected to a network. DHCP eliminates the need for manual configuration of IP addresses, making it easier to connect devices to a network and manage them efficiently.
+While DHCP eliminates the need for manual configuration and manages devices efficiently, it can cause the IP address to **change over time** once an assignment expired. For uninterrupted SSH access, its necessary to identify your node’s hardware address and set up reliable DHCP reservation or static assignment in your router.
 
-When a device joins a network, it sends a request to the router, asking for an address and other network settings. The DHCP software on the router then assigns an available IP address from its pool to the device, along with the required network configuration. This IP address is leased to the device for a specific duration, after which the device needs to renew the lease or obtain a new IP address. However, this also means that devices can change their IP addresses over time, making it difficult to access your node through SSH consistently.
+:::
 
-### 4.1.1 Resolve the Node's IP Address
+## 1. Resolve IP Address
 
-The `ip` command is a versatile and powerful networking tool in Linux, used to manage and display information about network interfaces, IP addresses, and other network-related configurations. We can use the command to display the default route information in the routing table of a Linux system. The default gateway route is the network path the system uses to send packets to destinations, not on the local network. In simpler terms, it is the route the system takes when sending data to an IP address outside its local network.
+:::tip
+
+Internet Protocol addresses are **logical, software‑assigned** labels. **IP** addresses let routers move data packages between different networks, whether your local home network or across the Internet.
+
+🙇🏻‍♂️ _Example: `192.168.1.10` or `2001:db8::1`_
+
+:::
+
+**1.1 Local Route Method**:
+
+:::info
+
+You can use the versatile and powerful `ip` tool to display the system’s default route and source IP. The default gateway's IP address is the intermediate route the system takes when sending data to an IP address outside its local network. The process also highlights the origin of the package: the device's IP address that was used to send the package.
+
+:::
 
 ```sh
 ip route show default
@@ -29,31 +43,47 @@ The output will look like this:
 default via <GATEWAY_IP_ADDRESS> dev eno1 proto dhcp src <NODE_IP_ADDRESS> metric <ROUTING_WEIGHT>
 ```
 
-Alternatively, you can send a request to a commonly used and stable server IP, for instance, Google. You will receive a response with your source IP address that you can filter using the text-processing tool `awk`, used for pattern scanning and processing.
+**1.2 Public Server Query**:
+
+:::info
+
+Alternatively, you can use the `ip` tool to query a stable external address like the Google DNS address `8.8.8.8` to reveal your source IP by filtering it's parameter from the response using the text-processing tool `awk`.
+
+:::
 
 ```sh
 ip route get 8.8.8.8 | awk '{print $7}'
 ```
 
-### 4.1.2 Resolve the Node's Hardware Address
+## 2 Resolve Hardware Address
 
-#### Media Access Controll
+:::tip
 
-A MAC address is a unique identifier assigned to network interfaces for communication on a physical network segment. It is also commonly referred to as a hardware or physical address. MAC addresses are used at the data link layer, enabling network devices such as switches and routers to identify and manage local network devices uniquely.
+The Media Access Control addresses are **permanent, globally-unique** identifiers built into each device's network interface. **MAC** addresses let switches and bridges forward data frames only within the same local network segment.
 
-Each MAC address is a 48-bit number, usually represented in a human-readable hexadecimal format, including a specific manufacturer registration code and individual product lineup iterations by the manufacturer to ensure that each network interface produced by the company has a unique MAC address.
+🙇🏻‍♂️ _Example: `00:1A:2B:3C:4D:5E`_
 
-We can use the previous networking tool to retrieve information about the MAC addresses.
+:::
+
+:::info
+
+You can list all network interfaces and their MAC addresses using the previously known `ip` command-line tool. Look for an interface name like `eno1` or `eth0`, typically used to broadcast information to the Internet using an Ethernet connection.
+
+:::
 
 ```sh
 ip link show
 ```
 
-The output will list all the network interfaces on the system. Look into the interface used to broadcast and send information to the outside world using an Ethernet connection. The entry you're looking for looks like this:
+The entry should look like this:
 
 ```sh
 <NETWORK_INFERFACE_NAME>: <BROADCAST,MULTICAST,UP,LOWER_UP> ...
     link/ether <MAC_ADDRESS> brd <BROADCAST_ADDRESS>
 ```
 
-**Write down or remember both names so you can check them later on and identify your device for router settings.**
+:::warning
+
+Write down both **IP** and **MAC** addresses so you can identify your node while configuring your router.
+
+:::
