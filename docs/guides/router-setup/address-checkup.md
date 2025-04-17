@@ -3,6 +3,9 @@ sidebar_label: "4.1 Address Checkup"
 sidebar_position: 1
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 # 4.1 Address Checkup
 
 Since many routers use different software, it’s important to know the device's network identifiers before setting up static access.
@@ -25,11 +28,12 @@ Internet Protocol addresses are **logical, software‑assigned** labels. **IP** 
 
 :::
 
-**1.1 Local Route Method**:
+<Tabs>
+  <TabItem value="local-ip" label="Local IP Check" default>
 
 :::info
 
-You can use the versatile and powerful `ip` tool to display the system’s default route and source IP. The default gateway's IP address is the intermediate route the system takes when sending data to an IP address outside its local network. The process also highlights the origin of the package: the device's IP address that was used to send the package.
+You can use `ip` tool to display the system’s default package route and source IP when connecting to the router. The default gateway's IP address is the intermediate route the system takes when sending data to an IP address outside its local network.
 
 :::
 
@@ -43,17 +47,21 @@ The output will look like this:
 default via <GATEWAY_IP_ADDRESS> dev eno1 proto dhcp src <NODE_IP_ADDRESS> metric <ROUTING_WEIGHT>
 ```
 
-**1.2 Public Server Query**:
+  </TabItem>
+  <TabItem value="public-ip" label="Public IP Check">
 
 :::info
 
-Alternatively, you can use the `ip` tool to query a stable external address like the Google DNS address `8.8.8.8` to reveal your source IP by filtering it's parameter from the response using the text-processing tool `awk`.
+You can use the `ip` tool to query a stable external address like the Google DNS address `8.8.8.8` to reveal your source IP. You can further filter the IP parameter from the server's response using the text-processing tool `awk`.
 
 :::
 
 ```sh
 ip route get 8.8.8.8 | awk '{print $7}'
 ```
+
+  </TabItem>
+</Tabs>
 
 ## 2 Resolve Hardware Address
 

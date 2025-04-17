@@ -39,7 +39,7 @@ const sections = [
       },
       {
         title: "Router Setup",
-        pages: ["Address Checkup", "Static IP Layout"],
+        pages: ["Address Checkup", "Static IP Assignment"],
       },
       {
         title: "SSH Setup",
