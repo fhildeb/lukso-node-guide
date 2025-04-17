@@ -49,7 +49,7 @@ Cleaning the local package cache removes outdated package files that are no long
 sudo apt autoclean
 ```
 
-## 5. Enable Automatic Security Updates
+## 5. Enabling Security Updates
 
 For a secure and stable server environment, it is important to apply critical updates automatically. It's possible to automate the installation of security updates and essential patches to ensure your system is up-to-date and protected against known vulnerabilities.
 
