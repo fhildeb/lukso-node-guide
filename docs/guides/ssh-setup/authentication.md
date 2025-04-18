@@ -1,11 +1,11 @@
 ---
-sidebar_label: "5.5 Authentication"
-sidebar_position: 5
+sidebar_label: "5.3 Authentication"
+sidebar_position: 3
 ---
 
-# 5.5 Authentication
+# 5.3 Authentication
 
-## 5.5 Enable Secure Authentication
+## Enable Secure Authentication
 
 Now we need to enable key authentication on the SSH configuration of the node. Therefore we adjusted the config file as we did in the system's setup.
 

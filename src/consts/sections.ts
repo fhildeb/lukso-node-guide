@@ -43,13 +43,7 @@ const sections = [
       },
       {
         title: "SSH Setup",
-        pages: [
-          "Installation",
-          "Configuration",
-          "Trial Connection",
-          "Key Usage",
-          "Authentication",
-        ],
+        pages: ["Initialization", "Key Login", "Authentication"],
       },
       {
         title: "Client Setup",
