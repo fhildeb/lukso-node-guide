@@ -5,146 +5,159 @@ sidebar_position: 2
 
 # 5.2 Key Login
 
-## Configuring a Login Key
+Using SSH key authentication greatly enhances your node’s security by replacing password-based logins with cryptographic keys. In this section, you will generate a key pair, secure your private key, deploy the public key to the node, and verify passwordless login.
 
-In the next step, we will significantly increase the security of the node access flow by using SSH keys for authentication instead of the direct password.
+SSH keys use public‑key cryptography to authenticate without sending passwords over the network. You generate a private key, which will be kept secret, and a public key, that will be copied to the node. When you connect, the server challenges your client to prove you hold the private key—without ever exposing it. SSH key authentication is resistant to brute‑force attacks, since an attacker cannot guess your private key in the same way they could guess a password.
 
-#### SSH Keys
+## 1. Check for Existing Keys
 
-SSH keys are a widely used cryptographic method for providing secure and passwordless authentication between a client and a server. They are based on public-key cryptography, where a pair of keys is generated: one private key, which should be kept secret, and one public key, which can be freely shared.
+Before creating a new key, you can check whether you already have one in the default SSH key directory.
 
-Using SSH keys involves generating a key pair on the client machine and copying the public key to the server. When the client attempts to authenticate with the server, it will prove its identity by performing a cryptographic operation with the private key. The server can verify this operation using the public key without seeing the private key. This authentication method is more secure than using passwords and more convenient, as it eliminates the need to remember and enter complex passwords.
+:::info
 
-#### Keys in Traveling Situations
+By default, SSH keys are located in the `~/.ssh` directory. The file names of the keys will depend on their encryption type:
 
-It's crucial to ensure the key's safety when storing your private SSH key, especially while traveling or when your device may be damaged or lost. Here are some recommendations:
+- RSA keys: `~/.ssh/id_rsa`
+- ECDSA keys: `~/.ssh/id_ecdsa`
+- Ed25519 keys: `~/.ssh/id_ed25519`
 
-- **Backup**: Always create a backup of your private key and store it in a secure and separate location. The backup could be an encrypted USB drive, a cloud storage service, or a hardware security device like a YubiKey.
-- **Encryption**: Protect your private key with a strong passphrase. Encryption adds an extra layer of security by requiring the passphrase to be entered before the key can be used, even if someone gains access to the file.
+Use the `ls` command to list the contents of a directory and serach for all public key files ending on `.pub`.
 
-If you want to go crazy on security, the following might be something to consider. It's a bit exaggerated because all keys are encrypted on your node, and there is no critical or dangerous data on it if you choose strong passwords for your validator wallet.
-
-- **Hardware Tokens**: You could consider using hardware tokens like YubiKey or other FIDO U2F devices, which store your private key securely on a physical device. These devices protect cryptographic keys from theft or unauthorized access and can be carried while traveling.
-
-> Ledger supports the FIDO application, and you could use your Ledger device to log into your node, not only to protect the validator's withdrawal and fee addresses.
-
-#### SSH Key Generation Tool
-
-SSH-Keygen is a widely used command-line tool for generating, managing, and converting SSH public and private key pairs. It is an integral part of the OpenSSH suite, which provides secure and encrypted communication over a network using the SSH protocol.
-
-## 5.4.1 Checking for existing keys
-
-If you have already created keys before, let's check the default
-directory for them.
-
-> Adjust the command accordingly if you have set up a custom path for the key.
-
-The default location is the `~/.ssh` directory in your home folder, and the default name depends on the type of the key:
-
-- **RSA keys**: `~/.ssh/id_rsa`
-- **ECDSA keys**: `~/.ssh/id_ecdsa`
-- **Ed25519 keys**: `~/.ssh/id_ed25519`
-
-There isn't a specific command to list all SSH keys generated on the device, but you can achieve this by listing the contents of the `~/.ssh` directory. Therefore, we use the default command-line utility `ls` to list the contents of a directory. When executed, it displays files and directories within the specified directory or, if no directory is specified, within the current working directory. In our case, we search for files with the `.pub` type to show all public keys in the default folder.
+:::
 
 ```sh
 ls ~/.ssh/*.pub
 ```
 
-> **NOTE**: If you already generated one key, you could use it for the node. However, it is strongly recommended always to have one key pair for every application, so a potential attacker can not access multiple authentication systems simultaneously.
+:::tip
 
-### 5.4.2 Creating a new key
+If you see `id_rsa.pub`, `id_ecdsa.pub`, or `id_ed25519.pub` keys, you could reuse an existing key. However, best practice is to generate a separate key pair for each service to limit exposure if one key is compromised.
 
-When generating a new SSH key pair, the `ssh-keygen` command allows you to specify various options, such as the type of key, key length, and other configurations. The following options are used to define the type and strength of the generated key:
+:::
 
-- `-t rsa`: The `-t` option is used to specify the type of key to generate. In our case, `rsa` denotes that an RSA key pair will be generated.
-- `-b 4096`: The `-b` option is used to specify the number of bits in the key. A higher number of bits usually results in a more vital key. In this case, 4096 indicates that a 4096-bit RSA key will be generated. The default key length for RSA keys is typically 2048 bits, but using a 4096-bit key provides an additional layer of security.
+## 2. Generate Key Pair
 
-#### RSA Cryptography
+:::tip
 
-RSA is a widely used public-key cryptosystem in modern computing and cryptography. The RSA algorithm is based on the mathematical properties of large prime numbers and is used for secure data transmission, digital signatures, and encryption.
+You could alternatively consider generating a **hardware token** instead of generating a regular key file for maximum security. Such USB devices store your private key physically and must be plugged into the computer for a secure connection, protected from digital piracy.
 
-The main benefit of choosing it for SSH is that it is widely supported and compatible with most SSH clients and servers. RSA keys with a length of 4096 bits provide high security. The only small deduction you must make here is that RSA keys tend to be larger, and key generation and cryptographic operations can be slower than ECDSA and Ed25519.
+Great examples would be 🟡 [**YubiKey**](https://developers.yubico.com/SSH/Securing_SSH_with_FIDO2.html) or other devices like 🔲 [**Ledger**](https://support.ledger.com/article/115005198545-zd) supporting 👤 [**FIDO U2F**](https://fidoalliance.org/).
 
-- ECDSA is faster and more efficient. However, not as widely supported as RSA, and its security depends on the choice of the underlying elliptic curve.
-- Ed25519 is the most currently supported and highly secure elliptic curve-based algorithm with excellent performance and is more prone to attacks than ECDSA. However, there may be some compatibility issues in some environments.
+:::
 
-On your personal computer, create the new key pair for SSH authentication.
+:::info
+
+The following steps are performed on your 💻 **personal computer**.
+
+:::
+
+To create a new key, we can use the SSH Key Generation Tool. It is a widely used and integral part of the OpenSSH suite to generate, manage, and convert SSH public and private key pairs. First, we must decide which type of key to generate:
+
+| Key Type | Security  | Efficiency | Compatibility        | Size  |
+| -------- | --------- | ---------- | -------------------- | ----- |
+| RSA      | Very High | Slower     | Widely supported     | Large |
+| ECDSA    | High      | Fast       | Moderately supported | Small |
+| Ed25519  | Very High | Very fast  | Mostly supported     | Small |
+
+RSA is generally recommended for its strong security and wide compatibility.
+
+**2.1 Create a new key pair**:
 
 ```sh
 ssh-keygen -t rsa -b 4096
 ```
 
-### 5.4.3 Defining a Key Name
+  <details>
+    <summary>Full Property Explanation</summary>
 
-You will be prompted to `Enter file in which to save the key`. Here, defining a specific name for the key is highly recommended to reference it later, mainly if you use multiple keys for different authentications. You can still use the default folder. Exchange:
+| **Option** | **Description**                                                                                                                                                                                                                        | **Value** |
+| ---------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------- |
+| `-t`       | Specifies the cryptographic key type.                                                                                                                                                                                                  | `rsa`     |
+| `-b`       | Specifies the number of bits in the key. A higher number of bits usually results in better security. The default key length for RSA keys is `2048` bits, but using a `4096` bits provides contemporary security for a blockchain node. | `4096`    |
 
-- `<your-username>` with the username of your personal computer
-- `<your-chosen-keyname>` with your preferred name of the key without spaces
+</details>
+
+**2.2 Enter file directory, name, and passphrase**:
 
 ```sh
 /Users/<your-username>/.ssh/<your-chosen-keyname>
 ```
 
-> As I explained above, If you do not want to specify a name, you can hit `Enter` to generate a random numbered file.
+:::tip
 
-### 5.4.4 Adding a passphrase
+Setting a passphrase is highly recommended for extra protection. This will mean you will be prompted to enter an additional password each time you connect to your node. The passphrase setup can be skipped by pressing `Enter`.
 
-Now, enter a password used to encrypt the key. It is **highly recommended** to choose a solid password to raise the security level if someone gains access to your machine. A strong password is also essential for backups of the keys if your working machine is damaged during a trip and you need to regain access from a new device.
+:::
 
-> If you do not want to set up a passphrase, you can hit `Enter` to generate a key without password encryption.
+:::warning
 
-### 5.4.5 Backing up the private key
+Never share or expose your private key. Treat it as your highest‑value secret.
 
-> Generate a backup before you set the authentication key to your node environment.
+:::
 
-Here, you could use a container of a cloud provider to store the file that can always be accessed even if devices get compromised or destroyed during a trip where you do not get physical access to your node in any short time. You could also store the backup on a dedicated USB device.
+## 3. Set Key Permissions
 
-Because the key is a passphrase itself, no one could sign anything without knowing its password in case the cloud container is compromised. You could also use an encrypted container to improve security further. Just make sure you always have secure and different passwords.
+After its generation, set strict permissions to protect your private key:
 
-**After backing up the generated key, we can continue using it in production.**
+```sh
+chmod 600 ~/.ssh/<your-chosen-keyname>
+```
 
-### 5.4.6 Copying the public key to the node
+:::info
 
-Copy a generated public key to the node machine. Make sure to replace:
+The command `chmod 600` sets the permissions of your private key file so that only the owner can read and write into it. Without this restriction, anyone with access to your system could potentially misuse your private key.
 
-- `<your-chosen-keyname>` with your key's file path
-- `<ssh-device-alias>` with your SSH node alias
+:::
+
+## 4. Create Key Backup
+
+Generate a backup before setting up the node authentication, otherwise you might not be able to remotely access your node. It's crucial to ensure the key is safety stored, especially while traveling or when your device may be damaged or lost.
+
+| **Precaution** | **Description**                                                                                                                                                                                                                        |
+| -------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Backup**     | Always create a backup and store it in a secure and separate location like an encrypted USB drive or a cloud.                                                                                                                          |
+| **Encryption** | Protect your private key with a strong passphrase or create an encrypted archive of the file to add an extra layer of security before the key can be used, even if someone gains access to the machine, USB drive, or cloud container. |
+
+After backing up the generated key, we can continue using it in production.
+
+## 5. Transfer Public Key
+
+Install your public key on the node for passwordless login:
 
 ```sh
 ssh-copy-id -i ~/.ssh/<your-chosen-keyname>.pub <ssh-device-alias>
 ```
 
-> Change the path if you set up a custom directory for the key.
+:::info
 
-You will be asked to input your node's user password one last time. Then this should be your final output. Please make sure that only the keys you wanted were added.
+Exchange `<your-chosen-keyname>` and `<ssh-device-alias>` with your generated key's file path and node's SSH alias.
+
+:::
+
+You will be prompted for your node’s password one last time. Afterward, this should be your final output:
 
 ```sh
 Number of key(s) added:        1
 ```
 
-Now try logging into the machine with the following:
+## 6. Key Verification
+
+Test to log into your node only using the newly deployed key:
 
 ```sh
 ssh <ssh-device-alias>
 ```
 
-The command line tool automatically disconnects from your node after adding the key. Continue with testing the login using the authentication key.
+You should connect without entering your node password.
 
-### 5.4.7 Checking for the added keys
+:::info
 
-Logging into the node, we can check if the key was added correctly. It will still ask you for the standard node's user password.
+The following steps are performed on your 📟 **node server**.
 
-```sh
-ssh <ssh-device-alias>
-```
+:::
 
-Check if the key was added.
+Ensure your public key file got added to the list of authorized keys:
 
 ```sh
 ls -al ~/.ssh/authorized_keys
 ```
-
-You should find your authentication key in the specific folder. If not, you need to redo the previous step.
-
-**Stay logged in to your node to enable secure key authentication in the following step.**
