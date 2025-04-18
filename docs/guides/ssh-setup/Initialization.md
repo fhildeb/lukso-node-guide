@@ -1,87 +1,121 @@
 ---
-sidebar_label: "5.1 Installation"
+sidebar_label: "5.1 Initialization"
 sidebar_position: 1
 ---
 
-# 5.1 Installation
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
-## 5.1 Check SSH Install
+# 5.1 Initialization
 
-Before verifying basic access to a node machine using SSH on our personal computer, we must check if all packages are installed correctly.
+This page will cover your SSH client preparation for seamless access to your node. You will verify that SSH is installed on your personal computer, create a convenient host alias in your SSH configuration, and perform a test connection.
 
-On my side, Im running MacOS, and SSH is installed by default in MacOS Ventura on Version `9.0`. We can check the version directly by calling the SSH software:
+## 1. Check SSH Installation
 
-> **NOTE**: All the following steps are performed on a personal computer.
+Before verifying basic access, we must check if SSH is already installed, like most modern operation systems.
 
-Open the terminal to continue.
+:::info
+
+The following steps are performed on your 💻 **personal computer**.
+
+:::
+
+Open the terminal and check your SSH client version:
 
 ```sh
 ssh -V
 ```
 
-The Output should look like this:
+You should see output similar to:
 
 ```sh
 OpenSSH_9.0p1, LibreSSL 3.3.6
 ```
 
-If you use another operating system or don't have SSH installed, please search how to install the latest SSH version for your operating system accordingly. We must run the SSH counterpart to establish a secure connection to our node.
+:::warning
 
-## 5.2 Configure SSH
+If SSH is not installed, follow your operating system’s documentation to install the latest OpenSSH client.
 
-If you have SSH installed, we can continue with the next step. We set the connection parameters for our node, so we can communicate easily without constantly typing the IP and Port.
+:::
 
-#### SSH Configuration File
+## 2. Configure SSH
 
-Within the SSH packages, the global configuration files should be at `~/.ssh/config`. The file is a user-specific SSH configuration file used to customize various settings for the SSH client on a per-host basis. It allows you to define different options for each remote host you connect to via SSH, such as hostname, username, port, identity files, and other preferences. Using this configuration file, you can simplify the SSH command to connect to remote servers and apply specific settings for each host.
+To avoid typing full connection details each time, define a host entry in the SSH config file.
 
-Start by checking if the folder already exists using the directory test. We can use the `-p` option to create the directory and any necessary parent directories. Therefore it will not display an error if the directory already exists.
+:::info
+
+The default SSH configuration file should be located at `~/.ssh/config`. The file is a user-specific SSH file to customize various settings for the SSH client on a per-host basis. It allows you to define different options for each remote host you connect to via SSH, such as hostname, username, port, identity files, and other preferences.
+
+:::
+
+**2.1 Create or ensure that the SSH directory exists and set proper permissions**:
 
 ```sh
 mkdir -p ~/.ssh/
+chmod 700 ~/.ssh
 ```
 
-The configuration file requires at least the following:
+:::info
 
-- the user name of a node machine
-- the IP address
-- the previously opened SSH port
+You can use the `mkdir` command to create a directory. Adding the `p` flag will create any necessary parent directories.
 
-Open the file using Vim as before. If you're more comfortable using your preferred text editor with a graphical user interface, go ahead now that you can.
+:::
+
+**2.2 Open your SSH config file with your preferred text editor**:
+
+<Tabs>
+  <TabItem value="vim" label="Vim" default>
 
 ```sh
 vim ~/.ssh/config
 ```
 
-The system setup and the router configuration guide have determined all the needed properties. Within the file, type in the following snippet. Replace:
+  </TabItem>
+  <TabItem value="nano" label="Nano">
 
-- `<ssh-device-alias>` with a preferred device name
-- `<node-username>` with your node's username
-- `<node-ip-address>` with your node's static IP address
-- `<ssh-port>` with your opened port number
+```sh
+nano ~/.ssh/config
+```
+
+  </TabItem>
+</Tabs>
+
+**2.3 Add a host snippet and replace placeholders**:
 
 ```text
 Host <ssh-device-alias>
   User <node-username>
-  HostName <node-ip>
+  HostName <node-ip-address>
   Port <ssh-port>
 ```
 
-> The property rows under _Host_ are indented by _2 Spaces_.
+:::info
 
-Write to and save the file after rechecking the input.
+- `<ssh-device-alias>`: a memorable short name
+- `<node-username>`: your node’s administrative login user
+- `<node-ip-address>`: your node’s static IP
+- `<ssh-port>`: the custom SSH port you configured
 
-# 5.3 Trial Connection
+:::
 
-## 5.3 Test the SSH Connection
+:::warning
 
-Verify the configuration by connecting the node machine. Therefore, immediately call the `SSH` application and type your preferred SSH device alias.
+Ensure each property line is indented by two spaces and safe the file.
+
+:::
+
+## 3. Trial Connection
+
+Now verify the connection by opening the first connection to your node:
 
 ```sh
 ssh <ssh-device-alias>
 ```
 
-You should now be able to log into your system by typing in your password. Afterward, you will be greeted by the node's welcoming printout:
+- onfirm the host fingerprint by typing yes.
+- Enter your node password when prompted.
+
+You should see the Ubuntu welcome banner:
 
 ```text
 Welcome to Ubuntu 22.04.2 LTS [BUILD]
@@ -114,10 +148,14 @@ Welcome to Ubuntu 22.04.2 LTS [BUILD]
 Last login: [DATE] from [IP_FROM_PERSONAL_COMPUTER]
 ```
 
-If it works correctly, you can close the connection without shutting down the node.
+To end the session, run:
 
 ```sh
 exit
 ```
 
-**Make sure you're disconnected before continuing the next steps.**
+:::warning
+
+Always confirm you’ve fully disconnected before continuing further terminal steps.
+
+:::
