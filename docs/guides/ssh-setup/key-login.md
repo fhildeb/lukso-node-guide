@@ -67,7 +67,7 @@ RSA is generally recommended for its strong security and wide compatibility.
 ssh-keygen -t rsa -b 4096
 ```
 
-  <details>
+<details>
     <summary>Full Property Explanation</summary>
 
 | **Option** | **Description**                                                                                                                                                                                                                        | **Value** |

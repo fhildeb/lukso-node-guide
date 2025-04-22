@@ -85,8 +85,8 @@ Replace `<desired-port-number>` with the SSH port you configured for your node.
 
 :::
 
-  <details>
-    <summary>Full Property Explanation</summary>
+<details>
+  <summary>Full Property Explanation</summary>
 
 | **Option** | **Description**                                                                     | **Value**           |
 | ---------- | ----------------------------------------------------------------------------------- | ------------------- |

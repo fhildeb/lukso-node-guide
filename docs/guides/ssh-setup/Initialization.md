@@ -48,7 +48,7 @@ The default SSH configuration file should be located at `~/.ssh/config`. The fil
 
 :::
 
-**2.1 Create or ensure that the SSH directory exists and set proper permissions**:
+**2.1 Create the Directory**: _Ensure that the SSH directory exists with proper permissions._
 
 ```sh
 mkdir -p ~/.ssh/
@@ -61,7 +61,7 @@ You can use the `mkdir` command to create a directory. Adding the `p` flag will 
 
 :::
 
-**2.2 Open your SSH config file with your preferred text editor**:
+**2.2 Open the Configuration File**: _Open your SSH config file with your preferred text editor._
 
 <Tabs>
   <TabItem value="vim" label="Vim" default>
@@ -80,7 +80,7 @@ nano ~/.ssh/config
   </TabItem>
 </Tabs>
 
-**2.3 Add a host snippet and replace placeholders**:
+**2.3 Add the Node Connection**: _Add a host snippet for your node and replace placeholders._
 
 ```text
 Host <ssh-device-alias>
