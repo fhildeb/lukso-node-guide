@@ -3,17 +3,41 @@ sidebar_label: "5.3 Authentication"
 sidebar_position: 3
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 # 5.3 Authentication
 
-## Enable Secure Authentication
+In this section, you will lock down SSH on the node to accept only key‑based logins. We will adjust the config file, test that password logins are disabled, and update your personal computer's configuration file to include your private key for automated authentication.
 
-Now we need to enable key authentication on the SSH configuration of the node. Therefore we adjusted the config file as we did in the system's setup.
+:::info
+
+The following steps are performed on your 📟 **node server**.
+
+:::
+
+## 1. Enable Secure Authentication
+
+**1.1 Open the Configuration File**: _Open the SSH daemon's file with your preferred text editor._
+
+<Tabs>
+  <TabItem value="vim" label="Vim" default>
 
 ```sh
 sudo vim /etc/ssh/sshd_config
 ```
 
-Within the file, scroll down to the following lines:
+  </TabItem>
+  <TabItem value="nano" label="Nano">
+
+```sh
+sudo nano /etc/ssh/sshd_config
+```
+
+  </TabItem>
+</Tabs>
+
+**1.2 Locate the Settings**: _Search for specific setting entries that are inactive by default._
 
 ```text
 #PermitRootLogin prohibit-password
@@ -28,22 +52,33 @@ Within the file, scroll down to the following lines:
 #KbdInteractiveAuthentication no
 ```
 
-Here is a description of what those settings are:
+:::warning
 
-- **PermitRootLogin**: Controls whether the root user can log in via SSH. The "prohibit-password" value means the root user can log in using public key authentication but not a password.
-- **PubkeyAuthentication**: Enables or disables public key authentication, which allows users to authenticate using their SSH keys instead of a password.
-- **AuthorizedKeysFile**: Specifies the file(s) containing the public keys authorized to log in to the system.
-- **PasswordAuthentication**: Enables or disables password-based authentication. It is enabled by default, so we want to uncomment the line and explicitly set it to "no" to disable password authentication.
-- **PermitEmptyPasswords**: Controls whether users with empty passwords can authenticate. When disabled, users with blank passwords cannot establish a connection.
-- **KbdInteractiveAuthentication**: Enables or disables challenge-response authentication, a more interactive form of authentication that typically involves the server sending a challenge to the client, and the client responds with an appropriate answer. When set to "no," challenge-response authentication is disabled. We do not need this when we want to use our new key exclusively.
+Dots indicate that there are further setting properties between these lines that remain untouched.
 
-Now edit the properties within the config file:
+:::
 
-- uncomment them by removing the `#` in front
-- change `PasswordAuthentication` to `no`
-- remove the second key folder from the authorized key files
+<details>
+    <summary>Full Property Explanation</summary>
 
-The outcome should look like this:
+| **Directive**                | **Description**                                          | **Value**            |
+| ---------------------------- | -------------------------------------------------------- | -------------------- |
+| PermitRootLogin              | Allows root login by public‑key only, not by password.   | prohibit-password    |
+| PubkeyAuthentication         | Enables authentication with authorized public keys.      | yes                  |
+| AuthorizedKeysFile           | Specifies the single file to read for valid public keys. | .ssh/authorized_keys |
+| PasswordAuthentication       | Disables login with a password entirely.                 | no                   |
+| PermitEmptyPasswords         | Ensures accounts with blank passwords cannot log in.     | no                   |
+| KbdInteractiveAuthentication | Disables challenge–response authentication methods.      | no                   |
+
+</details>
+
+**1.3 Update the Settings**: _Uncomment the entries and change their values._
+
+- Remove any leading _#_ to uncomment each line.
+- Set _PasswordAuthentication_ no.
+- Ensure only the first _AuthorizedKeysFile_ entry remains.
+
+**1.4 Verify the Changes**: _Check for spelling mistakes or unneeded spaces._
 
 ```text
 PermitRootLogin prohibit-password
@@ -58,82 +93,145 @@ PermitEmptyPasswords no
 KbdInteractiveAuthentication no
 ```
 
-Save and close the file. We can use the SHH daemon to validate our updated SSH configuration in a test run before we apply the change in production. Testing is crucial as we cannot do a regular password login afterward.
+**1.5 Save and Exit**: _Apply changes and close the file._
+
+**1.6 Test the new Configuration File**: _Validate your file changes using the SSH daemon._
+
+:::danger
+
+Testing is crucial as you cannot use the regular password login after applying the changes on the main service.
+
+:::
 
 ```sh
 sudo sshd -t
 ```
 
-If there is no output, everything has been alright. Restart the running SSH daemon for the new adjustments to take effect.
+:::info
+
+A blank output indicates no syntax errors.
+
+:::
+
+**1.7 Restart the Service**: _Restart the running SSH daemon for the new adjustments to take effect._
 
 ```sh
 sudo systemctl restart sshd
 ```
 
-**Log out of your node**
+**1.8 Log Out of the Node**: _Exit the node's terminal and SSH session._
 
-### 5.5.1 Testing the password connection
+```sh
+exit
+```
 
-After these configurations were applied correctly, we want to test if we can still log in using our password. Please exchange `<ssh-device-alias` with your actual SSH device name of the node.
+## 2. Testing Password Login
+
+:::info
+
+The following steps are performed on your 💻 **personal computer**.
+
+:::
+
+Attempt to SSH with your user password to confirm it is now disabled:
 
 ```sh
 ssh <ssh-device-alias>
 ```
 
-You should not be permitted anymore and see the following output:
+:::info
+
+Exchange `<ssh-device-alias` with your actual SSH device name of the node.
+
+:::
+
+You should see:
 
 ```sh
 ssh: connect to host <ssh-device-alias> port 22: Connection refused
 ```
 
-If you can still log in using your user's password, redo the previous step and make sure the SSH client is restarted correctly.
+:::warning
 
-**To connect to our node again, we need to add the SSH key to the SSH client of our personal computer.**
+If you can still log in with a password, verify your configuration file again.
 
-### 5.5.2 Adding the key on the computer
+:::
 
-Add the RSA key as an identity to your SSH connection properties on your personal computer by opening the configuration file.
+## 3. Update SSH Login Key
+
+To connect to your node again, we need to add the previously generated SSH key to the SSH client.
+
+**3.1 Open the Configuration File**: _Open the SSH client's file with your preferred text editor._
+
+<Tabs>
+  <TabItem value="vim" label="Vim" default>
 
 ```sh
 vim ~/.ssh/config
 ```
 
-Below the port of your node host, add the following line starting with two spaces. Ensure to update `<my-chosen-keyname>` with the actual name of the key.
+  </TabItem>
+  <TabItem value="nano" label="Nano">
 
-```text
-  IdentityFile ~/.ssh/<my-chosen-keyname>
+```sh
+nano ~/.ssh/config
 ```
 
-> The identity file points to your private SSH key, so do not add the `.pub` file type extension behind the name.
+  </TabItem>
+</Tabs>
 
-The final output should look like this:
+**3.2 Add the Identity Reference**: _Under the host block of your node, add your private key._
+
+```text
+  IdentityFile ~/.ssh/<chosen-keyname>
+```
+
+:::info
+
+Ensure that your `IdentityFile` points to your private `<chosen-keyname>` without the `.pub` extension behind its name.
+
+:::
+
+The final host block should look like this:
 
 ```text
 Host <ssh-device-alias>
   User <node-username>
   HostName <node-ip>
   Port <ssh-port>
-  IdentityFile ~/.ssh/<my-chosen-keyname>
+  IdentityFile ~/.ssh/<chosen-keyname>
 ```
 
-Of course, you will see your actual properties:
+:::info
 
 - `<ssh-device-alias>`: your nodes SSH device name
 - `<node-username>`: your node's username
 - `<node-ip-address>`: your node's static IP address
 - `<ssh-port>`: your opened port number
-- `<my-chosen-keyname>`: your SSH key.
+- `<chosen-keyname>`: your SSH key
 
-Save and close the file so we can continue to test the SSH key login.
+:::
 
-### 5.5.3 Testing the new authentification
+**3.3 Save and Exit**: _Apply changes and close the file._
 
-Test the new key login by starting the SSH connection to our node. This time the SSH client should not prompt for the user's password. Instead, it should ask to encrypt the private key with the passphrase.
+## 4. Testing Key Login
 
-> If you did not set up any password for the key, you will connect automatically.
+Now connect using your SSH alias:
 
 ```sh
 ssh <ssh-device-alias>
 ```
+
+:::info
+
+Instead, of the password promt, the SSH client should ask to encrypt the private key with the passphrase.
+
+:::
+
+:::tip
+
+If you did not set up any password for the key, you will connect automatically.
+
+:::
 
 After entering the correct passphrase, you will end up on the Ubuntu server welcoming printout.
