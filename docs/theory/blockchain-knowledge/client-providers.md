@@ -1,9 +1,9 @@
 ---
-sidebar_label: "Client Types"
+sidebar_label: "Client Providers"
 sidebar_position: 5
 ---
 
-# Client Types
+# Client Providers
 
 # 6.4 Client Setups
 
