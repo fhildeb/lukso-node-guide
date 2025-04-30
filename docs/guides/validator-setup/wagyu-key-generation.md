@@ -42,7 +42,7 @@ The following steps are performed on your 💻 **personal computer**.
 :::
 
 <Tabs>
-  <TabItem value="linux" label="Ubuntu" default>
+<TabItem value="linux" label="Ubuntu" default>
 
 1. Visit the [Official Release Page](https://github.com/lukso-network/tools-wagyu-key-gen/) on the [LUKSO Network](https://github.com/lukso-network/) GitHub page.
 2. Download the **_AppImage_** file from the [Latest Release](https://github.com/lukso-network/tools-wagyu-key-gen/releases).
@@ -51,8 +51,8 @@ The following steps are performed on your 💻 **personal computer**.
 5. Copy the downloaded **_AppImage_** onto the USB device.
 6. Eject the USB disk safely.
 
-  </TabItem>
-  <TabItem value="apple" label="MacOS">
+</TabItem>
+<TabItem value="apple" label="MacOS">
 
 1. Visit the [Official Release Page](https://github.com/lukso-network/tools-wagyu-key-gen/) on the [LUKSO Network](https://github.com/lukso-network/) GitHub page.
 2. Download the **_DMG_** file from the [Latest Release](https://github.com/lukso-network/tools-wagyu-key-gen/releases).
@@ -61,8 +61,8 @@ The following steps are performed on your 💻 **personal computer**.
 5. Copy the downloaded **_DMG_** onto the USB device.
 6. Eject the USB disk safely.
 
-  </TabItem>
-  <TabItem value="microsoft" label="Windows">
+</TabItem>
+<TabItem value="microsoft" label="Windows">
 
 1. Visit the [Official Release Page](https://github.com/lukso-network/tools-wagyu-key-gen/) on the [LUKSO Network](https://github.com/lukso-network/) GitHub page.
 2. Download the **_EXE_** file from the [Latest Release](https://github.com/lukso-network/tools-wagyu-key-gen/releases).
@@ -71,7 +71,7 @@ The following steps are performed on your 💻 **personal computer**.
 5. Copy the downloaded **_EXE_** onto the USB device.
 6. Eject the USB disk safely.
 
-  </TabItem>
+</TabItem>
 </Tabs>
 
 ## 3. Connect to Keygen Computer

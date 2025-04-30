@@ -13,7 +13,7 @@ They're open-source and flexible, provide excellent stability, extensive communi
 
 :::tip
 
-If you are uncertain about which operating system and version to choose, you can find further details and comparisons in the [Operating Systems](/docs/theory/preparations/operation-systems.md) chapter of the [**🧠 Theory**](/docs/theory/preparations/node-specification.md) section.
+If you are uncertain about which operating system and version to choose, you can find further details and comparisons in the [Operating Systems](/docs/theory/node-operation/operation-systems.md) chapter of the [**🧠 Theory**](/docs/theory/preparations/node-specification.md) section.
 
 :::
 
@@ -28,7 +28,7 @@ If you plan to become a validator and do not have a separate computer available 
 Both Ubuntu and Debian require a USB device with at least 2GB of capacity to create a bootable installer. Once downloaded, the bootable USB device is created on your personal computer. Once the update is complete, the USB device can be removed and inserted to your node to install the operation system on it's primary storage disk.
 
 <Tabs>
-  <TabItem value="ubuntu" label="Ubuntu">
+<TabItem value="ubuntu" label="Ubuntu">
   
 1. **Download the Ubuntu Server LTS**  
    Download [Ubuntu 22.04.2 Server](https://ubuntu.com/download/server) from the official website.
@@ -47,7 +47,7 @@ Both Ubuntu and Debian require a USB device with at least 2GB of capacity to cre
    Insert the USB drive into your node to install Ubuntu Server on its storage disk.
 
 </TabItem>
-  <TabItem value="debian" label="Debian">
+<TabItem value="debian" label="Debian">
   
 1. **Download the Debian Server Version**  
    Download [Debian 11 Bullseye](https://www.debian.org/distrib/) from the official Debian website.

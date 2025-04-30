@@ -44,20 +44,20 @@ Its recommended to create the additional file, as those settings persist through
 Open the configuration file in your preferred text editor:
 
 <Tabs>
-  <TabItem value="vim" label="Vim" default>
+<TabItem value="vim" label="Vim" default>
 
 ```sh
 sudo vim /etc/fail2ban/jail.local
 ```
 
-  </TabItem>
-  <TabItem value="nano" label="Nano">
+</TabItem>
+<TabItem value="nano" label="Nano">
 
 ```sh
 sudo nano /etc/fail2ban/jail.local
 ```
 
-  </TabItem>
+</TabItem>
 </Tabs>
 
 Then, add the following configuration snippet to protect the SSH daemon:

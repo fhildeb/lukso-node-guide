@@ -29,7 +29,7 @@ Internet Protocol addresses are **logical, software‑assigned** labels. **IP** 
 :::
 
 <Tabs>
-  <TabItem value="local-ip" label="Local IP Check" default>
+<TabItem value="local-ip" label="Local IP Check" default>
 
 :::info
 
@@ -47,12 +47,12 @@ The output will look like this:
 default via <GATEWAY_IP_ADDRESS> dev eno1 proto dhcp src <NODE_IP_ADDRESS> metric <ROUTING_WEIGHT>
 ```
 
-  </TabItem>
-  <TabItem value="public-ip" label="Public IP Check">
+</TabItem>
+<TabItem value="public-ip" label="Public IP Check">
 
 :::info
 
-You can use the `ip` tool to query a stable external address like the Google DNS address `8.8.8.8` to reveal your source IP. You can further filter the IP parameter from the server's response using the text-processing tool `awk`.
+You can use the `ip` tool to query a stable external address like the Google DNS address `8.8.8.8` to reveal your source IP and further filter the IP parameter from the server's response using the text-processing tool `awk`.
 
 :::
 
@@ -60,7 +60,7 @@ You can use the `ip` tool to query a stable external address like the Google DNS
 ip route get 8.8.8.8 | awk '{print $7}'
 ```
 
-  </TabItem>
+</TabItem>
 </Tabs>
 
 ## 2 Resolve Hardware Address

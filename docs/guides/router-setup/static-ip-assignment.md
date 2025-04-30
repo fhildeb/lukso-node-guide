@@ -85,7 +85,7 @@ If you set up a designated IP address, you will have to restart your node.
 Once the node and router are back online or updated, we can confirm if the IP matches your reservation:
 
 <Tabs>
-  <TabItem value="local-ip" label="Local IP Check" default>
+<TabItem value="local-ip" label="Local IP Check" default>
 
 :::info
 
@@ -103,8 +103,8 @@ The output will look like this:
 default via <GATEWAY_IP_ADDRESS> dev eno1 proto dhcp src <NODE_IP_ADDRESS> metric <ROUTING_WEIGHT>
 ```
 
-  </TabItem>
-  <TabItem value="public-ip" label="Public IP Check">
+</TabItem>
+<TabItem value="public-ip" label="Public IP Check">
 
 :::info
 
@@ -116,7 +116,7 @@ You can use the `ip` tool to query a stable external address like the Google DNS
 ip route get 8.8.8.8 | awk '{print $7}'
 ```
 
-  </TabItem>
+</TabItem>
 </Tabs>
 
 :::warning

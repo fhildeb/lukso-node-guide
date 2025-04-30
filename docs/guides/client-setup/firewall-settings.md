@@ -8,7 +8,7 @@ import TabItem from '@theme/TabItem';
 
 # 6.1 Firewall Settings
 
-A tightly controlled firewall lets your node participate in peer-to-peer networks while blocking unsolicited traffic. Below are the mandatory ports for each supported blockchain client of the LUKSO network, followed by firewall commands to open their communication channels and check current their current status.
+A tightly controlled firewall lets your node participate in peer-to-peer networks while blocking unsolicited traffic. This page lists the mandatory ports for each supported blockchain client of the LUKSO network, followed by firewall commands to open their communication channels and check current their current status.
 
 :::tip
 
@@ -74,7 +74,7 @@ Further details about [client types](/docs/theory/blockchain-knowledge/client-ty
 :::
 
 <Tabs>
-  <TabItem value="execution" label="Geth, Erigon, Nethermind, Besu">
+<TabItem value="execution" label="Geth, Erigon, Nethermind, Besu">
 
 ```sh
 sudo ufw allow 30303/tcp
@@ -95,7 +95,8 @@ sudo ufw allow 13000/tcp
 sudo ufw allow 12000/udp
 ```
 
-</TabItem> </Tabs>
+</TabItem> 
+</Tabs>
 
 The output of each command should always show:
 
@@ -113,7 +114,7 @@ sudo ufw status
 The output should look similar to this:
 
 <Tabs>
-  <TabItem value="execution" label="Execution Client + Lighthouse, Teku, or Nimbus">
+<TabItem value="execution" label="Execution Client + Lighthouse, Teku, or Nimbus">
 
 ```text
 Status: active
@@ -130,7 +131,8 @@ To                               Action      From
 9000/tcp (v6)                    ALLOW       Anywhere (v6)
 ```
 
-</TabItem> <TabItem value="prysm" label="Execution Client + Prysm">
+</TabItem> 
+<TabItem value="prysm" label="Execution Client + Prysm">
 
 ```text
 Status: active
@@ -149,7 +151,8 @@ To                               Action      From
 12000/udp (v6)                   ALLOW       Anywhere (v6)
 ```
 
-</TabItem> </Tabs>
+</TabItem> 
+</Tabs>
 
 :::info
 

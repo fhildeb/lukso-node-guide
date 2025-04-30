@@ -86,7 +86,7 @@ If you want to know more about validator differentiations, have a look into the 
 :::
 
 <Tabs>
-  <TabItem value="genesis" label="Genesis Validators" default>
+<TabItem value="genesis" label="Genesis Validators" default>
 
 Geneses Validators were able to upload their deposit file to the front page of the Staking Launchpad. You could observe the status icons for each validator key element. Unused deposit keys display grey symbols, indicating that no funds have been deposited yet. If they showed green arrows, you knew that those could be removed from the file, because you cannot find a key twice.
 
@@ -100,8 +100,8 @@ Additionally, the genesis validators could view the current votes for the networ
 
 ![Deposit Launchpad](/img/guides/validator-setup/launchpad_4.png)
 
-  </TabItem>
-  <TabItem value="testnet" label="Testnet Validators">
+</TabItem>
+<TabItem value="testnet" label="Testnet Validators">
 
 If you're a Testnet Validator, you're allowed to check the deposit status by verifying your address. Each wallet will display the number of validators you are eligible to deposit. Each wallet must previously whitelisted by the LUKSO team.
 
@@ -113,8 +113,8 @@ Whitelisting only affects the ability to make deposits, not becoming a validator
 
 ![Whitelist Checkup](/img/guides/validator-setup/whitelist-check.png)
 
-  </TabItem>
-    <TabItem value="mainnet" label="Mainnet Validators">
+</TabItem>
+<TabItem value="mainnet" label="Mainnet Validators">
 
 :::warning
 
@@ -122,7 +122,7 @@ The **Mainnet** Staking Launchpad only **supports deposit checks** in the **fina
 
 :::
 
-  </TabItem>
+</TabItem>
 </Tabs>
 
 ## 3. Placing Deposits
@@ -200,7 +200,7 @@ Original Genesis Validators locked LYXe in order to be included in the genesis f
 After the transactions have been sent, you can verify the status of your deposits using the provided transaction buttons.
 
 <Tabs>
-  <TabItem value="genesis" label="Genesis Validators" default>
+<TabItem value="genesis" label="Genesis Validators" default>
 
 For genesis depositors, the Ethereum Blockchain Explorer displayed all the deposit transactions to the [Genesis Contract](https://etherscan.io/address/0x42000421dd80D1e90E56E87e6eE18D7770b9F8cC).
 
@@ -216,8 +216,8 @@ In case the funds were only sufficient for the exact amount of deposits, they ha
 
 :::
 
-  </TabItem>
-  <TabItem value="testnet" label="Testnet Validators">
+</TabItem>
+<TabItem value="testnet" label="Testnet Validators">
 
 For Testnet Validators, the [LUKSO Testnet Consensus Explorer](https://explorer.consensus.testnet.lukso.network/) will display the deposit transactions.
 
@@ -229,8 +229,8 @@ Validator activation can take up 14 to 24 hours. You can start importing your ke
 
 :::
 
-  </TabItem>
-    <TabItem value="mainnet" label="Mainnet Validators">
+</TabItem>
+<TabItem value="mainnet" label="Mainnet Validators">
 
 For Mainnet Validators, the [LUKSO Mainnet Consensus Explorer](https://explorer.consensus.mainnet.lukso.network/) will display the deposit transactions.
 
@@ -242,5 +242,5 @@ Validator activation can take up 14 to 24 hours. You can start importing your ke
 
 :::
 
-  </TabItem>
+</TabItem>
 </Tabs>

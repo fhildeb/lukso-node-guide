@@ -64,20 +64,20 @@ You can use the `mkdir` command to create a directory. Adding the `p` flag will 
 **2.2 Open the Configuration File**: _Open your SSH config file with your preferred text editor._
 
 <Tabs>
-  <TabItem value="vim" label="Vim" default>
+<TabItem value="vim" label="Vim" default>
 
 ```sh
 vim ~/.ssh/config
 ```
 
-  </TabItem>
-  <TabItem value="nano" label="Nano">
+</TabItem>
+<TabItem value="nano" label="Nano">
 
 ```sh
 nano ~/.ssh/config
 ```
 
-  </TabItem>
+</TabItem>
 </Tabs>
 
 **2.3 Add the Node Connection**: _Add a host snippet for your node and replace placeholders._

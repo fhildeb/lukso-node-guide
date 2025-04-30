@@ -21,20 +21,20 @@ The following steps are performed on your 📟 **node server**.
 **1.1 Open the Configuration File**: _Open the SSH daemon's file with your preferred text editor._
 
 <Tabs>
-  <TabItem value="vim" label="Vim" default>
+<TabItem value="vim" label="Vim" default>
 
 ```sh
 sudo vim /etc/ssh/sshd_config
 ```
 
-  </TabItem>
-  <TabItem value="nano" label="Nano">
+</TabItem>
+<TabItem value="nano" label="Nano">
 
 ```sh
 sudo nano /etc/ssh/sshd_config
 ```
 
-  </TabItem>
+</TabItem>
 </Tabs>
 
 **1.2 Locate the Settings**: _Search for specific setting entries that are inactive by default._
@@ -164,20 +164,20 @@ To connect to your node again, we need to add the previously generated SSH key t
 **3.1 Open the Configuration File**: _Open the SSH client's file with your preferred text editor._
 
 <Tabs>
-  <TabItem value="vim" label="Vim" default>
+<TabItem value="vim" label="Vim" default>
 
 ```sh
 vim ~/.ssh/config
 ```
 
-  </TabItem>
-  <TabItem value="nano" label="Nano">
+</TabItem>
+<TabItem value="nano" label="Nano">
 
 ```sh
 nano ~/.ssh/config
 ```
 
-  </TabItem>
+</TabItem>
 </Tabs>
 
 **3.2 Add the Identity Reference**: _Under the host block of your node, add your private key._

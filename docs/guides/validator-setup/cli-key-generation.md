@@ -38,7 +38,7 @@ The following steps are performed on your 💻 **personal computer**.
 :::
 
 <Tabs>
-  <TabItem value="linux" label="Ubuntu" default>
+<TabItem value="linux" label="Ubuntu" default>
 
 1. Visit the [official release page](https://github.com/lukso-network/tools-key-gen-cli/releases).
 2. Download the _linux.tar.gz_ file from the [latest release](https://github.com/lukso-network/tools-key-gen-cli/releases).
@@ -47,8 +47,8 @@ The following steps are performed on your 💻 **personal computer**.
 5. Copy the tape archive (`.tar.gz` file) onto the USB disk.
 6. Eject the USB device safely.
 
-  </TabItem>
-  <TabItem value="apple" label="MacOS">
+</TabItem>
+<TabItem value="apple" label="MacOS">
 
 1. Visit the [official release page](https://github.com/lukso-network/tools-key-gen-cli/releases).
 2. Download the _macos.tar.gz_ file from the [latest release](https://github.com/lukso-network/tools-key-gen-cli/releases).
@@ -57,8 +57,8 @@ The following steps are performed on your 💻 **personal computer**.
 5. Copy the tape archive (`.tar.gz` file) onto the USB disk.
 6. Eject the USB device safely.
 
-  </TabItem>
-  <TabItem value="microsoft" label="Windows">
+</TabItem>
+<TabItem value="microsoft" label="Windows">
 
 1. Visit the [official release page](https://github.com/lukso-network/tools-key-gen-cli/releases).
 2. Download the _windows.tar.gz_ file from the [latest release](https://github.com/lukso-network/tools-key-gen-cli/releases).
@@ -67,7 +67,7 @@ The following steps are performed on your 💻 **personal computer**.
 5. Copy the tape archive (`.tar.gz` file) onto the USB disk.
 6. Eject the USB device safely.
 
-  </TabItem>
+</TabItem>
 </Tabs>
 
 ## 3. Connect to Keygen Computer

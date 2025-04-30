@@ -35,20 +35,20 @@ The default port number is `22`. It is recommended to choose a port number highe
 Use your preferred text editor to open the SSH configuration file:
 
 <Tabs>
-  <TabItem value="vim" label="Vim" default>
+<TabItem value="vim" label="Vim" default>
 
 ```sh
 sudo vim /etc/ssh/sshd_config
 ```
 
-  </TabItem>
-  <TabItem value="nano" label="Nano">
+</TabItem>
+<TabItem value="nano" label="Nano">
 
 ```sh
 sudo nano /etc/ssh/sshd_config
 ```
 
-  </TabItem>
+</TabItem>
 </Tabs>
 
 1. Locate the line `#Port 22`.
