@@ -11,7 +11,9 @@ import TabItem from '@theme/TabItem';
 This section guides you through the deposit process using the LUKSO Validator Deposit Launchpads. Depositing funds is a critical step that activates your validator keys and enables your node to participate in staking, which in turn generates income. Before you begin, please ensure that you have read and understood the staking fundamentals in the [Node Operation](/docs/theory/node-operation/staking.md) and [Blockchain Knowledge](/docs/theory/blockchain-knowledge/proof-of-stake.md) chapters in the [**🧠 Theory**](/docs/theory/preparations/node-specification.md) section.
 
 :::warning
+
 This step is about transferring funds from your wallet to your validator deposit keys, enabling your node to run and earn staking rewards. If you are unsure about Deposits and Proof of Stake, please read the [Staking](/docs/theory/node-operation/staking.md) chapter.
+
 :::
 
 After you have generated your deposit keys, you can visit the _LUKSO Validator Deposit Launchpads_ to stake funds:
@@ -22,13 +24,17 @@ After you have generated your deposit keys, you can visit the _LUKSO Validator D
 ![Deposit Launchpad](/img/guides/validator-setup/launchpad_1.png)
 
 :::danger Domain Verification
+
 Always double-check the `lukso.network` domain before continuing the deposit process.
+
 :::
 
 Take a moment to review the launchpad’s functionality and statistics. For each network, you will see details such as the total staked amount of LYXe or LYXt, the **total number of validators**, and the current **Annual Percentage Rate** of gains, which is particularly useful for monitoring the network dynamics.
 
 :::info
+
 Further insights about the mainnet’s genesis validators can be gathered from the [Dune Analytics Dashboard](https://dune.com/hmc/lukso-genesis-validators) by [Hugo Masclet](https://x.com/HugoApps).
+
 :::
 
 ## 1. Preparing Deposit Files

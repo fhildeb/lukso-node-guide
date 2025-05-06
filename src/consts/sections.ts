@@ -117,6 +117,7 @@ const sections = [
         pages: [
           "Proof of Stake",
           "Tokenomics",
+          "Peer Networks",
           "Slashing and Panelties",
           "Client Types",
           "Client Providers",

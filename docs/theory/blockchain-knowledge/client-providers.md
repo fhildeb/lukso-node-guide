@@ -1,6 +1,6 @@
 ---
 sidebar_label: "Client Providers"
-sidebar_position: 5
+sidebar_position: 6
 ---
 
 # Client Providers

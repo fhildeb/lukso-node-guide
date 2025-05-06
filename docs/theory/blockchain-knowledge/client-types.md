@@ -1,6 +1,6 @@
 ---
 sidebar_label: "Client Types"
-sidebar_position: 4
+sidebar_position: 5
 ---
 
 # Client Types

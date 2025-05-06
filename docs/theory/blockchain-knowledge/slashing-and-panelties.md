@@ -1,6 +1,6 @@
 ---
 sidebar_label: "Slashing and Panelties"
-sidebar_position: 3
+sidebar_position: 4
 ---
 
 # Slashing and Panelties
