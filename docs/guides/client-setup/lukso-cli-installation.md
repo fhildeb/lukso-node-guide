@@ -319,7 +319,10 @@ lukso start \
   --lighthouse-wss-checkpoint=$<BLOCK_ROOT>:$<EPOCH>
 
 # Starting the Testnet Node without Staking
-lukso start --testnet --lighthouse-checkpoint-sync-url=https://checkpoints.testnet.lukso.network
+lukso start --testnet \
+  --lighthouse-checkpoint-sync-url=https://checkpoints.testnet.lukso.network \
+  --lighthouse-genesis-state-url=https://checkpoints.testnet.lukso.network \
+  --lighthouse-wss-checkpoint=$<BLOCK_ROOT>:$<EPOCH>
 ```
 
 </TabItem> <TabItem value="teku" label="Teku">
@@ -331,7 +334,9 @@ lukso start \
   --teku-ws-checkpoint=$<BLOCK_ROOT>:$<EPOCH>
 
 # Starting the Testnet Node without Staking
-lukso start --testnet --teku-checkpoint-sync-url=https://checkpoints.testnet.lukso.network
+lukso start --testnet \
+  --teku-checkpoint-sync-url=https://checkpoints.testnet.lukso.network \
+  --teku-ws-checkpoint=$<BLOCK_ROOT>:$<EPOCH>
 ```
 
 </TabItem> <TabItem value="prysm" label="Prysm">
@@ -344,7 +349,26 @@ lukso start \
   --prysm-weak-subjectivity-checkpoint=$<BLOCK_ROOT>:$<EPOCH>
 
 # Starting the Testnet Node without Staking
-lukso start --testnet --prysm-checkpoint-sync-url=https://checkpoints.testnet.lukso.network
+lukso start --testnet \
+  --prysm-checkpoint-sync-url=https://checkpoints.testnet.lukso.network \
+  --prysm-genesis-beacon-api-url=https://checkpoints.testnet.lukso.network \
+  --prysm-weak-subjectivity-checkpoint=$<BLOCK_ROOT>:$<EPOCH>
+```
+
+</TabItem> <TabItem value="nimbus" label="Nimbus">
+
+```sh
+# Starting the Mainnet Node without Staking
+lukso start \
+  --nimbus-external-beacon-api-url=https://checkpoints.mainnet.lukso.network \
+  --nimbus-trusted-block-root=$<BLOCK_ROOT> \
+  --nimbus-weak-subjectivity-checkpoint=$<BLOCK_ROOT>:$<EPOCH>
+
+# Starting the Testnet Node without Staking
+lukso start --testnet \
+  --nimbus-external-beacon-api-url=https://checkpoints.testnet.lukso.network
+  --nimbus-trusted-block-root=$<BLOCK_ROOT> \
+  --nimbus-weak-subjectivity-checkpoint=$<BLOCK_ROOT>:$<EPOCH>
 ```
 
 </TabItem> 
@@ -352,12 +376,18 @@ lukso start --testnet --prysm-checkpoint-sync-url=https://checkpoints.testnet.lu
 
 :::info
 
-Replace the `<BLOCK_ROOT>` and `<EPOCH>` placeholders with the current hash and number.
+Replace the `<BLOCK_ROOT>` and `<EPOCH>` placeholders with the current hash and number while keeping the `$` sign.
 
 :::
 
 </TabItem> 
 </Tabs>
+
+:::tip
+
+Details about logging clients and [scanning problems](/docs/guides/maintenance/problem-scanning.md) can be found in the [maintenance section](/docs/guides/maintenance/software-updates.md) of the guide.
+
+:::
 
 :::note Folder Structure
 
