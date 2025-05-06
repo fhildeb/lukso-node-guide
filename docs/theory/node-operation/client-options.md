@@ -45,3 +45,8 @@ You can look up their individual documentation if you are willing to use them. T
 
 <!-- TODO: Add Dappnode + Link-->
 <!--TODO: Add Docker Factory: https://docker-factory.lukso.tech/-->
+
+Official Links:
+
+- [LUKSO Mainnet Parameters](https://docs.lukso.tech/networks/mainnet/parameters)
+- [LUKSO Testnet Parameters](https://docs.lukso.tech/networks/testnet/parameters)
