@@ -20,7 +20,7 @@ sudo systemctl enable ssh
 sudo systemctl is-enabled ssh
 ```
 
-#### Text Editors
+### Text Editors
 
 We can use various terminal text editors to configure files on the node. Ubuntus's default text editor is called Vi Improved. I will use the default editor `vim` in this guide. However, you can also choose a more user-friendly one like `nano`. Here is a description of the two:
 
@@ -49,3 +49,7 @@ At the bottom of the Nano screen, you'll see a row of commands, each represented
 
 - To save changes, press `Ctrl + O`, and press `Enter`.
 - To exit, press `Ctrl + X`. If you've made changes, you will be asked to save them- press `Y` for Yes or `N` for No.
+
+### SCP
+
+The [Secure Copy Protocol](https://en.wikipedia.org/wiki/Secure_copy_protocol) is used for secure file transfers between hosts on a network. It operates over SSH, leveraging its authentication and encryption mechanisms to ensure both the authenticity and confidentiality of the data during transfer. SCP is a reliable choice for data transfers, offering secure transmission even over unsecured networks.
