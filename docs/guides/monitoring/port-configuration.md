@@ -1,9 +1,9 @@
 ---
-sidebar_label: "8.2 Ports and Installation"
+sidebar_label: "8.2 Port Configuration"
 sidebar_position: 2
 ---
 
-# 8.2 Monitoring Ports
+# 8.2 Port Configuration
 
 ### 7.1.3 Opening Default Monitoring Ports
 
@@ -77,23 +77,4 @@ To                         Action      From
 12000/udp (v6)                  ALLOW       Anywhere (v6)
 9090/tcp  (v6)                  ALLOW       Anywhere (v6)
 3000/tcp  (v6)                  ALLOW       Anywhere (v6)
-```
-
-# 8.2 Ports and Installation
-
-### 7.1.4 Installing Core Tools
-
-Effective node monitoring is essential for maintaining a reliable and secure node and fostering trust within the blockchain ecosystem. Let's follow up by explaining the different tools and installing some core packages needed to download and execute such software.
-
-- **wget**: Utility tool for non-interactive download of files from the Web. It supports HTTP, HTTPS, and FTP protocols and retrieval through HTTP proxies. It's beneficial for downloading files from the command line, automating downloads, or when a graphical user interface is unavailable, like on our server installation.
-- **make**: Automation tool for software builds, generating executable programs and libraries from source code by reading files called Makefiles, which specify how to derive the target program. It's widely used in software development for compiling and linking source code files.
-- **git**: Distributed version control system for tracking changes in source code during software development, allowing developers to collaborate, clone, and manage software projects effectively. It will help us download code repositories.
-- **apt-transport-https**: Software service allowing the package management utility to retrieve files over the HTTPS protocol. Once installed, APT can retrieve packages more securely.
-- **software-properties-common**: A software package that provides some useful tools for adding and managing software repositories. The most common tool it offers is the `add-apt-repository` command to add software packages to the node.
-- **gnupg2**: OpenPGP standard for encrypting and signing data and communication. It is used to receive and install signed software packages.
-
-Install the following six tools that we will need to set up Prometheus, Grafana, and all the Exporters:
-
-```sh
-sudo apt install wget make git apt-transport-https software-properties-common gnupg2
 ```

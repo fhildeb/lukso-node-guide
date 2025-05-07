@@ -67,8 +67,8 @@ const sections = [
       {
         title: "Monitoring",
         pages: [
-          "Introduction",
-          "Ports and Installation",
+          "Software Preparation",
+          "Port Configuration",
           "Node Exporter",
           "JSON Exporter",
           "Blackbox Exporter",
