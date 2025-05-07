@@ -1,6 +1,6 @@
 ---
 sidebar_label: "L16 Client Installation"
-sidebar_position: 1
+sidebar_position: 2
 ---
 
 <!--Add general info about setup and testing community-->

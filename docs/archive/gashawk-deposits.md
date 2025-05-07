@@ -1,6 +1,6 @@
 ---
 sidebar_label: "GasHawk Deposits"
-sidebar_position: 4
+sidebar_position: 5
 ---
 
 <!--Add general info about eth costs during that time period-->
