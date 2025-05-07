@@ -3,90 +3,129 @@ sidebar_label: "6.4 Validator Configuration"
 sidebar_position: 4
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 # 6.4 Validator Configuration
 
-## 6.9 LUKSO CLI Validator Setup
+After your [node is configured](/docs/guides/client-setup/lukso-cli-installation.md) and client startup was tested, you can activate its staking functionality by importing your validator keys. Running a validator node means you're actively participating in the blockchain's consensus on top of providing a synchronized data peer of the network. The [LUKSO CLI](https://github.com/lukso-network/tools-lukso-cli) provides unified commands to manage staking for mainnet and testnet and various clients.
 
-If the network started correctly and was syncing, we can continue setting up your validator if you would like to participate in the blockchain consensus.
+:::tip
 
-### 6.9.1 Validator Credentials
+Please ensure you have a basic understanding of blockchain networks and staking before running a validator node. If you're not yet familiar with [proof of stake](/docs/theory/blockchain-knowledge/proof-of-stake.md), [tokenomics](/docs/theory/blockchain-knowledge/tokenomics.md), [panelties](/docs/theory/blockchain-knowledge/slashing-and-panelties.md), and the different [validator credentials](/docs/theory/node-operation/validator-credentials.md) and [client providers](/docs/theory/blockchain-knowledge/client-providers.md), you can refer to the [**🧠 Theory**](/docs/theory/blockchain-knowledge/proof-of-stake.md) section.
 
-When becoming a validator, you must manage passwords, addresses, and keys. Let's clear them up once again before we start the CLI process:
+:::
 
-- **Validator Mnemonic Seed**: This is a phrase that is used to generate your _Validator Deposit Keys_ and your _Deposit Data_. The mnemonic seed is a series of words that act as a seed to generate your keys and addresses. It's the most critical piece of information that you need to store securely and privately. If someone else gets access to your mnemonic seed, they could potentially regenerate your validator and gain access to your staked LYX/LYXt. On the other hand, if you lose your mnemonic seed and don't have your keys backed up, you could lose access to your staked LYX/LYXt. The mnemonic seed should be written down and stored in a secure location. Storing multiple copies in different secured locations is often recommended to protect against loss or damage.
-- **Validator Key Password**: This password is used to encrypt each individual _Validator Deposit Key_. Every time you import a validator key into your validator client, you'll need to provide this password. It's important to note that each validator key can have its unique password. Separate passwords would mean that if you're importing multiple keys, you may need to provide multiple passwords. Your key passwords should be strong, unique, and securely stored like your wallet password. If you create multiple batches of validator keys, all keys within one folder will have the same password.
-- **Validator Deposit Key**: A keystore file encrypts your private key using the _Validator Key Password_. It is generated for each potential deposit you want to make. It can be used to import your validator key into a validator client. It's important to store your keystore files securely, as anyone with access to your keystore file and its password would have access to your validator key. If you lose your keystore file, you can regenerate it using your _Validator Mnemonic Seed_, assuming you have also stored it securely. With it, the client can verify if you deposited the required 32 LYX/LYXe to become an active validator.
-- **Deposit Data**: This is a JSON file generated when you set up your validator using your _Validator Mnemonic Seed_. The JSON file includes various essential pieces of information, such as your public key and a signature. This file is used as part of the process to register your validator on the blockchain using transactions.
-- **Validator Wallet Password**: This password is used to secure the wallet holding your _Validator Deposit Keys_. The wallet password should be strong, unique, and known only to you. This password will be needed every time you start your validator client.
-- **Validator Withdrawal Address**: This is the Ethereum address where your funds will be sent when you stop validating and withdrawing your staked LYX. It's important that you always have control over it as it can not be updated. For more information, you can check the [Withdrawals and Earnings](#) section of the guide.
-- **Validator Recipient Fee Address**: This is the Ethereum address where the transaction fees you earn as a validator will be sent. Depending on your setup, this might be the same as your withdrawal address. For more information, you can check the [Withdrawals and Earnings](#) section of the guide.
+:::warning
 
-<!--TODO: 02-network-theory.md-->
-<!--TODO: 02-network-theory.md-->
+Depending on if you are participating in the mainnet or testnet, running a validator requires 32 LYX or 32 LYXt per validator key. Ensure you have completed the [key generation](/docs/guides/validator-setup/wagyu-key-generation.md) and [deposit process](/docs/guides/validator-setup/launchpad-walkthrough.md) of the [validator setup](/docs/guides/validator-setup/precautions.md) before importing keys.
+:::
 
-### 6.9.2 Import Mainnet Keys
+## 1. Transfer Validator Keys
 
-> If you want to import testnet validator keys, have a look at the [Importing Testnet Keys](#692-import-testnet-keys) guide.
+Once you've completed the [validator setup](/docs/guides/validator-setup/precautions.md), you will be left with one or multiple folders containing the encrypted validator key files, depending on if you split the deposits or withdrawals to multiple wallets. These deposit files will first have to be sent from your personal computer to your node, before they can be imported into the consensus client.
 
-Only validators that deposited LYXe to the [Genesis Deposit Contract](https://etherscan.io/address/0x42000421dd80D1e90E56E87e6eE18D7770b9F8cC#code) before it was frozen on May 9th, 2023 can run the back structure of the network until the LYXe Migration is live on the LUKSO blockchain. The migration is [expected](https://medium.com/lukso/its-happening-the-genesis-validators-are-coming-ce5e07935df6) around one month after the initial network start.
+:::tip SCP
 
-Visit the official [Deposit Launchpad](https://deposit.mainnet.lukso.network/) and cautiously go through the process of generating keys and depositing stakes to them, in case you have not already.
+The [Secure Copy Protocol](https://en.wikipedia.org/wiki/Secure_copy_protocol) is used for secure file transfers between hosts on a network. It operates over SSH, leveraging its authentication and encryption mechanisms to ensure both the authenticity and confidentiality of the data during transfer. SCP is a reliable choice for data transfers, offering secure transmission even over unsecured networks.
 
-1. Guide: [Generate Deposit Keys](/validator-key-generation/).
-2. Guide: [Deposit Stake in LYXe](/validator-key-stake/).
+:::
 
-Copy your folder(s) of your deposit keys from your personal computer into the working directory of your node.
+Build the entire command and execute it in the personal. You will be prompted to log in again before the process is started.
 
-#### Secure Copy Protocol
+:::info
 
-SCP is a network protocol that enables secure file transfers between hosts on a network. It uses SSH for data transfer and utilizes the exact mechanisms for authentication, in our case, authentication using a key, thereby ensuring the authenticity and confidentiality of the data in transit.
+The following steps are performed on your 💻 **personal computer**.
 
-SCP is a reliable and secure choice for data transfer over the internet or within unsecured networks due to its underlying SSH protocol, which encrypts the data in transit.
-
-> The command uses quite a few properties and flags. Opening up a text editor and copying the contents is recommended. If you're using a Unix-based system like Linux or Mac, you can follow these steps to get the data quickly:
-
-- `<ssh-key>`: Check your SSH keys within the SSH folder using `ls ~/.ssh/` from the terminal of your personal computer. Search for your generated key file and write down the name.
-- `<local-path-to-key-folder>`: Open your file explorer and localize the keystore folder with all your validator keys on your personal computer. Right-click and `Copy Path`. Then copy it to your editor.
-- `<your-ssh-port>`, `<user-name>` and `<node-ip-address>`: Open your SSH configuration file on your personal computer using `vim ~/.ssh/config`. Write down the Port, IP, and User of your node.
-- `<node-path-to-node-folder>`: Open your node's working directory on your node and run the `pwd` command. Then copy the full path.
-- `<keyfolder-name>`: Define a new name for the validator folder. It can be the same as on your personal computer and is used for importing the keys. We will remove it after.
-
-> Build the entire command and copy it to your personal computer's terminal. You will be prompted to log in again.
+:::
 
 ```sh
-scp -P <your-ssh-port> -i ~/.ssh/<ssh-key> -r <local-path-to-key-folder> <user-name>@<node-ip-address>:<node-path-to-node-folder>/<keyfolder-name>
+scp -P <ssh-port> -i ~/.ssh/<ssh-key> -r <key-folder> <user-name>@<node-ip>:<node-folder>/<keyfolder>
 ```
 
-Afterward, import your keys within the LUKSO CLI. You will be asked for your folder with your validator keys and a new password for your validator node, which is needed to secure the wallet and restart the validator later on.
+:::warning
 
-> If you have multiple sets of keys in different folders, run the `lukso validator import` command numerous times.
+The command uses quite a few properties and flags. Replace all properties with specific values of your SSH and node configuration. Opening up a text editor before copying the contents into the terminal is recommended.
+
+:::
+
+| **Property**                  | **Description**                                        | **Retrieval**                                                                                                                                             |
+| ----------------------------- | ------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| <nobr>`<ssh-key>`</nobr>      | SSH key file used for authentication.                  | Run `ls ~/.ssh/` in your personal computer's terminal to list the files in the SSH folder and find the correct key file name for your node login.         |
+| <nobr>`<key-folder>`</nobr>   | Local path to the keystore folder with validator keys. | Use your file explorer to locate the folder of your validator keys on your personal computer and right-click the folder and copy it's path.               |
+| <nobr>`<ssh-port>` </nobr>    | The SSH port of your node.                             | Open the `~/.ssh/config` file using your preferred text editor on your personal computer and find the port that is used for the node's SSH communication. |
+| <nobr>`<user-name>`</nobr>    | The SSH user for your node.                            | Open the `~/.ssh/config` file using your preferred text editor on your personal computer and find the admin user name for your node.                      |
+| <nobr>`<node-ip>` </nobr>     | The IP address of your node.                           | Open the `~/.ssh/config` file using your preferred text editor on your personal computer and find the host IP address of your node.                       |
+| <nobr>`<node-folder>` </nobr> | The full path to your node's working directory.        | Use SSH to connect to your node, enter your node's working directory, and run the `pwd` command to get it's full path.                                    |
+| <nobr>`<keyfolder>` </nobr>   | Name for the validator folder.                         | Define a name for the copied file's folder on your node, either the same as your personal computer or a new one.                                          |
+
+:::tip
+
+If you have multiple deposit folders, copy one folder at the time and perform this step several times.
+
+:::
+
+## 2. Import Validator Keys
+
+Once all validator key files got transferred over, import your keys within the LUKSO CLI. You will be asked for the path of the previously defined name of the key folder.
+
+:::warning
+
+During the first import process, a new password for starting your validator node must be defined to secure the consensus client's wallet. Make sure to use a strong passphrase. It will be used to startup the staking process of your node.
+
+:::
+
+:::info
+
+The following steps are performed on your 📟 **node server**.
+
+:::
+
+<Tabs groupId="network-type">
+  <TabItem value="mainnet" label="Mainnet" default>
 
 ```sh
-# Import validator keys for mainnet
-lukso validator import --validator-keys "./<key-folder-name>"
+lukso validator import --validator-keys "<node-folder>/<keyfolder>"
 ```
 
-#### Validator Folder Structure
+</TabItem> <TabItem value="testnet" label="Testnet">
 
-The import command will generate two new folders within the working directory: The keystore and the validator wallet.
+```sh
+lukso validator import --testnet --validator-keys "<node-folder>/<keyfolder>"
+```
+
+</TabItem>
+</Tabs>
+
+:::info
+
+If you have multiple deposit folders, import one folder at the time and re-type the wallet password on each additional import.
+
+:::
+
+:::note Folder Structure
+
+The import command will generate a new keystore folder within the working directory housing all imported validator accounts.
 
 ```text
 lukso-node
-...
+│
+├───configs                                   // Configuration Files
+├───[network]-logs                            // Network's Logged Status Messages
+├───[network]-data                            // Network's Blockchain Data
+├───[network]-keystore                        // Network's Validator Keystore List
 |
-├───mainnet-keystore                        // Testnet Validator Wallet
-│   ├───keys                                // Encrypted Private Keys
-│   ├───...                                 // Files for Signature Creation
-|   ├───pubkeys.json                        // Validator Public Keys
-|   ├───deposit_data.json                   // Deposit JSON for Validators
-|   └───node_config.yaml                    // Node Configuration File
-|
-...
+└───cli-config.yaml                           // Global CLI Configuration
 ```
 
-#### List Imported Mainnet Accounts
+:::
 
-After importing one or multiple folders, you can check your imported keys. Adjust the flag to the network's validator key folder.
+## 3. Verify Imported Accounts
+
+After importing one or multiple folders, you can check your imported keys.
+
+<Tabs groupId="network-type">
+  <TabItem value="mainnet" label="Mainnet" default>
 
 ```sh
 # LUKSO CLI v. 0.6.0+
@@ -96,63 +135,7 @@ lukso validator list --mainnet
 validator accounts list --wallet-dir "mainnet-keystore"
 ```
 
-### 6.9.3 Import Testnet Keys
-
-> If you want to import testnet validator keys, have a look at the [Importing Mainnet Keys](#691-import-mainnet-keys) guide.
-
-Testnet validators need to be whitelisted as they are seen as core members and organizations wanting to run and maintain their LUKSO Testnet node in a stable environment over a long period to ensure healthy uptimes, stability, and quick response times from clients as demand from developers rises.
-
-If you want to become a whitelisted validator on our testnet, prepare your validator keys, set up your node environment, and contact `testnet-validators@lukso.network`. You must send your Ethereum address and more details about your setup and involvement in the developer/network community. If you get whitelisted, you will also get a certain amount of LYXt to deposit your keys.
-
-Visit the official [Testnet Deposit Launchpad](https://deposit.testnet.lukso.network/) and cautiously go through the process of generating keys and depositing stakes to them, in case you have not already.
-
-1. Guide: [Generate Deposit Keys](/validator-key-generation/).
-2. Guide: [Deposit Stake in LYXt](/validator-key-stake/).
-
-Copy your folder(s) of your deposit keys from your personal computer into the working directory of your node.
-
-#### Secure Copy Protocol
-
-SCP is a network protocol that enables secure file transfers between hosts on a network. It uses SSH for data transfer and utilizes the exact mechanisms for authentication, in our case, authentication using a key, thereby ensuring the authenticity and confidentiality of the data in transit.
-
-SCP is a reliable and secure choice for data transfer over the internet or within unsecured networks due to its underlying SSH protocol, which encrypts the data in transit.
-
-> The command uses quite a few properties and flags. Opening up a text editor and copying the contents is recommended. If you're using a Unix-based system like Linux or Mac, you can follow these steps to get the data quickly:
-
-- `<ssh-key>`: Check your SSH keys within the SSH folder using `ls ~/.ssh/` from the terminal of your personal computer. Search for your generated key file and write down the name.
-- `<local-path-to-key-folder>`: Open your file explorer and localize the keystore folder with all your validator keys on your personal computer. Right-click and `Copy Path`. Then copy it to your editor.
-- `<your-ssh-port>`, `<user-name>` and `<node-ip-address>`: Open your SSH configuration file on your personal computer using `vim ~/.ssh/config`. Write down the Port, IP, and User of your node.
-- `<node-path-to-node-folder>`: Open your node's working directory on your node and run the `pwd` command. Then copy the full path.
-- `<keyfolder-name>`: Define a new name for the validator folder. It can be the same as on your personal computer and is used for importing the keys. We will remove it after.
-
-> Build the entire command and copy it to your personal computer's terminal. You will be prompted to log in again.
-
-```sh
-# Import validator keys for testnet
-lukso validator import --testnet --validator-keys "./<key-folder-name>"
-```
-
-#### Validator Folder Structure
-
-The import command will generate two new folders within the working directory: The keystore and the validator wallet.
-
-```text
-lukso-node
-...
-|
-├───testnet-keystore                        // Testnet Validator Wallet
-│   ├───keys                                // Encrypted Private Keys
-│   ├───...                                 // Files for Signature Creation
-|   ├───pubkeys.json                        // Validator Public Keys
-|   ├───deposit_data.json                   // Deposit JSON for Validators
-|   └───node_config.yaml                    // Node Configuration File
-|
-...
-```
-
-### 6.9.4 List Imported Testnet Accounts
-
-After importing one or multiple folders, you can check your imported keys:
+</TabItem> <TabItem value="testnet" label="Testnet">
 
 ```sh
 # LUKSO CLI v. 0.6.0+
@@ -162,104 +145,65 @@ lukso validator list --testnet
 validator accounts list --wallet-dir "testnet-keystore"
 ```
 
-### 6.9.5 Removing the Key Folder
+</TabItem>
+</Tabs>
 
-If your imported keys match the ones in the original folder you used to import, you can delete the folder used. You won't need the original files anymore.
+## 4. Remove the Key Folder
 
-You can use the `rm` command to remove files and directories while using the `-r` recursive method. It will ensure to remove directories and their contents within the pointed folder. You can skip the confirmation questions or file errors using `-rf` instead. Make sure to adjust the path to your key-folder.
+If the imported keys match the ones in the original deposits, you can delete the folder with the deposit keys.
+
+:::info
+
+You can use the `rm` command to remove files and directories while using the `-r` recursive method. The flag will ensure to remove directories and their contents. You can further skip the confirmation questions or file errors using `-rf` instead.
+:::
 
 ```sh
-rm -rf ./<validator-key-folder>
+rm -rf <node-folder>/<keyfolder>
 ```
 
-### 6.9.6 Starting the Validator
+:::info
 
-After importing your keys, you can start the node with the validator functionality. If the node is already synced and running, the `lukso start` command will do a restart automatically.
+Make sure to adjust the path to your key-folder and repeat the process for every folder that was transferred.
+
+:::
+
+## 5. Start the Validator
+
+After importing your keys, you can rstart the node with the validator functionality to begin staking.
+
+:::info
 
 To start the validator, you have to pass a minimum of two flags:
 
-- `--validator`: Not only (re-)starts the installed and configured clients, including the validator
-- `transaction-fee-recipient`: Your transaction fee recipient address, which will receive all block rewards and tips from transactions. The recipient could be any Ethereum address you have control over, like MetaMask, Ledger, or any other wallet that has the functionality to connect with LUKSO or custom networks. Ledger accounts, for instance, are secure and can be imported into MetaMask to send transactions on custom networks.
+- `--validator`: Starts the configured clients and their validator client.
+- `--transaction-fee-recipient`: Defines the address to which block rewards and transaction tips will be paid out.
 
-> If you want to set custom flags to the start command, like the graffiti from the previous section or a custom stat page connection, make sure to add them to the following commands:
+:::
 
-##### Starting up mainnet validator
+:::tip
+
+The recipient can be any Ethereum address of a wallet you have control over and is able to connect with custom networks. Ledger accounts, for instance, are secure hardware-wallets and can be imported into MetaMask to send transactions on custom networks. If you withdraw or transfer the money regularly, you can also store the funds in a browser wallet. The address can be updated every time the node is restarted.
+
+:::
+
+<Tabs groupId="network-type">
+  <TabItem value="mainnet" label="Mainnet" default>
 
 ```sh
 lukso start --validator --transaction-fee-recipient "<transaction-fee-recipient-address>"
 ```
 
-##### Starting up testnet validator
+</TabItem> <TabItem value="testnet" label="Testnet">
 
 ```sh
-lukso start --validator --transaction-fee-recipient "<transaction-fee-recipient-address>" --testnet
+lukso start --validator --testnet --transaction-fee-recipient "<transaction-fee-recipient-address>"
 ```
 
-### 6.9.7 Optional Slasher Config
+</TabItem>
+</Tabs>
 
-A slasher actively watches for offenses or misbehavior on the network and broadcasts them. This might be due to running the same validators or multiple machines, faking proposals, etc.
+:::info
 
-Slasher is the name of software that can detect slashable events from validators and report them to the protocol. You can think of a slasher as the network's police. Running a slasher is totally optional. In order to detect slashable messages, the slasher records the attesting and proposing history for every validator on the network, then cross references this history with what has been broadcasted to find slashable messages such as double blocks or surrounding votes.
+Replace `<transaction-fee-recipient-address>` with your actual withdrawal address.
 
-> Slashing affects the protocol layer, e.g., validators that act maliciously. It does not affect the nodes per se, even if all validators of a node might be affected.
-
-In theory all the network needs is 1 honest, properly functioning slasher to monitor the network because any slashings found are propagated to the entire network for it to be put into a block as soon as possible.
-
-> Due to uptime reasons, there should be multiple backups in different areas and networks. It's generally beneficial for network security if a handful of nodes independently check for slashing conditions.
-
-Running a slasher is not meant to be profitable and whistleblower rewards are purposefully low as slashing happens rarely.
-
-#### Additional Rewards
-
-Running a slasher may offer some profits to your validators given certain conditions. If the slasher detects a slashable condition, it will broadcast it to the network by default. Some lucky validator will then package this slashing evidence into a block and be rewarded for doing so. This validator might be your own one. By running only a one or two digit validator amount, chances are super low and do not keep up with the potential rewards.
-
-> **Note**: If there is no cheating behavior within the network, there is nothing to be slashed. Regular penalties are applied from the consensus.
-
-#### Requirements
-
-The [hardware requirements](https://docs.prylabs.network/docs/prysm-usage/slasher) for the slasher service can be seen below. It needs more system resources, namely more than 1GB of additional RAM and more storage space. However, there is not a particular number.
-
-- Processor: Intel Core i7–4770 or AMD FX-8310 or better
-- Memory: 16GB RAM
-- Storage: 1TB available space SSD
-- Internet: Broadband connection
-
-> The slasher database will take additional space on your hard disk, up to hundreds of GBs. If you want to know more about how much storage the node will need, have a look at the [Client Setup](#) section.
-
-<!--TODO: 04-client-setups.md-->
-
-If you run the slasher on a low-performance node or can not keep up with the requirements, it could lead to the following problems:
-
-- The slasher service could lag behind the head of the chain, making it ineffective at timely detecting slashable offenses.
-- The node could become unstable and crash due to running out of resources, disrupting its participation in the consensus process and potentially leading to penalties if it's also running a validator client.
-- The service could slow down other processes running on the same node, such as if it's also running a beacon node or validator client.
-
-If you are operating an **advanced hardware setup**, **staking pool** or **data center**, you should be fine with the requirements. Still, it is an entirely optional process.
-
-#### Activate or Disable the Slasher
-
-If you are running a **validator** using the LUKSO CLI, the slasher is activated by default. This is done for security reasons to increase watchers for malicious events during network downtimes of bigger services. If you are runnning on lower hardware, you can disable it using the commands below.
-
-Make sure to add your transaction fee recipient address within the command.
-
-```sh
-# Disable Slasher for Prysm Consensus Client on Mainnet
-lukso start --validator --transaction-fee-recipient "<transaction-fee-recipient-address>" --no-slasher
-
-# Disable Slasher for Prysm Consensus Client on Testnet
-lukso start --testnet --validator --transaction-fee-recipient "<transaction-fee-recipient-address>" --no-slasher
-```
-
-In case you are running a **regular node** or **custom setups** with the CLI, slashers are disabled by default, you can pass the `--prysm-slasher` or `--lighthouse-slasher` flag to enable it manually. The command will manually pass down the `--slasher` flag to the clients.
-
-#### Removing the Slasher Database
-
-In case you are running short on storage, you can delete the the slasher database, which takes up a lot of storage space. Simply remove the following database file within your node directory:
-
-```sh
-# Remove Slasher Database for Mainnet Node
-rm -rf /mainnet-data/consensus/beaconchaindata/slasher.db
-
-# Remove Slasher Database for Testnet Node
-rm -rf /testnet-data/consensus/beaconchaindata/slasher.db
-```
+:::
