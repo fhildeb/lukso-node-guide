@@ -1,9 +1,9 @@
 ---
-sidebar_label: "7.3 Dynamic DNS"
+sidebar_label: "7.4 Dynamic DNS"
 sidebar_position: 4
 ---
 
-# 7.3 Dynamic DNS
+# 7.4 Dynamic DNS
 
 ### 6.11.3 Configure Dynamic DNS
 

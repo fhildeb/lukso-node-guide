@@ -57,6 +57,7 @@ const sections = [
       {
         title: "Modifications",
         pages: [
+          "Slasher Configuration",
           "Client Name and Graffiti",
           "Peer Verification",
           "Dynamic DNS",
@@ -133,6 +134,7 @@ const sections = [
           "Client Options",
           "Staking",
           "Validator Credentials",
+          "Slasher Service",
           "Peer Discovery",
           "Dynamic DNS",
           "Monitoring Tools",

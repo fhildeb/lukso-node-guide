@@ -5,17 +5,17 @@ sidebar_position: 1
 
 # 1.1 Precautions
 
-The **Validator Setup** is the first step for anyone aspiring to participate in a blockchain consensus. In this section, we cover the initial processes for securely generating validator keys and the launchpad walkthrough. Before setting up your node, regardless of which [Client Options](#) you choose or whether you are running the software on a dedicated server or at home, it’s crucial to prepare thoroughly.
+The validator setup is the first step for anyone aspiring to participate in a blockchain consensus. In this section, we cover the initial processes for securely generating validator keys and the launchpad walkthrough. Before setting up your node, regardless of which [Client Options](#) you choose or whether you are running the software on a dedicated server or at home, it’s crucial to prepare thoroughly.
 
 :::tip
 
-If you're not quite sure about [hardware preparations](/docs/theory/preparations/node-specification.md), [blockchain fundamentals](/docs/theory/blockchain-knowledge/proof-of-stake.md), or the theoretical basics of [node operations](/docs/theory/node-operation/client-options.md), please refer to the [**🧠 Theory**](/docs/theory/preparations/node-specification.md) section first to build a solid foundation.
+If you're not quite sure about [hardware preparations](/docs/theory/preparations/node-specification.md), [blockchain fundamentals](/docs/theory/blockchain-knowledge/proof-of-stake.md), or the theoretical basics of [node operations](/docs/theory/node-operation/client-options.md), please refer to the [**🧠 Theory**](/docs/theory/preparations/node-specification.md) section to build a solid foundation of knowledge.
 
 :::
 
 :::info
 
-In case you dont want to participate in the staking process and just intend to setup a regular node or archive for accessing the blockchain data, you can skip this step and move to the [Hardware Setup](#) or [Client Setup](#) sections.
+In case you dont want to participate in the staking process and just intend to setup a regular network peer to access, stabalize, and synchronize the blockchain data, you can skip this step and move to the [Hardware Setup](/docs/guides/hardware-setup/introduction.md) or [Client Setup](/docs/guides/client-setup/firewall-settings.md) sections.
 
 :::
 

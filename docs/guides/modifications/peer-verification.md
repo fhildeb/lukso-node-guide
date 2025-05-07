@@ -1,9 +1,9 @@
 ---
-sidebar_label: "7.2 Peer Verification"
-sidebar_position: 2
+sidebar_label: "7.3 Peer Verification"
+sidebar_position: 3
 ---
 
-# 7.2 Peer Verification
+# 7.3 Peer Verification
 
 ### 6.11 Peer Discovery
 

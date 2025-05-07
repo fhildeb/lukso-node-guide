@@ -1,9 +1,9 @@
 ---
-sidebar_label: "7.1 Client Name and Graffiti"
-sidebar_position: 1
+sidebar_label: "7.2 Client Name and Graffiti"
+sidebar_position: 2
 ---
 
-# 7.1 Client Name and Graffiti
+# 7.2 Client Name and Graffiti
 
 ## 6.10 Client Modifications
 
