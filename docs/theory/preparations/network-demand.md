@@ -5,48 +5,79 @@ sidebar_position: 3
 
 # Network Demand
 
-#### Ethernet Connection
+Running a validator or full node is as much a network exercise as a compute one. Blocks, attestations, and peer gossip is shared around the clock. If data packages arrive late or not at all, your node lags behind, drops out of synchronization, or becomes penalised. This page breaks down the bandwidth, latency, and connection‑quality targets you should hit before spinning up a node.
 
-When setting up a node for blockchain networks, the choice of network connection can significantly impact the node's performance and reliability. Using an Ethernet connection is often the preferred method over Wi-Fi for several reasons:
+## Ethernet Connection
 
-- **Stability**: Ethernet connections provide a more stable and consistent connection than Wi-Fi. Wired connections are less prone to signal interference and environmental factors affecting Wi-Fi performance, resulting in fewer disconnections or connectivity issues.
-- **Speed**: Ethernet connections generally offer higher data transfer speeds than Wi-Fi. A gigabit Ethernet connection can reach up to 1000 Mbps, while most Wi-Fi connections are limited to a few hundred Mbps. This increased speed translates into better performance and reduced latency for your node, allowing for faster data processing and communication with other nodes.
-- **Security**: Ethernet connections are inherently more secure than Wi-Fi, as they require physical access to the network cable to intercept or tamper with the transmitted data. Wi-Fi networks are susceptible to various security threats, such as eavesdropping or man-in-the-middle attacks, which could compromise the integrity and privacy of the data being processed by your node.
-- **Reduced Packet Loss**: Ethernet connections typically experience lower packet loss rates than Wi-Fi. Packet loss can cause delays in data transmission and affect the overall performance of your node. With a wired Ethernet connection, your node can maintain a more reliable and efficient data transfer, ensuring optimal operation.
-- **Easy Troubleshooting**: Troubleshooting connectivity issues is generally more straightforward with Ethernet connections. Diagnosing and resolving network issues becomes more precise with fewer variables, such as signal strength, interference, or router configuration.
+Using a wired Ethernet connection is the gold standard for any node operation.
 
-## 1.3 Network Stats
+| Benefit                            | Description                                                                               | Node Impact                                                                            |
+| ---------------------------------- | ----------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| <nobr> **Stability** </nobr>       | The data connection is immune to interference from walls, microwaves, or neighbours.      | Fewer disconnects and a steady peer count to other nodes participating in the network. |
+| <nobr> **Speed** </nobr>           | The troughput of 1 gigabit or higher outperforms typical Wi‑Fi connections.               | Faster initial synchronization and smoother catch‑up after outages.                    |
+| <nobr> **Great Latency** </nobr>   | As there is no airtime contention, the wired connection offers low and constant latency.  | Attestations and block proposals always reach other peers of the network in time.      |
+| <nobr> **Security** </nobr>        | As the connection requires physical access, mobile devices cannot intercept or interfere. | Reduced risk of over‑the‑air snooping or network attacks from third parties.           |
+| <nobr> **Troubleshooting** </nobr> | As all packages are directed at one device, troubleshooting becomes predictable.          | Less effort and speculation when detecting package loss issues and latency drops.      |
 
-Running an EVM Proof of Stake validator node at home requires a stable and reliable internet connection with sufficient network speeds and low latency. A stable internet connection is crucial to ensure optimal performance and maintain the validator's active status within the EVM 2.0 network. Here's why network speeds and latency are essential:
+:::tip Security Advice
 
-- **Blockchain Synchronization**: A fast and stable internet connection is required to synchronize the blockchain data with the Ethereum network efficiently. Slow download speeds can lead to longer sync times, which may prevent your validator from actively participating in the consensus process, causing missed opportunities for rewards.
-- **Attestations and Proposals**: As a validator, your node creates attestations and proposes blocks. A low-latency connection ensures that your attestations and proposals reach the network promptly, increasing the likelihood of inclusion in the final chain and earning rewards.
-- **Missed Events and Penalties**: In Ethereum PoS, validators can be penalized for failing to participate in the consensus process. If your network connection is slow or unstable, it could cause missed attestations or proposals, resulting in penalties and reduced rewards.
-- **Network Resilience**: A reliable internet connection with low latency helps your validator node stay connected to the network and recover quickly from temporary network outages. Strength reduces the risk of being isolated from the rest of the network and missing important consensus events.
+Always connect via **Ethernet** and **turn off** air-based connections like **Wi‑Fi and Bluetooth** on the node’s network interface.
 
-#### Minimal Network Speeds
+:::
 
-- **Download speed**: A minimum download speed of `10-15 Mbps` is recommended, with higher rates being more desirable for faster blockchain synchronization and data transfer. I got a fiber connection at home locked at _100 Mbps_, which is enough for my needs.
-- **Upload speed**: A minimum upload speed of `2-4 Mbps` is suggested to ensure your attestations and proposals can be sent to the network quickly. With my fiber connection at home, I get around _70 Mbps_.
-- **Latency**: A low-latency connection below `30-100 ms` is ideal for guaranteeing timely participation in the consensus process and reducing the risk of missing attestations or proposals. While the block time of 12 seconds defines the average time for new block proposals, having good latency remains important for timely synchronization, data propagation, and network participation. I usually get a latency below _15 ms_ on my end.
+## Bandwidth Requirements
 
-Based on research within the community, the node itself will fetch similar network traffic amounts when running as validator fullnode: The archive nodes will get similar numbers but store data more consistently and in more detail.
+If you are considering running a node, the following values are the minimum troughput and latency you should keep.
 
-```text
---AVERAGE DAILY UPLOAD....................45 GB
---AVERAGE DAILY DOWNLOAD..................43 GB
------------------------------------------------------
---AVERAGE DAILY DATA......................88 GB TOTAL
+| Metric                            | Minimum      | Recommendation | Why it matters                                                         |
+| --------------------------------- | ------------ | -------------- | ---------------------------------------------------------------------- |
+| <nobr> **Download** </nobr>       | 10 – 15 Mbps | above 50 Mbps  | Faster initial synchronization and head‑of‑chain catch‑up.             |
+| <nobr> **Upload** </nobr>         | 2 – 4 Mbps   | above 20 Mbps  | Sending attestations, block proposals, and peer requests in time.      |
+| <nobr> **Latency / Ping** </nobr> | under 100 ms | under 30 ms    | Attestations close after 12 seconds and every ms counts for inclusion. |
+| <nobr> **Package Loss** </nobr>   | under 1 %    | under 0.1 %    | Steady peer gossip & fewer retransmissions.                            |
 
---AVERAGE WEEKLY UPLOAD..................330 GB
---AVERAGE WEEKLY DOWNLOAD................300 GB
------------------------------------------------------
---AVERAGE WEEKLY DATA....................630 GB TOTAL
+:::info Connection Tests
 
---AVERAGE MONTHLY UPLOAD................1400 GB
---AVERAGE MONTHLY DOWNLOAD..............1330 GB
------------------------------------------------------
---AVERAGE MONTHLY DATA..................2730 GB TOTAL
-```
+If you are unsure if the internet connection is stable and strong enough to power a node, consider running a 24‑hour ping and bandwidth **monitoring service** or look-up your **router's network analytics**. If you’re consistently below the recommended bandwith and latency, consider upgrading to fibre connection, hosting your node in a data centre, or using an third party staking service.
 
-In conclusion, having sufficient network speeds and low latency is essential for running an Ethereum PoS validator node at home. It ensures optimal performance, maximizes reward potential, and minimizes the risk of penalties or missed events.
+:::
+
+## Network Traffic Volumes
+
+Bandwidth analysis within the [LUKSO Validator Community](https://discord.gg/lukso) have shown incoming and outgoing data package throughputs. These numbers correlate to the **default peer settings** within the [LUKSO Network Configuration](https://github.com/lukso-network/network-configs) and should be considered the minimum required capacity to keep the topography of the network and the peer count stable.
+
+:::tip
+
+The amount of **uploaded data** that is exchanged can be lowered or raised by adjusting the [peer count](/docs/guides/modifications/peer-verification.md) setting, useful when having connectivity issues, or running an **advanced node setup** as archive node, data center, or bootnode.
+
+:::
+
+| Interval    | Uploaded Data | Downloaded Data | **Total Throughput** |
+| ----------- | ------------- | --------------- | -------------------- |
+| **Daily**   | ~45 GB        | ~43 GB          | ~88 GB               |
+| **Weekly**  | ~330 GB       | ~300 GB         | ~630 GB              |
+| **Monthly** | ~1.4 TB       | ~1.33 TB        | ~2.73 TB             |
+
+:::info
+
+Archive nodes transfer similar volumes but **store** far more because they keep **every historical state**.
+:::
+
+:::danger ISP Policy Issues
+
+Many residential internet service providers impose fair‑use **throughput limits** between **1 to 3 TB per month**. A single validator node can exceed this limit. Check your internet contract or upgrade to a _business_ or _unlimited_ plan to avoid throttling or retrospective payments.
+
+:::
+
+## Possible Network Issues
+
+A stable, low‑latency connection is considered mandatory for any node operation. If you are unable to comply with network requirements, the following restrictions might apply.
+
+:::warning Consequences of Network Issues
+
+- **Delayed Block Sync**: Slow downloads delay the execution of new data payloads and blockchain synchonization.
+- **Ignored Attestations**: Validators must reach their peers within the slot time to exclude low inactivity flags.
+- **Missed Proposals**: Block rewards drop to zero if peer connections time‑out, meaning another validator has to sign.
+- **Validator Penalties**: An extended desynchronization time will cause panelties and reduce your staked funds.
+
+:::

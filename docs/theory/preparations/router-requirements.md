@@ -7,9 +7,9 @@ sidebar_position: 2
 
 The router is the first, and often weakest, part in the chain of data exchange for blockchain nodes. Inadequate routers will drop packets, choke under high peer counts, or crash entirely, stalling your sync and putting validators at risk.
 
-:::warning ISP Router Issues
+:::danger ISP Router Issues
 
-The all‑in‑one routers many internet service provider supply are tuned for casual home use, **not for high‑connection workload** of a blockchain node. Even with correct port‑forwarding, they will likely suffer heavy packet loss, drastic bandwidth drops, or complete lock‑ups of your home network's internet when peer traffic surges. Upgrading to a business or prosumer router usually eliminates these issues.
+The all‑in‑one routers many internet service provider supply are tuned for casual home use, **not for high‑connection workload** of a blockchain node. Even with correct port‑forwarding, they will likely suffer heavy packet loss, drastic bandwidth drops, or complete lock‑ups of your home network's internet when peer traffic surges. Upgrading to a business or professional home router usually eliminates these issues.
 
 :::
 
