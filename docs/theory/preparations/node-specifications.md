@@ -8,7 +8,7 @@ import TabItem from '@theme/TabItem';
 
 # Node Specifications
 
-Running a Ethereum node for a custom network like LUKSO is not a one‑size‑fits‑all affair. Hardware needs grow with the amount of historical data you keep and the additional services you plan to enable. This guide compares three typical setups.
+Running a Ethereum node for a custom network like LUKSO is not a one‑size‑fits‑all affair. Hardware needs grow with the amount of historical data you keep and the additional services you plan to enable. The following table shows the typical node setups.
 
 | Node Type                  | Description                                                               |
 | -------------------------- | ------------------------------------------------------------------------- |
@@ -24,7 +24,7 @@ Further details about client variations can be found on the [client types](/docs
 
 ## Hardware Requirements
 
-Meeting or exceeding the hardware specs below keeps your node synced, healthy and penalty‑free.
+Meeting or exceeding the hardware specs below keeps your specific node type synced, healthy and penalty‑free.
 
 :::note Classification
 

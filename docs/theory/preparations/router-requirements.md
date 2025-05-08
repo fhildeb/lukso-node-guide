@@ -5,21 +5,35 @@ sidebar_position: 2
 
 # Router Requirements
 
-When setting up a blockchain node, the choice of the router can play a crucial role in ensuring optimal performance and reliability.
+The router is the first, and often weakest, part in the chain of data exchange for blockchain nodes. Inadequate routers will drop packets, choke under high peer counts, or crash entirely, stalling your sync and putting validators at risk.
 
-> Before I wanted to set up a node system, I only used routers you can get from your network provider for free. The prior device did not work at all. The node could not connect despite proper router configuration, packets were rejected, and the bandwidth dropped so enormously that no other device could connect to the internet or the device hung up. Then I bought a professional router, and it worked immediately.
+:::warning ISP Router Issues
 
-There are several factors to consider when selecting a router for running a blockchain node:
+The all‑in‑one routers many internet service provider supply are tuned for casual home use, **not for high‑connection workload** of a blockchain node. Even with correct port‑forwarding, they will likely suffer heavy packet loss, drastic bandwidth drops, or complete lock‑ups of your home network's internet when peer traffic surges. Upgrading to a business or prosumer router usually eliminates these issues.
 
-- **Network Stability and Performance**: A high-quality router will provide better network stability and performance during high load, reducing the chances of dropped connections, bottlenecking, or slow data transfer speeds. Load capacity is essential for a blockchain node, as consistent communication with other nodes is essential for maintaining the integrity of the blockchain. Choose a router with a good chipset that can cover the server load.
-- **Quality of Service Support**: A router with QoS support allows you to prioritize traffic for your blockchain node over other devices on the network. Prioritized bandwidth ensures the node gets the necessary bandwidth and minimizes delays in processing transactions and communicating with other nodes.
-- **Port Forwarding and Firewall**: Blockchain nodes often require specific ports to be opened for incoming and outgoing connections. Make sure the router allows for easy configuration of port forwarding and firewall rules to accommodate the requirements of your particular blockchain network.
-- **Gigabit Ethernet Support**: Routers with Gigabit Ethernet support can provide faster-wired connection speeds and benefit a blockchain node that needs to process and quickly transmit large amounts of data.
-- **IPv6 Support**: As the internet transitions from IPv4 to IPv6, it's essential to have a router that supports IPv6 to ensure future compatibility and optimal performance for your blockchain node.
-- **VPN Support**: Some blockchain networks may require or recommend a VPN for added security and privacy. Ensure that the router supports VPN connections through built-in functionality or compatibility with third-party VPN services.
-- **Firmware Updates and Security**: Choose a router from a reputable manufacturer that provides regular firmware updates and security patches. Being up-to-date ensures your router utilizes the latest features and security improvements.
-- **DynDNS**: If you want to provide your own dynamic DNS record for peer connections, you could set it up within your router. Here, you would not have to fall back to external services.
+:::
 
-In Germany, the manufacturer AVM is rated relatively high in quality, user interface, warranty length, and performance. I chose one of the higher-end routers in their product lineup with fiber optic and WiFi mesh support for higher WiFi ranges.
+| Capability                                   | Why it matters                                                                                   | What to look for                                                                       |
+| -------------------------------------------- | ------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------- |
+| <nobr>**Throughput & Stability** </nobr>     | Sustained, symmetric bandwidth keeps dozens of peer connections flowing without stalls.          | Routing throughput of 1 Gigabit per second with stability for 10k concurrent sessions. |
+| <nobr>**Quality of Service** </nobr>         | Lets you prioritise node traffic over bulk downloads or streaming, avoiding missed attestations. | Priority rules for devices and ports plus DiffServ and CoS support.                    |
+| <nobr>**Port Forwarding & Firewall** </nobr> | Nodes must expose TCP or UDP listener ports and validators need inbound traffic.                 | Simple access to map ports and create stateful rules.                                  |
+| <nobr>**Gigabit Ethernet** </nobr>           | Wired LAN removes Wi‑Fi bottlenecks and fibre SFP slots will allow future‑proof upgrades.        | RJ‑45 ports with more than 1 Gigabit throughput and optional fibre SFP slots.          |
+| <nobr>**IPv6** </nobr>                       | Many peers advertise only v6 addresses. Dual‑stack ensures full reachability.                    | Native dual‑stack with dynamic‑prefix delegation.                                      |
+| <nobr>**VPN Server & Client** </nobr>        | Lets you secure RPC or monitoring ports, or tunnel through restrictive ISPs.                     | WireGuard or OpenVPN clients built‑in or ready to install via firmware.                |
+| <nobr>**Dynamic DNS** </nobr>                | Publishes a stable hostname even when your IP changes, so peers & remote tools can reconnect.    | Built‑in DDNS client that supports multiple providers or custom webhooks.              |
+| <nobr>**Regular Firmware Updates** </nobr>   | Patch vulnerabilities and add protocol support                                                   | Vendor that publishes quarterly updates and offers long‑term firmware availability.    |
 
-**Router**: Fritzbox 7590 AX (Gigabit LAN, Fiber Support, WiFi 6)
+:::tip Priority
+
+`Reliable Throughput` > `Flexible Port and Network Controls` > `Ongoing Firmware Support`.
+
+:::
+
+:::note Example Hardware
+
+For central europe, [**🧭 AVM**](https://fritz.com/) ranks high for build quality, intuitive UI, long warranty, and frequent updates. Their higher‑end models add fibre and Wi‑Fi mesh support for greater connectivity, and even offer an integrated [Dynamic DNS](/docs/theory/node-operation/dynamic-dns.md) service.
+
+Within the [router setup](/docs/guides/router-setup/static-ip-assignment), all configurations were done on a **Fritz!Box 7590 AX**.
+
+:::
