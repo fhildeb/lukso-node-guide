@@ -12,7 +12,13 @@ This section guides you through the deposit process using the LUKSO Validator De
 
 :::warning
 
-This step is about transferring funds from your wallet to your validator deposit keys, enabling your node to run and earn staking rewards. If you are unsure about Deposits and Proof of Stake, please read the [Staking](/docs/theory/node-operation/staking.md) chapter.
+This step is about transferring funds from your wallet to your validator deposit keys, enabling your node to run and earn staking rewards. If you are unsure about Deposits and Proof of Stake, further details can be found in the [staking](/docs/theory/node-operation/staking.md) chapter.
+
+:::
+
+:::info
+
+To become a validator on the **LUKSO Testnet**, you will first have to contact <nobr> `testnet-validators@lukso.network` </nobr> to whitelist your wallet and validator keys. Testnet validators are core community members and organizations ensuring healthy uptimes, stability, and quick response times for developers without claiming profit.
 
 :::
 

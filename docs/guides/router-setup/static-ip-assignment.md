@@ -20,7 +20,7 @@ Terminology and steps vary heavily depending on your router model. If necessary,
 
 To ensure your node always uses the same IP address, we'll reserve it on the router.
 
-:::tip
+:::info
 
 The following steps are performed on your 💻 **personal computer** that's connected to the same home network as the node.
 

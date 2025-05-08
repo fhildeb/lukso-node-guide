@@ -111,7 +111,7 @@ const sections = [
     chapters: [
       {
         title: "Preparations",
-        pages: ["Node Specification", "Router Requirements", "Network Demand"],
+        pages: ["Node Specifications", "Router Requirements", "Network Demand"],
       },
       {
         title: "Blockchain Knowledge",

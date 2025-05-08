@@ -222,6 +222,8 @@ Now connect using your SSH alias:
 ssh <ssh-device-alias>
 ```
 
+After entering the correct passphrase, you will end up on the Ubuntu server welcoming printout.
+
 :::info
 
 Instead, of the password promt, the SSH client should ask to encrypt the private key with the passphrase.
@@ -233,5 +235,3 @@ Instead, of the password promt, the SSH client should ask to encrypt the private
 If you did not set up any password for the key, you will connect automatically.
 
 :::
-
-After entering the correct passphrase, you will end up on the Ubuntu server welcoming printout.

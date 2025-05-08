@@ -34,7 +34,7 @@ Consensus clients rely on broad outbound connectivity to discover other nodes, m
 
 :::tip
 
-Clients use extra ports for monitoring, which don't need firewall exposure. Check the [Monitoring](/docs/guides/monitoring/introduction.md) chapter for details.
+Clients use extra ports for monitoring, which don't need firewall exposure. Check the [Monitoring](/docs/guides/monitoring/software-preparation.md) chapter for details.
 
 :::
 

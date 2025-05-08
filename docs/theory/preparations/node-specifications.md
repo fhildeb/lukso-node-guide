@@ -1,12 +1,12 @@
 ---
-sidebar_label: "Node Specification"
+sidebar_label: "Node Specifications"
 sidebar_position: 1
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-# Node Specification
+# Node Specifications
 
 Running a Ethereum node for a custom network like LUKSO is not a one‑size‑fits‑all affair. Hardware needs grow with the amount of historical data you keep and the additional services you plan to enable. This guide compares three typical setups.
 

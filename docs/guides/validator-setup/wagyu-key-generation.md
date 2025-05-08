@@ -16,10 +16,10 @@ You will generate your validator keys using a graphical user interface. The foll
 
 The table below compares the two available tools for generating validator keys:
 
-| Tool                | Interface    | Description                                                                                                           |
-| ------------------- | ------------ | --------------------------------------------------------------------------------------------------------------------- |
-| LUKSO Wagyu Key Gen | Graphical    | Simplifies the staking process with an intuitive, step-by-step interface, ideal for users who prefer visual guidance. |
-| LUKSO Key Gen CLI   | Command-Line | Provides a terminal-based approach for generating keys, suitable for servers, automation and advanced users           |
+| Tool                               | Interface                   | Description                                                                                                           |
+| ---------------------------------- | --------------------------- | --------------------------------------------------------------------------------------------------------------------- |
+| <nobr> LUKSO Wagyu Key Gen </nobr> | <nobr> Graphical </nobr>    | Simplifies the staking process with an intuitive, step-by-step interface, ideal for users who prefer visual guidance. |
+| <nobr> LUKSO Key Gen CLI </nobr>   | <nobr> Command-Line </nobr> | Provides a terminal-based approach for generating keys, suitable for servers, automation and advanced users           |
 
 :::info
 
@@ -135,7 +135,7 @@ You can generate more keys than you immediately fund. These keys will remain ina
 
 :::info
 
-You can use the same withdrawal address multiple times, meaning all validator revenues go to the same account. If you are uncertain about the withdrawal address, please refer to the [Tokenomics](/docs/theory/blockchain-knowledge/tokenomics.md) chapter within the [**🧠 Theory**](/docs/theory/preparations/node-specification.md) section.
+You can use the same withdrawal address multiple times, meaning all validator revenues go to the same account. If you are uncertain about the withdrawal address, please refer to the [Tokenomics](/docs/theory/blockchain-knowledge/tokenomics.md) page within the [**🧠 Theory**](/docs/theory/preparations/node-specification.md) section.
 
 :::
 
@@ -232,7 +232,7 @@ To regenerate keys for **a backup** or **updating** the **withdrawal address** o
 
 :::info
 
-You can use the same withdrawal address multiple times, meaning all validator revenues go to the same account. If you are uncertain about the withdrawal address, please refer to the [Tokenomics](/docs/theory/blockchain-knowledge/tokenomics.md) chapter within the [**🧠 Theory**](/docs/theory/preparations/node-specification.md) section.
+You can use the same withdrawal address multiple times, meaning all validator revenues go to the same account. If you are uncertain about the withdrawal address, please refer to the [Tokenomics](/docs/theory/blockchain-knowledge/tokenomics.md) page within the [**🧠 Theory**](/docs/theory/preparations/node-specification.md) section.
 
 :::
 

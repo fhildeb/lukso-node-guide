@@ -14,10 +14,10 @@ This section explains how to generate your validator keys using the [LUKSO Key G
 
 The table below compares the two available tools for generating validator keys:
 
-| Tool                | Interface    | Description                                                                                                             |
-| ------------------- | ------------ | ----------------------------------------------------------------------------------------------------------------------- |
-| LUKSO Wagyu Key Gen | Graphical    | Simplifies the staking process with an intuitive, step-by-step interface, ideal for users who prefer visual guidance.   |
-| LUKSO Key Gen CLI   | Command-Line | Provides a terminal-based approach for generating keys, offering flexibility and ease of automation for advanced users. |
+| Tool                               | Interface                   | Description                                                                                                             |
+| ---------------------------------- | --------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
+| <nobr> LUKSO Wagyu Key Gen </nobr> | <nobr> Graphical </nobr>    | Simplifies the staking process with an intuitive, step-by-step interface, ideal for users who prefer visual guidance.   |
+| <nobr> LUKSO Key Gen CLI </nobr>   | <nobr> Command-Line </nobr> | Provides a terminal-based approach for generating keys, offering flexibility and ease of automation for advanced users. |
 
 :::info
 If you prefer a graphical interface, switch to the [LUKSO Wagyu Key Gen](./wagyu-key-generation.md) page.
@@ -118,7 +118,7 @@ cd lukso-key-gen-cli-v2.5.8-linux
 
 :::tip
 
-Setting a withdrawal address is necessary as you can withdraw your deposits later on. You can use the same withdrawal address multiple times, meaning all validator revenues go to the same account. If you are uncertain about the withdrawal address, please refer to the [Tokenomics](/docs/theory/blockchain-knowledge/tokenomics.md) chapter within the [**🧠 Theory**](/docs/theory/preparations/node-specification.md) section.
+Setting a withdrawal address is necessary as you can withdraw your deposits later on. You can use the same withdrawal address multiple times, meaning all validator revenues go to the same account. If you are uncertain about the withdrawal address, please refer to the [Tokenomics](/docs/theory/blockchain-knowledge/tokenomics.md) page within the [**🧠 Theory**](/docs/theory/preparations/node-specification.md) section.
 
 :::
 
@@ -256,7 +256,7 @@ Success!
 Please ensure that your destination folder contains the following files:
 
 - `deposit_data.json`: This file is used to make deposit transactions during the [Deposit Launchpad](./launchpad-walkthrough.md) process.
-- `keystore.json`: Each validator key has a corresponding keystore file, later used in the [Validator Setup](/docs/guides/client-setup/validator-configuration.md).
+- `keystore.json`: Each validator key has a corresponding keystore file, later used in the [Validator Setup](/docs/guides/client-setup/validator-configuration.md) process.
 
 :::
 
@@ -282,7 +282,7 @@ mv validator_keys <new-folder-name>
 
 :::info
 
-You can use the same withdrawal address multiple times, meaning all validator revenues go to the same account. For backup purposes, always use the same withdrawal address as the one used during the initial key generation process. If you are uncertain about the withdrawal address, please refer to the [Tokenomics](/docs/theory/blockchain-knowledge/tokenomics.md) chapter within the [**🧠 Theory**](/docs/theory/preparations/node-specification.md) section.
+You can use the same withdrawal address multiple times, meaning all validator revenues go to the same account. For backup purposes, always use the same withdrawal address as the one used during the initial key generation process. If you are uncertain about the withdrawal address, please refer to the [Tokenomics](/docs/theory/blockchain-knowledge/tokenomics.md) page within the [**🧠 Theory**](/docs/theory/preparations/node-specification.md) section.
 
 :::
 
