@@ -3,54 +3,130 @@ sidebar_label: "Proof of Stake"
 sidebar_position: 1
 ---
 
-# Proof of Stake
+# Proof of Stake
 
-## 6.2 Network Theory
+Proof of Stake is the consensus algorithm that secures modern EVM‑based networks such as **Ethereum** and **LUKSO**. Validators stake coins, propose blocks of gathered transactions, and vote on the chain’s head via block attestations. The more cryptocurrency a person puts at risk, the higher the chances of being selected. Honest behaviour is rewarded through transaction fees. Faults or attacks are punished by removing a slice of the stake through panalizing or slashing the validators.
 
-Let's also clear up the blockchain network we will run with this setup and how the compensation works for providing the backend infrastructure. It's essential to know the basics of how we will participate.
+## Consensus Effects
 
-### 6.2.1 Proof of Stake
+Unlike Proof of Work on Bitcoin or previous generations of Ethereum, requiring miners to solve complex mathematical problems to add new blocks to the blockchain, Proof of Stake relies on the amount of cryptocurrency a person is willing to risk as collateral.
 
-PoS is a consensus mechanism many blockchain networks use to validate and add new transactions. Unlike Proof of Work on Bitcoin, which requires miners to solve complex mathematical problems to add new blocks to the blockchain, PoS relies on the amount of cryptocurrency a person holds and is willing to stake as collateral.
+:::tip Advantages
 
-In a PoS blockchain, validators are chosen to create a new block based on their stake in the network. The more cryptocurrency a person holds, the chances of being selected as a validator increase. Once chosen, validators validate transactions and add them to the blockchain. For their service, validators are rewarded with transaction fees and potentially new coins.
+- **Energy Efficiency**: Staking cuts power use by more than 99 % in comparison to Proof of Work.
+- **Economical Security**: Attacking the chain requires buying and risking large amounts of the native coin.
+- **Deterministic Rewards**: Performance maps directly to APR; there is no luck factor like block‑finding races.
+- **Strict Uptime**: Validators target ≥ 98 % online time to avoid leaks within randomized epochs.
 
-One of the main advantages of PoS over PoW is its energy efficiency. While PoW requires massive computational resources and energy consumption, PoS achieves consensus with minimal energy use. The efficiency makes PoS more sustainable and environmentally friendly for blockchain networks.
+:::
 
-Another advantage of PoS is the security it provides. Since validators have a significant investment in the network, they are incentivized to act honestly. If a validator tries to manipulate the system or validate fraudulent transactions, they risk losing their stake, making attacks on the network costly and, therefore, less likely.
+:::warning Disadvantages
 
-### 6.2.2 Network Operations
+- **Early Centralisation Risk**: Stake often concentrates among a few early adopters and diversity must grows over time.
+- **Additional Stake Vectors**: As forking is cheap, protocols need slashing and finality rules to prevent riskless attestations.
+- **Operational Complexity**: Running two client layers and maintaining keys client and operational overhead.
 
-The Ethereum Virtual Machine is a crucial part of the Ethereum ecosystem, and each full node running the Ethereum software has its instance of it. Every full node validates every transaction and smart contract execution independently. The EVM is isolated from the network, filesystem, and other processes of the node's computer system, which makes it a sandboxed environment for smart contract execution.
+:::
 
-When a node receives a new block, it executes all transactions in its own EVM to validate the correctness of the transaction results and the final state of the block. Independent computation is a fundamental part of the Ethereum network's decentralized nature: every node independently verifies the validity of every block and every transaction.
+## Roles and Services
 
-### 6.2.3 Computation Measures
+Running a validator can be thought of as providing infrastructure in exchange for protocol‑level rewards. To participate you deposit the network’s native token of 32 LYX or LYXt into a one‑way validator key and spin up the following software. Stake can only be [withdrawn](/docs/theory/node-operation/validator-credentials.md) once the [validator exists](/docs/guides/withdrawals/exit-validators.md) the network.
 
-Each operation in the EVM requires a certain amount of gas, which is paid for in the blockchain's coin. The cost of gas is a crucial part of Ethereum's incentive structure, deterring spam on the network and incentivizing miners to confirm transactions.
+| Layer                 | Network Role                                                                       |
+| --------------------- | ---------------------------------------------------------------------------------- |
+| **Execution Client**  | Processes transactions and maintains the EVM state database.                       |
+| **Consensus Client**  | Follows the beacon chain, selects proposers, aggregates attestations.              |
+| **Validator Process** | Signs block proposals & attestations using your private keys.                      |
+| **Slasher Service**   | Detects and reports double‑signing or surround‑votes to maximise network security. |
 
-Since the [London Update](https://eips.ethereum.org/EIPS/eip-1559), Ethereum has a predictable fee system with two parts: a base fee and a tip. The base fee is burned and adjusted up or down depending on network congestion. When the network is busy, the base fee increases, and when the network is less active, the base fee decreases. The tip also called the priority fee, is given to the miner as an incentive to include the transaction in the block.
+## Network Lifecycle
 
-Gas plays a crucial role in the execution of transactions. If a transaction or smart contract operation does not have enough gas, it runs out of gas and fails, but the gas used up to that point is not returned as the computation was finished up to this point.
+The order of steps below summarises what happens every slot and epoch.
 
-### 6.2.10 Epochs
+| #   | Stage                                  | Description                                                                                  |
+| --- | -------------------------------------- | -------------------------------------------------------------------------------------------- |
+| 1   | <nobr> **Providing Stake** </nobr>     | Coins are locked and each validator key joins the active set of stakers.                     |
+| 2   | <nobr> **Proposing Blocks** </nobr>    | One validator is pseudo‑randomly chosen each slot to build and submit a block.               |
+| 3   | <nobr> **Attesting Blocks** </nobr>    | All other active validators vote on the head block and chain state.                          |
+| 4   | <nobr> **Reaching Finality** </nobr>   | Once two thirds of total stake attests over two consecutive epochs, blocks become immutable. |
+| 5   | <nobr> **Applying Incentives** </nobr> | Proposals and attestations earn funds while downtime or malicious acts reduce balance.       |
+
+:::tip
+
+Further details can be found on the [Tokenomisc](/docs/theory/blockchain-knowledge/tokenomics.md) or [Shashing and Panelties](/docs/theory/blockchain-knowledge/slashing-and-panelties.md) pages.
+
+:::
+
+## Node Operations
+
+Each operation in the EVM requires a certain amount of gas, which is paid for in the blockchain's coin. The cost of gas is a crucial part of Ethereum's incentive structure, discouraging spam on the network and incentivizing miners to confirm transactions.
+
+:::info Network Redundancy
+
+Every full node runs its own Ethereum Virtual Machine, short EVM. Once a new block arrives, each execution client of the network's nodes **re‑executes every transaction** in isolation to verify the proposer’s work, keeping the network trustless.
+
+:::
+
+## Gas and Fees
+
+With each transaction, users attach a max fee they are willing to pay. Since the [London Update](https://eips.ethereum.org/EIPS/eip-1559), EVM-based networks has a predictable fee system. The protocol burns a **base fee**, which increases or decreases based on the network's current activity. Another **priority fee** is collected by the block proposer.
+
+| Fee component                   | Recipient                                | Purpose                                        |
+| ------------------------------- | ---------------------------------------- | ---------------------------------------------- |
+| <nobr> **Base Fee** </nobr>     | Burnt through protocol                   | Elastic pricing to prevent spam                |
+| <nobr> **Priority Fee** </nobr> | Gathered by block proposer               | Incentivises inclusion                         |
+| <nobr> **MEV / Tips** </nobr>   | Gathered by block proposer and searchers | Optional extra payment for economic advantages |
+
+:::warning Transaction Failures
+
+If a transaction runs out of gas it reverts. However, the spent gas is still charged because the node had to do the work.
+
+:::
+
+:::tip MEV
+
+The Maximal Extractable Value is the extra profit obtainable by re‑ordering, inserting, or censoring transactions.  
+On PoS chains MEV is captured by proposers via off‑chain relays or direct bundles, while the protocol itself stays agnostic.
+
+:::
+
+## Epochs and Slots
 
 An epoch in PoS is a fixed period during which slots occur. It is a larger time frame that helps to organize the work of validators who propose and attest to blocks. An epoch is comprised of 32 slots, which means an epoch lasts for about 6.4 minutes, given that each slot is about 12 seconds.
 
-Epochs provide several key functions:
+| Function                                | Details                                                                                                                                                                                                                                                                   |
+| --------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| <nobr> **Validator Shuffling** </nobr>  | At the start of each epoch, a random selection process determines which validators are active and assigns them to slots. This is done to ensure that the system remains decentralized and that no single validator can predict far in advance when they will be selected. |
+| <nobr> **Reward Settlement** </nobr>    | At the end of each epoch, rewards and penalties are calculated for validators. Validators that correctly proposed and attested to blocks receive rewards, while those who behaved maliciously or were offline are penalized.                                              |
+| <nobr> **Finality Checkpoints** </nobr> | The first block of an epoch is considered a checkpoint, refering to the point at which a block cannot be economically changed or removed from the blockchain.                                                                                                             |
 
-- **Validator Shuffling**: At the start of each epoch, a random selection process determines which validators are active and assigns them to slots. This is done to ensure that the system remains decentralized and that no single validator can predict far in advance when they will be selected.
-- **Rewards and Penalties**: At the end of each epoch, rewards and penalties are calculated for validators. Validators that correctly proposed and attested to blocks receive rewards, while those who behaved maliciously or were offline are penalized.
-- **Finality**: An epoch also plays a role in achieving finality. In simple terms, finality refers to the point at which a block cannot be changed or removed from the blockchain. The finality is achieved every epoch.
+:::tip Checkpoints and Finality
 
-### 6.2.11 Slots
+A checkpoint becomes **finalised** once more than two thirds of the **total active validator stake** has attested to it. Reverting that finality would require an attacker to build a conflicting chain and get more than one third of the entire network’s stake to sign slashable votes to slash the other remaining validators.
 
-A slot in PoS, is a time period within an epoch that lasts for about 12 seconds. During a slot, a randomly chosen validator has the right to propose a new block to the blockchain.
+:::
 
-The role of a slot includes:
+A slot is a single 12‑second window where a randomly chosen validator has the right to propose a new block to the blockchain. Non‑proposers vote on head and block validity through attestations.
 
-- **Block Proposal**: Each slot represents an opportunity for a validator to propose a new block. If the selected validator is online and behaves correctly, they will propose a block, which other validators will then attest to.
-- **Attestations**: During each slot, validators who are not chosen to propose a block are expected to attest to the validity of the proposed block. These attestations are important for determining consensus and helping the network agree on the state of the blockchain.
-- **Missed Slots**: If a chosen validator is offline or fails to propose a block during their slot, the slot is skipped, and no new block is added to the chain for that slot.
+- **Missed Proposals**: If the proposer is offline the _slot is skipped_.
+- **Justified Blocks**: A block that gains more than two thirds of attestations _is considered as valid_.
+- **Finalized Blocks**: Once the justified checkpoint finalizes the previous one, _it is marked as final_.
 
-A **justified** slot is a block that has been voted on and is a candidate for finalization. Essentially, justifying a block is the step before finalizing it. A block is justified when it receives 2/3 of the voting weight from the active validators. Justified blocks can still be overwritten if a conflicting block receives more votes. However, once a justified block is **finalized**, meaning the network has reached consensus of the proposed block, it cannot be changed.
+## Computation
+
+Each network sets its own computational limits for their peer nodes.
+
+| Item                                  | **LUKSO**          | **Ethereum**       | Notes                                                                                    |
+| ------------------------------------- | ------------------ | ------------------ | ---------------------------------------------------------------------------------------- |
+| <nobr>**Block Gas Limit**</nobr>      | ~42 M gas          | ~30 M gas          | defined by the [Ethereum Yellow Paper](https://ethereum.github.io/yellowpaper/paper.pdf) |
+| <nobr>**Base Fee Volatility**</nobr>  | ± 12.5 % per block | ± 12.5 % per block | defined by the [EIP‑1559 Standardization](https://eips.ethereum.org/EIPS/eip-1559)       |
+| <nobr>**Max Transaction Size**</nobr> | 128 kB             | 128 kB             | prevents frequent block bloating                                                         |
+| <nobr>**Average Gas Price**</nobr>    | 0.1 – 0.8 gwei     | 15 – 40 gwei       | fluctuates with network demand                                                           |
+
+:::info Block Size
+
+The **block gas limit** is strict for a single block but **can adjust over time** by a small step‑size of one 1024th. Block proposers can vote gradually, avoiding abrupt jumps that could destabilise the network or overwhelm nodes.
+
+In practice the consensus code enforces an absolute floor of 5000 gas, and validators almost never coordinate to push in one direction for a significant amount of hours. However, within one day of around 7200 blocks, the limit could still scale by a few percent if every proposer pushes for the same direction.
+
+:::
