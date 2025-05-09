@@ -5,6 +5,14 @@ sidebar_position: 7
 
 # Slasher Service
 
+:::tip Slashing
+
+Slashing merely redistributes penalties from attackers to honest proposers. Running your own slasher increases network security but doesn’t guarantee extra income. Broadcasting and getting rewards for detected misbehavior is always linked to attaching this proof in a block.
+
+The lower the percentage of validators you run on your node, the lower the chance that you can publish this proof before anyone else. Since the consensus gives little incentive to cheat and misbehaviour is extremely rare, the optional service should only be run by larger institutions and staking services.
+
+:::
+
 A slasher actively watches for offenses or misbehavior on the network and broadcasts them. This might be due to running the same validators or multiple machines, faking proposals, etc.
 
 Slasher is the name of software that can detect slashable events from validators and report them to the protocol. You can think of a slasher as the network's police. Running a slasher is totally optional. In order to detect slashable messages, the slasher records the attesting and proposing history for every validator on the network, then cross references this history with what has been broadcasted to find slashable messages such as double blocks or surrounding votes.

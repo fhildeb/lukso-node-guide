@@ -118,7 +118,7 @@ Each network sets its own computational limits for their peer nodes.
 
 | Item                                  | **LUKSO**          | **Ethereum**       | Notes                                                                                    |
 | ------------------------------------- | ------------------ | ------------------ | ---------------------------------------------------------------------------------------- |
-| <nobr>**Block Gas Limit**</nobr>      | ~42 M gas          | ~30 M gas          | defined by the [Ethereum Yellow Paper](https://ethereum.github.io/yellowpaper/paper.pdf) |
+| <nobr>**Block Gas Limit**</nobr>      | ~42 million gas    | ~30 million gas    | defined by the [Ethereum Yellow Paper](https://ethereum.github.io/yellowpaper/paper.pdf) |
 | <nobr>**Base Fee Volatility**</nobr>  | ± 12.5 % per block | ± 12.5 % per block | defined by the [EIP‑1559 Standardization](https://eips.ethereum.org/EIPS/eip-1559)       |
 | <nobr>**Max Transaction Size**</nobr> | 128 kB             | 128 kB             | prevents frequent block bloating                                                         |
 | <nobr>**Average Gas Price**</nobr>    | 0.1 – 0.8 gwei     | 15 – 40 gwei       | fluctuates with network demand                                                           |
@@ -127,6 +127,6 @@ Each network sets its own computational limits for their peer nodes.
 
 The **block gas limit** is strict for a single block but **can adjust over time** by a small step‑size of one 1024th. Block proposers can vote gradually, avoiding abrupt jumps that could destabilise the network or overwhelm nodes.
 
-In practice the consensus code enforces an absolute floor of 5000 gas, and validators almost never coordinate to push in one direction for a significant amount of hours. However, within one day of around 7200 blocks, the limit could still scale by a few percent if every proposer pushes for the same direction.
+In practice the consensus code enforces an absolute floor of 5.000 gas, and validators almost never coordinate to push in one direction for a significant amount of hours. However, within one day of around 7200 blocks, the limit could still scale by a few percent if every proposer pushes for the same direction.
 
 :::

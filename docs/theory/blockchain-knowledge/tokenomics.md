@@ -5,23 +5,91 @@ sidebar_position: 2
 
 # Tokenomics
 
-### 6.2.4 Tokenomics
+Tokenomics describes the supply schedule, reward mechanics, and economic incentives that keep a Proof of Stake network healthy.
 
-A large portion of the transaction fee is burned, i.e., permanently removed from circulation. This burning mechanism effectively reduces the supply of Ether over time, which can exert upward pressure on the price, assuming demand remains constant or increases, making EVM PoS blockchain coins a semi-deflationary asset.
+1. **Consensus Rewards**: Validators receive new LYX or LYXt that are minted for timely proposals and attestations.
+2. **Execution Fees**: Validators receive priority fees and tips from end‑users on top of the [burnt base fee](/docs/theory/blockchain-knowledge/proof-of-stake.md#gas-and-fees).
+3. **Penalties and Slashing**: The validator's stake may be deducted for downtime or malicious voting behaviour.
 
-Therefore, validators only receive the block rewards and tips as fees.
+:::tip
 
-### 6.2.5 Earnings & Withdrawals
+Staking returns are typically expressed as **Annual Percentage Yield**, assuming permanent validator uptime.
 
-Regarding withdrawals and returns, there are specific wallet addresses to maintain: the withdrawal and the recipient address. They could be the same address, but different actions are bound to them:
+:::
 
-- **Staking Withdrawal Address**: Staking withdrawals refer to withdrawing earned rewards or the initial staked amount (32 LYX) by validators participating in Proof-of-Stake. These withdrawals become possible after the Shapella upgrade & EIP-4895 are up and running on the according network. These staking withdrawals are automatically pushed to the withdrawal address set during the key generation process and are registered on-chain during the deposit. **This address cannot be changed once the stake is deposited. You need to guarentee that you have control over the withdrawal address.** If you want to update it at any time, you need to exit your validators to receive the funds on the (old) withdrawal address and then set up new validators with a new one.
-- **Recipient Fee Address**: The recipient fee address, e.g., transaction or gas fee address, differs from the staking withdrawal. The recipient fee address is associated with the validator when they perform validation duties, such as proposing and attesting to blocks. The recipient fee address is set during the start of the validator client on the node and can be changed upon restart. You need your node's wallet password after importing the validator keys to set or modify. The fees are paid by users who initiate transactions and smart contract executions on the EVM network. Validators collect the fees as an incentive for their work in maintaining the blockchain.
+:::info APY May 2025
 
-Both addresses are regular Ethereum Addresses (EOAs) that can be generated in wallets like MetaMask or hardware wallets like Ledger. They could even be the same addresses, meaning you will receive both: withdrawals and fees at the same address.
+- The [LUKSO Mainnet](https://deposit.mainnet.lukso.network) has an APY of around **7%**
+- The [LUKSO Testnet](https://deposit.testnet.lukso.network) has an APY of around **42%**
 
-> Please remember that your hardware wallet needs support for importing or using these accounts on regular dApps. Otherwise, you might not be able to manage these funds until the LUKSO network is supported. In the case of Ledger, they can easily be imported into MetaMask, which should do the trick for most of you. Keep in mind to send some minimal supported funds onto this hardware key, so it will show up again if it was restored from the seed alone.
+:::
 
-In conclusion, staking withdrawals refer to withdrawing rewards and staked amounts connected to the consensus mechanism. Conversely, the recipient fee address is where validators receive transaction fees for their validation work.
+## APY Calculation
 
-> Typically, everything is included in the APY for staking rewards. But as expected, there are fluctuations for various factors such as network usage, the number of validators, and consensus changes.
+Returns only include the deterministic and major values of the consensus mechanism.
+
+| Component                                 | Included | Notes                                                                               |
+| ----------------------------------------- | -------- | ----------------------------------------------------------------------------------- |
+| <nobr> **Consensus Rewards** </nobr>      | ✅ Yes   | Set by the protocol and scaled with active stake on the network.                    |
+| <nobr> **Priority Fees and Tips** </nobr> | ❌ No    | Directly paid to the proposer to boost returns during highly network utilization.   |
+| <nobr> **MEV Commission** </nobr>         | ❌ No    | Indirectly paid to block proposer and searchers for manipulating transaction order. |
+| <nobr> **Slasher Income** </nobr>         | ❌ No    | Directly paid to the proposer broadcasting a proof of network misbehaviour.         |
+
+:::tip
+
+Further details about slashing and MEV can be found within the [Slasher Service](/docs/theory/node-operation/slasher-service.md) and [Proof of Stake](/docs/theory/blockchain-knowledge/proof-of-stake.md) pages.
+
+:::
+
+## Earnings and Withdrawals
+
+Validators manage two on‑chain addresses to receive withdrawals and returns.
+
+| Address Type                             | Description                                                                                                                        | Mutability                                                                                                                                                                                                                                                                                                                                                              |
+| ---------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| <nobr> **Withdrawal Address** </nobr>    | Receives auto‑pushed consensus rewards through block proposals and in case of an exit, the remaining LYX or LYXt of the validator. | The address can be set during the [validator key generation](/docs/guides/validator-setup/cli-key-generation.md) or [withdrawal update](/docs/guides/withdrawals/adding-withdrawals.md) and is **immutable** after stake has been [deposited](/docs/guides/validator-setup/launchpad-walkthrough.md) as defined by [EIP‑4895](https://eips.ethereum.org/EIPS/eip-4895). |
+| <nobr> **Recipient Fee Address** </nobr> | Collects the priority fees, tips, and MEV commission earned by the proposing validator.                                            | The address is **mutable** and can be updated during every start of the validator node.                                                                                                                                                                                                                                                                                 |
+
+:::tip
+
+Both addresses can be equal, in case stakers want to manage earnings and funds with one single account.
+
+:::
+
+:::info
+
+Changing the withdrawal address requires [exiting the validator](/docs/guides/withdrawals/exit-validators.md) and redepositing the stake to a new validator key.
+
+:::
+
+:::warning Wallet Compatability
+
+Both addresses are ordinary _Externally Owned Accounts_ that can be generated from regular EOA wallets within the browser, apps, or on hardware wallets. Ensure your wallet supports **LUKSO** or has the capability of adding **Custom EVM Networks**. Otherwise you may be unable to access rewards or must export the private key into another wallet before acessing the funds.
+
+:::
+
+## Withdrawal Cadence
+
+A maximum of **16 consensus payouts** to the withdrawal address can be processed per block.
+
+| Network                                                            | Active Validators | Daily Blocks | Payout Interval |
+| ------------------------------------------------------------------ | ----------------- | ------------ | --------------- |
+| [LUKSO Mainnet](https://explorer.consensus.mainnet.lukso.network/) | ~140.000          | ~7.200       |  29 Hours       |
+| [LUKSO Testnet](https://explorer.consensus.testnet.lukso.network/) | ~4.000            | ~7.200       |  50 Minutes     |
+
+## Semi‑Deflationary Supply
+
+Since the [London Update](https://ethereum.org/en/history/#london), EVM-based networks feature a transaction base fee that is burned during every block proposal. As outlined by [EIP‑1559](https://eips.ethereum.org/EIPS/eip-1559), the update actively **decreases the circulating supply** of the blockchain's native coin. If demand pushes the occupied block space above 50 percent, the base fee rises by up to 12.5 percent. The total of burned funds can frequently exceed newly minted consensus rewards, giving the network **semi‑deflationary dynamics**.
+
+:::info Economic Consequences
+
+- Sustained high activity will produce negative issuance periods for LYX and LYXt
+- Lighter traffic periods will results in smaller and decreasing amounts of burned funds
+
+:::
+
+:::tip Load Balancing
+
+As burned funds scale with demand while issuance scales with stake, the ultra‑sound effect grows when the network is busy.
+
+:::
