@@ -18,7 +18,7 @@ Running a Ethereum node for a custom network like LUKSO is not a one‑size‑fi
 
 :::tip
 
-Further details about client variations can be found on the [client types](/docs/theory/blockchain-knowledge/client-types.md) page.
+Further details about client variations can be found on the [Proof of Stake](/docs/theory/blockchain-knowledge/proof-of-stake.md) and [Client Types](/docs/theory/blockchain-knowledge/client-types.md) pages.
 
 :::
 

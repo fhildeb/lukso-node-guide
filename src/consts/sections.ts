@@ -149,13 +149,21 @@ const sections = [
     emoji: "📦",
     chapters: [
       {
-        title: "",
+        title: "Network",
+        pages: ["Blockchain Timeline", "Configuration Updates"],
+      },
+      {
+        title: "Testnet Operators",
         pages: [
           "L16 Client Installation",
           "L16 Node Tooltips",
           "L16 Software Removal",
           "GasHawk Deposits",
         ],
+      },
+      {
+        title: "Genesis Validators",
+        pages: ["GasHawk Deposits"],
       },
     ],
   },
