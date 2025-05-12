@@ -127,9 +127,9 @@ As of **May 2025** fully synchronized **Mainnet Full Node** occupies **≈ 750
 | **Mainnet** | ~ 29 GB            | ~ 346 GB          | ~ 12.5 GB                  | ~ 150 GB                  | May 23 2023 |
 | **Testnet** | ~ 3 GB             | ~ 36 GB           | ~ 1.3 GB                   | ~ 15 GB                   | May 03 2023 |
 
-:::info
+:::note Disclaimer
 
-Estimated numbers from Geth and Prysm clients. Slasher storage might vary based on attestation counts and interim resets.
+The above data was gathered from [Geth](/docs/theory/blockchain-knowledge/client-providers.md) and [Prysm](/docs/theory/blockchain-knowledge/client-providers.md) clients with an active [slasher service](/docs/theory/node-operation/slasher-service.md) without any data compromization since genesis. The storage numbers might vary based on other client providers and the total runtime of the slasher service.
 
 :::
 
