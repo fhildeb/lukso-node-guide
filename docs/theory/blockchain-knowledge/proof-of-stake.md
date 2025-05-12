@@ -57,6 +57,22 @@ Further details can be found on the [Tokenomisc](/docs/theory/blockchain-knowled
 
 :::
 
+## Participation Rate
+
+In Proof of Stake consensus, at least two-thirds of the total active validator stake must be online and actively participating for the chain to finalize blocks. If participation drops below this threshold, the network may fail to reach finality, causing stalls and potentially requiring manual intervention.
+
+Network stalls can occur due to:
+
+- A large number of validators going offline at the same time.
+- Network partitions or infrastructure issues.
+- Improper client configurations, bugs, or version mismatches.
+
+:::tip
+
+Keeping participation high ensures stable finality and robust network health. Redundant infrastructure is critical for minimizing correlated failures. Further information about network resilience can be found on the [Client Diversity](/docs/theory/blockchain-knowledge/client-diversity.md) page.
+
+:::
+
 ## Node Operations
 
 Each operation in the EVM requires a certain amount of gas, which is paid for in the blockchain's coin. The cost of gas is a crucial part of Ethereum's incentive structure, discouraging spam on the network and incentivizing miners to confirm transactions.
