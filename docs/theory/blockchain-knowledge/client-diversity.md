@@ -5,19 +5,44 @@ sidebar_position: 7
 
 # Client Diversity
 
-### 6.4.3 Client Diversity
+Client diversity refers to the practice of using **multiple, independently developed software clients** across one blockchain network. These clients are built by different engineering teams, often in different programming languages, and serve the same purpose of running the blockchain protocol Maintaining client diversity is essential **for network resilience**, security, and decentralization. If too many validators rely on the same software, a single bug or vulnerability could have catastrophic consequences.
 
-Client diversity refers to utilizing different software clients in a blockchain network developed by various teams and in other programming languages. Having a variety of clients in a blockchain network is critically important:
+:::tip
 
-- **Security and Resilience**: Client diversity increases the robustness of the network. If there's a bug in one client, it doesn't bring down the entire network because other clients can continue to operate. This decentralization and redundancy is a fundamental aspect of blockchain security and resilience.
-- **Decentralization and Governance**: Client diversity promotes decentralization in the development and governance of the Ethereum network. It prevents any team or entity from having too much influence over the network's growth.
+A detailed list of supported client software and differences can be found on the [Client Providers](/docs/theory/blockchain-knowledge/client-providers.md) page.
 
-Operators of validators and nodes should ensure that we can split our client usage evenly to the extent of officially supported clients and validators. You can find metrics about the diversity on Ethereum at the [Client Diversity Webpage](https://clientdiversity.org/#distribution). The charts for consensus and execution clients are updated on a daily basis.
+:::
 
-#### Ethereum's History
+## Diversity Measures
 
-Ethereum client diversity has proven essential in maintaining the network's robustness during several incidents. Some of the most notable incidents:
+| Topic                                            | Description                                                                                                                                                                             |
+| ------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| <nobr> **Security & Resilience** </nobr>         | Individual bugs or attacks on a single client are not harmful to the other clients on the network and hence do not increase the risk of a mass failure happening as a consequence.      |
+| <nobr> **Decentralization & Governance** </nobr> | No particular development group or codebase has an inordinate amount of power or control over the overall functionality and operation of the network as a whole.                        |
+| <nobr> **Implementation Independence** </nobr>   | Different clients have different understandings of the protocol, highlighting some of the ambiguities in the specifications. This ends up with collevtive refinements of the standards. |
+| <nobr> **Update Flexibility** </nobr>            | With multiple software manufacturers to choose from, there is less chance of delays in applying upgrades and a unified competition across companies to deliver features.                |
 
-- **Shanghai DoS Attacks, 2016**: During the Devcon2 conference, the Ethereum network was targeted by a [series of denial-of-service attacks](https://blog.ethereum.org/2016/09/22/ethereum-network-currently-undergoing-dos-attack). The attacker exploited several vulnerabilities in the Ethereum protocol, which resulted in a slowdown of block propagation times and disrupted the network. The main client at the time, Geth, was particularly affected. However, the Parity client had a different implementation and wasn't affected similarly. Client diversity allowed the network to continue to operate.
-- **OpenEthereum Consensus Bug, 2020**: There have been several instances where a consensus client bug could have led to a network fork. In 2020, a bug in the OpenEthereum client led to some [nodes getting stuck](https://www.coindesk.com/tech/2020/08/27/buggy-code-release-knocks-13-of-ethereum-nodes-offline/) at a particular block, but because many nodes were running other clients, the network as a whole continued to function.
-- **Prysm Client Incident, 2023**: Prysm nodes were burdened by a flood of attestations about older, outdated transactions. This phenomenon led to excessive usage of system resources in an attempt to update the transaction record, causing slowdowns and system failures. It turned out to be due to [an error in the transaction organization mechanism](https://offchain.medium.com/post-mortem-report-ethereum-mainnet-finality-05-11-2023-95e271dfd8b2), causing the system to sort transactions using incorrect information. During this time, Lighthouse was the only client not affected. Due to the majority being vulnerable, the Ethereum network stalled for 25 minutes and continued with tremendous workloads for several days.
+:::tip
+
+Node operators should aim to **distribute their client usage** across the officially supported clients **to avoid dominance** by any single implementation. The current network metrics can be found on the [LUKSO Diversity Dashboard](https://clientdiversity.lukso.network/).
+
+:::
+
+## Historical Incidents
+
+Client diversity has always proven to be of fundamental significance in the wide Ethereum Ecosystem. Below are some of the most important events in which diversity served an essential function in either protecting the network or bringing to light crucial vulnerabilities that would have had severe consequences.
+
+- **[Shanghai DoS Attacks, 2016](https://blog.ethereum.org/2016/09/22/ethereum-network-currently-undergoing-dos-attack)**  
+  Throughout the course of the Devcon2, Ethereum was targeted by a series of denial-of-service attacks that had a profound effect on its performance and stability. The dominant Geth client struggled, causing degraded performance and crashes. The alternative Parity client proved to be more resilient, keeping the network functional until highlighed issues were fixed.
+
+- **[OpenEthereum Consensus Bug, 2020](https://www.coindesk.com/tech/2020/08/27/buggy-code-release-knocks-13-of-ethereum-nodes-offline/)**  
+  A bug that was found in the OpenEthereum client led to a situation in which approximately 13% of all nodes halted at a particular block. The issue could have resulted in a chain split that would have been disruptive to the network. However, the chain kept operating normally and uninterrupted due to other nodes running Geth and Besu clients without issues.
+
+- **[Prysm Client Finality Failure, 2023](https://offchain.medium.com/post-mortem-report-ethereum-mainnet-finality-05-11-2023-95e271dfd8b2)**  
+  Shortly before the DappCon event, the Prysm client experienced severe delays due to a transaction ordering bug, also partially effecting other consensus clients. The only client not suffering from these issues at the time was Lighthouse and instrumentally kept the finality process alive even when following a long network stall of 25 minutes.
+
+:::info
+
+Client diversity is a **core pillar of network health to avoid systemic risks** and ensure long-term sustainability.
+
+:::
