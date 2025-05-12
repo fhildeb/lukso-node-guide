@@ -1,57 +1,100 @@
 ---
-sidebar_label: "Slashing and Panelties"
+sidebar_label: "Slashing and Penalties"
 sidebar_position: 4
 ---
 
-# Slashing and Panelties
+# Slashing and Penalties
 
-### 6.2.6 Slashing
+In a Proof of Stake blockchain, validators are monitored under strict scrutiny to maintain the integrity, decentralization, and consistency of the network. When a validator becomes dishonest, it risks punishment in the form of _slashing_ or _penalization_. Though both concepts are used interchangeably, they refer to two different mechanisms.
 
-In the Proof of Stake consensus context, the slasher functionality is designed to discourage validators from behaving dishonestly or maliciously. If a validator behaves in a way that could compromise the network's integrity—like trying to manipulate the transaction history or proposing conflicting blocks—they can be slashed. When a validator gets slashed, a portion of its staked LYX or LYXt is removed, e,g. burned. Additionally, they are ejected from the validator set, losing their ability to participate in the consensus process and earn further rewards.
+| Action       | Occurence                                  | Reason             |
+| ------------ | ------------------------------------------ | ------------------ |
+| **Slashing** | Validators commit provable malicious acts. | Punitive Measure   |
+| **Penalty**  | Validator fails to perform their duties.   | Corrective Measure |
 
-The slashing conditions include:
+## Slashing
 
-- **Double Proposal**: If a validator proposes two different blocks during the same time slot.
-- **Surround Vote**: If a validator makes attestations that surround each other, a later vote contradicts an earlier one in a way that isn't just an update.
+If a validator behaves inappropriately on the network, like suggesting two different blocks or distributing two different attestations, the validator is slashed by active participants on the consensus network who run a slasher service. The proof of detected misbehavior is then included in the proposed block and a portion of the slashed amount redistributed to the publisher.
 
-Without the slasher, slashed validators that have committed offenses might not be promptly removed from the validator set, which could theoretically affect network operation in certain situations. Running a slasher service can be resource-intensive. The slasher service needs to keep track of a significant amount of historical data to detect slashable offenses, which can require substantial storage space and processing power.
+:::tip
 
-### 6.2.7 Penalties
+More details about slashing abilities and software can be found on the [Slasher Service](/docs/theory/node-operation/slasher-service.md) page.
 
-In Proof of Stake, validators can be penalized for being offline, which is technically different from losing stake due to slashing. Instead, it's considered inactivity leakage or an inactivity penalty. The same penalties for an offline validator are dynamically adjusted based on the total amount of offline validators and their offline duration.
+:::
 
-This mechanism aims to incentivize validators to stay online and actively participate in the network's consensus process. Validators are expected to be online to propose and attest to blocks. If a validator is offline, they're not fulfilling their role, and so their balance slowly leaks over time.
+| Offense Type                       | Description                                                       |
+| ---------------------------------- | ----------------------------------------------------------------- |
+| <nobr> **Double Proposal** </nobr> | Submitting two different blocks for the same slot.                |
+| <nobr> **Surround Vote** </nobr>   | Creating an attestation that encloses a previously submitted one. |
 
-The penalties for being offline are much less severe than the penalties for malicious behavior that would result in slashing. The inactivity penalty is proportional to the square of the time the validator has been offline, meaning the penalty accelerates the longer the validator is offline.
+:::info
 
-It's important to note that these penalties are only applied when the network isn't finalizing blocks from someone that hasn't been online. If the network is finalizing blocks, offline validators don't receive inactivity penalties but miss out on potential rewards.
+The _surround vote_ occurs when a validator makes an attestation which coincides with a previous one. An example of this would be to vote on a fresh checkpoint that includes an existing attestation.
+This act can compromise the [finality guarantees](/docs/theory/blockchain-knowledge/proof-of-stake.md) of the chain.
 
-The design intention is to ensure that validators have a strong incentive to remain online and participate in the consensus process, but without making the penalties so severe that minor issues could result in significant losses. This balance aims to encourage a secure and decentralized network.
+:::
 
-#### Penalty Estimation
+When a validator is slashed for performing one of the previous inacceptable behaviours:
 
-The exact calculation of these penalties can be complex due to these variables, but here are rough estimates:
+- A portion of their staked LYX or LYXt is **burned**, effectively made inaccessible.
+- They are **ejected** from the active validator set and lose future reward potential.
+- Their offense is publicly **recorded**, ensuring transparency and accountability.
 
-```text
-For being offline for 5 hours:    0.01 LYX/LYXt penalty
-For being offline for 1 day:      0.10 LYX/LYXt penalty
-For being offline for 7 days:     1.00 LYX/LYXt penalty
-```
+## Penalties
 
-Based on the [panalty research](https://alonmuroch-65570.medium.com/how-long-will-it-take-an-inactive-eth2-validator-to-get-ejected-a6ce8f98fd1c), a validator will lose roughly 60% of their staked LYX after 18 days of inactivity, meaning `4096` epochs. It takes around 3 weeks or roughly `4686` epochs for the effective balance to fall to around 16 LYX, which will cause the validator to be ejected from the PoS protocol. An explanation of epochs can be found [below](#6210-epochs).
+Penalties are leveled against validators who are offline or do not fulfill their commitment obligations without requiring evidence of malicious behavior. These are also known as _inactivity punishments_. Unlike slashing punishments, they are used to slowly reduce a validator's balance unless validators actively participate in consensus activities like block proposing or voting on attestations.
 
-> Remember, these are rough estimates, and the penalties could differ based on the network conditions. If the network is not finalizing, e.g., over one-third of the network is offline, penalties can ramp up significantly.
+- Penalties **increase** the longer a validator is offline, reducing their balance.
+- Multiple offline validators cause penalties to **scale higher** across the network.
+- Indirectly, validators **lose potential rewards** while being inactive.
 
-### 6.2.8 Network Exits
+Inactivity penalties decrease as the effective balance of the validator decreases. During every epoch, rewards and penalties for each individual validator [are determined](https://alonmuroch-65570.medium.com/how-long-will-it-take-an-inactive-eth2-validator-to-get-ejected-a6ce8f98fd1c) using the validator's attestations, current block head, inclusion delays, and inactivity leaks.
 
-It will continue validating if your validator's balance goes below 32 ETH due to penalties or slashing events. However, dropping below 32 ETH is undesirable because it indicates that your validator is either underperforming or misbehaving.
+:::info Inclusion Delay
 
-Underperforming could be due to being offline frequently or having a poor network connection, causing your validator to miss attestations or block proposals. Misbehaving, on the other hand, could be due to double voting or other slashable offenses.
+The inclusion delay is the period between a work's assignment and submission. For blockchain networks, it's the delta between the [slot](/docs/theory/blockchain-knowledge/proof-of-stake.md) that a validator is called to [attest](/docs/theory/blockchain-knowledge/proof-of-stake.md) in, and the slot that includes their attestation on chain.
 
-If your validator's balance falls significantly and remains consistently low, it could eventually be forcefully exited during the next validator registry update. This safeguard keeps the network healthy and ensures that only active and correctly-functioning validators are participating in consensus. The core feature is to ensure the overall health and stability of the network, as validators with very low balances might not have the same incentives to behave correctly.
+:::
 
-Forceful exits will happen if your validator balance falls below 16 LYX/LYXt. Once a validator has been exited, it can no longer participate in consensus and earn rewards. When a validator is ejected, it is placed in a queue to be exited from the active set of consensus participants.
+:::warning
 
-### 6.2.9 Participation Rate
+Panelties rely on network-wide participation and values are determined in a network with a participation rate of 98%. If more than 33% of validators are offline and the network stops finalizing blocks, penalties will accelerate significantly.
 
-In Proof of Stake consensus, at least two-thirds of the validators must be online and actively participating for the chain to finalize blocks. Network stalls can occur for various reasons, such as network partitions or a significant number of other validators offline, or not participating effectively around the same time.
+:::
+
+| Downtime                  | 1 Day        | 1 Week        | 1 Month       | 6 Months       | 2 Years         |
+| ------------------------- | ------------ | ------------- | ------------- | -------------- | --------------- |
+| **Progressed Epoch**      | ~225 Epochs  | ~1,575 Epochs | ~6,720 Epochs | ~40,320 Epochs | ~161,280 Epochs |
+| **Approximate Penalty**   | ~0.01875 LYX | ~0.13125 LYX  | ~0.5625 LYX   | ~3.375 LYX     | ~13.70 LYX      |
+| **Stake Loss Percentage** | ~0.06%       | ~0.41%        | ~1.76%        | ~10.55%        | ~42.81%         |
+| **Remaining Stake**       | ~31.981 LYX  | ~31.869 LYX   | ~31.438 LYX   | ~28.625 LYX    | ~18.30 LYX      |
+
+:::danger
+
+If the balance falls below 16 LYX or LYXt, the validator is **automatically ejected** from the active validator set of the network.
+
+:::
+
+:::note
+
+On LUKSO, it will approximately take [2 Years and 4 Months](https://explorer.consensus.testnet.lukso.network/validator/903e80371518c7a3e7cb1a4705437f19329f75f0f20f5688ec9bbe38d23870e8e210fdbde332e78f988e67372918dfd7#charts) of downtime until the validator's stake will drop below 50%.
+
+:::
+
+## Termination
+
+A validator may be forcefully exited from the active set under certain conditions, typically when:
+
+- The **balance drops below 50%** due to slashing or penalties.
+- It has **been slashed** for a serious offense.
+
+:::info
+
+Once ejected, the validator is immediately placed in an exit queue and gets subtracted from the overall number of validators. A validator is not eligible to receive any reward or participate in the consensus after it exits. To rejoin the validators' group, users have to restart the staking process.
+
+:::
+
+:::tip
+
+A healthy validator should maintain a balance above 32 LYX or LYXt and ensure stable uptimes for good participation rates.
+:::
