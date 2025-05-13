@@ -5,35 +5,84 @@ sidebar_position: 5
 
 # Client Types
 
-## 6.3 Client Theory
+With blockchain technology, you should have an understanding of various software clients that operate in conjunction to maintain a decentralized network. The clients execute the transactions, validate decisions, operate wallets, and maintain various databases, forming the basis for EVM blockchain networks.
 
-When engaging with blockchain technologies, it's crucial to understand the different types of software clients involved in the process. The interplay between these clients makes a blockchain network function as intended, and understanding their roles and functionalities can help users troubleshoot issues and optimize their experiences.
+## General Overview
 
-> You will have to run all 3 clients to become a validator. However, you can also run the setup without the validator client if you want to participate and store the network without gaining returns.
+In order to participate as a peer node in the blockchain network, the minimum requirements for operation include the execution and the consensus clients. For additional staking, users also have to run a process for validators along with these clients.
 
-| Layer                                                                 | What it does                                                                                                                                                 | Why it’s still required for an _archive_ node                                                                                                                                                                                                               |
-| --------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Execution client**<br />(Geth, Erigon, Nethermind, Besu)            | Executes transactions, maintains the state database. Running in _archive_ mode simply means it keeps **every historical state** instead of pruning old data. | After the Merge, it **no longer speaks directly to peers for fork‑choice or new blocks**. It relies on the consensus client through the Engine API (`eth_newPayload`, `forkchoiceUpdated`) to know which blocks to execute.                                 |
-| **Consensus client**<br />(Prysm, Lighthouse, Teku, Nimbus, Lodestar) | Talks to the beacon‑chain network, follows fork choice, verifies validator signatures, finality, etc.                                                        | Even if you don’t run validators, your execution layer still needs a live feed of **new headers and fork‑choice updates**. Without the consensus client, the execution client stalls at the merge transition block (the “terminal total difficulty” block). |
+:::tip Optional Add-ons
 
-### 6.3.1 Execution Client
+Depending on use case and infrastructure goals, an optional [slasher service](/docs/theory/node-operation/slasher-service.md) or [MEV process](/docs/theory/blockchain-knowledge/proof-of-stake.md#roles-and-services) can be run to gain further profits.
 
-The Execution Client, also referred to as blockchain or network client, is the software that directly interacts with the blockchain. It connects to the blockchain network, downloads and verifies blocks, maintains a local copy of the blockchain data, and propagates transactions and blocks.
+:::
 
-Underneath, the Execution Client does a lot of heavy lifting: it verifies cryptographic proofs, validates transactions, applies state changes, manages the local database, and provides an interface for querying and spreading the blockchain data from or to other nodes. Regarding the copy of the blockchain data, it maintains account balances, contract bytecode, contract storage, and the transaction pool.
+| Client Layer                         | Role and Responsibilities                                                                                                                                                                                                                                  |
+| ------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| <nobr> **Execution Client** </nobr>  | Handles EVM execution, transaction validation, state updates, gas accounting, and block propagation, while directly communicating with other execution peers. Aditionally, it also maintains account balances, contract storage, and the transaction pool. |
+| <nobr> **Consensus Client** </nobr>  | Connects to the beacon chain, follows fork choice, validates block headers, aggregates attestations, and manages finality while directly communicating with other consensus peers.                                                                         |
+| <nobr> **Validator Process** </nobr> | Manages validator keypairs, proposes blocks, signs attestations, and performs [Proof of Stake](/docs/theory/blockchain-knowledge/proof-of-stake.md) duties.                                                                                                |
 
-The transaction pool, often called the memory pool, is a set of transactions broadcast to the network but not yet included in a block. The execution client is responsible for managing this pool, deciding which transactions to fit in a proposed block based on criteria such as gas price, and executing these transactions when they are included.
+:::info
 
-The execution client also communicates with the consensus client to receive updates on the state of the consensus protocol, including finalized blocks and the current state of the validator set.
+Execution and consensus clients connect to separate [peer networks](/docs/theory/blockchain-knowledge/peer-networks.md) with their own protocols and discovery layers.
 
-### 6.3.2 Consensus Client
+:::
 
-The consensus client, also referred to as the beacon client or beacon node, is responsible for participating in the consensus protocol of the blockchain. In a Proof of Stake system, this involves proposing own blocks and attesting to the validity of proposed blocks.
+## Execution Responsibilities
 
-Under the hood, the Consensus Client communicates with other validators to agree on the state of the blockchain. It signs messages with the validator's private key as part of the consensus process and reads from and writes to the blockchain through the execution client.
+The execution client, is responsible for all operations related to executing transactions and managing the EVM state:
 
-### 6.3.3 Validator Client
+- Receiving and validating new blocks.
+- Managing the transaction memory pool for pending transactions.
+- Applying state transitions such as account balance changes and contract updates.
+- Storing all on-chain data including, account balances, contract bytecode, contract storage.
+- Maintains a frequent section or even the full blockchain history.
+- Communicating with the consensus client to execute finalized blocks.
 
-The Validator Client is often a part of the Consensus Client software. It manages the validator's keypairs and performs the duties assigned by the consensus protocol: proposing blocks and making attestations.
+:::tip
 
-The validator client only manages the validator's activities, while the consensus client implements the consensus protocol and communicates with the rest of the network.
+The execution client does not determine which block is added next. Instead, it waits for the consensus client to decide on a **canonical block** that will become the head of the chain and only carries it's formation and transaction execution.
+
+:::
+
+:::info
+
+The [Engine API](https://hackmd.io/@danielrachi/engine_api) is used to keep execution and consensus clients aligned on the latest valid blockchain state.
+
+- `eth_newPayload`: Submits a new block from the execution layer to be validated and proposed.
+- `forkchoiceUpdated`: Informs the execution client which block is currently considered canonical.
+
+:::
+
+## Consensus Responsibilities
+
+The consensus client is responsible for all consensus-related operations in a Proof of Stake blockchain.
+
+- Syncing the beacon chain and following the correct fork choice rule.
+- Aggregating and propagating attestations, sync committee messages, and block proposals.
+- Managing the validator registry and shuffling validators between slots and epochs.
+- Verifying incoming block headers and ensuring they match the chain rules.
+- Providing fork-choice and head updates to the execution client.
+
+:::info
+
+Consensus clients use the 🎨 [**libp2p**](https://libp2p.io/) stack and handle real-time communication with other validator nodes.
+
+:::
+
+## Validator Responsibilities
+
+The validator client is a lightweight process embedded within the consensus client for distinct staking purposes.
+
+- Managing the imported validator keypairs.
+- Proposing blocks when selected as the slot leader.
+- Attesting to new blocks and voting on chain finality.
+- Signing duties with the validator's private keys.
+- Monitoring performance and ensuring duties are fulfilled within the slot time.
+
+:::warning
+
+A validator client must be **online and well-connected** to avoid penalties and maximize rewards. While it does not store blockchain state or perform execution, it depends on the consensus client to stay in sync with the rest of the network.
+
+:::
