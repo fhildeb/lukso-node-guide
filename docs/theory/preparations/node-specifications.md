@@ -10,15 +10,16 @@ import TabItem from '@theme/TabItem';
 
 Running a Ethereum node for a custom network like LUKSO is not a one‑size‑fits‑all affair. Hardware needs grow with the amount of historical data you keep and the additional services you plan to enable. The following table shows the typical node setups.
 
-| Node Type                  | Description                                                               |
-| -------------------------- | ------------------------------------------------------------------------- |
-| **Regular Full Node**      | Keeps recent state only and prunes old data once hash tree is verifiable. |
-| **Node + Slasher Service** | Runs a proof‑of‑stake slasher service to the regular node services.       |
-| **Archive Node**           | Stores all historical state ideal for explorers, research & analytics.    |
+| Node Type                                 | Description                                                               |
+| ----------------------------------------- | ------------------------------------------------------------------------- |
+| <nobr> **Light Node** </nobr>             | Downloads block headers and verifies minimal parts of the chain.          |
+| <nobr> **Regular Full Node** </nobr>      | Keeps recent state only and prunes old data once hash tree is verifiable. |
+| <nobr> **Node + Slasher Service** </nobr> | Runs a proof‑of‑stake slasher service to the regular node services.       |
+| <nobr> **Archive Node** </nobr>           | Stores all historical state ideal for explorers, research & analytics.    |
 
 :::tip
 
-Further details about client variations can be found on the [Proof of Stake](/docs/theory/blockchain-knowledge/proof-of-stake.md) and [Client Types](/docs/theory/blockchain-knowledge/client-types.md) pages.
+Further details about node variations can be found on the [Client Types](/docs/theory/blockchain-knowledge/client-types.md) and [Client Providers](/docs/theory/blockchain-knowledge/client-providers.md) pages.
 
 :::
 
@@ -36,21 +37,23 @@ Meeting or exceeding the hardware specs below keeps your specific node type sync
 <Tabs>
 <TabItem value="minimal" label="Minimal">
 
-| Node Type                  | CPU     | RAM   | Storage | Network   | Typical Execution Clients              |
-| -------------------------- | ------- | ----- | ------- | --------- | -------------------------------------- |
-| **Regular Full Node**      | 4 Cores | 8 GB  | 500 GB  | ≥ 25 Mbps | [Geth], [Erigon], [Nethermind], [Besu] |
-| **Node + Slasher Service** | 6 Cores | 16 GB | 1 TB    | ≥ 50 Mbps | [Geth], [Erigon], [Nethermind], [Besu] |
-| **Archive Node**           | 8 Cores | 16 GB | 2 TB    | ≥ 50 Mbps | [Erigon], [Besu]                       |
+| Node Type                                 | CPU     | RAM   | Storage | Network   | Typical Execution Clients              | [CLI Support](https://github.com/lukso-network/tools-lukso-cli) |
+| ----------------------------------------- | ------- | ----- | ------- | --------- | -------------------------------------- | --------------------------------------------------------------- |
+| <nobr> **Light Node** </nobr>             | 2 Cores | 2 GB  | 2 GB    | ≥ 5 Mbps  | [Helios], [Nimbus], [Lodestar]         | ❌ No                                                           |
+| <nobr> **Regular Full Node** </nobr>      | 4 Cores | 8 GB  | 500 GB  | ≥ 25 Mbps | [Geth], [Erigon], [Nethermind], [Besu] | ✅ Yes                                                          |
+| <nobr> **Node + Slasher Service** </nobr> | 6 Cores | 16 GB | 1 TB    | ≥ 50 Mbps | [Geth], [Erigon], [Nethermind], [Besu] | ✅ Yes                                                          |
+| <nobr> **Archive Node** </nobr>           | 8 Cores | 16 GB | 2 TB    | ≥ 50 Mbps | [Erigon], [Besu]                       | ✅ Yes                                                          |
 
 </TabItem>
 
 <TabItem value="recommended" label="Recommended">
 
-| Node Type                  | CPU           | RAM   | Storage   | Network   | Typical Execution Clients              |
-| -------------------------- | ------------- | ----- | --------- | --------- | -------------------------------------- |
-| **Regular Full Node**      | 6 – 8 Cores   | 16 GB | 1 - 2 TB  | ≥ 25 Mbps | [Geth], [Erigon], [Nethermind], [Besu] |
-| **Node + Slasher Service** | 8 - 10 Cores  | 32 GB | 2 - 4 TB  | ≥ 50 Mbps | [Geth], [Erigon], [Nethermind], [Besu] |
-| **Archive Node**           | 12 – 16 Cores | 32 GB | 4 - 6 TB  | ≥ 50 Mbps | [Erigon], [Besu]                       |
+| Node Type                                 | CPU           | RAM   | Storage   | Network   | Typical Execution Clients              | [CLI Support](https://github.com/lukso-network/tools-lukso-cli) |
+| ----------------------------------------- | ------------- | ----- | --------- | --------- | -------------------------------------- | --------------------------------------------------------------- |
+| <nobr> **Light Node** </nobr>             | 2 – 4 Cores   | 4 GB  | 5 – 10 GB | ≥ 10 Mbps | [Helios], [Nimbus], [Lodestar]         | ❌ No                                                           |
+| <nobr> **Regular Full Node** </nobr>      | 6 – 8 Cores   | 16 GB | 1 - 2 TB  | ≥ 25 Mbps | [Geth], [Erigon], [Nethermind], [Besu] | ✅ Yes                                                          |
+| <nobr> **Node + Slasher Service** </nobr> | 8 - 10 Cores  | 32 GB | 2 - 4 TB  | ≥ 50 Mbps | [Geth], [Erigon], [Nethermind], [Besu] | ✅ Yes                                                          |
+| <nobr> **Archive Node** </nobr>           | 12 – 16 Cores | 32 GB | 4 - 6 TB  | ≥ 50 Mbps | [Erigon], [Besu]                       | ✅ Yes                                                          |
 
 </TabItem>
 </Tabs>
@@ -133,6 +136,9 @@ The above data was gathered from [Geth](/docs/theory/blockchain-knowledge/client
 
 :::
 
+[Helios]: https://github.com/a16z/helios
+[Nimbus]: https://nimbus.guide/index.html
+[Lodestar]: https://chainsafe.github.io/lodestar/
 [Geth]: https://geth.ethereum.org/docs/getting-started/hardware-requirements
 [Erigon]: https://docs.erigon.tech/getting-started/hw-requirements
 [Nethermind]: https://docs.nethermind.io/get-started/system-requirements/
