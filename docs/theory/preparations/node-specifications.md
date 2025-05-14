@@ -13,7 +13,7 @@ Running a Ethereum node for a custom network like LUKSO is not a one‑size‑fi
 | Node Type                                 | Description                                                               |
 | ----------------------------------------- | ------------------------------------------------------------------------- |
 | <nobr> **Light Node** </nobr>             | Downloads block headers and verifies minimal parts of the chain.          |
-| <nobr> **Regular Full Node** </nobr>      | Keeps recent state only and prunes old data once hash tree is verifiable. |
+| <nobr> **Full Node** </nobr>              | Keeps recent state only and prunes old data once hash tree is verifiable. |
 | <nobr> **Node + Slasher Service** </nobr> | Runs a proof‑of‑stake slasher service to the regular node services.       |
 | <nobr> **Archive Node** </nobr>           | Stores all historical state ideal for explorers, research & analytics.    |
 
@@ -40,7 +40,7 @@ Meeting or exceeding the hardware specs below keeps your specific node type sync
 | Node Type                                 | CPU     | RAM   | Storage | Network   | Typical Execution Clients              | [CLI Support](https://github.com/lukso-network/tools-lukso-cli) |
 | ----------------------------------------- | ------- | ----- | ------- | --------- | -------------------------------------- | --------------------------------------------------------------- |
 | <nobr> **Light Node** </nobr>             | 2 Cores | 2 GB  | 2 GB    | ≥ 5 Mbps  | [Helios], [Nimbus], [Lodestar]         | ❌ No                                                           |
-| <nobr> **Regular Full Node** </nobr>      | 4 Cores | 8 GB  | 500 GB  | ≥ 25 Mbps | [Geth], [Erigon], [Nethermind], [Besu] | ✅ Yes                                                          |
+| <nobr> **Full Node** </nobr>              | 4 Cores | 8 GB  | 500 GB  | ≥ 25 Mbps | [Geth], [Erigon], [Nethermind], [Besu] | ✅ Yes                                                          |
 | <nobr> **Node + Slasher Service** </nobr> | 6 Cores | 16 GB | 1 TB    | ≥ 50 Mbps | [Geth], [Erigon], [Nethermind], [Besu] | ✅ Yes                                                          |
 | <nobr> **Archive Node** </nobr>           | 8 Cores | 16 GB | 2 TB    | ≥ 50 Mbps | [Erigon], [Besu]                       | ✅ Yes                                                          |
 
@@ -51,7 +51,7 @@ Meeting or exceeding the hardware specs below keeps your specific node type sync
 | Node Type                                 | CPU           | RAM   | Storage   | Network   | Typical Execution Clients              | [CLI Support](https://github.com/lukso-network/tools-lukso-cli) |
 | ----------------------------------------- | ------------- | ----- | --------- | --------- | -------------------------------------- | --------------------------------------------------------------- |
 | <nobr> **Light Node** </nobr>             | 2 – 4 Cores   | 4 GB  | 5 – 10 GB | ≥ 10 Mbps | [Helios], [Nimbus], [Lodestar]         | ❌ No                                                           |
-| <nobr> **Regular Full Node** </nobr>      | 6 – 8 Cores   | 16 GB | 1 - 2 TB  | ≥ 25 Mbps | [Geth], [Erigon], [Nethermind], [Besu] | ✅ Yes                                                          |
+| <nobr> **Full Node** </nobr>              | 6 – 8 Cores   | 16 GB | 1 - 2 TB  | ≥ 25 Mbps | [Geth], [Erigon], [Nethermind], [Besu] | ✅ Yes                                                          |
 | <nobr> **Node + Slasher Service** </nobr> | 8 - 10 Cores  | 32 GB | 2 - 4 TB  | ≥ 50 Mbps | [Geth], [Erigon], [Nethermind], [Besu] | ✅ Yes                                                          |
 | <nobr> **Archive Node** </nobr>           | 12 – 16 Cores | 32 GB | 4 - 6 TB  | ≥ 50 Mbps | [Erigon], [Besu]                       | ✅ Yes                                                          |
 
@@ -90,7 +90,7 @@ The slasher tracks validator attestations to detect misbehaviour on the network.
 
 :::tip
 
-Further details about the slasher functionality can be found on the [slasher service](/docs/theory/node-operation/slasher-service.md) page.
+Further details about the slasher functionality can be found on the [Slasher Service](/docs/theory/node-operation/slasher-service.md) page.
 
 :::
 
@@ -103,7 +103,7 @@ Further details about the slasher functionality can be found on the [slasher ser
 
 :::info Storage Growth
 
-The slasher database can expand from **0 → 200 GB in its first year**. Plan for continuous growth or a separate SSD drive.
+The **Slasher DB** could potentially expand from **0 → 200 GB in one year**. Plan for continuous growth or a separate SSD drive.
 
 :::
 
@@ -119,16 +119,22 @@ The slasher database can expand from **0 → 200 GB in its first year**. P
 
 Since the [LUKSO Mainnet Launch](https://medium.com/lukso/genesis-validators-start-your-clients-fe01db8f3fba), the blockchain data has increased on a rather static level.
 
-:::tip Current DISK USAGE
+:::info Current DISK USAGE
 
-As of **May 2025** fully synchronized **Mainnet Full Node** occupies **≈ 750 GB** of data, and **≈ 350 GB** of slasher database.
+As of **May 2025** fully synchronized **LUKSO Mainnet Full Node** occupies **≈ 62 GB** of data, and **≈ 40 GB** of slasher database.
+
+:::
+
+:::tip
+
+An extended analysis and comparison of storage usage across execution clients can be found on the [Client Providers](/docs/theory/blockchain-knowledge/client-providers.md) page.
 
 :::
 
 | Network     | **Monthly** Growth | **Yearly** Growth | **Monthly** Slasher Growth | **Yearly** Slasher Growth | Genesis     |
 | ----------- | ------------------ | ----------------- | -------------------------- | ------------------------- | ----------- |
-| **Mainnet** | ~ 29 GB            | ~ 346 GB          | ~ 12.5 GB                  | ~ 150 GB                  | May 23 2023 |
-| **Testnet** | ~ 3 GB             | ~ 36 GB           | ~ 1.3 GB                   | ~ 15 GB                   | May 03 2023 |
+| **Mainnet** | ~ 2.6 GB           | ~ 31 GB           | ~ 2 GB                     | ~ 20 GB                   | May 23 2023 |
+| **Testnet** | ~ 0.3 GB           | ~ 3.7 GB          | ~ 0.2 GB                   | ~ 2 GB                    | May 03 2023 |
 
 :::note Disclaimer
 
