@@ -3,85 +3,155 @@ sidebar_label: "Client Providers"
 sidebar_position: 6
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 # Client Providers
 
-# 6.4 Client Setups
+Client software is the essential underlying backbone that enables actions being executed on a blockchain network. Based on the user's specific role, whether stakers, developers, infrastructure providers, or observers, they all use different node setups and software clients that are adjusted according to their specific requirements and roles.
 
-To become a validator on an EVM PoS network, you must run a full node as a. This is because validators need the entire blockchain data and a real-time view of the network state to validate new blocks and transactions effectively. A light node would not have sufficient data for these operations. On top of that, you could run your validator as an archive node. Let's clarify the differences:
+## Node Setups
 
-#### Full Node
+There are three basic setups in which an execution client of the network can be operated.
 
-A full node downloads the entire blockchain and validates all blocks and transactions against the network's consensus rules. It stores the current state of the network, including account balances, contracts, storage, and other information. However, it does not keep all historical states. If you need to check the balance of an account at a specific block height in the past, a full node cannot provide this information directly.
+| Node Type                                 | Description                                                            | Use Case                                                                        | <nobr> Typical Execution Clients </nobr> |
+| ----------------------------------------- | ---------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ---------------------------------------- |
+| <nobr> **Light Node** </nobr>             | Downloads block headers and verifies only part of the chain.           | Wallets and Mobile dApps, <nobr> Low-Resource Devices </nobr>                   | [Helios], [Nimbus], [Lodestar]           |
+| <nobr> **Full Node** </nobr>              | Stores recent state and verifies all transactions and blocks.          | RPC Endpoints, Stakers, <nobr> Regular Node Operaters </nobr>                   | [Geth], [Erigon], [Nethermind], [Besu]   |
+| <nobr> **Node + Slasher Service** </nobr> | Runs a proof‑of‑stake slasher service on top of regular node services. | Staking Institutions, Watchers, <nobr> Advanced Node Operaters </nobr>          | [Geth], [Erigon], [Nethermind], [Besu]   |
+| <nobr> **Archive Node** </nobr>           | Stores all historical state since genesis.                             | Indexers, <nobr> Block Explorers, </nobr> <nobr> Data Analytic Services </nobr> | [Erigon], [Geth]                         |
 
-#### Archive Node
+:::tip
 
-An archive node is a type of full node. It downloads the entire blockchain and validates all blocks and transactions like a full node. However, in addition to the current state of the network, it also stores all historical states since the genesis block. Keeping the entire historical state makes an archive node much more storage extensive than a full node, but it allows you to query any historical state directly on the node.
+Further details about hardware requirements can be found on the [Node Specifications](/docs/theory/preparations/node-specifications.md) page.
 
-### 6.4.1 Supported Clients
+:::
 
-As of version `0.7.0` of the LUKSO CLI, the following clients are officially supported:
+## Supported Clients
 
-- **Execution Clients:** Geth, Erigon
-- **Consensus Clients:** Prysm, Lighthouse
-- **Validator Clients:** Prysm, Lighthouse
+Any Ethereum client can be set up to join the open LUKSO Network effectively. This can be done by using the publicly available [network configuration](https://github.com/lukso-network/network-configs). It should be noted, however, that some clients have been officially tested, which not only guarantees their compatibility but also ensures correct behavior within the network itself. Moreover, this testing has been carried out to ensure that the process of entering into staking is easy and not complicated for users.
 
-You can find a list of all EVM Clients, their current development and status, plus supported operating at the [Client Diversity Webpage](https://clientdiversity.org/#clients). The data is updated frequently and charts feature metrics that are fetched on a daily basis.
+:::tip Verified Support
 
-#### Geth
+Within the [LUKSO CLI v 0.24.1](https://github.com/lukso-network/tools-lukso-cli) the following clients are officially tested and supported by the LUKSO Network Team.
 
-Geth is the most popular and widely used Ethereum execution client. It's written in the Go programming language. Geth can be used for various tasks, including creating smart contracts, transferring tokens, mining ether, and exploring block history. It's developed and maintained by the Ethereum Foundation.
+:::
 
-#### Erigon
+| Consensus Client                                                  | Github                                         | Docs                                                     | Chat                                | System Support         | Language | [CLI Staking Support](https://github.com/lukso-network/tools-lukso-cli) |
+| ----------------------------------------------------------------- | ---------------------------------------------- | -------------------------------------------------------- | ----------------------------------- | ---------------------- | -------- | ----------------------------------------------------------------------- |
+| [**Lighthouse**](https://lighthouse.sigmaprime.io/)               | [🔗](https://github.com/sigp/lighthouse/)      | [📘](https://lighthouse-book.sigmaprime.io/)             | [💬](https://discord.gg/cyAszAh)    | Linux, Win, macOS, ARM | Rust     | ✅ Yes                                                                  |
+| [**Prysm**](https://prysmaticlabs.com/)                           | [🔗](https://github.com/prysmaticlabs/prysm)   | [📘](https://docs.prylabs.network/docs/getting-started/) | [💬](https://discord.gg/YMVYzv6)    | Linux, Win, macOS, ARM | Go       | ✅ Yes                                                                  |
+| [**Teku**](https://consensys.net/knowledge-base/ethereum-2/teku/) | [🔗](https://github.com/ConsenSys/teku)        | [📘](https://docs.teku.consensys.net/)                   | [💬](https://discord.gg/9mCVSY6)    | Linux, Win, macOS      | Java     | ✅ Yes                                                                  |
+| [**Nimbus**](https://nimbus.team/)                                | [🔗](https://github.com/status-im/nimbus-eth2) | [📘](https://nimbus.team/docs/)                          | [💬](https://discord.gg/qnjVyhatUa) | Linux, Win, macOS, ARM | Nim      | ❌ No                                                                   |
 
-Erigon is an Ethereum execution client that aims to offer a more efficient and faster alternative to Geth. It's written in Go and includes several optimizations to reduce the amount of data stored and improve processing speed. However, these optimizations can make Erigon more complex to maintain and update.
+| Execution Client                                          | Github                                            | Docs                                                               | Chat                                                   | System Support         | Language |
+| --------------------------------------------------------- | ------------------------------------------------- | ------------------------------------------------------------------ | ------------------------------------------------------ | ---------------------- | -------- |
+| [**Besu**](https://hyperledger.org/use/besu)              | [🔗](https://github.com/hyperledger/besu/)        | [📘](https://besu.hyperledger.org/en/stable/)                      | [💬](https://discord.com/invite/hyperledger)           | Linux, Win, macOS      | Java     |
+| [**Erigon**](https://github.com/erigontech/erigon#erigon) | [🔗](https://github.com/erigontech/erigon)        | [📘](https://docs.erigon.tech/)                                    | [💬](https://github.com/erigontech/erigon/discussions) | Linux, Win, macOS, ARM | Go       |
+| [**Geth**](https://geth.ethereum.org/)                    | [🔗](https://github.com/ethereum/go-ethereum)     | [📘](https://geth.ethereum.org/docs/)                              | [💬](https://discord.com/invite/nthXNEv)               | Linux, Win, macOS, ARM | Go       |
+| [**Nethermind**](http://nethermind.io/)                   | [🔗](https://github.com/NethermindEth/nethermind) | [📘](https://docs.nethermind.io/get-started/installing-nethermind) | [💬](https://discord.com/invite/PaCMRFdvWT)            | Linux, Win, macOS, ARM | .NET     |
 
-#### Prysm
+:::warning Further Assistance
 
-Prysm is an Ethereum consensus client written in Go and developed by Prysmatic Labs. Validators widely use it. Performance-wise, Prysm leverages optimized processes and data structures, offering a smooth experience for validators. The client had rigorous testing and auditing processes to ensure the client was secure against potential threats. It also comes with an excellent user-friendly terminal interface.
+If you have client-specific issues, it's best to contact the software providers directly. While LUKSO orchestrates the network, client maintainers have more hands-on knowledge about the software tools and supported infrastructure.
 
-#### Lighthouse
+:::
 
-Lighthouse is an Ethereum consensus client written in Rust and developed by Sigma Prime. From a security perspective, Lighthouse leverages Rust's safety features and undergoes regular security audits to protect against potential vulnerabilities. Regarding efficiency, Lighthouse is designed to perform well even on low-spec hardware, making it accessible to a wide range of users with different skill levels.
+## Provider Differences
 
-> Both consensus clients, Prysm and Lighthouse, are known to be highly secure and reliable.
+Each client has different runtime requirements, optimization, and unique features.
 
-### 6.4.2 Storage Comparison
+:::tip
 
-As [analyzed by QuickNode](https://www.quicknode.com/guides/infrastructure/node-setup/ethereum-full-node-vs-archive-node/), [declared by Ledgerwatch](https://github.com/ledgerwatch/erigon), and [crawled by YCharts](https://ycharts.com/indicators/ethereum_chain_full_sync_data_size), the used storage of the clients for the Ethereum Blockchain as of March 2023 can be estimated around these numbers:
+There is **no preferred client**. What’s most important is maintaining [client diversity](/docs/theory/blockchain-knowledge/client-diversity.md) to ensure network resilience.
 
-```text
-FULL NODE MODE
---GETH...................................970 GB TOTAL
---ERIGON.................................460 GB TOTAL
+:::
 
-ARCHIVE NODE MODE
---GETH..................................13.5 TB TOTAL
---ERIGON.................................2.4 TB TOTAL
-```
+| Client         | Description                                                                                                      | Benefits                                                                              |
+| -------------- | ---------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
+| **Geth**       | Most widely used Ethereum client, maintained by the Ethereum Foundation. Longstanding and stable.                | Default in many setups, strong community support, and broad tooling compatibility     |
+| **Erigon**     | Modern execution client focused on performance and modularity. Optimized for archive and historical data access. | Ideal for data-heavy applications, efficient disk use, and fast synchronization times |
+| **Nethermind** | Performance-oriented client built with analytics and customizability in mind.                                    | Excellent logging, modular design, and strong support for advanced node operators     |
+| **Besu**       | Enterprise-ready client maintained by the Hyperledger Foundation. Supports public and private network use cases. | Permissioned features, great for institutional and consortium chain deployments       |
+| **Prysm**      | Popular consensus client with a clean terminal interface and great user experience, developed by Prysmatic Labs. | Intuitive tooling, widely adopted, with solid performance and documentation           |
+| **Lighthouse** | Security-first consensus client from Sigma Prime, known for audit quality and reliable performance.              | Efficient on low-end hardware, great default for solo stakers and hobbyists           |
+| **Teku**       | Institutional-grade client maintained by ConsenSys, with focus on interface integrations and operability.        | Preferred by data centers and custodians with strong monitoring and API support       |
+| **Nimbus**     | Minimalist, resource-light consensus client designed for embedded and ARM devices.                               | Excellent for mobile, Raspberry Pi, and custom lightweight deployments                |
 
-#### Size Differences
+## Storage Comparison
 
-Geth is the initial implementation of the EVM as a blockchain protocol. In comparison, Erigon is designed to be a more efficient execution client and achieves this efficiency through several optimizations:
+Disk utilization is not just determined by the clients and additional software, but mainly the node's operation type. The following comparison clarifies the storage requirement for both LUKSO networks and the supported execution clients.
 
-- **Database Schema**: Erigon uses a more optimized database schema that reduces the amount of data that needs to be stored.
-- **State Trie Pruning**: Erigon implements more aggressive state tree pruning, which removes more unnecessary data from the state trie.
-- **Data Compression**: Erigon uses advanced data compression techniques to reduce the size of stored blockchain data.
-- **Code Optimization**: Erigon includes various code-level optimizations that make it run more efficiently, requiring less storage and processing power.
+<Tabs>
+<TabItem value="ethereum" label="Ethereum Mainnet">
 
-#### Expected Growth
+| Client         | Total <br /> Full Node Size | Monthly <br /> Full‑Node Growth | Yearly <br /> Full‑Node Growth | Total <br /> Archive Node Size | Yearly <br /> Archive Growth |
+| -------------- | --------------------------- | ------------------------------- | ------------------------------ | ------------------------------ | ---------------------------- |
+| **Geth**       | ≈ 1.3 TB                    | ≈ 18 GB                         | ≈ 217 GB                       | ≈ 12 TB                        | ≈ 950 GB                     |
+| **Erigon**     | ≈ 1.0 TB                    | ≈ 16 GB                         | ≈ 193 GB                       | ≈ 3.5 TB                       | ≈ 320 GB                     |
+| **Nethermind** | ≈ 1.1 TB                    | ≈ 17 GB                         | ≈ 204 GB                       | ≈ 7.5 TB                       | ≈ 690 GB                     |
+| **Besu**       | ≈ 1.4 TB                    | ≈ 19 GB                         | ≈ 220 GB                       | ≈ 12 TB                        | ≈ 950 GB                     |
 
-The needed storage can be broken down into the following yearly growth based on an EVM network that gained significant exposure for almost a decade:
+:::note Disclaimer
 
-```text
-GROWTH OF STORAGE IN FULL NODE MODE
---GETH...................................10.5 GB/MONTH | 120 GB/YEAR
---ERIGON....................................5 GB/MONTH |  60 GB/YEAR
+Estimated numbers sourced from [Geth Y-Chart](https://ycharts.com/indicators/ethereum_chain_full_sync_data_size), [Erigon Requirements](https://github.com/ledgerwatch/erigon#system-requirements), [Nethermind Documentation](https://docs.nethermind.io/get-started/system-requirements), and [Besu Resources](https://ethdocker.com/Usage/ResourceUsage). <br /> Blockchain created on [30th July 2015](https://etherscan.io/block/1), metrics gathered after _9 years and 10 months_ of uptime.
 
-GROWTH OF STORAGE IN ARCHIVE NODE MODE
---GETH....................................145 GB/MONTH | 1.8 TB/YEAR
---ERIGON...................................26 GB/MONTH | 320 GB/YEAR
-```
+:::
 
-Adjust your need for storage accordingly by asking yourself how long you can get by without maintenance on the node.
+</TabItem> <TabItem value="lukso-mainnet" label="LUKSO Mainnet">
 
-> These are rough numbers for a different blockchain running the supported clients. These are only for estimation purposes and may slightly differ based on the used storage format.
+| Client         | Total <br /> Full Node Size | Monthly <br /> Full‑Node Growth | Yearly <br /> Full‑Node Growth | Total <br /> Archive Node Size | Yearly <br /> Archive Growth |
+| -------------- | --------------------------- | ------------------------------- | ------------------------------ | ------------------------------ | ---------------------------- |
+| **Geth**       | ≈ 62 GB                     | ≈ 2.6 GB                        | ≈ 31 GB                        | ≈ 572 GB                       | ≈ 286 GB                     |
+| **Erigon**     | ≈ 54 GB                     | ≈ 2.2 GB                        | ≈ 27 GB                        | ≈ 169 GB                       | ≈ 85 GB                      |
+| **Nethermind** | ≈ 56 GB                     | ≈ 2.3 GB                        | ≈ 28 GB                        | ≈ 361 GB                       | ≈ 181 GB                     |
+| **Besu**       | ≈ 67 GB                     | ≈ 2.7 GB                        | ≈ 32 GB                        | ≈ 574 GB                       | ≈ 287 GB                     |
+
+:::note Disclaimer
+
+Estimated numbers from the LUKSO Validator Community and Ethereum-based client projections. <br /> Blockchain created on [23rd May 2023](https://explorer.execution.mainnet.lukso.network/block/0x0f1192332bf25788a44610f912a3ac38342051707720afff667b4744785bfc79), metrics gathered after _2 years_ of uptime.
+
+:::
+
+</TabItem> <TabItem value="lukso-testnet" label="LUKSO Testnet">
+
+| Client         | Total <br /> Full Node Size | Monthly <br /> Full‑Node Growth | Yearly <br /> Full‑Node Growth | Total <br /> Archive Node Size | Yearly <br /> Archive Growth |
+| -------------- | --------------------------- | ------------------------------- | ------------------------------ | ------------------------------ | ---------------------------- |
+| **Geth**       | ≈ 7.4 GB                    | ≈ 310 MB                        | ≈ 3.7 GB                       | ≈ 67 GB                        | ≈ 34 GB                      |
+| **Erigon**     | ≈ 6.4 GB                    | ≈ 260 MB                        | ≈ 3.2 GB                       | ≈ 20 GB                        | ≈ 10 GB                      |
+| **Nethermind** | ≈ 6.8 GB                    | ≈ 280 MB                        | ≈ 3.4 GB                       | ≈ 43 GB                        | ≈ 22 GB                      |
+| **Besu**       | ≈ 8.0 GB                    | ≈ 320 MB                        | ≈ 3.8 GB                       | ≈ 69 GB                        | ≈ 34 GB                      |
+
+:::note Disclaimer
+
+Estimated numbers from LUKSO Testnet Operators and Ethereum-based client projections. <br /> Blockchain created on [3rd May 2023](https://explorer.execution.testnet.lukso.network/block/0xaf02ebeed3c2e900d7319535a08daa5fb21bc7d3e3603fc23e221e39925625bc), metrics gathered after _2 years_ of uptime.
+
+:::
+
+</TabItem> 
+</Tabs>
+
+:::tip
+
+Details on the additional [slasher service](/docs/theory/node-operation/slasher-service.md)'s database growth, can be found on the [Node Specifications](/docs/theory/preparations/node-specifications.md#storage-demand) page.
+
+:::
+
+## Size Differences
+
+All execution clients store the same, verifiable blockchain state, yet their disk sizes vary widely through different trade‑offs in database layouts, compression, pruning policies or snapshot schedules.
+
+| Client         | Storage Schema                          | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+| -------------- | --------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Geth**       | <nobr> _LevelDB Trie + Freezer_ </nobr> | Uses a [Merkle-Trie](https://ethereum.org/de/developers/docs/data-structures-and-encoding/patricia-merkle-trie/) in [LevelDB](https://github.com/google/leveldb) and moves old blocks to a Freezer directory. There is no auto-pruning, meaning every state is kept unless manually expired, therefore has one of the larger footprints across clients.                                                                                                                                                                                                                                                                                            |
+| **Erigon**     | <nobr> _Flat & Caplin_ </nobr>          | Uses flat key-value tables with staged syncing and [Caplin](https://erigon.tech/releasing-caplins-archival-format/) compression file format to strip out redundant historical trie node data. With aggressive pruning and a column-oriented layout, it has the lowest growth in size with around 20% less than Geth, most significantly as archive node with around 33% of Geth's or Besu's size.                                                                                                                                                                                                                                                  |
+| **Nethermind** | <nobr> _RocksDB & Hybrid Prune_ </nobr> | Stores it's state in [RocksDB](https://github.com/facebook/rocksdb) and sweeps stale old trie nodes via [hybrid pruning](https://docs.nethermind.io/fundamentals/pruning/). Growth around 15% smaller than Geth, but higher than Erigon as the schema stores more historical receipts and keeps a chunk of pre‑prune snapshots. It's archive size sits in the middle with around 25% less than Geth or Besu.                                                                                                                                                                                                                                       |
+| **Besu**       | <nobr> _Bonsai & Forest Tries_ </nobr>  | Ships with two different storage layouts for regular and full archive setups. While the [Forest Trie](https://besu.hyperledger.org/public-networks/concepts/data-storage-formats#forest-of-tries) is a classic archive, the default [Bonsai Trie](https://besu.hyperledger.org/public-networks/concepts/data-storage-formats#bonsai-tries) is a flat table layout for regular nodes, only writing leaf nodes and log deltas within a [Merkle-Trie](https://ethereum.org/de/developers/docs/data-structures-and-encoding/patricia-merkle-trie/). Additional prune commands can reduce occupied space further and make the client extremely modular. |
+
+[Helios]: https://github.com/a16z/helios
+[Nimbus]: https://nimbus.guide/index.html
+[Lodestar]: https://chainsafe.github.io/lodestar/
+[Geth]: https://geth.ethereum.org/docs/getting-started/hardware-requirements
+[Erigon]: https://docs.erigon.tech/getting-started/hw-requirements
+[Nethermind]: https://docs.nethermind.io/get-started/system-requirements/
+[Besu]: https://besu.hyperledger.org/24.3.0/public-networks/get-started/system-requirements
