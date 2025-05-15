@@ -61,7 +61,6 @@ const sections = [
           "Client Name and Graffiti",
           "Peer Verification",
           "Dynamic DNS",
-          "Minimal Block Rewards",
           "Service Automation",
         ],
       },
