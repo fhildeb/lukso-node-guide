@@ -97,9 +97,15 @@ lukso validator import --testnet --validator-keys "<node-folder>/<keyfolder>"
 </TabItem>
 </Tabs>
 
+:::tip
+
+During the import of the keys, you will be promted to enter the password of the [generated deposit keys](/docs/guides/validator-setup/wagyu-key-generation.md).
+
+:::
+
 :::info
 
-If you have multiple deposit folders, import one folder at the time and re-type the wallet password on each additional import.
+If you have multiple deposit folders, import one folder at the time and re-type both wallet andkey passwords on each round.
 
 :::
 
