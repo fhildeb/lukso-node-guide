@@ -5,28 +5,46 @@ sidebar_position: 7
 
 # Slasher Service
 
-:::tip Slashing
+The slashing service is an optional but crucial network service that adds an additional layer of **protocol-level security** to Proof of Stake blockchains. It detects misbehavior by a validator, like double-signing or surround-voting, which then triggers slashing by the consensus protocol. On a broader view, slashing nodes can be considered the network's watchdogs to help enforce honesty and proper punishment for violators.
 
-Slashing merely redistributes penalties from attackers to honest proposers. Running your own slasher increases network security but doesn’t guarantee extra income. Broadcasting and getting rewards for detected misbehavior is always linked to attaching this proof in a block.
+:::tip
 
-The lower the percentage of validators you run on your node, the lower the chance that you can publish this proof before anyone else. Since the consensus gives little incentive to cheat and misbehaviour is extremely rare, the optional service should only be run by larger institutions and staking services.
+More details about slashable events and validator duties can be found on the [Slashing and Panelties](/docs/theory/blockchain-knowledge/slashing-and-panelties.md) and [Proof of Stake](/docs/theory/blockchain-knowledge/proof-of-stake.md) pages.
 
 :::
 
-A slasher actively watches for offenses or misbehavior on the network and broadcasts them. This might be due to running the same validators or multiple machines, faking proposals, etc.
+## Responsibilities
 
-Slasher is the name of software that can detect slashable events from validators and report them to the protocol. You can think of a slasher as the network's police. Running a slasher is totally optional. In order to detect slashable messages, the slasher records the attesting and proposing history for every validator on the network, then cross references this history with what has been broadcasted to find slashable messages such as double blocks or surrounding votes.
+A slasher **keeps track of** all the validators on the network by **block proposals** per slot and **attestations** to chain head or checkpoints. It cross-verifies those records against each other to detect double proposals or a surrounded votes. Once an offense was found, the slasher service reports evidence to the network so that the misbehaving validator can be sanctioned. However, slashers themselves don't stop or ban validators.
 
-> Slashing affects the protocol layer, e.g., validators that act maliciously. It does not affect the nodes per se, even if all validators of a node might be affected.
+Theoretically, one honest slasher within the network would be sufficient. Once published, any other operator within the network could add the proof to a future block. However, as slasher services are operated on top of nodes, multiple instances should be run geographically spread to ensure resilience during downtime.
 
-In theory all the network needs is 1 honest, properly functioning slasher to monitor the network because any slashings found are propagated to the entire network for it to be put into a block as soon as possible.
+:::info
 
-> Due to uptime reasons, there should be multiple backups in different areas and networks. It's generally beneficial for network security if a handful of nodes independently check for slashing conditions.
+The slashing only affects **individual validators at protocol level** and not the ongoing execution of the node clients. However, in case validators were operated on several nodes simultaniously, its possible that they are slashed all together.
 
-Running a slasher is not meant to be profitable and whistleblower rewards are purposefully low as slashing happens rarely.
+:::
 
-#### Additional Rewards
+## Slasher Operation
 
-Running a slasher may offer some profits to your validators given certain conditions. If the slasher detects a slashable condition, it will broadcast it to the network by default. Some lucky validator will then package this slashing evidence into a block and be rewarded for doing so. This validator might be your own one. By running only a one or two digit validator amount, chances are super low and do not keep up with the potential rewards.
+Slashing is **not required** for node operators or validators. While any validator can attach a slashing report to a block and get a small reward, the frequency of misbehaviour paired with the chance of publishing the subsequent block are extremely low for solo stakers or those running only a few validators. As most participants behave correctly, running a slasher service is mostly advisable for:
 
-> **Note**: If there is no cheating behavior within the network, there is nothing to be slashed. Regular penalties are applied from the consensus.
+- Large staking institutions or services
+- Advanced staking nodes above 100 keys
+- Operators focusing on fraud detection
+
+:::info
+
+In two years of the [LUKSO Mainnet](https://explorer.lukso.network/block/0x0f1192332bf25788a44610f912a3ac38342051707720afff667b4744785bfc79) with around [140.000 active validators](https://explorer.consensus.mainnet.lukso.network/), not a single slashable event was detected.
+
+:::
+
+## Rewards
+
+If a slasher detects misbehaviour and broadcasts a valid slashing proof, it becomes available to be included in the next block. The validator that **publishes this proof** within a block, **earns a small** part of the slashed stake through a **whistleblower reward**. Since validators are selected randomly, one can't guarantee that the detecting node is also the one to publish the proof on-chain. In reality, several nodes will detect a slashable event and compete that one of their validators gets to propose the subsequent block.
+
+:::tip
+
+Slashing rewards are meant to **incentivize correctness**, not serve as a business model. The goal is prevention, not profit.
+
+:::
