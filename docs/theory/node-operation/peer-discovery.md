@@ -5,20 +5,54 @@ sidebar_position: 8
 
 # Peer Discovery
 
-### 6.11 Peer Discovery
+Peer discovery is the mechanism by which a peer on a distributed network finds peers with which it may communicate. In peer-to-peer blockchain, this process is done automatically with algorithms that create channels of communication between the clients. All of the nodes are equal parties in this mesh, and dynamic peer discovery allows the network to heal, expand, and adapt.
 
-In a blockchain network, peers are individual nodes participating and playing a crucial role in its functioning. These nodes can have different roles depending on the type of blockchain, but they all work collectively to maintain and validate the shared ledger.
+:::tip
 
-One of the fundamental characteristics of a blockchain is decentralization, which is achieved through a network of peers distributed across different geographic locations. Each peer maintains a copy of the entire blockchain and validates new transactions and blocks according to the protocol rules. The separate operations ensure the integrity and security of the blockchain, as it makes it very difficult for any single entity to tamper with the data on the blockchain.
+The fundamentals of peer networks, operation layers, and blockchain nodes can be found on the [Peer Networks](/docs/theory/blockchain-knowledge/peer-networks.md) page.
 
-The process of peers communicating with each other is known as peer-to-peer networking. In a P2P network, there is no central server. Instead, each node or peer is equal and can act as a client and a server. The P2P communication process involves sharing data directly between systems on a network, enabling data to be transmitted directly from the source peer to the destination peer.
+:::
 
-In a blockchain network like Ethereum, peers validate transactions and blocks, ensuring they comply with network rules before adding them to the blockchain. Peers propagate valid transactions and blocks to other peers in the network, ensuring all peers have the same data and maintain the network's consensus. They play an integral role in blockchain technology's decentralized and trustless nature.
+:::info
 
-#### Benefits and Drawbacks
+EVM-based blockchains like LUKSO use [two overlapping peer networks](/docs/theory/blockchain-knowledge/peer-networks.md#operation-layers), for the consensus and execution layer.
 
-While this page will prepare you to increase your peer count and discoverability to raise the node's connectivity and resilience, setting your peer count too high can also have adverse side effects. Here are the main reasons:
+:::
 
-- **Resource Usage**: Each peer connection requires computational and network resources for managing the connection and processing transactions and blocks. If the maximum peer count is set too high, it may overwhelm your system resources like CPU, memory, and bandwidth, affecting the performance of your node and possibly your entire system. It affects bandwidth usage because your peer nodes are downloading the blockchain data from you if you are one of their peers. The connections would mean that your upload bandwidth is sending out a lot of data which will add to your outbound network usage.
-- **Network Topology Impact**: LUKSO is a P2P network designed with a certain degree of decentralization and distribution. If individual nodes have too many connections, it could lead to a more centralized network topology, negatively affecting the network's resilience to specific attacks or failures. Too high counts can defeat the distributed nature of blockchain networks. Ideally, the network consists of smaller circles of discovered nodes with a decentralized topology, extensive network growth, and no large population centers. When some node is down in a minor process of connected nodes, most of the blockchain does not notice the outage and goes on as if nothing happened. However, if every node is connected to most of the network, having outages would mean dropping the peer count of everyone and bringing fluctuations onto the table.
-- **Wasted Connections**: There's a point beyond which additional connections don't provide a meaningful increase in data propagation speed or network resilience, for instance, if you are already connected to 33% or more percent for smaller networks or more than 100 active peers for bigger ones. Peers beyond this point are just wasting connections, harming the topology, and consuming resources without providing additional benefits.
+## Connection Process
+
+The peer-to-peer discovery process is surprisingly elegant and efficient. Here’s a high-level overview of how your node finds others:
+
+1. **Every node has a unique ID**, derived from its cryptographic keys. This is like its personal identity on the network.
+2. **Nodes maintain a routing table**, organizing other peer IDs into buckets based on how close their IDs are.
+3. **When searching for peers**, your node asks others “who is closer to this target ID?” and walks through the routing tree.
+4. **Once a new peer is found**, the connection is upgraded to a secure, encrypted session using mutually agreed sub-protocols.
+5. **After connection**, nodes begin exchanging blocks, transactions, and consensus messages through gossip networks.
+
+:::tip
+
+All of this happens behind the scenes. Node operators just need to make sure that the router allows incoming connections on the appropriate ports. Further details can be found on the [Router Setup](/docs/guides/router-setup/static-ip-assignment.md) and [Firewall Settings](/docs/guides/client-setup/firewall-settings.md) pages.
+
+:::
+
+:::note Further Details
+
+The peer discovery within mesh networks like EVM-based blockchains utilizes the [Kademlia](https://medium.com/coinmonks/a-brief-overview-of-kademlia-and-its-use-in-various-decentralized-platforms-da08a7f72b8f) algorithm.
+
+:::
+
+## Adjustment Effects
+
+While you may increase your peer count and visibility to add to your node's network connectivity and health, overly high peer limits can be inefficient or interfere with optimal topology design. Theoretical recommendations for setting peer discovery parameters are presented in the next table.
+
+| Effect                                     | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| ------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| <nobr> **Resource Usage** </nobr>          | Each additional peer is requiring system resources, including CPU, memory, and bandwidth. Having high peer counts increases your [uploaded data](/docs/theory/preparations/network-demand.md), since your node is sending out more packages to other peers. Node effectiveness and synchronization rate can be degraded if system resources are overwhelmed.                                                                                                                                                                                                                                                                                                                    |
+| <nobr> **Network Topology Impact** </nobr> | The peer-to-peer network thrives with decentralization. The moment that one node is linked with too many peers, by default it creates a hub, centralized communication, going in direct opposition of the distributed nature of the network. Ideally, the network is made up of tiny overlapping subgroups. Overconnecting creates systemic risk. When a ordinary node is offline in a small sub-group, the overall network does not notice. However, if highly-connected peers generate downtime, a much bigger portion of the network fluctuates, as hundreds of communication channels will stall at once, re-try to establish connections, and might drop their peer count. |
+| <nobr> **Wasted Connections** </nobr>      | Above a peer count of around 100 on large networks with thousands of nodes, further connections gain little propagation rate or stability. They just consume bandwidth and sockets with no improvement on any fault tolerance or synchronization time of the overall network. The added connections add redundancy with little real gain, especially on small or medium nodes.                                                                                                                                                                                                                                                                                                  |
+
+:::tip
+
+If you are unsure about [Peer Connectivity](/docs/guides/modifications/peer-connectivity.md) limits, it’s best to rely on your client’s defaults, designed to balance resource use, discovery efficiency, and network stability for homestakers within the community.
+
+:::

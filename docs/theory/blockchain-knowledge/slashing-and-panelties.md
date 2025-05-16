@@ -5,7 +5,7 @@ sidebar_position: 4
 
 # Slashing and Penalties
 
-In a Proof of Stake blockchain, validators are monitored under strict scrutiny to maintain the integrity, decentralization, and consistency of the network. When a validator becomes dishonest, it risks punishment in the form of _slashing_ or _penalization_. Though both concepts are used interchangeably, they refer to two different mechanisms.
+In a Proof of Stake blockchain, validators are monitored under strict scrutiny to maintain the integrity, decentralization, and consistency of the network. When a validator becomes dishonest, it risks punishment in the form of _slashing_ or _penalization_. Although both concepts are used interchangeably, they refer to two different mechanisms.
 
 | Action       | Occurence                                  | Reason             |
 | ------------ | ------------------------------------------ | ------------------ |
