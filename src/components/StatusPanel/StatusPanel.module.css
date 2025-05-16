@@ -31,6 +31,11 @@
   font-size: 0.9rem;
 }
 
+.headerMessage {
+  text-align: center;
+  font-size: 0.9rem;
+}
+
 /* Client Distribution */
 
 .progressPanel {
@@ -57,6 +62,7 @@
   background-color: var(--blog-container-bg);
   border: 5px solid var(--blog-container-border);
   border-radius: 5px;
+  margin-top: 15px;
 }
 
 .blogPost {

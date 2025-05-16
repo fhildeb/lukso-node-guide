@@ -69,6 +69,9 @@ export function StatusPanel() {
         <h3 className={styles.sectionHeading}>Current Client Distribution</h3>
         <div className={styles.progressPanel}>
           <div className={styles.statusColumn}>
+            <div className={styles.headerMessage}>
+              Consensus Metrics based on Total Validator Number:
+            </div>
             {executionClientsToUse.map((client, idx) => (
               <ProgressBar
                 key={`${client.label}-${client.value}`}
@@ -78,6 +81,9 @@ export function StatusPanel() {
             ))}
           </div>
           <div className={styles.statusColumn}>
+            <div className={styles.headerMessage}>
+              Execution Metrics based on Total Node Operators:
+            </div>
             {consensusClientsToUse.map((client, idx) => (
               <ProgressBar
                 key={`${client.label}-${client.value}`}
@@ -99,9 +105,12 @@ export function StatusPanel() {
         </div>
       </div>
 
-      {/* Right Panel: Latest News */}
+      {/* Right Panel: Latest Updates */}
       <div className={styles.rightPanel}>
-        <h3 className={styles.sectionHeading}>Latest News</h3>
+        <h3 className={styles.sectionHeading}>Latest Updates</h3>
+        <div className={styles.headerMessage}>
+          Official Network Team Announcements:
+        </div>
         <div className={styles.blogContainer}>
           <div className={styles.blogPost}>
             {!blogLoading && !blogError && blogData && blogData.length > 0
