@@ -53,6 +53,6 @@ While you may increase your peer count and visibility to add to your node's netw
 
 :::tip
 
-If you are unsure about [Peer Connectivity](/docs/guides/modifications/peer-connectivity.md) limits, it’s best to rely on your client’s defaults, designed to balance resource use, discovery efficiency, and network stability for homestakers within the community.
+If you are unsure about [Peer Connectivity](/docs/guides/modifications/peer-connectivity.md) limits, it’s best to rely on your [client’s defaults](https://github.com/lukso-network/network-configs), which are designed to balance resource use, discovery efficiency, and network stability for homestaking nodes within the community.
 
 :::
