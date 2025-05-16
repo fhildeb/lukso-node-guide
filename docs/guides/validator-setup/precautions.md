@@ -9,7 +9,7 @@ The validator setup is the first step for anyone aspiring to participate in a bl
 
 :::tip
 
-If you're not quite sure about [hardware preparations](/docs/theory/preparations/node-specification.md), [blockchain fundamentals](/docs/theory/blockchain-knowledge/proof-of-stake.md), or the theoretical basics of [node operations](/docs/theory/node-operation/client-options.md), please refer to the [**🧠 Theory**](/docs/theory/preparations/node-specification.md) section to build a solid foundation of knowledge.
+If you're not quite sure about [hardware preparations](/docs/theory/preparations/node-specifications.md), [blockchain fundamentals](/docs/theory/blockchain-knowledge/proof-of-stake.md), or the theoretical basics of [node operations](/docs/theory/node-operation/client-options.md), please refer to the [**🧠 Theory**](/docs/theory/preparations/node-specifications.md) section to build a solid foundation of knowledge.
 
 :::
 

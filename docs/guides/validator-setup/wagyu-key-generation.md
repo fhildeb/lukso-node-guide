@@ -135,7 +135,7 @@ You can generate more keys than you immediately fund. These keys will remain ina
 
 :::info
 
-You can use the same withdrawal address multiple times, meaning all validator revenues go to the same account. If you are uncertain about the withdrawal address, please refer to the [Tokenomics](/docs/theory/blockchain-knowledge/tokenomics.md) page within the [**🧠 Theory**](/docs/theory/preparations/node-specification.md) section.
+You can use the same withdrawal address multiple times, meaning all validator revenues go to the same account. If you are uncertain about the withdrawal address, please refer to the [Tokenomics](/docs/theory/blockchain-knowledge/tokenomics.md) page within the [**🧠 Theory**](/docs/theory/preparations/node-specifications.md) section.
 
 :::
 
@@ -232,7 +232,7 @@ To regenerate keys for **a backup** or **updating** the **withdrawal address** o
 
 :::info
 
-You can use the same withdrawal address multiple times, meaning all validator revenues go to the same account. If you are uncertain about the withdrawal address, please refer to the [Tokenomics](/docs/theory/blockchain-knowledge/tokenomics.md) page within the [**🧠 Theory**](/docs/theory/preparations/node-specification.md) section.
+You can use the same withdrawal address multiple times, meaning all validator revenues go to the same account. If you are uncertain about the withdrawal address, please refer to the [Tokenomics](/docs/theory/blockchain-knowledge/tokenomics.md) page within the [**🧠 Theory**](/docs/theory/preparations/node-specifications.md) section.
 
 :::
 

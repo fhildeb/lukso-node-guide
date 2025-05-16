@@ -13,7 +13,7 @@ They're open-source and flexible, provide excellent stability, extensive communi
 
 :::tip
 
-If you are uncertain about which operating system and version to choose, you can find further details and comparisons in the [Operating Systems](/docs/theory/node-operation/operation-systems.md) chapter of the [**🧠 Theory**](/docs/theory/preparations/node-specification.md) section.
+If you are uncertain about which operating system and version to choose, you can find further details and comparisons in the [Operating Systems](/docs/theory/node-operation/operation-systems.md) chapter of the [**🧠 Theory**](/docs/theory/preparations/node-specifications.md) section.
 
 :::
 

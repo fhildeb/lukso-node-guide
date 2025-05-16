@@ -118,7 +118,7 @@ cd lukso-key-gen-cli-v2.5.8-linux
 
 :::tip
 
-Setting a withdrawal address is necessary as you can withdraw your deposits later on. You can use the same withdrawal address multiple times, meaning all validator revenues go to the same account. If you are uncertain about the withdrawal address, please refer to the [Tokenomics](/docs/theory/blockchain-knowledge/tokenomics.md) page within the [**🧠 Theory**](/docs/theory/preparations/node-specification.md) section.
+Setting a withdrawal address is necessary as you can withdraw your deposits later on. You can use the same withdrawal address multiple times, meaning all validator revenues go to the same account. If you are uncertain about the withdrawal address, please refer to the [Tokenomics](/docs/theory/blockchain-knowledge/tokenomics.md) page within the [**🧠 Theory**](/docs/theory/preparations/node-specifications.md) section.
 
 :::
 
@@ -282,7 +282,7 @@ mv validator_keys <new-folder-name>
 
 :::info
 
-You can use the same withdrawal address multiple times, meaning all validator revenues go to the same account. For backup purposes, always use the same withdrawal address as the one used during the initial key generation process. If you are uncertain about the withdrawal address, please refer to the [Tokenomics](/docs/theory/blockchain-knowledge/tokenomics.md) page within the [**🧠 Theory**](/docs/theory/preparations/node-specification.md) section.
+You can use the same withdrawal address multiple times, meaning all validator revenues go to the same account. For backup purposes, always use the same withdrawal address as the one used during the initial key generation process. If you are uncertain about the withdrawal address, please refer to the [Tokenomics](/docs/theory/blockchain-knowledge/tokenomics.md) page within the [**🧠 Theory**](/docs/theory/preparations/node-specifications.md) section.
 
 :::
 

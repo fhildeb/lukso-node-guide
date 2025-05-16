@@ -8,7 +8,7 @@ import TabItem from '@theme/TabItem';
 
 # 1.5 Launchpad Walkthrough
 
-This section guides you through the deposit process using the LUKSO Validator Deposit Launchpads. Depositing funds is a critical step that activates your validator keys and enables your node to participate in staking, which in turn generates income. Before you begin, please ensure that you have read and understood the staking fundamentals in the [Node Operation](/docs/theory/node-operation/staking.md) and [Blockchain Knowledge](/docs/theory/blockchain-knowledge/proof-of-stake.md) chapters in the [**🧠 Theory**](/docs/theory/preparations/node-specification.md) section.
+This section guides you through the deposit process using the LUKSO Validator Deposit Launchpads. Depositing funds is a critical step that activates your validator keys and enables your node to participate in staking, which in turn generates income. Before you begin, please ensure that you have read and understood the staking fundamentals in the [Node Operation](/docs/theory/node-operation/staking.md) and [Blockchain Knowledge](/docs/theory/blockchain-knowledge/proof-of-stake.md) chapters in the [**🧠 Theory**](/docs/theory/preparations/node-specifications.md) section.
 
 :::warning
 
@@ -93,7 +93,7 @@ If you're a Genesis or Testnet Validator, the prepared deposit files can be chec
 
 :::info
 
-If you want to know more about validator differentiations, have a look into the [Staking](/docs/theory/node-operation/staking.md) chapter of the [**🧠 Theory**](/docs/theory/preparations/node-specification.md) section.
+If you want to know more about validator differentiations, have a look into the [Staking](/docs/theory/node-operation/staking.md) chapter of the [**🧠 Theory**](/docs/theory/preparations/node-specifications.md) section.
 
 :::
 

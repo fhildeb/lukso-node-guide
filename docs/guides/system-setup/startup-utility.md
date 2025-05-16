@@ -17,7 +17,7 @@ sudo systemctl is-enabled ssh
 
 :::tip
 
-Further information about system control commands can be found on the [Utility Tools](/docs/theory/node-operation/utility-tools.md) page of the [**🧠 Theory**](/docs/theory/preparations/node-specification.md) section.
+Further information about system control commands can be found on the [Utility Tools](/docs/theory/node-operation/utility-tools.md) page of the [**🧠 Theory**](/docs/theory/preparations/node-specifications.md) section.
 
 :::
 

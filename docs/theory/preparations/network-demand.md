@@ -48,7 +48,7 @@ Bandwidth analysis within the [LUKSO Validator Community](https://discord.gg/luk
 
 :::tip
 
-The amount of **uploaded data** that is exchanged can be lowered or raised by adjusting the [peer count](/docs/guides/modifications/peer-verification.md) setting, useful when having connectivity issues, or running an **advanced node setup** as archive node, data center, or bootnode.
+The amount of **uploaded data** that is exchanged can be lowered or raised by adjusting the [peer count](/docs/guides/modifications/peer-connectivity.md) setting, useful when having connectivity issues, or running an **advanced node setup** as archive node, data center, or bootnode.
 
 :::
 
