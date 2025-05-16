@@ -8,9 +8,32 @@ import TabItem from '@theme/TabItem';
 
 # Peer Networks
 
-When one tries to visit a website, the request often goes through a short series of centralized servers owned by corporations or data centers. These servers take on a vital role in making the service available and, therefore, become inaccessible when they go offline. Blockchains, however, don't rely on centralized servers; instead, they use a network of computers in a peer-to-peer manner, where thousands of nodes communicate directly with each other.
+When one tries to visit a website, the request from a computer client often goes through a short series of centralized servers owned by corporations or data centers. These servers take on a vital role in making the service available and, therefore, become inaccessible when they go offline. Blockchains, however, don't rely on centralized servers. Instead, they use a network of computers in a peer-to-peer manner, where hundreds or thousands of servers communicate directly with each other.
 
-Every node has its own copy of the blockchain data and helps in propagating it to others. This setup forms a decentralized mesh network, where there is no control by a single machine. Instead of trusting a single server to manage the delivery of data packages, every participant interconnects with others and helps in propagating the information. This leads, to a system that is more resilient, harder to censor, and has improved transparency.
+Each of the peers maintains its own copy of all the pertinent blockchain details, and helps distribute it to others. The structure forms a distributed mesh network that is not held by any one organization. Rather than depending upon a centralized server for distribution of the packets of data, all parties link with others and help with the distribution of the details. All of the peers are both server and client, facilitating passing of the data directly from parties to parties without the need for go-between intermediaries. It is a resilient system that is harder to censor and that provides increased transparency.
+
+## Blockchain Peers
+
+In a blockchain network, peers are individual nodes that collectively maintain the system. Because these nodes are distributed across various geographic regions, the network becomes decentralized by design, making it extremely difficult for any single actor to manipulate the ledger or disrupt its operation. While nodes have varying roles depending on their setup, all of them contribute to data validation, storage, and propagation.
+
+Each peer is responsible for:
+
+- **Maintaining a local copy** of the chain’s latest state
+- **Validating new transactions and blocks** against protocol rules
+- **Broadcasting verified data** to other connected peers
+- **Receiving updates** in real time to maintain network consensus
+
+:::info
+
+Since all peers independently confirm the same sata and reach onsensus through clearly defined rules and protocols, users don't need to rely on a source of truth. Blockchains are therefore also referenced as the **trustless** web.
+
+:::
+
+:::tip
+
+Further details on how peer nodes connect and communicate with each other can be found on the [Peer Discovery](/docs/theory/node-operation/peer-discovery.md) page.
+
+:::
 
 ## Operation Layers
 
@@ -48,28 +71,6 @@ Bootnodes **don’t send blocks or transactions** themselves. They can be seen a
 - Having multiple bootnodes ensures reliability and **full geographic distribution** and **low latency**.
 
   :::
-
-## Peer Discovery
-
-The peer-to-peer discovery process is surprisingly elegant and efficient. Here’s a high-level overview of how your node finds others:
-
-1. **Every node has a unique ID**, derived from its cryptographic keys. This is like its personal identity on the network.
-2. **Nodes maintain a routing table**, organizing other peer IDs into buckets based on how close their IDs are.
-3. **When searching for peers**, your node asks others “who is closer to this target ID?” and walks through the routing tree.
-4. **Once a new peer is found**, the connection is upgraded to a secure, encrypted session using mutually agreed sub-protocols.
-5. **After connection**, nodes begin exchanging blocks, transactions, and consensus messages through gossip networks.
-
-:::tip
-
-All of this happens behind the scenes. Node operators responsibility is to make sure that the router allows incoming connections on the appropriate ports. Further details can be found on the [Router Setup](/docs/guides/router-setup/static-ip-assignment.md) and [Firewall Settings](/docs/guides/client-setup/firewall-settings.md) pages.
-
-:::
-
-:::note Further Details
-
-The peer discovery within mesh networks like EVM-based blockchains utilizes the [Kademlia](https://medium.com/coinmonks/a-brief-overview-of-kademlia-and-its-use-in-various-decentralized-platforms-da08a7f72b8f) algorithm.
-
-:::
 
 ## Architectural Benefits
 
