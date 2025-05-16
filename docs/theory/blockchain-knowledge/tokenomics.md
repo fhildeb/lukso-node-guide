@@ -13,18 +13,18 @@ Tokenomics describes the supply schedule, reward mechanics, and economic incenti
 
 :::tip
 
-Staking returns are typically expressed as **Annual Percentage Yield**, assuming permanent validator uptime.
+Staking returns are typically expressed as **Annual Percentage Rate**, assuming permanent validator uptime.
 
 :::
 
-:::info APY May 2025
+:::info APR May 2025
 
-- The [LUKSO Mainnet](https://deposit.mainnet.lukso.network) has an APY of around **7%**
-- The [LUKSO Testnet](https://deposit.testnet.lukso.network) has an APY of around **42%**
+- The [LUKSO Mainnet](https://deposit.mainnet.lukso.network) has an APR of around **7%**
+- The [LUKSO Testnet](https://deposit.testnet.lukso.network) has an APR of around **42%**
 
 :::
 
-## APY Calculation
+## APR Calculation
 
 Returns only include the deterministic and major values of the consensus mechanism.
 
