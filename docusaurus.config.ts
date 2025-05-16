@@ -84,6 +84,10 @@ const config: Config = {
           label: "Archive",
         },
         {
+          type: "custom-aprButton",
+          position: "right",
+        },
+        {
           href: "https://github.com/fhildeb/lukso-node-guide",
           label: "GitHub",
           position: "right",
