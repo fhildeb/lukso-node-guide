@@ -59,7 +59,7 @@ const sections = [
         pages: [
           "Slasher Configuration",
           "Client Name and Graffiti",
-          "Peer Verification",
+          "Peer Connectivity",
           "Dynamic DNS",
           "Service Automation",
         ],
