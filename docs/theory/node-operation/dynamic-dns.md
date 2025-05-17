@@ -5,22 +5,55 @@ sidebar_position: 9
 
 # Dynamic DNS
 
-### 6.11.3 Configure Dynamic DNS
+In order for the node to be accessible to other participants in a peer-to-peer blockchain, it must have an identifiable and stable IP address. Most internet service providers assign dynamically changing IP addresses to residential customers, and these can change on a weekly basis or router reboots. The frequent IP address changes disrupt incoming peer connections and slow down the node's visibility and synchronization times. Dynamic DNS solves the problem through linking the dynamic IP address to a permanent domain name, allowing others to find you even when the IP changes.
 
-Ideally, you want to have a stable node over a long period. Right now, as I described within the IP address section, the public IP would need adjustment every time it changes. Here is where a Dynamic DNS setup comes into play.
+:::info Default Setup
 
-#### What's a DNS Record?
+The regular [LUKSO CLI Installation](/docs/guides/client-setup/lukso-cli-installation.md) will optionally set the current interchangeble IP address to the configuration.
 
-A Domain Name System record is essential to the internet infrastructure, serving as it's phone book. It maintains a directory of domain names and translates them to Internet Protocol addresses. The record is necessary because although domain names are easy for people to remember, computers or machines access websites based on IP addresses. A DNS record is an entry in this directory that maps a domain name to an IP address.
+:::
 
-#### What's a Dynamic DNS?
+## DNS Records
 
-A Dynamic Domain Name System is a service that allows networked devices, such as a node in our case, to update their DNS record whenever their IP address changes. Devices with dynamically assigned IP addresses, like those given out by many ISPs, benefit from such services, as their device's IP address could change daily but needs to stay accessible.
+A Domain Name System record can be thought of as the internet's directory and is used to associate a human-readable domain name with an IP address used by computers to communicate. DNS records are of particular importance for the following reasons:
 
-Dynamic DNS can play a crucial role in peer discovery for blockchain networks. In a P2P network, every node must maintain a list of other nodes, e.g., peers it can connect to. If a node's IP address changes, other nodes in the network could have trouble finding it unless they are somehow informed of the new IP address.
+- Allow devices to find each other over the internet without hardcoding IPs
+- Enable services like HTTPS, email delivery, and node routing
+- Abstract IPs behind stable webpage or service names
 
-That's where dynamic DNS comes in. With dynamic DNS, a node can register a domain name that always points to its current IP address, even if that address changes. When the node's IP address changes, it simply updates its dynamic DNS record, and other nodes in the network can still find it by looking up its domain name.
+:::note DNS
 
-Dynamic DNS helps maintain the health and connectivity of the P2P network by ensuring that nodes can always find each other, even when their IP addresses are constantly changing.
+`mynode.example.com` → `198.51.100.12`
 
-> There are lots of solutions to handle or manage the topic. You could use your domain and deploy a script there to maintain the record for the device. Another option would be hosting your own Dynamic DNS Service and configuring it via the Cloudflare API on your router. You could also combine those two variants in different ways. However, all those solutions require good technical understanding and the router to support such functionality. I will use a simple and free Dynamic DNS provider.
+:::
+
+## Dynamic DNS
+
+A Dynamic DNS service allows for automatic domain name registration and update in case of an IP address change. Once the IP address changes, the node or the router can trigger the respective DDNS provider to update the DNS record accordingly. Other nodes can thereby continue to be in touch using the domain name without interruption. This is especially useful for:
+
+- Devices that must maintain consistent connectivity
+- Services that want to stay discoverable during updates
+
+:::note DDNS
+
+`mynode.example.com` → `198.51.100.12` at _Time A_ / `198.51.100.13` at _Time B_
+
+:::
+
+## Approaches
+
+There are several ways to implement Dynamic DNS. Each varies in technical complexity, flexibility, and setup cost.
+
+| Approach                                       | Difficulty                      | Description                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| ---------------------------------------------- | ------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| <nobr> **Dynamic DNS Providers** </nobr>       | <nobr> 🟢 Non-Technical </nobr> | Users can register and choose free domains from DNS providers. The services often come with plug-and-play installation and scripts, which are ideal for regular node setups. For little money, the domain ownership can even be extended without further maintenance. <br /> <br /> **→** [Peer Connectivity](/docs/guides/modifications/peer-connectivity.md), [🚫 No-IP](https://www.noip.com/), [🐤 Duck-DNS](https://www.duckdns.org/) |
+| <nobr> **Built-in Router DDNS** </nobr>        | <nobr> 🟢 Non-Technical </nobr> | Many consumer routers support built-in DDNS settings for providers or ISP services. Users can configure their DDNS via the router's user interface. It's free and easy to set up, but people are bound to the hardware and supported service partners. <br /> <br /> **→** [Router Requirements](/docs/theory/preparations/router-requirements.md), [🧭 AVM](https://fritz.com/) , [💠 ASUS](https://www.asus.com/)                        |
+| <nobr> **Cloudflare DNS + API Script** </nobr> | 🔵 Advanced                     | Technically experienced users can register a domain and update the DNS record through the [Cloudflare API](https://developers.cloudflare.com/api/). While offering great control, this requires experience with scripting and API calls.                                                                                                                                                                                                   |
+| <nobr> **Cronjob or Shell Script** </nobr>     | 🔵 Advanced                     | Developers can register their own domain and run a local IP checking script that sends a DNS update call to the domain provider. While offering great control, it requires experience with daemon software and API calls.                                                                                                                                                                                                                  |
+| <nobr> **Self-Hosted DDNS Server** </nobr>     | 🔴 Expert                       | System administrators can create their own DDNS update server and use their domain registrar’s API. This offers self-sufficient control over the setup but requires extensive development and DNS knowledge.                                                                                                                                                                                                                               |
+
+:::warning
+
+**Advanced** and **Expert** setups might come with monthly or yearly costs due to the **required domain name**.
+
+:::
