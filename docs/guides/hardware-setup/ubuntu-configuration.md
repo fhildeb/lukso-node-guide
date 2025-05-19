@@ -49,9 +49,9 @@ The correct configuration ensures that your command-line entries during setup an
 
 **3. Installation Type**: _Choose the regular Ubuntu Server installation for your node._
 
-:::info
+:::tip
 
-Detailed differences of a minimal or regular installation can be found in the [Operation Systems](/docs/theory/node-operation/operation-systems.md) page of the [**🧠 Theory Section**](/docs/theory/preparations/node-specifications.md).
+Detailed differences of a minimal or regular installation can be found in the [Operation Systems](/docs/theory/node-operation/operation-systems.md) page of the [**🧠 Theory**](/docs/theory/preparations/node-specifications.md) section.
 
 :::
 
