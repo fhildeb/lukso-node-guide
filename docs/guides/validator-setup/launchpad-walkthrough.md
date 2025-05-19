@@ -35,7 +35,7 @@ Always double-check the `lukso.network` domain before continuing the deposit pro
 
 :::
 
-Take a moment to review the launchpad’s functionality and statistics. For each network, you will see details such as the total staked amount of LYXe or LYXt, the **total number of validators**, and the current **Annual Percentage Rate** of gains, which is particularly useful for monitoring the network dynamics.
+Take a moment to review the launchpad’s functionality and statistics. For each network, you will see details such as the total staked amount of LYXe or LYXt, the total number of validators, and the current Annual Percentage Rate during staking, which is particularly useful for monitoring the network dynamics.
 
 :::info
 
