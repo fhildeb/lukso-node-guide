@@ -5,33 +5,47 @@ sidebar_position: 10
 
 # Monitoring Tools
 
-<!--TODO: Add link to external monitoring guide page and show explorers previews-->
-<!--TODO: differentiate between local and external monitoring in a table, listing the tools and the info they gather-->
+Monitoring tools help node operators monitor hardware health, service availability, connection reliability, and validator performance. Whether someone is running a home setup or cloud nodes, real-time observability is essential to avoid downtime, correct bottlenecks, and respond quickly to any type of anomaly.
 
-## 7.1 Core Tools for Monitoring
+| Category                               | Description                                                                                                  | <nobr> Related Services </nobr>                                                                                                                                                                                                                                                                                                                                                     |
+| -------------------------------------- | ------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| <nobr> **Local Monitoring** </nobr>    | Tracks and collects data **from within your own node**. <br /> Useful for internal health & uptime tracking. | - [Prometheus](/docs/guides/monitoring/prometheus.md) and [Grafana Dashboard](/docs/guides/monitoring/grafana.md)<br/>- [Node](/docs/guides/monitoring/node-exporter.md), [JSON](/docs/guides/monitoring/json-exporter.md), and [Blackbox Exporters](/docs/guides/monitoring/blackbox-exporter.md)                                                                                  |
+| <nobr> **External Monitoring** </nobr> | Provides visibility into **your node's public behavior**. <br /> Useful for consensus and network analysis.  | - [Execution Explorer](/docs/guides/monitoring/external-monitoring.md#execution-block-explorer) and [Status Page](/docs/guides/monitoring/external-monitoring.md#execution-status-page)<br/>- [Consensus Explorer](/docs/guides/monitoring/external-monitoring.md#consensus-block-explorer) and [Status Page](/docs/guides/monitoring/external-monitoring.md#consensus-status-page) |
 
-Local node monitoring is observing and tracking a blockchain or validator node's performance, health, and status within a network. This monitoring ensures that the validator node functions correctly, efficiently, and securely. By regularly gathering and analyzing key performance metrics, such as CPU usage, memory consumption, disk space, network latency, and the number of connected peers, local node monitoring helps to identify potential issues and bottlenecks, enabling prompt corrective actions.
+:::tip
 
-Additionally, monitoring the validator's activity, such as the number of proposed and validated blocks, can provide insights into the overall performance and contribution of the node to the blockchain network.
+Monitoring tools typically get connected to [alert systems](/docs/guides/alert-systems/telegram-bot.md) for receiving status updates and warnings via message or email.
 
-### 7.1.1 Monitoring Software List
+:::
 
-It's crucial to monitor various aspects of its functionality, such as hardware usage, network connectivity, and even the performance of the associated cryptocurrency in the market. A comprehensive monitoring setup can help detect potential issues early, reduce downtime, and optimize performance. In this guide, we will install five core monitoring services widely used across servers and nodes.
+## Software List
 
-- **Prometheus**: Prometheus is an open-source system monitoring and alerting toolkit. It collects metrics from configured targets at given intervals, evaluates rule expressions, displays the results, and can trigger alerts if some condition is observed to be true. In the context of the blockchain node, Prometheus collects metrics for various exporter services. This data is vital for monitoring your blockchain nodes' performance, health, and reliability, providing alerts for abnormal data, and helping you diagnose and fix issues more quickly.
-- **Grafana**: Grafana is an open-source platform for monitoring and observability. It queries, visualizes, alerts on, and understands your metrics no matter where they are stored. In the node setup, Grafana is used to query Prometheus for metrics and display this information in a user-friendly dashboard. It's an essential tool because it helps visualize the data in an easy-to-understand format, allowing you to spot trends, track the performance over time, and identify abnormal patterns. Grafana's alerting feature can also notify you when certain conditions are met, helping you respond quickly to potential issues.
+Local node monitoring tracks the hardware condition and performance of a node. Commonly measured parameters usually include CPU load, memory pressure level, disk utilization, consensus and execution metrics, validator uptimes and syncing health. Having everything measured in real time, the software enables preemptive debugging and extended stability.
 
-### 7.1.2 Exporter Services
+| Tool           | Description                                                                                                                                                                                                                                                                                                                         |
+| -------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Prometheus** | Prometheus is an open source system and service monitor and alert tool. It gathers statistics from exporters based on periodic time intervals and provides historical data storage. The service works based on custom rules and alert configurations to proactively detect and diagnose anomalies within the node's infrastructure. |
+| **Grafana**    | Grafana is a data visualisation system that converts Prometheus metrics into insightful dashboards. The service supports querying, visualising, alerting, and monitoring data over time. At local node configuration level, it is generally utilized as primary interface to monitor node health and blockchain-specific telemetry. |
 
-In the Prometheus monitoring ecosystem, exporters play a crucial role. They are applications that expose a system's metrics in a format that Prometheus can understand, enabling Prometheus to track those metrics over time. This capacity to tap into a wide variety of system metrics is a vital part of what makes Prometheus such a versatile and powerful monitoring tool.
+## Exporter Services
 
-Prometheus exporters are typically used for two primary types of jobs:
+In a Prometheus environment, internal as well as external metrics get exposed as local HTTP targets that get scraped and saved through exporter services. Depending on their purpose for use, they become system-level or application-level services.
 
-- **Machine-centric exporters**: These exporters fetch metrics from the host machine's kernel and operating system. They expose system-level metrics, such as CPU usage, memory, disk I/O, network traffic, and more. An example of this kind of exporter is the Node Exporter.
-- **Application-centric exporters**: These exporters fetch metrics about the performance of a specific application or service running on a system. Such software could include request latency, error rates, and queue lengths. Examples include the MySQL exporter for MySQL databases, the JSON Exporter for network probing, and the JSON Exporter for data from JSON endpoints.
+:::info Categories
 
-By leveraging the right mix of exporters, the node can create a comprehensive monitoring solution that provides deep insights into performance and health. In this guide, we will focus on these Prometheus exporter services:
+- **Machine-Centric Exporters**: Monitor system resources from the host's operation system or hardware.
+- **Application-Centric Exporters**: Monitor specific services, blochain clients, or fetch external APIs.
 
-- **Node Exporter**: Exporter for hardware and OS metrics. It allows you to measure various machine resources such as memory, disk I/O, CPU usage, and network statistics. Hardware metrics are crucial because they give you a broad overview of your machine's performance and health. They allow you to monitor how your node affects your system's resources and catch any potential issues (like memory leaks or high CPU usage) before they cause problems. Running Node Exporter on every node of your network provides you with valuable insights and helps ensure the smooth operation of your blockchain applications.
-- **JSON Exporter**: Exporter to scrape data from JSON endpoints and expose it as Prometheus. In our case, it's being used to fetch LUKSO price information from CoinGecko. Conveying price information is important because it enables us to monitor LUKSO's market performance directly from your Prometheus and Grafana setup, providing a unified view of your node's performance and the associated token's market performance. It saves time and provides convenience, eliminating the need to check this information on separate platforms.
-- **Blackbox Exporter**: Exporter that probes endpoints over protocols such as HTTP, HTTPS, DNS, TCP, and ICMP and provides detailed metrics on the results. In our case, it monitors the ping time between the node machine and two DNS servers. This information can be crucial in diagnosing network-related issues. If the ping time is too long or the connection fails, it could indicate network problems affecting your node's performance or its ability to stay in sync with the rest of the blockchain network.
+:::
+
+| Exporter                             | Description                                                                                                                                                                                                                                                                                                                |
+| ------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| <nobr> **Node Exporter** </nobr>     | Monitors hardware and statistics from the operation system such as CPU utilization, memory load, disk utilization growth, and network throughput. Running it on each node outlines a full picture of the system's health and prevents potential performance degradation.                                                   |
+| <nobr> **JSON Exporter** </nobr>     | Periodically fetches data from JSON APIs. This type of exporter is generally used to fetch current prices of the staked coin to synchronize validator activity with market data. For LUKSO homestakers, the LYX price is fetchable using the [🦎 CoinGecko](https://www.coingecko.com/) API.                               |
+| <nobr> **Blackbox Exporter** </nobr> | Frequently sends data requests to an stable external server, like the [📡 Google DNS](https://developers.google.com/speed/public-dns?hl=en), to ensure connectivity and low latency. The exporter is used to determine potential connection issues or clarify if downtime comes from the home network or external parties. |
+
+:::tip
+
+The table only shows the node's most important datapoints configured within the [Monitoring Setup](/docs/guides/monitoring/software-preparation.md) of the [**📖 Guide**](/docs/guides/validator-setup/precautions.md) section. Optional exporters can be configured for various metrics and a more comprehensive dashboards.
+
+:::
