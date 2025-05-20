@@ -162,7 +162,7 @@ const sections = [
       },
       {
         title: "Genesis Validators",
-        pages: ["GasHawk Deposits"],
+        pages: ["GasHawk Deposits, Initial Staking"],
       },
     ],
   },

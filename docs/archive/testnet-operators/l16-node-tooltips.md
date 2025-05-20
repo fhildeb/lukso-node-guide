@@ -1,6 +1,6 @@
 ---
 sidebar_label: "L16 Node Tooltips"
-sidebar_position: 3
+sidebar_position: 2
 ---
 
 # L16 Node Tooltips
