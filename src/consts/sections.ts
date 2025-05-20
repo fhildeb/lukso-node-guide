@@ -132,7 +132,7 @@ const sections = [
           "Storage Specification",
           "Utility Tools",
           "Client Options",
-          "Staking",
+          "Staking Deposits",
           "Validator Credentials",
           "Slasher Service",
           "Peer Discovery",
