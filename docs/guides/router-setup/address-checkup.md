@@ -33,7 +33,7 @@ Internet Protocol addresses are **logical, software‑assigned** labels. **IP** 
 
 :::info
 
-You can use `ip` tool to display the system’s default package route and source IP when connecting to the router. The default gateway's IP address is the intermediate route the system takes when sending data to an IP address outside its local network.
+You can use the `ip` tool to display the system’s default package route and source IP when connecting to the router. The default gateway's IP address is the intermediate route the system takes when sending data to an IP address outside its local network.
 
 :::
 
@@ -63,7 +63,7 @@ ip route get 8.8.8.8 | awk '{print $7}'
 </TabItem>
 </Tabs>
 
-## 2 Resolve Hardware Address
+## 2. Resolve Hardware Address
 
 :::tip
 

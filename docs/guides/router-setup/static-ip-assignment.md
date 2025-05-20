@@ -89,7 +89,7 @@ Once the node and router are back online or updated, we can confirm if the IP ma
 
 :::info
 
-You can use `ip` tool to display the system’s default package route and source IP when connecting to the router. The default gateway's IP address is the intermediate route the system takes when sending data to an IP address outside its local network.
+You can use the `ip` tool to display the system’s default package route and source IP when connecting to the router. The default gateway's IP address is the intermediate route the system takes when sending data to an IP address outside its local network.
 
 :::
 

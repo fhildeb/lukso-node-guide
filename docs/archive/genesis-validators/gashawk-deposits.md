@@ -33,9 +33,9 @@ The off-chain service cannot change its contents once a signed transaction is se
 
 **5. Start the Launchpad**: _Change your RPC back to Ethereum Mainnet and go through the [LUKSO Launchpad](https://deposit.mainnet.lukso.network/en/) process._
 
-**5. Change Network**: _On the final deposit page, change the network back to the previously added GasHawk's RPC._
+**6. Change Network**: _On the final deposit page, change the network back to the previously added GasHawk's RPC._
 
-**6. Executing Deposits**: _Separately send each validator key deposit transaction while raising the nonce._
+**7. Executing Deposits**: _Separately send each validator key deposit transaction while raising the nonce._
 
 :::tip Off-Chain Queue
 
@@ -49,7 +49,7 @@ After sending the transaction to the GasHawk endpoint, the launchpad will show t
 
 :::
 
-**7. Reviewing Transactions**: _Head over to the [GasHawk](https://gashawk.io/#/tx) dashboard and wait for the transactions to be executed._
+**8. Reviewing Transactions**: _Head over to the [GasHawk](https://gashawk.io/#/tx) dashboard and wait for the transactions to be executed._
 
 :::info Resending Transactions
 
@@ -57,7 +57,7 @@ In case a transaction failed due to a nonce error, you can _resend_ it directly 
 
 :::
 
-**8. Verify Deposits**: _Return to the front page of the [LUKSO Launchpad](https://deposit.mainnet.lukso.network/en/) and input your deposit file._
+**9. Verify Deposits**: _Return to the front page of the [LUKSO Launchpad](https://deposit.mainnet.lukso.network/en/) and input your deposit file._
 
 :::tip
 
