@@ -5,51 +5,65 @@ sidebar_position: 11
 
 # Utility Tools
 
-<!--TODO: Add APT package manager-->
+Proficiently running a node requires an in-depth knowledge of the command line. From updating packages, editing configuration files, and running system services, having basic tool familiarity will save time and reduce the chances of misconfiguration.
 
-### System Control
+## Text Editors
 
-System Control is a powerful command-line utility that is the primary management tool for system processes, widely used across modern Linux distributions. By leveraging `systemctl`, administrators can control and get insights into their system's state, enabling them to fine-tune their environment for optimal performance, stability, and security. The system control command offers a unified and consistent approach to starting, stopping, enabling, disabling, and checking the status of various components.
+Text editors allow editing configuration files, service configurations, and application setting tweaking directly from the command line. Ubuntu comes with Vim installed as its default editor, while Nano provides an easier option.
 
-Used for:
+:::tip
 
-```sh
-sudo systemctl restart sshd
-systemctl list-unit-files --type=service
-sudo systemctl enable ssh
-sudo systemctl is-enabled ssh
-```
+For additional commands and descriptions, have a look at the [VIM MAN Page](https://manpages.ubuntu.com/manpages/noble/de/man1/vim.1.html) or [NANO MAN Page](https://manpages.ubuntu.com/manpages/bionic/man1/nano.1.html) for Ubuntu.
 
-### Text Editors
+:::
 
-We can use various terminal text editors to configure files on the node. Ubuntus's default text editor is called Vi Improved. I will use the default editor `vim` in this guide. However, you can also choose a more user-friendly one like `nano`. Here is a description of the two:
+| **Editor**      | **Vim**                                                                        | **Nano**                                                          |
+| --------------- | ------------------------------------------------------------------------------ | ----------------------------------------------------------------- |
+| **Description** | Advanced, modal editor used in Unix systems                                    | <nobr> Beginner-friendly, modeless editor for quick edits </nobr> |
+| **Benefits**    | - Highly Configurable <br/> - Ideal for Power Users                            | - Intuitive and Immediate Editing <br/> - Features On-Screen Help |
+| **Startup**     | - Write `vim [file]` to open file                                              | - Write `nano [file]` to open file                                |
+| **Navigation**  | - Navigate with arrows                                                         | - Navigate with arrows                                            |
+| **Insertion**   | - Press `i` to start insertion mode <br/> - Press `Esc` to return to view mode | - No separate modes <br/> - Start typing immediately              |
+| **Save**        | - Write `:wq` from view mode to save and quit                                  | - Press `Ctrl + O` to save and `Y` to confirm                     |
+| **Quit**        | - Write `:q!` from view mode to exit                                           | - Press `Ctrl + X` to exit                                        |
 
-#### Vim
+## Package Management
 
-Vim is an enhanced version of the classic Unix text editor Vi, with additional features and improved usability. Vim operates in multiple modes: normal mode, insert mode, and command mode, allowing users to navigate, edit, and manipulate text files efficiently.
+The Advanced Package Tool is the default package manager used in Debian-based distributions, such as Ubuntu. It is used for the installation, update, and maintenance of software packages downloaded from online repositories.
 
-You'll start in normal mode once the file is open in Vim. You navigate through files by using the arrow keys.
+:::tip
 
-To enter insert mode to edit the text, press `i`. You'll see `-- INSERT --` at the bottom of the screen- press `Esc` to exit insert mode and return to normal mode.
+For additional commands and descriptions, have a look at the [APT MAN Page](https://manpages.ubuntu.com/manpages/xenial/man8/apt.8.html) for Ubuntu.
 
-To enter command mode to manage to save and exit, press `:` while in normal mode. A colon will appear at the bottom of the screen.
+:::
 
-- To write and quit, type `wq` and press `Enter`.
-- To quit without saving: type `q!` and press `Enter`.
+| Frequent Commands                      | Description                                                                 |
+| -------------------------------------- | --------------------------------------------------------------------------- |
+| <nobr> `apt update` </nobr>            | Updates the list of available packages and their versions                   |
+| <nobr> `apt list --upgradable` </nobr> | Displays a list of packages that can be updated                             |
+| <nobr> `apt install [service]` </nobr> | Installs the package of a service                                           |
+| <nobr> `apt upgrade` </nobr>           | Upgrades all upgradable packages                                            |
+| <nobr> `apt autoremove` </nobr>        | Removes packages that were automatically installed and are no longer needed |
+| <nobr> `apt autoclean` </nobr>         | Cleans up the local repository of retrieved package files                   |
 
-#### Nano
+## System Control
 
-Nano is a beginner-friendly text editor on Ubuntu. Nano is a simple, modeless, command-line text editor in most Linux distributions. It is designed to be easy to use and suitable for editing system configuration files, writing programming scripts, and other text editing tasks.
+A system daemon service forms a critical part of modern Debian-based operating systems, as it starts and manages the running programs in the background. System control commands allow the user to monitor and manage such programs individually.
 
-Once you've opened a file in Nano, you can edit it immediately. Navigation through the file is accomplished using the arrow keys.
+:::tip
 
-Unlike Vim, Nano doesn't have different modes like normal or insert mode. You're in editing mode as soon as the file opens and can start changing the text.
+For additional commands and descriptions, have a look at the [SYSTEMCTL MAN Page](https://manpages.ubuntu.com/manpages/trusty/man1/systemctl.1.html) for Ubuntu.
 
-At the bottom of the Nano screen, you'll see a row of commands, each represented by a caret symbol (`^`) and a letter. The caret symbol represents the `Ctrl` key.
+:::
 
-- To save changes, press `Ctrl + O`, and press `Enter`.
-- To exit, press `Ctrl + X`. If you've made changes, you will be asked to save them- press `Y` for Yes or `N` for No.
-
-### SCP
-
-The [Secure Copy Protocol](https://en.wikipedia.org/wiki/Secure_copy_protocol) is used for secure file transfers between hosts on a network. It operates over SSH, leveraging its authentication and encryption mechanisms to ensure both the authenticity and confidentiality of the data during transfer. SCP is a reliable choice for data transfers, offering secure transmission even over unsecured networks.
+| Frequent Commands                          | Description                                                |
+| ------------------------------------------ | ---------------------------------------------------------- |
+| `systemctl list-unit-files --type=service` | Lists all available services and their enablement state    |
+| `systemctl daemon-reload`                  | Reloads systems daemon manager configuration               |
+| `systemctl is-enabled [service]`           | Checks whether a service is enabled to start at boot       |
+| `systemctl start [service]`                | Starts a service immediately                               |
+| `systemctl stop [service]`                 | Stops a running service                                    |
+| `systemctl restart [service]`              | Restarts a running service                                 |
+| `systemctl enable [service]`               | Enables a service to start on boot                         |
+| `systemctl disable [service]`              | Disables a service from starting on boot                   |
+| `systemctl status [service]`               | Displays current status, logs, and metadata of the service |
