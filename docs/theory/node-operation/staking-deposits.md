@@ -1,6 +1,6 @@
 ---
 sidebar_label: "Staking Deposits"
-sidebar_position: 5
+sidebar_position: 4
 ---
 
 import Tabs from '@theme/Tabs';

@@ -1,6 +1,6 @@
 ---
 sidebar_label: "Slasher Service"
-sidebar_position: 7
+sidebar_position: 5
 ---
 
 # Slasher Service

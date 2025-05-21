@@ -1,9 +1,9 @@
 ---
-sidebar_label: "Storage Specification"
-sidebar_position: 2
+sidebar_label: "Disk Management"
+sidebar_position: 10
 ---
 
-# Storage Specification
+# Disk Management
 
 <!--TODO: Chapter SSD vs HDD for blockchain nodes-->
 

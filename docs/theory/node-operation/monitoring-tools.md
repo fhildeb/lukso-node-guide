@@ -1,6 +1,6 @@
 ---
 sidebar_label: "Monitoring Tools"
-sidebar_position: 10
+sidebar_position: 8
 ---
 
 # Monitoring Tools

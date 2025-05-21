@@ -1,6 +1,6 @@
 ---
 sidebar_label: "Peer Discovery"
-sidebar_position: 8
+sidebar_position: 6
 ---
 
 # Peer Discovery

@@ -23,7 +23,7 @@ Log in with your previously configured user profile. When prompted for elevated 
 
 The _passwd_ command is a fundamental utility in Unix-based operating systems for managing user passwords. With administrative rights, you can use _passwd_ to change passwords for any account on the system. Options include setting password expiry, locking/unlocking accounts, and forcing password resets on next login. This is essential for ensuring that only authorized users can access critical system functions.
 
-## 1. Disabling Root Access
+## 1. Disable Root Access
 
 To improve system security, it is best practice to disable direct root login Locking the root account prevents unauthorized direct access, forcing all administrative commands to go through superuser permissions, ensuring that no one can bypass the security policies of elevated privileges.
 
@@ -45,7 +45,7 @@ The outcome should look like this:
 passwd: password expiry information changed.
 ```
 
-### 2. Check Root Account
+## 2. Check Root Account
 
 After locking the root account, you should verify the change. With the root account locked, any command requiring administrative rights will prompt you for your user password through superuser permissions.
 
