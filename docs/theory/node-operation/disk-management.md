@@ -9,7 +9,7 @@ Managing storage is essential when running a blockchain node, particularly for h
 
 ## Logical Volume Manager
 
-LVM is a storage management system that allows you to manage disk space flexibly. It enables the grouping of multiple physical disks into a single pool of storage, called a volume group, from which logical volumes are created. Using LVM is especially useful if you're planning to run multiple nodes, expect storage growth, or want to avoid re-partitioning, as it allows:
+LVM is a storage management system that offers flexibility in managing disk space. It allows pooling of several physical disks into a consistent storage pool, known as a volume group, from which logical volumes are created. The system is especially useful for those planning for several nodes, expecting storage growth, and avoiding re-partitioning, as it allows:
 
 - Easy resizing of partitions
 - Grouping storage across multiple physical disks
@@ -44,7 +44,7 @@ Logical volumes can span across multiple hardware disks and can be resized dynam
 
 ## Filesystem Metadata
 
-Every file system tracks data using index nodes and descriptor blocks. When expanding volumes or filesystems, new descriptor blocks and index nodes are automatically created as needed to map out and manage additional storage space.
+Each file system keeps track of data by using index nodes and descriptor blocks. When volume or filesystem expansion occurs, new index nodes and descriptor blocks are created as needed to define and manage additional storage space.
 
 | Component             | Purpose                                                                                |
 | --------------------- | -------------------------------------------------------------------------------------- |
