@@ -8,7 +8,7 @@ import TabItem from '@theme/TabItem';
 
 # Node Specifications
 
-Running a Ethereum node for a custom network like LUKSO is not a one‑size‑fits‑all affair. Hardware needs grow with the amount of historical data you keep and the additional services you plan to enable. The following table shows the typical node setups.
+Running a Ethereum node is not a one‑size‑fits‑all affair. Hardware needs grow with the amount of historical data you keep and the additional services you plan to enable. The following table shows the typical node setups.
 
 | Node Type                                 | Description                                                               |
 | ----------------------------------------- | ------------------------------------------------------------------------- |
