@@ -5,80 +5,92 @@ sidebar_position: 10
 
 # Disk Management
 
-<!--TODO: Chapter SSD vs HDD for blockchain nodes-->
+Managing storage is essential when running a blockchain node, particularly for handling large and continuously growing datasets. Using flexible volume management, proper filesystem types, and well-structured partitioning can significantly improve system reliability and future maintenance.
 
-### 1.3.6 Storage Setup
+## Logical Volume Manager
 
-For storage, set the entire disk.
+LVM is a storage management system that allows you to manage disk space flexibly. It enables the grouping of multiple physical disks into a single pool of storage, called a volume group, from which logical volumes are created. Using LVM is especially useful if you're planning to run multiple nodes, expect storage growth, or want to avoid re-partitioning, as it allows:
 
-#### Logical Volume Manager
+- Easy resizing of partitions
+- Grouping storage across multiple physical disks
+- Clean logical structure for service-specific storage
+- Adding new disks without downtime
 
-It's generally recommended to enable the LVM group option. A flexible management system allows you to set and resize your storage volumes easily. If you plan to run multiple blockchain nodes or might add another disk later on, LVM can be beneficial. If you need to add more storage space later, you can easily add a new disk to the existing LVM group and expand the logical volumes as needed. A logical combination would mean you do not have to split your data folders across multiple storage devices. Maintenance can be done without downtime, re-sync, or data loss. It also allows for resizing storage volumes, so you can easily resize them on the fly, allowing you to adapt to changing storage requirements of your blockchain node.
+:::tip Industry Standard
 
-> Considering the benefits, LVM is also enabled on new [Dappnode](https://dappnode.com/) machines and has been set as default on Ubuntu since version 20.04.
+- LVM is the default partitioning method on 🔶 [Ubuntu](https://ubuntu.com/download) starting from version 20.04.
+- 🎨 [DAppNode](https://dappnode.com/) machines also ship with LVM pre-enabled.
 
-Some trade-offs when using LVM are the complexity of disk management and a tiny performance dint in performance. The advanced features might not be needed if you have lots of SSD space and want to run everything on the primary physical partition. If you are unsure, activate the option- maybe you run out of storage space at some point and do not want to re-sync or configure data folders of blockchain data.
+:::
 
-#### Encryption
+## Storage Components
 
-Encryption is unnecessary, as you could encrypt a small portion of the disk later if needed. Encrypting the whole disk could become cumbersome for remote access, requiring manual intervention each time the server is restarted. There are ways to automate the unlocking process, such as using a remote key server or network-bound disk encryption. However, these methods can increase complexity and may have security implications.
+Within the Logical Volume Manager there are several terminologies and concepts.
 
-Your validator keys are safe anyway, as they are encrypted by default. The validator also has its encrypted wallet needed to restart the client with a modified address for the fee recipient. The only risk here is physical access or modification- except for the keys or wallet. These could include log data, configuration files, or other personal data stored on the node. The added complexity is unnecessary if these points are not deemed high-risk.
+| Name                             | Abbreviation | Description                                                                                                                               |
+| -------------------------------- | ------------ | ----------------------------------------------------------------------------------------------------------------------------------------- |
+| <nobr> Physical Volume </nobr>   | PV           | The underlying physical storage disk or partition that is added to a volume group.                                                        |
+| <nobr> Logical Volume </nobr>    | LV           | A flexible storage partition carved out of a volume group.                                                                                |
+| <nobr> Volume Group </nobr>      | VG           | A collection of physical volumes pooled together into a single logical unit. <br /> **→** _Logical volumes are created from these groups_ |
+| <nobr> Physical Extent </nobr>   | PE           | A fixed-size chunk of space used to manage allocation within a volume group. <br /> **→** _Logical volumes are built from these chunks_   |
+| <nobr> Logical Extent </nobr>    | LE           | Each logical volume consists of multiple logical extents mapped to physical extents.                                                      |
+| <nobr> Allocated Extents </nobr> | —            | All Physical Extents that are currently assigned to one or more logical volumes.                                                          |
 
-#### Storage Configuration
+:::tip
 
-On the storage configuration screen, you will see your available physical disks with their physically available storage and mount points. If you enabled LVM before, it automatically created a volume group with a logical volume inside.
+Logical volumes can span across multiple hardware disks and can be resized dynamically.
 
-The volume group can be seen as a parent container of multiple digital storage partitions, so-called logical volumes. These groups can extend across multiple physical disks.
+:::
 
-By default, the logical volume will have the size of `100GB` to allow flexibility of partitions. To change properties, you can select `ubuntu-lv` under `ubuntu-vg (new)` in the `USED DEVICES` section to adjust the logical volume's name, size, and format in a pop-up window.
+## Filesystem Metadata
 
-If you are sure you want to use the whole disk space available, set the `Size` property of the logical volume to the maximum value shown in front of the input field of the logical volumes pop-up window.
+Every file system tracks data using index nodes and descriptor blocks. When expanding volumes or filesystems, new descriptor blocks and index nodes are automatically created as needed to map out and manage additional storage space.
 
-> Within the [system setup](/3-system-setup/) section of the guide, there is also a whole chapter about extending the LVM storage of a logical volume later on and how new disks can be added to your system.
+| Component             | Purpose                                                                                |
+| --------------------- | -------------------------------------------------------------------------------------- |
+| **Index Nodes**       | Track metadata like file size, ownership, and timestamps                               |
+| **Descriptor Blocks** | Map index nodes to actual physical extends, used during file creation and modification |
 
-#### Partition Naming
+:::info
 
-The name of the volume group `ubuntu-vg` and logical volumes, e.g., `ubuntu-lv` can be changed. If you do not plan to have different partitions for different blockchain networks, leaving the default names is recommended. Keeping the default naming is highly recommended and helps not create confusion later. It also helps you out when you post logs somewhere- since everyone can associate the default names with the LVM setup.
+LVM Metadata is stored on each physical volume to hold configuration data about volume groups and logical volumes.
 
-#### Storage Formats
+:::
 
-The same default values rule also applies to the default storage format `ext4`. Storage formats like `ext2`, `ext3`, and `ext4` are all part of the same family of Linux filesystems, but each brings improvements and added features over the previous. The type `ext4` is the most commonly used as it supports files up to 16TB, faster and more efficient disk space allocation, and many other convenience features.
+## Volume Sizing
 
-## 3.2 Manage Storage Volumes
+LVM sets a default size for the root logical volume during server installation to leave headroom for future expansions.
 
-As described in the previous guide on the system installation, the LVM is a flexible and powerful storage management system. It delivers excellent functionality. However, by default, it initially only allocates `100GB` of storage for the logical volume.
+- It's safer to grow volumes than shrink them.
+- Shrinking involves more steps and risks, including potential data loss.
+- This approach allows resizing after performance benchmarking or growth.
 
-The default allocation ensures ample storage for basic system functionality without consuming the entire available storage capacity. This approach allows users to extend the storage volumes as needed based on their specific requirements and the growth of their data.
+:::tip
 
-One of the main reasons for this conservative allocation is that it is much easier to extend storage volumes than shrink them. Shrinking volumes can be more complicated and time-consuming, often requiring unmounting and remounting of the filesystems and a greater risk of data loss. By starting with a smaller allocation, LVM allows you to manage your storage more efficiently.
+More advanced instructions for resizing, expanding volumes, or adding disks can be found in the [Disk Volumes](/docs/guides/system-setup/disk-volumes.md) guide.
 
-> As we use the server as the primary node machine, we want to extend the capacity of `100 GB` to the total size of the physical storage before even the physical storage space is no longer sufficient and new hard disks must be added.
+:::
 
-**Before we add or extend any storage volumes, we have to check the volume group's status.**
+:::info
 
-If you already set your logical volume to the maximum capacity during the installation, looking at the following section is still recommended. You will learn the basics about LVM when adding a new storage device.
+[Ubuntu Server](/docs/guides/system-setup/disk-volumes.md) installs LVM with a default logical volume size of `100GB`.
+:::
 
-#### Physical Extents
+## Disk Encryption
 
-When a physical volume is added to a volume group, the disk space in the physical volume is divided into Physical Extents. The size of the physical extent is determined when the volume group is created, and all extents within a group are the same size.
+Encrypting the entire disk ensures maximum data protection but introduces complexity for maintenance or restarts.
 
-They are portions of disk space on a physical volume, usually several megabytes.
+- Full disk encryption requires manual decryption on every boot.
+- Remote connections and unlocking setups are extremely complex and harder to maintain.
 
-- `Total Physical Extents`: Total Number of Physical Extents allocated or free across all volumes.
-- `Alloc Physical Extents / Size`: displays how much space has been allocated by the logical volume.
-- `Free Physical Extents / Size`: displays how much accessible space units are left on the physical volume. If it is already zero, no more physical free disk space is left.
+:::tip
 
-Check the amount of free disk space left on the physical volume. If you did not already extend the disk size during the installation, there should be plenty of storage left that we can add to the logical volume of the group.
+For most node setups, **full disk encryption** adds a barrier and **is not recommended**.
 
-## Resizing
+:::
 
-<!--TODO: explain lvm groups, logical and physical volumes and the order (1. adding disk, 2. extending logical volume, 3. extending group)-->
+:::info
 
-:::note
-File systems have two key components: index nodes and descriptor blocks. When resizing, new descriptor blocks will be created to map the file metadata to the actual physical counterpart.
-
-- **Index Nodes** are data structures within a filesystem that contain information about a file or directory, such as its size and owner. Every file or directory has an associated inode, which essentially serves as a table of contents for it's data.
-- **Descriptor Blocks** are part of the filesystem's metadata. They contain information about where the file data is located on the disk and keep track of arrangement information, such as the number of free index nodes, when new files are created.
+The node's wallet and validator keys are encrypted independently. If needed, smaller encrypted partitions can be added after the regular node setup was completed. This might include extended service automation or sensitive data folders.
 
 :::
