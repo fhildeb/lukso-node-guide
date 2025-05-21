@@ -121,7 +121,7 @@ On the storage screen, you will see your available disks along with their mount 
 
 :::tip
 
-Further details about disks and volume management can be found on the [Storage Specification](/docs/theory/node-operation/storage-specification.md) page in the [**🧠 Theory**](/docs/theory/preparations/node-specifications.md) section.
+Further details about disks and volume management can be found on the [Disk Management](/docs/theory/node-operation/disk-management.md) page in the [**🧠 Theory**](/docs/theory/preparations/node-specifications.md) section.
 
 :::
 
