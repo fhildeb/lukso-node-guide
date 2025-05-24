@@ -149,7 +149,11 @@ const sections = [
     chapters: [
       {
         title: "Network",
-        pages: ["Blockchain Timeline", "Configuration Updates"],
+        pages: [
+          "Blockchain Timeline",
+          "Configuration Updates",
+          "Network Forks",
+        ],
       },
       {
         title: "Testnet Operators",
