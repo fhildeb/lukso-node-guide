@@ -24,7 +24,7 @@ The following steps are performed on your 📟 **node server**.
 
 :::
 
-## Installation
+## 1. Installation
 
 **1. LUKSO CLI Download**: _Fetch and execute the installation script._
 
@@ -63,7 +63,7 @@ cd l16-node-testnet
 lukso network init
 ```
 
-## Configuration
+## 2. Configuration
 
 **1. Set the Environment Name**: _Edit the environment file to name your node using your preferred text editor._
 
@@ -114,7 +114,7 @@ lukso network update
 lukso network refresh
 ```
 
-## Deposit Key Integration
+## 3. Deposit Key Integration
 
 <Tabs groupId="validator">
   <TabItem value="regular" label="Regular Validators" default>
@@ -202,7 +202,7 @@ Ensure all validator files are inside the `keystore` folder and not within neste
 </TabItem> 
 </Tabs>
 
-## Folder Structure
+## 4. Folder Structure
 
 **Check the Folder Structure**: _During the setup and key integration, your working directory created new files._
 
@@ -245,7 +245,7 @@ The data folder will apear during the first node start using the `sudo lukso net
 
 :::
 
-## Node Startup
+## 5. Node Startup
 
 <Tabs>
 <TabItem value="validator" label="Validator Node" default>
