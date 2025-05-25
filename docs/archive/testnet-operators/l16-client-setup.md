@@ -1,5 +1,5 @@
 ---
-sidebar_label: "L16 Client Installation"
+sidebar_label: "L16 Client Setup"
 sidebar_position: 1
 ---
 
@@ -8,7 +8,7 @@ import TabItem from '@theme/TabItem';
 
 <!--TODO: on every command where there is vim/nano, add "using your preferred editor." at the end of the description-->
 
-# L16 Client Installation
+# L16 Client Setup
 
 This guide walks through the setup of a LUKSO L16 testnet node using the legacy CLI.
 

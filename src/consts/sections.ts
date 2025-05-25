@@ -158,7 +158,7 @@ const sections = [
       {
         title: "Testnet Operators",
         pages: [
-          "L16 Client Installation",
+          "L16 Client Setup",
           "L16 Node Tooltips",
           "L16 Software Removal",
           "GasHawk Deposits",
