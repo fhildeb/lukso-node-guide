@@ -3,151 +3,210 @@ sidebar_label: "L16 Client Installation"
 sidebar_position: 1
 ---
 
-<!--Add general info about setup and testing community-->
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+<!--TODO: on every command where there is vim/nano, add "using your preferred editor." at the end of the description-->
 
 # L16 Client Installation
 
-# LUKSO CLI Installation
+This guide walks through the setup of a LUKSO L16 testnet node using the legacy CLI.
 
-The initial guide was from [Luksoverse](https://luksoverse.io/2022/04/l16-re-spin-extra-tools-and-explanation/) written by [Rob](https://github.com/KEEZ-RobG) and [Jordy](https://github.com/JordyDutch). The guides were mainly updated to also support non-genesis validators and also use the new commands for updating the network bootnodes automatically.
+:::danger Historical Guide
 
-> **The old CLI version has been removed as an available download. If you do not have the tool already, this installation guide can not be continued.**
+This guide is kept for historical reference. The old LUKSO CLI and L16 Faucet are unavailable by now.
 
-## 1. Retrieve LUKSO CLI
+:::
 
-Run the following command to retrieve the new LUKSO CLI script
+:::info
 
-```bash
+The following steps are performed on your 📟 **node server**.
+
+:::
+
+## Installation
+
+**1. LUKSO CLI Download**: _Fetch and execute the installation script._
+
+```sh
+cd ~
 curl https://raw.githubusercontent.com/lukso-network/lukso-cli/main/cli_downloader.sh | bash
 ```
 
-### 2. Put CLI into Binary PATH
+**2. Add the CLI to Binary Path**: _Move the binary into the system path so it can be called globally._
 
-```bash
+```sh
 sudo mv ~/lukso /usr/local/bin
 ```
 
-At this moment LUKSO CLI isn’t installing Docker and docker compose you can install them.
+**3. Install Docker**: _Install the Docker runtime environment used to run client containers._
 
-## 3. Install Docker
-
-```bash
+```sh
 curl -fsSL https://get.docker.com -o get-docker.sh
 sudo sh get-docker.sh
 ```
 
-## 4. Install Docker Compose
+**4. Install Docker Compose**: _Install Docker Compose to manage multi-container deployments._
 
-```bash
+```sh
 sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 sudo chmod +x /usr/local/bin/docker-compose
 sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
 docker-compose --version
 ```
 
-## 5. Setup Node and Network
+**5. Setup the Node Environment**: _Create the node directory and initialize the network configuration._
 
-```bash
-# Setup Folder
+```sh
 mkdir l16-node-testnet
 cd l16-node-testnet
-
-# Download the dependencies.
 lukso network init
 ```
 
-### 6 Change Node Name
+## Configuration
 
-> Make sure not to remove quotation marks in the .env file
+**1. Set the Environment Name**: _Edit the environment file to name your node using your preferred text editor._
 
-```bash
+<Tabs groupId="editor">
+  <TabItem value="vim" label="Vim" default>
+
+```sh
 vim .env
 ```
 
-Change your node name. In case you are running a genesis validator, replace XX with the validator number on your ZIP file. `beta-genesis-validator_XX`
+</TabItem> <TabItem value="nano" label="Nano">
 
-> Use control + X to close the file and save it
+```sh
+nano .env
+```
 
-```bash
+</TabItem>
+</Tabs>
+
+**2. Set the Node Name**: _Edit the node config file to name your node using your preferred text editor._
+
+<Tabs groupId="editor">
+  <TabItem value="vim" label="Vim" default>
+
+```sh
 vim node_config.yaml
 ```
 
-Change your node name. In case you are running a genesis validator, replace XX with the validator number on your ZIP file. `beta-genesis-validator_XX`
+</TabItem> <TabItem value="nano" label="Nano">
 
-> Use control + X to close the file and save it
-
-## 7. Create Validator Keys
-
-### 7.1 L16 Genesis Setup
-
-```bash
-cd
-mkdir l16-node-testnet/keystore
+```sh
+nano node_config.yaml
 ```
 
-Unzip the validator keys from the `beta*[your number].zip` and copy the contents into the directory
+</TabItem>
+</Tabs>
 
-```bash
-mv beta l16-node-testnet/keystore
+:::info
+
+The name is used to reference your node in the node explorer. Genesis validators use `beta-genesis-validator_XX` and replace the `XX` with the validator number of their ZIP files that they received, housing the funded validator keys.
+
+:::
+
+**3. Update the Network Configuration**: _Retrieve and overwrite the network configuration with the latest bootnodes and specs._
+
+```sh
+lukso network update
+lukso network refresh
 ```
 
-> Make sure all separate files are in the keystore folder, not the ZIP file itself
+## Deposit Key Integration
 
-### 7.2 Regular Validator Setup
+<Tabs groupId="validator">
+  <TabItem value="regular" label="Regular Validators" default>
 
-The Mnemonics will appear in your node_config.yaml file.
+**1. Generate Validator Keys**: _Generate new validator deposit keys directly from the validator wallet of the consensus client._
 
-```bash
+```sh
 lukso network validator setup
 ```
 
-Open your node_config.yaml, copy your mnemonics and store them somewhere safe and offline.
+**2. Save Mnemonics**: _Add the mnemonic seed of your wallet into the node configuration using your preferred text editor._
 
-```bash
+<Tabs groupId="editor">
+  <TabItem value="vim" label="Vim" default>
+
+```sh
 vim node_config.yaml
 ```
 
-> Use control + X to close the file and save it
+</TabItem> <TabItem value="nano" label="Nano">
 
-Check if your validator already has enough funds
+```sh
+nano node_config.yaml
+```
 
-```bash
+</TabItem>
+</Tabs>
+
+**3. Check Validator Status**: _Verify the amount of validator keys to determine the LYXt amount needed for deposits._
+
+```sh
 lukso network validator describe
 ```
 
-#### Fund the Wallet
+**4. Fund Wallet**: _Visit the [L16 Faucet](https://faucet.l16.lukso.network/) and fund your address with at least 32 LYX for one validator._
 
-Visit the [L16 Faucet](https://faucet.l16.lukso.network/) and paste your wallet address into the field. Each validator will need 32 LYXt.
+![L16 Faucet](/img/archive/l16_faucet.png)
 
-> Transfer enough LYXt to also be able to pay for deposit fees
+**5. Dry Run Deposit**: _Simulate the validator deposit process to ensure your mnemonic seed was added correctly._
 
-#### Deposit Test
-
-This will give you the possibility to peek in what is going to happen without executing a transaction.
-
-```bash
+```sh
 lukso network validator deposit --dry
 ```
 
-#### Deposit Validators
+**6. Execute Deposit**: _If there were no isuess, execute the deposit on the L16 testnet using your wallet funds._
 
-```bash
+```sh
 lukso network validator deposit
 ```
 
-#### Backup Validator Data
+**7. Backup the Validator Keys**: _Save the validator keys in a recovery file._
 
-```bash
+```sh
 lukso network validator backup
 ```
 
-Store the generated node_recovery.json somewhere safe and offline.
+:::warning
 
-## 8. Check Node Folder Structure
+The LUKSO CLI will generate a `node_recovery.json` file in its working directory. Store it securely on an offline device.
 
-> Your directory structure should look similar to this. The data folder will not apear until sudo lukso network start is ran for the first time
+:::
 
-```bash
+</TabItem> <TabItem value="genesis" label="Genesis Validators">
+
+**Import Validator Keys**: _Unzip and copy your validator files into the keystore directory._
+
+```sh
+cd
+mkdir l16-node-testnet/keystore
+mv beta l16-node-testnet/keystore
+```
+
+:::tip
+
+Genesis Validators received whitelisted and funded validator keys from the LUKSO Network Team via Email and had to pre-register via the official validator questionary to receive a spot in the public node list.
+
+:::
+
+:::info
+
+Ensure all validator files are inside the `keystore` folder and not within nested directories.
+
+:::
+
+</TabItem> 
+</Tabs>
+
+## Folder Structure
+
+**Check the Folder Structure**: _During the setup and key integration, your working directory created new files._
+
+```sh
 cd l16-node-testnet
 ls -al
 ```
@@ -180,28 +239,38 @@ l16-node-testnet
 └── transaction_wallet
 ```
 
-## 9. Update The Network Config
+:::info
 
-Will update all network config itself and use the latest
-bootnodes for consensus and validator.
+The data folder will apear during the first node start using the `sudo lukso network start` command.
 
-```bash
-lukso network update
-lukso network refresh
-```
+:::
 
-## 10. Start the Node
+## Node Startup
 
-```bash
-cd
-cd l16-node-testnet
-lukso network start
-```
+<Tabs>
+<TabItem value="validator" label="Validator Node" default>
 
-## 11. Start the Validator
+**Start the Validator**: _Execute the consensus and execution clients with the deposit keys of the node wallet._
 
-```bash
+```sh
+cd ~/l16-node-testnet
 lukso network start validator
 ```
 
-> Your node should sync and then start validating. It can take up to eight hours before your validator becomes active
+:::info
+
+Your node should start staking once synced. It can take up to eight hours before the deposit becomes active.
+
+:::
+
+</TabItem><TabItem value="regular" label="Regular Fullnode">
+
+**Start the Node**: _Execute the consensus and execution clients based on the CLI client configurations and network stats._
+
+```sh
+cd ~/l16-node-testnet
+lukso network start
+```
+
+</TabItem> 
+</Tabs>
