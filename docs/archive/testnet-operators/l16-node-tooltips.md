@@ -5,16 +5,28 @@ sidebar_position: 2
 
 # L16 Node Tooltips
 
-# LUKSO CLI Tooltips
+This page provides quick access to LUKSO L16 testnet node commands through the Legacy CLI and Docker.
 
-## 1. Stopping the Node
+:::danger Historical Guide
+
+This guide is kept for historical reference. The old LUKSO CLI commands may be unavailable by now.
+
+:::
+
+:::info
+
+The following steps are performed on your 📟 **node server**.
+
+:::
+
+## Stop Node Operation
 
 ```bash
 lukso network stop validator
 lukso network stop
 ```
 
-## 2. Clearing and Restarting
+## Clear Network Config
 
 ```bash
 lukso network stop validator
@@ -23,49 +35,39 @@ lukso network clear
 lukso network init
 ```
 
-### Get Latest Network Bootnode
+## Update Bootnodes
 
 ```bash
 lukso network update
 lukso network refresh
 ```
 
-### Redo Node Config
-
-```bash
-vim node_config.yaml
-```
-
-Change your node name to this format, replacing XX with the validator number on your ZIP file: `beta-genesis-validator_XX`
-
-> Use control + X to close the file and save it
-
-### Restart
+## Restart the Validator
 
 ```bash
 lukso network start
 lukso network start validator
 ```
 
-> Wait 10 minutes. Your node should start syncing and validating.
-
-## 3. Docker Checks
-
-### Check Containers
+## Check Docker Containers
 
 ```bash
 docker ps -a
 ```
 
-### Check Images
+## Monitor Docker Images
 
 ```bash
 docker images -a
 ```
 
-## 4. Logging
+## Log Blockchain Clients
 
-> Open multiple terminals to track them all at the same time
+:::tip
+
+Open multiple terminals to track them all at the same time.
+
+:::
 
 ```bash
 # Execution Client
@@ -81,4 +83,8 @@ sudo docker logs prysm_beacon -f
 sudo docker logs eth2stats-client -f
 ```
 
-> Use control + c to exit the logs.
+:::info
+
+Use `Control + C` to exit the logs and return to the regular terminal window.
+
+:::

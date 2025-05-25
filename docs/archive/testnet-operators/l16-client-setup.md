@@ -6,11 +6,9 @@ sidebar_position: 1
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-<!--TODO: on every command where there is vim/nano, add "using your preferred editor." at the end of the description-->
-
 # L16 Client Setup
 
-This guide walks through the setup of a LUKSO L16 testnet node using the legacy CLI.
+This guide walks through the setup of a LUKSO L16 testnet node using the Legacy CLI and Docker.
 
 :::danger Historical Guide
 
@@ -24,9 +22,9 @@ The following steps are performed on your 📟 **node server**.
 
 :::
 
-## 1. Installation
+## 1. Software Installation
 
-**1. LUKSO CLI Download**: _Fetch and execute the installation script._
+**1. LUKSO CLI Download**: _Move to your home directory, then fetch and execute the installation script._
 
 ```sh
 cd ~
@@ -63,7 +61,7 @@ cd l16-node-testnet
 lukso network init
 ```
 
-## 2. Configuration
+## 2. Network Configuration
 
 **1. Set the Environment Name**: _Edit the environment file to name your node using your preferred text editor._
 
@@ -202,7 +200,7 @@ Ensure all validator files are inside the `keystore` folder and not within neste
 </TabItem> 
 </Tabs>
 
-## 4. Folder Structure
+## 4. Folder Structure Check
 
 **Check the Folder Structure**: _During the setup and key integration, your working directory created new files._
 
@@ -254,6 +252,7 @@ The data folder will apear during the first node start using the `sudo lukso net
 
 ```sh
 cd ~/l16-node-testnet
+lukso network start
 lukso network start validator
 ```
 
