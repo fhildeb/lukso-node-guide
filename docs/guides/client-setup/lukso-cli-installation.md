@@ -36,7 +36,7 @@ The clients started from the CLI run in the `/usr/local/` directory of the opera
 
 :::tip
 
-If you want to use a 🐳 [**Docker**](https://github.com/lukso-network/network-docker-containers) configuration or manual setup, have a look at the [client options](/docs/theory/node-operation/client-options.md) page in the [**🧠 Theory**](/docs/theory/blockchain-knowledge/proof-of-stake.md) section.
+If you want to use a 🐳 [**Docker**](https://github.com/lukso-network/network-docker-containers) configuration or manual setup, have a look at the [client options](/docs/theory/node-operation/client-setups.md) page in the [**🧠 Theory**](/docs/theory/blockchain-knowledge/proof-of-stake.md) section.
 
 :::
 
