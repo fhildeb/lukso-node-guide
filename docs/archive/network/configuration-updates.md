@@ -10,19 +10,20 @@ import TabItem from '@theme/TabItem';
 
 This page lists changes introduced to the [LUKSO Mainnet Network Configuration Files](https://github.com/lukso-network/network-configs) since [Genesis Launch on 23 May 2023](https://explorer.execution.mainnet.lukso.network/block/1).
 
-:::info
-
-The page was last updated on May 21, 2025.
-
-:::
-
 :::tip
 
 Chain configurations can be updated on a node setup by:
 
-- **[DAppNode](https://dappnode.com/)**: Reinstalling both execution and consensus clients, as configuration is only fetched during setup.
-- **[LUKSO CLI](https://github.com/lukso-network/tools-lukso-cli)**: Overwriting the old chain configuration using the `lukso update configs` command.
-- **[Docker](https://github.com/lukso-network/network-docker-containers)** or **[Custom](https://docs.lukso.tech/networks/mainnet/running-a-node#-with-your-own-clients)**: Redownloading the network configuration or modifying files individually.
+- 🎨 **[DAppNode](https://dappnode.com/)**: Reinstalling both execution and consensus clients, as configuration is only fetched during setup.
+- 👾 **[LUKSO CLI](https://github.com/lukso-network/tools-lukso-cli)**: Overwriting the old chain configuration using the `lukso update configs` command.
+- 🐳 **[Docker](https://github.com/lukso-network/network-docker-containers)**: Modifying the `docker_compose.yml` client files to change the container configuration.
+- 🗂️ **[Custom](https://docs.lukso.tech/networks/mainnet/running-a-node#-with-your-own-clients)**: Redownloading the network configuration or modifying files individually.
+
+:::
+
+:::info
+
+The page was last updated on May 21, 2025.
 
 :::
 

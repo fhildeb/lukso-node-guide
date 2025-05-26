@@ -5,9 +5,21 @@ sidebar_position: 3
 
 # L16 Software Removal
 
-## LUKSO CLI Uninstall
+<!--TODO: add introduction-->
 
-> This guide is suited for L16 nodes running a docker installation up to the `LUKSO CLI Version 4.9.0`. If you are using an newer version, paths and tools might not fully align. Use the uninstall commands at own risk.
+<!--TODO: add danger admonition: Historical guide: The old CLI version has been removed as download.-->
+
+:::danger Historical Guide
+
+This guide is kept for historical reference. The old LUKSO CLI commands may be unavailable by now.
+
+:::
+
+:::info
+
+The following steps are performed on your 📟 **node server**.
+
+:::
 
 The LUKSO CLI is installed within `/usr/local/bin/lukso`, and links to Docker. You will have to remove:
 

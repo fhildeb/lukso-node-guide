@@ -273,3 +273,9 @@ lukso network start
 
 </TabItem> 
 </Tabs>
+
+:::tip
+
+Details about analyzing the staking and node processes can be found on the [**Monitoring**](/docs/guides/monitoring/software-preparation.md) page of the 📖 [**Guide**](/docs/guides/validator-setup/precautions.md) section.
+
+:::

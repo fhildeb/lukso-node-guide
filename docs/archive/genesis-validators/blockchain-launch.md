@@ -9,7 +9,7 @@ Before creating its blockchain as an independent network, LUKSO conducted a [Rev
 
 :::tip Token Contract
 
-LYXe is based on the [ERC-777](https://eips.ethereum.org/EIPS/eip-777) standardization and can be viewed on [Etherscan](https://etherscan.io/token/0xA8b919680258d369114910511cc87595aec0be6D).
+LYXe is based on the [**ERC-777**](https://eips.ethereum.org/EIPS/eip-777) standardization and can be viewed on 🏙️ [**Etherscan**](https://etherscan.io/token/0xA8b919680258d369114910511cc87595aec0be6D).
 
 :::
 
@@ -17,17 +17,17 @@ LYXe is based on the [ERC-777](https://eips.ethereum.org/EIPS/eip-777) standardi
 
 On the 19th of April, 2023, LUKSO launched the [Genesis Deposit Contract](https://etherscan.io/address/0x42000421dd80D1e90E56E87e6eE18D7770b9F8cC#code) as an entry portal for the creation of a unique blockchain. All users who held as little as 32 LYXe were allowed to lock up their LYXe in this deposit contract and become genesis validators. Participants pre-reserved their validator spots in the genesis files, which allowed them to start a staking node.
 
-The deposit contract remained open for about three weeks, whereupon it was manually triggered by the team on the 3rd of May 2023, as part of the launch of the [LUKSO Testnet](https://medium.com/lukso/genesis-validators-deposit-smart-contract-freeze-and-testnet-launch-c5f7b568b1fc). Following a predefined delay of one week, final deposits were received on the 10th of May 2023. About 223 separate wallets took part in deposits for more than 10,000 validators, totaling more than 330,000 LYXe, an approximately 3.5 million-dollar equivalent at that time. Community participants and builders carried out all these deposits, as the LUKSO team did not actively distribute stake.
+The deposit contract remained open for about three weeks, whereupon it was manually triggered by the team on the 3rd of May 2023, as part of the launch of the [LUKSO Testnet](https://medium.com/lukso/genesis-validators-deposit-smart-contract-freeze-and-testnet-launch-c5f7b568b1fc). Following a predefined delay of one week, final deposits were received on the 10th of May 2023. About 223 separate wallets took part in deposits for more than 10,000 validators, totaling more than 330,000 LYXe, an approximately 3.5 million-dollar equivalent at that time. Community participants and builders carried out all these deposits, as the LUKSO team did not actively distribute stake. Due to the high demand of the Ethereum network during the time, gas prices soared and LUKSO decided to [pay back the gas costs](https://medium.com/lukso/genesis-validators-deposit-smart-contract-freeze-and-testnet-launch-c5f7b568b1fc) of the first 10,000 genesis validators in ETH.
 
 :::tip
 
-Further details about [Proof of Stake](/docs/theory/blockchain-knowledge/proof-of-stake.md), [Tokenomics](/docs/theory/blockchain-knowledge/tokenomics.md), and [Peer Networks](/docs/theory/blockchain-knowledge/peer-networks.md) can be found in the [**🧠 Theory**](/docs/theory/preparations/node-specifications.md) section.
+Further details about [**Proof of Stake**](/docs/theory/blockchain-knowledge/proof-of-stake.md), [**Tokenomics**](/docs/theory/blockchain-knowledge/tokenomics.md), and [**Peer Networks**](/docs/theory/blockchain-knowledge/peer-networks.md) can be found in the 🧠 [**Theory**](/docs/theory/preparations/node-specifications.md) section.
 
 :::
 
 :::info
 
-Further insights about the mainnet’s genesis validators can be gathered from the [Dune Analytics Dashboard](https://dune.com/hmc/lukso-genesis-validators) by [Hugo Masclet](https://x.com/HugoApps).
+Further insights about the genesis validators can be gathered from the [**Dune Analytics Dashboard**](https://dune.com/hmc/lukso-genesis-validators) by [**Hugo Masclet**](https://x.com/HugoApps).
 
 :::
 
