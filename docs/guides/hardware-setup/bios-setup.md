@@ -5,25 +5,20 @@ sidebar_position: 5
 
 # 2.5 BIOS Setup
 
-Proper BIOS configuration is critical for optimizing your node's energy consumption, processing speed, and overall stability. Adjusting the settings can ensure that your operating system runs smoothly and that your hardware performs at its best. Entering the settings allows you to configure essential hardware configurations, ensuring that your node boots in a controlled and optimized environment.
+Proper BIOS configuration is critical for optimizing your node's energy consumption and overall performance. Adjusting the settings will ensure that your node machine runs smooth and efficient under various load scenarios and automatically restarts during power failures.
 
-:::note
+:::warning
 
-BIOS layouts and settings may vary depending on the CPU and motherboard. Please refer to your device’s documentation.
+BIOS settings vary depending on the CPU and motherboard. For further help, please refer to your device’s documentation.
 
 :::
 
 ## 1. Enter BIOS
 
-:::info
-
-Connect your machine to power and attach a keyboard and monitor. This ensures that you can interact with the BIOS setup.
-
-:::
-
+1. Connect your machine to power and attach a keyboard and monitor.
 1. Connect your bootable USB device to the node.
-2. Turn on the node using the power button.
-3. Press `F2` on your keyboard during boot to enter the BIOS setup.
+1. Turn on the node using the power button.
+1. Press `F2` on your keyboard during boot to enter the BIOS setup.
 
 ## 2. Power Settings
 
@@ -41,7 +36,7 @@ Auto-starts enable your node to restart after a power interruption, reducing dow
 
 :::info
 
-These settings optimize cooling and performance. If your node uses fans for cooling, you may skip the cooling adjustments.
+These settings optimize performance on load and general energy efficiency. If your node has fans, skip the cooling adjustment.
 
 :::
 
@@ -51,14 +46,8 @@ These settings optimize cooling and performance. If your node uses fans for cool
    - Enable **Intel Turbo Boost Technology**.
    - Set **Active Processor Cores** to `All`.
    - Enable **Real-Time Performance Tuning**.
+3. Navigate to `Power`:
 
-:::info
-
-For energy efficiency and optimal performance in a server environment, adjust further power options:
-
-:::
-
-3. Go to `Power`:
    - Enable **Max Performance Enabled**.
    - Set **Intel Dynamic Power Technology** to `Energy Efficient Performance`.
    - Set **Package Power Limit 1 (Sustained)** to `25`.
@@ -67,9 +56,9 @@ For energy efficiency and optimal performance in a server environment, adjust fu
 
 ## 4. LED Settings
 
-:::tip
+:::info
 
-For server installations, you might not require illuminated status indicators.
+For server installations, you might choose to disable the illuminated status indicators.
 
 :::
 
@@ -91,7 +80,7 @@ Establishing the correct boot order ensures that your node boots from the correc
 2. Set **Boot Option #1** to your USB device.
 3. Set **Boot Option #2** to your internal SSD.
 
-## 6. Operating System Startup
+## 6. Startup
 
 Once the BIOS settings are correctly configured, you can proceed with the operating system installation. Saving and exiting the BIOS applies your configuration changes, and booting the installation media initiates the operating system setup process.
 

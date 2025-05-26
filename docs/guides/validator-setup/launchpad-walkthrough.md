@@ -8,17 +8,17 @@ import TabItem from '@theme/TabItem';
 
 # 1.5 Launchpad Walkthrough
 
-This section guides you through the deposit process using the LUKSO Validator Deposit Launchpads. Depositing funds is a critical step that activates your validator keys and enables your node to participate in staking, which in turn generates income. Before you begin, please ensure that you have read and understood the staking fundamentals in the [Node Operation](/docs/theory/node-operation/staking-deposits.md) and [Blockchain Knowledge](/docs/theory/blockchain-knowledge/proof-of-stake.md) chapters in the [**🧠 Theory**](/docs/theory/preparations/node-specifications.md) section.
+This section guides you through the deposit process using the LUKSO Validator Deposit Launchpads. Depositing funds is a critical step that activates your validator keys and enables your node to participate in staking, which in turn generates income.
 
-:::warning
+:::tip
 
-This step is about transferring funds from your wallet to your validator deposit keys, enabling your node to run and earn staking rewards. If you are unsure about Deposits and Proof of Stake, further details can be found on the [Staking Deposits](/docs/theory/node-operation/staking-deposits.md) page.
+If you're not quite sure about [**Hardware Preparations**](/docs/theory/preparations/node-specifications.md), [**Blockchain Fundamentals**](/docs/theory/blockchain-knowledge/proof-of-stake.md), or the basics of [**Node Operations**](/docs/theory/node-operation/client-setups.md), please refer to the 🧠 [**Theory**](/docs/theory/preparations/node-specifications.md) section to build a solid foundation of knowledge before continuing with the validator or node setup.
 
 :::
 
-:::info
+:::warning
 
-To become a validator on the **LUKSO Testnet**, you will first have to contact <nobr> `testnet-validators@lukso.network` </nobr> to whitelist your wallet and validator keys. Testnet validators are core community members and organizations ensuring healthy uptimes, stability, and quick response times for developers without claiming profit.
+Further details about validator operation and deposit instructions can be found on the [**Staking Deposits**](/docs/theory/node-operation/staking-deposits.md) page.
 
 :::
 
@@ -35,19 +35,13 @@ Always double-check the `lukso.network` domain before continuing the deposit pro
 
 :::
 
-Take a moment to review the launchpad’s functionality and statistics. For each network, you will see details such as the total staked amount of LYXe or LYXt, the total number of validators, and the current Annual Percentage Rate during staking, which is particularly useful for monitoring the network dynamics.
-
-:::info
-
-Further insights about the mainnet’s genesis validators can be gathered from the [Dune Analytics Dashboard](https://dune.com/hmc/lukso-genesis-validators) by [Hugo Masclet](https://x.com/HugoApps).
-
-:::
+Take a moment to review the launchpad’s functionality and statistics. For each network, you will see details such as the total staked amount of LYX or LYXt, the total number of validators, and the current Annual Percentage Rate during staking, which is particularly useful for monitoring the network dynamics.
 
 ## 1. Preparing Deposit Files
 
 Before making any deposits, you must prepare and verify your deposit files on the launchpad. If you only have one wallet with enough LYX or LYXt to fund your validator keys, you can use one single deposit file during the process. However, if you have multiple wallets or currently only have enough funds to activate a smaller amount of validators, you must prepare or split your deposit file.
 
-:::tip Split Deposits to multiple Wallets
+:::info Split Deposits to multiple Wallets
 
 **1. You Generated Batches with the Same Seed**
 
@@ -71,7 +65,7 @@ Before making any deposits, you must prepare and verify your deposit files on th
 
 :::
 
-:::info
+:::tip
 
 If your wallets hold different amounts of LYX or LYXt, adjust the subkeys and validator counts of the deposit file accordingly to match holdings. If you only want to fund some of your validator keys later, you can create a copy of the deposit file and remove the last pubkey elements.
 
@@ -93,7 +87,7 @@ If you're a Genesis or Testnet Validator, the prepared deposit files can be chec
 
 :::info
 
-Further details about validator differentiations can be found on the [Staking Deposits](/docs/theory/node-operation/staking-deposits.md) page in the [**🧠 Theory**](/docs/theory/preparations/node-specifications.md) section.
+Further details about validator differentiations can be found on the [**Staking Deposits**](/docs/theory/node-operation/staking-deposits.md) page in the 🧠 [**Theory**](/docs/theory/preparations/node-specifications.md) section.
 
 :::
 
@@ -119,7 +113,7 @@ If you're a Testnet Validator, you're allowed to check the deposit status by ver
 
 :::tip Whitelists and Deposits
 
-Whitelisting only affects the ability to make deposits, not becoming a validator. If you are removed from the whitelist before all validators are deposited, you will not be able to proceed. You can find further information on becoming a Testnet Validator on the related [LUKSO Tech Documentation](https://docs.lukso.tech/networks/testnet/become-a-validator).
+Whitelisting only affects the ability to make deposits, not becoming a validator. If you are removed from the whitelist before all validators are deposited, you will not be able to proceed. You can find further information on becoming a Testnet Validator on the related [**LUKSO Tech Documentation**](https://docs.lukso.tech/networks/testnet/become-a-validator) or the [**Staking Deposits**](/docs/theory/node-operation/staking-deposits.md) page.
 
 :::
 
@@ -128,9 +122,9 @@ Whitelisting only affects the ability to make deposits, not becoming a validator
 </TabItem>
 <TabItem value="mainnet" label="Mainnet Validators">
 
-:::warning
+:::note
 
-The **Mainnet** Staking Launchpad only **supports deposit checks** in the **final transaction window** after submitting the deposit file and connecting your wallet. The wallet must contain enough LYX, LYXe, or LYXt to proceed to the final screen.
+The Mainnet Staking Launchpad only supports deposit checks in the final transaction window after submitting the deposit file and connecting your wallet. The wallet must contain enough LYX or LYXt to proceed to the final screen.
 
 :::
 
@@ -139,7 +133,7 @@ The **Mainnet** Staking Launchpad only **supports deposit checks** in the **fina
 
 ## 3. Placing Deposits
 
-You can initiate the deposits by the clicking _Become a validator_ button on the launchpad.
+You can initiate the deposits by the clicking _Become a validator_ button on the Staking Launchpad.
 
 :::warning
 
@@ -165,7 +159,7 @@ Deposits can only be made once and cannot be refunded in the event of an error.
 
 :::tip
 
-While the Staking Launchpad only supports MetaMask as browser wallet, you can still [link your hardware wallet](https://support.lukso.network/general/supported-wallets/hardware-wallets) or send LYX to this Ethereum address. It will show up once you've [added and switched to the LUKSO network](https://docs.lukso.tech/networks/mainnet/parameters#add-lukso-to-wallets).
+While the Staking Launchpad only supports MetaMask as browser wallet, you can still [**link your hardware wallet**](https://support.lukso.network/general/supported-wallets/hardware-wallets) or send LYX to a different Ethereum address. It will show up once you've [**added and switched**](https://docs.lukso.tech/networks/mainnet/parameters#add-lukso-to-wallets) to the LUKSO network.
 
 :::
 
@@ -177,33 +171,25 @@ If you create deposits on the LUKSO Testnet, clean your MetaMask activity and no
 
 :::
 
-**4. Review Wallet Balance**: The launchpad will fetch your balance. If sufficient funds are available, you're allowed to continue.
+**4. Review Wallet Balance**: The launchpad will fetch your balance and will allow you to continue with sufficient funds.
 
 ![Deposit Launchpad](/img/guides/validator-setup/launchpad_8.png)
+
+:::tip
+
+If you have insufficient funds or want to activate some of the generated validator keys later on, you can create a copy of the deposit file with a subsection of keys to fullfil the deposit requirements.
+
+:::
 
 **5. Confirm Summary Page**: Review the summary of your deposit keys and agree to the terms to proceed with the transactions.
 
 ![Deposit Launchpad](/img/guides/validator-setup/launchpad_9.png)
 
-After the confirmation and setup, you will be able to **send deposit transactions** by either clicking _Confirm deposit_ or _Send X deposits_. If you select the latter option, the transactions will be sent in series, and you will be prompted to confirm each one individually.
+After the confirmation and setup, you will be able to send deposit transactions by either clicking _Confirm deposit_ or _Send X deposits_. If you select the latter option, the transactions will be sent in series, and you will be prompted to confirm each one individually.
 
 :::warning Status Updates
 
-Please remain on the deposit page and **monitor the transaction status**. The deposit keys will initially show as **ready** and will update to **pending**, **deposited**, or **failed** based on the blockchain’s response.
-
-:::
-
-:::info Error
-
-If a transaction error occurs and the option to resend from the final screen is not available, return to the home screen and recheck your deposit file. In case your funds are only sufficient for the exact amount of deposits, you have to create a new copy of the deposit file with only the keys that have not been successfully processed and are still marked in grey. Then repeat the process.
-
-:::
-
-:::note Lore
-
-Previous Genesis Validators were aboe to vote on the preferred initial coin supply of the LUKSO network. This choice had to be placed with every transaction, and people may had to adjust votes during standalone transactions if needed. The final outcome was a election result of around 85% that [voted for a supply of 42,000,000 LYX](https://medium.com/lukso/genesis-validators-start-your-clients-fe01db8f3fba).
-
-Original Genesis Validators locked LYXe in order to be included in the genesis file of the LUKSO blockchain. Due to the high demand of the Ethereum network during the time, gas prices soared and LUKSO decided to [pay back the gas costs](https://medium.com/lukso/genesis-validators-deposit-smart-contract-freeze-and-testnet-launch-c5f7b568b1fc) of the first 10,000 genesis validators in ETH.
+Please remain on the deposit page and monitor the transaction status. The deposit keys will **initially show as ready** and will update to **pending**, **deposited**, or **failed** based on the blockchain’s response. If a transaction error occurs and the option to resend from the final screen should not be available, restart the process from the home screen.
 
 :::
 
@@ -214,19 +200,13 @@ After the transactions have been sent, you can verify the status of your deposit
 <Tabs>
 <TabItem value="genesis" label="Genesis Validators" default>
 
-For genesis depositors, the Ethereum Blockchain Explorer displayed all the deposit transactions to the [Genesis Contract](https://etherscan.io/address/0x42000421dd80D1e90E56E87e6eE18D7770b9F8cC).
+For [Genesis Validators](/docs/archive/genesis-validators/blockchain-launch.md), the Ethereum Blockchain Explorer displayed all the deposit transactions to the [Genesis Contract](https://etherscan.io/address/0x42000421dd80D1e90E56E87e6eE18D7770b9F8cC).
 
 ![Genesis Execution Chain Deposit](/img/guides/validator-setup/genesis-deposit-screen.png)
 
-They were also able to review the deposit files on the Staking Launchpad. If all validator keys show as green, every deposit transaction was successful. In case some validator keys remained in grey color, genesis validators had to repeat the process over.
+[Genesis Validators](/docs/archive/genesis-validators/blockchain-launch.md) were also able to review the deposit files on the Staking Launchpad. If all validator keys show as green, every deposit transaction was successful. In case some validator keys remained in grey, the deposit had to be repeated.
 
 ![Deposit Launchpad](/img/guides/validator-setup/launchpad_12.png)
-
-:::info
-
-In case the funds were only sufficient for the exact amount of deposits, they had to create a new copy of the deposit file with only the keys that have not been successfully processed and repeat the process with the new deposit file.
-
-:::
 
 </TabItem>
 <TabItem value="testnet" label="Testnet Validators">
@@ -235,12 +215,6 @@ For Testnet Validators, the [LUKSO Testnet Consensus Explorer](https://explorer.
 
 ![Testnet Beacon Chain Deposit](/img/guides/validator-setup/testnet-deposit-screen.png)
 
-:::info
-
-Validator activation can take up 14 to 24 hours. You can start importing your keys and setting up your node using the [Node Installation](/docs/guides/client-setup/lukso-cli-installation.md) and [Validator Configuration](/docs/guides/client-setup/validator-configuration.md) sections while awaiting activation.
-
-:::
-
 </TabItem>
 <TabItem value="mainnet" label="Mainnet Validators">
 
@@ -248,11 +222,11 @@ For Mainnet Validators, the [LUKSO Mainnet Consensus Explorer](https://explorer.
 
 ![Testnet Beacon Chain Deposit](/img/guides/validator-setup/testnet-deposit-screen.png)
 
-:::info
-
-Validator activation can take up 14 to 24 hours. You can start importing your keys and setting up your node using the [Node Installation](/docs/guides/client-setup/lukso-cli-installation.md) and [Validator Configuration](/docs/guides/client-setup/validator-configuration.md) sections while awaiting activation.
-
-:::
-
 </TabItem>
 </Tabs>
+
+:::tip
+
+Validator activation can take up multiple days depending on the network occupation. You can already start to run your node using one of the [**Client Setups**](/docs/theory/node-operation/client-setups.md) and import the validator keys. The validator clients will then run in idle mode until the blockchain is synced and validators got activated.
+
+:::

@@ -12,7 +12,7 @@ A tightly controlled firewall lets your node participate in peer-to-peer network
 
 :::tip
 
-Please ensure you have a basic understanding of blockchain networks before operating a node. If you're not yet familiar with [proof of stake](/docs/theory/blockchain-knowledge/proof-of-stake.md), [tokenomics](/docs/theory/blockchain-knowledge/tokenomics.md), [panelties](/docs/theory/blockchain-knowledge/slashing-and-panelties.md), or [clients](/docs/theory/blockchain-knowledge/client-types.md) and their [differences](/docs/theory/blockchain-knowledge/client-providers.md), you can refer to the [**🧠 Theory**](/docs/theory/blockchain-knowledge/proof-of-stake.md) section.
+Please ensure you have a basic understanding of blockchain networks before operating a node. If you're not yet familiar with [**Proof of Stake**](/docs/theory/blockchain-knowledge/proof-of-stake.md), [**Tokenomics**](/docs/theory/blockchain-knowledge/tokenomics.md), [**Panelties**](/docs/theory/blockchain-knowledge/slashing-and-panelties.md), [**Client Types**](/docs/theory/blockchain-knowledge/client-types.md) or [**Client Providers**](/docs/theory/blockchain-knowledge/client-providers.md), please refer to the 🧠 [**Theory**](/docs/theory/blockchain-knowledge/proof-of-stake.md) section.
 
 :::
 
@@ -34,7 +34,7 @@ Consensus clients rely on broad outbound connectivity to discover other nodes, m
 
 :::tip
 
-Clients use extra ports for monitoring, which don't need firewall exposure. Check the [Monitoring](/docs/guides/monitoring/software-preparation.md) chapter for details.
+Clients use extra ports for monitoring, which don't need firewall exposure. Check the [**Monitoring**](/docs/guides/monitoring/software-preparation.md) chapter for details.
 
 :::
 
@@ -69,7 +69,7 @@ You will have to chose one execution client and one consensus client.
 - **Execution Clients**: Geth, Erigon, Nethermind, Besu
 - **Consensus Clients**: Prysm, Lighthouse, Teku, Nimbus
 
-Further details about [client types](/docs/theory/blockchain-knowledge/client-types.md) and their [providers](/docs/theory/blockchain-knowledge/client-providers.md) can be found in the [**🧠 Theory**](/docs/theory/blockchain-knowledge/proof-of-stake.md) section.
+Further details about [**Client Types**](/docs/theory/blockchain-knowledge/client-types.md) and [**Client Providers**](/docs/theory/blockchain-knowledge/client-providers.md) can be found in the 🧠 [**Theory**](/docs/theory/blockchain-knowledge/proof-of-stake.md) section.
 
 :::
 

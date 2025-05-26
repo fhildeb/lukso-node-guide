@@ -13,13 +13,13 @@ They're open-source and flexible, provide excellent stability, extensive communi
 
 :::tip
 
-If you are uncertain about which operating system and version to choose, you can find further details and comparisons in the [Operating Systems](/docs/theory/node-operation/operation-systems.md) chapter of the [**🧠 Theory**](/docs/theory/preparations/node-specifications.md) section.
+If you are uncertain about which operating system and node setup to choose, you can find further details and comparisons on the [**Operating Systems**](/docs/theory/node-operation/operation-systems.md) and [**Client Setups**](/docs/theory/node-operation/client-setups.md) pages within the 🧠 [**Theory**](/docs/theory/preparations/node-specifications.md) section.
 
 :::
 
 :::warning
 
-If you plan to become a validator and do not have a separate computer available to safely generate your validator keys offline, head over to the [Key Generation](/validator-key-generation/) section and generate your keys using your current node first. Then reflash your machine to continue with the OS installation.
+If you want to become a validator and do not have a separate computer available to safely generate your validator keys, head over to the [**Validator Setup**](/docs/guides/validator-setup/precautions.md) and generate your keys using your node before flashing it and continuing with the OS installation.
 
 :::
 

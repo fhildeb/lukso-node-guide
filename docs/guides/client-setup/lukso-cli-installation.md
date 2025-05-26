@@ -12,7 +12,7 @@ The [LUKSO CLI](https://github.com/lukso-network/tools-lukso-cli) is a unified c
 
 :::tip
 
-Please ensure you have a basic understanding of blockchain networks before operating a node. If you're not yet familiar with [proof of stake](/docs/theory/blockchain-knowledge/proof-of-stake.md), [tokenomics](/docs/theory/blockchain-knowledge/tokenomics.md), [panelties](/docs/theory/blockchain-knowledge/slashing-and-panelties.md), or [clients](/docs/theory/blockchain-knowledge/client-types.md) and their [differences](/docs/theory/blockchain-knowledge/client-providers.md), refer to the [**🧠 Theory**](/docs/theory/blockchain-knowledge/proof-of-stake.md) section.
+Please ensure you have a basic understanding of blockchain networks before operating a node. If you're not yet familiar with [**Proof of Stake**](/docs/theory/blockchain-knowledge/proof-of-stake.md), [**Tokenomics**](/docs/theory/blockchain-knowledge/tokenomics.md), [**Panelties**](/docs/theory/blockchain-knowledge/slashing-and-panelties.md), [**Client Types**](/docs/theory/blockchain-knowledge/client-types.md) or [**Client Providers**](/docs/theory/blockchain-knowledge/client-providers.md), please refer to the 🧠 [**Theory**](/docs/theory/blockchain-knowledge/proof-of-stake.md) section.
 
 :::
 
@@ -36,7 +36,7 @@ The clients started from the CLI run in the `/usr/local/` directory of the opera
 
 :::tip
 
-If you want to use a 🐳 [**Docker**](https://github.com/lukso-network/network-docker-containers) configuration or manual setup, have a look at the [client options](/docs/theory/node-operation/client-setups.md) page in the [**🧠 Theory**](/docs/theory/blockchain-knowledge/proof-of-stake.md) section.
+If you want to use 🐳 [**Docker**](https://github.com/lukso-network/network-docker-containers) or manual configuration, have a look at the [**Client Setups**](/docs/theory/node-operation/client-setups.md) page in the 🧠 [**Theory**](/docs/theory/blockchain-knowledge/proof-of-stake.md) section.
 
 :::
 
@@ -100,7 +100,7 @@ The `init` command generates a `cli-config.yaml` file and a `config` folder with
 
 :::tip
 
-To learn about bootnodes and the architecture, have a look at the [peer networks](/docs/theory/blockchain-knowledge/peer-networks.md) page in the [**🧠 Theory**](/docs/theory/blockchain-knowledge/proof-of-stake.md) section.
+To learn about bootnodes and the architecture, have a look at the [**Peer Networks**](/docs/theory/blockchain-knowledge/peer-networks.md) page in the 🧠 [**Theory**](/docs/theory/blockchain-knowledge/proof-of-stake.md) section.
 
 :::
 
@@ -108,15 +108,15 @@ To learn about bootnodes and the architecture, have a look at the [peer networks
 lukso init
 ```
 
-:::info
+:::note
 
-During setup, a file named `jwt.hex` is created at at `./configs/shared/secrets/`. It is the secret key file for [JSON Web Tokens](https://en.wikipedia.org/wiki/JSON_Web_Token) and will be used to sign and verify the communication between the execution and consensus client of your node.
+When asked to add your _public IP address_ to the configuration file to improve connectivity, you can decline for now. Your public IP address may change frequently, depending on your internet provider, even if you've previously [assigned a static IP](/docs/guides/router-setup/static-ip-assignment.md) on the router level. While adding your IP is a temporary improvement, this setting is overwritten once [setting up a dynamic DNS](/docs/guides/modifications/dynamic-dns.md) for stable and long-term connectivity without ongoing maintenance.
 
 :::
 
-:::tip
+:::info
 
-When asked to add your _public IP address_ to the configuration file to improve connectivity, you can decline for now. Your public IP address may change frequently, depending on your internet provider, even if you've previously [assigned a static IP](/docs/guides/router-setup/static-ip-assignment.md) on the router level. While adding your IP is a temporary improvement, this setting is overwritten once [setting up a dynamic DNS](/docs/guides/modifications/dynamic-dns.md) for stable and long-term connectivity without ongoing maintenance.
+During setup, a file named `jwt.hex` is created at at `./configs/shared/secrets/`. The [**JSON Web Token**](https://en.wikipedia.org/wiki/JSON_Web_Token) key will be used to sign and verify the communication between the execution and consensus client of your node.
 
 :::
 
@@ -155,7 +155,7 @@ lukso-node
 
 ## 4. Install Blockchain Clients
 
-Select which clients to install.
+After the initialization of the node's working directory, you will be able to select which clients clients to run in the setup.
 
 :::info
 
@@ -165,11 +165,11 @@ Clients will be installed globally at `/usr/local/bin/` and set as default withi
 
 :::tip
 
-Please inform yourself about [client providers](/docs/theory/blockchain-knowledge/client-providers.md) and [client diversity](/docs/theory/blockchain-knowledge/client-diversity.md) to ensure your node's and the network stability.
+Please inform yourself about [**Client Providers**](/docs/theory/blockchain-knowledge/client-providers.md) and [**Client Diversity**](/docs/theory/blockchain-knowledge/client-diversity.md) to ensure your node's and the network stability.
 
 :::
 
-:::warning
+:::warning Staking Notice
 
 If you want to run a validator and stake funds, choose between the `Prysm`, `Lighthouse`, or `Teku` consensus client.
 
@@ -385,7 +385,7 @@ Replace the `<BLOCK_ROOT>` and `<EPOCH>` placeholders with the current hash and 
 
 :::tip
 
-Details about logging clients and [scanning problems](/docs/guides/maintenance/problem-scanning.md) can be found in the [maintenance section](/docs/guides/maintenance/software-updates.md) of the guide.
+Details about logging client outputs can be found on the [**Problem Scanning**](/docs/guides/maintenance/problem-scanning.md) page of the [**Maintenance**](/docs/guides/maintenance/software-updates.md) section.
 
 :::
 

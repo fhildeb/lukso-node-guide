@@ -14,18 +14,20 @@ This section explains how to generate your validator keys using the [LUKSO Key G
 
 The table below compares the two available tools for generating validator keys:
 
-| Tool                               | Interface                   | Description                                                                                                             |
-| ---------------------------------- | --------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
-| <nobr> LUKSO Wagyu Key Gen </nobr> | <nobr> Graphical </nobr>    | Simplifies the staking process with an intuitive, step-by-step interface, ideal for users who prefer visual guidance.   |
-| <nobr> LUKSO Key Gen CLI </nobr>   | <nobr> Command-Line </nobr> | Provides a terminal-based approach for generating keys, offering flexibility and ease of automation for advanced users. |
+| Tool                                                                                           | Interface                   | Description                                                                                                           |
+| ---------------------------------------------------------------------------------------------- | --------------------------- | --------------------------------------------------------------------------------------------------------------------- |
+| <nobr> [**LUKSO Wagyu Key Gen**](https://github.com/lukso-network/tools-wagyu-key-gen) </nobr> | <nobr> Graphical </nobr>    | Simplifies the staking process with an intuitive, step-by-step interface, ideal for users who prefer visual guidance. |
+| <nobr> [**LUKSO Key Gen CLI**](https://github.com/lukso-network/tools-key-gen-cli) </nobr>     | <nobr> Command-Line </nobr> | Provides a terminal-based approach for generating keys, suitable for servers, automation and advanced users           |
 
-:::info
-If you prefer a graphical interface, switch to the [LUKSO Wagyu Key Gen](./wagyu-key-generation.md) page.
+:::tip
+
+If you prefer a graphical interface, switch to the [**Wagyu Key Generation**](./wagyu-key-generation.md) page.
+
 :::
 
 ## 2. Download the Software
 
-This step prepares the key generation tool. You need to chose the correct archive file for the **operating system** on your **offline machine** where you are **going to generate the keys on**, not the operating system of your personal computer.
+This step prepares the key generation tool. You need to chose the correct archive file for the operating system on your offline machine where you are going to generate the keys on, not the operating system of your personal computer.
 
 - Linux, Ubuntu: _linux.tar.gz_
 - Apple, MacOS: _macos.tar.gz_
@@ -44,7 +46,7 @@ The following steps are performed on your 💻 **personal computer**.
 2. Download the _linux.tar.gz_ file from the [latest release](https://github.com/lukso-network/tools-key-gen-cli/releases).
 3. Connect a USB device.
 4. Flash the USB device using your preferred disk utility tool.
-5. Copy the tape archive (`.tar.gz` file) onto the USB disk.
+5. Copy the _tar.gz_ archive file onto the USB disk.
 6. Eject the USB device safely.
 
 </TabItem>
@@ -54,7 +56,7 @@ The following steps are performed on your 💻 **personal computer**.
 2. Download the _macos.tar.gz_ file from the [latest release](https://github.com/lukso-network/tools-key-gen-cli/releases).
 3. Connect a USB device.
 4. Flash the USB device using your preferred disk utility tool.
-5. Copy the tape archive (`.tar.gz` file) onto the USB disk.
+5. Copy the _tar.gz_ archive file onto the USB disk.
 6. Eject the USB device safely.
 
 </TabItem>
@@ -64,7 +66,7 @@ The following steps are performed on your 💻 **personal computer**.
 2. Download the _windows.tar.gz_ file from the [latest release](https://github.com/lukso-network/tools-key-gen-cli/releases).
 3. Connect a USB device.
 4. Flash the USB device using your preferred disk utility tool.
-5. Copy the tape archive (`.tar.gz` file) onto the USB disk.
+5. Copy the _tar.gz_ archive file onto the USB disk.
 6. Eject the USB device safely.
 
 </TabItem>
@@ -74,7 +76,7 @@ The following steps are performed on your 💻 **personal computer**.
 
 :::info
 
-The following steps are performed on your 🖥️ **offline computer**.
+The following steps are performed on your 🗄️ **offline computer**.
 
 :::
 
@@ -94,7 +96,7 @@ The following steps are performed using Ubuntu. Commands may differ depending on
 
 :::
 
-After downloading, we need to unpack the file. After downloading it, we can extract the tape archive using Ubuntu's archiving tool. We're going to extract (`x`) and compress (`z`) the tape archive into its previous packaged files (`f`) using verbose mode (`v`) to list all files being processed during the extraction and compression. Please note that the filenames might change due to the versioning.
+After downloading, we need to unpack the file. After downloading it, we can extract the tape archive using Ubuntu's archiving tool. We're going to extract (_x_) and compress (_z_) the tape archive into its previous packaged files (_f_) using verbose mode (_v_) to list all files being processed during the extraction and compression. Please note that the filenames might change due to the versioning.
 
 **1. Unpack the downloaded file**
 
@@ -110,15 +112,17 @@ cd lukso-key-gen-cli-v2.5.8-linux
 
 ## 5. Generate Initial Keys
 
-**1. Start the Key Generation Process**: Start the application using the _new-mnemonic_ option.
+Follow these steps to generate your initial validator keys using the CLI tool:
+
+**1. Start the Key Generation Process**: Start the tool using the _new-mnemonic_ option and paste your withdrawal address.
 
 ```sh
-./lukso-key-gen new-mnemonic --eth1_withdrawal_address 0x42000421dd80D1e90E56E87e6eE18D7770b9F8cC
+./lukso-key-gen new-mnemonic --eth1_withdrawal_address <your-withdrawal-address>
 ```
 
 :::tip
 
-Setting a withdrawal address is necessary as you can withdraw your deposits later on. You can use the same withdrawal address multiple times, meaning all validator revenues go to the same account. If you are uncertain about the withdrawal address, please refer to the [Tokenomics](/docs/theory/blockchain-knowledge/tokenomics.md) page within the [**🧠 Theory**](/docs/theory/preparations/node-specifications.md) section.
+When generating keys in multiple rounds, you can use the same withdrawal address multiple times so all revenue goes to the same account. Further details can be found on the [**Tokenomics**](/docs/theory/blockchain-knowledge/tokenomics.md) and [**Validator Credentials**](/docs/theory/node-operation/validator-credentials.md) pages within the 🧠 [**Theory**](/docs/theory/preparations/node-specifications.md) section.
 
 :::
 
@@ -146,7 +150,7 @@ If you press _Enter_ it will select English as default.
 
 :::
 
-**3. Specify the Number of Validators**: Select how many validator keys you want to generate.
+**3. Specify the Validator Number**: Select how many validator keys you want to generate to deposit stake.
 
 ```text
 > 10
@@ -158,7 +162,7 @@ You can generate more keys than you immediately fund. These keys will remain ina
 
 :::
 
-:::tip Split Deposits to multiple Wallets
+:::info Split Deposits to multiple Wallets
 
 If you only require deposits from a single wallet, simply complete the process once. However, if you have multiple wallets with varying amounts of LYXt, LYXe, or LYX to make the deposits with, you have two primary options:
 
@@ -181,17 +185,17 @@ If you only require deposits from a single wallet, simply complete the process o
 - _Removed the first and last 10 `pubkey` entries for wallet two. (validators 11–20)_
 - _Removed the first 20 `pubkey` elements for wallet three. (keeping validators 21–30)_
 
-In both cases, you will have to go through the [Launchpad Process](./launchpad-walkthrough.md) 3 times, as the launchpad will check if your wallets have enough balance before you can continue to the deposit screen.
+In both cases, you will have to go through the [**Launchpad Process**](./launchpad-walkthrough.md) 3 times, as the launchpad will check if your wallets have enough balance before you can continue to the deposit screen.
 
 :::
 
-**4. Select Network**: Choose between your network type and select _lukso-testnet_ or _lukso_ mainnet keys.
+**4. Select Network**: Choose between generating the _lukso-testnet_ or _lukso_ mainnet keys and press any key to continue.
 
 ```text
 > lukso
 ```
 
-**5. Enter your Password**: Input the password that will be used to encrypt your validator keys and confirm it.
+**5. Password Input**: Input the password that will be used to encrypt your validator keys and confirm it.
 
 **6. Mnemonic Seed Generation**: Your mnemonic seed phrase will be generated and printed in the terminal.
 
@@ -200,8 +204,6 @@ In both cases, you will have to go through the [Launchpad Process](./launchpad-w
 Write down your mnemonic on paper and store it securely. Do not save it digitally as plain text. **Anyone with access** to this seed phrase **can control your deposits** or slash your validator, as it can be used to regenerate your validator's private keys and sign messages on your behalf. **Treat it like your most valuable secret.** Never share it or store it insecurely.
 
 :::
-
-Press any key to continue.
 
 **7. Confirm the Mnemonic**: You will be asked to re-enter your mnemonic seed phrase for verification purposes.
 
@@ -249,22 +251,20 @@ Verifying your deposits:    [####################################]  10/10
 Success!
 ```
 
-**8. Reviewing Output Files**: The deposit files will be saved in a `validator_keys` folder within the current destination.
+**8. Reviewing Output Files**: The deposit files will be saved in the current destination, you can press any key to exit.
 
-:::tip Verifying Generated Files
+:::warning Verifying Generated Files
 
-Please ensure that your destination folder contains the following files:
+Please ensure that your destination folder contains a folder with the following files:
 
 - `deposit_data.json`: This file is used to make deposit transactions during the [Deposit Launchpad](./launchpad-walkthrough.md) process.
 - `keystore.json`: Each validator key has a corresponding keystore file, later used in the [Validator Setup](/docs/guides/client-setup/validator-configuration.md) process.
 
 :::
 
-Press any key to exit the CLI tool.
-
 ## 6. Generate Additional Keys
 
-If you need to add more keys to your validator setup, follow these steps:
+If you need to add more stake, follow these steps to generate additional validator keys using the CLI tool:
 
 **1. Navigate to the CLI Folder**: Ensure you are in the same folder as the LUKSO Key Gen CLI.
 
@@ -278,16 +278,16 @@ cd && cd lukso-key-gen-cli-v2.5.8-linux
 mv validator_keys <new-folder-name>
 ```
 
-**3. Run the Existing Mnemonic Process**: Start the tool with an existing mnemonic using _existing-mnemonic_.
+**3. Run the Existing Mnemonic Process**: Start the tool using the _existing-mnemonic_ option and paste your withdrawal address.
 
-:::info
+:::tip
 
-You can use the same withdrawal address multiple times, meaning all validator revenues go to the same account. For backup purposes, always use the same withdrawal address as the one used during the initial key generation process. If you are uncertain about the withdrawal address, please refer to the [Tokenomics](/docs/theory/blockchain-knowledge/tokenomics.md) page within the [**🧠 Theory**](/docs/theory/preparations/node-specifications.md) section.
+When generating keys in multiple rounds, you can use the same withdrawal address multiple times so all revenue goes to the same account. Further details can be found on the [**Tokenomics**](/docs/theory/blockchain-knowledge/tokenomics.md) and [**Validator Credentials**](/docs/theory/node-operation/validator-credentials.md) pages within the 🧠 [**Theory**](/docs/theory/preparations/node-specifications.md) section.
 
 :::
 
 ```sh
-./lukso-key-gen existing-mnemonic --eth1_withdrawal_address 0x42000421dd80D1e90E56E87e6eE18D7770b9F8cC
+./lukso-key-gen existing-mnemonic --eth1_withdrawal_address <your-withdrawal-address>
 ```
 
 **4. Select the Language**: Choose your language by typing the corresponding number into the input prompt.
@@ -304,15 +304,23 @@ If you press _Enter_ it will select English as default.
 
 **5. Enter the Existing Mnemonic**: Input your previously generated mnemonic seed phrase when prompted.
 
-**6. Specify Starting Index and Number of Keys**: Specify the total amount of previous keys and new ones to generate.
+**6. Specify the Validator Number**: Specify the amount of previous and new keys before verifying them again.
 
 :::note
 
-The starting index of the keys is the total amount of already generated keys. If you already generated _10_ keys before and want to start by generating the 11th deposit key.
+You can generate more keys than you immediately fund. These keys will remain inactive until they are sufficiently funded.
 
 :::
 
 :::tip
+
+The starting index is the total amount of previously generated keys.
+
+🙇🏻‍♂️ _Example: If the starting index is 10, the tool will start generating the 11th deposit key._
+
+:::
+
+:::info
 
 To regenerate keys for **a backup** or **updating** the **withdrawal address** or **password**, you can set the **starting index** to **0** and specify the total number of all your previously generated keys. The new files can then be re-used to setup a new node once the original one stopped operating.
 
@@ -321,8 +329,6 @@ To regenerate keys for **a backup** or **updating** the **withdrawal address** o
 ```text
 > 10
 ```
-
-Then confirm by entering the number again when prompted.
 
 **7. Select Network**: Choose between your network type and select _lukso-testnet_ or _lukso_ mainnet keys.
 

@@ -12,13 +12,13 @@ To expose your node’s open ports to the internet, you must forward them on you
 
 :::tip
 
-Additionally to opening the router ports, you will first have to [configure the firewall](./firewall-settings.md) of your node to allow data throughput.
+Additionally to opening the router ports, you must configure the [**Firewall Settings**](./firewall-settings.md) of your node to allow data throughput.
 
 :::
 
 :::info
 
-You will have to know both **IP** and **MAC** addresses from the [router setup](/docs/guides/router-setup/address-checkup) to identify your node while configuring the router.
+You will have to know both **IP** and **MAC** addresses from the [**Router Setup**](/docs/guides/router-setup/address-checkup) to identify your node while configuring the router.
 
 :::
 

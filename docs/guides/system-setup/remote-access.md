@@ -88,7 +88,7 @@ Daemon services, like `sshd` are background processes that run continuously on U
 
 :::tip
 
-Further information about system control commands can be found on the [Utility Tools](/docs/theory/node-operation/utility-tools.md) page of the [**🧠 Theory**](/docs/theory/preparations/node-specifications.md) section.
+Further information about system control commands can be found on the [**Utility Tools**](/docs/theory/node-operation/utility-tools.md) page in the 🧠 [**Theory**](/docs/theory/preparations/node-specifications.md) section.
 
 :::
 

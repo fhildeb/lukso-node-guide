@@ -8,17 +8,17 @@ import TabItem from '@theme/TabItem';
 
 # 6.4 Validator Configuration
 
-After your [node is configured](/docs/guides/client-setup/lukso-cli-installation.md) and client startup was tested, you can activate its staking functionality by importing your validator keys. Running a validator node means you're actively participating in the blockchain's consensus on top of providing a synchronized data peer of the network. The [LUKSO CLI](https://github.com/lukso-network/tools-lukso-cli) provides unified commands to manage staking for mainnet and testnet and various clients.
+After your [node setup](/docs/guides/client-setup/lukso-cli-installation.md) is working as intended, you can activate its staking functionality by importing your validator keys. Running a validator node means you're actively participating in the blockchain's consensus on top of providing a synchronized data peer of the network. The [LUKSO CLI](https://github.com/lukso-network/tools-lukso-cli) provides unified commands to manage staking for mainnet and testnet and various clients.
 
 :::tip
 
-Please ensure you have a basic understanding of blockchain networks and staking before running a validator node. If you're not yet familiar with [proof of stake](/docs/theory/blockchain-knowledge/proof-of-stake.md), [tokenomics](/docs/theory/blockchain-knowledge/tokenomics.md), [panelties](/docs/theory/blockchain-knowledge/slashing-and-panelties.md), and the different [validator credentials](/docs/theory/node-operation/validator-credentials.md) and [client providers](/docs/theory/blockchain-knowledge/client-providers.md), you can refer to the [**🧠 Theory**](/docs/theory/blockchain-knowledge/proof-of-stake.md) section.
+Please ensure you have a basic understanding of blockchain networks and staking before running a validator node. If you're not yet familiar with [**Proof of Stake**](/docs/theory/blockchain-knowledge/proof-of-stake.md), [**Tokenomics**](/docs/theory/blockchain-knowledge/tokenomics.md), [**Slashing and Panelties**](/docs/theory/blockchain-knowledge/slashing-and-panelties.md), [**Validator Credentials**](/docs/theory/node-operation/validator-credentials.md) and [**Client Providers**](/docs/theory/blockchain-knowledge/client-providers.md), please refer to the 🧠 [**Theory**](/docs/theory/blockchain-knowledge/proof-of-stake.md) section.
 
 :::
 
 :::warning
 
-Depending on if you are participating in the mainnet or testnet, running a validator requires 32 LYX or 32 LYXt per validator key. Ensure you have completed the [key generation](/docs/guides/validator-setup/wagyu-key-generation.md) and [deposit process](/docs/guides/validator-setup/launchpad-walkthrough.md) of the [validator setup](/docs/guides/validator-setup/precautions.md) before importing keys.
+Depending on if you are participating in the mainnet or testnet, running a validator requires 32 LYX or 32 LYXt per validator key. Ensure you have completed the [**Key Generation**](/docs/guides/validator-setup/wagyu-key-generation.md) and [**Deposit Process**](/docs/guides/validator-setup/launchpad-walkthrough.md) before importing keys.
 :::
 
 ## 1. Transfer Validator Keys

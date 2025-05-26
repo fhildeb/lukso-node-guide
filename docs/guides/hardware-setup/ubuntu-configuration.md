@@ -9,7 +9,7 @@ Configuring Ubuntu for your blockchain node is a crucial step to ensure stabilit
 
 :::tip
 
-For additional reference, you can view the official but outdated [Ubuntu's Install Guide](https://ubuntu.com/tutorials/install-ubuntu-server#1-overview).
+For additional reference, you can view the official [**Ubuntu's Install Guide**](https://ubuntu.com/tutorials/install-ubuntu-server#1-overview).
 
 :::
 
@@ -23,7 +23,7 @@ Connect your machine to the router using an Ethernet cable so that the installer
 
 :::info
 
-More details about network usage and connections can be found on the [Network Demand](/docs/theory/preparations/network-demand.md) page of the [**🧠 Theory**](/docs/theory/preparations/node-specifications.md) section.
+More details about network usage and connections can be found on the [**Network Demand**](/docs/theory/preparations/network-demand.md) page of the 🧠 [**Theory**](/docs/theory/preparations/node-specifications.md) section.
 
 :::
 
@@ -51,15 +51,15 @@ The correct configuration ensures that your command-line entries during setup an
 
 :::tip
 
-Detailed differences of a minimal or regular installation can be found in the [Operation Systems](/docs/theory/node-operation/operation-systems.md) page of the [**🧠 Theory**](/docs/theory/preparations/node-specifications.md) section.
+Detailed differences of a minimal or regular installation can be found in the [**Operation Systems**](/docs/theory/node-operation/operation-systems.md) page of the 🧠 [**Theory**](/docs/theory/preparations/node-specifications.md) section.
 
 :::
 
 ![Ubuntu Installation Type](/img/guides/hardware-setup/install_04.png)
 
-:::note
+:::warning
 
-Do not _Search for third-party drivers_. Only remote access is needed, which will be installed later. Other applications and web services could potentially cause harm to security, and ease of software maintenance in the long run.
+Do not _Search for third-party drivers_. Additional services could potentially be a harm to security and ease of maintenance.
 
 :::
 
@@ -67,7 +67,7 @@ Do not _Search for third-party drivers_. Only remote access is needed, which wil
 
 :::info
 
-If your node is connected via Ethernet, set the network type to _eth_ and configure both IPv4 and IPv6 as _Automatic (DHCP)_.
+If your node is connected via Ethernet, set the network type to _eth_ and configure both IPv4 and IPv6 as _Automatic DHCP_.
 
 :::
 
@@ -77,7 +77,8 @@ If your node is connected via Ethernet, set the network type to _eth_ and config
 
 :::info
 
-The HTTP proxy and static IP addresses can be configured later together with the router once the node is ready for operation.
+The HTTP proxy and static IP addresses are usually configured later once the node is ready for operation.
+
 :::
 
 ![Ubuntu Proxy Setup](/img/guides/hardware-setup/install_06.png)
@@ -121,7 +122,7 @@ On the storage screen, you will see your available disks along with their mount 
 
 :::tip
 
-Further details about disks and volumes can be found on the [Disk Management](/docs/theory/node-operation/disk-management.md) page in the [**🧠 Theory**](/docs/theory/preparations/node-specifications.md) section.
+Further details about disks and volumes can be found on the [**Disk Management**](/docs/theory/node-operation/disk-management.md) page in the 🧠 [**Theory**](/docs/theory/preparations/node-specifications.md) section.
 
 :::
 
@@ -149,7 +150,7 @@ OpenSSH is essential for encrypted communication, command-line management, and k
 
 :::tip
 
-Further details about node connectivity can be found on the [SSH and VPN Tunnel](/docs/theory/node-operation/ssh-and-vpn-tunnel.md) page of the [**🧠 Theory**](/docs/theory/preparations/node-specifications.md) section.
+Further details about node connectivity can be found on the [**SSH and VPN Tunnel**](/docs/theory/node-operation/ssh-and-vpn-tunnel.md) page of the 🧠 [**Theory**](/docs/theory/preparations/node-specifications.md) section.
 
 :::
 
@@ -157,7 +158,7 @@ Further details about node connectivity can be found on the [SSH and VPN Tunnel]
 
 :::note
 
-If you do not have an SSH identity set up yet, leave the field blank. We will configure SSH access once the node is operational.
+If you do not have an SSH identity yet, leave the field blank. We will configure SSH once the operation system is installed.
 
 :::
 

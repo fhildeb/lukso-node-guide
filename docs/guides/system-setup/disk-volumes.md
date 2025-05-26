@@ -5,7 +5,7 @@ sidebar_position: 2
 
 # 3.2 Disk Volumes
 
-This section explains how to manage and extend your disk volumes using the Logical Volume Manager (LVM). By default, during installation, LVM allocates only a conservative 100 GB for the logical volume. The process ensures that the node utilizes the entire disk space without getting interruptions once the storage cap is hit.
+This section explains how to manage and extend your disk volumes using the Logical Volume Manager. By default, during installation, LVM allocates only a conservative 100 GB for the logical volume. The process ensures that the node utilizes the entire disk space without getting interruptions once the storage cap is hit.
 
 :::tip
 
@@ -54,7 +54,7 @@ If you have not changed the LVM settings during installation, the output should 
 
 :::tip
 
-If you are uncertain about storage, logical disk management, volume groups, or physical extents, please have a look at the [Disk Management](/docs/theory/node-operation/disk-management.md) page in the [**🧠 Theory**](/docs/theory/preparations/node-specifications.md) section to ensure you have the fundamental knowledge.
+If you are uncertain about storage or logical volumes, further information can be found on the [**Disk Management**](/docs/theory/node-operation/disk-management.md) page within the 🧠 [**Theory**](/docs/theory/preparations/node-specifications.md) section to ensure you have the fundamental knowledge.
 
 :::
 
@@ -68,9 +68,9 @@ Check the amount of free disk space left on the physical volume. If you did not 
 
 :::info
 
-If you have customized your installation, the `VG Name` may differ. Even if you extended your logical volume during installation, checking the volume group gives you useful insight into the available free physical extents, short `PE`.
+If you have customized your installation, the name of the volume group may differ. Even if you extended your logical volume during installation, checking the volume group gives you useful insight into the available free physical extents.
 
-If you extended your logical volume to the maximum available capacity during installation, the `Free PE / Size` property will show `0 / 0`, meaning no more unreserved storage is left on the volume group for any partition to utilize.
+If you already extended your logical volume to the maximum available capacity during installation, the `Free PE / Size` property will show `0 / 0`, meaning no more unreserved storage is left on the volume group for any partition to utilize.
 
 :::
 
@@ -119,7 +119,7 @@ Then, install the new disk into the appropriate frame.
 
 :::tip
 
-Further information about adding a hard drive to your node can be found in the [Component Assambly](/docs/guides/hardware-setup/component-assembly.md) page.
+Further information about adding a hard drive to your node can be found in the [**Component Assambly**](/docs/guides/hardware-setup/component-assembly.md) page.
 
 :::
 
@@ -263,11 +263,7 @@ Update the `<logical-volume-path>` with the `LV Path` property from the previous
 
 :::
 
-:::tip
-
-If you did not extend the storage before but want to configure it now, you can use the following command. The expansion can be done for the main storage device and the newly added logical volume.
-
-:::
+If you did not extend the storage before but want to use the full disk capacity, you can use the following command:
 
 ```sh
 sudo lvextend -l +100%FREE <logical-volume-path>
@@ -307,13 +303,13 @@ The filesystem on /dev/mapper/ubuntu--vg-ubuntu--lv is now [TOTAL_BLOCKS] ([BLOC
 
 :::tip
 
-Further details about blocks and resizing can be found on the [Disk Management](/docs/theory/node-operation/disk-management.md) page of the [**🧠 Theory Section**](/docs/theory/preparations/node-specifications.md) section.
+Further details about blocks and resizing can be found on the [**Disk Management**](/docs/theory/node-operation/disk-management.md) page of the 🧠 [**Theory Section**](/docs/theory/preparations/node-specifications.md) section.
 
 :::
 
 ## 6. Verifying Storage Space
 
-Finally, verify that the volume group and logical volume have been updated correctly:
+After the extension, verify that the volume group and logical volume have been updated correctly:
 
 ```sh
 sudo vgdisplay

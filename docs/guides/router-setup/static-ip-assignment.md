@@ -10,9 +10,15 @@ import TabItem from '@theme/TabItem';
 
 Assigning a static IP or reserving your node’s existing DHCP lease prevents connectivity issues and simplifies router port forwarding, firewall rules, and remote access to your node. In this step, we will configure the router of the home network it is connected to.
 
-:::warning
+:::note
 
-Terminology and steps vary heavily depending on your router model. If necessary, read the documentation for your router.
+Terminology and steps vary heavily depending on your router model. For help, refer to your router's documentation.
+
+:::
+
+:::info
+
+The following steps are performed on your 💻 **personal computer** that's connected to the same home network as the node.
 
 :::
 
@@ -20,9 +26,9 @@ Terminology and steps vary heavily depending on your router model. If necessary,
 
 To ensure your node always uses the same IP address, we'll reserve it on the router.
 
-:::info
+:::tip
 
-The following steps are performed on your 💻 **personal computer** that's connected to the same home network as the node.
+If you want to assign a totally new IP address instead of reserving one, choose a free address within your router's IP address range but outside the scope of IP addresses that are automatically allocated by the DHCP server to prevent conflicts.
 
 :::
 
@@ -58,12 +64,6 @@ Within the device menu, select `General` > `Home Network` and enable `Permanent 
 
 :::
 
-:::tip
-
-If you want to assign a totally new IP address, choose one within your router's IP address range but outside the scope of IP addresses that are automatically allocated by the DHCP server to prevent conflicts.
-
-:::
-
 **1.5 Apply and Save**: _Apply the static IP rule to the DHCP service of the router._
 
 :::note Fritzbox Router
@@ -72,17 +72,11 @@ On the bottom right side of the device menu, click `Apply`.
 
 :::
 
-After applying the changes, you may have to reboot your router. For modern routers, it will work on the fly.
-
-:::tip
-
-If you set up a designated IP address, you will have to restart your node.
-
-:::
+After applying the changes, restartyour node for the automated IP assignment to take effect.
 
 ## 2. Address Verification
 
-Once the node and router are back online or updated, we can confirm if the IP matches your reservation:
+Once the node is back online, we can confirm if the IP matches your reservation:
 
 <Tabs>
 <TabItem value="local-ip" label="Local IP Check" default>
@@ -133,10 +127,8 @@ With a fixed IP in place, you can relocate the node into a server rack or shelf.
 sudo shutdown now
 ```
 
-Once the node is offline, disconnect the monitor, keyboard, as well as power and network cables.
-
 :::info
 
-Once power is restored, your node will [automatically boot](/docs/guides/hardware-setup/bios-setup.md) and be reachable at its reserved IP within 15–60 seconds.
+Once the node is offline, disconnect the monitor, keyboard, as well as power and network cables. Once power is restored, your node will **automatically boot** through the configured [**BIOS Settings**](/docs/guides/hardware-setup/bios-setup.md) and should be reachable at its reserved IP address within 15–60 seconds.
 
 :::

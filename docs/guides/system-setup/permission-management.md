@@ -7,9 +7,10 @@ sidebar_position: 1
 
 Managing user permissions is a critical component for securing your node system. By locking direct root access and enforcing the use of superuser privileges, you create an auditable environment that minimizes the risk of accidental or malicious system changes. This guide explains how to disable direct root login and manage user passwords for better security.
 
-## Super User Permissions
-
-When the system is set up with a regular user account, certain commands require elevated privileges. The _sudo_ command, allows a user to run commands with the privileges of another user, usually the root user, without exposing the root password. This controlled mechanism is essential for maintaining system security and accountability.
+| **Command** | **Description**                                                                                                                                                                                                                                                                                                                                                                                                                |
+| ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `sudo`      | When the system is set up with a regular user account, certain commands require elevated privileges. The superuser command, allows a user to run commands with the privileges of another user, usually the root user, without exposing the root password. This controlled mechanism is essential for maintaining system security and accountability.                                                                           |
+| `passwd`    | The password command is a fundamental utility in Unix-based operating systems for managing user passwords. With administrative rights, you can use _passwd_ to change passwords for any account on the system. Options include setting password expiry, locking/unlocking accounts, and forcing password resets on next login. This is essential for ensuring that only authorized users can access critical system functions. |
 
 :::warning
 
@@ -17,11 +18,11 @@ Always be cautious when using _sudo_, as executing commands with root privileges
 
 :::
 
-Log in with your previously configured user profile. When prompted for elevated commands, you will be asked to enter your password.
+:::info
 
-## Password Utility
+The following steps are performed on your 📟 **node server**.
 
-The _passwd_ command is a fundamental utility in Unix-based operating systems for managing user passwords. With administrative rights, you can use _passwd_ to change passwords for any account on the system. Options include setting password expiry, locking/unlocking accounts, and forcing password resets on next login. This is essential for ensuring that only authorized users can access critical system functions.
+:::
 
 ## 1. Disable Root Access
 

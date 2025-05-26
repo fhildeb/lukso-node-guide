@@ -10,23 +10,21 @@ import TabItem from '@theme/TabItem';
 
 This page will cover your SSH client preparation for seamless access to your node. You will verify that SSH is installed on your personal computer, create a convenient host alias in your SSH configuration, and perform a test connection.
 
-## 1. Check SSH Installation
-
-Before verifying basic access, we must check if SSH is already installed, like most modern operation systems.
-
 :::info
 
 The following steps are performed on your 💻 **personal computer**.
 
 :::
 
-Open the terminal and check your SSH client version:
+## 1. Check SSH Installation
+
+Before verifying basic access, we must check if SSH is already installed. Open the terminal and check your SSH client version:
 
 ```sh
 ssh -V
 ```
 
-You should see output similar to:
+You should see an output similar to:
 
 ```sh
 OpenSSH_9.0p1, LibreSSL 3.3.6

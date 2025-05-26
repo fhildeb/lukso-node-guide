@@ -75,7 +75,13 @@ backend=auto
 ignoreip=127.0.0.1/8
 ```
 
-:::info
+:::warning
+
+Ensure there are no extra spaces between property names and their values to avoid syntax errors.
+
+:::
+
+:::note
 
 Replace `<desired-port-number>` with the SSH port you configured for your node.
 
@@ -106,12 +112,6 @@ Replace `<desired-port-number>` with the SSH port you configured for your node.
 :::tip
 
 Instead of just including the localhost range to the ignored IP addresses in order to avoid self‑lockout, you can also append any trusted IP or VPN range if you are using a specific tunnel network.
-
-:::
-
-:::warning
-
-Ensure there are no extra spaces between property names and their values to avoid syntax errors.
 
 :::
 
@@ -160,5 +160,3 @@ The output should indicate that the service is active and running:
 [DATE] [USER] systemd[PID]: Started Fail2Ban Service.
 [DATE] [USER] fail2ban-server[PID]: Server ready
 ```
-
-If _Fail2Ban_ is active, your node is now protected against brute force attempts on SSH and other services you may configure.

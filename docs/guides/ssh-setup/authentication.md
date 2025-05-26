@@ -41,22 +41,16 @@ sudo nano /etc/ssh/sshd_config
 
 ```text
 #PermitRootLogin prohibit-password
-...
+
 #PubkeyAuthentication yes
-...
+
 #AuthorizedKeysFile .ssh/authorized_keys ./ssh/authored_keys2
-...
+
 #PasswordAuthentication yes
 #PermitEmptyPasswords no
-...
+
 #KbdInteractiveAuthentication no
 ```
-
-:::warning
-
-Dots indicate that there are further setting properties between these lines that remain untouched.
-
-:::
 
 <details>
     <summary>Full Property Explanation</summary>
@@ -95,21 +89,15 @@ KbdInteractiveAuthentication no
 
 **1.5 Save and Exit**: _Apply changes and close the file._
 
-**1.6 Test the new Configuration File**: _Validate your file changes using the SSH daemon._
-
-:::danger
-
-Testing is crucial as you cannot use the regular password login after applying the changes on the main service.
-
-:::
+**1.6 Test the new Configuration**: _Validate your file changes using the SSH daemon. A blank output indicates no syntax errors._
 
 ```sh
 sudo sshd -t
 ```
 
-:::info
+:::danger
 
-A blank output indicates no syntax errors.
+Testing is crucial as you cannot use the regular password login after applying the changes on the main service.
 
 :::
 

@@ -7,9 +7,9 @@ sidebar_position: 2
 
 This section will walk you through the process of installing the mainboard into a new fanless enclosure for passive cooling.
 
-:::tip
+:::warning
 
-Before you start building, ground yourself by touching a metal object, like a heater, to discharge any static electricity. This simple step helps prevent damage to sensitive technical components.
+Before you start building, ground yourself by touching a metal object, like a heater, to discharge any static electricity and prevent damage to sensitive technical components.
 
 :::
 

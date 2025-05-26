@@ -5,9 +5,13 @@ sidebar_position: 2
 
 # 5.2 Key Login
 
-Using SSH key authentication greatly enhances your node’s security by replacing password-based logins with cryptographic keys. In this section, you will generate a key pair, secure your private key, deploy the public key to the node, and verify passwordless login.
+Using SSH key authentication greatly enhances your node’s security by replacing password-based logins with cryptographic keys. In this section, you will generate and configure a authentication key to allow a more secure and passwordless login.
+
+:::note Key Pair Usage
 
 SSH keys use public‑key cryptography to authenticate without sending passwords over the network. You generate a private key, which will be kept secret, and a public key, that will be copied to the node. When you connect, the server challenges your client to prove you hold the private key—without ever exposing it. SSH key authentication is resistant to brute‑force attacks, since an attacker cannot guess your private key in the same way they could guess a password.
+
+:::
 
 ## 1. Check for Existing Keys
 
@@ -85,7 +89,7 @@ ssh-keygen -t rsa -b 4096
 
 :::tip
 
-Setting a passphrase is highly recommended for extra protection. This will mean you will be prompted to enter an additional password each time you connect to your node. The passphrase setup can be skipped by pressing `Enter`.
+Setting a passphrase is highly recommended for extra protection. This will mean you will be prompted to enter an additional password each time you connect to your node. The passphrase setup can be skipped by pressing _Enter_.
 
 :::
 

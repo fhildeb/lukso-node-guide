@@ -7,9 +7,9 @@ sidebar_position: 3
 
 This sequence will walk you through all the steps I followed while installing the hardware components for my node and includes installing memory, storage devices, antennas, and hard disks.
 
-:::tip
+:::warning
 
-Before you start building, ground yourself by touching a metal object, like a heater, to discharge any static electricity. This simple precaution helps prevent damage to sensitive technical components.
+Before you start building, ground yourself by touching a metal object, like a heater, to discharge any static electricity and prevent damage to sensitive technical components.
 
 :::
 

@@ -82,6 +82,6 @@ Setting the priority to low using `plow` ensures that only essential questions a
 The `dpkg-reconfigure` command is a utility that reconfigures an already-installed package using user-provided values.
 :::
 
-You will get a screen prompt in the terminal. Agree with \<Yes\> and continue the setup.
+You will get a screen prompt in the terminal. Agree with _Yes_ and continue the setup.
 
 ![Auto Update Screen](/img/guides/system-setup/setup-autoupdate.png)
