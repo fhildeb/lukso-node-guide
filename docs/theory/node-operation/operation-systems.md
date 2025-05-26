@@ -9,8 +9,8 @@ The choice of operating system for blockchain nodes makes a considerable differe
 
 :::tip External Analysis
 
-- According to 🍃 [**Ether Nodes**](https://www.ethernodes.org/os), more than 95% of EVM-based nodes run on Linux, with **Ubuntu** and **Debian** on top.
-- Wide-spread consumer software like 🎨 [**DAppNode**](https://dappnode.com/) also operates **Debian** under the hood.
+- According to 🍃 [**Ether Nodes**](https://www.ethernodes.org/os), more than 95% of EVM-based nodes run on Linux, with 🔶 [**Ubuntu**](https://ubuntu.com/) and 🍥 [**Debian**](https://www.debian.org/) on top.
+- Wide-spread consumer software like 🎨 [**DAppNode**](https://dappnode.com/) also operates 🍥 [**Debian**](https://www.debian.org/) under the hood.
 
 :::
 
@@ -31,7 +31,7 @@ Ubuntu and Debian both are distributions of high-performance operating systems w
 
 :::tip
 
-The [Hardware Setup](/docs/guides/hardware-setup/introduction.md) of the [📖 **Guide**](/docs/guides/validator-setup/precautions.md) section uses **Ubuntu 22.04.2 LTS Server**. While Debian users can follow along, some commands or package names may slightly differ. Feel free to look up distribution-specific alternatives when needed.
+The [**Hardware Setup**](/docs/guides/hardware-setup/introduction.md) of the 📖 [**Guide**](/docs/guides/validator-setup/precautions.md) section uses **Ubuntu 22.04.2 LTS Server**. While Debian users can follow along, some commands or package names may slightly differ. Feel free to look up distribution-specific alternatives when needed.
 
 :::
 

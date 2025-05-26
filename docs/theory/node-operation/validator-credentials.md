@@ -31,6 +31,6 @@ Never disclose or share your **Validator Mnemonic Seed.** It is the source of yo
 
 :::tip
 
-For more details about earnings and withdrawals, check the [Tokenomics](/docs/theory/blockchain-knowledge/tokenomics.md) and [Proof of Stake](/docs/theory/blockchain-knowledge/proof-of-stake.md) pages in the 🧠 **Theory** section.
+For more details about earnings and withdrawals, check the [**Tokenomics**](/docs/theory/blockchain-knowledge/tokenomics.md) and [**Proof of Stake**](/docs/theory/blockchain-knowledge/proof-of-stake.md) pages in the 🧠 [**Theory**](/docs/theory/preparations/node-specifications.md) section.
 
 :::

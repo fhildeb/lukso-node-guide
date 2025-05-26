@@ -5,11 +5,13 @@ sidebar_position: 7
 
 # Dynamic DNS
 
-In order for the node to be accessible to other participants in a peer-to-peer blockchain, it must have an identifiable and stable IP address. Most internet service providers assign dynamically changing IP addresses to residential customers, and these can change on a weekly basis or router reboots. The frequent IP address changes disrupt incoming peer connections and slow down the node's visibility and synchronization times. Dynamic DNS solves the problem through linking the dynamic IP address to a permanent domain name, allowing others to find you even when the IP changes.
+In order for the node to be accessible to other participants in a peer-to-peer blockchain, it must have an identifiable and stable IP address. Most internet service providers assign dynamically changing IP addresses to residential customers, and these can change on a weekly basis or router reboots.
+
+The frequent IP address changes disrupt incoming peer connections and slow down the node's visibility and synchronization times. Dynamic DNS solves the problem through linking the dynamic IP address to a permanent domain name, allowing others to find you even when the IP changes.
 
 :::info Default Setup
 
-The regular [LUKSO CLI Installation](/docs/guides/client-setup/lukso-cli-installation.md) will optionally set the current interchangeble IP address to the configuration.
+The 👾 [LUKSO CLI](/docs/guides/client-setup/lukso-cli-installation.md) will optionally set the current interchangeble IP address during the client installation.
 
 :::
 
@@ -21,7 +23,7 @@ A Domain Name System record can be thought of as the internet's directory and is
 - Enable services like HTTPS, email delivery, and node routing
 - Abstract IPs behind stable webpage or service names
 
-:::note DNS
+:::note DNS Schematic
 
 `mynode.example.com` → `198.51.100.12`
 
@@ -34,7 +36,7 @@ A Dynamic DNS service allows for automatic domain name registration and update i
 - Devices that must maintain consistent connectivity
 - Services that want to stay discoverable during updates
 
-:::note DDNS
+:::note DDNS Schematic
 
 `mynode.example.com` → `198.51.100.12` at _Time A_ / `198.51.100.13` at _Time B_
 
@@ -54,7 +56,7 @@ There are several ways to implement Dynamic DNS. Each varies in technical comple
 
 :::tip
 
-A guide to integrate **DDNS** using a **Dynamic DNS Provider** can be found on the [Peer Connectivity](/docs/guides/modifications/peer-connectivity.md) page.
+A guide to integrate **DDNS** using a **Dynamic DNS Provider** can be found on the [**Peer Connectivity**](/docs/guides/modifications/peer-connectivity.md) page.
 
 :::
 

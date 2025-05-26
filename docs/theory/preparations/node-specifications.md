@@ -19,7 +19,7 @@ Running a Ethereum node is not a one‑size‑fits‑all affair. Hardware needs 
 
 :::tip
 
-Further details about node variations can be found on the [Client Types](/docs/theory/blockchain-knowledge/client-types.md) and [Client Providers](/docs/theory/blockchain-knowledge/client-providers.md) pages.
+Further details about node variations can be found on the [**Client Types**](/docs/theory/blockchain-knowledge/client-types.md) and [**Client Providers**](/docs/theory/blockchain-knowledge/client-providers.md) pages.
 
 :::
 
@@ -70,7 +70,7 @@ A modern node performs millions of tiny random reads and writes every hour. Mode
 
 :::tip Network Connection
 
-If you're staking with a validator, staying in consensus requires nur just a great network bandwidth, but also low latency, so the node get informed about new blocks and it's attestations before the deadline. High latency leads to missed attestations, orphaned blocks, and potential penalties. More details can be found on the [router requirements](/docs/theory/preparations/router-requirements.md) and [network demand](/docs/theory/preparations/network-demand.md) pages.
+If you're staking with a validator, operating for the consensus network requires great network bandwidth and low latency to receive blocks information and attest them before the deadline. High latency leads to missed attestations, orphaned blocks, and potential penalties. More details can be found on the [**Router Requirements**](/docs/theory/preparations/router-requirements.md) and [**Network Demand**](/docs/theory/preparations/network-demand.md) pages.
 
 :::
 
@@ -90,7 +90,7 @@ The slasher tracks validator attestations to detect misbehaviour on the network.
 
 :::tip
 
-Further details about the slasher functionality can be found on the [Slasher Service](/docs/theory/node-operation/slasher-service.md) page.
+Further details about the slasher functionality can be found on the [**Slasher Service**](/docs/theory/node-operation/slasher-service.md) page.
 
 :::
 
@@ -127,7 +127,7 @@ As of **May 2025** fully synchronized **LUKSO Mainnet Full Node** occupies **≈
 
 :::tip
 
-An extended analysis and comparison of storage usage across execution clients can be found on the [Client Providers](/docs/theory/blockchain-knowledge/client-providers.md) page.
+An extended analysis and comparison of storage usage across execution clients can be found on the [**Client Providers**](/docs/theory/blockchain-knowledge/client-providers.md) page.
 
 :::
 

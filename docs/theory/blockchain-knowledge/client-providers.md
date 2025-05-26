@@ -23,7 +23,7 @@ There are three basic setups in which an execution client of the network can be 
 
 :::tip
 
-Further details about hardware requirements can be found on the [Node Specifications](/docs/theory/preparations/node-specifications.md) page.
+Further details about hardware requirements can be found on the [**Node Specifications**](/docs/theory/preparations/node-specifications.md) page.
 
 :::
 
@@ -37,19 +37,19 @@ Within the [LUKSO CLI v 0.24.1](https://github.com/lukso-network/tools-lukso-cli
 
 :::
 
-| Consensus Client                                                  | Version  | Github                                         | Docs                                                     | Chat                                | System Support         | Language | [CLI Staking](https://github.com/lukso-network/tools-lukso-cli) |
-| ----------------------------------------------------------------- | -------- | ---------------------------------------------- | -------------------------------------------------------- | ----------------------------------- | ---------------------- | -------- | --------------------------------------------------------------- |
-| [**Lighthouse**](https://lighthouse.sigmaprime.io/)               | v6.0.1   | [🔗](https://github.com/sigp/lighthouse/)      | [📘](https://lighthouse-book.sigmaprime.io/)             | [💬](https://discord.gg/cyAszAh)    | Linux, Win, macOS, ARM | Rust     | ✅ Yes                                                          |
-| [**Prysm**](https://prysmaticlabs.com/)                           | v5.2.0   | [🔗](https://github.com/prysmaticlabs/prysm)   | [📘](https://docs.prylabs.network/docs/getting-started/) | [💬](https://discord.gg/YMVYzv6)    | Linux, Win, macOS, ARM | Go       | ✅ Yes                                                          |
-| [**Teku**](https://consensys.net/knowledge-base/ethereum-2/teku/) | v24.12.1 | [🔗](https://github.com/ConsenSys/teku)        | [📘](https://docs.teku.consensys.net/)                   | [💬](https://discord.gg/9mCVSY6)    | Linux, Win, macOS      | Java     | ✅ Yes                                                          |
-| [**Nimbus**](https://nimbus.team/)                                | v24.10.0 | [🔗](https://github.com/status-im/nimbus-eth2) | [📘](https://nimbus.team/docs/)                          | [💬](https://discord.gg/qnjVyhatUa) | Linux, Win, macOS, ARM | Nim      | ❌ No                                                           |
+| Consensus Client                                                  | Version | Github                                         | Docs                                                     | Chat                                | System Support         | Language | [CLI Staking](https://github.com/lukso-network/tools-lukso-cli) |
+| ----------------------------------------------------------------- | ------- | ---------------------------------------------- | -------------------------------------------------------- | ----------------------------------- | ---------------------- | -------- | --------------------------------------------------------------- |
+| [**Lighthouse**](https://lighthouse.sigmaprime.io/)               | 6.0.1   | [🔗](https://github.com/sigp/lighthouse/)      | [📘](https://lighthouse-book.sigmaprime.io/)             | [💬](https://discord.gg/cyAszAh)    | Linux, Win, macOS, ARM | Rust     | ✅ Yes                                                          |
+| [**Prysm**](https://prysmaticlabs.com/)                           | 5.2.0   | [🔗](https://github.com/prysmaticlabs/prysm)   | [📘](https://docs.prylabs.network/docs/getting-started/) | [💬](https://discord.gg/YMVYzv6)    | Linux, Win, macOS, ARM | Go       | ✅ Yes                                                          |
+| [**Teku**](https://consensys.net/knowledge-base/ethereum-2/teku/) | 24.12.1 | [🔗](https://github.com/ConsenSys/teku)        | [📘](https://docs.teku.consensys.net/)                   | [💬](https://discord.gg/9mCVSY6)    | Linux, Win, macOS      | Java     | ✅ Yes                                                          |
+| [**Nimbus**](https://nimbus.team/)                                | 24.10.0 | [🔗](https://github.com/status-im/nimbus-eth2) | [📘](https://nimbus.team/docs/)                          | [💬](https://discord.gg/qnjVyhatUa) | Linux, Win, macOS, ARM | Nim      | ❌ No                                                           |
 
-| Execution Client                                          | Version  | Github                                            | Docs                                                               | Chat                                                   | System Support         | Language |
-| --------------------------------------------------------- | -------- | ------------------------------------------------- | ------------------------------------------------------------------ | ------------------------------------------------------ | ---------------------- | -------- |
-| [**Besu**](https://hyperledger.org/use/besu)              | v24.12.2 | [🔗](https://github.com/hyperledger/besu/)        | [📘](https://besu.hyperledger.org/en/stable/)                      | [💬](https://discord.com/invite/hyperledger)           | Linux, Win, macOS      | Java     |
-| [**Erigon**](https://github.com/erigontech/erigon#erigon) | v2.61.0  | [🔗](https://github.com/erigontech/erigon)        | [📘](https://docs.erigon.tech/)                                    | [💬](https://github.com/erigontech/erigon/discussions) | Linux, Win, macOS, ARM | Go       |
-| [**Geth**](https://geth.ethereum.org/)                    | v1.14.13 | [🔗](https://github.com/ethereum/go-ethereum)     | [📘](https://geth.ethereum.org/docs/)                              | [💬](https://discord.com/invite/nthXNEv)               | Linux, Win, macOS, ARM | Go       |
-| [**Nethermind**](http://nethermind.io/)                   | v1.30.3  | [🔗](https://github.com/NethermindEth/nethermind) | [📘](https://docs.nethermind.io/get-started/installing-nethermind) | [💬](https://discord.com/invite/PaCMRFdvWT)            | Linux, Win, macOS, ARM | .NET     |
+| Execution Client                                          | Version | Github                                            | Docs                                                               | Chat                                                   | System Support         | Language |
+| --------------------------------------------------------- | ------- | ------------------------------------------------- | ------------------------------------------------------------------ | ------------------------------------------------------ | ---------------------- | -------- |
+| [**Besu**](https://hyperledger.org/use/besu)              | 24.12.2 | [🔗](https://github.com/hyperledger/besu/)        | [📘](https://besu.hyperledger.org/en/stable/)                      | [💬](https://discord.com/invite/hyperledger)           | Linux, Win, macOS      | Java     |
+| [**Erigon**](https://github.com/erigontech/erigon#erigon) | 2.61.0  | [🔗](https://github.com/erigontech/erigon)        | [📘](https://docs.erigon.tech/)                                    | [💬](https://github.com/erigontech/erigon/discussions) | Linux, Win, macOS, ARM | Go       |
+| [**Geth**](https://geth.ethereum.org/)                    | 1.14.13 | [🔗](https://github.com/ethereum/go-ethereum)     | [📘](https://geth.ethereum.org/docs/)                              | [💬](https://discord.com/invite/nthXNEv)               | Linux, Win, macOS, ARM | Go       |
+| [**Nethermind**](http://nethermind.io/)                   | 1.30.3  | [🔗](https://github.com/NethermindEth/nethermind) | [📘](https://docs.nethermind.io/get-started/installing-nethermind) | [💬](https://discord.com/invite/PaCMRFdvWT)            | Linux, Win, macOS, ARM | .NET     |
 
 :::warning Further Assistance
 
@@ -63,7 +63,7 @@ Each client has different runtime requirements, optimization, and unique feature
 
 :::tip
 
-There is **no preferred client**. What’s most important is maintaining [client diversity](/docs/theory/blockchain-knowledge/client-diversity.md) to ensure network resilience.
+There is **no preferred client**. What’s most important is maintaining [**Client Diversity**](/docs/theory/blockchain-knowledge/client-diversity.md) to ensure network resilience.
 
 :::
 
@@ -133,7 +133,7 @@ Estimated numbers from LUKSO Testnet Operators and Ethereum-based client project
 
 :::tip
 
-Details on the additional [slasher service](/docs/theory/node-operation/slasher-service.md)'s database growth, can be found on the [Node Specifications](/docs/theory/preparations/node-specifications.md#storage-demand) page.
+Details on the additional [**Slasher Service**](/docs/theory/node-operation/slasher-service.md)'s database growth, can be found on the [**Node Specifications**](/docs/theory/preparations/node-specifications.md#storage-demand) page.
 
 :::
 

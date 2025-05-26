@@ -9,7 +9,7 @@ Peer discovery is the mechanism by which a peer on a distributed network finds p
 
 :::tip
 
-The fundamentals of peer networks, operation layers, and blockchain nodes can be found on the [Peer Networks](/docs/theory/blockchain-knowledge/peer-networks.md) page.
+The fundamentals of peer networks, operation layers, and blockchain nodes can be found on the [**Peer Networks**](/docs/theory/blockchain-knowledge/peer-networks.md) page.
 
 :::
 
@@ -31,13 +31,13 @@ The peer-to-peer discovery process is surprisingly elegant and efficient. Here�
 
 :::tip
 
-All of this happens behind the scenes. Node operators just need to make sure that the router allows incoming connections on the appropriate ports. Further details can be found on the [Router Setup](/docs/guides/router-setup/static-ip-assignment.md) and [Firewall Settings](/docs/guides/client-setup/firewall-settings.md) pages.
+All of this happens behind the scenes. Node operators just need to make sure that the router allows incoming connections on the appropriate ports. Further details can be found on the [**Router Setup**](/docs/guides/router-setup/static-ip-assignment.md) and [**Firewall Settings**](/docs/guides/client-setup/firewall-settings.md) pages.
 
 :::
 
 :::note Further Details
 
-The peer discovery within mesh networks like EVM-based blockchains utilizes the [Kademlia](https://medium.com/coinmonks/a-brief-overview-of-kademlia-and-its-use-in-various-decentralized-platforms-da08a7f72b8f) algorithm.
+The peer discovery within mesh networks like EVM-based blockchains utilizes the 🕸️ [**Kademlia**](https://medium.com/coinmonks/a-brief-overview-of-kademlia-and-its-use-in-various-decentralized-platforms-da08a7f72b8f) algorithm.
 
 :::
 
@@ -53,6 +53,6 @@ While you may increase your peer count and visibility to add to your node's netw
 
 :::tip
 
-If you are unsure about [Peer Connectivity](/docs/guides/modifications/peer-connectivity.md) limits, it’s best to rely on your [client’s defaults](https://github.com/lukso-network/network-configs), which are designed to balance resource use, discovery efficiency, and network stability for homestaking nodes within the community.
+If you are unsure about [**Peer Connectivity**](/docs/guides/modifications/peer-connectivity.md) limits, it’s best to rely on the [default network configuration](https://github.com/lukso-network/network-configs), designed to balance resource use, discovery efficiency, and network stability for homestaking nodes within the community.
 
 :::

@@ -9,7 +9,7 @@ Having a remote blockchain node generally requires secure and persistent access 
 
 :::tip
 
-A detailed guide about remote access can be found within the [SSH Setup](/docs/guides/ssh-setup/initialization.md) and [Tailscale](/docs/guides/external-access/tailscale.md) pages of the [**📖 Guide**](/docs/guides/validator-setup/precautions.md) section.
+A detailed guide about remote access can be found within the [**SSH Setup**](/docs/guides/ssh-setup/initialization.md) and [**Tailscale**](/docs/guides/external-access/tailscale.md) pages of the 📖 [**Guide**](/docs/guides/validator-setup/precautions.md) section.
 
 :::
 
@@ -40,7 +40,7 @@ WireGuard is a next-generation VPN protocol that is a sophisticated virtual priv
 
 :::info
 
-Unlike older VPN stacks like [🍊 OpenVPN](https://github.com/OpenVPN/openvpn) or [🌐 IPSec](https://github.com/hwdsl2/setup-ipsec-vpn), [🐉 WireGuard](https://github.com/WireGuard/wireguard-linux) has modern cryptography and minimal requirements.
+Unlike older VPN stacks like 🍊 [**OpenVPN**](https://github.com/OpenVPN/openvpn) or 🌐 [**IPSec**](https://github.com/hwdsl2/setup-ipsec-vpn), 🐉 [**WireGuard**](https://github.com/WireGuard/wireguard-linux) has modern cryptography and minimal requirements.
 
 :::
 
@@ -66,6 +66,6 @@ Tailscale is a free identity-based VPN service, simplifying the creation of secu
 
 :::info
 
-Alternative VPN software would be [🈸 ZeroTier](https://www.zerotier.com) and [🛡️ OpenVPN](https://openvpn.net/community/), both with compromises in ease of use and platform support.
+Alternative VPN software for 🦾 [**Tailscale**](https://tailscale.com/) would be 🈸 [**ZeroTier**](https://www.zerotier.com) and 🛡️ [**OpenVPN**](https://openvpn.net/community/), both with compromises in ease of use.
 
 :::

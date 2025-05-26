@@ -31,7 +31,7 @@ Since all peers independently confirm the same sata and reach onsensus through c
 
 :::tip
 
-Further details on how peer nodes connect and communicate with each other can be found on the [Peer Discovery](/docs/theory/node-operation/peer-discovery.md) page.
+Further details on how peer nodes connect and communicate with each other can be found on the [**Peer Discovery**](/docs/theory/node-operation/peer-discovery.md) page.
 
 :::
 
@@ -46,7 +46,7 @@ EVM-based blockchains like LUKSO use **two overlapping peer networks**, each wit
 
 :::info
 
-When a node joins the network, it **automatically joins** both of these networks through the Ethereum client software, which manages connections and protocols in the background. More details can be found on the [Client Types](/docs/theory/blockchain-knowledge/client-types.md) page.
+When a node joins the network, it **automatically operates as peer** for **both of these networks** through the Ethereum clients, managing all connections in the background. More details can be found on the [**Client Types**](/docs/theory/blockchain-knowledge/client-types.md) and [**Client Providers**](/docs/theory/blockchain-knowledge/client-providers.md) pages.
 
 :::
 

@@ -9,7 +9,7 @@ Client diversity refers to the practice of using **multiple, independently devel
 
 :::tip
 
-A detailed list of supported client software and differences can be found on the [Client Providers](/docs/theory/blockchain-knowledge/client-providers.md) page.
+A detailed list of supported client software and differences can be found on the [**Client Providers**](/docs/theory/blockchain-knowledge/client-providers.md) page.
 
 :::
 
@@ -24,7 +24,7 @@ A detailed list of supported client software and differences can be found on the
 
 :::tip
 
-Node operators should aim to **distribute their client usage** across the officially supported clients **to avoid dominance** by any single implementation. The current network metrics can be found on the [LUKSO Diversity Dashboard](https://clientdiversity.lukso.network/).
+Node operators should aim to **distribute their client usage** across the officially supported clients **to avoid dominance** by any single implementation. The current network metrics can be found on the [**LUKSO Diversity Dashboard**](https://clientdiversity.lukso.network/).
 
 :::
 

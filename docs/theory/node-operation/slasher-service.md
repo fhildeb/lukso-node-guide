@@ -5,17 +5,17 @@ sidebar_position: 5
 
 # Slasher Service
 
-The slashing service is an optional but crucial network service that adds an additional layer of **protocol-level security** to Proof of Stake blockchains. It detects misbehavior by a validator, like double-signing or surround-voting, which then triggers slashing by the consensus protocol. On a broader view, slashing nodes can be considered the network's watchdogs to help enforce honesty and proper punishment for violators.
+The slashing service is an optional but crucial network service that adds an additional layer of protocol-level security to Proof of Stake blockchains. It detects misbehavior by a validator, like double-signing or surround-voting, which then triggers slashing by the consensus protocol. On a broader view, slashing nodes can be considered the network's watchdogs to help enforce honesty and proper punishment for violators.
 
 :::tip
 
-More details about slashable events and validator duties can be found on the [Slashing and Panelties](/docs/theory/blockchain-knowledge/slashing-and-panelties.md) and [Proof of Stake](/docs/theory/blockchain-knowledge/proof-of-stake.md) pages.
+More details about slashing and validator duties can be found on the [**Slashing and Panelties**](/docs/theory/blockchain-knowledge/slashing-and-panelties.md) and [**Proof of Stake**](/docs/theory/blockchain-knowledge/proof-of-stake.md) pages.
 
 :::
 
 ## Responsibilities
 
-A slasher **keeps track of** all the validators on the network by **block proposals** per slot and **attestations** to chain head or checkpoints. It cross-verifies those records against each other to detect double proposals or a surrounded votes. Once an offense was found, the slasher service reports evidence to the network so that the misbehaving validator can be sanctioned. However, slashers themselves don't stop or ban validators.
+A slasher keeps track of all the validators on the network by block proposals per slot and attestations to chain the new heads or checkpoints. It cross-verifies those records against each other to detect double proposals or a surrounded votes. Once an offense was found, the slasher service reports evidence to the network so that the misbehaving validator can be sanctioned. However, slashers themselves don't stop or ban validators.
 
 Theoretically, one honest slasher within the network would be sufficient. Once published, any other operator within the network could add the proof to a future block. However, as slasher services are operated on top of nodes, multiple instances should be run geographically spread to ensure resilience during downtime.
 

@@ -18,7 +18,7 @@ If a validator behaves inappropriately on the network, like suggesting two diffe
 
 :::tip
 
-More details about slashing abilities and software can be found on the [Slasher Service](/docs/theory/node-operation/slasher-service.md) page.
+More details about slashing abilities and software can be found on the [**Slasher Service**](/docs/theory/node-operation/slasher-service.md) page.
 
 :::
 
@@ -29,7 +29,7 @@ More details about slashing abilities and software can be found on the [Slasher 
 
 :::info
 
-The _surround vote_ occurs when a validator makes an attestation which coincides with a previous one. An example of this would be to vote on a fresh checkpoint that includes an existing attestation.
+The _surround vote_ occurs when a validator makes an attestation which coincides with a previous one. An example would be to vote on a fresh checkpoint that includes an existing attestation.
 This act can compromise the [finality guarantees](/docs/theory/blockchain-knowledge/proof-of-stake.md) of the chain.
 
 :::

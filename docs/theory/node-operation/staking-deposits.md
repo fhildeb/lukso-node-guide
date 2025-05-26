@@ -12,7 +12,7 @@ Staking is the process of locking up tokens to activate validator responsibiliti
 
 :::tip
 
-Further details about staking in general can be found on the [Proof of Stake](/docs/theory/blockchain-knowledge/proof-of-stake.md) and [Tokenomics](/docs/theory/blockchain-knowledge/tokenomics.md) pages.
+Further details about staking in general can be found on the [**Proof of Stake**](/docs/theory/blockchain-knowledge/proof-of-stake.md) and [**Tokenomics**](/docs/theory/blockchain-knowledge/tokenomics.md) pages.
 
 :::
 

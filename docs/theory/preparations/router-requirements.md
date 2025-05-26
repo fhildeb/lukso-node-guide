@@ -5,11 +5,11 @@ sidebar_position: 2
 
 # Router Requirements
 
-The router is the first, and often weakest, part in the chain of data exchange for blockchain nodes. Inadequate routers will drop packets, choke under high peer counts, or crash entirely, stalling your sync and putting validators at risk.
+The router is the first, and often weakest, part when it comes to data exchange of blockchain nodes. Inadequate routers will drop packets, choke under high peer counts, or stall your synchronization while putting validators at risk.
 
 :::danger ISP Router Issues
 
-The all‑in‑one routers many internet service provider supply are tuned for casual home use, **not for high‑connection workload** of a blockchain node. Even with correct port‑forwarding, they will likely suffer heavy packet loss, drastic bandwidth drops, or complete lock‑ups of your home network's internet when peer traffic surges. Upgrading to a business or professional home router usually eliminates these issues.
+All‑in‑one routers from internet service providers are tuned for casual home use, **not for high‑connection workload** of a blockchain node. Even with correct port‑forwarding, they will likely suffer heavy packet loss, drastic bandwidth drops, or complete lock‑ups of your home network's internet when peer traffic surges. Upgrading to a business or professional home router usually eliminates these issues.
 
 :::
 
@@ -32,8 +32,8 @@ The all‑in‑one routers many internet service provider supply are tuned for c
 
 :::note Example Hardware
 
-For central europe, [**🧭 AVM**](https://fritz.com/) ranks high for build quality, intuitive UI, long warranty, and frequent updates. Their higher‑end models add fibre and Wi‑Fi mesh support for greater connectivity, and even offer an integrated [Dynamic DNS](/docs/theory/node-operation/dynamic-dns.md) service.
+For central europe, [**🧭 AVM**](https://fritz.com/) ranks high for build quality, intuitive UI, long warranty, and frequent updates. Their higher‑end models add fibre and Wi‑Fi mesh support for greater connectivity, and even offer an integrated [**Dynamic DNS**](/docs/theory/node-operation/dynamic-dns.md) service.
 
-Within the [router setup](/docs/guides/router-setup/static-ip-assignment), all configurations were done on a **Fritz!Box 7590 AX**.
+Within the [**Router Setup**](/docs/guides/router-setup/static-ip-assignment), all configurations were done on a [**Fritz!Box 7590 AX**](https://en.fritz.com/products/fritzbox/fritzbox-7590-ax/).
 
 :::

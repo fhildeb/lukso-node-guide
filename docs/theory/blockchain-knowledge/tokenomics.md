@@ -37,7 +37,7 @@ Returns only include the deterministic and major values of the consensus mechani
 
 :::tip
 
-Further details about slashing and MEV can be found within the [Slasher Service](/docs/theory/node-operation/slasher-service.md) and [Proof of Stake](/docs/theory/blockchain-knowledge/proof-of-stake.md) pages.
+Further details about slashing and MEV can be found within the [**Slasher Service**](/docs/theory/node-operation/slasher-service.md) and [**Proof of Stake**](/docs/theory/blockchain-knowledge/proof-of-stake.md) pages.
 
 :::
 
@@ -58,7 +58,7 @@ Both addresses can be equal, in case stakers want to manage earnings and funds w
 
 :::info
 
-Changing the withdrawal address requires [exiting the validator](/docs/guides/withdrawals/exit-validators.md) and redepositing the stake to a new validator key.
+Changing the withdrawal address requires [exiting the validator](/docs/guides/withdrawals/exit-validators.md) and [redepositing the stake](/docs/guides/validator-setup/precautions.md) to a new validator key.
 
 :::
 

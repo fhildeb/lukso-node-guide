@@ -14,7 +14,7 @@ Monitoring tools help node operators monitor hardware health, service availabili
 
 :::tip
 
-Monitoring tools typically get connected to [alert systems](/docs/guides/alert-systems/telegram-bot.md) for receiving status updates and warnings via message or email.
+Monitoring tools typically get connected to [**Alert Systems**](/docs/guides/alert-systems/telegram-bot.md) for receiving status updates and warnings via message or email.
 
 :::
 
@@ -46,6 +46,6 @@ In a Prometheus environment, internal as well as external metrics get exposed as
 
 :::tip
 
-The table only shows the node's most important datapoints configured within the [Monitoring Setup](/docs/guides/monitoring/software-preparation.md) of the [**📖 Guide**](/docs/guides/validator-setup/precautions.md) section. Optional exporters can be configured for various metrics and a more comprehensive dashboards.
+The table only shows the node's most important datapoints configured within the [**Monitoring Setup**](/docs/guides/monitoring/software-preparation.md) of the 📖 [**Guide**](/docs/guides/validator-setup/precautions.md) section. Optional exporters can be configured for various metrics and a more comprehensive dashboards.
 
 :::

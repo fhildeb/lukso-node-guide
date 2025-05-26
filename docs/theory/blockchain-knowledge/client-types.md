@@ -13,7 +13,7 @@ In order to participate as a peer node in the blockchain network, the minimum re
 
 :::tip Optional Add-ons
 
-Depending on use case and infrastructure goals, an optional [slasher service](/docs/theory/node-operation/slasher-service.md) or [MEV process](/docs/theory/blockchain-knowledge/proof-of-stake.md#roles-and-services) can be run to gain further profits.
+Depending on infrastructure goals, an optional [**Slasher Service**](/docs/theory/node-operation/slasher-service.md) or [**MEV Process**](/docs/theory/blockchain-knowledge/proof-of-stake.md#roles-and-services) can be run to gain further profits.
 
 :::
 
@@ -25,7 +25,7 @@ Depending on use case and infrastructure goals, an optional [slasher service](/d
 
 :::info
 
-Execution and consensus clients connect to separate [peer networks](/docs/theory/blockchain-knowledge/peer-networks.md) with their own protocols and discovery layers.
+Execution and consensus clients connect to separate [**Peer Networks**](/docs/theory/blockchain-knowledge/peer-networks.md) with their own protocols and discovery layers.
 
 :::
 
@@ -67,7 +67,7 @@ The consensus client is responsible for all consensus-related operations in a Pr
 
 :::info
 
-Consensus clients use the 🎨 [**libp2p**](https://libp2p.io/) stack and handle real-time communication with other validator nodes.
+Consensus clients use the 🎲 [**libp2p**](https://libp2p.io/) stack and handle real-time communication with other validator nodes.
 
 :::
 

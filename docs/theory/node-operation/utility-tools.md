@@ -13,7 +13,7 @@ Text editors allow editing configuration files, service configurations, and appl
 
 :::tip
 
-For additional commands and descriptions, have a look at the [VIM MAN Page](https://manpages.ubuntu.com/manpages/noble/de/man1/vim.1.html) or [NANO MAN Page](https://manpages.ubuntu.com/manpages/bionic/man1/nano.1.html) for Ubuntu.
+For additional commands and descriptions, have a look at the 🐍 [**Vim Help Page**](https://manpages.ubuntu.com/manpages/noble/de/man1/vim.1.html) or ☂️ [**Nano Help Page**](https://manpages.ubuntu.com/manpages/bionic/man1/nano.1.html) for 🔸 [**Ubuntu**](https://ubuntu.com/).
 
 :::
 
@@ -33,7 +33,7 @@ The Advanced Package Tool is the default package manager used in Debian-based di
 
 :::tip
 
-For additional commands and descriptions, have a look at the [APT MAN Page](https://manpages.ubuntu.com/manpages/xenial/man8/apt.8.html) for Ubuntu.
+For additional commands and descriptions, have a look at the 📦 [**APT Help Page**](https://manpages.ubuntu.com/manpages/xenial/man8/apt.8.html) for 🔸 [**Ubuntu**](https://ubuntu.com/).
 
 :::
 
@@ -52,7 +52,7 @@ A system daemon service forms a critical part of modern Debian-based operating s
 
 :::tip
 
-For additional commands and descriptions, have a look at the [SYSTEMCTL MAN Page](https://manpages.ubuntu.com/manpages/trusty/man1/systemctl.1.html) for Ubuntu.
+For additional commands and descriptions, have a look at the 🕹️ [**System Control Help Page**](https://manpages.ubuntu.com/manpages/trusty/man1/systemctl.1.html) for 🔸 [**Ubuntu**](https://ubuntu.com/).
 
 :::
 

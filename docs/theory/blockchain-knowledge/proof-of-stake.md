@@ -53,7 +53,7 @@ The order of steps below summarises what happens every slot and epoch.
 
 :::tip
 
-Further details can be found on the [Tokenomisc](/docs/theory/blockchain-knowledge/tokenomics.md) or [Shashing and Panelties](/docs/theory/blockchain-knowledge/slashing-and-panelties.md) pages.
+Further details can be found on the [**Tokenomics**](/docs/theory/blockchain-knowledge/tokenomics.md) or [**Shashing and Panelties**](/docs/theory/blockchain-knowledge/slashing-and-panelties.md) pages.
 
 :::
 
@@ -69,7 +69,7 @@ Network stalls can occur due to:
 
 :::tip
 
-Keeping participation high ensures stable finality and robust network health. Redundant infrastructure is critical for minimizing correlated failures. Further information about network resilience can be found on the [Client Diversity](/docs/theory/blockchain-knowledge/client-diversity.md) page.
+Keeping participation high ensures stable finality and robust network health. Redundant infrastructure is critical for minimizing correlated failures. Further information about network resilience can be found on the [**Client Diversity**](/docs/theory/blockchain-knowledge/client-diversity.md) page.
 
 :::
 
@@ -101,8 +101,8 @@ If a transaction runs out of gas it reverts. However, the spent gas is still cha
 
 :::tip MEV
 
-The Maximal Extractable Value is the extra profit obtainable by re‑ordering, inserting, or censoring transactions.  
-On PoS chains MEV is captured by proposers via off‑chain relays or direct bundles, while the protocol itself stays agnostic.
+The Maximal Extractable Value is the extra profit obtainable by re‑ordering, inserting, or censoring transactions.
+On Proof-of-Stake chains, MEV is captured by proposers via off‑chain relays or direct bundlers, while the protocol itself stays agnostic.
 
 :::
 

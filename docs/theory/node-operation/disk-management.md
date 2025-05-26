@@ -18,8 +18,8 @@ LVM is a storage management system that offers flexibility in managing disk spac
 
 :::tip Industry Standard
 
-- LVM is the default partitioning method on 🔶 [Ubuntu](https://ubuntu.com/download) starting from version 20.04.
-- 🎨 [DAppNode](https://dappnode.com/) machines also ship with LVM pre-enabled.
+- LVM is the default partitioning method on 🔶 [**Ubuntu**](https://ubuntu.com/download) from version _20.04_ and above.
+- 🎨 [**DAppNode**](https://dappnode.com/) machines also ship with LVM pre-enabled.
 
 :::
 
@@ -67,13 +67,13 @@ LVM sets a default size for the root logical volume during server installation t
 
 :::tip
 
-More advanced instructions for resizing, expanding volumes, or adding disks can be found in the [Disk Volumes](/docs/guides/system-setup/disk-volumes.md) guide.
+More advanced instructions for resizing, expanding volumes, or adding disks can be found in the [**Disk Volumes**](/docs/guides/system-setup/disk-volumes.md) guide.
 
 :::
 
 :::info
 
-[Ubuntu Server](/docs/guides/system-setup/disk-volumes.md) installs LVM with a default logical volume size of `100GB`.
+The 🔸 [**Ubuntu Server**](/docs/guides/system-setup/disk-volumes.md) installation configured LVM with a default logical volume size of `100GB`.
 :::
 
 ## Disk Encryption
