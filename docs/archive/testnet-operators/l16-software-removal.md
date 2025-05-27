@@ -3,11 +3,12 @@ sidebar_label: "L16 Software Removal"
 sidebar_position: 3
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 # L16 Software Removal
 
-<!--TODO: add introduction-->
-
-<!--TODO: add danger admonition: Historical guide: The old CLI version has been removed as download.-->
+This guide teaches you how to remove the Legacy LUKSO CLI and all installed data after completing L16 testnet runs.
 
 :::danger Historical Guide
 
@@ -21,117 +22,153 @@ The following steps are performed on your 📟 **node server**.
 
 :::
 
-The LUKSO CLI is installed within `/usr/local/bin/lukso`, and links to Docker. You will have to remove:
+## 1. Remove LUKSO CLI
 
-- CLI Tool
-- Docker Containers & Images
-- Node folder
+**1.1 Stop the Node**: _Make sure all running LUKSO services are stopped._
 
-> Commands may need admin permission
-
-## 1. Stop the Node
-
-```bash
-$ lukso network stop validator
-$ lukso network stop
+```sh
+lukso network stop validator
+lukso network stop
 ```
 
-## 2. Remove LUKSO CLI
+**1.2 Delete CLI Binary**: _Remove the LUKSO CLI from the binary path._
 
-```bash
-$ cd /usr/local/bin
-$ ls -al
-$ rm -rf lukso
+```sh
+cd /usr/local/bin
+ls -al
+sudo rm -rf lukso
 ```
 
-### Remove Monitoring
+## 2. Remove Docker Data
 
-If you want to fully remove all node data and monitoring software, you can also stop and remove Prometheus, Grafana and all tools that were needed for them.
+Depending on the further use of the server, there are two different ways to reset docker data used for node operation.
 
-```bash
-# Stop monitoring software
-$ systemctl stop grafana-server
-$ systemctl stop prometheus
+| **Method**                           | **Description**                                                                                                                                                                    | **Removed Software**                                                                                                                              |
+| ------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
+| <nobr> **Node Data Removal** </nobr> | This lightway version only removes the data related to the blockchain node operation. If you continue to use the server and _Docker_ for other purposes, this is the right choice. | - Stopped Containers <br /> - LUKSO L16 Images <br />                                                                                             |
+| <nobr> **System Prune** </nobr>      | This is a complete removal of the container setup and the entire data that has ever been worked with. Its the ideal choice if you are not using _Docker_ for other software.       | <nobr> - Stopped Containers and Images </nobr><br /> - All Volumes and Networks<br /> - Docker Compose Tool <br /> - Docker Tool and Config Files |
 
-# Remove packages installed with apt-get
-$ apt remove apt-transport-https software-properties-common wget grafana-enterprise
+<Tabs>
+<TabItem value="soft" label="Node Data Removal" default>
 
-# Remove binaries
-$ cd /usr/local/bin
-$ rm -rf node_exporter prometheus promtool blackbox_exporter
+**2.1 Remove Docker Containers**: _Find and remove containers related to your node._
 
-# Remove libraries
-$ cd /var/lib
-$ rm -rf prometheus grafana
-$ cd /lib/systemd/system
-$ rm-rf grafana-server.service grafana-server.service.old
-
-# Remove config and databases
-$ cd /etc
-$ rm -rf prometheus grafana blackbox_exporter
-$ cd /etc/systemd/system
-$ rm -rf prometheus.service grafana.service blackbox_exporter.service
-
+```sh
+docker ps -a
+sudo docker rm <container-id>
 ```
 
-## 3. Remove Docker Data
+**2.2 Remove Docker Images**: _Find and remove images associated with LUKSO services._
 
-There are two different ways of removing docker data: soft-reset or hard-reset. If you are not running anything else on the node, just prune your docker system to remove all data. You can also uninstall docker-compose and docker after. If you have other software using docker, just remove the node-specific data.
-
-### Option A: Only Remove Node Data
-
-Get all the `CONTAINER_IDs` of the containers named like:
-
-- `docker-geth/geth:`
-- `docker-prysm/beacon:`
-- `docker-prysm/validator:`
-
-They have to be remove one by one.
-
-```bash
-$ docker ps -a
-$ docker rm CONTAINER_ID
+```sh
+docker images -a
+sudo docker rmi <image-id>
 ```
 
-Get all the `IMAGE_IDs` of the images named like:
+:::tip
 
-- `docker-geth/geth`
-- `docker-prysm/beacon`
-- `docker-prysm/validator`
+Containers and images are typically named `docker-geth/geth`, `docker-prysm/beacon`, `docker-prysm/validator`.
 
-They have to be remove one by one.
+:::
 
-```bash
-$ docker images -a
-$ docker rmi IMAGE_ID
+:::info
+
+Replace `<container-id>` and `<image-id>` with the actual identification numbers like `7e9f0a29f3b3`, or `c3c1a1d3b6a1`.
+
+:::
+
+</TabItem>
+<TabItem value="hard" label="System Prune">
+
+**2.1 Prune Docker System**: _This will delete all Docker data and cache._
+
+```sh
+sudo docker system prune -a
 ```
 
-### Option B: Prune Docker
+**2.2 Remove Docker Compose**:
 
-If you installed docker via [get.docker.com](https://get.docker.com/) and used curl scripts to install the docker-compose add-on as described by the LUKSO documentation, the following commands will match the installation folders and can be removed.
-
-```bash
-# Prune Docker Data
-$ docker system prune -a
-
-# Remove Docker Compose
-$ rm -rf /usr/local/bin/docker-compose
-
-# Remove Docker
-$ rm -rf /var/lib/docker
-$ rm -rf /etc/docker
+```sh
+sudo rm -rf /usr/local/bin/docker-compose
 ```
 
-## 4. Backup and Folder Removal
+**2.3 Remove Docker Directories**:
 
-Now you can backup your private keys and remove the node folder with all its contents. Exchange `NODE_FOLDER` with your node folder name. If you do not want to create a backup just delete the node folder without further redo.
+```sh
+sudo rm -rf /var/lib/docker
+sudo rm -rf /etc/docker
+```
 
-```bash
-$ cd ~
-$ mkdir l16-key-backup
-$ cd NODE_FOLDER
-$ mv keystore ~/l16-key-backup/keystore
-$ mv transaction_wallet ~/l16-key-backup/transaction_wallet
-$ cd ..
-$ rm -rf NODE_FOLDER
+</TabItem>
+</Tabs>
+
+## 3. Remove Blockchain Data
+
+**3.1 Backup Your Validator Keys**: _Copy the keystore and wallet folders into a new directory._
+
+```sh
+cd ~
+mkdir l16-key-backup
+cd <my-node-folder>
+mv keystore ~/l16-key-backup/keystore
+mv transaction_wallet ~/l16-key-backup/transaction_wallet
+cd ..
+```
+
+**3.2 Delete the Node Folder**: _Remove the old working directory with all blockchain data, logs, wallets, and configs._
+
+```sh
+sudo rm -rf <my-node-folder>
+```
+
+:::info
+
+Replace `<my-node-folder>` with your actual node directory like `l16-node-testnet`.
+
+:::
+
+## 4. Remove Monitoring Software
+
+**4.1 Stop Monitoring Services**: _Stop the software daemons of the dashboard and data collector._
+
+```sh
+systemctl stop grafana-server
+systemctl stop prometheus
+```
+
+**4.2 Remove Monitoring Packages**: _Delete all tools used to install exporters or dashboards._
+
+```sh
+sudo apt remove apt-transport-https software-properties-common wget grafana-enterprise
+```
+
+**4.3 Delete Exporter Binaries**: _Delete the exporter services of Prometheus._
+
+```sh
+cd /usr/local/bin
+sudo rm -rf node_exporter prometheus promtool blackbox_exporter
+```
+
+**4.4 Remove Database Files**: _Delete the data collected by Grafana and Prometheus._
+
+```sh
+cd /var/lib
+sudo rm -rf prometheus grafana
+```
+
+**4.5 Remove Systemd Services**: _Delete service configurations of Grafana._
+
+```sh
+cd /lib/systemd/system
+sudo rm -rf grafana-server.service grafana-server.service.old
+```
+
+**4.6 Remove Configurations**: _Delete data collection configurations for exporters, Grafana, and Prometheus._
+
+```sh
+cd /etc
+sudo rm -rf prometheus grafana blackbox_exporter
+
+cd /etc/systemd/system
+sudo rm -rf prometheus.service grafana.service blackbox_exporter.service
 ```
