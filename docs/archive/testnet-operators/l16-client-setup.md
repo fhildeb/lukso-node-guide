@@ -24,27 +24,27 @@ The following steps are performed on your 📟 **node server**.
 
 ## 1. Software Installation
 
-**1. LUKSO CLI Download**: _Move to your home directory, then fetch and execute the installation script._
+**1.1 LUKSO CLI Download**: _Move to your home directory, then fetch and execute the installation script._
 
 ```sh
 cd ~
 curl https://raw.githubusercontent.com/lukso-network/lukso-cli/main/cli_downloader.sh | bash
 ```
 
-**2. Add the CLI to Binary Path**: _Move the binary into the system path so it can be called globally._
+**1.2 Add the CLI to Binary Path**: _Move the binary into the system path so it can be called globally._
 
 ```sh
 sudo mv ~/lukso /usr/local/bin
 ```
 
-**3. Install Docker**: _Install the Docker runtime environment used to run client containers._
+**1.3 Install Docker**: _Install the Docker runtime environment used to run client containers._
 
 ```sh
 curl -fsSL https://get.docker.com -o get-docker.sh
 sudo sh get-docker.sh
 ```
 
-**4. Install Docker Compose**: _Install Docker Compose to manage multi-container deployments._
+**1.4 Install Docker Compose**: _Install Docker Compose to manage multi-container deployments._
 
 ```sh
 sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
@@ -53,7 +53,7 @@ sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
 docker-compose --version
 ```
 
-**5. Setup the Node Environment**: _Create the node directory and initialize the network configuration._
+**1.5 Setup the Node Environment**: _Create the node directory and initialize the network configuration._
 
 ```sh
 mkdir l16-node-testnet
@@ -63,7 +63,7 @@ lukso network init
 
 ## 2. Network Configuration
 
-**1. Set the Environment Name**: _Edit the environment file to name your node using your preferred text editor._
+**2.1 Set the Environment Name**: _Edit the environment file to name your node using your preferred text editor._
 
 <Tabs groupId="editor">
   <TabItem value="vim" label="Vim" default>
@@ -81,7 +81,7 @@ nano .env
 </TabItem>
 </Tabs>
 
-**2. Set the Node Name**: _Edit the node config file to name your node using your preferred text editor._
+**2.2 Set the Node Name**: _Edit the node config file to name your node using your preferred text editor._
 
 <Tabs groupId="editor">
   <TabItem value="vim" label="Vim" default>
@@ -105,7 +105,7 @@ The name is used to reference your node in the node explorer. Genesis validators
 
 :::
 
-**3. Update the Network Configuration**: _Retrieve and overwrite the network configuration with the latest bootnodes and specs._
+**2.3 Update the Network Configuration**: _Retrieve and overwrite the network configuration with the latest bootnodes and specs._
 
 ```sh
 lukso network update
@@ -117,13 +117,13 @@ lukso network refresh
 <Tabs groupId="validator">
   <TabItem value="regular" label="Regular Validators" default>
 
-**1. Generate Validator Keys**: _Generate new validator deposit keys directly from the validator wallet of the consensus client._
+**3.1 Generate Validator Keys**: _Generate new validator deposit keys directly from the validator wallet of the consensus client._
 
 ```sh
 lukso network validator setup
 ```
 
-**2. Save Mnemonics**: _Add the mnemonic seed of your wallet into the node configuration using your preferred text editor._
+**3.2 Save Mnemonics**: _Add the mnemonic seed of your wallet into the node configuration using your preferred text editor._
 
 <Tabs groupId="editor">
   <TabItem value="vim" label="Vim" default>
@@ -141,29 +141,29 @@ nano node_config.yaml
 </TabItem>
 </Tabs>
 
-**3. Check Validator Status**: _Verify the amount of validator keys to determine the LYXt amount needed for deposits._
+**3.3 Check Validator Status**: _Verify the amount of validator keys to determine the LYXt amount needed for deposits._
 
 ```sh
 lukso network validator describe
 ```
 
-**4. Fund Wallet**: _Visit the [L16 Faucet](https://faucet.l16.lukso.network/) and fund your address with at least 32 LYX for one validator._
+**3.4 Fund Wallet**: _Visit the [L16 Faucet](https://faucet.l16.lukso.network/) and fund your address with at least 32 LYX for one validator._
 
 ![L16 Faucet](/img/archive/l16_faucet.png)
 
-**5. Dry Run Deposit**: _Simulate the validator deposit process to ensure your mnemonic seed was added correctly._
+**3.5 Dry Run Deposit**: _Simulate the validator deposit process to ensure your mnemonic seed was added correctly._
 
 ```sh
 lukso network validator deposit --dry
 ```
 
-**6. Execute Deposit**: _If there were no isuess, execute the deposit on the L16 testnet using your wallet funds._
+**3.6 Execute Deposit**: _If there were no isuess, execute the deposit on the L16 testnet using your wallet funds._
 
 ```sh
 lukso network validator deposit
 ```
 
-**7. Backup the Validator Keys**: _Save the validator keys in a recovery file._
+**3.7 Backup the Validator Keys**: _Save the validator keys in a recovery file._
 
 ```sh
 lukso network validator backup

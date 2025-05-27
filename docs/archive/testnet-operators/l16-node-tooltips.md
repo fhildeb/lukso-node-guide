@@ -79,7 +79,7 @@ sudo docker logs prysm_validator -f
 # Consensus Client
 sudo docker logs prysm_beacon -f
 
-# ETH Stats
+# ETH Stats Monitoring Service
 sudo docker logs eth2stats-client -f
 ```
 
