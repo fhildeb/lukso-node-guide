@@ -1,5 +1,4 @@
 import React from "react";
-import Link from "@docusaurus/Link";
 import styles from "./StatusCard.module.css";
 import software from "@site/src/consts/software";
 

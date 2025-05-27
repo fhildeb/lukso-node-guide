@@ -1,15 +1,21 @@
 .landingGrid {
   display: grid;
   grid-template-columns: 1fr 3fr 1fr;
+  grid-template-areas: "left center right";
   gap: 1rem;
   padding: 2rem;
 }
 
-.leftColumn,
-.centerColumn,
+.leftColumn {
+  grid-area: left;
+}
+
+.centerColumn {
+  grid-area: center;
+}
+
 .rightColumn {
-  display: flex;
-  flex-direction: column;
+  grid-area: right;
 }
 
 .sectionContainer {
@@ -60,4 +66,63 @@
   }
 }
 
-/* TODO: Add media styling for single-column sections */
+/** 
+ * Page Width ≤ 1201px : 
+ * Reduce guides to 2 columns 
+ */
+@media (max-width: 1201px) {
+  .landingGrid {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+  .guidesGrid {
+    column-count: 2;
+  }
+}
+
+/** 
+ * Page Width ≤ 768px: 
+ * Reduce guides to 1 column 
+ */
+@media (max-width: 768px) {
+  .landingGrid {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+  .guidesGrid {
+    column-count: 1;
+  }
+}
+
+/** 
+ * Page Width ≤ 520px: 
+ * Arrange Theory next to Software
+ * Set guides to 2 columns
+ */
+@media (max-width: 520px) {
+  .landingGrid {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      "left  right"
+      "center center";
+  }
+  .guidesGrid {
+    column-count: 2;
+  }
+}
+
+/**
+ * Page Width ≤ 512px: 
+ * Single column stack 
+ * Reduce guides to 1 column
+ */
+@media (max-width: 350px) {
+  .landingGrid {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "left"
+      "center"
+      "right";
+  }
+  .guidesGrid {
+    column-count: 1;
+  }
+}
