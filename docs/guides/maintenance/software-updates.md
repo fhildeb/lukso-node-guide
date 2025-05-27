@@ -106,6 +106,8 @@ However, LUKSO recently introduced some optional changes to the client configura
 
 <!--TODO: link to configuration updates page-->
 
+<!--TODO: add LUKSO CLI update-->
+
 ### Optional: Remove Genesis Flags
 
 In case you were a genesis validator using an automation script on your node, make sure to **remove the following lines** from your startup script:
