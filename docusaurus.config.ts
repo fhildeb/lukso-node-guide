@@ -139,7 +139,7 @@ const config: Config = {
               href: "https://clientdiversity.lukso.network/",
             },
             {
-              label: "Execution Status Overview",
+              label: "Execution Status Panel",
               href: "https://stats.execution.mainnet.lukso.network/",
             },
             {

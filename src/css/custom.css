@@ -11,6 +11,34 @@
   border-radius: 1rem;
 }
 
+/* Custom Responsive Footer Layout */
+
+/* Default screens with 4-column centered grid */
+.footer__links {
+  display: grid;
+  grid-template-columns: repeat(4, auto);
+  gap: 0.75rem 3rem;
+  justify-content: center;
+}
+
+/* Page width ≤ 996px:
+ * Switch to 2 × 2 grid 
+ */
+@media (max-width: 996px) {
+  .footer__links {
+    grid-template-columns: repeat(2, auto);
+  }
+}
+
+/* Page width ≤ 470px:
+ * Switch to single column 
+ */
+@media (max-width: 470px) {
+  .footer__links {
+    grid-template-columns: auto;
+  }
+}
+
 /* You can override the default Infima variables here. */
 :root {
   --ifm-color-primary: #5c7784;
