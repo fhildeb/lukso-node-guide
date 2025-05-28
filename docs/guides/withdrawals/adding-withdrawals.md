@@ -82,8 +82,6 @@ To update your withdrawals, you have to specify the on-chain indices for each of
 <Tabs>
   <TabItem value="index-from-explorer" label="Get Index Numbers from Explorer">
 
-<div>
-
 **2.1 Open the Deposit File**: Within the validator's deposit _json_ file, copy the _pubkey_ element of a validator key.
 
 **2.2 Validator Lookup**: Search for your validator by entering its public key into the search bar of the consensus explorer.
@@ -98,8 +96,6 @@ To update your withdrawals, you have to specify the on-chain indices for each of
 The steps **2.1** to **2.3** need to be repeated for every validator key that is used for staking.
 
 :::
-
-</div>
 
   </TabItem>
   <TabItem value="index-from-node" label="Get Index Numbers from Node">
@@ -209,23 +205,7 @@ The [LUKSO KeyGen CLI](https://github.com/lukso-network/tools-key-gen-cli) might
 The withdrawal credential can be shared directly from your node or the public consensus explorer.
 
 <Tabs>
-  <TabItem value="broadcast-from-explorer" label="Broadcast Message from Explorer">
-
-<div>
-
-**5.1. Open Consensus Explorer**: Open the broadcast tool of the consensus explorer.
-
-- [LUKSO Mainnet Consensus Explorer Broadcast Tool](https://explorer.consensus.mainnet.lukso.network/tools/broadcast)
-- [LUKSO Testnet Consensus Explorer Broadcast Tool](https://explorer.consensus.testnet.lukso.network/tools/broadcast)
-
-**5.2 Upload Credential**: Upload the _bls_to_execution_change.json_ file to the server.
-
-**5.3 Broadcast Credential**: Click _Submit & Broadcast_ to publish the withdrawal credential.
-
-</div>
-
-  </TabItem>
-  <TabItem value="broadcast-from-node" label="Broadcast Message from Node">
+  <TabItem value="broadcast-from-node" label="Broadcast Message from Node" default>
 
 **5.1 Copy File Contents**: Print and copy the contents of the _bls_to_execution_change.json_ file.
 
@@ -240,6 +220,12 @@ POST -H "Content-type: application/json" -d  '<file-content>'
 ```
 
 **5.3 Broadcast Credential**: Log into your node’s terminal and execute the command to publish the withdrawal credential.
+
+:::warning
+
+Each consensus client with validator support uses a different internal consensus port, opened by the LUKSO CLI.
+
+:::
 
 <Tabs groupId="consensus">
   <TabItem value="prysm" label="Prysm" default>
@@ -298,6 +284,17 @@ curl -X POST -H “Content-type: application/json” -d '[{"message": {"validato
 </Tabs>
 
 </details>
+
+</TabItem> <TabItem value="broadcast-from-explorer" label="Broadcast Message from Explorer">
+
+**5.1. Open Consensus Explorer**: Open the broadcast tool of the consensus explorer.
+
+- [LUKSO Mainnet Consensus Explorer Broadcast Tool](https://explorer.consensus.mainnet.lukso.network/tools/broadcast)
+- [LUKSO Testnet Consensus Explorer Broadcast Tool](https://explorer.consensus.testnet.lukso.network/tools/broadcast)
+
+**5.2 Upload Credential**: Upload the _bls_to_execution_change.json_ file to the server.
+
+**5.3 Broadcast Credential**: Click _Submit & Broadcast_ to publish the withdrawal credential.
 
   </TabItem>
 </Tabs>
