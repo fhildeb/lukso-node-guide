@@ -166,7 +166,30 @@ const config: Config = {
           ],
         },
       ],
-      copyright: `Copyright @ ${new Date().getFullYear()} Felix Hildebrandt`,
+      copyright: `
+    © ${new Date().getFullYear()} Felix Hildebrandt&nbsp;
+    <br />
+    <a href="https://profile.link/voulex@0F41"
+       target="_blank" rel="noopener"
+       class="footer-icon" aria-label="Universal Profile">
+      <img src="/img/icons/up.svg"></img>
+    </a>
+    <a href="https://x.com/voulex"
+       target="_blank" rel="noopener"
+       class="footer-icon" aria-label="Twitter">
+      <img src="/img/icons/twitter.svg"></img>
+    </a>
+    <a href="https://app.ens.domains/fhildeb.eth"
+       target="_blank" rel="noopener"
+       class="footer-icon" aria-label="ENS">
+      <img src="/img/icons/ens.svg"></img>
+    </a>
+        <a href="https://fhildeb.medium.com"
+       target="_blank" rel="noopener"
+       class="footer-icon" aria-label="ENS">
+      <img src="/img/icons/medium.svg"></img>
+    </a>
+  `,
     },
     prism: {
       theme: prismThemes.github,
