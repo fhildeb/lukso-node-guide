@@ -70,7 +70,7 @@ export function StatusPanel() {
         <div className={styles.progressPanel}>
           <div className={styles.statusColumn}>
             <div className={styles.headerMessage}>
-              Consensus Metrics based on Total Validator Number:
+              Consensus Metrics based on Total Validator Count:
             </div>
             {executionClientsToUse.map((client, idx) => (
               <ProgressBar

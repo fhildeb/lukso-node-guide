@@ -20,7 +20,7 @@ export function useSubstackData() {
       link: "https://luksovalidators.substack.com/p/lukso-dencun-hard-fork-testnet",
     },
     {
-      title: "Status Update on the Dencun Hard Fork",
+      title: "Status Update on the Dencun Fork",
       date: "Jun 4, 2024",
       link: "https://luksovalidators.substack.com/p/status-update-on-the-dencun-hard",
     },
