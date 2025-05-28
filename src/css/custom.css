@@ -45,6 +45,7 @@
   display: inline-block;
   margin-left: 0.4rem;
   line-height: 0;
+  color: var(--icon-fill);
 }
 .footer-icon svg,
 .footer-icon img {
@@ -52,6 +53,13 @@
   height: 1.1rem;
   vertical-align: text-top;
   margin-top: 2px;
+}
+
+.logo {
+  color: var(--logo-fg);
+}
+.logo .bg {
+  fill: var(--logo-bg);
 }
 
 /* You can override the default Infima variables here. */
@@ -75,6 +83,8 @@
   --blog-container-border: #dddddd;
   --progress-wrapper-bg: #ddd;
   --progress-text-color: #285060;
+  --logo-fg: #000;
+  --logo-bg: #fff;
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
@@ -97,4 +107,6 @@
   --blog-container-border: #595959;
   --progress-wrapper-bg: #2e2e2e;
   --progress-text-color: #e3e3e3;
+  --logo-fg: #fff;
+  --logo-bg: #000;
 }
