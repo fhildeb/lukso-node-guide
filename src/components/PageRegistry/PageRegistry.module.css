@@ -51,26 +51,10 @@
 }
 
 /** 
- * If screen width is smaller, layout is 
- * changed to single-column display. 
- * 
- * Column-count is reduced to 1 for 100% of page width. 
- */
-@media (max-width: 1200px) {
-  .landingGrid {
-    grid-template-columns: 1fr;
-  }
-  /* TODO: More Gradient Styling + Max Width */
-  .guidesGrid {
-    column-count: 1;
-  }
-}
-
-/** 
- * Page Width ≤ 1201px : 
+ * Page Width ≤ 1382px: 
  * Reduce guides to 2 columns 
  */
-@media (max-width: 1201px) {
+@media (max-width: 1382px) {
   .landingGrid {
     grid-template-columns: 1fr 1fr 1fr;
   }
@@ -80,10 +64,10 @@
 }
 
 /** 
- * Page Width ≤ 768px: 
+ * Page Width ≤ 1120px: 
  * Reduce guides to 1 column 
  */
-@media (max-width: 768px) {
+@media (max-width: 1120px) {
   .landingGrid {
     grid-template-columns: 1fr 1fr 1fr;
   }
@@ -93,11 +77,11 @@
 }
 
 /** 
- * Page Width ≤ 520px: 
+ * Page Width ≤ 858px: 
  * Arrange Theory next to Software
  * Set guides to 2 columns
  */
-@media (max-width: 520px) {
+@media (max-width: 858px) {
   .landingGrid {
     grid-template-columns: 1fr 1fr;
     grid-template-areas:
@@ -110,11 +94,11 @@
 }
 
 /**
- * Page Width ≤ 512px: 
+ * Page Width ≤ 596px: 
  * Single column stack 
  * Reduce guides to 1 column
  */
-@media (max-width: 350px) {
+@media (max-width: 596px) {
   .landingGrid {
     grid-template-columns: 1fr;
     grid-template-areas:
