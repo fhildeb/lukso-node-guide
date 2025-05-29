@@ -23,7 +23,7 @@ Client-specific blockchain configurations can be updated on a node setup by:
 
 :::info
 
-The page was last updated on May 21, 2025.
+The page was last updated on May 30, 2025.
 
 :::
 

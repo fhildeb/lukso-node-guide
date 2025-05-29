@@ -48,29 +48,31 @@ const software = {
       version: "6.0.1",
     },
     {
-      name: "Geth",
-      link: "https://github.com/ethereum/go-ethereum/releases",
-      version: "1.14.13",
-    },
-    {
-      name: "Nimbus-Eth2",
-      link: "https://github.com/status-im/nimbus-eth2/releases",
-      version: "24.12.0",
-    },
-    {
       name: "Nethermind",
       link: "https://github.com/NethermindEth/nethermind/releases",
       version: "1.30.3",
+    },
+
+    {
+      name: "Prysm",
+      link: "https://github.com/OffchainLabs/prysm/releases",
+      version: "5.2.0",
+    },
+    {
+      name: "Geth",
+      link: "https://github.com/ethereum/go-ethereum/releases",
+      version: "1.14.13",
     },
     {
       name: "Teku",
       link: "https://github.com/Consensys/teku/releases",
       version: "24.12.1",
     },
+
     {
-      name: "Prysm",
-      link: "https://github.com/OffchainLabs/prysm/releases",
-      version: "5.2.0",
+      name: "Nimbus-Eth2",
+      link: "https://github.com/status-im/nimbus-eth2/releases",
+      version: "24.12.0",
     },
     {
       name: "Erigon",
