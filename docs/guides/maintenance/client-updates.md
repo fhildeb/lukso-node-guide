@@ -53,50 +53,38 @@ sudo systemctl stop lukso-validator
 sudo pkill geth
 ```
 
-</TabItem>
-
-<TabItem value="erigon" label="Erigon">
+</TabItem> <TabItem value="erigon" label="Erigon">
 
 ```sh
 sudo pkill erigon
 ```
 
-</TabItem>
-
-<TabItem value="nethermind" label="Nethermind">
+</TabItem> <TabItem value="nethermind" label="Nethermind">
 
 ```sh
 sudo pkill nethermind
 ```
 
-</TabItem>
-
-<TabItem value="besu" label="Besu">
+</TabItem> <TabItem value="besu" label="Besu">
 
 ```sh
 sudo pkill besu
 ```
 
-</TabItem>
-
-<TabItem value="teku" label="Teku">
+</TabItem> <TabItem value="teku" label="Teku">
 
 ```sh
 sudo pkill teku
 ```
 
-</TabItem>
-
-<TabItem value="nimbus" label="Nimbus">
+</TabItem> <TabItem value="nimbus" label="Nimbus">
 
 ```sh
 sudo pkill nimbus_beacon_node
 sudo pkill nimbus_validator_client
 ```
 
-</TabItem>
-
-<TabItem value="lighthouse" label="Lighthouse">
+</TabItem> <TabItem value="lighthouse" label="Lighthouse">
 
 ```sh
 sudo pkill lighthouse
@@ -108,9 +96,7 @@ The Lighthouse client uses a single binary for both the consensus and validator 
 
 :::
 
-</TabItem>
-
-<TabItem value="prysm" label="Prysm">
+</TabItem> <TabItem value="prysm" label="Prysm">
 
 ```sh
 sudo pkill prysm
@@ -145,57 +131,43 @@ Check your current client versions.
 geth version
 ```
 
-</TabItem>
-
-<TabItem value="erigon" label="Erigon">
+</TabItem> <TabItem value="erigon" label="Erigon">
 
 ```sh
 erigon --version
 ```
 
-</TabItem>
-
-<TabItem value="nethermind" label="Nethermind">
+</TabItem> <TabItem value="nethermind" label="Nethermind">
 
 ```sh
 nethermind --version
 ```
 
-</TabItem>
-
-<TabItem value="besu" label="Besu">
+</TabItem> <TabItem value="besu" label="Besu">
 
 ```sh
 besu --version
 ```
 
-</TabItem>
-
-<TabItem value="teku" label="Teku">
+</TabItem> <TabItem value="teku" label="Teku">
 
 ```sh
 teku --version
 ```
 
-</TabItem>
-
-<TabItem value="nimbus" label="Nimbus">
+</TabItem> <TabItem value="nimbus" label="Nimbus">
 
 ```sh
 nimbus_beacon_node --version
 ```
 
-</TabItem>
-
-<TabItem value="lighthouse" label="Lighthouse">
+</TabItem> <TabItem value="lighthouse" label="Lighthouse">
 
 ```sh
 lighthouse --version
 ```
 
-</TabItem>
-
-<TabItem value="prysm" label="Prysm">
+</TabItem> <TabItem value="prysm" label="Prysm">
 
 ```sh
 prysm --version

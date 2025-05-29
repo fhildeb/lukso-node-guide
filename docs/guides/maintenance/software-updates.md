@@ -85,50 +85,38 @@ sudo systemctl stop lukso-validator
 sudo pkill geth
 ```
 
-</TabItem>
-
-<TabItem value="erigon" label="Erigon">
+</TabItem> <TabItem value="erigon" label="Erigon">
 
 ```sh
 sudo pkill erigon
 ```
 
-</TabItem>
-
-<TabItem value="nethermind" label="Nethermind">
+</TabItem> <TabItem value="nethermind" label="Nethermind">
 
 ```sh
 sudo pkill nethermind
 ```
 
-</TabItem>
-
-<TabItem value="besu" label="Besu">
+</TabItem> <TabItem value="besu" label="Besu">
 
 ```sh
 sudo pkill besu
 ```
 
-</TabItem>
-
-<TabItem value="teku" label="Teku">
+</TabItem> <TabItem value="teku" label="Teku">
 
 ```sh
 sudo pkill teku
 ```
 
-</TabItem>
-
-<TabItem value="nimbus" label="Nimbus">
+</TabItem> <TabItem value="nimbus" label="Nimbus">
 
 ```sh
 sudo pkill nimbus_beacon_node
 sudo pkill nimbus_validator_client
 ```
 
-</TabItem>
-
-<TabItem value="lighthouse" label="Lighthouse">
+</TabItem> <TabItem value="lighthouse" label="Lighthouse">
 
 ```sh
 sudo pkill lighthouse
@@ -140,9 +128,7 @@ The Lighthouse client uses a single binary for both the consensus and validator 
 
 :::
 
-</TabItem>
-
-<TabItem value="prysm" label="Prysm">
+</TabItem> <TabItem value="prysm" label="Prysm">
 
 ```sh
 sudo pkill prysm
