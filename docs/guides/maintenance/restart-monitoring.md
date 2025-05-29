@@ -3,6 +3,9 @@ sidebar_label: "11.8 Reset Monitoring"
 sidebar_position: 8
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 # 11.8 Reset Monitoring
 
 Monitoring services collect and display important performance, health, and status metrics of your node. While these services are designed to start automatically with the system, issues like stalled exporters, configuration changes, or failed updates can require a manual restart. Resetting ensures metrics are refreshed, dashboards are populated correctly, and alerts are based on accurate data.
@@ -10,6 +13,12 @@ Monitoring services collect and display important performance, health, and statu
 :::info
 
 The following steps are performed on your 📟 **node server**.
+
+:::
+
+:::note
+
+Monitoring tools can be restarted while the node is running.
 
 :::
 
@@ -29,6 +38,46 @@ sudo systemctl restart prometheus
 # Restart Grafana Dashboard
 sudo systemctl restart grafana-server
 ```
+
+:::info
+
+Check the monitoring service's status and uptimes.
+
+<Tabs>
+<TabItem value="node" label="Node Exporter">
+
+```sh
+sudo systemctl status node_exporter
+```
+
+</TabItem> <TabItem value="json" label="JSON Exporter">
+
+```sh
+sudo systemctl status json_exporter
+```
+
+</TabItem> <TabItem value="blackbox" label="Blackbox Exporter">
+
+```sh
+sudo systemctl status blackbox_exporter
+```
+
+</TabItem> <TabItem value="prometheus" label="Prometheus">
+
+```sh
+sudo systemctl status prometheus
+```
+
+</TabItem> <TabItem value="grafana" label="Grafana Server">
+
+```sh
+sudo systemctl status grafana-server
+```
+
+</TabItem>
+</Tabs>
+
+:::
 
 :::tip
 
