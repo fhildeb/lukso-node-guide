@@ -28,7 +28,7 @@ Consensus clients rely on broad outbound connectivity to discover other nodes, m
 | PORT  | CLIENT(S)                                                       | DESCRIPTION                        | TCP | UDP |
 | ----- | --------------------------------------------------------------- | ---------------------------------- | --- | --- |
 | 30303 | [Geth] ↗ <br />[Erigon] ↗ <br /> [Nethermind] ↗ <br /> [Besu] ↗ | Execution Chain Data & Discovery   | ✔️  | ✔️  |
-| 9000  | [Lighthouse] ↗ <br /> [Teku] ↗ <br /> [Nimbus] ↗ <br />         | Beacon Gossip & Data               | ✔️  | ✔️  |
+| 9000  | [Lighthouse] ↗ <br /> [Teku] ↗ <br /> [Nimbus-Eth2] ↗ <br />    | Beacon Gossip & Data               | ✔️  | ✔️  |
 | 13000 | [Prysm] ↗                                                       | Beacon Gossip, Requests, Responses | ✔️  |     |
 | 12000 | [Prysm] ↗                                                       | Beacon Discovery, Data Exchange    |     | ✔️  |
 
@@ -67,7 +67,7 @@ The following steps are performed on your 📟 **node server**.
 You will have to chose one execution client and one consensus client.
 
 - **Execution Clients**: Geth, Erigon, Nethermind, Besu
-- **Consensus Clients**: Prysm, Lighthouse, Teku, Nimbus
+- **Consensus Clients**: Prysm, Lighthouse, Teku, Nimbus-Eth2
 
 Further details about [**Client Types**](/docs/theory/blockchain-knowledge/client-types.md) and [**Client Providers**](/docs/theory/blockchain-knowledge/client-providers.md) can be found in the 🧠 [**Theory**](/docs/theory/blockchain-knowledge/proof-of-stake.md) section.
 
@@ -81,7 +81,7 @@ sudo ufw allow 30303/tcp
 sudo ufw allow 30303/udp
 ```
 
-</TabItem> <TabItem value="consensus" label="Lighthouse, Teku, Nimbus">
+</TabItem> <TabItem value="consensus" label="Lighthouse, Teku, Nimbus-Eth2">
 
 ```sh
 sudo ufw allow 9000/tcp
@@ -114,7 +114,7 @@ sudo ufw status
 The output should look similar to this:
 
 <Tabs>
-<TabItem value="execution" label="Execution Client + Lighthouse, Teku, or Nimbus">
+<TabItem value="execution" label="Execution Client + Lighthouse, Teku, or Nimbus-Eth2">
 
 ```text
 Status: active
@@ -179,4 +179,4 @@ If all required ports are featured with the `ALLOW` property, your node’s loca
 [Lighthouse]: https://lighthouse-book.sigmaprime.io/faq.html?highlight=9000#do-i-need-to-set-up-any-port-mappings
 [Prysm]: https://docs.prylabs.network/docs/prysm-usage/p2p-host-ip#configure-your-firewall
 [Teku]: https://docs.teku.consensys.io/how-to/find-and-connect/improve-connectivity#configure-ports
-[Nimbus]: https://nimbus.guide/networking.html
+[Nimbus-Eth2]: https://nimbus.guide/networking.html

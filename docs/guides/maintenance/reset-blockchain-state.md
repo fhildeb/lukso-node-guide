@@ -77,7 +77,7 @@ sudo pkill besu
 sudo pkill teku
 ```
 
-</TabItem> <TabItem value="nimbus" label="Nimbus">
+</TabItem> <TabItem value="nimbus2" label="Nimbus-Eth2">
 
 ```sh
 sudo pkill nimbus_beacon_node
@@ -138,7 +138,7 @@ Exchange `<lukso-working-directory>` and `<network>` with the path of the node f
 
 ## 3. Restart the Node
 
-Depending on your setup method, there are different ways to start your node after updates have been applied.
+Depending on your setup method, there are different ways to start your node after the blockchain state was cleared.
 
 <Tabs groupId="setup">
   <TabItem value="clinode" label="LUKSO CLI Node" default>
@@ -188,4 +188,5 @@ sudo lukso status
 :::warning
 
 If you are still running into issues, [scan for problems](/docs/guides/maintenance/problem-scanning.md), [update your clients and configuration](/docs/guides/maintenance/client-updates.md), or [revert the client version](/docs/guides/maintenance/revert-client-versions.md).
+
 :::

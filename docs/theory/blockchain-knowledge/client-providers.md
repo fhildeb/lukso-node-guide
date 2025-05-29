@@ -16,7 +16,7 @@ There are three basic setups in which an execution client of the network can be 
 
 | Node Type                                 | Description                                                            | Use Case                                                                        | <nobr> Typical Execution Clients </nobr> |
 | ----------------------------------------- | ---------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ---------------------------------------- |
-| <nobr> **Light Node** </nobr>             | Downloads block headers and verifies only part of the chain.           | Wallets and Mobile dApps, <nobr> Low-Resource Devices </nobr>                   | [Helios], [Nimbus], [Lodestar]           |
+| <nobr> **Light Node** </nobr>             | Downloads block headers and verifies only part of the chain.           | Wallets and Mobile dApps, <nobr> Low-Resource Devices </nobr>                   | [Helios], [Nimbus-Eth2], [Lodestar]      |
 | <nobr> **Full Node** </nobr>              | Stores recent state and verifies all transactions and blocks.          | RPC Endpoints, Stakers, <nobr> Regular Node Operaters </nobr>                   | [Geth], [Erigon], [Nethermind], [Besu]   |
 | <nobr> **Node + Slasher Service** </nobr> | Runs a proof‑of‑stake slasher service on top of regular node services. | Staking Institutions, Watchers, <nobr> Advanced Node Operaters </nobr>          | [Geth], [Erigon], [Nethermind], [Besu]   |
 | <nobr> **Archive Node** </nobr>           | Stores all historical state since genesis.                             | Indexers, <nobr> Block Explorers, </nobr> <nobr> Data Analytic Services </nobr> | [Erigon], [Geth]                         |
@@ -42,7 +42,7 @@ Within the [LUKSO CLI v 0.24.1](https://github.com/lukso-network/tools-lukso-cli
 | [**Lighthouse**](https://lighthouse.sigmaprime.io/)               | 6.0.1   | [🔗](https://github.com/sigp/lighthouse/)      | [📘](https://lighthouse-book.sigmaprime.io/)             | [💬](https://discord.gg/cyAszAh)    | Linux, Win, macOS, ARM | Rust     | ✅ Yes                                                          |
 | [**Prysm**](https://prysmaticlabs.com/)                           | 5.2.0   | [🔗](https://github.com/prysmaticlabs/prysm)   | [📘](https://docs.prylabs.network/docs/getting-started/) | [💬](https://discord.gg/YMVYzv6)    | Linux, Win, macOS, ARM | Go       | ✅ Yes                                                          |
 | [**Teku**](https://consensys.net/knowledge-base/ethereum-2/teku/) | 24.12.1 | [🔗](https://github.com/ConsenSys/teku)        | [📘](https://docs.teku.consensys.net/)                   | [💬](https://discord.gg/9mCVSY6)    | Linux, Win, macOS      | Java     | ✅ Yes                                                          |
-| [**Nimbus**](https://nimbus.team/)                                | 24.10.0 | [🔗](https://github.com/status-im/nimbus-eth2) | [📘](https://nimbus.team/docs/)                          | [💬](https://discord.gg/qnjVyhatUa) | Linux, Win, macOS, ARM | Nim      | ❌ No                                                           |
+| [**Nimbus-Eth2**](https://nimbus.team/)                           | 24.10.0 | [🔗](https://github.com/status-im/nimbus-eth2) | [📘](https://nimbus.team/docs/)                          | [💬](https://discord.gg/qnjVyhatUa) | Linux, Win, macOS, ARM | Nim      | ❌ No                                                           |
 
 | Execution Client                                          | Version | Github                                            | Docs                                                               | Chat                                                   | System Support         | Language |
 | --------------------------------------------------------- | ------- | ------------------------------------------------- | ------------------------------------------------------------------ | ------------------------------------------------------ | ---------------------- | -------- |
@@ -67,16 +67,16 @@ There is **no preferred client**. What’s most important is maintaining [**Clie
 
 :::
 
-| Client         | Description                                                                                                      | Benefits                                                                              |
-| -------------- | ---------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
-| **Geth**       | Most widely used Ethereum client, maintained by the Ethereum Foundation. Longstanding and stable.                | Default in many setups, strong community support, and broad tooling compatibility     |
-| **Erigon**     | Modern execution client focused on performance and modularity. Optimized for archive and historical data access. | Ideal for data-heavy applications, efficient disk use, and fast synchronization times |
-| **Nethermind** | Performance-oriented client built with analytics and customizability in mind.                                    | Excellent logging, modular design, and strong support for advanced node operators     |
-| **Besu**       | Enterprise-ready client maintained by the Hyperledger Foundation. Supports public and private network use cases. | Permissioned features, great for institutional and consortium chain deployments       |
-| **Prysm**      | Popular consensus client with a clean terminal interface and great user experience, developed by Prysmatic Labs. | Intuitive tooling, widely adopted, with solid performance and documentation           |
-| **Lighthouse** | Security-first consensus client from Sigma Prime, known for audit quality and reliable performance.              | Efficient on low-end hardware, great default for solo stakers and hobbyists           |
-| **Teku**       | Institutional-grade client maintained by ConsenSys, with focus on interface integrations and operability.        | Preferred by data centers and custodians with strong monitoring and API support       |
-| **Nimbus**     | Minimalist, resource-light consensus client designed for embedded and ARM devices.                               | Excellent for mobile, Raspberry Pi, and custom lightweight deployments                |
+| Client          | Description                                                                                                      | Benefits                                                                              |
+| --------------- | ---------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
+| **Geth**        | Most widely used Ethereum client, maintained by the Ethereum Foundation. Longstanding and stable.                | Default in many setups, strong community support, and broad tooling compatibility     |
+| **Erigon**      | Modern execution client focused on performance and modularity. Optimized for archive and historical data access. | Ideal for data-heavy applications, efficient disk use, and fast synchronization times |
+| **Nethermind**  | Performance-oriented client built with analytics and customizability in mind.                                    | Excellent logging, modular design, and strong support for advanced node operators     |
+| **Besu**        | Enterprise-ready client maintained by the Hyperledger Foundation. Supports public and private network use cases. | Permissioned features, great for institutional and consortium chain deployments       |
+| **Prysm**       | Popular consensus client with a clean terminal interface and great user experience, developed by Prysmatic Labs. | Intuitive tooling, widely adopted, with solid performance and documentation           |
+| **Lighthouse**  | Security-first consensus client from Sigma Prime, known for audit quality and reliable performance.              | Efficient on low-end hardware, great default for solo stakers and hobbyists           |
+| **Teku**        | Institutional-grade client maintained by ConsenSys, with focus on interface integrations and operability.        | Preferred by data centers and custodians with strong monitoring and API support       |
+| **Nimbus-Eth2** | Minimalist, resource-light consensus client designed for embedded and ARM devices.                               | Excellent for mobile, Raspberry Pi, and custom lightweight deployments                |
 
 ## Storage Comparison
 
@@ -149,7 +149,7 @@ All execution clients store the same, verifiable blockchain state, yet their dis
 | **Besu**       | <nobr> _Bonsai & Forest Tries_ </nobr>  | Ships with two different storage layouts for regular and full archive setups. While the [Forest Trie](https://besu.hyperledger.org/public-networks/concepts/data-storage-formats#forest-of-tries) is a classic archive, the default [Bonsai Trie](https://besu.hyperledger.org/public-networks/concepts/data-storage-formats#bonsai-tries) is a flat table layout for regular nodes, only writing leaf nodes and log deltas within a [Merkle-Trie](https://ethereum.org/de/developers/docs/data-structures-and-encoding/patricia-merkle-trie/). Additional prune commands can reduce occupied space further and make the client extremely modular. |
 
 [Helios]: https://github.com/a16z/helios
-[Nimbus]: https://nimbus.guide/index.html
+[Nimbus-Eth2]: https://nimbus.guide/index.html
 [Lodestar]: https://chainsafe.github.io/lodestar/
 [Geth]: https://geth.ethereum.org/docs/getting-started/hardware-requirements
 [Erigon]: https://docs.erigon.tech/getting-started/hw-requirements

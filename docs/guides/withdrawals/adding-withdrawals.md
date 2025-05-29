@@ -37,7 +37,7 @@ As LUKSO is an EVM-based blockchain, the withdrawal update is similar to Ethereu
 - [Prysm Withdrawal Guide](https://docs.prylabs.network/docs/wallet/withdraw-validator)
 - [Lighthouse Exit Description](https://lighthouse-book.sigmaprime.io/voluntary-exit.html#withdrawal-of-exited-funds)
 - [Teku Credential Updates](https://docs.teku.consensys.io/how-to/update-withdrawal-keys)
-- [Nimbus Withdrawal Changes](https://nimbus.guide/withdrawals.html)
+- [Nimbus-Eth2 Withdrawal Changes](https://nimbus.guide/withdrawals.html)
 - [Official ETH2 Book Withdrawal Explanation](https://eth2book.info/capella/part2/deposits-withdrawals/withdrawal-processing/)
 - [Official Ethereum Withdrawal FAQ](https://notes.ethereum.org/@launchpad/withdrawals-faq)
 

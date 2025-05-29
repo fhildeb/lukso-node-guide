@@ -77,7 +77,7 @@ sudo pkill besu
 sudo pkill teku
 ```
 
-</TabItem> <TabItem value="nimbus" label="Nimbus">
+</TabItem> <TabItem value="nimbus2" label="Nimbus-Eth2">
 
 ```sh
 sudo pkill nimbus_beacon_node
@@ -155,7 +155,7 @@ besu --version
 teku --version
 ```
 
-</TabItem> <TabItem value="nimbus" label="Nimbus">
+</TabItem> <TabItem value="nimbus2" label="Nimbus-Eth2">
 
 ```sh
 nimbus_beacon_node --version

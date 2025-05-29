@@ -71,7 +71,7 @@ sudo pkill besu
 sudo pkill teku
 ```
 
-</TabItem> <TabItem value="nimbus" label="Nimbus">
+</TabItem> <TabItem value="nimbus2" label="Nimbus-Eth2">
 
 ```sh
 sudo pkill nimbus_beacon_node
@@ -128,13 +128,13 @@ lukso install --lighthouse-tag v4.1.0
 # Overwrite default Teku Version
 lukso install --teku-tag v23.10.0
 
-# Overwrite default Nimbus Eth2 Version
+# Overwrite default Nimbus-Eth2 Version
 lukso install --nimbus2-tag v24.2.1 --nimbus2-commit-hash 7fe43fc
 ```
 
 :::tip
 
-The **Geth**, **Nethermind**, and **Nimbus Eth2** clients require an additional commit hash to the release tag, both attached as flags.
+The **Geth**, **Nethermind**, and **Nimbus-Eth2** clients require an additional commit hash to the release tag, both attached as flags.
 
 :::
 
@@ -155,7 +155,7 @@ Version numbers and commit hashes can be derived from the client repositories:
 - [Prysm Releases](https://github.com/prysmaticlabs/prysm/releases)
 - [Lighthouse Releases](https://github.com/sigp/lighthouse/releases)
 - [Teku Releases](https://github.com/ConsenSys/teku/releases)
-- [Nimbus Releases](https://github.com/status-im/nimbus-eth2/releases)
+- [Nimbus-Eth2 Releases](https://github.com/status-im/nimbus-eth2/releases)
 
 :::
 

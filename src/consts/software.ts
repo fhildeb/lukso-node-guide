@@ -53,7 +53,7 @@ const software = {
       version: "1.14.13",
     },
     {
-      name: "Nimbus",
+      name: "Nimbus-Eth2",
       link: "https://github.com/status-im/nimbus-eth2/releases",
       version: "24.12.0",
     },

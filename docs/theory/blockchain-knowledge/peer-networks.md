@@ -105,7 +105,7 @@ enode://276f14e4049840a0f5aa5e568b772ab6639251149a52ba244647277175b83f47b135f3b3
 ```
 
 </TabItem>
-<TabItem value="prysm" label="Prysm, Nimbus, Lighthouse">
+<TabItem value="prysm" label="Prysm, Nimbus-Eth2, Lighthouse">
 
 ```text title="Mainnet Execution Bootnodes"
 # Address 1

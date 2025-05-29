@@ -39,7 +39,7 @@ Meeting or exceeding the hardware specs below keeps your specific node type sync
 
 | Node Type                                 | CPU     | RAM   | Storage | Network   | Typical Execution Clients              | [CLI Support](https://github.com/lukso-network/tools-lukso-cli) |
 | ----------------------------------------- | ------- | ----- | ------- | --------- | -------------------------------------- | --------------------------------------------------------------- |
-| <nobr> **Light Node** </nobr>             | 2 Cores | 2 GB  | 2 GB    | ≥ 5 Mbps  | [Helios], [Nimbus], [Lodestar]         | ❌ No                                                           |
+| <nobr> **Light Node** </nobr>             | 2 Cores | 2 GB  | 2 GB    | ≥ 5 Mbps  | [Helios], [Nimbus-Eth2], [Lodestar]    | ❌ No                                                           |
 | <nobr> **Full Node** </nobr>              | 4 Cores | 8 GB  | 500 GB  | ≥ 25 Mbps | [Geth], [Erigon], [Nethermind], [Besu] | ✅ Yes                                                          |
 | <nobr> **Node + Slasher Service** </nobr> | 6 Cores | 16 GB | 1 TB    | ≥ 50 Mbps | [Geth], [Erigon], [Nethermind], [Besu] | ✅ Yes                                                          |
 | <nobr> **Archive Node** </nobr>           | 8 Cores | 16 GB | 2 TB    | ≥ 50 Mbps | [Erigon], [Besu]                       | ✅ Yes                                                          |
@@ -50,7 +50,7 @@ Meeting or exceeding the hardware specs below keeps your specific node type sync
 
 | Node Type                                 | CPU           | RAM   | Storage   | Network   | Typical Execution Clients              | [CLI Support](https://github.com/lukso-network/tools-lukso-cli) |
 | ----------------------------------------- | ------------- | ----- | --------- | --------- | -------------------------------------- | --------------------------------------------------------------- |
-| <nobr> **Light Node** </nobr>             | 2 – 4 Cores   | 4 GB  | 5 – 10 GB | ≥ 10 Mbps | [Helios], [Nimbus], [Lodestar]         | ❌ No                                                           |
+| <nobr> **Light Node** </nobr>             | 2 – 4 Cores   | 4 GB  | 5 – 10 GB | ≥ 10 Mbps | [Helios], [Nimbus-Eth2], [Lodestar]    | ❌ No                                                           |
 | <nobr> **Full Node** </nobr>              | 6 – 8 Cores   | 16 GB | 1 - 2 TB  | ≥ 25 Mbps | [Geth], [Erigon], [Nethermind], [Besu] | ✅ Yes                                                          |
 | <nobr> **Node + Slasher Service** </nobr> | 8 - 10 Cores  | 32 GB | 2 - 4 TB  | ≥ 50 Mbps | [Geth], [Erigon], [Nethermind], [Besu] | ✅ Yes                                                          |
 | <nobr> **Archive Node** </nobr>           | 12 – 16 Cores | 32 GB | 4 - 6 TB  | ≥ 50 Mbps | [Erigon], [Besu]                       | ✅ Yes                                                          |
@@ -143,7 +143,6 @@ The above data was gathered from [Geth](/docs/theory/blockchain-knowledge/client
 :::
 
 [Helios]: https://github.com/a16z/helios
-[Nimbus]: https://nimbus.guide/index.html
 [Lodestar]: https://chainsafe.github.io/lodestar/
 [Geth]: https://geth.ethereum.org/docs/getting-started/hardware-requirements
 [Erigon]: https://docs.erigon.tech/getting-started/hw-requirements
@@ -152,4 +151,4 @@ The above data was gathered from [Geth](/docs/theory/blockchain-knowledge/client
 [Prysm]: https://docs.prylabs.network/docs/prysm-usage/slasher
 [Lighthouse]: https://lighthouse-book.sigmaprime.io/installation.html#recommended-hardware
 [Teku]: https://docs.teku.consensys.io/development/get-started/system-requirements
-[Nimbus]: https://nimbus.guide/hardware.html
+[Nimbus-Eth2]: https://nimbus.guide/hardware.html

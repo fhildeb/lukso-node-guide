@@ -130,7 +130,7 @@ RULE 2
 **2.4 Add Consensus Port Forwarding Rules**: _Set multiple port access rules for UDP and TCP connections._
 
 <Tabs>
-<TabItem value="execution" label="Lighthouse, Teku, or Nimbus">
+<TabItem value="execution" label="Lighthouse, Teku, or Nimbus-Eth2">
 
 ```text
 RULE 3
@@ -221,7 +221,7 @@ RULE 4
 Check back to your port sharing screen of the router to find a list with all added rules.
 
 <Tabs>
-<TabItem value="execution" label="Execution Client + Lighthouse, Teku, or Nimbus">
+<TabItem value="execution" label="Execution Client + Lighthouse, Teku, or Nimbus-Eth2">
 
 ```text
 DEVICE SCREEN

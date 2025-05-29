@@ -134,7 +134,7 @@ lukso-node
 │   |   ├───geth                              // Config Files for Geth Client
 │   |   ├───lighthouse                        // Config Files for Lighthouse Client
 │   |   ├───nethermind                        // Config Files for Nethermind Client
-│   |   ├───nimbus2                           // Config Files for Nimbus Client
+│   |   ├───nimbus2                           // Config Files for Nimbus-Eth2 Client
 │   |   ├───prysm                             // Config Files for Prysm Client
 │   |   ├───teku                              // Config Files for Teku Client
 │   |   └───shared
@@ -210,7 +210,7 @@ besu --version
 ```
 
 </TabItem> 
-<TabItem value="nimbus" label="Nimbus">
+<TabItem value="nimbus2" label="Nimbus-Eth2">
 
 ```sh
 nimbus_beacon_node --version
@@ -355,20 +355,20 @@ lukso start --testnet \
   --prysm-weak-subjectivity-checkpoint=$<BLOCK_ROOT>:$<EPOCH>
 ```
 
-</TabItem> <TabItem value="nimbus" label="Nimbus">
+</TabItem> <TabItem value="nimbus2" label="Nimbus-Eth2">
 
 ```sh
 # Starting the Mainnet Node without Staking
 lukso start \
-  --nimbus-external-beacon-api-url=https://checkpoints.mainnet.lukso.network \
-  --nimbus-trusted-block-root=$<BLOCK_ROOT> \
-  --nimbus-weak-subjectivity-checkpoint=$<BLOCK_ROOT>:$<EPOCH>
+  --nimbus2-external-beacon-api-url=https://checkpoints.mainnet.lukso.network \
+  --nimbus2-trusted-block-root=$<BLOCK_ROOT> \
+  --nimbus2-weak-subjectivity-checkpoint=$<BLOCK_ROOT>:$<EPOCH>
 
 # Starting the Testnet Node without Staking
 lukso start --testnet \
-  --nimbus-external-beacon-api-url=https://checkpoints.testnet.lukso.network
-  --nimbus-trusted-block-root=$<BLOCK_ROOT> \
-  --nimbus-weak-subjectivity-checkpoint=$<BLOCK_ROOT>:$<EPOCH>
+  --nimbus2-external-beacon-api-url=https://checkpoints.testnet.lukso.network
+  --nimbus2-trusted-block-root=$<BLOCK_ROOT> \
+  --nimbus2-weak-subjectivity-checkpoint=$<BLOCK_ROOT>:$<EPOCH>
 ```
 
 </TabItem> 
