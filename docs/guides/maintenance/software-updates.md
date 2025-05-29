@@ -199,12 +199,25 @@ sudo apt autoremove
 sudo apt autoclean
 ```
 
-## 5. Restart Node
+## 5. Restart the Node
 
-Depending on your setup method, there are different ways to stop your node before applying updates.
+Depending on your setup method, there are different ways to start your node.
 
 <Tabs groupId="setup">
-  <TabItem value="cli" label="LUKSO CLI" default>
+  <TabItem value="clinode" label="LUKSO CLI Node" default>
+
+```sh
+cd <lukso-working-directory>
+lukso start --checkpoint-sync
+```
+
+:::info
+
+Exchange `<lukso-working-directory>` with the path of the node folder
+
+:::
+
+</TabItem> <TabItem value="clivalidator" label="LUKSO CLI Validator" default>
 
 ```sh
 cd <lukso-working-directory>
@@ -240,6 +253,12 @@ sudo systemctl start lukso-validator
 
 </TabItem>
 </Tabs>
+
+After the clients were started, verify that their services are still up.
+
+```sh
+sudo lukso status
+```
 
 :::tip
 
