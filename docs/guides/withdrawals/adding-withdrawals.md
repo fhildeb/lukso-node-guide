@@ -104,13 +104,13 @@ The steps **2.1** to **2.3** need to be repeated for every validator key that is
 
 **2.2 Enter Log Folder**: Move into the logging folder of the node’s working directory.
 
-```bash
+```sh
 cd <node-working-directory>/<network-type>-logs/
 ```
 
 **2.3 Search Logs**: Search and print out all validator indices of the active validator.
 
-```bash
+```sh
 cat <latest-validator-logs.log> | grep -o 'index=[0-9]* ' | awk -F'=' '{printf "%s,", $2}' | sed 's/,$//' | tr -d ' '
 ```
 
@@ -150,7 +150,7 @@ The LUKSO KeyGen CLI should only be used on a secure offline device.
 
 Start the BLS to Execution process from the LUKSO KeyGen CLI.
 
-```bash
+```sh
 ./lukso-key-gen generate-bls-to-execution-change
 ```
 
@@ -209,13 +209,13 @@ The withdrawal credential can be shared directly from your node or the public co
 
 **5.1 Copy File Contents**: Print and copy the contents of the _bls_to_execution_change.json_ file.
 
-```bash
+```sh
 cat bls_to_execution_change.json
 ```
 
 **5.2 Generate Terminal Command**: Paste the contents into the local broadcast command.
 
-```bash
+```sh
 POST -H "Content-type: application/json" -d  '<file-content>'
 ```
 
@@ -230,21 +230,21 @@ Each consensus client with validator support uses a different internal consensus
 <Tabs groupId="consensus">
   <TabItem value="prysm" label="Prysm" default>
 
-```bash
+```sh
 curl -X POST -H "Content-type: application/json" -d '<file-content>'
 http://localhost:3500/eth/v1/beacon/pool/bls_to_execution_changes
 ```
 
 </TabItem> <TabItem value="teku" label="Teku">
 
-```bash
+```sh
 curl -X POST -H "Content-type: application/json" -d '<file-content>'
 http://localhost:5051/eth/v1/beacon/pool/bls_to_execution_changes
 ```
 
 </TabItem><TabItem value="lighthouse" label="Lighthouse">
 
-```bash
+```sh
 curl -X POST -H "Content-type: application/json" -d '<file-content>'
 http://localhost:5052/eth/v1/beacon/pool/bls_to_execution_changes
 ```
@@ -264,19 +264,19 @@ Exchange `<file-content>` with the actual content of the _bls_to_execution_chang
 <Tabs groupId="consensus">
   <TabItem value="prysm" label="Prysm" default>
 
-```bash
+```sh
 curl -X POST -H “Content-type: application/json” -d '[{"message": {"validator_index": "7", "from_bls_pubkey": "0x89a6dc1e83570b99cfb2557f01c852ab2bf00957367d0c35a5aa0e3101c9aad33645064e5da8a1efcd5cd501eb123ad0", "to_execution_address": "0x3daee8cd2e3c18dafe13332de33972ac5cf558f3"}, "signature": "0x80e4c40a543ffb99b6fc4b66e0d37726c1739830d27c229091bf8e792ffb98cac0971274bdc815dcba1042e33a4087d809113a0293614f8533f911cb6726c2efb03cf46470bff3ecf00ed962964262470f502208f6cd50e93f56e1b71ee61fa7", "metadata": {"network_name": "lukso", "genesis_validators_root": "0xd7cc24d150c617450dfa8176ef45a01dadb885a75a1a4c32d4a6828f8f088760", "deposit_cli_version": "2.5.6"}}]' http://localhost:3500/eth/v1/beacon/pool/bls_to_execution_changes
 ```
 
 </TabItem> <TabItem value="teku" label="Teku">
 
-```bash
+```sh
 curl -X POST -H “Content-type: application/json” -d '[{"message": {"validator_index": "7", "from_bls_pubkey": "0x89a6dc1e83570b99cfb2557f01c852ab2bf00957367d0c35a5aa0e3101c9aad33645064e5da8a1efcd5cd501eb123ad0", "to_execution_address": "0x3daee8cd2e3c18dafe13332de33972ac5cf558f3"}, "signature": "0x80e4c40a543ffb99b6fc4b66e0d37726c1739830d27c229091bf8e792ffb98cac0971274bdc815dcba1042e33a4087d809113a0293614f8533f911cb6726c2efb03cf46470bff3ecf00ed962964262470f502208f6cd50e93f56e1b71ee61fa7", "metadata": {"network_name": "lukso", "genesis_validators_root": "0xd7cc24d150c617450dfa8176ef45a01dadb885a75a1a4c32d4a6828f8f088760", "deposit_cli_version": "2.5.6"}}]' http://localhost:5051/eth/v1/beacon/pool/bls_to_execution_changes
 ```
 
 </TabItem><TabItem value="lighthouse" label="Lighthouse">
 
-```bash
+```sh
 curl -X POST -H “Content-type: application/json” -d '[{"message": {"validator_index": "7", "from_bls_pubkey": "0x89a6dc1e83570b99cfb2557f01c852ab2bf00957367d0c35a5aa0e3101c9aad33645064e5da8a1efcd5cd501eb123ad0", "to_execution_address": "0x3daee8cd2e3c18dafe13332de33972ac5cf558f3"}, "signature": "0x80e4c40a543ffb99b6fc4b66e0d37726c1739830d27c229091bf8e792ffb98cac0971274bdc815dcba1042e33a4087d809113a0293614f8533f911cb6726c2efb03cf46470bff3ecf00ed962964262470f502208f6cd50e93f56e1b71ee61fa7", "metadata": {"network_name": "lukso", "genesis_validators_root": "0xd7cc24d150c617450dfa8176ef45a01dadb885a75a1a4c32d4a6828f8f088760", "deposit_cli_version": "2.5.6"}}]' http://localhost:5052/eth/v1/beacon/pool/bls_to_execution_changes
 ```
 

@@ -29,7 +29,7 @@ Ensure you have the latest [LUKSO CLI](https://github.com/lukso-network/tools-lu
 <Tabs>
   <TabItem value="prysm" label="Prysm or Teku" default>
 
-```bash
+```sh
 # Start Mainnet Exit
 sudo lukso validator exit
 
@@ -39,7 +39,7 @@ sudo lukso validator exit --testnet
 
 </TabItem> <TabItem value="lighthouse" label="Lighthouse">
 
-```bash
+```sh
 # Start Mainnet Exit
 sudo lukso validator exit --keystore "./mainnet-keystore/keystore-xxx.json"
 

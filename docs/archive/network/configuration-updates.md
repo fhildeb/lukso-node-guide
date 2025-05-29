@@ -12,12 +12,12 @@ This page lists changes introduced to the [LUKSO Mainnet Network Configuration F
 
 :::tip
 
-Chain configurations can be updated on a node setup by:
+Client-specific blockchain configurations can be updated on a node setup by:
 
-- 🎨 **[DAppNode](https://dappnode.com/)**: Reinstalling both execution and consensus clients, as configuration is only fetched during setup.
-- 👾 **[LUKSO CLI](https://github.com/lukso-network/tools-lukso-cli)**: Overwriting the old chain configuration using the `lukso update configs` command.
-- 🐳 **[Docker](https://github.com/lukso-network/network-docker-containers)**: Modifying the `docker_compose.yml` client files to change the container configuration.
-- 🗂️ **[Custom](https://docs.lukso.tech/networks/mainnet/running-a-node#-with-your-own-clients)**: Redownloading the network configuration or modifying files individually.
+- 🎨 **[DAppNode](https://dappnode.com/)**: Reinstalling both execution and consensus clients, as their configuration is only fetched during setup.
+- 👾 **[LUKSO CLI](https://github.com/lukso-network/tools-lukso-cli)**: Updating files manually, as `lukso update configs` only affects shared, cross-client configurations.
+- 🐳 **[Docker](https://github.com/lukso-network/network-docker-containers)**: Updating the client's `docker_compose.yml` files for the container configuration.
+- 🗂️ **[Custom](https://docs.lukso.tech/networks/mainnet/running-a-node#-with-your-own-clients)**: Redownloading the network configuration or updating files manually.
 
 :::
 

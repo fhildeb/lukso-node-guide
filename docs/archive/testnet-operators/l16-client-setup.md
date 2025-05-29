@@ -209,7 +209,7 @@ cd l16-node-testnet
 ls -al
 ```
 
-```bash
+```sh
 l16-node-testnet
 ├── configs
 │   ├── config.yaml

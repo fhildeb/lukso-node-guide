@@ -21,14 +21,14 @@ The following steps are performed on your 📟 **node server**.
 
 ## Stop Node Operation
 
-```bash
+```sh
 lukso network stop validator
 lukso network stop
 ```
 
 ## Clear Network Config
 
-```bash
+```sh
 lukso network stop validator
 lukso network stop
 lukso network clear
@@ -37,27 +37,27 @@ lukso network init
 
 ## Update Bootnodes
 
-```bash
+```sh
 lukso network update
 lukso network refresh
 ```
 
 ## Restart the Validator
 
-```bash
+```sh
 lukso network start
 lukso network start validator
 ```
 
 ## Check Docker Containers
 
-```bash
+```sh
 docker ps -a
 ```
 
 ## Monitor Docker Images
 
-```bash
+```sh
 docker images -a
 ```
 
@@ -69,7 +69,7 @@ Open multiple terminals to track them all at the same time.
 
 :::
 
-```bash
+```sh
 # Execution Client
 sudo docker logs lukso-geth -f
 
