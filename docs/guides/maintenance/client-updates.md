@@ -46,7 +46,7 @@ sudo systemctl stop lukso-validator
 <details>
 <summary>Force Client Shutdown</summary>
 
-<Tabs>
+<Tabs groupId="client">
 <TabItem value="geth" label="Geth">
 
 ```sh
@@ -124,7 +124,7 @@ lukso version
 
 Check your current client versions.
 
-<Tabs>
+<Tabs groupId="client">
 <TabItem value="geth" label="Geth">
 
 ```sh
