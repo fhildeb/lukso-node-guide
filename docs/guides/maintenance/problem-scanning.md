@@ -136,7 +136,7 @@ JSON-RPC is a lightweight communication protocol encoded in JSON, allowing calls
 
 :::tip
 
-By default, the [LUKSO CLI](https://github.com/lukso-network/tools-lukso-cli) opens the default internal JSON RPC ports for the Nethermind and Besu client, while restricting their use for Erigon and Geth clients due to their JavaScript console and broader functionality. If you're using Geth or Erigon, you will first have to adjust the client-configuration to allow all data packages from being read.
+By default, the [LUKSO Network Configuration](https://github.com/lukso-network/network-configs) allows a variety of JSON RPC modules for the Nethermind and Besu client, while restricting their use for Erigon and Geth clients due to their JavaScript console. If you're using Geth or Erigon, you will first have to adjust the client-configuration to allow the regular data packages from being accessed.
 
 :::
 
@@ -506,7 +506,7 @@ A REST API is a web-based interface for querying structured data. Ethereum conse
 
 :::tip
 
-By default, the [LUKSO CLI](https://github.com/lukso-network/tools-lukso-cli) opens the default REST API ports for all consensus clients.
+By default, the [LUKSO Network Configuration](https://github.com/lukso-network/network-configs) opens the REST API ports for all consensus clients.
 :::
 
 **1. Install Querying Tool**: _Install the JSON query service for data processing from the RPC endpoint._
