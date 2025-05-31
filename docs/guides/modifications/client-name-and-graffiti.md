@@ -48,7 +48,7 @@ cd
 Navigate into the node's config folder of your network you want to set the name for. Adjust the `your-node-folder` and `<network>` `your-execution-client` properties with the actual folder names.
 
 ```
-cd <your-node-folder>/configs/<network>/<your-execution-client>
+cd <lukso-working-directory>/configs/<network>/<your-execution-client>
 ```
 
 Then open up the configuration file:
@@ -102,7 +102,7 @@ cd
 Navigate into your node's config folder of the network you want to set the name for. Adjust the `your-node-folder` and `<network>` `your-consensus-client` properties with the actual folder names.
 
 ```
-cd <your-node-folder>/configs/<network>/<your-consensus-client>
+cd <lukso-working-directory>/configs/<network>/<your-consensus-client>
 ```
 
 Then open up the configuration file:

@@ -40,7 +40,7 @@ The following steps are performed on your 💻 **personal computer**.
 :::
 
 ```sh
-scp -P <ssh-port> -i ~/.ssh/<ssh-key> -r <key-folder> <user-name>@<node-ip>:<node-folder>/<keyfolder>
+scp -P <ssh-port> -i ~/.ssh/<ssh-key> -r <key-folder> <user-name>@<node-ip>:<lukso-working-directory>/<keyfolder>
 ```
 
 :::warning
@@ -49,15 +49,15 @@ The command uses quite a few properties and flags. Replace all properties with s
 
 :::
 
-| **Property**                  | **Description**                                        | **Retrieval**                                                                                                                                             |
-| ----------------------------- | ------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| <nobr>`<ssh-key>`</nobr>      | SSH key file used for authentication.                  | Run `ls ~/.ssh/` in your personal computer's terminal to list the files in the SSH folder and find the correct key file name for your node login.         |
-| <nobr>`<key-folder>`</nobr>   | Local path to the keystore folder with validator keys. | Use your file explorer to locate the folder of your validator keys on your personal computer and right-click the folder and copy it's path.               |
-| <nobr>`<ssh-port>` </nobr>    | The SSH port of your node.                             | Open the `~/.ssh/config` file using your preferred text editor on your personal computer and find the port that is used for the node's SSH communication. |
-| <nobr>`<user-name>`</nobr>    | The SSH user for your node.                            | Open the `~/.ssh/config` file using your preferred text editor on your personal computer and find the admin user name for your node.                      |
-| <nobr>`<node-ip>` </nobr>     | The IP address of your node.                           | Open the `~/.ssh/config` file using your preferred text editor on your personal computer and find the host IP address of your node.                       |
-| <nobr>`<node-folder>` </nobr> | The full path to your node's working directory.        | Use SSH to connect to your node, enter your node's working directory, and run the `pwd` command to get it's full path.                                    |
-| <nobr>`<keyfolder>` </nobr>   | Name for the validator folder.                         | Define a name for the copied file's folder on your node, either the same as your personal computer or a new one.                                          |
+| **Property**                              | **Description**                                        | **Retrieval**                                                                                                                                             |
+| ----------------------------------------- | ------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| <nobr>`<ssh-key>`</nobr>                  | SSH key file used for authentication.                  | Run `ls ~/.ssh/` in your personal computer's terminal to list the files in the SSH folder and find the correct key file name for your node login.         |
+| <nobr>`<key-folder>`</nobr>               | Local path to the keystore folder with validator keys. | Use your file explorer to locate the folder of your validator keys on your personal computer and right-click the folder and copy it's path.               |
+| <nobr>`<ssh-port>` </nobr>                | The SSH port of your node.                             | Open the `~/.ssh/config` file using your preferred text editor on your personal computer and find the port that is used for the node's SSH communication. |
+| <nobr>`<user-name>`</nobr>                | The SSH user for your node.                            | Open the `~/.ssh/config` file using your preferred text editor on your personal computer and find the admin user name for your node.                      |
+| <nobr>`<node-ip>` </nobr>                 | The IP address of your node.                           | Open the `~/.ssh/config` file using your preferred text editor on your personal computer and find the host IP address of your node.                       |
+| <nobr>`<lukso-working-directory>` </nobr> | The full path to your node's working directory.        | Use SSH to connect to your node, enter your node's working directory, and run the `pwd` command to get it's full path.                                    |
+| <nobr>`<keyfolder>` </nobr>               | Name for the validator folder.                         | Define a name for the copied file's folder on your node, either the same as your personal computer or a new one.                                          |
 
 :::tip
 
@@ -85,13 +85,13 @@ The following steps are performed on your 📟 **node server**.
   <TabItem value="mainnet" label="Mainnet" default>
 
 ```sh
-lukso validator import --validator-keys "<node-folder>/<keyfolder>"
+lukso validator import --validator-keys "<lukso-working-directory>/<keyfolder>"
 ```
 
 </TabItem> <TabItem value="testnet" label="Testnet">
 
 ```sh
-lukso validator import --testnet --validator-keys "<node-folder>/<keyfolder>"
+lukso validator import --testnet --validator-keys "<lukso-working-directory>/<keyfolder>"
 ```
 
 </TabItem>
@@ -164,7 +164,7 @@ You can use the `rm` command to remove files and directories while using the `-r
 :::
 
 ```sh
-rm -rf <node-folder>/<keyfolder>
+rm -rf <lukso-working-directory>/<keyfolder>
 ```
 
 :::info
@@ -192,24 +192,128 @@ The recipient can be any Ethereum address of a wallet you have control over and 
 
 :::
 
-<Tabs groupId="network-type">
-  <TabItem value="mainnet" label="Mainnet" default>
+<Tabs>
+<TabItem value="regular-sync" label="Regular Synchronization">
 
 ```sh
+# Starting the Mainnet Node as Validator
 lukso start --validator --transaction-fee-recipient "<transaction-fee-recipient-address>"
+
+# Starting the Testnet Node as Validator
+lukso start --validator --transaction-fee-recipient "<transaction-fee-recipient-address>" --testnet
 ```
-
-</TabItem> <TabItem value="testnet" label="Testnet">
-
-```sh
-lukso start --validator --testnet --transaction-fee-recipient "<transaction-fee-recipient-address>"
-```
-
-</TabItem>
-</Tabs>
 
 :::info
 
 Replace `<transaction-fee-recipient-address>` with your actual withdrawal address.
 
 :::
+
+</TabItem> 
+<TabItem value="automated-checkpoints" label="Automated Checkpoints">
+
+```sh
+# Starting the Mainnet Node as Validator
+lukso start --validator --transaction-fee-recipient "<transaction-fee-recipient-address>" --checkpoint-sync
+
+# Starting the Testnet Node as Validator
+lukso start --validator --testnet --transaction-fee-recipient "<transaction-fee-recipient-address>" --checkpoint-sync
+```
+
+:::info
+
+Replace `<transaction-fee-recipient-address>` with your actual withdrawal address.
+
+:::
+
+</TabItem> 
+<TabItem value="manual-checkpoints" label="Manual Checkpoints">
+
+- Visit the [Mainnet Checkpoint Explorer](https://checkpoints.mainnet.lukso.network/) or [Testnet Checkpoint Explorer](https://checkpoints.testnet.lukso.network/)
+- Pass the latest **Block Root** and **Epoch** values to the consensus client flags
+
+<Tabs>
+<TabItem value="lighthouse" label="Lighthouse">
+
+```sh
+# Starting the Mainnet Node as Validator
+lukso start --validator \
+  --transaction-fee-recipient "<transaction-fee-recipient-address>" \
+  --lighthouse-checkpoint-sync-url=https://checkpoints.mainnet.lukso.network \
+  --lighthouse-genesis-state-url=https://checkpoints.mainnet.lukso.network \
+  --lighthouse-wss-checkpoint=$<BLOCK_ROOT>:$<EPOCH>
+
+# Starting the Testnet Node as Validator
+lukso start --validator --testnet \
+  --transaction-fee-recipient "<transaction-fee-recipient-address>" \
+  --lighthouse-checkpoint-sync-url=https://checkpoints.testnet.lukso.network \
+  --lighthouse-genesis-state-url=https://checkpoints.testnet.lukso.network \
+  --lighthouse-wss-checkpoint=$<BLOCK_ROOT>:$<EPOCH>
+```
+
+</TabItem> <TabItem value="teku" label="Teku">
+
+```sh
+# Starting the Mainnet Node as Validator
+lukso start --validator \
+  --transaction-fee-recipient "<transaction-fee-recipient-address>" \
+  --teku-checkpoint-sync-url=https://checkpoints.mainnet.lukso.network \
+  --teku-ws-checkpoint=$<BLOCK_ROOT>:$<EPOCH>
+
+# Starting the Testnet Node as Validator
+lukso start --validator --testnet \
+  --transaction-fee-recipient "<transaction-fee-recipient-address>" \
+  --teku-checkpoint-sync-url=https://checkpoints.testnet.lukso.network \
+  --teku-ws-checkpoint=$<BLOCK_ROOT>:$<EPOCH>
+```
+
+</TabItem> <TabItem value="prysm" label="Prysm">
+
+```sh
+# Starting the Mainnet Node as Validator
+lukso start --validator \
+  --transaction-fee-recipient "<transaction-fee-recipient-address>" \
+  --prysm-checkpoint-sync-url=https://checkpoints.mainnet.lukso.network \
+  --prysm-genesis-beacon-api-url=https://checkpoints.mainnet.lukso.network \
+  --prysm-weak-subjectivity-checkpoint=$<BLOCK_ROOT>:$<EPOCH>
+
+# Starting the Testnet Node as Validator
+lukso start --validator --testnet \
+  --transaction-fee-recipient "<transaction-fee-recipient-address>" \
+  --prysm-checkpoint-sync-url=https://checkpoints.testnet.lukso.network \
+  --prysm-genesis-beacon-api-url=https://checkpoints.testnet.lukso.network \
+  --prysm-weak-subjectivity-checkpoint=$<BLOCK_ROOT>:$<EPOCH>
+```
+
+</TabItem> <TabItem value="nimbus2" label="Nimbus-Eth2">
+
+```sh
+# Starting the Mainnet Node as Validator
+lukso start --validator \
+  --transaction-fee-recipient "<transaction-fee-recipient-address>" \
+  --nimbus2-external-beacon-api-url=https://checkpoints.mainnet.lukso.network \
+  --nimbus2-trusted-block-root=$<BLOCK_ROOT> \
+  --nimbus2-weak-subjectivity-checkpoint=$<BLOCK_ROOT>:$<EPOCH>
+
+# Starting the Testnet Node as Validator
+lukso start --validator --testnet \
+  --transaction-fee-recipient "<transaction-fee-recipient-address>" \
+  --nimbus2-external-beacon-api-url=https://checkpoints.testnet.lukso.network
+  --nimbus2-trusted-block-root=$<BLOCK_ROOT> \
+  --nimbus2-weak-subjectivity-checkpoint=$<BLOCK_ROOT>:$<EPOCH>
+```
+
+</TabItem> 
+</Tabs>
+
+:::info
+
+Replace the following parameters of the commands:
+
+- `<BLOCK_ROOT>` and `<EPOCH>` with the current hash and number while keeping the `$` sign.
+- `<transaction-fee-recipient-address>` with your actual withdrawal address.
+
+:::
+
+</TabItem> 
+</Tabs>

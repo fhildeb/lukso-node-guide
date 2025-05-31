@@ -30,7 +30,7 @@ Move into the working directory of your node:
 cd
 
 # Move into your working directory
-cd <your-node-folder>
+cd <lukso-working-directory>
 ```
 
 Stop the node before you continue:
@@ -77,7 +77,7 @@ Make sure you're in the config folder of the node's working directory:
 cd
 
 # Open config folder
-cd <your-node-folder>
+cd <lukso-working-directory>
 ```
 
 Create a new directory to store the file in. This is just so it does not directly appear within the root directory for everyone to see:
@@ -187,36 +187,36 @@ sudo chown lukso-validator-worker:lukso-validator-worker /usr/local/bin/lukso
 In order to still be able to access our logs and working directory as regular user, we need to change the permissions:
 
 ```sh
-sudo chmod -R 750 /home/<user-name>/<your-node-folder>
-sudo chmod 755 /home/<user-name>/<your-node-folder>
+sudo chmod -R 750 /home/<user-name>/<lukso-working-directory>
+sudo chmod 755 /home/<user-name>/<lukso-working-directory>
 ```
 
 The same goes for the read access of the password file, so only the owner of the validator client can read it. Groups and others won't see anything.
 
 ```sh
-sudo chmod 400 /home/<user-name>/<your-node-folder>/static/<your-generic-password-file>
+sudo chmod 400 /home/<user-name>/<lukso-working-directory>/static/<your-generic-password-file>
 ```
 
 For the startup script, only the user will need full read and execution rights:
 
 ```sh
-sudo chmod 500 /home/<user-name>/<your-node-folder>/static/lukso_startup.sh
+sudo chmod 500 /home/<user-name>/<lukso-working-directory>/static/lukso_startup.sh
 ```
 
 Now we only have to check that the service can access the node directorie's path. If the process can not access parent directories, it wont be able to even see the folders he became owner of.
 
 ```sh
-namei -l /home/<user-name>/<your-node-folder>
+namei -l /home/<user-name>/<lukso-working-directory>
 ```
 
 The output will look like the following:
 
 ```text
-f: /home/<user-name>/<your-node-folder>
+f: /home/<user-name>/<lukso-working-directory>
 drwxr-xr-x root                    root                    /
 drwxr-xr-x root                    root                    home
 drwxr-x--- <user-name>             <user-name>             <user-name>
-drwxr-xr-x lukso-validator-worker  lukso-validator-worker  <your-node-folder>
+drwxr-xr-x lukso-validator-worker  lukso-validator-worker  <lukso-working-directory>
 ```
 
 You can see, that the lukso-validator-worker is owner of the node folder and can access `/home`. However, only the regular node user can enter `/home/<user-name>`! We need to change it, so our new user can enter the node folder that sits within `/home/<user-name>`.
@@ -228,17 +228,17 @@ sudo chmod 755 /home/<user-name>
 If you run the command again, you should see the change took effect.
 
 ```sh
-namei -l /home/<user-name>/<your-node-folder>
+namei -l /home/<user-name>/<lukso-working-directory>
 ```
 
 The output will look like the following:
 
 ```text
-f: /home/<user-name>/<your-node-folder>
+f: /home/<user-name>/<lukso-working-directory>
 drwxr-xr-x root                    root                    /
 drwxr-xr-x root                    root                    home
 drwxr-xr-x <user-name>             <user-name>             <user-name>
-drwxr-xr-x lukso-validator-worker  lukso-validator-worker  <your-node-folder>
+drwxr-xr-x lukso-validator-worker  lukso-validator-worker  <lukso-working-directory>
 ```
 
 Now we're good to go to configure the actual service.
@@ -493,7 +493,7 @@ sudo rm /etc/systemd/system/lukso-validator.service
 Now, remove password file and its folder. You may need to adjust the names in case you stored the password file in a different position.
 
 ```sh
-rm -rf <node-working-directory>/static
+rm -rf <lukso-working-directory>/static
 ```
 
 Reload the system service daemon to get the service file change:

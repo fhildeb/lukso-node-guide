@@ -74,18 +74,18 @@ cd
 
 :::info
 
-Replace `<your-node-folder>` with a specific name for your node folder.
+Replace `<lukso-working-directory>` with a specific name for your node folder.
 
 :::
 
 ```sh
-mkdir <your-node-folder>
+mkdir <lukso-working-directory>
 ```
 
 **2.3 Navigate into the Folder**: _Move into the working directory to initialize your node clients._
 
 ```sh
-cd ./<your-node-folder>
+cd ./<lukso-working-directory>
 ```
 
 ## 3. Initialize the Working Directory

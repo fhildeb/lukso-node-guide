@@ -105,7 +105,7 @@ The steps **2.1** to **2.3** need to be repeated for every validator key that is
 **2.2 Enter Log Folder**: Move into the logging folder of the node’s working directory.
 
 ```sh
-cd <node-working-directory>/<network-type>-logs/
+cd <lukso-working-directory>/<network-type>-logs/
 ```
 
 **2.3 Search Logs**: Search and print out all validator indices of the active validator.
@@ -118,7 +118,7 @@ cat <latest-validator-logs.log> | grep -o 'index=[0-9]* ' | awk -F'=' '{printf "
 
 The following properties need to be exchanged:
 
-- `<node-working-directory>` with the actual folder name
+- `<lukso-working-directory>` with the actual folder name
 - `<network-type>` with `mainnet` or `testnet`
 - `<latest-validator-logs.log>` with the **latest** validator log file
 

@@ -206,7 +206,7 @@ Now that everything is configured in the right way, we can set the hostname into
 Navigate into your node's working directory:
 
 ```sh
-cd <your-node-directory>
+cd <lukso-working-directory>
 ```
 
 Stop your currently running clients:

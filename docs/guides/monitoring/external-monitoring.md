@@ -63,10 +63,10 @@ First, log on to your node machine:
 ssh <ssh-device-alias>
 ```
 
-Then head over to your node's log directory. Exchange `<node-working-directory>` with the actual folder name and `<network-type>` with `mainnet` or `testnet` depending on your node's network.
+Then head over to your node's log directory. Exchange `<lukso-working-directory>` with the actual folder name and `<network-type>` with `mainnet` or `testnet` depending on your node's network.
 
 ```sh
-cd <node-working-directory>/<network-type>-logs/
+cd <lukso-working-directory>/<network-type>-logs/
 ```
 
 Next, we need to find the latest validator log file created for the node's network to get the total amount of imported validators. You can either check that manually or use the following script to automatically search for the validator logs, sort them by creation date and output the most recent filename to the terminal. I've used the `find` tool that is used to search for files and directories within a specified location and further used pipes as we already did plenty of times before. Here is a description of the script:

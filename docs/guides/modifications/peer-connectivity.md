@@ -50,7 +50,7 @@ If your ports are already open, there seems to be a threshold on your peer count
 Open your node's working directory:
 
 ```sh
-cd <your-node-directory>
+cd <lukso-working-directory>
 ```
 
 Stop your currently running clients:
@@ -165,7 +165,7 @@ As a first step, we should tell our public IP address to the consensus client. I
 Navigate into the working directory of your node:
 
 ```sh
-cd <your-node-directory>
+cd <lukso-working-directory>
 ```
 
 Stop your currently running clients:
