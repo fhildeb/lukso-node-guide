@@ -31,7 +31,7 @@ The [Secure Copy Protocol](https://en.wikipedia.org/wiki/Secure_copy_protocol) i
 
 :::
 
-Build the entire command and execute it in the personal. You will be prompted to log in again before the process is started.
+Build and execute the entire command. You will be prompted to log in again before the process is started.
 
 :::info
 

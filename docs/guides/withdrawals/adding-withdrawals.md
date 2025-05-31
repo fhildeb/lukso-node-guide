@@ -194,7 +194,7 @@ During **Step 6** and **Step 7** you will have to input hexadecimal values.
 
 :::
 
-:::caution Error Handling
+:::warning Error Handling
 
 The [LUKSO KeyGen CLI](https://github.com/lukso-network/tools-key-gen-cli) might show errors about _inputs no being hexadecimal_ or _invalid checksum values_. If the _JSON_ File was generated, such warnings can be ignored. However, please verify you inputs by regenerating the file and comparing the output.
 

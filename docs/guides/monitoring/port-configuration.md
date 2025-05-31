@@ -78,3 +78,13 @@ To                         Action      From
 9090/tcp  (v6)                  ALLOW       Anywhere (v6)
 3000/tcp  (v6)                  ALLOW       Anywhere (v6)
 ```
+
+:::info
+
+To `delete` a specific port rule using `UFW`, type the `<rule-number>` that is no longer required.
+
+:::
+
+```sh
+sudo ufw delete <rule-number>
+```

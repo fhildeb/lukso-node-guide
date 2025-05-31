@@ -172,6 +172,16 @@ If all required ports are featured with the `ALLOW` property, your node’s loca
 
 :::
 
+:::info
+
+To `delete` a specific port rule using `UFW`, type the `<rule-number>` that is no longer required.
+
+:::
+
+```sh
+sudo ufw delete <rule-number>
+```
+
 [Geth]: https://github.com/ethereum/go-ethereum#configuration
 [Erigon]: https://github.com/ledgerwatch/erigon#default-ports-and-firewalls
 [Nethermind]: https://www.quicknode.com/guides/infrastructure/node-setup/how-to-run-nethermind-node#firewall-configuration
