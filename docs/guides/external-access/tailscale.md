@@ -3,49 +3,57 @@ sidebar_label: "10.1 Tailscale"
 sidebar_position: 1
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 # 10.1 Tailscale
 
-<!--TODO: Link to Theory VPN Tunnels-->
+Tailscale is a modern VPN service that allows you to create a secure, encrypted connection between your devices using a simple and user-friendly interface. It is especially useful for remote server access, such as connecting to your node from anywhere in the world without exposing public ports or relying on complicated firewall configurations.
 
-For External Access to my node, I'm using Tailscale. Tailscale is a technology that creates a secure network of your devices with an internet connection. It works as if they were all connected on the same local network utilizing [WireGuard](https://www.wireguard.com/).
+:::tip
 
-## 9.2 Tailscale Setup
+Further details about SSH and VPN protocols can be found on the [**SSH and VPN Tunnel**](/docs/theory/node-operation/ssh-and-vpn-tunnel.md) page in the 🧠 [**Theory**](/docs/theory/preparations/node-specifications.md) section.
 
-Now that we have spoken about VPN services and the benefits of Tailscale, we can continue with the installation. If you want to use a different software service to set up a tunnel connection to your node, feel free to do so.
+:::
 
-### 9.2.1 Installation
+:::info
 
-Visit [Tailscale](https://tailscale.com/) and register for the service. It is a free service for a limited amount of users and devices. After logging in with your favorite identity provider, you will be prompted to connect your first two devices. Click on `Linux` to connect your node. On your node, install the Tailscale package using `curl`. The `-fsSL` options instruct curl to silently follow HTTP redirects, not output any content for error HTTP codes, but still display error messages if the operation fails. The silent mode is needed for the pipe, as the script gets executed right after it is fetched.
+The following steps are performed on your 📟 **node server**.
+
+:::
+
+## 1. Software Installation
+
+Visit the [Tailscale Webpage](https://tailscale.com/) and register for the service. It's a free for a limited amount of users and devices. After logging in with your favorite identity provider, you will be prompted to connect your first two devices. Click on _Linux_ to connect your node.
 
 ```sh
-# install tailscale configs
-curl -fsSL https://tailscale.com/install.sh | sh
-
-# set up the service itself
 sudo apt-get update
 sudo apt-get install tailscale
 ```
 
-You can enable auto-updates for tailscale using the following commend. This step is not mandatory.
+You can also enable auto-updates for Tailscale.
 
 ```sh
 tailscale set --auto-update
 ```
 
-After Tailscale is installed, run the following command to start Tailscale
+After the installation, activate Tailscale.
 
 ```sh
 tailscale up
 ```
 
-You will receive a printed-out link that you must copy and paste into the address bar of your machine. Do so and connect with your previously created account. Your first device has been added.
+You will receive a link that you must copy and paste to the terminal of your node in order to connect the device with your account.
+
 :::info
-Now continue with the second device. The Guide on the Tailscale screen will give you a selection of possible installations. Install the software on your primary computer and go through the minimal setup to log in. Now, everything should already be set up in place. You can try it out in the guide section by pinging each device over the VPN.
+
+Continue with the second device, like your personal computer or smartphone. The Guide on the Tailscale webpage will give you a selection of possible installations. After activating Tailscale on both, your devices will be able to communicate.
+
 :::
 
-### 9.2.2 Configure Auto Startup
+## 2. Configure Auto Startup
 
-Tailscale comes with its own CLI tool called `tailscaled`. By default, it will automatically list itself as a system service. We can check the status of Tailscale with the following command:
+Tailscale comes with its own CLI tool called _tailscaled_. By default, it will list itself as a system service for easy maintenance. You can retreive the service's status directly from the system control or further stop, restart, or disable autostarts in a similar way.
 
 ```sh
 systemctl status tailscaled
@@ -59,7 +67,7 @@ The output should be something similar to the following:
      Active: active (running) since Fri 2023-05-19 20:01:42 UTC; 3h 19min ago
        Docs: https://tailscale.com/kb/
    Main PID: 1005 (tailscaled)
-     Status: "Connected; voulex.4128@gmail.com; 100.87.208.19 fd7a:115c:a1e0:ab12:4843:cd96:6257:d013"
+     Status: "Connected; [EMAIL-ACCOUNT]; [TAILSCALE-IP] [MAC-ADDRESS]"
       Tasks: 17 (limit: 38043)
      Memory: 40.6M
         CPU: 1min 29.134s
@@ -69,29 +77,41 @@ The output should be something similar to the following:
 [DATE] [TIME] [USER] tailscaled[4974]: control: NetInfo: NetInfo{varies=false hairpin=false ipv6=true ipv>...
 ```
 
-It should already be configured to start up on boot or failure, but we can check once again:
+The service should already be configured to start and connect during boot or failure. Verify it once again.
 
 ```sh
 sudo systemctl enable tailscaled
 ```
 
-If it was not correctly set up, it should've created a `symlink` and printed out the filenames.
+If it was not set already, the command created a _symlink_ and print out the filenames.
 
-You should be set and can turn off the VPN service until you need to connect with your node outside your home environment.
+:::info
 
-## 9.2.3 Update SSH Config
+The following steps are performed on your 💻 **personal computer**.
 
-As Tailscale uses internal static IP addresses on both ends of the tunnel, we must also update the SSH configuration file to connect to the IP. On your personal computer, open up the file:
+:::
+
+## 3. Update SSH Config
+
+As Tailscale uses internal static IP addresses on both ends of the tunnel, you must also update the SSH configuration to connect to the new IP once outside of your home network. On your personal computer, open up the SSH file using your preferred text editor.
+
+<Tabs groupId="editor">
+  <TabItem value="vim" label="Vim" default>
 
 ```sh
 vim ~/.ssh/config
 ```
 
-Then Copy the node Host entry of your node device. Only change the `HostName` address and the `Host`. If you want to connect to your node via Tailscale, you must use the new name.
+</TabItem> <TabItem value="nano" label="Nano">
 
-You will find the new static internal IP of the node device on the Tailscales Device Dashboard. You can copy it over.
+```sh
+nano ~/.ssh/config
+```
 
-The final entry should look like this:
+</TabItem>
+</Tabs>
+
+If you want to connect to your node via Tailscale, you must use the new Tailscale IP instead. You will find this static and internal IP on the _Tailscale Device Dashboard_. You can copy it over to a text file. Then dplicate the node's _Host_ entry and exchange the _HostName_ with the new IP and the _Host_ property with a new alias. The final entry should look like this:
 
 ```text
 Host <ssh-device-alias-for-home-environment>
@@ -107,19 +127,38 @@ Host <ssh-device-alias-for-tailscale-environment>
   IdentityFile ~/.ssh/<my-chosen-keyname>
 ```
 
-Save and exit. You will have successfully configured your external remote access. Try to connect to your node.
+Save the file and exit. Then try to connect to your node while Tailscale is active.
 
-## 9.2.4 Update Grafana Dashboard
+```sh
+ssh <ssh-device-alias-for-tailscale-environment>
+```
 
-If you want to visit your Grafana Dashboard outside your home network using Tailscale, you will need to adjust the IP. As you did with SSH, having two different browser bookmarks is recommended- one for your home network and one for the Tailscale address.
+:::info
 
-Within your browser, you can find Grafana at the following address in case your VPN is activated:
+Exchange the `<ssh-device-alias-for-tailscale-environment>` with the actual SSH device name.
+
+:::
+
+## 4. Update Grafana Dashboard
+
+If you want to visit your Grafana Dashboard outside your home network using Tailscale, you will need to adjust the IP once again. As you did with the SSH, having two different browser bookmarks is recommended: one for your home environment and one for the static Tailscale IP. Within your browser, you can find Grafana at the following address in case your VPN is activated:
 
 ```text
 http://<tailscale-node-ip>:3000/login
 ```
 
-## 9.2.5 Disable Key Expiry
+:::info
 
-By default, Tailscale keys from devices expire after 180 days of being unused. If you want to raise the limit or turn it
-off completely, for your main devices- you can do so by navigating into the **Devices Menu** within the Tailscale service and clicking the three dots behind the IP. You can either select "Disable Expiry Date" or come up with your own preference in the device-specific setting.
+Exchange the `<tailscale-node-ip>` with the actual IP address found in the _Tailscale Device Dashboard_.
+
+:::
+
+## 5. Disable Key Expiry
+
+By default, Tailscale session keys from devices expire after 180 days of being unused, meaning you wont be able to re-connect to your node without maintenance. If you want to raise the limit or turn key expiry off for your main devices, you can do so by navigating into the _Tailscale Device Dashboard_ once logged in to their web service. On your node device, click on the three dots menu behind the static Tailscale IP and either select _Disable Expiry Date_ or _Specify Expiry Period_.
+
+:::tip
+
+Expiry settings are device-specific and can be adjusted anytime within the _Tailscale Device Dashboard_.
+
+:::
