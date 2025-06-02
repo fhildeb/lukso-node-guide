@@ -1,12 +1,12 @@
 ---
-sidebar_label: "7.2 Execution Name"
+sidebar_label: "7.2 Node Name"
 sidebar_position: 2
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-# 7.2 Execution Name
+# 7.2 Node Name
 
 To personalize your node's appearance, you can assign a custom name thats publically displayed on the [execution status panel](https://stats.execution.mainnet.lukso.network/).
 
@@ -102,7 +102,7 @@ sudo pkill validator
 
 </details>
 
-## 2. Change Node Name
+## 2. Add Node Name
 
 You can either set the node name via startup flags or persistently within the configuration files of your execution client. If you want to set a temporary name, using the flag is recommended, as it will only persist until the next restart of the node.
 
@@ -159,15 +159,15 @@ lukso start --testnet --checkpoint-sync --nethermind-ethstats-name "<your-node-n
 cd <lukso-working-directory>
 
 # Start the Mainnet Node with Custom Name
-lukso start --checkpoint-sync --nimbus2-ethstats="<your-node-name>:<ethstats-secret>@<ethstats-server-url>"
+lukso start --checkpoint-sync --besu-ethstats="<your-node-name>:<ethstats-secret>@<ethstats-server-url>"
 
 # Start the Testnet Node with Custom Name
-lukso start --testnet --checkpoint-sync --nimbus2-ethstats="<your-node-name>:<ethstats-secret>@<ethstats-server-url>"
+lukso start --testnet --checkpoint-sync --besu-ethstats="<your-node-name>:<ethstats-secret>@<ethstats-server-url>"
 ```
 
 :::warning
 
-The Nimbus client embeds the node name directly within the Eth-Stats connection string, meaning you must also exchange and provide the `<ethstats-secret>` and `<ethstats-server-url>` as a flag. Other execution clients have those set separately within their config files.
+The Besu client embeds the node name directly within the Eth-Stats connection string, meaning you must also exchange and provide the `<ethstats-secret>` and `<ethstats-server-url>` as a flag. Other execution clients have those set separately within their config files.
 
 :::
 
@@ -236,15 +236,15 @@ lukso start --testnet --validator --transaction-fee-recipient "<your-fee-recipie
 cd <lukso-working-directory>
 
 # Start the Mainnet Validator Node with Custom Name
-lukso start --validator --transaction-fee-recipient "<your-fee-recipient-address>" --checkpoint-sync --nimbus2-ethstats="<your-node-name>:<ethstats-secret>@<ethstats-server-url>"
+lukso start --validator --transaction-fee-recipient "<your-fee-recipient-address>" --checkpoint-sync --besu-ethstats="<your-node-name>:<ethstats-secret>@<ethstats-server-url>"
 
 # Start the Testnet Validator Node with Custom Name
-lukso start --testnet --validator --transaction-fee-recipient "<your-fee-recipient-address>" --checkpoint-sync --nimbus2-ethstats="<your-node-name>:<ethstats-secret>@<ethstats-server-url>"
+lukso start --testnet --validator --transaction-fee-recipient "<your-fee-recipient-address>" --checkpoint-sync --besu-ethstats="<your-node-name>:<ethstats-secret>@<ethstats-server-url>"
 ```
 
 :::warning
 
-The Nimbus client embeds the node name directly within the Eth-Stats connection string, meaning you must also exchange and provide the `<ethstats-secret>` and `<ethstats-server-url>` as a flag. Other execution clients have those set separately within their config files.
+The Besu client embeds the node name directly within the Eth-Stats connection string, meaning you must also exchange and provide the `<ethstats-secret>` and `<ethstats-server-url>` as a flag. Other execution clients have those set separately within their config files.
 
 :::
 
@@ -281,7 +281,7 @@ sudo vim <lukso-working-directory>/static/lukso_startup.sh
 </TabItem> <TabItem value="nano" label="Nano">
 
 ```sh
-duso nano <lukso-working-directory>/static/lukso_startup.sh
+sudo nano <lukso-working-directory>/static/lukso_startup.sh
 ```
 
 </TabItem>
@@ -293,7 +293,7 @@ Exchange `<lukso-working-directory>` with the path to the node folder.
 
 :::
 
-Add the flag to disable the slasher service as a new line to the start command, then save and exit the file.
+Add the name flag new line to the start command, then save and exit the file.
 
 <Tabs>
 <TabItem value="geth" label="Geth">
@@ -337,12 +337,12 @@ exec /usr/local/bin/lukso start \
         --validator-wallet-password ./static/<your-generic-password-file> \
         --transaction-fee-recipient "<your-fee-recipient-address>" \
         --checkpoint-sync \
-        --nimbus2-ethstats="<your-node-name>:<ethstats-secret>@<ethstats-server-url>"
+        --besu-ethstats="<your-node-name>:<ethstats-secret>@<ethstats-server-url>"
 ```
 
 :::warning
 
-The Nimbus client embeds the node name directly within the Eth-Stats connection string, meaning you must also exchange and provide the `<ethstats-secret>` and `<ethstats-server-url>` as a flag. Other execution clients have those set separately within their config files.
+The Besu client embeds the node name directly within the Eth-Stats connection string, meaning you must also exchange and provide the `<ethstats-secret>` and `<ethstats-server-url>` as a flag. Other execution clients have those set separately within their config files.
 
 :::
 
@@ -360,7 +360,7 @@ sudo systemctl start lukso-validator
 
 </TabItem> <TabItem value="file" label="Modifying the Client Configuration">
 
-Depending on your execution client, the execution name can be set with different properties.
+Depending on your execution client, the name can be set with different properties.
 
 <Tabs groupId="client">
 <TabItem value="geth" label="Geth">
@@ -503,7 +503,7 @@ Set the _ethstats_ property at the end of the file.
 
 :::warning
 
-The Nimbus client embeds the node name directly within the Eth-Stats connection string, meaning you must also exchange and provide the `<ethstats-secret>` and `<ethstats-server-url>` as a flag. Other execution clients have those set separately within their config files.
+The Besu client embeds the node name directly within the Eth-Stats connection string, meaning you must also exchange and provide the `<ethstats-secret>` and `<ethstats-server-url>` as a flag. Other execution clients have those set separately within their config files.
 
 :::
 
