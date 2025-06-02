@@ -25,3 +25,29 @@ The 🎨 [**DAppNode**](https://dappnode.com) setup utilizes 🐳 [**Docker**](h
 Currently, 🎨 [**DAppNode**](https://dappnode.com) **only supports Geth** as execution client, further decreasing the [**Client Diversity**](/docs/theory/blockchain-knowledge/client-diversity.md) of the LUKSO Network. If you're technically skilled, consider an alternative setup using the LUKSO CLI or Docker.
 
 :::
+
+:::tip
+
+None of the setups does restrict modification of the underlying blockchain clients. A whole suite of flags and settings can be added during startup or within configuration files to change service behaviour as described in the [Modification](/docs/guides/modifications/slasher-configuration.md) chapter.
+
+- 🎨 [**DAppNode**](https://dappnode.com): You can pass down the `--<flag-name>` within the _EXTRA_OPTS_ field of the client page.
+- 👾 [**LUKSO CLI**](https://github.com/lukso-network/tools-lukso-cli): You can pass the superordinate `--<client>-<flag-name>` or modify the `config` folder files.
+- 🐳 [**Docker**](https://github.com/lukso-network/network-docker-containers): You can modify or add settings to the client container's `docker_compose.yml` files.
+- 🗂️ [**Custom**](https://docs.lukso.tech/networks/mainnet/running-a-node#-with-your-own-clients): Modify network configurations files or directly pass the `--<flag-name>` to the clients.
+
+:::
+
+:::note
+
+Further Sources about Client Configurations:
+
+- [Geth Parameters](https://geth.ethereum.org/docs/fundamentals/command-line-options)
+- [Erigon Options](https://github.com/ledgerwatch/erigon)
+- [Besu Options](https://besu.hyperledger.org/stable/private-networks/reference/cli/options)
+- [Nethermind Configuration](https://docs.nethermind.io/fundamentals/configuration)
+- [Prysm Parameters](https://docs.prylabs.network/docs/prysm-usage/parameters)
+- [Lighthouse Flags](https://lighthouse-book.sigmaprime.io/help_general.html)
+- [Teku Reference](https://docs.teku.consensys.io/reference/cli)
+- [Nimbus-Eth2 Options](https://nimbus.guide/options.html)
+
+:::
