@@ -248,7 +248,7 @@ sudo nano ./lukso_startup.sh
 
 :::info
 
-Exchange `<lukso-working-directory>` with the path to the node folder
+Exchange `<lukso-working-directory>` with the path to the node folder.
 
 :::
 
@@ -273,7 +273,7 @@ lukso start --checkpoint-sync
 
 :::info
 
-Exchange `<lukso-working-directory>` with the path of the node folder
+Exchange `<lukso-working-directory>` with the path of the node folder.
 
 :::
 

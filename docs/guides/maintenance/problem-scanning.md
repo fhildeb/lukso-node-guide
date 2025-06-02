@@ -339,7 +339,7 @@ lukso start --checkpoint-sync
 
 :::info
 
-Exchange `<lukso-working-directory>` with the path of the node folder
+Exchange `<lukso-working-directory>` with the path of the node folder.
 
 :::
 
