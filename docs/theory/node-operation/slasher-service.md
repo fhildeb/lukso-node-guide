@@ -35,7 +35,7 @@ Slashing is **not required** for node operators or validators. While any validat
 
 :::info
 
-In two years of the [LUKSO Mainnet](https://explorer.lukso.network/block/0x0f1192332bf25788a44610f912a3ac38342051707720afff667b4744785bfc79) with around [140.000 active validators](https://explorer.consensus.mainnet.lukso.network/), not a single slashable event was detected.
+In two years of [LUKSO](https://explorer.lukso.network/block/0x0f1192332bf25788a44610f912a3ac38342051707720afff667b4744785bfc79) with around [140.000 validators](https://explorer.consensus.mainnet.lukso.network/) and [4,5 million blocks](https://explorer.lukso.network/blocks), [less than 500 slashable events](https://explorer.consensus.mainnet.lukso.network/validators/slashings) were detected.
 
 :::
 
