@@ -1,9 +1,9 @@
 ---
-sidebar_label: "7.5 Service Automation"
-sidebar_position: 5
+sidebar_label: "7.6 Service Automation"
+sidebar_position: 6
 ---
 
-# 7.5 Service Automation
+# 7.6 Service Automation
 
 By default, the blockchain clients are not automatically starting whenever there has been a power outage or crash on your node system. This means additional manual work by logging into the node again after a power outage and restarting the clients.
 

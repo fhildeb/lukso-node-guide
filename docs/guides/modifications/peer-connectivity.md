@@ -1,9 +1,9 @@
 ---
-sidebar_label: "7.3 Peer Connectivity"
-sidebar_position: 3
+sidebar_label: "7.4 Peer Connectivity"
+sidebar_position: 4
 ---
 
-# 7.3 Peer Connectivity
+# 7.4 Peer Connectivity
 
 <!--TODO: add tip box with link to peer discovery explanation and benefits and drawbacks of changing the value-->
 

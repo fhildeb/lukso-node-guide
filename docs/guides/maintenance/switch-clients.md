@@ -268,7 +268,7 @@ In case you did any modifications to your previous client configuration files, p
 
 - [Attaching the Node Explorer](https://stats.execution.mainnet.lukso.network/)
 - [Configuring a Dynamic DNS](/docs/guides/modifications/dynamic-dns.md)
-- [Adding a Node Name or Graffiti](/docs/guides/modifications/client-name-and-graffiti.md)
+- [Adding a Node Name or Graffiti](/docs/guides/modifications/execution-name.md)
 - [Adjusting Peer Connectivity](/docs/guides/modifications/peer-connectivity.md)
 - [Enabling RPC Modules](/docs/guides/maintenance/problem-scanning.md#attach-execution-clients)
 - ...

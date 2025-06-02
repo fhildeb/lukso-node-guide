@@ -58,7 +58,8 @@ const sections = [
         title: "Modifications",
         pages: [
           "Slasher Configuration",
-          "Client Name and Graffiti",
+          "Execution Name",
+          "Consensus Graffiti",
           "Peer Connectivity",
           "Dynamic DNS",
           "Service Automation",

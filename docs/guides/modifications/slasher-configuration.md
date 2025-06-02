@@ -155,15 +155,13 @@ Open the startup script within your node directory with your preferred text edit
   <TabItem value="vim" label="Vim" default>
 
 ```sh
-cd <lukso-working-directory>/static
-vim lukso_startup.sh
+sudo vim <lukso-working-directory>/static/lukso_startup.sh
 ```
 
 </TabItem> <TabItem value="nano" label="Nano">
 
 ```sh
-cd <lukso-working-directory>/static
-nano lukso_startup.sh
+sudo nano <lukso-working-directory>/static/lukso_startup.sh
 ```
 
 </TabItem>
@@ -178,7 +176,6 @@ Exchange `<lukso-working-directory>` with the path to the node folder.
 Add the flag to disable the slasher service as a new line to the start command, then save and exit the file.
 
 ```text
-...
 exec /usr/local/bin/lukso start \
         --validator \
         --validator-wallet-password ./static/<your-generic-password-file> \
@@ -271,7 +268,6 @@ Add the flag to activate the slasher service as a new line to the start command,
 <TabItem value="lighthouse" label="Lighthouse">
 
 ```text
-...
 exec /usr/local/bin/lukso start \
         --validator \
         --validator-wallet-password ./static/<your-generic-password-file> \
@@ -283,7 +279,6 @@ exec /usr/local/bin/lukso start \
 </TabItem> <TabItem value="prysm" label="Prysm">
 
 ```text
-...
 exec /usr/local/bin/lukso start \
         --validator \
         --validator-wallet-password ./static/<your-generic-password-file> \
