@@ -275,7 +275,8 @@ In case you did any modifications to your previous client configuration files, p
 - [Attaching the Node Explorer](https://stats.execution.mainnet.lukso.network/)
 - [Configuring a Dynamic DNS](/docs/guides/modifications/dynamic-dns.md)
 - [Adding a Node Name or Graffiti](/docs/guides/modifications/node-name.md)
-- [Adjusting Peer Connectivity](/docs/guides/modifications/peer-connectivity.md)
+- [Attaching the Public IP](/docs/guides/modifications/public-ip-setup.md)
+- [Adjusting Peer Count Limits](/docs/guides/modifications/peer-count-limits.md)
 - [Enabling RPC Modules](/docs/guides/maintenance/problem-scanning.md#attach-execution-clients)
 - ...
 

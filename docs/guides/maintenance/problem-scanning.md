@@ -130,7 +130,7 @@ Execution clients have JSON-RPC endpoints allowing users to request information 
 
 :::info JSON RPC
 
-JSON-RPC is a lightweight communication protocol encoded in JSON, allowing calls to be sent to the server. Each execution client exposes such an interface at port `8545` to retreive calls to interact with the Ethereum network though a users local node. The RPC allows to query network stats, node metadata, blockchain data, or even send transactions and interact with smart contracts.
+JSON-RPC is a lightweight communication protocol encoded in JSON, allowing calls to be sent to a service or server. Each execution client exposes a related interface at port `8545` to retreive calls to interact with the Ethereum network though the local node. The RPC allows to query network stats, node metadata, blockchain data, or even send transactions and interact with smart contracts.
 
 :::
 
@@ -441,7 +441,7 @@ The `parseInt()` function will convert the hexadecimal output to a human-readabl
 sudo apt install jq
 ```
 
-**2. Call Endpoints**: _While the node is running, call the JSON RPCs of the execution client._
+**2. Call Endpoints**: _While the node is running, call the JSON RPC of the execution client._
 
 ```sh
 # Check Current Block Height
@@ -507,15 +507,16 @@ A REST API is a web-based interface for querying structured data. Ethereum conse
 :::tip
 
 By default, the [LUKSO Network Configuration](https://github.com/lukso-network/network-configs) opens the REST API ports for all consensus clients.
+
 :::
 
-**1. Install Querying Tool**: _Install the JSON query service for data processing from the RPC endpoint._
+**1. Install Querying Tool**: _Install the JSON query service for data processing from the REST API endpoint._
 
 ```sh
 sudo apt install jq
 ```
 
-**2. Call Endpoints**: _While the node is running, call the REST endpoints of the consensus client._
+**2. Call Endpoints**: _While the node is running, call the REST endpoint of the consensus client._
 
 <Tabs>
   <TabItem value="teku" label="Teku">
