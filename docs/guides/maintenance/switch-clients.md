@@ -22,6 +22,12 @@ The majority of nodes on the LUKSO network [**is running Geth and Prysm**](https
 
 :::
 
+:::info
+
+The following steps are performed on your 📟 **node server**.
+
+:::
+
 ## 1. Stop Node Operation
 
 Depending on your setup method, there are different ways to stop your node before applying updates.

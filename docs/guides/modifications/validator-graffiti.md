@@ -12,6 +12,12 @@ To personalize your validator's appearance, you can assign a custom graffiti tha
 
 Within an EVM-blockchain, the graffiti refers to a customizable field where validators can inscribe a short message of up to 32 bytes into the block's metadata. These messages are permanently stored on the blockchain. Each ASCII character uses 1 byte, but special characters or emojis can up take more.
 
+:::note
+
+Although the graffiti allows for freedom of expression, it should be used responsibly. It's part of the blockchain's permanent record and repeated with every block proposal. The community generally encourages respectful and appropriate usage.
+
+:::
+
 :::tip
 
 Check if your message is [within the byte limit](https://mothereff.in/byte-counter) before attaching it to the client. Emojis take up several bytes.
@@ -20,7 +26,7 @@ Check if your message is [within the byte limit](https://mothereff.in/byte-count
 
 :::info
 
-Although the graffiti allows for freedom of expression, it should be used responsibly. It's part of the blockchain's permanent record and repeated with every block proposal. The community generally encourages respectful and appropriate usage.
+The following steps are performed on your 📟 **node server**.
 
 :::
 

@@ -10,7 +10,7 @@ import TabItem from '@theme/TabItem';
 
 Within the network configuration files, validators can adjust the minimum gas price for transactions they accept to propose blocks to the network. The minimum gas price is an **individual client setting**. Validators can choose the value they desire for block approval depending on the current network occupation.
 
-:::info Balancing Gas Fees
+:::warning Balancing Gas Fees
 
 If most of the network accepts transactions with a small gas price, overall fees will remain lower. However, if the gas price is too high, the validator will propose empty blocks without transaction fees. As the network throughput rises, these values should be adjusted.
 
@@ -19,6 +19,12 @@ If most of the network accepts transactions with a small gas price, overall fees
 :::tip Default Gas Price
 
 The gas price mainly causes issues for Geth, as the execution client is using a strict default value that must be overwritten. The [**LUKSO Network Configuration**](https://github.com/lukso-network/network-configs) was recently updated to a base gas price of **0.001 Gwei** for **Geth Execution Clients**. Further details can be found on the [**Configuration Updates**](/docs/archive/network/configuration-updates.md) of the 🏛️ [**Archive**](/docs/archive/network/blockchain-timeline.md) section.
+
+:::
+
+:::info
+
+The following steps are performed on your 📟 **node server**.
 
 :::
 

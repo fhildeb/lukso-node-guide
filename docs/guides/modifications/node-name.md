@@ -10,6 +10,12 @@ import TabItem from '@theme/TabItem';
 
 To personalize your node's appearance, you can assign a custom name thats publically displayed on the [execution status panel](https://stats.execution.mainnet.lukso.network/).
 
+:::info
+
+The following steps are performed on your 📟 **node server**.
+
+:::
+
 ## 1. Stop Node Operation
 
 Depending on your setup method, there are different ways to stop your node before setting a custom name.

@@ -8,11 +8,17 @@ import TabItem from '@theme/TabItem';
 
 # 7.1 Slasher Configuration
 
-Running a slasher service helps monitor and report malicious validator behavior, contributing to the overall health and security of the network. This guide explains how to enable or disable the slasher for regular and validator nodes.
+Running a slasher service helps monitor and report malicious validator behavior, contributing to the overall health and security of the network. This guide explains how to enable or disable the slasher for regular nodes and validators.
 
 :::tip
 
 Further details can be found on the [**Slashing and Panelties**](/docs/theory/blockchain-knowledge/slashing-and-panelties.md) and [Slasher Service](/docs/theory/node-operation/slasher-service.md) pages in the 🧠 [**Theory**](/docs/theory/preparations/node-specifications.md) section.
+
+:::
+
+:::info
+
+The following steps are performed on your 📟 **node server**.
 
 :::
 

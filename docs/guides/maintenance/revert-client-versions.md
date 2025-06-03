@@ -10,6 +10,12 @@ import TabItem from '@theme/TabItem';
 
 The [LUKSO CLI](https://github.com/lukso-network/tools-lukso-cli) allows to downgrade clients to an earlier version below the latest supported one. This might solve potential stability, database, or configuration issues that happen after an upgrade or maintenance. However, keep in mind that older versions must feature support for the latest [network fork](/docs/archive/network/network-forks.md) to keep up with the current chain head and stake funds.
 
+:::info
+
+The following steps are performed on your 📟 **node server**.
+
+:::
+
 ## 1. Stop Node Operation
 
 Depending on your setup method, there are different ways to stop your node before applying updates.
