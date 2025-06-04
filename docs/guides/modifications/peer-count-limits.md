@@ -22,9 +22,15 @@ It's not recommended to set network peer limits higher than 100 for homestakers,
 
 :::
 
+:::info
+
+The following steps are performed on your 📟 **node server**.
+
+:::
+
 ## 1. Check Peer Connections
 
-Every node operates two independent peer-to-peer networks: the execution and the consensus layer. Each of these networks handles communication with other nodes differently and maintains separate sets of peers. Monitoring both layers is essential to ensure healthy connectivity and network participation.
+To get insights into the current connections, you can check the peer connections from your local node. Every node operates two independent peer-to-peer networks: the execution and the consensus layer. Each of these networks handles communication with other nodes differently and maintains separate sets of peers. Monitoring both layers is essential to ensure healthy connectivity and network participation.
 
 <Tabs groupId="network-type">
 <TabItem value="execution" label="Execution Peers" default>
@@ -138,6 +144,8 @@ The output should be something in the range from 5 to 70 peers.
 
 </TabItem>
 </Tabs>
+
+If you have low or volatile peer counts, continue to stop the node and raise the peer count limits.
 
 ## 2. Stop Node Operation
 

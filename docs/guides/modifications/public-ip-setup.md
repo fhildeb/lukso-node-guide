@@ -16,9 +16,15 @@ Further details about connectivity can be found on the [**Peer Networks**](/docs
 
 :::
 
+:::info
+
+The following steps are performed on your 📟 **node server**.
+
+:::
+
 ## 1. Check Peer Connections
 
-Every node operates two independent peer-to-peer networks: the execution and the consensus layer. Each of these networks handles communication with other nodes differently and maintains separate sets of peers. Monitoring both layers is essential to ensure healthy connectivity and network participation.
+To get insights into the current connections, you can check the peer connections from your local node. Every node operates two independent peer-to-peer networks: the execution and the consensus layer. Each of these networks handles communication with other nodes differently and maintains separate sets of peers. Monitoring both layers is essential to ensure healthy connectivity and network participation.
 
 <Tabs groupId="network-type">
 <TabItem value="execution" label="Execution Peers" default>
@@ -132,6 +138,8 @@ The output should be something in the range from 5 to 70 peers.
 
 </TabItem>
 </Tabs>
+
+If you have low or volatile peer counts, continue to stop the node and configure your public IP address.
 
 ## 2. Stop Node Operation
 
@@ -364,7 +372,7 @@ Add or update the following client properties, then save and exit the file.
 Update or add the _p2p-host-ip_ property at the end of the file.
 
 ```text
-# Previous Value
+# Previous Value Examples
 p2p-host-ip: '0.0.0.0'
 p2p-host-ip: '<your-previous-ip>'
 
@@ -401,16 +409,23 @@ enr-address = "<your-current-ip-address>"
 
 </TabItem> <TabItem value="nimbus2" label="Nimbus">
 
-Update or add the _p2p-host-ip_ property at the end of the file.
+Update or add the _extip_ and _enr-auto-update_ properties at the end of the file.
 
 ```text
-# Previous Value
+# Previous Value Examples
 nat = "extip:0.0.0.0"
 nat = "extip:<your-previous-ip>"
 
 # Updated Value
 nat = "extip:<your-current-ip-address>"
+enr-auto-update = true
 ```
+
+:::tip
+
+By adding the `enr-auto-update` property, the **Nimbus-Eth2** client automatically detects and updates your public IP address upon changes, meaning you dont have to [set up a dynamic DNS](/docs/guides/modifications/dynamic-dns.md) to permanently stay connected with the network.
+
+:::
 
 </TabItem>
 </Tabs>
