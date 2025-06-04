@@ -3,256 +3,630 @@ sidebar_label: "7.6 Dynamic DNS"
 sidebar_position: 6
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 # 7.6 Dynamic DNS
 
-### 6.11.3 Configure Dynamic DNS
+Blockchain clients typically do not remain a persistent connection and rely on static or temporary IP addresses that can change over time and cause connection issues to other peers in the network. Instead of using IP addresses, Dynamic DNS can be used to link your changing IP to a fixed hostname.
 
-Ideally, you want to have a stable node over a long period. Right now, as I described within the IP address section, the public IP would need adjustment every time it changes. Here is where a Dynamic DNS setup comes into play.
+:::tip
 
-<!--TODO: info box with short explanation what dynamic dns and a dns record is-->
+Further details about **DDNS**, setups, and providers can be found on the [**Dynamic DNS**](/docs/theory/node-operation/dynamic-dns.md) page in the 🧠 [**Theory**](/docs/theory/preparations/node-specifications.md) section.
 
-#### Installing NOIP
+:::
 
-There are lots of service providers you can choose from. Some of them provide paid services for advanced features. But since we only need a simple record, I went with [NO-IP](https://www.noip.com/). At the point of writing this guide, there are 2 models:
+:::warning
 
-- `free`: You must confirm your Dynamic DNS hostname every month to keep it. You will receive emails with a link to extend the hostname before expiration. Your record will be reset if you do not confirm the link in the mail.
-- `paid`: You get your hostname forever
+The **Nimbus-Eth2** client does not support DDNS, as it's able to automatically detect public IP changes to update it's address accordingly. Instead of a dynamic DNS, please refer to the [**Public IP Setup**](/docs/guides/modifications/public-ip-setup.md) to configure automatic IP updates.
 
-I'm ok with clicking a button from an email once a month. It's a straightforward service.
+:::
 
-First, you must register on their page with an email and password. You can also set a hostname already. Choose a name with a `ddns.net` and complete the registration by confirming your email.
+## 1. Registration
 
-To build the no-ip package on our node, we must install a developer library called `build-essential`. It contains references to all the software packages needed to compile and create binary packages, which includes development tools for the programming language C.
+[NO-IP](https://www.noip.com/) is one of the free and recommended DDNS providers. The service comes with plug-and-play installation and scripts, ideal for regular node setups. Within the free service, you will receive emails to extend the hostname once a month that needs to be confirmed to keep the hostname active. For little money, the domain ownership will be extended without further maintenance.
 
-Update your package list first:
+**1.1 Register on the Page**: Use _email_ and _password_ to create a new account on the [NO-IP Webpage](https://www.noip.com/).
+
+**1.2 Choose a Hostname**: Choose a _hostname_ of your choice from the _ddns.net_ category.
+
+**1.3 Verify your Email**: Complete the registration by confirming your email and optional payment.
+
+**1.4 Improve Security**: Set _2FA_, a _username_, and add a _security question_ to protect against malicious actors.
+
+:::info
+
+Once the account is set up, the following steps are performed on your 📟 **node server**.
+
+:::
+
+## 2. Installation
+
+To connect your node with the [NO-IP](https://www.noip.com/) service, you have to install their package.
+
+**2.1 Download the NOIP Software**: Get the [latest stable build](https://www.noip.com/download) of _DUC_ for _Linux_ and install it within the source directory.
 
 ```sh
-sudo apt update
-```
+# Move to Home Directory
+cd
 
-Afterward, we can install the package:
-
-```sh
-sudo apt install build-essential
-```
-
-Get the newest build from NO-IP. Do not use beta tools that may be advertised as the current version and sick to stable software releases. As of May 2023, `Version 2.1.9-1` is the latest stable release.
-
-Move into the source directory:
-
-```sh
-cd /usr/local/src/
-```
-
-```sh
-sudo wget http://www.noip.com/client/linux/noip-duc-linux.tar.gz
+# Download Software
+sudo wget --content-disposition https://www.noip.com/download/linux/latest
 ```
 
 The output should be similar to this:
 
 ```sh
-[DATE] [TIME] (11.8 MB/s) - ‘noip-duc-linux.tar.gz’ saved [2529997/2529997]
+[DATE] [TIME] (11.8 MB/s) - ‘noip-duc_3.3.0.tar.gz’ saved [4896895/4896895]
 ```
 
-After downloading it, we can extract the tape archive using the Ubuntu tool. We will extract (`x`) the tape archive into its previous packaged files (`f`).
+:::tip
+
+Always sick to stable releases. As of June 2025, _Version 3.3.0_ is the latest stable release.
+
+:::
+
+**2.2 Extract the Tape Archive**: Unpack the archive file using the downloaded build tool and move into it's binary.
 
 ```sh
-sudo tar xf noip-duc-linux.tar.gz
+sudo tar xf noip-duc_3.3.0.tar.gz
+cd noip-duc_3.3.0/binaries
 ```
 
-Move into the folder of the extracted tape archive.
+:::info
+
+The `tar` command will extract `x` the tape archive into its previous packaged files `f`.
+
+:::
+
+:::warning
+
+The folder name will vary depending on the installed version.
+
+:::
+
+**2.3 Install the Binary**: Install the executable binary file of your architecture using the system's package manager.
+
+<Tabs groupId="architecture">
+  <TabItem value="amd" label="AMD" default>
 
 ```sh
-cd noip-2.1.9-1/
+# Enhence Permissions for Local Installation
+sudo chown _apt /var/lib/update-notifier/package-data-downloads/partial/
+
+# Install Binary
+sudo apt install ./noip-duc_3.3.0_amd64.deb
+
+# Return to Home Directory
+cd
 ```
 
-#### Configuring NOIP
-
-Build the application using the `make` command. You will then be prompted to log in with your No-IP account username and password.
+</TabItem> <TabItem value="arm" label="ARM">
 
 ```sh
-sudo make install
+# Enhence Permissions for Local Installation
+sudo chown _apt /var/lib/update-notifier/package-data-downloads/partial/
+
+# Install Binary
+sudo apt install ./noip-duc_3.3.0_arm64.deb
+
+# Return to Home Directory
+cd
 ```
 
-Choose your default Ethernet connection, usually `eno1`. Also, choose an update interval of `5`, which will update your DNS registry every 5 Minutes, so you never lose peer connections. 5 is the highest frequency you can edit. The final output will look like this:
+</TabItem>
+</Tabs>
+
+:::info
+
+You will have to enhence the permissions for the package manager's default `_apt` user to be able to write into the partial download directory, used for installing local packages that have been pre-downloaded to the system.
+
+:::
+
+**2.4 Verify Installation**: Check the installation folder and service files of the installed package.
+
+```sh
+dpkg -L noip-duc
+```
+
+The output should look similar to:
 
 ```text
-New configuration file '/tmp/no-ip2.conf' created.
+/usr
+/usr/share
+/usr/share/doc
+/usr/share/doc/noip-duc
+/usr/share/doc/noip-duc/README.md
+/lib
+/lib/systemd
+/lib/systemd/system
+/lib/systemd/system/noip-duc.service
+/usr/share/doc/noip-duc/copyright
+/usr/bin
+/usr/bin/noip-duc
 ```
 
-To configure the client globally, we must run the built executable with the `-C` flag again. It is needed for our service to find the right config file after automatic startups.
+**2.5 Check Executable**: Try to call the service directly from the terminal to ensure it can be called by the system.
 
 ```sh
-sudo make install -C
+noip-duc
 ```
 
-The application will create a default config file within the user directory. The final output will look like this:
+The output should look similar to:
 
 ```text
-New configuration file '/usr/local/etc/no-ip2.conf' created.
+USAGE:
+    noip-duc [OPTIONS] --username <USERNAME> --password <PASSWORD>
+
+For more information try --help
 ```
 
-> Be careful. One of the questions might be, “Do you wish to update ALL hosts” if you are already using NO-IP with other devices. If answered incorrectly, this could effect hostnames in your account that are pointing at different locations.
-
-Now that the client is installed and configured, you can launch it. Execute this command to launch the client in the background:
+**2.6 Delete Installation Files**: After the installed package and executable have been verified, delete the installation files.
 
 ```sh
-sudo /usr/local/bin/noip2
+sudo rm -rf noip-duc_3.3.0 noip-duc_3.3.0.tar.gz
 ```
 
-Stop the process again, as we want to enable it on startup. If it is running, we can not configure it as it is running as a forked daemon.
+:::warning
+
+The folder name will vary depending on the installed version.
+
+:::
+
+## 3. User Configuration
+
+Since the service will be automatically starting and running, we need to set login credentials and preferences.
+
+**3.1 Create User Config File**: Create the file with all your DDNS credentials and preferences using your preferred text editor.
+
+<Tabs groupId="editor">
+  <TabItem value="vim" label="Vim" default>
 
 ```sh
-sudo pkill noip2
+sudo vim /etc/default/noip-duc
 ```
 
-#### Allow NOIP on Startup
-
-For the program to be started at boot, we will create a system service file for it:
+</TabItem> <TabItem value="nano" label="Nano">
 
 ```sh
-sudo vim /etc/systemd/system/noip2.service
+sudo nano /etc/default/noip-duc
 ```
 
-We will set the following properties:
+</TabItem>
+</Tabs>
 
-- **Description**: Provides a concise but meaningful explanation of the service used in the configuration
-- **Type**: This option configures the process startup type for this service unit. The noip2 software runs as a daemon that forks itself after starting up. The `forking` value tells the system to expect the primary process to return immediately but instead watch the process spawned by noip2.
-- **ExecStart**: Specifies the command to run when the service starts. In this case, it's `/usr/local/bin/noip2` as the program folder of NO-IP.
-- **Restart**: Configures whether the service shall be restarted when the service process exits, is killed, or a timeout is reached. The `always` value means the service will be restarted regardless of whether it exited cleanly or not.
-- **WantedBy**: This option creates a small dependency and starts the service at boot time. If we input `multi-user.target`, we can specify that the software will start when the system is set up for multiple users.
+**3.2 Write User Configurations**: Input all your preferences and DDNS update interval, then save and exit the file.
 
-That is the content of the service file:
+```text
+NOIP_USERNAME=<your-noip-username>
+NOIP_PASSWORD=<your-noip-password>
+NOIP_HOSTNAMES=<your-ddns-hostname>
+NOIP_CHECK_INTERVAL=5m
+```
+
+:::info
+
+The following properties need to be exchanged:
+
+- `<your-noip-username>` with your NOIP email
+- `<your-noip-password>` with your NOIP password
+- `<your-ddns-hostname>` with your DDNS hostname ending on `.ddns.net`
+
+:::
+
+**3.3 Update Permissions**: For better security, locking down the permissions so only the root user can access credentials.
+
+```sh
+sudo chmod 600 /etc/default/noip-duc
+sudo chown root:root /etc/default/noip-duc
+```
+
+## 4. Service Configuration
+
+The setup already installed a default NOIP service file that can be used to allow automatic startups during boot and restarts on failures. We can further modify the default service file to also check for logging, an online network connection.
+
+**4.1 Open Service Config File**: Further customize the service file using your preferred text editor.
+
+<Tabs groupId="editor">
+  <TabItem value="vim" label="Vim" default>
+
+```sh
+sudo vim /lib/systemd/system/noip-duc.service
+```
+
+</TabItem> <TabItem value="nano" label="Nano">
+
+```sh
+sudo nano /lib/systemd/system/noip-duc.service
+```
+
+</TabItem>
+</Tabs>
+
+**4.2 Update Service Configurations**: Add further preferences for network autages and restarts, then save and exit the file.
 
 ```text
 [Unit]
-Description=No-ip.com Dynamic DNS
-After=network.target
-After=syslog.target
+Description=No-IP Dynamic Update Client
+After=network.target auditd.service syslog.target network-online.target
 Wants=network-online.target
-After=network-online.target
+
+[Service]
+EnvironmentFile=/etc/default/noip-duc
+ExecStart=/usr/bin/noip-duc
+Restart=on-failure
+Type=simple
 
 [Install]
 WantedBy=multi-user.target
 Alias=noip.service
-
-[Service]
-ExecStart=/usr/local/bin/noip2
-Restart=always
-Type=forking
 ```
 
-#### Starting NOIP as a Service
+<details>
+    <summary>Full Property Explanation</summary>
 
-First, we need to reload the system manager configuration. It is used when making changes to service configuration files or creating new service files, ensuring that the system daemon is aware of the changes like before.
+| Property          | Description                                                                                                                                                                                                                                                                                                                                                      |
+| ----------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Description`     | A human-readable description of the service shown in `systemctl status`.                                                                                                                                                                                                                                                                                         |
+| `After`           | - `network.target`: Ensures networking setup enabled before service is started. <br /> - `auditd.service`: Ensures audit daemon is initialized before service is started. <br /> - `syslog.target`: Ensures system logging is ready before service is started. <br /> - `network-online.target`: Waits for network to be fully online before service is started. |
+| `Wants`           | Tries to fullfil `network-online.target` but might start even if there is a temporary downtime.                                                                                                                                                                                                                                                                  |
+| `EnvironmentFile` | Path to the `/lib/systemd/system/noip-duc.service` configuration file.                                                                                                                                                                                                                                                                                           |
+| `ExecStart`       | Link to binary at `/usr/bin/noip-duc`, started with the terminal command of the service.                                                                                                                                                                                                                                                                         |
+| `Restart`         | Restarts the service `on-failure` for a variety of reasons.                                                                                                                                                                                                                                                                                                      |
+| `Type`            | Indicates running at a `simple` service in the foreground without forking into a daemon process.                                                                                                                                                                                                                                                                 |
+| `WantedBy`        | Starts the service automatically during the system's normal multi-user boot.                                                                                                                                                                                                                                                                                     |
+| `Alias`           | Alternative `noip.service` service name to manage DDNS within the terminal.                                                                                                                                                                                                                                                                                      |
+
+</details>
+
+## 5. DDNS Startup
+
+After both, the user and service configuration are set in place, we can start the DDNS tool.
+
+**5.1 Reaload Service Configs**: Reload the previously modified system manager configuration for all services.
 
 ```sh
 sudo systemctl daemon-reload
 ```
 
-Afterward, we can start the noip2 service using the system control command:
+**5.2 Enable Autostarts**: Use the system control to create a symbolic link to enable startups during boot.
 
 ```sh
-sudo systemctl start noip2
+sudo systemctl enable noip-duc.service
 ```
 
-To enable the noip2 service to start when the system boots, we can use the system control to create a symbolic link as we did before.
-
-```sh
-sudo systemctl enable noip2
-```
-
-The output should look similar to this:
+The output should be similar to:
 
 ```text
-Created symlink /etc/systemd/system/noip.service → /etc/systemd/system/noip2.service.
-Created symlink /etc/systemd/system/multi-user.target.wants/noip2.service → /etc/systemd/system/noip2.service.
+Created symlink /etc/systemd/system/noip.service → /lib/systemd/system/noip-duc.service.
+Created symlink /etc/systemd/system/multi-user.target.wants/noip-duc.service → /lib/systemd/system/noip-duc.service.
 ```
 
-We can fetch the current status from the system control to check if the noip2 service is running and configured correctly. It will display whether it is active, enabled, or disabled and show any recent log entries.
+**5.3 Start the Service**: Use the system control to start the DDNS service with the configured user credentials and preferences.
+
+```sh
+sudo systemctl start noip-duc.service
+```
+
+**5.4 Verify Status**: Use the system control to fetch the current status and check if it's running correctly.
 
 ```sh
 sudo systemctl status noip2
 ```
 
+:::info
+
+The status will display whether it is active, enabled, or disabled and show any recent log entries.
+
+:::
+
 The output should look similar to this:
 
 ```text
-● noip2.service - No-ip.com Dynamic DNS
-     Loaded: loaded (/etc/systemd/system/noip2.service; enabled; vendor preset: enabled)
+● noip-duc.service - No-IP Dynamic Update Client
+     Loaded: loaded (/lib/systemd/system/noip-duc.service; enabled; vendor preset: enabled)
      Active: active (running) since [DATE] UTC; [TIME] ago
-   Main PID: 4387 (noip2)
-      Tasks: 1 (limit: 38043)
-     Memory: 228.0K
-        CPU: 6ms
-     CGroup: /system.slice/noip2.service
-             └─4387 /usr/local/bin/noip2
+   Main PID: 288425 (noip-duc)
+      Tasks: 1 (limit: 38033)
+     Memory: 388.0K
+        CPU: 7ms
+     CGroup: /system.slice/noip-duc.service
+             └─288425 /usr/bin/noip-duc
 
-[DATE] [TIME] [USER] systemd[1]:  Starting No-ip.com Dynamic DNS
-[DATE] [TIME] [USER] noip2[4387]: v2.1.9 daemon started with NAT enabled
-[DATE] [TIME] [USER] systemd[1]:  Started No-ip.com Dynamic DNS.
-[DATE] [TIME] [USER] noip2[4387]: [DYN_DNS_NAME] was already set to [PUBLIC_IP].
+[DATE] [TIME] [USER] systemd[1]: Started No-IP Dynamic Update Client.
+[DATE] [TIME] [USER] noip-duc[288425]: [DATE-TIME INFO  noip_duc::public_ip] Attempting to get IP with method Dns(No-IP Anycast DNS Tools)
+[DATE] [TIME] [USER] noip-duc[288425]: [DATE-TIME INFO  noip_duc::observer] got new ip; current=[YOUR_PUBLIC_IP], previous=0.0.0.0
+[DATE] [TIME] [USER] noip-duc[288425]: [DATE-TIME INFO  noip_duc::observer] update successful; current=[YOUR_PUBLIC_IP], previous=0.0.0.0
+[DATE] [TIME] [USER] noip-duc[288425]: [DATE-TIME INFO  noip_duc::observer] checking ip again in 5m
 ...
 ```
 
-#### Complete NOIP Setup
+Remember your DDNS hostname or copy it to a notepad, as it will be necessary for the client updates.
 
-Make sure to complete the setup by logging into your NOIP account again. Please set 2FA, a username, and a security question to protect against malicious actors. In the `My Services` section, copy your hostname, as we need it in the next step.
+## 6. Stop Node Operation
 
-#### Set Dynamic DNS Hostname in Config
+Depending on your setup method, there are different ways to stop your node before linking your DDNS hostname.
 
-Now that everything is configured in the right way, we can set the hostname into the config file of the consensus client.
-
-Navigate into your node's working directory:
+<Tabs groupId="setup">
+  <TabItem value="cli" label="LUKSO CLI" default>
 
 ```sh
 cd <lukso-working-directory>
-```
-
-Stop your currently running clients:
-
-```sh
 lukso stop
 ```
 
-The output should be the following:
+:::info
 
-```text
-# INFO[0000] PID ----- - Execution (geth): Stopped 🔘
-# INFO[0000] PID ----- - Consensus (prysm): Stopped 🔘
-# INFO[0000] PID ----- - Validator (validator): Stopped 🔘
-```
+Exchange `<lukso-working-directory>` with the path of the node folder.
 
-Open your Prysm configuration file:
+:::
+
+</TabItem> <TabItem value="automation" label="Service Automation">
 
 ```sh
-### Prysm Mainnet Configuration
-vim /configs/mainnet/prysm/prysm.yaml
-
-### Prsym Testnet Configuration
-vim /configs/testnet/prysm/prysm.yaml
+sudo systemctl stop lukso-validator
 ```
 
-Now add the following line, including your hostname of the Dynamic DNS:
+</TabItem>
+</Tabs>
 
-```text
-p2p-host-dns: '<your-hostname-address>'
-```
+<details>
+<summary>Force Client Shutdown</summary>
 
-Comment the old ip property out by putting a hash in front of it:
-
-```text
-#p2p-host-ip: '<your-host-ip>'
-```
-
-Restart the client again:
+<Tabs>
+<TabItem value="geth" label="Geth">
 
 ```sh
-# Restart Mainnet Validator
-lukso start --validator --transaction-fee-recipient "0x1234..."
-
-# Restart Testnet Validator
-lukso start --validator --transaction-fee-recipient "0x1234..." --testnet
+sudo pkill geth
 ```
 
-After setting your public address, wait some minutes to recheck your peer count. You should see it rise. After some hours, you should have a stable connection.
+</TabItem> <TabItem value="erigon" label="Erigon">
+
+```sh
+sudo pkill erigon
+```
+
+</TabItem> <TabItem value="nethermind" label="Nethermind">
+
+```sh
+sudo pkill nethermind
+```
+
+</TabItem> <TabItem value="besu" label="Besu">
+
+```sh
+sudo pkill besu
+```
+
+</TabItem> <TabItem value="teku" label="Teku">
+
+```sh
+sudo pkill teku
+```
+
+</TabItem> <TabItem value="lighthouse" label="Lighthouse">
+
+```sh
+sudo pkill lighthouse
+```
+
+:::tip
+
+The Lighthouse client uses a single binary for both the consensus and validator processes.
+
+:::
+
+</TabItem> <TabItem value="prysm" label="Prysm">
+
+```sh
+sudo pkill prysm
+sudo pkill validator
+```
+
+</TabItem>
+</Tabs>
+
+</details>
+
+## 7. Client DNS Update
+
+Depending on your consensus client, the DDNS hostname can be set with different properties.
+
+<Tabs groupId="client">
+<TabItem value="prysm" label="Prysm">
+
+Open the configuration file using your preferred text editor.
+
+<Tabs groupId="editor">
+  <TabItem value="vim" label="Vim" default>
+
+```sh
+cd <lukso-working-directory>/configs/<network>/prysm/
+vim prysm.yaml
+```
+
+</TabItem> <TabItem value="nano" label="Nano">
+
+```sh
+cd <lukso-working-directory>/configs/<network>/prysm/
+nano prysm.yaml
+```
+
+</TabItem>
+</Tabs>
+
+</TabItem> <TabItem value="teku" label="Teku">
+
+Open the configuration file using your preferred text editor.
+
+<Tabs groupId="editor">
+  <TabItem value="vim" label="Vim" default>
+
+```sh
+cd <lukso-working-directory>/configs/<network>/teku/
+vim teku.yaml
+```
+
+</TabItem> <TabItem value="nano" label="Nano">
+
+```sh
+cd <lukso-working-directory>/configs/<network>/teku/
+nano teku.yaml
+```
+
+</TabItem>
+</Tabs>
+
+</TabItem> <TabItem value="lighthouse" label="Lighthouse">
+
+Open the configuration file using your preferred text editor.
+
+<Tabs groupId="editor">
+  <TabItem value="vim" label="Vim" default>
+
+```sh
+cd <lukso-working-directory>/configs/<network>/lighthouse/
+vim lighthouse.toml
+```
+
+</TabItem> <TabItem value="nano" label="Nano">
+
+```sh
+cd <lukso-working-directory>/configs/<network>/lighthouse/
+nano lighthouse.toml
+```
+
+</TabItem>
+</Tabs>
+
+</TabItem>
+</Tabs>
+
+:::info
+
+The following properties need to be exchanged:
+
+- `<lukso-working-directory>` with the path to the node folder.
+- `<network>` with the name of your node's network.
+
+:::
+
+Set the DDNS hostname within the settings, then save and exit the file.
+
+<Tabs groupId="client">
+<TabItem value="prysm" label="Prysm">
+
+In case the _p2p-host-ip_ property is set, disable it by putting a hash _#_ in front:
+
+```text
+# Previous Value Examples
+p2p-host-ip: '0.0.0.0'
+p2p-host-ip: '<your-ip-address>'
+
+# Updated Value
+#p2p-host-ip: '0.0.0.0'
+#p2p-host-ip: '<your-ip-address>'
+```
+
+Then add the _p2p-host-dns_ property into a new line of the file:
+
+```text
+# Added Property
+p2p-host-dns: '<your-ddns-hostname>'
+```
+
+</TabItem> <TabItem value="teku" label="Teku">
+
+Update the _p2p-advertised-ip_ property.
+
+```text
+# Default Value Examples
+p2p-advertised-ip: 0.0.0.0
+p2p-advertised-ip: '<your-ip-address>'
+
+# Updated Value
+p2p-advertised-ip: '<your-ddns-hostname>'
+```
+
+</TabItem> <TabItem value="lighthouse" label="Lighthouse">
+
+Update the _enr-address_ property.
+
+```text
+# Default Value Examples
+enr-address = "0.0.0.0"
+enr-address = '<your-ip-address>'
+
+# Updated Value
+enr-address = '<your-ddns-hostname>'
+```
+
+</TabItem>
+</Tabs>
+
+:::info
+
+Exchange `<your-ddns-hostname>` with the actual address of the DDNS hostname ending on `.ddns.net`.
+
+:::
+
+:::warning
+
+Ensure there are no missing spaces, characters or unintended linebreaks before saving the configuration file.
+
+:::
+
+## 8. Restart the Node
+
+Depending on your setup method, there are different ways to start your node after the DDNS hostname was added.
+
+<Tabs groupId="setup">
+  <TabItem value="clinode" label="LUKSO CLI Node" default>
+
+```sh
+cd <lukso-working-directory>
+lukso start --checkpoint-sync
+```
+
+:::info
+
+Exchange `<lukso-working-directory>` with the path of the node folder.
+
+:::
+
+</TabItem> <TabItem value="clivalidator" label="LUKSO CLI Validator" default>
+
+```sh
+cd <lukso-working-directory>
+lukso start --validator --transaction-fee-recipient "<your-fee-recipient-address>" --checkpoint-sync
+```
+
+:::info
+
+The following properties need to be exchanged:
+
+- `<lukso-working-directory>` with the path of the node folder
+- `<your-fee-recipient-address>` with the wallet address receiving staking profits
+
+:::
+
+</TabItem> <TabItem value="automation" label="Service Automation">
+
+```sh
+sudo systemctl start lukso-validator
+```
+
+</TabItem>
+</Tabs>
+
+After the clients were started, verify that their services are still up.
+
+```sh
+sudo lukso status
+```
+
+:::tip
+
+You should now have a stable and permanent blockchain connection. Wait some hours before [rechecking your peer count](/docs/guides/modifications/peer-count-limits.md).
+
+:::
