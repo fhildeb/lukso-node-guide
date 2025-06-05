@@ -82,7 +82,7 @@ const sections = [
       },
       {
         title: "Alert Systems",
-        pages: ["Telegram Bot", "Image Rendering"],
+        pages: ["Telegram Bot", "Grafana Notifications", "Image Rendering"],
       },
       {
         title: "External Access",

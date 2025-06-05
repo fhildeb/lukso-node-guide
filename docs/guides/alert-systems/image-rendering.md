@@ -1,9 +1,9 @@
 ---
-sidebar_label: "9.2 Image Rendering"
-sidebar_position: 2
+sidebar_label: "9.3 Image Rendering"
+sidebar_position: 3
 ---
 
-# 9.2 Image Rendering
+# 9.3 Image Rendering
 
 ## 8.2 Enable Image Alerts
 
