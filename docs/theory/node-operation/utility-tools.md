@@ -3,6 +3,9 @@ sidebar_label: "Utility Tools"
 sidebar_position: 11
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 # Utility Tools
 
 Proficiently running a node requires an in-depth knowledge of the command line. From updating packages, editing configuration files, and running system services, having basic tool familiarity will save time and reduce the chances of misconfiguration.
@@ -67,3 +70,52 @@ For additional commands and descriptions, have a look at the 🕹️ [**System C
 | `systemctl enable [service]`               | Enables a service to start on boot                         |
 | `systemctl disable [service]`              | Disables a service from starting on boot                   |
 | `systemctl status [service]`               | Displays current status, logs, and metadata of the service |
+
+## Service Logging
+
+When configuring your service file output, you can choose between journal and system logging, two variants that are very common for reading data and the status of services during maintenance or if there are hickups on ports or interfaces.
+
+| Feature          | Journal Logging                                 | System Logging                           |
+| ---------------- | ----------------------------------------------- | ---------------------------------------- |
+| Format           | Human Friendly, Structured Format with Metadata | Basic Output as Plain Text               |
+| Filtering        | Powerful Filtering by Unit, Process ID, Time    | Less Advanced Filtering through _grep_   |
+| Remote Logging   | Not built-in                                    | Supports remote logging over UDP and TCP |
+| Space Efficiency | More Compact using Binary Format                | Larger due to Plain Text Format          |
+| Tooling          | Requires _journalctl_ from Ubuntu or Linux      | Compatible across all UNIX tools         |
+
+:::tip
+
+For additional commands and descriptions, have a look at the 📰 [**Journal Control Help Page**](https://manpages.ubuntu.com/manpages/focal/man1/journalctl.1.html) for 🔸 Ubuntu.
+
+:::
+
+<Tabs groupId="logging-tool">
+  <TabItem value="journal" label="Journal Logging" default>
+
+| Frequent Commands                          | Description                                                    |
+| ------------------------------------------ | -------------------------------------------------------------- |
+| `journalctl`                               | Show all logs                                                  |
+| `journalctl -r`                            | Show logs in reverse chronological order                       |
+| `journalctl -u [service]`                  | Show logs for a specific service                               |
+| `journalctl -b`                            | Show logs from the current boot                                |
+| `journalctl -b -1`                         | Show logs from the previous boot                               |
+| `journalctl --since "YYYY-MM-DD HH:MM:SS"` | Show logs since a specific date and time                       |
+| `journalctl --since "1 hour ago"`          | Show logs from the last hour                                   |
+| `journalctl -p [priority]`                 | Show logs of a specific priority like `err`, `warning`, `info` |
+| `journalctl -f`                            | Follow new log entries in real-time                            |
+| `journalctl \| grep [keyword]`             | Search logs for a specific keyword                             |
+
+</TabItem> <TabItem value="system" label="System Logging">
+
+| Frequent Commands                | Description                                      |
+| -------------------------------- | ------------------------------------------------ |
+| `cat /var/log/syslog`            | Display the entire syslog file                   |
+| `less /var/log/syslog`           | View syslog file with pagination                 |
+| `tail -f /var/log/syslog`        | Monitor new log entries in real-time             |
+| `grep [keyword] /var/log/syslog` | Search for a specific keyword in the syslog file |
+| `logger "Your message"`          | Add a custom message to the syslog               |
+| `sudo systemctl restart rsyslog` | Restart the syslog service                       |
+| `sudo systemctl status rsyslog`  | Check the status of the syslog service           |
+
+</TabItem>
+</Tabs>
