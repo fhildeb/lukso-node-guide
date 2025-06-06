@@ -245,6 +245,9 @@ sudo nano /lib/systemd/system/noip-duc.service
 
 **4.2 Update Service Configurations**: Add further preferences for network autages and restarts, then save and exit the file.
 
+<Tabs groupId="logging-tool">
+  <TabItem value="journal" label="Journal Logging" default>
+
 ```text
 [Unit]
 Description=No-IP Dynamic Update Client
@@ -256,11 +259,35 @@ EnvironmentFile=/etc/default/noip-duc
 ExecStart=/usr/bin/noip-duc
 Restart=on-failure
 Type=simple
+StandardOutput=journal
+StandardError=journal
 
 [Install]
 WantedBy=multi-user.target
-Alias=noip.service
 ```
+
+</TabItem> <TabItem value="system" label="System Logging">
+
+```text
+[Unit]
+Description=No-IP Dynamic Update Client
+After=network.target auditd.service syslog.target network-online.target
+Wants=network-online.target
+
+[Service]
+EnvironmentFile=/etc/default/noip-duc
+ExecStart=/usr/bin/noip-duc
+Restart=on-failure
+Type=simple
+StandardOutput=syslog
+StandardError=syslog
+
+[Install]
+WantedBy=multi-user.target
+```
+
+</TabItem>
+</Tabs>
 
 <details>
     <summary>Full Property Explanation</summary>
@@ -274,10 +301,17 @@ Alias=noip.service
 | `ExecStart`       | Link to binary at `/usr/bin/noip-duc`, started with the terminal command of the service.                                                                                                                                                                                                                                                                         |
 | `Restart`         | Restarts the service `on-failure` for a variety of reasons.                                                                                                                                                                                                                                                                                                      |
 | `Type`            | Indicates running at a `simple` service in the foreground without forking into a daemon process.                                                                                                                                                                                                                                                                 |
+| `StandardOutput`  | Sends regular service logs to the journal or syslog system.                                                                                                                                                                                                                                                                                                      |
+| `StandardError`   | Sends error service logs to the journal or syslog system.                                                                                                                                                                                                                                                                                                        |
 | `WantedBy`        | Starts the service automatically during the system's normal multi-user boot.                                                                                                                                                                                                                                                                                     |
-| `Alias`           | Alternative `noip.service` service name to manage DDNS within the terminal.                                                                                                                                                                                                                                                                                      |
 
 </details>
+
+:::warning
+
+Ensure there are no missing or unintended spaces, characters or linebreaks before saving the service configuration.
+
+:::
 
 ## 5. DDNS Startup
 
@@ -292,7 +326,7 @@ sudo systemctl daemon-reload
 **5.2 Enable Autostarts**: Use the system control to create a symbolic link to enable startups during boot.
 
 ```sh
-sudo systemctl enable noip-duc.service
+sudo systemctl enable noip-duc
 ```
 
 The output should be similar to:
@@ -305,13 +339,13 @@ Created symlink /etc/systemd/system/multi-user.target.wants/noip-duc.service →
 **5.3 Start the Service**: Use the system control to start the DDNS service with the configured user credentials and preferences.
 
 ```sh
-sudo systemctl start noip-duc.service
+sudo systemctl start noip-duc
 ```
 
 **5.4 Verify Status**: Use the system control to fetch the current status and check if it's running correctly.
 
 ```sh
-sudo systemctl status noip2
+sudo systemctl status noip-duc
 ```
 
 :::info
@@ -630,3 +664,84 @@ sudo lukso status
 You should now have a stable and permanent blockchain connection. Wait some hours before [rechecking your peer count](/docs/guides/modifications/peer-count-limits.md).
 
 :::
+
+## Maintenance
+
+Proper maintenance ensures that all the components are working as intended and can be updated on the fly.
+
+**Logging**: Check the latest status of the system service.
+
+<Tabs groupId="logging-tool">
+  <TabItem value="journal" label="Journal Logging" default>
+
+```sh
+sudo journalctl -f -u noip-duc
+```
+
+</TabItem> <TabItem value="system" label="System Logging">
+
+```sh
+sudo tail -f /var/log/syslog | grep noip-duc
+```
+
+</TabItem>
+</Tabs>
+
+:::tip
+
+Further details about checking client logs files can be found on the [**Problem Scanning**](/docs/guides/maintenance/problem-scanning.md) page.
+
+:::
+
+**Starting**: If you made any changes or updates to configuration, reload the system daemon and start the node.
+
+```sh
+sudo systemctl daemon-reload
+sudo systemctl restart noip-duc
+```
+
+**Stopping**: You can stop all the node clients and parent processes using the system control.
+
+```sh
+sudo systemctl stop noip-duc
+```
+
+:::tip
+
+Further information about system control or logging can be found on the [**Utility Tools**](/docs/theory/node-operation/utility-tools.md) page in the 🧠 [**Theory**](/docs/theory/preparations/node-specifications.md) section.
+
+:::
+
+## Revert Setup
+
+If something went wrong, you can remove the service and related files all together.
+
+**1. Disable Node Service**: Remove the service link from the system's boot.
+
+```sh
+sudo systemctl disable noip-duc
+```
+
+**2. Remove Service File**: Delete the service configuration file from the system folder.
+
+```sh
+sudo rm /lib/systemd/system/noip-duc.service
+```
+
+**3. Reload System Service**: Reload the system daemon to apply latest service updates.
+
+```sh
+sudo systemctl daemon-reload
+```
+
+**4. Remove Software Package**: Delete the binary and optional configuration files using the package management tool.
+
+```sh
+# Remove Software
+sudo apt remove noip-duc
+
+# Remove Software and Configuration
+sudo apt purge noip-duc
+```
+
+**5. Update Client Configuration**: Stop the node, update your DDNS or IP address, and restart the clients.
