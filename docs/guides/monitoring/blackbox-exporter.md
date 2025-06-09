@@ -5,7 +5,11 @@ sidebar_position: 5
 
 # 8.5 Blackbox Exporter
 
-## 7.4 Blackbox Exporter Setup
+:::danger
+
+This page is currently under maintenance reworked and contains outdated content.
+
+:::
 
 After installing the Node and JSON Exporters, we will move on with the last exporter service for Prometheus: the Blackbox Exporter, as it's common practice to install the exporters before the main Prometheus service, as [explained before](#).
 
@@ -13,7 +17,7 @@ After installing the Node and JSON Exporters, we will move on with the last expo
 
 > The Blackbox Exporter probes endpoints over protocols such as HTTP, HTTPS, DNS, TCP, and ICMP and provides detailed metrics on the results. In our case, it monitors the ping time between the node machine and two DNS servers. This information can be crucial in diagnosing network-related issues. If the ping time is too long or the connection fails, it could indicate network problems affecting your node's performance or ability to stay in sync with the rest of the blockchain network.
 
-### 7.4.1 Creating a New User
+## 1. Creating a New User
 
 As explained and done [previously](#), we will create a new user to run the Blackbox Exporter service specifically. Running services as a system user with minimal privileges is a typical security best practice.
 
@@ -41,7 +45,7 @@ The output should look similar to this:
 blackbox-exporter-worker:x:116:122::/home blackbox-exporter-worker:/usr/sbin/nologin
 ```
 
-### 7.4.2 Installing the Blackbox Exporter
+## 2. Installing the Blackbox Exporter
 
 When installing the Blackbox Exporter, we first have to get the latest version from the official [Prometheus Webpage](https://prometheus.io/download/#blackbox_exporter). As of `May 2023`, the only listed version is `0.23.0`.
 
@@ -129,7 +133,7 @@ The same applies to the tape archive, which we have previously downloaded:
 rm blackbox_exporter-0.23.0.linux-amd64.tar.gz
 ```
 
-### 7.4.3 Extend Network Capabilities
+## 3. Extend Network Capabilities
 
 Because the Blackbox Exporter will monitor the ping time between the node machine and DNS servers. This information can be crucial in diagnosing network-related issues. However, it will ping those many times, and service has strict capabilities set by default.
 
@@ -147,7 +151,7 @@ In our case, the final command looks like this:
 sudo setcap cap_net_raw+ep /usr/local/bin/blackbox_exporter
 ```
 
-### 7.4.4 Configuring External Datasets
+## 4. Configuring External Datasets
 
 After installation, we want to create a separate configuration file to define a module that performs network probes. This configuration can monitor network connectivity by sending ping requests and waiting for replies.
 
@@ -199,7 +203,7 @@ sudo chown -R blackbox-exporter-worker:blackbox-exporter-worker /etc/blackbox_ex
 
 We can now continue the service configuration and link our external metrics there.
 
-### 7.4.5 Configuring the Service
+## 5. Configuring the Service
 
 After installation, we want to define how the Blackbox Exporter service should be run. Within Ubuntu, the `/etc/systemd/system/` directory is where system service unit files are stored and used to configure services to start automatically at boot.
 
@@ -265,7 +269,7 @@ WantedBy=multi-user.target
 
 > Be cautious: When creating new rules or modifying existing ones, following the correct syntax and structure are essential to ensure that the Blackbox Exporter functions appropriately and provides the desired level of security. Verify that you do not use spaces between properties and their values.
 
-### 7.4.6 Start the Blackbox Exporter Service
+## 6. Start the Blackbox Exporter Service
 
 First, we need to reload the system manager configuration. It is used when making changes to service configuration files or creating new service files, ensuring that the system daemon is aware of the changes like before.
 
@@ -316,7 +320,7 @@ The output should look similar to this:
 ...
 ```
 
-### 7.4.7 Maintenance
+## Maintenance
 
 Proper maintenance ensures that all the components are working as intended, can be updated on the fly, and that software can be kept up-to-date and secure. It's also essential to identify and fix errors quickly.
 
@@ -353,7 +357,7 @@ You can stop the service using the system control:
 sudo systemctl stop blackbox_exporter
 ```
 
-### 7.4.8 Optional User Removal
+## Cleanup
 
 If you ever want to remove the user or something went wrong, do the following steps:
 
@@ -374,8 +378,6 @@ sudo delgroup blackbox-exporter-worker
 ```
 
 Afterward, you can redo the Blackbox Exporter guide and either set up a new user or remove the `User` property from the configuration in `7.4.5`. By default, the process will run as `root`. Also, make sure to go through every step in `7.4.6` once again.
-
-### 7.4.9 Optional Software Removal
 
 If you want to remove the Blackbox Exporter tool, stop the running service:
 

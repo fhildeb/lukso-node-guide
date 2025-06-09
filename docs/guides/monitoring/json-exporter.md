@@ -5,7 +5,11 @@ sidebar_position: 4
 
 # 8.4 JSON Exporter
 
-## 7.3 JSON Exporter Setup
+:::danger
+
+This page is currently under maintenance reworked and contains outdated content.
+
+:::
 
 After installing the JSON Exporter, we will move on with the second exporter service for Prometheus: the JSON Exporter, as it's common practice to install the exporters before starting the main Prometheus service, as [explained before](#).
 
@@ -13,7 +17,7 @@ After installing the JSON Exporter, we will move on with the second exporter ser
 
 > The JSON Exporter fetches data from JSON endpoints and exposes it as Prometheus. In our case, it's being used to convey LUKSO price information from CoinGecko. Price discovery is important because it enables us to monitor LUKSO's market performance directly from your Prometheus and Grafana setup, providing a unified view of both your node's performance and the associated token's market performance. It saves time and provides convenience, eliminating the need to check this information on separate platforms.
 
-### 7.3.1 Creating a New User
+## 1. Creating a New User
 
 As explained and done [previously](#), we will create a new user to to run the JSON Exporter service specifically. Running services as a system user with minimal privileges is a common security best practice.
 
@@ -42,7 +46,7 @@ The output should look similar to this:
 json-exporter-worker:x:115:121::/home/json-exporter-worker:/usr/sbin/nologin
 ```
 
-### 7.3.2 Installing the Dependencies
+## 2. Installing the Dependencies
 
 For the JSON Exporter, we will need the programming language Go, as the JSON Exporter is a tool written in the Go programming language to produce the executable.
 
@@ -119,7 +123,7 @@ If everything works properly, we can remove the downloaded tape archive. Note th
 rm go1.20.4.linux-amd64.tar.gz
 ```
 
-### 7.3.3 Installing the JSON Exporter
+## 3. Installing the JSON Exporter
 
 Before downloading anything, make sure you are still in the home directory so everything is in one place:
 
@@ -181,7 +185,7 @@ After we have copied the executable file into the system's program path and give
 rm -rf json_exporter
 ```
 
-### 7.3.4 Configuring External Datasets
+## 4. Configuring External Datasets
 
 After installation, we want to create a separate configuration file to fetch external information, the LYX price. We will create our own folder for the applciation's configuration files within `/etc/json_exporter/`.
 
@@ -233,7 +237,7 @@ sudo chown -R json-exporter-worker:json-exporter-worker /etc/json_exporter/
 
 We can now continue the service configuration and link our external metrics there.
 
-### 7.3.5 Configuring the Service
+## 5. Configuring the Service
 
 After installation, we want to define how the JSON Exporter service should be run. Within Ubuntu, the `/etc/systemd/system/` directory is where system service unit files are stored and used to configure services to start automatically at boot.
 
@@ -299,7 +303,7 @@ WantedBy=multi-user.target
 
 > Be cautious: When creating new rules or modifying existing ones, following the correct syntax and structure are essential to ensure that the JSON Exporter functions appropriately and provides the desired level of security. Please verify that you do not use spaces between properties and their values.
 
-### 7.3.6 Start the JSON Exporter Service
+## 6. Start the JSON Exporter Service
 
 First, we need to reload the system manager configuration. It is used when making changes to service configuration files or creating new service files, ensuring that the system daemon is aware of the changes like before.
 
@@ -348,7 +352,7 @@ The output should look similar to this:
 [DATE] [TIME] [USER] json_exporter[88174]: net/http.HandlerFunc.ServeHTTP(0xc00002408>...
 ```
 
-### 7.3.7 Maintenance
+## Maintenance
 
 Proper maintenance ensures that all the components are working as intended, can be updated on the fly, and that software can be kept up-to-date and secure. It's also essential to identify and fix errors quickly.
 
@@ -385,7 +389,7 @@ You can stop the service using the system control:
 sudo systemctl stop json_exporter
 ```
 
-### 7.3.8 Optional User Removal
+## Cleanup
 
 If you ever want to remove the user or something went wrong, do the following steps:
 
@@ -406,8 +410,6 @@ sudo delgroup json-exporter-worker
 ```
 
 Afterward, you can redo the JSON Exporter guide and either set up a new user or remove the `User` property from the configuration in `7.3.5`. By default, the process will run as `root`. Also, make sure to go through every step in `7.3.6` once again.
-
-### 7.3.9 Optional Software Removal
 
 If you want to remove the JSON Exporter tool, stop the running service:
 

@@ -5,11 +5,15 @@ sidebar_position: 6
 
 # 8.6 Prometheus
 
-## 7.5 Prometheus Setup
+:::danger
 
-Now that all exporters are installed and running, we can set up the main application.
+This page is currently under maintenance reworked and contains outdated content.
 
-### 7.5.1 Creating a New User
+:::
+
+After exporters are installed and running, we can set up the main application.
+
+## 1. Creating a New User
 
 As explained and done [previously](#), we will create a new user to run the Prometheus service specifically. Running services as a system user with minimal privileges is a typical security best practice.
 
@@ -35,7 +39,7 @@ The output should look similar to this:
 prometheus-worker:x:117:123::/home/prometheus-worker:/usr/sbin/nologin
 ```
 
-### 7.5.2 Installing Prometeus
+## 2. Installing Prometeus
 
 Before downloading or installing anything, make sure you are in the home directory so everything is in one place:
 
@@ -112,7 +116,7 @@ Then continue with copying the CLI tool:
 sudo cp promtool /usr/local/bin/
 ```
 
-### 7.5.3 Cleaning up Install Files
+## 3. Cleaning up Install Files
 
 Before we clean up any files, make sure to move them back into the home directory:
 
@@ -132,7 +136,7 @@ The same applies to the tape archive, which we have previously downloaded:
 rm prometheus-2.37.8.linux-amd64.tar.gz
 ```
 
-### 7.5.4 Configuring External Datasets
+## 4. Configuring External Datasets
 
 After installation, we want to create a separate configuration file for the Prometheus server to collect all the exporters' information. It will tell Prometheus where to scrape data from, how often to scrape it, and how to handle the scraped data.
 
@@ -285,7 +289,7 @@ If you want the LYX price showing up in a different currency than `EUR`, please 
 
 Those properties will, later on, be used within the Grafana Dashboard to fetch the token prices and build metrics based on our validator sevice.
 
-### 7.5.5 Set Prometheus Permissions
+## 5. Set Prometheus Permissions
 
 Now we can change the owner of the software applications to admin access. Owner changes are commonly done for security reasons. Giving root ownership to these binary files prevents non-root users or exporter workers from modifying or replacing these essential executables, which could lead to unauthorized or unexpected behavior.
 
@@ -337,7 +341,7 @@ Afterward, we can change it for the database folder:
 sudo chmod 755 /var/lib/prometheus
 ```
 
-### 7.5.6 Configuring the Service
+## 6. Configuring the Service
 
 After installation and job configuration, we want to define how the Prometheus service should run. Within Ubuntu, the `/etc/systemd/system/` directory is where system service unit files are stored and used to configure services to start automatically at boot.
 
@@ -411,7 +415,7 @@ WantedBy=multi-user.target
 
 > Be cautious: When creating new rules or modifying existing ones, following the correct syntax and structure are essential to ensure that the Prometheus functions appropriately and provides the desired level of security. Verify that you do not use spaces between properties and their values.
 
-### 7.5.7 Start the Prometheus Service
+## 7. Start the Prometheus Service
 
 First we need to reload the system manager configuration. It is used when making changes to service configuration files or creating new service files, ensuring that the system's daemon is aware of the changes like before.
 
@@ -461,7 +465,7 @@ The output should look similar to this:
 ...
 ```
 
-### 7.5.8 Maintenance
+## Maintenance
 
 Proper maintenance ensures that all the components are working as intended, can be updated on the fly, and that software can be kept up-to-date and secure. It's also essential to identify and fix errors quickly.
 
@@ -498,7 +502,7 @@ You can stop the service using the system control:
 sudo systemctl stop prometheus
 ```
 
-### 7.5.9 Optional User Removal
+## Cleanup
 
 If you ever want to remove the user or something went wrong, do the following steps:
 
@@ -537,8 +541,6 @@ sudo delgroup prometheus-worker
 ```
 
 Afterward, you can redo the Prometheus guide and either set up a new user or remove the `User` and `Group` properties from the configuration in `7.5.6`. By default, the process will run as `root`. Also, make sure to go through every step in `7.5.7` once again.
-
-### 7.5.10 Optional Software Removal
 
 If you want to remove the Prometheus and Promtool software, stop the running service:
 

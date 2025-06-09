@@ -5,7 +5,13 @@ sidebar_position: 2
 
 # 8.2 Port Configuration
 
-### 7.1.3 Opening Default Monitoring Ports
+:::danger
+
+This page is currently under maintenance reworked and contains outdated content.
+
+:::
+
+## Opening Monitoring Ports
 
 Our Blockchain Clients have various default ports over which specific monitoring can occur. We already used `8545` within the CLI setup to check the status of the execution client. Prometheus will the similar steps in a more advanced and automated way to generate metrics.
 

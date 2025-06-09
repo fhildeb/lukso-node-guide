@@ -5,9 +5,13 @@ sidebar_position: 3
 
 # 9.3 Image Rendering
 
-## 8.2 Enable Image Alerts
+:::danger
 
-### 8.2.1 Install Grafana Image Renderer
+This page is currently under maintenance reworked and contains outdated content.
+
+:::
+
+## 1. Install Grafana Image Renderer
 
 If you want pictures or graphs added to your regular notifications, you can install the Grafana Image Renderer. It can be installed via the built-in Grafana CLI:
 
@@ -49,7 +53,7 @@ The output should look similar to this:
 
 > **WARNING**: The following section is still Work in Progress for Grafana 9, as windows and settings have changed in terms of names, behavior, and placement.
 
-### 8.2.2 Apply Notification Settings
+## 2. Apply Notification Settings
 
 After Grafana is up and running again, go to the Grafana webpage.
 
@@ -61,12 +65,12 @@ After Grafana is up and running again, go to the Grafana webpage.
 
 From now on, all notifications you've set up will automatically send graphs.
 
-### 8.2.3 Enable Continuous Notifications
+## 3. Enable Continuous Notifications
 
 Within the notification dashboard of the node, you can also activate `send reminders`. Alert reminders are sent after notification rules are evaluated and a certain amount of time has passed.
 
 By setting it to 1h, you will get a notification every hour if a critical error or status has not changed. Continuous notification behavior is helpful if you want regular node status reports.
 
-#### 8.2.4 Permanent Alerts
+## 4. Permanent Alerts
 
 After enabling it on the notification dashboard, you could head over to your node's dashboard and clone or create a new notification. For it to show permanent notifications at a constant rate, you can set a metric so high that it is never supposed to be reached. For instance: If you want hourly updates on the participation rate, you can select the alert for under 100% participation. In this case, you would get a graph of the network participation once an hour.

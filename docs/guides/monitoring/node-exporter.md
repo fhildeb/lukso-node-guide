@@ -5,8 +5,6 @@ sidebar_position: 3
 
 # 8.3 Node Exporter
 
-## 7.2 Node Exporter Setup
-
 We will start the monitoring by setting up the three Node Exporter services before we manage the core Prometheus connection to them. Everything will be set in place and loaded when we configure the Dashboard later.
 
 Setting up sub-tools first has the following benefits:
@@ -16,7 +14,7 @@ Setting up sub-tools first has the following benefits:
 
 > The Node Exporter measures various machine resources such as memory, disk I/O, CPU usage, and network statistics. Metrics give you a broad overview of your machine's performance and health, allowing you to monitor how your node affects your system's resources and catch any potential issues (like memory leaks or high CPU usage) before they cause problems. Running Node Exporter on every node of your network provides you with valuable insights and helps ensure the smooth operation of your blockchain applications.
 
-### 7.2.1 Creating a New User
+## 1. Creating a New User
 
 When setting up a Prometheus Node Exporter, we will create a new system user specifically to run the Node Exporter service. Running services as a system user with minimal privileges is a typical security best practice. It limits the potential damage if the service is somehow compromised. For example, the Node Exporter user won't be able to write to most directories on the system or execute commands as other users. We will use the system's user creation tool:
 
@@ -43,7 +41,7 @@ The output should look similar to this:
 node-exporter-worker:x:114:120::/home/node-exporter-worker:/usr/sbin/nologin
 ```
 
-### 7.2.2 Installing the Node Exporter
+## 2. Installing the Node Exporter
 
 When it comes to the Installation of the Node Exporter, we first have to get the latest version from the official [Prometheus Webpage](https://prometheus.io/download/#node_exporter). As of `May 2023`, the only listed version is `1.5.0`.
 
@@ -138,7 +136,7 @@ The same applies to the tape archive, which we have previously downloaded:
 rm node_exporter-1.5.0.linux-amd64.tar.gz
 ```
 
-### 7.2.3 Configuring the Service
+## 3. Configuring the Service
 
 After installation, we want to define how the Node Exporter service should be run. Within Ubuntu, the `/etc/systemd/system/` directory is where system service unit files are stored and used to configure services to start automatically at boot.
 
@@ -203,7 +201,7 @@ WantedBy=multi-user.target
 
 > Be cautious: When creating new rules or modifying existing ones, following the correct syntax and structure are essential to ensure that the Node Exporter functions appropriately and provides the desired level of security. Please verify that you do not use spaces between properties and their values.
 
-### 7.2.4 Start the Node Exporter Service
+## 4. Start the Node Exporter Service
 
 First, we need to reload the system manager configuration. It is used when making changes to service configuration files or creating new service files, ensuring that systemd is aware of the changes like before.
 
@@ -253,7 +251,7 @@ The output should look similar to this:
 ...
 ```
 
-### 7.2.5 Maintenance
+## Maintenance
 
 Proper maintenance ensures that all the components are working as intended, can be updated on the fly, and that software can be kept up-to-date and secure. It's also essential to identify and fix errors quickly.
 
@@ -290,7 +288,7 @@ You can stop the service using the system control:
 sudo systemctl stop node_exporter
 ```
 
-### 7.2.6 Optional User Removal
+## Cleanup
 
 If you ever want to remove the user or something went wrong, do the following steps:
 
@@ -311,8 +309,6 @@ sudo delgroup node-exporter-worker
 ```
 
 Afterward, you can redo the Node Exporter guide and either set up a new user or remove the `User` property from the configuration in `7.2.3`. By default, the process will run as `root`. Also, go through every step in `7.2.4` once again.
-
-### 7.2.6 Optional Software Removal
 
 If you want to remove the Node Exporter tool, stop the running service:
 

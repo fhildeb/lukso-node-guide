@@ -5,11 +5,19 @@ sidebar_position: 1
 
 # 8.1 Software Preparation
 
+:::danger
+
+This page is currently under maintenance reworked and contains outdated content.
+
+:::
+
 <!--TODO: add tip box with link to monitoring theory section-->
 
 <!--explain order in what the monitoring will be set up-->
 
-### 7.1.4 Installing Core Tools
+<!--link docker monitoring package from lukso and state that the following setup is for lukso cli or custom setups. docker will come with their own monitoring tools-->
+
+### 1. Installing Core Tools
 
 Effective node monitoring is essential for maintaining a reliable and secure node and fostering trust within the blockchain ecosystem. Let's follow up by explaining the different tools and installing some core packages needed to download and execute such software.
 

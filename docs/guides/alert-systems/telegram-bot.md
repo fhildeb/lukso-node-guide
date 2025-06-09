@@ -5,13 +5,17 @@ sidebar_position: 1
 
 # 9.1 Telegram Bot
 
-## 8.1 Enable Alerts
+:::danger
+
+This page is currently under maintenance reworked and contains outdated content.
+
+:::
 
 Grafana can send alerts through various channels, such as Discord, Telegram, or Email when unregular behavior in metrics or reading from Prometheus is recognized. The following will guide will configure Grafana notifications for Telegram.
 
 > It is convenient to temporarily open a text editor to store information needed for these steps.
 
-### 8.1.1 Create Telegram Bot
+## 1. Create Telegram Bot
 
 > You need a [Telegram](https://telegram.org/) account in order to continue.
 
@@ -25,7 +29,7 @@ Grafana can send alerts through various channels, such as Discord, Telegram, or 
 8. A message will appear with information about your bot.
 9. Highlight and copy the API token, then paste it into your text editor.
 
-### 8.1.2 Create a Group
+## 2. Create a Group
 
 1. Open the Telegram menu.
 2. Set up a new group.
@@ -36,7 +40,7 @@ Grafana can send alerts through various channels, such as Discord, Telegram, or 
 7. Copy `https://api.telegram.org/bot<your-bot-api-token>/getUpdates` to a text document.
 8. Replace `<your-bot-api-token>` with your token ID of the bot
 
-### 8.1.3 Fetching the Chat ID
+## 3. Fetching the Chat ID
 
 1. Copy the link you just edited into a web browser.
 2. Look for text that says `{"id"}:`
@@ -44,7 +48,7 @@ Grafana can send alerts through various channels, such as Discord, Telegram, or 
 
 > Ensure your Chat ID is fully copied. It might have a `-` in front.
 
-### 8.1.4 Add Telegram Contact Points
+## 4. Add Telegram Contact Points
 
 1. Return to Grafana
 2. Login using your credentials
@@ -63,7 +67,7 @@ Grafana can send alerts through various channels, such as Discord, Telegram, or 
 9. Wait until you see a new message in Telegram.
 10. Click `Save contact point`.
 
-### 8.1.5 Update Notification Policies
+## 5. Update Notification Policies
 
 1. On the left-hand menu, click `Alerting`
 2. Click the `Notification policies` on the left side

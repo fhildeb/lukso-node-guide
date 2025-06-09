@@ -5,11 +5,13 @@ sidebar_position: 7
 
 # 8.7 Grafana
 
-## 7.6 Grafana Dashboard
+:::danger
 
-As the final step within the monitoring, we will set up a Grafana Dashboard to gather all metrics in one place.
+This page is currently under maintenance reworked and contains outdated content.
 
-### 7.6.1 Creating a New User
+:::
+
+## 1. Creating a New User
 
 As explained and done [previously](#), we will create a new user to run the Grafana service specifically. Running services as a system user with minimal privileges is a common security best practice.
 
@@ -35,7 +37,7 @@ The output should look similar to this:
 grafana-server-worker:x:117:123::/home/grafana-server-worker:/usr/sbin/nologin
 ```
 
-### 7.6.2 Installation
+## 2. Installation
 
 Before downloading or installing anything, make sure you are in the home directory so everything is in one place:
 
@@ -109,7 +111,7 @@ sudo apt-mark hold grafana
 
 Whenever you update your Ubuntu packages using APT, it will automatically fetch the latest Grafana updates.
 
-### 7.6.3 Set Grafana Permissionsets
+## 3. Set Grafana Permissionsets
 
 Now we can change the owner of the software applications. Ownership changes are commonly done for security reasons. Giving root ownership to these binary files prevents non-root users or exporter workers from modifying or replacing these important executables, which could lead to unauthorized or unexpected behavior.
 
@@ -167,7 +169,7 @@ The Grafana database also needs privileges:
 sudo chmod 755 /var/lib/grafana
 ```
 
-### 7.6.4 Configuring the Service
+## 4. Configuring the Service
 
 Within Ubuntu, the `/etc/systemd/system/` directory is where system service unit files are stored and used to configure services to start automatically at boot. A service file is generally used to define how daemon processes should be started. In our case, we create the file with the exact name of the Prometheus service stored within the system directory to modify Prometheus' startup process.
 
@@ -298,7 +300,7 @@ WantedBy=multi-user.target
 
 > Be cautious: When creating new rules or modifying existing ones, it's essential to follow the correct syntax and structure to ensure that the Prometheus functions properly and provides the desired level of security. Verify that you do not use spaces between properties and their values.
 
-### 7.6.5 Start the Grafana Service
+## 5. Start the Grafana Service
 
 First, we need to reload the system manager configuration. It is used when making changes to service configuration files or creating new service files, ensuring that the system's daemon is aware of the changes like before.
 
@@ -350,7 +352,24 @@ The output should look similar to this:
 ...
 ```
 
-### 7.6.6 Maintenance
+## 6. Adjusting the Time Zone
+
+In some cases, there are issues when having different timezones set on your system and your personal computer when accessing Grafana. On the other hand, metrics might also show the wrong timestamps. You can check if the wanted timezone is correct by typing:
+
+```sh
+timedatectl
+```
+
+In case there is an offset, you can set a new timezone. This will automatically take effect for all applications and log files created on your node machine. Make sure you check online which timezone you are in and whats the correct naming.
+
+```sh
+sudo timedatectl set-timezone <your-time-zone>
+
+# Example for Berlin Time
+sudo timedatectl set-timezone Europe/Berlin
+```
+
+## Maintenance
 
 Proper maintenance ensures that all the components are working as intended, can be updated on the fly, and that software can be kept up-to-date and secure. It's also essential to identify and fix errors quickly.
 
@@ -387,24 +406,7 @@ You can stop the service using the system control:
 sudo systemctl stop grafana-server
 ```
 
-### 7.6.7 Adjusting the Time Zone
-
-In some cases, there are issues when having different timezones set on your system and your personal computer when accessing Grafana. On the other hand, metrics might also show the wrong timestamps. You can check if the wanted timezone is correct by typing:
-
-```sh
-timedatectl
-```
-
-In case there is an offset, you can set a new timezone. This will automatically take effect for all applications and log files created on your node machine. Make sure you check online which timezone you are in and whats the correct naming.
-
-```sh
-sudo timedatectl set-timezone <your-time-zone>
-
-# Example for Berlin Time
-sudo timedatectl set-timezone Europe/Berlin
-```
-
-### 7.6.8 Optional User Removal
+## Cleanup
 
 If you ever want to remove the user or something went wrong, do the following steps:
 
@@ -449,8 +451,6 @@ sudo delgroup grafana-server-worker
 ```
 
 Afterward, you can redo the Grafana guide and either set up a new user or remove the `User` and `Group` properties from the configuration in `7.6.4`. By default, the process will run as `root`. Also, go through every step in `7.6.5` once again.
-
-### 7.6.9 Optional Software Removal
 
 If you want to remove the Grafana software, stop the running service:
 

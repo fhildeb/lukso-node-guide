@@ -5,7 +5,13 @@ sidebar_position: 2
 
 # 9.2 Grafana Notifications
 
-### 8.1.6 Add Notifications to Metrics
+:::danger
+
+This page is currently under maintenance reworked and contains outdated content.
+
+:::
+
+## 1. Add Notifications to Metrics
 
 In order to make sure that the node notifies you if some process is down, follow these steps. If something is unclear, you can have a look at the picture of each alert down below.
 
@@ -24,7 +30,7 @@ In order to make sure that the node notifies you if some process is down, follow
 11. Scroll up and click `Save`
 12. Repeat this for every Alert on the Dashboard.
 
-### 8.1.7 Metrics Presets
+## 2. Set Metrics Presets
 
 ![Grafana Alert Board](/img/guides/alert-systems/grafana-alerts-1.png)
 
@@ -205,7 +211,7 @@ below 0,03: Connection takes less than 30ms, everything alright
 probe_duration_seconds{job="google-ping-job"}
 ```
 
-### 8.1.8 Configuring Notfication Intervals
+## 1. Configuring Notfication Intervals
 
 1. Head over to the `Alerting` section on the left menu.
 2. Click on `Notification policies`.

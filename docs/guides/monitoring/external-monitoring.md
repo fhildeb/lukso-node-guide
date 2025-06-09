@@ -5,11 +5,15 @@ sidebar_position: 9
 
 # 8.9 External Monitoring
 
-## 7.8 Explorer Page Monitoring
+:::danger
+
+This page is currently under maintenance reworked and contains outdated content.
+
+:::
 
 You can also use LUKSO's official explorer webpages to monitor your nodes or validator status without relying directly on your local metrics. It's one of the most efficient methods and does not require any login to work. Their links can be verified at the [Mainnet Parameter](https://docs.lukso.tech/networks/mainnet/parameters) and [Testnet Parameter](https://docs.lukso.tech/networks/testnet/parameters) sections of the official [LUKSO Tech Docs](https://docs.lukso.tech/) page.
 
-### 7.8.1 Execution Block Explorer
+## Execution Block Explorer
 
 ![Execution Block Explorer](/img/guides/monitoring/explorer-pages-1.png)
 
@@ -18,7 +22,7 @@ The Execution Block Explorer is a valuable tool for examining your blockchain's 
 - [Mainnet Execution Explorer](https://explorer.execution.mainnet.lukso.network/)
 - [Testnet Execution Explorer](https://explorer.execution.testnet.lukso.network/)
 
-### 7.8.2 Execution Status Page
+## Execution Status Page
 
 ![Execution Status Page](/img/guides/monitoring/explorer-pages-2.png)
 
@@ -27,7 +31,7 @@ The Execution Status Page is crucial for tracking your node's overall health and
 - [Mainnet Execution Stats](https://stats.execution.mainnet.lukso.network/)
 - [Testnet Execution Stats](https://stats.execution.testnet.lukso.network/)
 
-### 7.8.3 Consensus Block Explorer
+## Consensus Block Explorer
 
 ![Consensus Block Explorer](/img/guides/monitoring/explorer-pages-3.png)
 
@@ -40,7 +44,7 @@ If you need more information about slots, epochs, and their status types, look i
 - [Mainnet Consensus Explorer](https://explorer.consensus.mainnet.lukso.network/)
 - [Testnet Consensus Explorer](https://explorer.consensus.testnet.lukso.network/)
 
-### 7.8.4 Consensus Status Page
+## Consensus Status Page
 
 ![Consensus Status Page](/img/guides/monitoring/explorer-pages-4.png)
 
@@ -53,7 +57,7 @@ If you need more information about slots, epochs, and their status types, look i
 - [Mainnet Consensus Stats](https://stats.consensus.mainnet.lukso.network/)
 - [Testnet Consensus Stats](https://stats.consensus.testnet.lukso.network/)
 
-### 7.8.5 External Node Validator Checks
+## External Node Validator Checks
 
 As the **Consensus Explorer** is the main page for every information going on with the consensus and single validators that propose and participate in the consensus, we can also set up a link for this page that gathers consensus information for every validator of our node at once.
 

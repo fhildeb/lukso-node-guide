@@ -5,11 +5,15 @@ sidebar_position: 8
 
 # 8.8 Dashboard Configuration
 
-## 7.7 Dashboard Setup
+:::danger
+
+This page is currently under maintenance reworked and contains outdated content.
+
+:::
 
 The following section will configure the Grafana Dashboard after all exporter services and the Grafana Server are up and running on the node.
 
-### 7.7.1 Get Node IP Address
+## 1. Get Node IP Address
 
 If you opened the port as stated within the [Core Tools](#) section of the guide, you would now have access to the web interface.
 
@@ -41,7 +45,7 @@ Log out of your node and continue using your personal computer's browser.
 exit
 ```
 
-### 7.7.2 Web Interface
+## 2. Web Interface
 
 Open your browser at the following address. Make sure to use the node IP you gathered in the previous step.
 
@@ -60,7 +64,7 @@ password: admin
 
 Set a new secure and long password when prompted by Grafana. Security is vital as this page might be accessed through the external internet later so that you can access it from everywhere.
 
-### 7.7.3 Add Prometheus Data Source
+## 3. Add Prometheus Data Source
 
 Now we have to add the running Prometheus service to the Grafana Dashboard to utilize all the significant metrics we collected from all the Prometheus jobs we've set up.
 
@@ -74,7 +78,7 @@ Now we have to add the running Prometheus service to the Grafana Dashboard to ut
 
 > You should see a green checkmark "Data source is working" and can continue to import the dashboard.
 
-### 7.7.4 Import Dashboard
+## 4. Import Dashboard
 
 Choose a dashboard preset you want to load for the LUKSO mainnet and testnet. Within this guide, there are two main templates:
 
