@@ -1,28 +1,20 @@
 # lukso-node-guide
 
-**INFO: THIS REPO IS CURRENTLY UNDER MAINTENANCE TO BECOME A DOCUMENTATION WEBPAGE FOR ALL SUPPORTED BLOCKCHAIN CLIENTS.**
-
-This repository features all information needed to build, set up, and run a node for EVM Proof-of-Stake blockchains such as [LUKSO](https://docs.lukso.tech/). It is the essence of running a node at home and should act as a Wiki if you need detailed information about any possible step.
-
-> _It's a documentation of every single step I went through and explains every desicion I had to cut during the process._
+This repository features all information needed to build, set up, and run a node for EVM Proof-of-Stake blockchains like [LUKSO](https://docs.lukso.tech/). It is the essence of running a node at home and should act as a Wiki if you need detailed information about any possible step.
 
 - 📖 **More than 80 Pages of Theory and Best Practice**
 - 🌍 **Compiled from a dozen Guides, Forums, and Wikis**
 - 🚀 **Beginner-Friendly Step-by-Step Documentation**
 
-The repository includes a pictured guide of the node build and components, the proper BIOS and operation system setup, installation of the blockchain clients, the configuration of staking and monitoring software, and even includes lagacy guides for the outdated L16 network of LUKSO.
+## Preview
 
-## CLI Support
-
-- Legacy Software: `LUKSO CLI v 0.1.0 - 0.4.4`
-- Full Node Setup: `LUKSO CLI v 0.5.0 +`
-- Service Automation: `LUKSO CLI v 0.6.1 +`
+![Node Guide Webpage](/static/img/web.jpeg)
 
 ## Description
 
-> _**Disclaimer**: This guide is for informational purposes only. We do not warrant its accuracy or completeness and shall not be liable for any direct, indirect, incidental, or consequential damages arising out of or in connection with the use of this guide. The disclaimed warranty also applies to business interruption, data loss, or financial loss._
+The repository includes theory pages and guides regarding network and consensus, validator deposits, node builds, system setups, the client installation and their the configuration, as well as operating staking and monitoring software. Within the archive section, network updates, applied forks, and historical guides are listed. The pages in the repository are split into multiple sections.
 
-The guides in the repository are split into multiple folders and sections.
+> ⚠️ _Pages are for informational purposes only. We do not warrant its accuracy or completeness and shall not be liable for any direct, indirect, incidental, or consequential damages arising out of or in connection with the use of this guide. The disclaimed warranty also applies to business interruption, data loss, or financial loss._
 
 ### 🧠 Theory
 
@@ -51,7 +43,7 @@ The guides in the repository are split into multiple folders and sections.
 - [`testnet-operators`](/docs/archive/testnet-operators/): L16 Client Setup, Node Tooltips, and Software Removal
 - [`genesis-validators`](/docs/archive/genesis-validators/): Blockchain Launch and GasHawn Deposits
 
-### Templates
+### 🪞 Templates
 
 - [`templates`](/static/templates/): Grafana Dashboard Presets for LYXt & LYX Staking
 
