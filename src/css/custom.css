@@ -1,0 +1,112 @@
+/**
+ * Any CSS included here will be global. The classic template
+ * bundles Infima by default. Infima is a CSS framework designed to
+ * work well for content-centric websites.
+ *
+ * https://docusaurus.io/docs/styling-layout
+ */
+
+.markdown img,
+.theme-doc-content img {
+  border-radius: 1rem;
+}
+
+/* Custom Responsive Footer Layout */
+
+/* Default screens with 4-column centered grid */
+.footer__links {
+  display: grid;
+  grid-template-columns: repeat(4, auto);
+  gap: 0.75rem 3rem;
+  justify-content: center;
+}
+
+/* Page width ≤ 996px:
+ * Switch to 2 × 2 grid 
+ */
+@media (max-width: 996px) {
+  .footer__links {
+    grid-template-columns: repeat(2, auto);
+  }
+}
+
+/* Page width ≤ 470px:
+ * Switch to single column 
+ */
+@media (max-width: 470px) {
+  .footer__links {
+    grid-template-columns: auto;
+  }
+}
+
+/* Custom Footer Social Icons*/
+
+.footer-icon {
+  display: inline-block;
+  margin-left: 0.4rem;
+  line-height: 0;
+  color: var(--icon-fill);
+}
+.footer-icon svg,
+.footer-icon img {
+  width: 1.1rem;
+  height: 1.1rem;
+  vertical-align: text-top;
+  margin-top: 2px;
+}
+
+.logo {
+  color: var(--logo-fg);
+}
+.logo .bg {
+  fill: var(--logo-bg);
+}
+
+/* You can override the default Infima variables here. */
+:root {
+  --ifm-color-primary: #5c7784;
+  --ifm-color-primary-dark: #536b77;
+  --ifm-color-primary-darker: #4e6570;
+  --ifm-color-primary-darkest: #40535c;
+  --ifm-color-primary-light: #658391;
+  --ifm-color-primary-lighter: #6a8997;
+  --ifm-color-primary-lightest: #7e98a5;
+  --ifm-code-font-size: 95%;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+
+  /* Custom Elements */
+  --button-bg: #f5f6f7;
+  --button-bg-hover: #dddddd;
+  --status-container-bg: #f8f8f8;
+  --section-heading-color: #666;
+  --blog-container-bg: #f4f2f2;
+  --blog-container-border: #dddddd;
+  --progress-wrapper-bg: #ddd;
+  --progress-text-color: #285060;
+  --logo-fg: #000;
+  --logo-bg: #fff;
+}
+
+/* For readability concerns, you should choose a lighter palette in dark mode. */
+[data-theme="dark"] {
+  --ifm-color-primary: #849da9;
+  --ifm-color-primary-dark: #728f9d;
+  --ifm-color-primary-darker: #698896;
+  --ifm-color-primary-darkest: #57707c;
+  --ifm-color-primary-light: #96abb5;
+  --ifm-color-primary-lighter: #9fb2bc;
+  --ifm-color-primary-lightest: #b9c7ce;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+
+  /* Custom Elements */
+  --button-bg: #2e2e2e;
+  --button-bg-hover: #3a3a3a;
+  --status-container-bg: #1c1e21;
+  --section-heading-color: #aaa;
+  --blog-container-bg: #2e2e2e;
+  --blog-container-border: #595959;
+  --progress-wrapper-bg: #2e2e2e;
+  --progress-text-color: #e3e3e3;
+  --logo-fg: #fff;
+  --logo-bg: #000;
+}

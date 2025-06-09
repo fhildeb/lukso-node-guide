@@ -1,0 +1,61 @@
+.card {
+  display: inline-block;
+  width: 100%;
+  min-width: 270px;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 1rem;
+  break-inside: avoid;
+}
+
+.version {
+  background-color: #ddd;
+  border-radius: 1rem;
+  padding-left: 0.3rem;
+  padding-right: 0.3rem;
+  background-color: #5c7784;
+  color: white;
+  font-size: 0.7rem;
+}
+
+.softwareList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+}
+
+.softwareButton {
+  background-color: var(--button-bg);
+  border: none;
+  border-radius: 2rem;
+  padding: 0.5rem 0.5rem;
+  cursor: pointer;
+  text-align: center;
+  display: inline-block;
+  transition: background-color 0.3s ease;
+}
+
+.softwareButton:hover {
+  background-color: var(--button-bg-hover);
+}
+
+.toolName {
+  display: block;
+  font-size: 0.9rem;
+  padding-left: 0.3rem;
+}
+
+.toolInfo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.categorySection {
+  margin-top: 1rem;
+}
+
+.categoryHeading {
+  font-size: 1.2rem;
+}

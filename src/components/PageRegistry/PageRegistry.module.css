@@ -1,0 +1,112 @@
+.landingGrid {
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr;
+  grid-template-areas: "left center right";
+  gap: 1rem;
+  padding: 2rem;
+}
+
+.leftColumn {
+  grid-area: left;
+}
+
+.centerColumn {
+  grid-area: center;
+}
+
+.rightColumn {
+  grid-area: right;
+}
+
+.sectionContainer {
+  margin-bottom: 1rem;
+}
+
+.sectionTitle {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  padding-left: 0.5rem;
+}
+
+.emoji {
+  margin-right: 0.5rem;
+}
+
+/**
+ * Masonry Guide Layout:
+ * 
+ * Multi-column layout of 3 columns and a maximum 
+ * column width of 1/5 of the total page width
+ */
+.guidesGrid {
+  column-count: 3;
+  column-gap: 1rem;
+}
+
+/* Single-Column Sections */
+.theoryGrid,
+.singleGrid {
+  column-count: 1;
+  column-gap: 1rem;
+}
+
+/** 
+ * Page Width ≤ 1382px: 
+ * Reduce guides to 2 columns 
+ */
+@media (max-width: 1382px) {
+  .landingGrid {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+  .guidesGrid {
+    column-count: 2;
+  }
+}
+
+/** 
+ * Page Width ≤ 1120px: 
+ * Reduce guides to 1 column 
+ */
+@media (max-width: 1120px) {
+  .landingGrid {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+  .guidesGrid {
+    column-count: 1;
+  }
+}
+
+/** 
+ * Page Width ≤ 858px: 
+ * Arrange Theory next to Software
+ * Set guides to 2 columns
+ */
+@media (max-width: 858px) {
+  .landingGrid {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      "left  right"
+      "center center";
+  }
+  .guidesGrid {
+    column-count: 2;
+  }
+}
+
+/**
+ * Page Width ≤ 596px: 
+ * Single column stack 
+ * Reduce guides to 1 column
+ */
+@media (max-width: 596px) {
+  .landingGrid {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "left"
+      "center"
+      "right";
+  }
+  .guidesGrid {
+    column-count: 1;
+  }
+}

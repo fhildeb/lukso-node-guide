@@ -1,0 +1,159 @@
+.statusContainer {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 1rem;
+  padding: 2rem;
+  background-color: var(--status-container-bg);
+}
+
+.leftPanel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.rightPanel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sectionHeading {
+  text-align: center;
+  margin-bottom: 1rem;
+  font-size: 1.4rem;
+  color: --section-heading-color;
+}
+
+.statusMessage {
+  text-align: center;
+  margin-top: 1rem;
+  font-size: 0.9rem;
+}
+
+.headerMessage {
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+/* Client Distribution */
+
+.progressPanel {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.statusColumn {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  min-width: 208px;
+}
+
+/* Latest News */
+
+.blogContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  background-color: var(--blog-container-bg);
+  border: 5px solid var(--blog-container-border);
+  border-radius: 5px;
+  margin-top: 15px;
+  min-height: 145px;
+}
+
+.blogPost {
+  padding: 1.1rem;
+  height: 100%;
+}
+
+.blogTitle {
+  font-size: 1.2rem;
+  margin: 0 0 0.6rem 0;
+}
+
+.blogDate {
+  font-size: 0.8rem;
+  color: #666;
+}
+
+/** 
+ * Page Width ≤ 1551px: 
+ * Reduce blog title size
+ */
+@media (max-width: 1551px) {
+  .blogTitle {
+    font-size: 1rem;
+    padding: 2px;
+  }
+}
+
+/** 
+ * Page Width ≤ 1402px: 
+ * Hide blog post dates to save space
+ */
+@media (max-width: 1402px) {
+  .blogDate {
+    display: none;
+  }
+  .headerMessage {
+    font-size: 0.8rem;
+  }
+}
+
+/** 
+ * Page Width ≤ 1148px: 
+ * Stack the two status containers
+ * Return date and title size
+ * Hide header messages
+ */
+@media (max-width: 1148px) {
+  .statusContainer {
+    grid-template-columns: 1fr;
+  }
+  .statusColumn {
+    margin-top: 1rem;
+  }
+  .blogDate {
+    display: contents;
+  }
+  .headerMessage {
+    font-size: 0.9rem;
+  }
+  .headerMessage {
+    display: none;
+  }
+}
+
+/** 
+ * Page Width ≤ 504px: 
+ * Stack the two progress panels
+ * Adjust title and dates
+ */
+@media (max-width: 504px) {
+  .progressPanel {
+    flex-direction: column;
+  }
+  .blogTitle {
+    font-size: 0.9rem;
+    padding: 0.5rem;
+  }
+  .blogDate {
+    display: none;
+  }
+}
+
+/** 
+ * Page Width ≤ 387px: 
+ * Further reduce title size
+ */
+@media (max-width: 387px) {
+  .blogTitle {
+    font-size: 0.6rem;
+  }
+}
