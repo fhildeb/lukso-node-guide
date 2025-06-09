@@ -1,16 +1,16 @@
 # lukso-node-guide
 
+**INFO: THIS REPO IS CURRENTLY UNDER MAINTENANCE TO BECOME A DOCUMENTATION WEBPAGE FOR ALL SUPPORTED BLOCKCHAIN CLIENTS.**
+
 This repository features all information needed to build, set up, and run a node for EVM Proof-of-Stake blockchains such as [LUKSO](https://docs.lukso.tech/). It is the essence of running a node at home and should act as a Wiki if you need detailed information about any possible step.
 
 > _It's a documentation of every single step I went through and explains every desicion I had to cut during the process._
 
-- 📖 **More than 50 Pages of Theory and Best Practice**
+- 📖 **More than 80 Pages of Theory and Best Practice**
 - 🌍 **Compiled from a dozen Guides, Forums, and Wikis**
 - 🚀 **Beginner-Friendly Step-by-Step Documentation**
 
 The repository includes a pictured guide of the node build and components, the proper BIOS and operation system setup, installation of the blockchain clients, the configuration of staking and monitoring software, and even includes lagacy guides for the outdated L16 network of LUKSO.
-
-> _**Publication:** This guide is live on [Luksoverse Docs](https://docs.luksoverse.io/). Please note, that this GitHub repository is always the latest version, as the website is updated manually by an external party._
 
 ## CLI Support
 
@@ -18,41 +18,42 @@ The repository includes a pictured guide of the node build and components, the p
 - Full Node Setup: `LUKSO CLI v 0.5.0 +`
 - Service Automation: `LUKSO CLI v 0.6.1 +`
 
-> All scripts were tested on 1st March 2025 using `LUKSO CLI v 0.24.1` using `Grafana v 9.5.2`
-
 ## Description
 
 > _**Disclaimer**: This guide is for informational purposes only. We do not warrant its accuracy or completeness and shall not be liable for any direct, indirect, incidental, or consequential damages arising out of or in connection with the use of this guide. The disclaimed warranty also applies to business interruption, data loss, or financial loss._
 
 The guides in the repository are split into multiple folders and sections.
 
-### Full Node Setup
+### 🧠 Theory
 
-- [`1-hardware-build`](/1-hardware-build/): Hardware, Router, and Network Setup including the Node Build
-- [`2-bios-installation`](/2-bios-installation/): BIOS Configuration, Ubuntu Install, and System Preparations
-- [`3-system-setup`](/3-system-setup/): Permissions, Storage Volumes, Updates, Remote Access, and Firewall Setup
-- [`4-router-config`](/4-router-config/): Fetching Device Addresses and Configuring the Address Reservation
-- [`5-access-connection`](/5-access-connection/): SSH Setup, Access Properties, and Authentication Keys
-- [`6-blockchain-clients`](/6-blockchain-clients/): LUKSO Blockchain Validator Setup, Ports, and Peers
-- [`7-monitoring`](/7-monitoring/): Node Monitoring for Hardware, Software Clients, and Connections
-- [`8-notifications`](/8-notifications/): Image Notifications and Constant Mobile Device Updates
-- [`9-external-access`](/8-notifications/): Secure External Node Access Configuration
-- [`tooltips`](/tooltips/): Tips for Finding and Resolving Node Errors
+- [`preparations`](/docs/theory/preparations/): Node and Router Specifications, Network Demand
+- [`blockchain-knowledge`](/docs/theory/blockchain-knowledge/): Proof of Stake, Tokenomics, Peer Networks, Slashing and Panalties, Clients
+- [`node-operation`](/docs/theory/node-operation/): Setup Types, OS, Validator Credentials, DDNS, SSH and VPN, Utility Tools
 
-### Monitoring Presets
+### 📖 Guides
 
-- [`grafana`](/grafana/): Grafana Dashboard Presets for LYXt & LYX Staking
+- [`validator-setup`](/docs/guides/hardware-setup/): Device Setup, Key Generation, Launchpad Walkthrough
+- [`hardware-setup`](/docs/guides/hardware-setup/): Node, Router, and Network Setup, BIOS Config, OS Install
+- [`system-setup`](/docs/guides/system-setup/): Permissions, Storage Volumes, Updates, Remote Access, and Firewall Setup
+- [`router-setup`](/docs/guides/router-setup/): Fetching Device Addresses and Configuring the Address Reservation
+- [`ssh-setup`](/docs/guides/ssh-setup/):Access Properties, Connections, and Authentication Keys
+- [`client-setup`](/docs/guides/client-setup/): LUKSO Blockchain Node and Validator Setup
+- [`modifications`](/docs/guides/modifications/): Slasher, Node Name, Graffiti, IP & DDNS, Peer Config, Service Automation
+- [`monitoring`](/docs/guides/monitoring/): Node Monitoring for Hardware, Software Clients, and Connections
+- [`alert-systems`](/docs/guides/alert-systems/): Image Notifications and Constant Mobile Device Updates
+- [`external-access`](/docs/guides/external-access/): Secure External Node Access Configuration
+- [`maintenance`](/docs/guides/maintenance/): Tips for Finding and Resolving Node Errors
+- [`withdrawals`](/docs/guides/withdrawals/): Adding Withdrawals and Exiting Validators
 
-### Legacy Software
+### 🏛️ Archive
 
-- [`l16-install`](/l16-install/): Installation for L16 Testnet Software
-- [`l16-tooltips`](/l16-tooltips/): Tooltips for L16 LUKSO CLI
-- [`l16-uninstall`](/l16-uninstall/): Uninstalling L16 Testnet Software
+- [`network`](/docs/archive/network/): Blockchain Timeline, Configuration Updates, Network Forks
+- [`testnet-operators`](/docs/archive/testnet-operators/): L16 Client Setup, Node Tooltips, and Software Removal
+- [`genesis-validators`](/docs/archive/genesis-validators/): Blockchain Launch and GasHawn Deposits
 
-### Validator Setup
+### Templates
 
-- [`validatork-key-generation`](/validator-key-generation/): Device Setup, Key Generation for CLI and Wagyu
-- [`validator-key-stake`](/validator-key-stake/): Genesis Startup, Launchpad Walkthrough, GasHawk Guide
+- [`templates`](/static/templates/): Grafana Dashboard Presets for LYXt & LYX Staking
 
 ## Development
 
