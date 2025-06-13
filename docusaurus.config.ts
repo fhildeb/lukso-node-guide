@@ -201,6 +201,19 @@ const config: Config = {
       darkTheme: prismThemes.dracula,
     },
   } satisfies Preset.ThemeConfig,
+
+  plugins: [
+    function customWebpackPlugin() {
+      return {
+        name: "custom-webpack-plugin",
+        configureWebpack() {
+          return {
+            cache: false,
+          };
+        },
+      };
+    },
+  ],
 };
 
 export default config;
