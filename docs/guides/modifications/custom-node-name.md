@@ -1,12 +1,12 @@
 ---
-sidebar_label: "7.2 Node Name"
+sidebar_label: "7.2 Custom Node Name"
 sidebar_position: 2
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-# 7.2 Node Name
+# 7.2 Custom Node Name
 
 To personalize your node's appearance, you can assign a custom name thats publically displayed on the [execution status panel](https://stats.execution.mainnet.lukso.network/).
 

@@ -351,7 +351,7 @@ Exchange the following properties:
 
 :::tip
 
-Additional flags can be attached to further customize your node, like [configuring the slasher service](./slasher-configuration.md), [specifying a node name](./node-name.md), or [setting a validator graffiti](validator-graffiti.md). The startup script will automatically read all the client configuration files within the node folder. However, keep in mind that you will always have to add another backslash `\` if you attach several flags across multiple lines.
+Additional flags can be attached to further customize your node, like [configuring the slasher service](./slasher-configuration.md), [specifying a node name](./custom-node-name.md), or [setting a validator graffiti](validator-graffiti.md). The startup script will automatically read all the client configuration files within the node folder. However, keep in mind that you will always have to add another backslash `\` if you attach several flags across multiple lines.
 
 :::
 

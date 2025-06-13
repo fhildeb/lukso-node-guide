@@ -43,8 +43,8 @@ Setting up a validator involves multiple careful steps. Below is an overview of 
 1. _Acquire LYX and transfer to a regular browser wallet_
 2. [**Device Setup**](/docs/guides/validator-setup/precautions.md): _Configure a secure and offline device_
 3. [**Key Generation**](/docs/guides/validator-setup/wagyu-key-generation.md): _Generate validator keys and deposit data on an offline device_
-4. [**Hardware Setup**](/docs/guides/hardware-setup/): _Configure your homestaking node or server_
-5. [**Client Setup**](/docs/guides/client-setup/): _Set up your node with execution, consensus, and validator clients_
+4. [**Hardware Setup**](/docs/guides/hardware-setup/introduction.md): _Configure your homestaking node or server_
+5. [**Client Setup**](/docs/guides/client-setup/router-port-arrangement.md): _Set up your node with execution, consensus, and validator clients_
 6. [**Validator Configuration**](/docs/guides/client-setup/validator-configuration.md): _Transfer generated keys to your staking node_
 7. [**Validator Configuration**](/docs/guides/client-setup/validator-configuration.md) _Import validator keys into your node's consensus client_
 8. [**Validator Configuration**](/docs/guides/client-setup/validator-configuration.md): _Start the staking node in idle mode until deposit is confirmed_
@@ -59,8 +59,8 @@ Setting up a validator involves multiple careful steps. Below is an overview of 
 2. _Wait upon whitelisted deposits and receipt of LYXt from the LUKSO team_
 3. [**Device Setup**](/docs/guides/validator-setup/precautions.md): _Configure a secure and offline device_
 4. [**Key Generation**](/docs/guides/validator-setup/wagyu-key-generation.md): _Generate validator keys and deposit data on an offline device_
-5. [**Hardware Setup**](/docs/guides/hardware-setup/): _Configure your homestaking node or server_
-6. [**Client Setup**](/docs/guides/client-setup/): _Set up your node with execution, consensus, and validator clients_
+5. [**Hardware Setup**](/docs/guides/hardware-setup/introduction.md): _Configure your homestaking node or server_
+6. [**Client Setup**](/docs/guides/client-setup/router-port-arrangement.md): _Set up your node with execution, consensus, and validator clients_
 7. [**Validator Configuration**](/docs/guides/client-setup/validator-configuration.md): _Transfer generated keys to your staking node_
 8. [**Validator Configuration**](/docs/guides/client-setup/validator-configuration.md) _Import validator keys into your node's consensus client_
 9. [**Validator Configuration**](/docs/guides/client-setup/validator-configuration.md): _Start the staking node in idle mode until deposit is confirmed_

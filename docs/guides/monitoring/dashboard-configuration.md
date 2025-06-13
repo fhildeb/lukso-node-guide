@@ -82,8 +82,8 @@ Now we have to add the running Prometheus service to the Grafana Dashboard to ut
 
 Choose a dashboard preset you want to load for the LUKSO mainnet and testnet. Within this guide, there are two main templates:
 
-- [LUKSO Dashboard EUR](/grafana/lukso-dashboard-eur.json)
-- [LUKSO Dashboard USD](/grafana/lukso-dashboard-usd.json)
+- [LUKSO Dashboard EUR](/templates/grafana-9-dashboard-eur.json)
+- [LUKSO Dashboard USD](/templates/grafana-9-dashboard-usd.json)
 
 > Make sure the file matches with the [JSON Exporter](#) External Data Configuration file. You could also specify your dashboard by adjusting the contents and jobs.
 
