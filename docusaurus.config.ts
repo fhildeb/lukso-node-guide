@@ -9,10 +9,7 @@ const config: Config = {
   tagline: "Everything about Homestaking",
   favicon: "img/favicon.ico",
 
-  // Set the production url of your site here
-  url: "https://lukso-node-guide.com",
-  // Set the /<baseUrl>/ pathname under which your site is served
-  // For GitHub pages deployment, it is often '/<projectName>/'
+  url: "https://lukso-nodes.com",
   baseUrl: "/",
 
   // GitHub pages deployment config.
