@@ -199,6 +199,13 @@ const config: Config = {
     },
   } satisfies Preset.ThemeConfig,
 
+  /**
+   * Disable Cache for Production Builds
+   * Uncomment for Local Testing
+   *
+   * Causes warnings due to high buffer
+   * elements from long page content.
+   */
   plugins: [
     function customWebpackPlugin() {
       return {
