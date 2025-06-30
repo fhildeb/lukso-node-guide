@@ -62,7 +62,7 @@ The output should be similar to this:
 
 :::tip
 
-Always sick to stable releases. As of June 2025, _Version 3.3.0_ is the latest stable release.
+Always sick to stable releases. As of July 2025, _Version 3.3.0_ is the latest stable release.
 
 :::
 
