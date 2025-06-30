@@ -55,9 +55,9 @@ export function useClientDiversityData() {
         setData({
           executionClients: [
             { label: "Prysm", value: 41 },
-            { label: "Teku", value: 31 },
-            { label: "Lighthouse", value: 19 },
-            { label: "Others", value: 12 },
+            { label: "Teku", value: 30 },
+            { label: "Lighthouse", value: 18 },
+            { label: "Others", value: 11 },
           ],
           consensusClients: [
             { label: "Geth", value: 97 },
@@ -90,7 +90,7 @@ function extractClientData(root: Element | null): ClientData[] {
         if (parts.length === 2) {
           const clientLabel = parts[0].trim();
           const valueStr = parts[1].replace("%", "").trim();
-          const value = Math.ceil(parseFloat(valueStr));
+          const value = Math.round(parseFloat(valueStr));
           clients.push({ label: clientLabel, value });
         }
       }
