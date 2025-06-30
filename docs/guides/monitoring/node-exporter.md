@@ -5,13 +5,6 @@ sidebar_position: 3
 
 # 8.3 Node Exporter
 
-We will start the monitoring by setting up the three Node Exporter services before we manage the core Prometheus connection to them. Everything will be set in place and loaded when we configure the Dashboard later.
-
-Setting up sub-tools first has the following benefits:
-
-- **Problem Encapsulation**: Installing exporters first allows you to ensure that the necessary metrics are being exposed by the services you want to monitor. By installing and configuring exporters beforehand, you can verify that the metrics are accessible and correctly exposed. Separated installation helps troubleshoot potential issues with the exporters or the services themselves.
-- **No Idle Rotation Problems**: With the exporters already installed and configured, Prometheus can immediately start scraping the endpoints and collecting metrics. Having data endpoints running ensures that you have data available for monitoring as soon as Prometheus is up, excluding errors where configurations need to be reloaded and updated.
-
 > The Node Exporter measures various machine resources such as memory, disk I/O, CPU usage, and network statistics. Metrics give you a broad overview of your machine's performance and health, allowing you to monitor how your node affects your system's resources and catch any potential issues (like memory leaks or high CPU usage) before they cause problems. Running Node Exporter on every node of your network provides you with valuable insights and helps ensure the smooth operation of your blockchain applications.
 
 ## 1. Creating a New User

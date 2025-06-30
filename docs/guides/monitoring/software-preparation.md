@@ -24,6 +24,15 @@ Further details about node analytics can be found on the [**Monitoring Tools**](
 
 :::
 
+:::info
+
+As the table suggests, exporter services and clients should be set up before configuring Prometheus or Grafana, so all data sources are set in place. Setting up the underlaying software first has the following benefits:
+
+- **Problem Encapsulation**: By installing exporters beforehand, you can verify that the metrics are accessible and correctly exposed. Separated installation helps troubleshoot potential issues with the exporters or the services themselves.
+- **No Idle Rotation Problems**: With the exporters already installed and configured, Prometheus can immediately start scraping the endpoints and collecting metrics. Having data endpoints running ensures that you have data available for monitoring as soon as Prometheus is up, excluding errors where configurations need to be reloaded and updated.
+
+:::
+
 <Tabs groupId="editor">
   <TabItem value="lukso-cli" label="👾 LUKSO CLI" default>
 
