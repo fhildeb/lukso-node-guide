@@ -25,7 +25,7 @@ Your node needs specific inbound ports open so that execution and consensus clie
 Consensus clients rely on broad outbound connectivity to discover other nodes, meaning only inbound traffic will be restricted.
 :::
 
-| PORT  | CLIENT(S)                                                       | DESCRIPTION                        | TCP | UDP |
+| PORT  | CLIENT                                                          | DESCRIPTION                        | TCP | UDP |
 | ----- | --------------------------------------------------------------- | ---------------------------------- | --- | --- |
 | 30303 | [Geth] ↗ <br />[Erigon] ↗ <br /> [Nethermind] ↗ <br /> [Besu] ↗ | Execution Chain Data & Discovery   | ✔️  | ✔️  |
 | 9000  | [Lighthouse] ↗ <br /> [Teku] ↗ <br /> [Nimbus-Eth2] ↗ <br />    | Beacon Gossip & Data               | ✔️  | ✔️  |
@@ -34,7 +34,7 @@ Consensus clients rely on broad outbound connectivity to discover other nodes, m
 
 :::tip
 
-Clients use extra ports for monitoring, which don't need firewall exposure. Check the [**Monitoring**](/docs/guides/monitoring/software-preparation.md) chapter for details.
+Clients use extra ports for monitoring, which don't need firewall exposure. Check the [**Monitoring**](/docs/guides/monitoring/port-configuration.md) chapter for details.
 
 :::
 
@@ -114,7 +114,7 @@ sudo ufw status
 The output should look similar to this:
 
 <Tabs>
-<TabItem value="execution" label="Execution Client + Lighthouse, Teku, or Nimbus-Eth2">
+<TabItem value="lh-teku-nimbus" label="Execution Client + Lighthouse, Teku, or Nimbus-Eth2">
 
 ```text
 Status: active
@@ -171,6 +171,12 @@ If something is missing, retry to apply the above rules or have a look into the 
 If all required ports are featured with the `ALLOW` property, your node’s local firewall is correctly configured. To expose these ports at the network level, you will have to proceed to configure the router’s port forwarding rules.
 
 :::
+
+If you need to modify the firewall rules, such as removing an unwanted port rule, you can list them all.
+
+```sh
+sudo ufw status
+```
 
 :::info
 
