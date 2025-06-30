@@ -3,33 +3,64 @@ sidebar_label: "8.1 Software Preparation"
 sidebar_position: 1
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 # 8.1 Software Preparation
 
-:::danger
+Node monitoring ensures that operators can solve issues ahead of time, maintain uptime, and optimize performance by providing real-time insight into system health, client status, and network usage. This page will walk you through the software installs and configurations needed to get your monitoring environment up and running. All the monitoring tooling, regardless of the client configurations, generally follows a modular approach of software modules.
 
-This page is currently under maintenance reworked and contains outdated content.
+| Step | Name                                    | Description                                                |
+| ---- | --------------------------------------- | ---------------------------------------------------------- |
+| 1    | Install Core Tools & Port Configuration | Install required packages and expose monitoring ports.     |
+| 2    | Create Exporter Services                | Export metrics like system, consensus, and execution data. |
+| 3    | Setup Prometheus                        | Scrape and process metrics from exporter services.         |
+| 4    | Configure Grafana                       | Visualizing metrics and creating dashboards.               |
+| 5    | Configure Dashboard                     | Load dashboards and configure alerts.                      |
+
+:::tip
+
+Further details about node analytics can be found on the [**Monitoring Tools**](/docs/theory/node-operation/monitoring-tools.md) page in the 🧠 [**Theory**](/docs/theory/preparations/node-specifications.md) section.
 
 :::
 
-<!--TODO: add tip box with link to monitoring theory section-->
+<Tabs groupId="editor">
+  <TabItem value="lukso-cli" label="👾 LUKSO CLI" default>
 
-<!--explain order in what the monitoring will be set up-->
+The LUKSO CLI does not restrict the use of additional tools and monitoring solutions, but it also doesn’t include any monitoring tools out of the box. That means the setup must be done manually and will dock onto the already running clients. The following six tools are essential to install before setting up Prometheus, Grafana, and the required Exporters:
 
-<!--link docker monitoring package from lukso and state that the following setup is for lukso cli or custom setups. docker will come with their own monitoring tools-->
+| Tool                                          | Description                                                                            |
+| --------------------------------------------- | -------------------------------------------------------------------------------------- |
+| <nobr> **wget** </nobr>                       | Utility for downloading files to fetch resources directly from the terminal.           |
+| <nobr> **make** </nobr>                       | Automation tool used to compile software, required for compiling some exporter tools.  |
+| <nobr> **git** </nobr>                        | Version control system used to clone repositories for exporter services.               |
+| <nobr> **apt-transport-https** </nobr>        | Allows to securely download packages over HTTPS, required for third-party software.    |
+| <nobr> **software-properties-common** </nobr> | Provides useful tools like `add-apt-repository` to manage software sources.            |
+| <nobr> **gnupg2** </nobr>                     | Standard for secure encryption and signing, required for verifying package signatures. |
 
-### 1. Installing Core Tools
+:::info
 
-Effective node monitoring is essential for maintaining a reliable and secure node and fostering trust within the blockchain ecosystem. Let's follow up by explaining the different tools and installing some core packages needed to download and execute such software.
+The following step is performed on your 📟 **node server**.
 
-- **wget**: Utility tool for non-interactive download of files from the Web. It supports HTTP, HTTPS, and FTP protocols and retrieval through HTTP proxies. It's beneficial for downloading files from the command line, automating downloads, or when a graphical user interface is unavailable, like on our server installation.
-- **make**: Automation tool for software builds, generating executable programs and libraries from source code by reading files called Makefiles, which specify how to derive the target program. It's widely used in software development for compiling and linking source code files.
-- **git**: Distributed version control system for tracking changes in source code during software development, allowing developers to collaborate, clone, and manage software projects effectively. It will help us download code repositories.
-- **apt-transport-https**: Software service allowing the package management utility to retrieve files over the HTTPS protocol. Once installed, APT can retrieve packages more securely.
-- **software-properties-common**: A software package that provides some useful tools for adding and managing software repositories. The most common tool it offers is the `add-apt-repository` command to add software packages to the node.
-- **gnupg2**: OpenPGP standard for encrypting and signing data and communication. It is used to receive and install signed software packages.
-
-Install the following six tools that we will need to set up Prometheus, Grafana, and all the Exporters:
+:::
 
 ```sh
 sudo apt install wget make git apt-transport-https software-properties-common gnupg2
 ```
+
+</TabItem> <TabItem value="dappnode" label="🎨 DAppNode">
+
+DAppNode provides an integrated monitoring solution called [**DAppNode Monitoring Service**](https://docs.dappnode.io/docs/user/packages/dms/). The software solution includes all necessary tools such as node exporters, Prometheus, and Grafana out of the box. The dashboards come pre-configured, and services are automatically hooked into the DAppNode-managed blockchain clients without custom installation.
+
+- [DAappNode DMS Setup](https://docs.dappnode.io/docs/user/packages/dms/)
+- [DAppNode Metrics](https://docs.dappnode.io/docs/user/ethical-metrics/overview/)
+
+</TabItem> <TabItem value="docker" label="🐳 Docker">
+
+The LUKSO team provides a separate [**Docker Monitoring Setup**](https://github.com/lukso-network/network-docker-monitoring), designed to work alongside their default Docker repositories for node operators. The configuration includes all necessary exporter services, Prometheus, and Grafana within one single container.
+
+- [LUKSO Docker Monitoring Setup](https://github.com/lukso-network/network-docker-monitoring)
+- [LUKSO Docker Containers](https://github.com/lukso-network/network-docker-containers)
+
+</TabItem>
+</Tabs>
