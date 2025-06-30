@@ -124,7 +124,7 @@ sudo pkill validator
 
 As the staking node requests the validator wallet's password every time during startup, we have to write the password into a file, similar to how credentials are handled within the [Dynamic DNS](/docs/guides/modifications/dynamic-dns.md) setup. To mitigate security risks, a separate user will be added to exclusively run the node service and read the password file.
 
-Running services as a system user with minimal privileges is a typical best practice, as the service is not allowed to write outside of the specific client folders. It limits the potential damage if the software is somehow compromised, and hides the private credentials for the rest of the system. The node's user won't be able to write to directorieson the system or execute commands. Use the system's user creation tool to add a new one.
+Running services as a system user with minimal privileges is a typical best practice, as the service is not allowed to write outside of the specific client folders. It limits the potential damage if the software is somehow compromised, and hides the private credentials for the rest of the system. The node's user won't be able to write to directories on the system or execute commands. Use the system's user creation tool to add a new one.
 
 ```sh
 sudo adduser --system lukso-validator-worker --group --no-create-home
