@@ -24,7 +24,7 @@ The following steps are performed on your 📟 **node server**.
 
 ## 1. Create System User
 
-Running services as a system user with minimal privileges is a typical best practice, as the service is not allowed to write outside of the specific service files. It limits the potential damage if the software is somehow compromised. The node exporter user won't be able to write to directories on the system or execute other commands. Use the system's user creation tool to add a new one.
+Running services as a system user with minimal privileges is a best practice, limiting damage if compromised. The JSON Exporter user will only be able to read and execute service-specific files. Use the system's user creation tool to add a new one.
 
 ```sh
 sudo adduser --system node-exporter-worker --group --no-create-home
@@ -72,7 +72,7 @@ tar xzfv node_exporter-1.9.1.linux-amd64.tar.gz
 
 :::info
 
-The `tar` command will extract `x` the uncompressed `z` archive from the file path `f` using verbose `v` status messages.
+The `tar` command extracts `x` the uncompressed `z` archive from the file path `f` using verbose `v` status messages.
 
 :::
 
@@ -108,7 +108,7 @@ rm node_exporter-1.9.1.linux-amd64.tar.gz
 
 ## 3. Service Configuration
 
-Once the binary file is in place, we can create a service configuration for it automatically starts during boot, restarts during crashes and is executed using the previously created service user. The configuration will also check for logging ad an online network connection before it starts up.
+Once the binary file is in place, we can create a service configuration for the exporter, so it automatically starts during boot, restarts during crashes. The configuration will also check for logging before it starts up and uses the previously created user.
 
 **3.1 Create Service File**: Create a system service file using your preferred text editor.
 
@@ -194,7 +194,7 @@ WantedBy=multi-user.target
 | `User`             | Executes the service as the `node-exporter-worker` user.                                         |
 | `Group`            | Executes the service under the `node-exporter-worker` group.                                     |
 | `Type`             | Indicates running at a `simple` service in the foreground without forking into a daemon process. |
-| `ExecStart`        | Link to binary at `/usr/bin/noip-duc`, started with the terminal command of the service.         |
+| `ExecStart`        | Link to binary at `/usr/local/bin/node_exporter`, started with the terminal command.             |
 | `Restart`          | Restarts the service `on-failure` for a variety of reasons.                                      |
 | `RestartSec`       | Delay in seconds before restarting the service.                                                  |
 | `SyslogIdentifier` | Tags logs from the service with `node_exporter` to help distinguish them from other logs.        |
@@ -243,7 +243,7 @@ Created symlink /etc/systemd/system/multi-user.target.wants/node_exporter.servic
 
 ## 5. Check Service Status
 
-You can fetch the current status from the system control to check if the node exporter service is running and configured correctly. The command will display whether it is active, enabled, or disabled and show recent log entries.
+You can fetch the current status from the system control to check if the Node Exporter service is running and configured correctly. The command will display whether it is active, enabled, or disabled and show recent log entries.
 
 ```sh
 sudo systemctl status node_exporter
