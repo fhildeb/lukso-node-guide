@@ -116,12 +116,27 @@ rm json_exporter-0.7.0.linux-amd64.tar.gz
 
 Create a configuration file that will be used for the API call to fetch the current LYX price.
 
-**3.1 Create Config Directory and File**: Choose a separate folder and file name.
+**3.1 Create Config Directory and File**: Choose a separate folder and create a config file using your preferred text editor.
 
 ```sh
 sudo mkdir /etc/json_exporter/
+```
+
+<Tabs groupId="editor">
+  <TabItem value="vim" label="Vim" default>
+
+```sh
 sudo vim /etc/json_exporter/json_exporter.yaml
 ```
+
+</TabItem> <TabItem value="nano" label="Nano">
+
+```sh
+sudo nano /etc/json_exporter/json_exporter.yaml
+```
+
+</TabItem>
+</Tabs>
 
 **3.2 Paste Configuration**: Add the CoinGecko API configuration structure.
 

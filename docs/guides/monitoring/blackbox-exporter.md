@@ -124,12 +124,27 @@ sudo setcap cap_net_raw+ep /usr/local/bin/blackbox_exporter
 
 Create a configuration file that will be used for the pings from the node to the servers.
 
-**4.1 Create Config Directory and File**: Choose a separate folder and file name.
+**4.1 Create Config Directory and File**: Choose a separate folder and create a config file using your preferred text editor.
 
 ```sh
 sudo mkdir /etc/blackbox_exporter/
+```
+
+<Tabs groupId="editor">
+  <TabItem value="vim" label="Vim" default>
+
+```sh
 sudo vim /etc/blackbox_exporter/blackbox.yaml
 ```
+
+</TabItem> <TabItem value="nano" label="Nano">
+
+```sh
+sudo nano /etc/blackbox_exporter/blackbox.yaml
+```
+
+</TabItem>
+</Tabs>
 
 **4.2 Paste Configuration**: Add the preferred server call properties.
 
@@ -364,6 +379,8 @@ Further information about system control or logging can be found on the [**Utili
 :::
 
 ## Revert Setup
+
+If something went wrong, you can remove the user or delete the service and related files all together.
 
 **1. Stop and Disable Service**: Stop the tool and remove it's service link from the system's boot.
 
