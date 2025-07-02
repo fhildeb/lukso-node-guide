@@ -193,23 +193,23 @@ WantedBy=multi-user.target
 <details>
     <summary>Full Property Explanation</summary>
 
-| Property           | Description                                                                                      |
-| ------------------ | ------------------------------------------------------------------------------------------------ |
-| `Description`      | A human-readable description of the service shown in `systemctl status`.                         |
-| `Documentation`    | Link to documentation of the software that is being used for this service file.                  |
-| `User`             | Executes the service as the `node-exporter-worker` user.                                         |
-| `Group`            | Executes the service under the `node-exporter-worker` group.                                     |
-| `Type`             | Indicates running at a `simple` service in the foreground without forking into a daemon process. |
-| `ExecStart`        | Link to binary at `/usr/local/bin/node_exporter`, started with the terminal command.             |
-| `Restart`          | Restarts the service `always` for a variety of reasons, errors, or timeouts.                     |
-| `RestartSec`       | Delay in seconds before restarting the service.                                                  |
-| `SyslogIdentifier` | Tags logs from the service with `node_exporter` to help distinguish them from other logs.        |
-| `StandardOutput`   | Sends regular service logs to the journal or syslog system.                                      |
-| `StandardError`    | Sends error service logs to the journal or syslog system.                                        |
-| `ProtectSystem`    | Restricts filesystem write access outside of the service runtime.                                |
-| `NoNewPrivileges`  | Prevents privilege escalation which processes can be apply for.                                  |
-| `PrivateTmp`       | Creates an isolated `/tmp` directory for the service.                                            |
-| `WantedBy`         | Binds the service to the `multi-user.target`, so it starts during all boot processes.            |
+| Property           | Description                                                                           |
+| ------------------ | ------------------------------------------------------------------------------------- |
+| `Description`      | A human-readable description of the service shown in `systemctl status`.              |
+| `Documentation`    | Link to documentation of the software that is being used for this service file.       |
+| `User`             | Executes the service as the `node-exporter-worker` user.                              |
+| `Group`            | Executes the service under the `node-exporter-worker` group.                          |
+| `Type`             | Indicates running at a `simple` service in the foreground without forking.            |
+| `ExecStart`        | Link to binary at `/usr/local/bin/node_exporter`, started with the terminal command.  |
+| `Restart`          | Restarts the service `always` for a variety of reasons, errors, or timeouts.          |
+| `RestartSec`       | Delay in seconds before restarting the service.                                       |
+| `SyslogIdentifier` | Tags logs from the service with `node_exporter` to help distinguish them.             |
+| `StandardOutput`   | Sends regular service logs to the journal or syslog system.                           |
+| `StandardError`    | Sends error service logs to the journal or syslog system.                             |
+| `ProtectSystem`    | Restricts filesystem write access outside of the service runtime.                     |
+| `NoNewPrivileges`  | Prevents privilege escalation which processes can be apply for.                       |
+| `PrivateTmp`       | Creates an isolated `/tmp` directory for the service.                                 |
+| `WantedBy`         | Binds the service to the `multi-user.target`, so it starts during all boot processes. |
 
 </details>
 
@@ -221,7 +221,7 @@ If you renamed the user, make sure to update both `User` and `Group` values to p
 
 ## 4. Start the Exporter Service
 
-After setting up the service, you can enable and start the systemd service.
+After setting up the service, you can enable and start the system service.
 
 **4.1 Reload Daemon**: Reload the system daemon to include the new service.
 

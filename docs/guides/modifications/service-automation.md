@@ -537,7 +537,7 @@ WantedBy=multi-user.target
 | `WorkingDirectory` | Defines that the service command will be executed in the `<lukso-working-directory>`.            |
 | `ExecStart`        | The `lukso_startup.sh` script that will be started from the service.                             |
 | `ExecStop`         | Command to stop the validator service using `lukso stop` once clients are up and running.        |
-| `SyslogIdentifier` | Tags logs from the service with `lukso-validator` to help distinguish them from other logs.      |
+| `SyslogIdentifier` | Tags logs from the service with `lukso-validator` to help distinguish them.                      |
 | `StandardOutput`   | Sends regular service logs to the journal or syslog system.                                      |
 | `StandardError`    | Sends error service logs to the journal or syslog system.                                        |
 | `WantedBy`         | Binds the service to the `multi-user.target`, so it starts during all boot processes.            |
@@ -573,7 +573,7 @@ sudo systemctl daemon-reload
 
 ## 7. Restart the Node
 
-After setting up the service and configuring file access, you can enable and start the systemd service.
+After setting up the service and configuring file access, you can enable and start the system service.
 
 **7.1 Enable Start Boot**: Enable autostarts of the node process during system boot.
 

@@ -86,6 +86,7 @@ The `tar` command extracts `x` the uncompressed `z` archive from the file path `
 
 ```sh
 sudo cd prometheus-2.53.5.linux-amd64
+ls -al
 ```
 
 :::info
@@ -680,7 +681,7 @@ sudo chmod 755 /var/lib/prometheus
 
 ## 4. Service Configuration
 
-Once the binary and ping files are in place, we can create a service configuration for the exporter, so it automatically starts during boot and restarts during crashes. The configuration will also check for logging and an internet connection before it starts up and uses the previously created user.
+Once the software and dataset configuration are in place, we can create a service configuration, so it automatically starts during boot and restarts during crashes. The configuration will also check for logging and an internet connection before it starts up and uses the previously created user.
 
 **4.1 Create Service File**: Create a system service file using your preferred text editor.
 
@@ -783,11 +784,11 @@ WantedBy=multi-user.target
 | `After`            | - `network.target`: Ensures networking setup enabled before service is started. <br /> - `network-online.target`: Waits for network to be fully online before service is started. |
 | `User`             | Executes the service as the `json-exporter-worker` user.                                                                                                                          |
 | `Group`            | Executes the service under the `json-exporter-worker` group.                                                                                                                      |
-| `Type`             | Indicates running at a `simple` service in the foreground without forking into a daemon process.                                                                                  |
+| `Type`             | Indicates running at a `simple` service in the foreground without forking.                                                                                                        |
 | `ExecStart`        | - Link to binary at `/usr/local/bin/prometheus`, started with the terminal command.                                                                                               |
 | `ExecReload`       | Sends a `kill` signal to the main process to restart and re-read all configuration files.                                                                                         |
 | `RestartSec`       | Delay in seconds before restarting the service.                                                                                                                                   |
-| `SyslogIdentifier` | Tags logs from the service with `json_exporter` to help distinguish them from other logs.                                                                                         |
+| `SyslogIdentifier` | Tags logs from the service with `json_exporter` to help distinguish them.                                                                                                         |
 | `StandardOutput`   | Sends regular service logs to the journal or syslog system.                                                                                                                       |
 | `StandardError`    | Sends error service logs to the journal or syslog system.                                                                                                                         |
 | `ProtectSystem`    | Restricts filesystem write access outside of the service runtime.                                                                                                                 |
@@ -805,7 +806,7 @@ If you renamed the user, make sure to update both `User` and `Group` values to p
 
 ## 5. Start the Prometheus Service
 
-After setting up the service, you can enable and start the systemd service.
+After setting up the service, you can enable and start the system service.
 
 **5.1 Reload Daemon**: Reload the system daemon to include the new service.
 
@@ -858,8 +859,6 @@ The output should look similar to this:
 ```
 
 ## Maintenance
-
-Proper maintenance ensures that all the components are working as intended and can be updated on the fly.
 
 Proper maintenance ensures that all the components are working as intended and can be updated on the fly.
 
