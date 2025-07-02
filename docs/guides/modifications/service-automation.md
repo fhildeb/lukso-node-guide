@@ -720,10 +720,11 @@ Within the commands, exchange the following properties:
 
 :::
 
-**1. Stop the Node Service**: First, stop the blockchain clients using the configured service.
+**1. Stop and Disable Service**: Stop the clients and remove it's service link from the system's boot.
 
 ```sh
 sudo systemctl stop lukso-validator
+sudo systemctl disable lukso-validator
 ```
 
 **2. Change Folder Ownership**: Change the owner of the node folder back to your regular node user.
@@ -751,25 +752,14 @@ sudo deluser --remove-all-files lukso-validator-worker
 sudo delgroup lukso-validator-worker
 ```
 
-**6. Disable Node Service**: Remove the service link from the system's boot.
-
-```sh
-sudo systemctl disable lukso-validator
-```
-
-**7. Remove Service File**: Delete the service configuration file from the system folder.
+**6. Remove Service File**: Delete the configurations and reload the system daemon.
 
 ```sh
 sudo rm /etc/systemd/system/lukso-validator.service
-```
-
-**8. Reload System Service**: Reload the system daemon to apply latest service updates.
-
-```sh
 sudo systemctl daemon-reload
 ```
 
-**9. Remove Startup Files**: Delete the password file and startup script within the node folder.
+**7. Remove Startup Files**: Delete the password file and startup script within the node folder.
 
 ```sh
 rm -rf <lukso-working-directory>/static

@@ -110,10 +110,14 @@ rm json_exporter-0.7.0.darwin-amd64.tar.gz
 
 Create a configuration file that will be used for the API call to fetch the current LYX price.
 
+**3.1 Create Config Directory and File**: Choose a separate folder and file name.
+
 ```sh
 sudo mkdir /etc/json_exporter/
 sudo vim /etc/json_exporter/json_exporter.yaml
 ```
+
+**3.2 Paste Configuration**: Add the CoinGecko API configuration structure.
 
 <Tabs groupId="currency">
   <TabItem value="euro" label="EUR" default>
@@ -141,7 +145,13 @@ modules:
 </TabItem>
 </Tabs>
 
-Afterwards, change the ownership of the configuration file to the service user.
+:::warning
+
+Ensure the correct formatting of double-spaces for the correct use of the API calls.
+
+:::
+
+**3.3 Restrict Permissions**: Change the ownership of the configuration file to the service user.
 
 ```sh
 sudo chown -R json-exporter-worker:json-exporter-worker /etc/json_exporter/
@@ -149,7 +159,7 @@ sudo chown -R json-exporter-worker:json-exporter-worker /etc/json_exporter/
 
 ## 4. Service Configuration
 
-Once the binary and API files are in place, we can create a service configuration for the exporter, so it automatically starts during boot, restarts during crashes. The configuration will also check for logging before it starts up and uses the previously created user.
+Once the binary and API files are in place, we can create a service configuration for the exporter, so it automatically starts during boot and restarts during crashes. The configuration will also check for logging before it starts up and uses the previously created user.
 
 **4.1 Create Service File**: Create a system service file using your preferred text editor.
 
@@ -241,7 +251,7 @@ WantedBy=multi-user.target
 | `Group`            | Executes the service under the `json-exporter-worker` group.                                                                                                                      |
 | `Type`             | Indicates running at a `simple` service in the foreground without forking into a daemon process.                                                                                  |
 | `ExecStart`        | Link to binary at `/usr/local/bin/json_exporter`, started with the terminal command.                                                                                              |
-| `Restart`          | Restarts the service `on-failure` for a variety of reasons.                                                                                                                       |
+| `Restart`          | Restarts the service `always` for a variety of reasons, errors, or timeouts.                                                                                                      |
 | `RestartSec`       | Delay in seconds before restarting the service.                                                                                                                                   |
 | `SyslogIdentifier` | Tags logs from the service with `json_exporter` to help distinguish them from other logs.                                                                                         |
 | `StandardOutput`   | Sends regular service logs to the journal or syslog system.                                                                                                                       |
@@ -358,14 +368,14 @@ Further information about system control or logging can be found on the [**Utili
 
 If something went wrong, you can remove the user or delete the service and related files all together.
 
-**1. Stop and Disable the Service**:
+**1. Stop and Disable the Service**: Stop the tool and remove it's service link from the system's boot.
 
 ```sh
 sudo systemctl stop json_exporter
 sudo systemctl disable json_exporter
 ```
 
-**2. Remove the Service and Config Files**:
+**2. Remove the Service and Config Files**: Delete the configurations and reload the system daemon.
 
 ```sh
 sudo rm /etc/systemd/system/json_exporter.service
@@ -373,13 +383,13 @@ sudo rm -rf /etc/json_exporter
 sudo systemctl daemon-reload
 ```
 
-**3. Delete Binary**:
+**3. Delete Binary**: Remove the executable JSON Exporter from your system.
 
 ```sh
 sudo rm -rf /usr/local/bin/json_exporter
 ```
 
-**4. Remove User and Group**:
+**4. Remove User and Group**: Prune the user and all it's cached configurations.
 
 ```sh
 sudo deluser --remove-all-files json-exporter-worker

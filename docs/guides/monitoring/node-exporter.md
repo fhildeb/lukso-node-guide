@@ -108,7 +108,7 @@ rm node_exporter-1.9.1.linux-amd64.tar.gz
 
 ## 3. Service Configuration
 
-Once the binary file is in place, we can create a service configuration for the exporter, so it automatically starts during boot, restarts during crashes. The configuration will also check for logging before it starts up and uses the previously created user.
+Once the binary file is in place, we can create a service configuration for the exporter, so it automatically starts during boot and restarts during crashes. The configuration will also check for logging before it starts up and uses the previously created user.
 
 **3.1 Create Service File**: Create a system service file using your preferred text editor.
 
@@ -195,7 +195,7 @@ WantedBy=multi-user.target
 | `Group`            | Executes the service under the `node-exporter-worker` group.                                     |
 | `Type`             | Indicates running at a `simple` service in the foreground without forking into a daemon process. |
 | `ExecStart`        | Link to binary at `/usr/local/bin/node_exporter`, started with the terminal command.             |
-| `Restart`          | Restarts the service `on-failure` for a variety of reasons.                                      |
+| `Restart`          | Restarts the service `always` for a variety of reasons, errors, or timeouts.                     |
 | `RestartSec`       | Delay in seconds before restarting the service.                                                  |
 | `SyslogIdentifier` | Tags logs from the service with `node_exporter` to help distinguish them from other logs.        |
 | `StandardOutput`   | Sends regular service logs to the journal or syslog system.                                      |
@@ -309,27 +309,27 @@ Further information about system control or logging can be found on the [**Utili
 
 If something went wrong, you can remove the user or delete the service and related files all together.
 
-**1. Stop and Disable the Service**:
+**1. Stop and Disable the Service**: Stop the tool and remove it's service link from the system's boot.
 
 ```sh
 sudo systemctl stop node_exporter
 sudo systemctl disable node_exporter
 ```
 
-**2. Remove the Service File**:
+**2. Remove the Service File**: Delete the configuration and reload the system daemon.
 
 ```sh
 sudo rm /etc/systemd/system/node_exporter.service
 sudo systemctl daemon-reload
 ```
 
-**3. Delete Binary**:
+**3. Delete Binary**: Remove the executable Node Exporter from your system.
 
 ```sh
 sudo rm -rf /usr/local/bin/node_exporter
 ```
 
-**4. Remove User and Group**:
+**4. Remove User and Group**: Prune the user and all it's cached configurations.
 
 ```sh
 sudo deluser --remove-all-files node-exporter-worker

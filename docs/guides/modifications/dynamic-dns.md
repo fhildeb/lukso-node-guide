@@ -716,25 +716,21 @@ Further information about system control or logging can be found on the [**Utili
 
 If something went wrong, you can remove the service and related files all together.
 
-**1. Disable Node Service**: Remove the service link from the system's boot.
+**1. Stop and Disable Service**: Stop the tool and remove it's service link from the system's boot.
 
 ```sh
+sudo systemctl stop noip-duc
 sudo systemctl disable noip-duc
 ```
 
-**2. Remove Service File**: Delete the service configuration file from the system folder.
+**2. Remove the Service File**: Delete the configuration and reload the system daemon.
 
 ```sh
 sudo rm /lib/systemd/system/noip-duc.service
-```
-
-**3. Reload System Service**: Reload the system daemon to apply latest service updates.
-
-```sh
 sudo systemctl daemon-reload
 ```
 
-**4. Remove Software Package**: Delete the binary and optional configuration files using the package management tool.
+**3. Remove Software Package**: Delete the binary and optional configuration files using the package management tool.
 
 ```sh
 # Remove Software
@@ -744,4 +740,4 @@ sudo apt remove noip-duc
 sudo apt purge noip-duc
 ```
 
-**5. Update Client Configuration**: Stop the node, update your DDNS or IP address, and restart the clients.
+**4. Update Client Configuration**: Stop the node, update your DDNS or IP address, and restart the clients.
