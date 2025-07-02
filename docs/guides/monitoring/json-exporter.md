@@ -57,6 +57,12 @@ json-exporter-worker:x:115:121::/home/json-exporter-worker:/usr/sbin/nologin
 
 To add the JSON Exporter tool to your node, you have to install it's package.
 
+:::tip
+
+Depending on the [Current JSON Exporter Release](https://github.com/prometheus-community/json_exporter/releases/) the version and filenames might differ. Please ensure to use the latest release for best security and stability. As of **July 2025** it is version **0.7.0**.
+
+:::
+
 **2.1 Download Archive**: Move to the home directory and download the latest version.
 
 ```sh

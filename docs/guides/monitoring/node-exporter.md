@@ -57,6 +57,12 @@ node-exporter-worker:x:114:120::/home/node-exporter-worker:/usr/sbin/nologin
 
 To add the Node Exporter tool to your node, you have to install it's package.
 
+:::tip
+
+Depending on the [Current Node Exporter Release](https://github.com/prometheus/node_exporter/releases/) the version and filenames might differ. Please ensure to use the latest release for best security and stability. As of **July 2025** it is version **1.9.1**.
+
+:::
+
 **2.1 Download Archive**: Move to the home directory and download the latest version.
 
 ```sh
