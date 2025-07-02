@@ -67,13 +67,13 @@ Depending on the [Current JSON Exporter Release](https://github.com/prometheus-c
 
 ```sh
 cd
-wget https://github.com/prometheus-community/json_exporter/releases/download/v0.7.0/json_exporter-0.7.0.darwin-amd64.tar.gz
+wget https://github.com/prometheus-community/json_exporter/releases/download/v0.7.0/json_exporter-0.7.0.linux-amd64.tar.gz
 ```
 
 **2.2 Extract Files**: Unpack the archive using Ubuntu’s archiving tool.
 
 ```sh
-tar json_exporter-0.7.0.darwin-amd64.tar.gz
+tar json_exporter-0.7.0.linux-amd64.tar.gz
 ```
 
 :::info
@@ -85,7 +85,7 @@ The `tar` command extracts `x` the uncompressed `z` archive from the file path `
 **2.3 Move Binary to System Path**: Move the JSON Exporter binary to your system path.
 
 ```sh
-sudo cp json_exporter-0.7.0.darwin-amd64/json_exporter /usr/local/bin/
+sudo cp json_exporter-0.7.0.linux-amd64/json_exporter /usr/local/bin/
 ```
 
 **2.4 Assign Permissions**: Set the correct owner and access rights.
@@ -108,8 +108,8 @@ sudo chmod 755 /usr/local/bin/json_exporter
 **2.5 Cleanup Installation Files**: Delete leftover archive and extracted folder.
 
 ```sh
-rm -rf json_exporter-0.7.0.darwin-amd64
-rm json_exporter-0.7.0.darwin-amd64.tar.gz
+rm -rf json_exporter-0.7.0.linux-amd64
+rm json_exporter-0.7.0.linux-amd64.tar.gz
 ```
 
 ## 3. Price Configuration

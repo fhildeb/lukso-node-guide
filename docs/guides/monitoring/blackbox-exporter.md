@@ -50,7 +50,7 @@ grep "blackbox-exporter-worker" /etc/passwd
 The output should look similar to this:
 
 ```text
-blackbox-exporter-worker:x:116:122::/home blackbox-exporter-worker:/usr/sbin/nologin
+blackbox-exporter-worker:x:116:122::/home/blackbox-exporter-worker:/usr/sbin/nologin
 ```
 
 ## 2. Install Blackbox Exporter
