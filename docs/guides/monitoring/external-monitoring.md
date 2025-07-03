@@ -3,121 +3,198 @@ sidebar_label: "8.9 External Monitoring"
 sidebar_position: 9
 ---
 
-# 8.9 External Monitoring
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
-:::danger
+# 8.9 External Monitoring Tools
 
-This page is currently under maintenance reworked and contains outdated content.
+<!--TODO: finish/wrap up the introduction section-->
 
-:::
-
-You can also use LUKSO's official explorer webpages to monitor your nodes or validator status without relying directly on your local metrics. It's one of the most efficient methods and does not require any login to work. Their links can be verified at the [Mainnet Parameter](https://docs.lukso.tech/networks/mainnet/parameters) and [Testnet Parameter](https://docs.lukso.tech/networks/testnet/parameters) sections of the official [LUKSO Tech Docs](https://docs.lukso.tech/) page.
+Instead of only using local monitoring tools like [Prometheus](/docs/guides/monitoring/prometheus.md) and [Grafana](/docs/guides/monitoring/grafana.md), there are a bunch of web-based service tools that significantly help ... they mostly cover around uptime, let you check executed or missed proposals, or your earnings. This means node operators are not soley relying on local metrics and setups.
 
 ## Execution Block Explorer
 
+The Execution Block Explorer is a valuable tool for examining detailed transactions and blocks. The serivce provides data like who validated the block and the number of blocks a certain validator has validated in total. Additionally, the tool displays the balance of the transaction recipient's fees addresses.
+
+- [Mainnet Execution Explorer ↗](https://explorer.execution.mainnet.lukso.network/)
+- [Testnet Execution Explorer ↗](https://explorer.execution.testnet.lukso.network/)
+
 ![Execution Block Explorer](/img/guides/monitoring/explorer-pages-1.png)
-
-The Execution Block Explorer is a valuable tool for examining your blockchain's detailed transactions and blocks. It provides information about who validated the blocks and the number of blocks your validator has validated. It also displays the balance of the transaction recipient's fees addresses. With the aid of the Execution Block Explorer, you can maintain a comprehensive understanding of your transactional environment, ensuring the continued smooth operation of your blockchain network.
-
-- [Mainnet Execution Explorer](https://explorer.execution.mainnet.lukso.network/)
-- [Testnet Execution Explorer](https://explorer.execution.testnet.lukso.network/)
 
 ## Execution Status Page
 
+The Execution Status Page is crucial for tracking your node's overall health and performance. If you received an ETHStats secret from the LUKSO Team prior to the Mainnet Launch, the service provides the public node names, their execution client versions and types, latencies, and the number of their current peers. It also shows their pending transactions based on their current [gas price configuration](/docs/guides/maintenance/gas-price-configuration.md), the last synced block and its hash, as well as the timing of the last block.
+
+- [Mainnet Execution Status Page ↗](https://stats.execution.mainnet.lukso.network/)
+- [Testnet Execution Status Page ↗](https://stats.execution.testnet.lukso.network/)
+
 ![Execution Status Page](/img/guides/monitoring/explorer-pages-2.png)
 
-The Execution Status Page is crucial for tracking your node's overall health and performance. It displays your node if it has been added to the ETHStats page, showing the names of the nodes, their types, latencies, and the number of their peers. It also indicates pending transactions, the last synced block and its hash, and the timing of the last block. Furthermore, the total count of active nodes that activated the ETHStats client is readily available. The Execution Status Page is essentially a dashboard, providing all the critical metrics required to assess the performance of your node.
+:::info
 
-- [Mainnet Execution Stats](https://stats.execution.mainnet.lukso.network/)
-- [Testnet Execution Stats](https://stats.execution.testnet.lukso.network/)
+If you want to list your node as core contributor, get in contact with the Network Team on the [**LUKSO Discord Server**](https://discord.gg/lukso).
+
+:::
 
 ## Consensus Block Explorer
 
+The Consensus Block Explorer offers comprehensive insights into the current consensus status. It displays the present epoch, slot, active and pending validator counts, the total staked LYX, and the average balance. For each slot, the explorer provides information about the proposer, the sync participation, time, and status. On top, the explorer also allows for an in-depth examination of each block, revealing the proposer's graffiti and all associated metadata.
+
+From the validator's perspective, it provides critical information about attestations and deposits, the validators' status and effectiveness, and their balance. Validators can even check for slashed nodes, and execute their network exits while using the broadcast tool and checking their status on the withdrawals screen.
+
+- [Mainnet Consensus Explorer ↗](https://explorer.consensus.mainnet.lukso.network/)
+- [Mainnet Consensus Broadcast Tool ↗](https://explorer.consensus.mainnet.lukso.network/tools/broadcast)
+- [Mainnet Consensus Slashing Board ↗](https://explorer.consensus.mainnet.lukso.network/validators/slashings)
+- [Mainnet Consensus Withdrawals and BLS Changes ↗](https://explorer.consensus.mainnet.lukso.network/validators/withdrawals)
+- [Mainnet Consensus Slot Inspector ↗](https://explorer.consensus.mainnet.lukso.network/slots)
+- [Testnet Consensus Explorer ↗](https://explorer.consensus.testnet.lukso.network/)
+- [Testnet Consensus Broadcast Tool ↗](https://explorer.consensus.testnet.lukso.network/tools/broadcast)
+- [Testnet Consensus Slashing Board ↗](https://explorer.consensus.testnet.lukso.network/validators/slashings)
+- [Testnet Consensus Withdrawals and BLS Changes ↗](https://explorer.consensus.testnet.lukso.network/validators/withdrawals)
+- [Testnet Consensus Slot Inspector ↗](https://explorer.consensus.testnet.lukso.network/slots)
+
 ![Consensus Block Explorer](/img/guides/monitoring/explorer-pages-3.png)
 
-The Consensus Block Explorer offers comprehensive insights into the blockchain's current consensus status. It displays the present epoch, current slot, active and pending validator counts, the staked LYX, and the average balance. For each slot, the explorer provides information about the proposer, the sync participation, time, and status. The explorer also allows for an in-depth examination of each block, revealing the proposer's graffiti and all associated metadata. From the validator's perspective, it provides critical information about attestations and deposits, the validators' status and effectiveness, and their balance. This tool gives a clear view of the consensus health of the blockchain.
+:::tip
 
-If you need more information about slots, epochs, and their status types, look into this guide's [Network Theory](#) section.
+For further details about slots, epochs, and status types, look at the [**Proof of Stake**](/docs/theory/blockchain-knowledge/proof-of-stake.md) page in the 🧠 [**Theory**](/docs/theory/preparations/node-specifications.md) section.
 
-<!--TODO: /6-blockchain-clients/02-network-theory.md-->
-
-- [Mainnet Consensus Explorer](https://explorer.consensus.mainnet.lukso.network/)
-- [Testnet Consensus Explorer](https://explorer.consensus.testnet.lukso.network/)
+:::
 
 ## Consensus Status Page
 
+The Consensus Status Page is a tool for monitoring your node's operation. If you received an ETH2Stats secret from the LUKSO Team prior to the Mainnet Launch, the service provides details such as the node's name, consensus client type, it's current consensus peers, attestations, head slot, justified slot, and finalized slot. On top, it also displays the memory usage on the node.
+
+- [Mainnet Consensus Status Page ↗](https://stats.consensus.mainnet.lukso.network/)
+- [Testnet Consensus Status Page ↗](https://stats.consensus.testnet.lukso.network/)
+
 ![Consensus Status Page](/img/guides/monitoring/explorer-pages-4.png)
 
-The Consensus Status Page is another tool for monitoring your node's operation. If your node has been added to the ETH2Stats page, it will show up here, along with details such as the node's name, consensus client type, consensus peers, attestations, head slot, justified slot, and finalized slot. It even displays the memory usage on the machine running the node. This information is crucial in monitoring the performance of your consensus mechanism and ensuring your blockchain system runs efficiently.
+:::tip
 
-If you need more information about slots, epochs, and their status types, look into this guide's [Network Theory](#) section.
+For further details about slots, epochs, and status types, look at the [**Proof of Stake**](/docs/theory/blockchain-knowledge/proof-of-stake.md) page in the 🧠 [**Theory**](/docs/theory/preparations/node-specifications.md) section.
 
-<!--TODO: /6-blockchain-clients/02-network-theory.md-->
+:::
 
-- [Mainnet Consensus Stats](https://stats.consensus.mainnet.lukso.network/)
-- [Testnet Consensus Stats](https://stats.consensus.testnet.lukso.network/)
+:::info
 
-## External Node Validator Checks
+If you want to list your node as core contributor, get in contact with the Network Team on the [**LUKSO Discord Server**](https://discord.gg/lukso).
 
-As the **Consensus Explorer** is the main page for every information going on with the consensus and single validators that propose and participate in the consensus, we can also set up a link for this page that gathers consensus information for every validator of our node at once.
+:::
 
-First, log on to your node machine:
+## External Validator Checks
+
+The consensus explorer is considered the main status page for validators when it comes to monitoring uptime, withdrawals, block proposals, and earnings. While you can search for single validator indecies, the service also offers to **build a personalized validator status page** from an URL. This link can then be bookmarked in your browser to access a consolidated overview of all your validators at any time.
+
+:::tip
+
+Up to 250 validator keys can be added in a single URL. If exceeded, you must split keys across multiple links.
+
+:::
+
+:::info
+
+The following steps are performed on your 📟 **node server**.
+
+:::
+
+**1. Move into Node Folder**: Navigate into your log folder within your node setup.
+
+<Tabs groupId="network">
+  <TabItem value="mainnet" label="Mainnet" default>
 
 ```sh
-ssh <ssh-device-alias>
+cd
+cd <lukso-working-directory>/mainnet-logs/
 ```
 
-Then head over to your node's log directory. Exchange `<lukso-working-directory>` with the actual folder name and `<network-type>` with `mainnet` or `testnet` depending on your node's network.
+</TabItem> <TabItem value="testnet" label="Testnet">
 
 ```sh
-cd <lukso-working-directory>/<network-type>-logs/
+cd
+cd <lukso-working-directory>/testnet-logs/
 ```
 
-Next, we need to find the latest validator log file created for the node's network to get the total amount of imported validators. You can either check that manually or use the following script to automatically search for the validator logs, sort them by creation date and output the most recent filename to the terminal. I've used the `find` tool that is used to search for files and directories within a specified location and further used pipes as we already did plenty of times before. Here is a description of the script:
+</TabItem>
+</Tabs>
 
-- `.`: Represents the current directory.
-- `type f`: Specifies that only regular files should be considered, excluding directories and other types of files.
-- `name "*validator*"`: Sets the pattern to match filenames containing "validator" anywhere within the name.
-- `printf "%T@ %p\n"`: Specifies the format for the output of the found files. `%T@` represents the file's last modification time in seconds since the epoch, and `%p` represents the file path.
-- `sort -n`: Sorts the output in ascending order based on the file's modification time.
-- `tail -1`: Selects the last line from the sorted output, which corresponds to the file with the latest creation time.
-- `awk '{print $2}'`: Extracts the second column from the output, which contains the file path, and prints it.
+:::info
+
+Exchange `<lukso-working-directory>` with the actual folder name of your node setup.
+
+:::
+
+**2. Search Resent Log File**: Find the latest validator log file to retrieve the imported validators.
 
 ```sh
 find . -type f -name "*validator*" -printf "%T@ %p\n" | sort -n | tail -1 | awk '{print $2}'
 ```
 
-Now we can search this log file to get all the index properties of each validator imported to the node. The script will fetch all indexes and build the link of the consensus page so that you can copy/paste it into the browser of your choice. Here is a description of the script:
+<details>
+  <summary>Full Command Description</summary>
 
-- `cat file`: The cat command is used to concatenate and display the contents of a file, in our case the latest validator log.
-- `grep -o 'index=[0-9]* '`: Searches for the pattern `index=` followed by a sequence of digits, and outputs only the matching parts. The `-o` flag tells grep to output only the matching index numbers, not the entire line.
-- `awk -F'=' '{printf "%s,", $2}'`: Uses the equals sign `=` as the field separator `-F` for the output of the `grep` command. It then only prints the numbers after the equals sign, which corresponds to the validator index, separated by a comma.
-- `sed 's/,$//'`: Removes the trailing comma from the output.
-- `tr -d ' '`: Deletes any remaining spaces from the index list.
-- `awk '{print URL $0}'`: Prepends the extracted validator index numbers to the URL, creating a complete link for all validator index numbers, represented by `$0`.
+| Component                            | Description                                                                   |
+| ------------------------------------ | ----------------------------------------------------------------------------- |
+| <nobr> `find .` </nobr>              | Current directory as the starting point for the file search.                  |
+| <nobr> `-type f` </nobr>             | Tells `find` to only consider regular files and ignore directories.           |
+| <nobr> `-name "*validator*"` </nobr> | Matches files with "validator" anywhere in their names.                       |
+| <nobr> `-printf "%T@ %p\n"` </nobr>  | Formats the output to show modification time `%T@` followed by the path `%p`. |
+| <nobr> `sort -n` </nobr>             | Pipes the list and sorts the lines numerically by the modification time.      |
+| <nobr> `tail -1` </nobr>             | Selects the last line, corresponding to the most recently modified file.      |
+| <nobr> `awk '{print $2}'` </nobr>    | Extracts and prints the file path from the output line.                       |
 
-Make sure to exchange `<recent-validator-logs.log>` with the actual filename from the previous step.
+</details>
 
-#### Testnet Validator Script
+**3. Create Monitoring Link**: Search the most recent log file and access all imported validators.
+
+<Tabs groupId="network">
+  <TabItem value="mainnet" label="Mainnet" default>
 
 ```sh
-cat <recent-validator-logs.log> | grep -o 'index=[0-9]* ' | awk -F'=' '{printf "%s,", $2}' | sed 's/,$//' | tr -d ' ' | awk '{print "https://explorer.consensus.testnet.lukso.network/dashboard?validators=" $0}'
+cat <validator-log.log> | grep -o 'index=[0-9]* ' | awk -F'=' '{printf "%s,", $2}' | sed 's/,$//' | tr -d ' ' | awk '{print "https://explorer.consensus.mainnet.lukso.network/dashboard?validators=" $0}'
 ```
 
-#### Mainnet Validator Script
+</TabItem> <TabItem value="testnet" label="Testnet">
 
 ```sh
-cat <recent-validator-logs.log> | grep -o 'index=[0-9]* ' | awk -F'=' '{printf "%s,", $2}' | sed 's/,$//' | tr -d ' ' | awk '{print "https://explorer.consensus.mainnet.lukso.network/dashboard?validators=" $0}'
+cat <validator-log.log> | grep -o 'index=[0-9]* ' | awk -F'=' '{printf "%s,", $2}' | sed 's/,$//' | tr -d ' ' | awk '{print "https://explorer.consensus.testnet.lukso.network/dashboard?validators=" $0}'
 ```
+
+</TabItem>
+</Tabs>
+
+:::info
+
+Exchange `<validator-log.log>` with the actual filename of the most recent validator log file.
+
+:::
+
+<details>
+  <summary>Full Command Description</summary>
+
+| Component                                       | Description                                                                                        |
+| ----------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| <nobr> `cat file` </nobr>                       | Displays all file contents including all the validator information.                                |
+| <nobr> `grep -o 'index=[0-9]* '` </nobr>        | Extracts all occurrences of `index=` followed by digits, using `-o` to return only matching parts. |
+| <nobr> `awk -F'=' '{printf "%s,", $2}'` </nobr> | Splits each match on `=`, and prints only the validator number followed by a comma.                |
+| <nobr> `sed 's/,$//'` </nobr>                   | Removes the trailing comma from the end of the list.                                               |
+| <nobr> `tr -d ' '` </nobr>                      | Deletes all spaces from the output, resulting in a compact list of comma-separated index numbers.  |
+| <nobr> `awk '{print URL $0}'` </nobr>           | Prepends the `URL` to the entire index string, constructing a full link.                           |
+
+</details>
 
 The output will look similar to this one, having all your index numbers:
 
 ```text
-https://explorer.consensus.mainnet.lukso.network/dashboard?validators=1,2,3
+https://explorer.consensus.mainnet.lukso.network/dashboard?validators=111,222,888
 ```
 
-The link can then be copied from the terminal and saved as a bookmark in your browser.
-
-The page will look like the one below. It shows the status and uptime of your validators that are run on your node:
+**4. Access Validator Page**: Copy and open the link to gather uptime, proposal, and withdrawal metrics of your node.
 
 ![Validator Overview](/img/guides/monitoring/explorer-pages-5.png)
+
+:::tip
+
+Safe the link in your notes or as browser bookmark to be able to check the validator status from any device.
+
+:::

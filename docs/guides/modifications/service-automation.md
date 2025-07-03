@@ -124,7 +124,7 @@ sudo pkill validator
 
 As the staking node requests the validator wallet's password every time during startup, we have to write the password into a file, similar to how credentials are handled within the [Dynamic DNS](/docs/guides/modifications/dynamic-dns.md) setup. To mitigate security risks, a separate user will be added to exclusively run the node service and read the password file.
 
-Running services as a system user with minimal privileges is a typical best practice, as the service is not allowed to write outside of the specific client folders. It limits the potential damage if the software is somehow compromised, and hides the private credentials for the rest of the system. The node's user won't be able to write to directorieson the system or execute commands. Use the system's user creation tool to add a new one.
+Running services as a system user with minimal privileges is a typical best practice, as the service is not allowed to write outside of the specific client folders. It limits the potential damage if the software is somehow compromised, and hides the private credentials for the rest of the system. The node's user won't be able to write to directories on the system or execute commands. Use the system's user creation tool to add a new one.
 
 ```sh
 sudo adduser --system lukso-validator-worker --group --no-create-home
@@ -537,7 +537,7 @@ WantedBy=multi-user.target
 | `WorkingDirectory` | Defines that the service command will be executed in the `<lukso-working-directory>`.            |
 | `ExecStart`        | The `lukso_startup.sh` script that will be started from the service.                             |
 | `ExecStop`         | Command to stop the validator service using `lukso stop` once clients are up and running.        |
-| `SyslogIdentifier` | Tags logs from the service with `lukso-validator` to help distinguish them from other logs.      |
+| `SyslogIdentifier` | Tags logs from the service with `lukso-validator` to help distinguish them.                      |
 | `StandardOutput`   | Sends regular service logs to the journal or syslog system.                                      |
 | `StandardError`    | Sends error service logs to the journal or syslog system.                                        |
 | `WantedBy`         | Binds the service to the `multi-user.target`, so it starts during all boot processes.            |
@@ -573,7 +573,7 @@ sudo systemctl daemon-reload
 
 ## 7. Restart the Node
 
-After setting up the service and configuring file access, you can enable and start the systemd service.
+After setting up the service and configuring file access, you can enable and start the system service.
 
 **7.1 Enable Start Boot**: Enable autostarts of the node process during system boot.
 
@@ -720,10 +720,11 @@ Within the commands, exchange the following properties:
 
 :::
 
-**1. Stop the Node Service**: First, stop the blockchain clients using the configured service.
+**1. Stop and Disable Service**: Stop the clients and remove it's service link from the system's boot.
 
 ```sh
 sudo systemctl stop lukso-validator
+sudo systemctl disable lukso-validator
 ```
 
 **2. Change Folder Ownership**: Change the owner of the node folder back to your regular node user.
@@ -751,25 +752,14 @@ sudo deluser --remove-all-files lukso-validator-worker
 sudo delgroup lukso-validator-worker
 ```
 
-**6. Disable Node Service**: Remove the service link from the system's boot.
-
-```sh
-sudo systemctl disable lukso-validator
-```
-
-**7. Remove Service File**: Delete the service configuration file from the system folder.
+**6. Remove Service File**: Delete the configurations and reload the system daemon.
 
 ```sh
 sudo rm /etc/systemd/system/lukso-validator.service
-```
-
-**8. Reload System Service**: Reload the system daemon to apply latest service updates.
-
-```sh
 sudo systemctl daemon-reload
 ```
 
-**9. Remove Startup Files**: Delete the password file and startup script within the node folder.
+**7. Remove Startup Files**: Delete the password file and startup script within the node folder.
 
 ```sh
 rm -rf <lukso-working-directory>/static

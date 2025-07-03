@@ -16,10 +16,21 @@ const software = {
       version: "1.11.7",
     },
     {
-      name: "Tailscale",
-      link: "https://github.com/tailscale/tailscale/releases",
-      version: "1.82.0",
+      name: "Node Exporter",
+      link: "https://github.com/prometheus/node_exporter/releases/",
+      version: "1.9.1",
     },
+    {
+      name: "JSON Exporter",
+      link: "https://github.com/prometheus-community/json_exporter/releases/",
+      version: "0.7.0",
+    },
+    {
+      name: "Blackbox Exporter",
+      link: "https://github.com/prometheus/blackbox_exporter/releases/",
+      version: "0.27.0",
+    },
+
     {
       name: "Dynamic DNS Updater",
       link: "https://www.noip.com/de-DE/download?page=linux",
@@ -34,6 +45,11 @@ const software = {
       name: "LUKSO Key Gen CLI",
       link: "https://github.com/lukso-network/tools-key-gen-cli/releases",
       version: "2.5.8",
+    },
+    {
+      name: "Tailscale",
+      link: "https://github.com/tailscale/tailscale/releases",
+      version: "1.82.0",
     },
   ],
   "Blockchain Clients": [
