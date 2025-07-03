@@ -301,3 +301,11 @@ Once an alert is triggered, you can define how frequently the message will be se
 Besides intervals, Grafana will also send a **Resolved** message once the issue is not present anymore.
 
 :::
+
+## 4. Continuous Notifications
+
+Within the Grafana Dashboard, you can also enable _Alert Reminders_ that send notifications after a certain period of time. Setting it to one hour will send a notification every hour if a critical error or status has not changed yet.
+
+## 5. Permanent Alerts
+
+For a metric to send out permanent notifications, you can clone or create a new alert rule for a metric and define a rule that it is never supposed to be reached, so it permanently triggers. If you want hourly updates on the participation rate, you could select the alert for under 100% participation. In this case, you would constantly get notified about the network participation.
