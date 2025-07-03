@@ -3,40 +3,59 @@ sidebar_label: "9.2 Grafana Notifications"
 sidebar_position: 2
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 # 9.2 Grafana Notifications
 
-:::danger
+Grafana Notifications allow you to monitor the health of your node and its components in real-time. By configuring alerts for critical metrics, you can proactively resolve issues before they impact performance or security. Once a notification channel like [Telegram](/docs/guides/alert-systems/telegram-bot.md), Discord or E-Mail has been set up, you will be able to configure custom rules on when the [Grafana Dashboard](/docs/guides/monitoring/dashboard-configuration.md) sends messages based on gathered metrics.
 
-This page is currently under maintenance reworked and contains outdated content.
+:::tip
+
+This guide uses the default Grafana 📝 [**Templates**](#) to configure notification behaviour.
 
 :::
 
-## 1. Add Notifications to Metrics
+:::info
 
-In order to make sure that the node notifies you if some process is down, follow these steps. If something is unclear, you can have a look at the picture of each alert down below.
+The following steps are performed on your 💻 **personal computer**.
 
-> Make sure to get the latest dashboard of this guide, before continuing.
+:::
 
-1. Click the Granfana Icon to get to the landing page.
-2. Click the LUKSO Dashboard.
-3. Scroll down to the dashboard's `Alerts` section.
-4. Select each alert and click `Edit` on the 3-dot-menu.
-5. Within the `Alert` tab, select `Create alert rule from this panel` if you do not already see a alert panel on the page that you can click on. Do not worry if you need to create it first, as this is the default behavior since you will have to create folders and groups first.
-6. Click `Preview` to print out the graph to evaluate metric numbers.
-7. Adjust the `Threshold` section to your likings on when the alert should happen.
-8. In case the `Reduce` section is showing multiple lines and one of them is `NaN`, set `Replace Non-numeric Values` with a custom number above the alert range. For single line metrics that rely on clients or the network, its recommended to set a `NaN` number within the alert range, meaning that an alert is sent when the process or network is currently down.
-9. Within the `Alert evaluation behavior` section, add a `node-alerts` folder where all the alert data will be stored. If it is already existing, select it from the panel. You can change the name of the folder of your likings, it is just to group alert's data. Its recommended to always choose the same name for one network, node or validator, so you do not mix up various targets and dashboards.
-10. Within the `Evaluation group` selection, add a `node-group`. If it is already existing, select it from the panel. You can change the name of the group of your likings, it is just to group alert's data. Its recommended to always choose the same name for one network, node or validator, so you do not mix up various targets and dashboards.
-11. Scroll up and click `Save`
-12. Repeat this for every Alert on the Dashboard.
+## 1. Add Notifications
+
+To be notified once some process is down or something is off, you will have to create notifications for every metric.
+
+1. Click the Granfana Icon to get to the **Landing Page** and select the **LUKSO Dashboard** from the list.
+2. Scroll down to the dashboard's **Alerts** section, select an alert, and click **Edit** on the **3-Dot-Menu** on the right side.
+3. Within the **Alert** tab, select **Create Alert Rule from this Panel** to open up a new window.
+4. Click **Preview** to print out the graph and adjust the **Threshold** section to your likings on when the alert should happen.
+5. In case the **Reduce** section is showing **NaN**, **Replace Non-numeric Values** with a custom number above the alert range.
+6. For metrics that rely on the network, its recommended to set a **NaN** value, so it triggers when the network is down.
+7. Within the **Alert Evaluation Behavior** section, add a **node-alerts** folder where all the alert data will be stored.
+8. Within the **Evaluation Group** selection, add a **node-group** or select it from the panel.
+9. Its recommended to always choose the same alert folder and group for one node, so you do not mix up any targets.
+10. Scroll up and click **Save** to enable this alert for the specific metric.
+
+:::info
+
+The steps need to be repeated for every Alert on the Grafana Dashboard you want to receive notifications for.
+
+:::
 
 ## 2. Set Metrics Presets
 
+This section outlines every alert setup from the default dashboard. You can check the picures and validate your configurations.
+
+:::tip
+
+Below metric presets are based on default Grafana 📝 [**Templates**](#). If you used different service job names within the [Prometheus Dataset Configuration](/docs/guides/monitoring/prometheus.md#3-dataset-configuration), you will have to adjust the job names to match your Prometheus installation.
+
+:::
+
 ![Grafana Alert Board](/img/guides/alert-systems/grafana-alerts-1.png)
 
-Here are some example metrics that are included in the default dashboard. You can check the picures and validate if everything is configured the same way as in the guide.
-
-#### Consensus Process Down
+**Alert: Consensus Process Down**
 
 ```text
 1: Process up
@@ -45,11 +64,23 @@ Here are some example metrics that are included in the default dashboard. You ca
 
 ![Consensus Process Down Metric](/img/guides/alert-systems/grafana-alerts-2.png)
 
+<Tabs groupId="client">
+<TabItem value="lighthouse-prysm" label="Lighthouse & Prysm">
+
 ```text
 up{job="consensus-client-job"}
 ```
 
-#### Validator Process Down
+</TabItem><TabItem value="teku-nimbus" label="Teku & Nimbus-Eth2">
+
+```text
+up{job="consensus-validator-client-job"}
+```
+
+</TabItem> 
+</Tabs>
+
+**Alert: Validator Process Down**
 
 ```text
 1: Process up
@@ -58,11 +89,23 @@ up{job="consensus-client-job"}
 
 ![Validator Process Down Metric](/img/guides/alert-systems/grafana-alerts-3.png)
 
+<Tabs groupId="client">
+<TabItem value="lighthouse-prysm" label="Lighthouse & Prysm">
+
 ```text
 up{job="validator-client-job"}
 ```
 
-#### Consensus Process Restarted
+</TabItem><TabItem value="teku-nimbus" label="Teku & Nimbus-Eth2">
+
+```text
+up{job="consensus-validator-client-job"}
+```
+
+</TabItem> 
+</Tabs>
+
+**Alert Consensus Process Restarted**
 
 ```text
 1:   Process up
@@ -72,11 +115,23 @@ NaN: Not available (likely down --> 0)
 
 ![Consensus Process Restarted Metric](/img/guides/alert-systems/grafana-alerts-4.png)
 
+<Tabs groupId="client">
+<TabItem value="lighthouse-prysm" label="Lighthouse & Prysm">
+
 ```text
 (time()-process_start_time_seconds{job="consensus-client-job"})/3600
 ```
 
-#### Validator Process Restarted
+</TabItem><TabItem value="teku-nimbus" label="Teku & Nimbus-Eth2">
+
+```text
+(time()-process_start_time_seconds{job="consensus-validator-client-job"})/3600
+```
+
+</TabItem> 
+</Tabs>
+
+**Alert: Validator Process Restarted**
 
 ```text
 1:   Process up
@@ -86,11 +141,23 @@ NaN: Not available (likely down --> 0)
 
 ![Validator Process Restarted Metric](/img/guides/alert-systems/grafana-alerts-5.png)
 
+<Tabs groupId="client">
+<TabItem value="lighthouse-prysm" label="Lighthouse & Prysm">
+
 ```text
 (time()-process_start_time_seconds{job="validator-client-job"})/3600
 ```
 
-#### Below 40 Peers
+</TabItem><TabItem value="teku-nimbus" label="Teku & Nimbus-Eth2">
+
+```text
+(time()-process_start_time_seconds{job="consensus-validator-client-job"})/3600
+```
+
+</TabItem> 
+</Tabs>
+
+**Alert: Below 40 Peers**
 
 ```text
 above 30: Ideal healthy connections
@@ -100,11 +167,23 @@ NaN:      Not available (no connections --> 0)
 
 ![Below 40 Peers Metric](/img/guides/alert-systems/grafana-alerts-6.png)
 
+<Tabs groupId="client">
+<TabItem value="lighthouse-prysm" label="Lighthouse & Prysm">
+
 ```text
 p2p_peer_count{state="Connected",job="consensus-client-job"}
 ```
 
-#### Participation Rate below 80%
+</TabItem><TabItem value="teku-nimbus" label="Teku & Nimbus-Eth2">
+
+```text
+p2p_peer_count{state="Connected",job="consensus-validator-client-job"}
+```
+
+</TabItem> 
+</Tabs>
+
+**Alert: Participation Rate below 80%**
 
 ```text
 above 80: Ideal healthy network
@@ -118,7 +197,7 @@ NaN:      2nd data feed (ignore metric --> 100)
 beacon_prev_epoch_target_gwei / beacon_prev_epoch_active_gwei * 100
 ```
 
-#### 50 Slots Behind
+**Alert: 50 Slots Behind**
 
 ```text
 below 50: Ideal syncing speed
@@ -132,7 +211,7 @@ NaN:      Not available (likely unstable --> 51)
 beacon_clock_time_slot-beacon_head_slot
 ```
 
-#### No Hourly Earnings
+**Alert: No Hourly Earnings**
 
 ```text
 above 0,0001: Earning rewards
@@ -146,7 +225,7 @@ NaN:          Not available (likely negative rewards --> 0)
 sum(validator_balance) - sum(validator_balance offset 1h) - count(validator_balance > 16)*32 + count(validator_balance offset 1h > 0)*32
 ```
 
-#### Less than 2GB Free Memory
+**Alert: Less than 2GB Free Memory**
 
 ```text
 above 2000000000: More than 2GB remaining
@@ -159,7 +238,7 @@ below 2000000000: Less than 2GB remaining
 (node_memory_MemFree_bytes{job="node-exporter-job"} or node_memory_MemFree{job="node-exporter-job"}) + (node_memory_Cached_bytes{job="node-exporter-job"} or node_memory_Cached{job="node-exporter-job"})
 ```
 
-#### CPU Usage above 40%
+**Alert: CPU Usage above 40%**
 
 ```text
 above 4: More than 40% of computation resources used
@@ -172,7 +251,7 @@ below 4: Less than 40% of computation resources used
 sum(irate(node_cpu_seconds_total{mode="user",job="node-exporter-job"}[5m])) or sum(irate(node_cpu{mode="user",job="node-exporter-job"}[5m]))
 ```
 
-#### Disk Usage above 60%
+**Alert: Disk Usage above 60%**
 
 ```text
 above 0,6: Disk more than 60% occupied by tasks
@@ -185,7 +264,7 @@ below 0,6: Disk less than 60% occupied by tasks
 (sum(node_filesystem_size_bytes{job="node-exporter-job"})-sum(node_filesystem_avail_bytes{job="node-exporter-job"}))/sum(node_filesystem_size_bytes{job="node-exporter-job"})
 ```
 
-#### CPU Temperature above 75 °C
+**Alert: CPU Temperature above 75 °C**
 
 ```text
 above 75: Processor is running hot
@@ -198,7 +277,7 @@ below 75: Processor is running normally
 node_hwmon_temp_celsius{chip="platform_coretemp_0",job="node-exporter-job",sensor="temp1"}
 ```
 
-#### Google Ping above 30ms
+**Alert: Google Ping above 30ms**
 
 ```text
 above 0,03: Connection takes longer than 30ms, not ideal
@@ -211,14 +290,26 @@ below 0,03: Connection takes less than 30ms, everything alright
 probe_duration_seconds{job="google-ping-job"}
 ```
 
-## 1. Configuring Notfication Intervals
+## 3. Configure Intervals
 
-1. Head over to the `Alerting` section on the left menu.
-2. Click on `Notification policies`.
-3. Click the 3-dot-menu on the default notification channel.
-4. Choose `Edit` within the popup.
-5. Expand the `Timing Options` field
+Once an alert is triggered, you can define how frequently the message will be sent out to your notification channel.
 
-The window should look similar to this one, to send one notification every 5 minutes and refresh existing errors every 10 minutes. Grafana 9 will also send you and `resolved` message if the alarm is not present anymore.
+1. Navigate to the **Alerting** section on the left menu and click on the **Notification Policies** heading.
+2. Select the **3-Dot-Menu** on the default notification channel and choose **Edit** within the popup.
+3. Expand the **Timing Options** field to a duration or message frequency of your liking.
 
 ![Grafana Alert Interval](/img/guides/alert-systems/grafana-alerts-15.png)
+
+:::info
+
+Besides intervals, Grafana will also send a **Resolved** message once the issue is not present anymore.
+
+:::
+
+## 4. Continuous Notifications
+
+Within the Grafana Dashboard, you can also enable _Alert Reminders_ that send notifications after a certain period of time. Setting it to one hour will send a notification every hour if a critical error or status has not changed yet.
+
+## 5. Permanent Alerts
+
+For a metric to send out permanent notifications, you can clone or create a new alert rule for a metric and define a rule that it is never supposed to be reached, so it permanently triggers. If you want hourly updates on the participation rate, you could select the alert for under 100% participation. In this case, you would constantly get notified about the network participation.
