@@ -141,7 +141,7 @@ apt list -a grafana
 
 **2.6 Install Grafana**: Download the latest supported Grafana build from the package list.
 
-<Tabs groupId="editor">
+<Tabs groupId="grafana">
   <TabItem value="latest" label="Latest Grafana Version" default>
 
 ```sh

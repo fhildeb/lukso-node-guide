@@ -8,13 +8,17 @@ import TabItem from '@theme/TabItem';
 
 # 9.2 Grafana Notifications
 
-<!--TODO: extend the introduction text to twice the size-->
-
-Once a notification channel like [Telegram](/docs/guides/alert-systems/telegram-bot.md), Discord or E-Mail has been set up, you will be able to configure custom rules on when the [Grafana Dashboard](/docs/guides/monitoring/dashboard-configuration.md) sends messages based on gathered metrics.
+Grafana Notifications allow you to monitor the health of your node and its components in real-time. By configuring alerts for critical metrics, you can proactively resolve issues before they impact performance or security. Once a notification channel like [Telegram](/docs/guides/alert-systems/telegram-bot.md), Discord or E-Mail has been set up, you will be able to configure custom rules on when the [Grafana Dashboard](/docs/guides/monitoring/dashboard-configuration.md) sends messages based on gathered metrics.
 
 :::tip
 
 This guide uses the default Grafana 📝 [**Templates**](#) to configure notification behaviour.
+
+:::
+
+:::info
+
+The following steps are performed on your 💻 **personal computer**.
 
 :::
 
