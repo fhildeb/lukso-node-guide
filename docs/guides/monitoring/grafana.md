@@ -8,8 +8,7 @@ import TabItem from '@theme/TabItem';
 
 # 8.7 Grafana
 
-Grafana is an analytics and interactive visualization tool that connects to the previously configured [Prometheus](/docs/guides/monitoring/prometheus.md) tool to display real-time metrics, logs, and alerting dashboards.  
-This guide walks you through the process of installing Grafana and configuring it to run as a dedicated background service.
+Grafana is an analytics and interactive visualization tool that connects to the previously configured [Prometheus](/docs/guides/monitoring/prometheus.md) tool to display real-time metrics, logs, and alerting dashboards. This guide walks you through the process of installing Grafana and configuring it to run as a dedicated background service.
 
 :::tip
 

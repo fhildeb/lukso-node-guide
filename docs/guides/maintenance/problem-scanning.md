@@ -26,8 +26,6 @@ lukso status
 
 ## Listen to Live Logs
 
-<!--TODO: extend the introduction text-->
-
 The [LUKSO CLI](https://github.com/lukso-network/tools-lukso-cli) comes with its own logging functionality, directly printed to the terminal and stored in the node directory.
 
 <Tabs groupId="network">
