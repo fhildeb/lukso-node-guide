@@ -14,6 +14,12 @@ Monitoring tools help node operators monitor hardware health, service availabili
 
 :::tip
 
+A list of external tools, descriptions, and validator setups can be found within [**External Monitoring**](/docs/guides/monitoring/external-monitoring.md) of the 📖 [**Guide**](/docs/guides/validator-setup/precautions.md) section.
+
+:::
+
+:::info
+
 Monitoring tools typically get connected to [**Alert Systems**](/docs/guides/alert-systems/telegram-bot.md) for receiving status updates and warnings via message or email.
 
 :::
