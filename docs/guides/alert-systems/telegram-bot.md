@@ -5,72 +5,59 @@ sidebar_position: 1
 
 # 9.1 Telegram Bot
 
-:::danger
+Once the [Grafana Dashboard](/docs/guides/monitoring/dashboard-configuration.md) is configured, your node can send alerts through various channels, such as Discord, Telegram, or Email. The alert system can be used to notify you during unregular behavior from metrics, or when certain services cant be reached anymore.
 
-This page is currently under maintenance reworked and contains outdated content.
+:::tip
+
+It is convenient to temporarily open a text editor to store information needed for these steps.
 
 :::
 
-Grafana can send alerts through various channels, such as Discord, Telegram, or Email when unregular behavior in metrics or reading from Prometheus is recognized. The following will guide will configure Grafana notifications for Telegram.
+:::info
 
-> It is convenient to temporarily open a text editor to store information needed for these steps.
+The following steps are performed on your 💻 **personal computer**.
+
+:::
 
 ## 1. Create Telegram Bot
 
-> You need a [Telegram](https://telegram.org/) account in order to continue.
+1. Open the web-based or Desktop version of [Telegram](https://telegram.org/apps).
+2. Register or login to your [Telegram](https://telegram.org/) account.
+3. Open the Botfather chat using the [t.me/botfather](https://t.me/botfather) link.
+4. A new BotFather channel will be opened.
+5. Type and send `/newbot` in the message line.
+6. You will be promted to choose a full name for your future bot.
+7. A message will appear with information about your bot.
+8. Highlight and copy the API token and username.
+9. Paste the information into your notes.
 
-1. Open the web-based or Desktop version of Telegram.
-2. Click on this link https://t.me/botfather and allow the BotFather application to open Telegram.
-3. A BotFather channel will open.
-4. Type `/newbot` in the message line
-5. Send off the message
-6. Choose a full name for your bot.
-7. Choose a user name for your bot. The name must end with `bot`
-8. A message will appear with information about your bot.
-9. Highlight and copy the API token, then paste it into your text editor.
+## 2. Create Group Chat
 
-## 2. Create a Group
+1. Open the Telegram menu and set up a new group.
+2. Choose a name for the group of you and your bot.
+3. Add your bot to the group by typing the exact username.
+4. Create the group once the username was selected.
+5. Type and send `/my_id` to trigger the API refresh.
 
-1. Open the Telegram menu.
-2. Set up a new group.
-3. Choose a name for the group.
-4. Add your bot to the group by typing the exact _username_
-5. Select the user when it appears in the list and click `create`
-6. Send a message `/my_id` to trigger the API refresh
-7. Copy `https://api.telegram.org/bot<your-bot-api-token>/getUpdates` to a text document.
-8. Replace `<your-bot-api-token>` with your token ID of the bot
+## 3. Fetch the Chat Number
 
-## 3. Fetching the Chat ID
+1. Copy `https://api.telegram.org/bot<your-api-token>/getUpdates` to a text document.
+2. Replace `<your-api-token>` with your API token.
+3. Copy the link and access it from a web browser and look for the `{"id"}:` element.
+4. Copy and paste the `id` into your notes. It might have a `-` symbol in front.
 
-1. Copy the link you just edited into a web browser.
-2. Look for text that says `{"id"}:`
-3. Copy and paste the `id` into your notes.
+## 4. Add Contact Points
 
-> Ensure your Chat ID is fully copied. It might have a `-` in front.
-
-## 4. Add Telegram Contact Points
-
-1. Return to Grafana
-2. Login using your credentials
-3. On the left-hand menu, click `Alerting`
-4. Click the `Contact Points` on the left side
-5. Click `Add contact point`
-6. Click on `Add channel`
-7. Fill in the following information:
-
-   - `Name`: Your Notification Channel Name
-   - `Integration:` Telegram
-   - `BOT API Token:` Your copied BOT API Token
-   - `Chat ID:` The copied Chat ID
-
-8. Click `Test` within the Integration Panel.
-9. Wait until you see a new message in Telegram.
-10. Click `Save contact point`.
+1. Return to Grafana and login using your credentials.
+2. On the left-hand menu, click **Alerting** and select the **Contact Points** heading.
+3. Click **Add contact point** and fill in a name for your notification channel.
+4. Select the **Telegram Integration** and add the API Token and your chat ID.
+5. Click **Test** within the Integration Panel.
+6. Wait until you see a new message in Telegram.
+7. Click **Save contact point**.
 
 ## 5. Update Notification Policies
 
-1. On the left-hand menu, click `Alerting`
-2. Click the `Notification policies` on the left side
-3. On the right of the default notification, click the 3-dot-menu and chose `Edit`
-4. Change `Default contact point` to Telegram's Contact Point
-5. Click `Update default policy`
+1. Visit the **Grafana Landing Page**, click **Alerting** on the left-hand menu, and select **Notification Policies**.
+2. On the right side of the **Default Notification**, click the **3-Dot-Menu** and choose **Edit**.
+3. Change the **Default Contact Point** to the Telegram's Contact Point and click **Update Default Policy**
