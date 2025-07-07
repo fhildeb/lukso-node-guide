@@ -1,6 +1,7 @@
 ---
 sidebar_label: "Network Demand"
 sidebar_position: 3
+description: "Learn the bandwidth, latency, and connection requirements to run a stable LUKSO validator or full node without penalties or sync issues."
 ---
 
 # Network Demand
