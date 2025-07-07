@@ -1,6 +1,7 @@
 ---
 sidebar_label: "Client Providers"
 sidebar_position: 6
+description: "Explore supported LUKSO client software, node types, performance metrics, and storage footprints to choose the best execution and consensus clients for your setup."
 ---
 
 import Tabs from '@theme/Tabs';

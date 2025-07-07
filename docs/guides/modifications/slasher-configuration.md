@@ -1,6 +1,7 @@
 ---
 sidebar_label: "7.1 Slasher Configuration"
 sidebar_position: 1
+description: "Enable or disable the LUKSO slasher service to detect validator misbehavior. Configure slasher flags for CLI and automated setups, and remove slasher data to save disk space."
 ---
 
 import Tabs from '@theme/Tabs';

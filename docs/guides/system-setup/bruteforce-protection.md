@@ -1,6 +1,7 @@
 ---
 sidebar_label: "3.7 Bruteforce Protection"
 sidebar_position: 7
+description: "Protect your LUKSO node from SSH bruteforce attacks using Fail2Ban. Learn how to install, configure, and secure your server with automatic IP banning."
 ---
 
 import Tabs from '@theme/Tabs';

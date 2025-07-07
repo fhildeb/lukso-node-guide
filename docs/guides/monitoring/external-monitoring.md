@@ -1,6 +1,7 @@
 ---
 sidebar_label: "8.9 External Monitoring"
 sidebar_position: 9
+description: "Explore web-based monitoring tools for tracking validator uptime, block proposals, and node health using LUKSO explorers and status pages."
 ---
 
 import Tabs from '@theme/Tabs';

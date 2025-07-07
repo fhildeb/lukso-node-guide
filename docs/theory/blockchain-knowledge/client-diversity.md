@@ -1,6 +1,7 @@
 ---
 sidebar_label: "Client Diversity"
 sidebar_position: 7
+description: "Learn why using multiple LUKSO clients improves network security, decentralization, and resilience—and how diversity prevents critical outages."
 ---
 
 # Client Diversity

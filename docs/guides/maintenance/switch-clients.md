@@ -1,6 +1,7 @@
 ---
 sidebar_label: "11.5 Switch Clients"
 sidebar_position: 5
+description: "Learn how to switch between execution and consensus clients on your LUKSO validator node to improve network decentralization and client diversity."
 ---
 
 import Tabs from '@theme/Tabs';

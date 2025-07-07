@@ -1,6 +1,7 @@
 ---
 sidebar_label: "5.3 Authentication"
 sidebar_position: 3
+description: "Secure your LUKSO node by enforcing SSH key-based authentication and disabling password logins. Learn how to configure and verify your SSH access settings."
 ---
 
 import Tabs from '@theme/Tabs';

@@ -1,6 +1,7 @@
 ---
 sidebar_label: "3.4 Remote Access"
 sidebar_position: 4
+description: "Securely configure remote SSH access to your LUKSO node by customizing the OpenSSH port and validating service settings."
 ---
 
 import Tabs from '@theme/Tabs';

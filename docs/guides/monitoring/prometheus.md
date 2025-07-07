@@ -1,6 +1,7 @@
 ---
 sidebar_label: "8.6 Prometheus"
 sidebar_position: 6
+description: "Learn how to install, configure, and manage a local Prometheus server to monitor your LUKSO node with data from exporters like Node, JSON, and Blackbox Exporter."
 ---
 
 import Tabs from '@theme/Tabs';

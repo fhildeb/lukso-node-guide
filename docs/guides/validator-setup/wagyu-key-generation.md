@@ -1,6 +1,7 @@
 ---
 sidebar_label: "1.3 Wagyu Key Generation"
 sidebar_position: 3
+description: "Generate LUKSO validator keys easily using Wagyu’s graphical tool. Follow this step-by-step guide for a secure and intuitive key creation process."
 ---
 
 import Tabs from '@theme/Tabs';

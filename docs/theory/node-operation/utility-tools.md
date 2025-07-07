@@ -1,6 +1,7 @@
 ---
 sidebar_label: "Utility Tools"
 sidebar_position: 11
+description: "Master essential Linux tools for running a LUKSO node, including Vim, Nano, APT package management, systemctl commands, and logging with journalctl."
 ---
 
 import Tabs from '@theme/Tabs';

@@ -1,6 +1,7 @@
 ---
 sidebar_label: "6.3 LUKSO CLI Installation"
 sidebar_position: 3
+description: "Install, configure, and initialize the LUKSO CLI for managing execution and consensus clients, validator services, and blockchain data from a unified command-line interface."
 ---
 
 import Tabs from '@theme/Tabs';

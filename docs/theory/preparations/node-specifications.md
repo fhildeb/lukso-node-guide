@@ -1,6 +1,7 @@
 ---
 sidebar_label: "Node Specifications"
 sidebar_position: 1
+description: "Explore LUKSO node types and the recommended hardware specs to run a reliable validator, slasher, or archive node without penalties."
 ---
 
 import Tabs from '@theme/Tabs';

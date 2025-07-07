@@ -1,6 +1,7 @@
 ---
 sidebar_label: "Peer Discovery"
 sidebar_position: 6
+description: "Understand how LUKSO nodes discover peers, connect securely, and maintain network health through Kademlia-based routing and optimal peer counts."
 ---
 
 # Peer Discovery

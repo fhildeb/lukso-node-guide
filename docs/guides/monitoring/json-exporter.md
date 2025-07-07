@@ -1,6 +1,7 @@
 ---
 sidebar_label: "8.4 JSON Exporter"
 sidebar_position: 4
+description: "Install and configure the JSON Exporter to fetch live LYX price data from external APIs and expose it to Prometheus for financial monitoring."
 ---
 
 import Tabs from '@theme/Tabs';

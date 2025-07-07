@@ -1,6 +1,7 @@
 ---
 sidebar_label: "L16 Client Setup"
 sidebar_position: 1
+description: "Step-by-step guide to setting up a LUKSO L16 testnet node using the legacy CLI and Docker, including validator integration and startup procedures."
 ---
 
 import Tabs from '@theme/Tabs';

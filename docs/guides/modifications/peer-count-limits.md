@@ -1,6 +1,7 @@
 ---
 sidebar_label: "7.5 Peer Count Limits"
 sidebar_position: 5
+description: "Learn how to monitor and configure peer count limits for LUKSO nodes across execution and consensus clients. Improve network stability and avoid peer connectivity issues."
 ---
 
 import Tabs from '@theme/Tabs';

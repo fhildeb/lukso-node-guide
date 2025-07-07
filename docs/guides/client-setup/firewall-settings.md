@@ -1,6 +1,7 @@
 ---
 sidebar_label: "6.1 Firewall Settings"
 sidebar_position: 1
+description: "Open and manage required network ports for your LUKSO node. Learn which TCP/UDP ports each Ethereum client needs and how to configure your firewall for secure and stable node operation."
 ---
 
 import Tabs from '@theme/Tabs';

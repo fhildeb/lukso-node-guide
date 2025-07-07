@@ -1,6 +1,7 @@
 ---
 sidebar_label: "L16 Software Removal"
 sidebar_position: 3
+description: "Learn how to fully remove the legacy LUKSO CLI, Docker containers, blockchain data, and monitoring tools after completing L16 testnet runs."
 ---
 
 import Tabs from '@theme/Tabs';

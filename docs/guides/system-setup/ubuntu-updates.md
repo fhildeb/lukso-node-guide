@@ -1,6 +1,7 @@
 ---
 sidebar_label: "3.3 Ubuntu Updates"
 sidebar_position: 3
+description: "Learn how to keep your Ubuntu node secure and efficient with essential update commands and automatic security patching using APT."
 ---
 
 # 3.3 Ubuntu Updates

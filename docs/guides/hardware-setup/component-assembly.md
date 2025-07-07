@@ -1,6 +1,7 @@
 ---
 sidebar_label: "2.3 Component Assembly"
 sidebar_position: 3
+description: "Step-by-step guide for assembling your LUKSO validator node hardware, including memory, storage, antennas, and cooling components."
 ---
 
 # 2.3 Component Assembly

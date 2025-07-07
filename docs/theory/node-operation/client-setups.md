@@ -1,6 +1,7 @@
 ---
 sidebar_label: "Client Setups"
 sidebar_position: 1
+description: "Compare LUKSO node setup options like DAppNode, LUKSO CLI, Docker, and custom installs to find the right client stack for your validator."
 ---
 
 # Client Setups

@@ -1,6 +1,7 @@
 ---
 sidebar_label: "GasHawk Deposits"
 sidebar_position: 2
+description: "Guide to using GasHawk with the LUKSO Launchpad to minimize Ethereum gas fees during validator deposits by leveraging off-chain transaction buffering."
 ---
 
 # GasHawk Deposits

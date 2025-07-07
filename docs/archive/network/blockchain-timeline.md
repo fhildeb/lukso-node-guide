@@ -1,6 +1,7 @@
 ---
 sidebar_label: "Blockchain Timeline"
 sidebar_position: 1
+description: "Explore the complete LUKSO blockchain timeline, from early testnet phases to mainnet launch, LYXe migration milestones, and Universal Profile releases."
 ---
 
 # Blockchain Timeline

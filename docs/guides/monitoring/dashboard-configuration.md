@@ -1,6 +1,7 @@
 ---
 sidebar_label: "8.8 Dashboard Configuration"
 sidebar_position: 8
+description: "Set up a Grafana dashboard to visualize Prometheus metrics, monitor node health, and track performance with real-time charts and alerts."
 ---
 
 import Tabs from '@theme/Tabs';

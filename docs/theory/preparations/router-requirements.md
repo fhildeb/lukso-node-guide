@@ -1,6 +1,7 @@
 ---
 sidebar_label: "Router Requirements"
 sidebar_position: 2
+description: "Ensure your router can handle LUKSO node traffic with high throughput, stable connections, and proper port forwarding to avoid sync or validator issues."
 ---
 
 # Router Requirements

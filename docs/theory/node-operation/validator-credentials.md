@@ -1,6 +1,7 @@
 ---
 sidebar_label: "Validator Credentials"
 sidebar_position: 3
+description: "Understand all credentials needed to run a LUKSO validator, including seed phrases, deposit keys, passwords, withdrawal addresses, and key management."
 ---
 
 # Validator Credentials

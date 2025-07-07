@@ -1,6 +1,7 @@
 ---
 sidebar_label: "L16 Node Tooltips"
 sidebar_position: 2
+description: "Access quick-reference commands for managing LUKSO L16 testnet nodes using the legacy CLI and Docker, including start, stop, logs, and network refresh."
 ---
 
 # L16 Node Tooltips

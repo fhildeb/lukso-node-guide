@@ -1,6 +1,7 @@
 ---
 sidebar_label: "6.4 Validator Configuration"
 sidebar_position: 4
+description: "Learn how to configure validator keys and enable staking on your LUKSO node using the LUKSO CLI, including secure key import, startup commands, and reward address setup."
 ---
 
 import Tabs from '@theme/Tabs';

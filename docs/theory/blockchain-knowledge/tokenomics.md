@@ -1,6 +1,7 @@
 ---
 sidebar_label: "Tokenomics"
 sidebar_position: 2
+description: "Learn how LUKSO’s tokenomics work—covering staking rewards, fees, penalties, withdrawals, and the semi-deflationary supply mechanics in Proof of Stake."
 ---
 
 # Tokenomics

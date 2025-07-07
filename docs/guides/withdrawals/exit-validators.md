@@ -1,6 +1,7 @@
 ---
 sidebar_label: "12.2 Exit Validators"
 sidebar_position: 1
+description: "Learn how to exit LUKSO validators and withdraw your staked LYX or LYXt across DAppNode, CLI, Docker, or custom setups using client-specific instructions."
 ---
 
 import Tabs from '@theme/Tabs';

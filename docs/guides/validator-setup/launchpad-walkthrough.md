@@ -1,6 +1,7 @@
 ---
 sidebar_label: "1.5 Launchpad Walkthrough"
 sidebar_position: 5
+description: "Learn how to deposit LYX or LYXt using the LUKSO Launchpad to activate your validator keys and start staking on Mainnet or Testnet."
 ---
 
 import Tabs from '@theme/Tabs';

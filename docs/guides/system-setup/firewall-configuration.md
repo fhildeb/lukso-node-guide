@@ -1,6 +1,7 @@
 ---
 sidebar_label: "3.6 Firewall Configuration"
 sidebar_position: 6
+description: "Secure your LUKSO node by configuring a UFW firewall, restricting incoming traffic, and enabling safe SSH access over custom ports."
 ---
 
 # 3.6 Firewall Configuration

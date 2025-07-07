@@ -1,6 +1,7 @@
 ---
 sidebar_label: "2.1 Introduction"
 sidebar_position: 1
+description: "Overview of LUKSO node hardware requirements and professional homestaking setup, including energy efficiency, network design, and future-proofing strategies."
 ---
 
 # 2.1 Introduction

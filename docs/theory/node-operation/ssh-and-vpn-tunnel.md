@@ -1,6 +1,7 @@
 ---
 sidebar_label: "SSH and VPN Tunnel"
 sidebar_position: 9
+description: "Securely access and manage your LUKSO node from anywhere using SSH, VPN tunnels, WireGuard, and Tailscale for encrypted remote connectivity."
 ---
 
 # SSH and VPN Tunnel

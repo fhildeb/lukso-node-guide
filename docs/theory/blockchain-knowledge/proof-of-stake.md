@@ -1,6 +1,7 @@
 ---
 sidebar_label: "Proof of Stake"
 sidebar_position: 1
+description: "Understand Proof of Stake on LUKSO—how validators earn rewards, maintain consensus, and secure the network through staking, attestations, and finality."
 ---
 
 # Proof of Stake

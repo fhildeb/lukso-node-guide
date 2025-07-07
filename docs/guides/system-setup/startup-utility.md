@@ -1,6 +1,7 @@
 ---
 sidebar_label: "3.5 Startup Utility"
 sidebar_position: 5
+description: "Ensure secure remote access to your LUKSO node by enabling SSH to start automatically at system boot using systemd."
 ---
 
 # 3.5 Startup Utility

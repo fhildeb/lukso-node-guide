@@ -1,6 +1,7 @@
 ---
 sidebar_label: "Staking Deposits"
 sidebar_position: 4
+description: "Learn how to stake 32 LYX or LYXt to activate a LUKSO validator on mainnet or testnet, including key generation, deposit steps, and setup requirements."
 ---
 
 import Tabs from '@theme/Tabs';

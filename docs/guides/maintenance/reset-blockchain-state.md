@@ -1,6 +1,7 @@
 ---
 sidebar_label: "11.7 Reset Blockchain State"
 sidebar_position: 7
+description: "Learn how to reset your LUKSO node's blockchain state to resolve sync errors, client crashes, and data corruption when switching or updating execution clients."
 ---
 
 import Tabs from '@theme/Tabs';
