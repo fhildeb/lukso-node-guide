@@ -1,6 +1,7 @@
 ---
 sidebar_label: "3.1 Permission Management"
 sidebar_position: 1
+description: "Enhance LUKSO node security by disabling root login and managing user permissions with sudo and passwd commands."
 ---
 
 # 3.1 Permission Management

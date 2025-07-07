@@ -1,6 +1,7 @@
 ---
 sidebar_label: "3.2 Disk Volumes"
 sidebar_position: 2
+description: "Learn how to inspect, extend, and manage LUKSO node storage using Logical Volume Manager (LVM) to avoid disk space issues and optimize performance."
 ---
 
 # 3.2 Disk Volumes
