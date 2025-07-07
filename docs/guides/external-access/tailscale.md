@@ -1,6 +1,7 @@
 ---
 sidebar_label: "10.1 Tailscale"
 sidebar_position: 1
+description: "Set up Tailscale VPN for secure remote access to your LUKSO node. Learn how to install Tailscale, configure auto-start, update SSH settings, and access Grafana dashboards from anywhere."
 ---
 
 import Tabs from '@theme/Tabs';
