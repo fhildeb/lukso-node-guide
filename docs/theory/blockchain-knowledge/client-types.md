@@ -1,6 +1,7 @@
 ---
 sidebar_label: "Client Types"
 sidebar_position: 5
+description: "Understand the roles of execution, consensus, and validator clients in the LUKSO network, and how each contributes to staking, syncing, and network security."
 ---
 
 # Client Types

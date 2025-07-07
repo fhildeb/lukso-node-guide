@@ -1,6 +1,7 @@
 ---
 sidebar_label: "Slashing and Penalties"
 sidebar_position: 4
+description: "Explore how LUKSO enforces validator honesty through slashing and inactivity penalties to protect network security and finality in Proof of Stake."
 ---
 
 # Slashing and Penalties

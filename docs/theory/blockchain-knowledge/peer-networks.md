@@ -1,6 +1,7 @@
 ---
 sidebar_label: "Peer Networks"
 sidebar_position: 3
+description: "Learn how LUKSO’s peer-to-peer network architecture replaces central servers with resilient mesh connectivity across execution and consensus layers."
 ---
 
 import Tabs from '@theme/Tabs';
