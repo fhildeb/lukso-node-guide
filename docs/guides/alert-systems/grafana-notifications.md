@@ -75,7 +75,7 @@ up{job="consensus-client-job"}
 </TabItem><TabItem value="teku-nimbus" label="Teku & Nimbus-Eth2">
 
 ```text
-up{job="consensus-validator-client-job"}
+up{job="beacon-client-job"}
 ```
 
 </TabItem> 
@@ -100,7 +100,7 @@ up{job="validator-client-job"}
 </TabItem><TabItem value="teku-nimbus" label="Teku & Nimbus-Eth2">
 
 ```text
-up{job="consensus-validator-client-job"}
+up{job="beacon-client-job"}
 ```
 
 </TabItem> 
@@ -126,7 +126,7 @@ NaN: Not available (likely down --> 0)
 </TabItem><TabItem value="teku-nimbus" label="Teku & Nimbus-Eth2">
 
 ```text
-(time()-process_start_time_seconds{job="consensus-validator-client-job"})/3600
+(time()-process_start_time_seconds{job="beacon-client-job"})/3600
 ```
 
 </TabItem> 
@@ -152,7 +152,7 @@ NaN: Not available (likely down --> 0)
 </TabItem><TabItem value="teku-nimbus" label="Teku & Nimbus-Eth2">
 
 ```text
-(time()-process_start_time_seconds{job="consensus-validator-client-job"})/3600
+(time()-process_start_time_seconds{job="beacon-client-job"})/3600
 ```
 
 </TabItem> 
@@ -178,7 +178,7 @@ p2p_peer_count{state="Connected",job="consensus-client-job"}
 </TabItem><TabItem value="teku-nimbus" label="Teku & Nimbus-Eth2">
 
 ```text
-p2p_peer_count{state="Connected",job="consensus-validator-client-job"}
+p2p_peer_count{state="Connected",job="beacon-client-job"}
 ```
 
 </TabItem> 

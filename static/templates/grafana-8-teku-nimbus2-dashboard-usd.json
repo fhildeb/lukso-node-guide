@@ -240,7 +240,7 @@
       "pluginVersion": "8.2.3",
       "targets": [
         {
-          "expr": "sum(validator_balance{job=\"consensus-validator-client-job\"})",
+          "expr": "sum(validator_balance{job=\"beacon-client-job\"})",
           "instant": true,
           "interval": "",
           "legendFormat": "vbal",
@@ -321,7 +321,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "sum(validator_balance{job=\"consensus-validator-client-job\"})-(count(validator_balance{job=\"consensus-validator-client-job\"} > 16 and validator_statuses{job=\"consensus-validator-client-job\"} == 3)*32)",
+          "expr": "sum(validator_balance{job=\"beacon-client-job\"})-(count(validator_balance{job=\"beacon-client-job\"} > 16 and validator_statuses{job=\"beacon-client-job\"} == 3)*32)",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -401,7 +401,7 @@
       "pluginVersion": "8.2.3",
       "targets": [
         {
-          "expr": "(sum(validator_balance{job=\"consensus-validator-client-job\"}) - (count(validator_balance{job=\"consensus-validator-client-job\"} > 16 and validator_statuses{job=\"consensus-validator-client-job\"} == 3)*32))/(count(validator_balance{job=\"consensus-validator-client-job\"} > 16 and validator_statuses{job=\"consensus-validator-client-job\"} == 3)*32)  ",
+          "expr": "(sum(validator_balance{job=\"beacon-client-job\"}) - (count(validator_balance{job=\"beacon-client-job\"} > 16 and validator_statuses{job=\"beacon-client-job\"} == 3)*32))/(count(validator_balance{job=\"beacon-client-job\"} > 16 and validator_statuses{job=\"beacon-client-job\"} == 3)*32)  ",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -470,7 +470,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "p2p_peer_count{state=\"Connected\",job=\"consensus-validator-client-job\"}",
+          "expr": "p2p_peer_count{state=\"Connected\",job=\"beacon-client-job\"}",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -541,7 +541,7 @@
       "pluginVersion": "8.2.3",
       "targets": [
         {
-          "expr": "(beacon_prev_epoch_target_gwei{job=\"consensus-validator-client-job\"} / beacon_prev_epoch_active_gwei{job=\"consensus-validator-client-job\"} )",
+          "expr": "(beacon_prev_epoch_target_gwei{job=\"beacon-client-job\"} / beacon_prev_epoch_active_gwei{job=\"beacon-client-job\"} )",
           "interval": "",
           "legendFormat": "",
           "refId": "A"
@@ -609,7 +609,7 @@
       "pluginVersion": "8.2.3",
       "targets": [
         {
-          "expr": "clamp_min((1-(4*((floor(beacon_clock_time_slot{job=\"consensus-validator-client-job\"}/32) - beacon_finalized_epoch{job=\"consensus-validator-client-job\"} - 2)/100))),0)",
+          "expr": "clamp_min((1-(4*((floor(beacon_clock_time_slot{job=\"beacon-client-job\"}/32) - beacon_finalized_epoch{job=\"beacon-client-job\"} - 2)/100))),0)",
           "interval": "",
           "legendFormat": "",
           "refId": "A"
@@ -669,7 +669,7 @@
       "steppedLine": true,
       "targets": [
         {
-          "expr": "(beacon_prev_epoch_target_gwei{job=\"consensus-validator-client-job\"} / beacon_prev_epoch_active_gwei{job=\"consensus-validator-client-job\"} )",
+          "expr": "(beacon_prev_epoch_target_gwei{job=\"beacon-client-job\"} / beacon_prev_epoch_active_gwei{job=\"beacon-client-job\"} )",
           "interval": "",
           "legendFormat": "participation rate",
           "refId": "A"
@@ -769,7 +769,7 @@
           "refId": "A"
         },
         {
-          "expr": "sum(validator_balance{job=\"consensus-validator-client-job\"})",
+          "expr": "sum(validator_balance{job=\"beacon-client-job\"})",
           "hide": false,
           "instant": true,
           "interval": "",
@@ -870,7 +870,7 @@
       "pluginVersion": "8.2.3",
       "targets": [
         {
-          "expr": "sum(validator_balance{job=\"consensus-validator-client-job\"})-(count(validator_balance{job=\"consensus-validator-client-job\"} > 16 and validator_statuses{job=\"consensus-validator-client-job\"} == 3)*32)",
+          "expr": "sum(validator_balance{job=\"beacon-client-job\"})-(count(validator_balance{job=\"beacon-client-job\"} > 16 and validator_statuses{job=\"beacon-client-job\"} == 3)*32)",
           "instant": true,
           "interval": "",
           "legendFormat": "total_balance",
@@ -1112,21 +1112,21 @@
       "pluginVersion": "8.2.3",
       "targets": [
         {
-          "expr": "floor(beacon_clock_time_slot{job=\"consensus-validator-client-job\"} / 32)",
+          "expr": "floor(beacon_clock_time_slot{job=\"beacon-client-job\"} / 32)",
           "instant": true,
           "interval": "",
           "legendFormat": "current",
           "refId": "A"
         },
         {
-          "expr": "beacon_current_justified_epoch{job=\"consensus-validator-client-job\"}",
+          "expr": "beacon_current_justified_epoch{job=\"beacon-client-job\"}",
           "instant": true,
           "interval": "",
           "legendFormat": "justified",
           "refId": "C"
         },
         {
-          "expr": "beacon_finalized_epoch {job=\"consensus-validator-client-job\"} ",
+          "expr": "beacon_finalized_epoch {job=\"beacon-client-job\"} ",
           "format": "time_series",
           "instant": true,
           "interval": "",
@@ -1181,14 +1181,14 @@
       "pluginVersion": "8.2.3",
       "targets": [
         {
-          "expr": "beacon_slot{job=\"consensus-validator-client-job\"}",
+          "expr": "beacon_slot{job=\"beacon-client-job\"}",
           "instant": true,
           "interval": "",
           "legendFormat": "current slot",
           "refId": "A"
         },
         {
-          "expr": "beacon_head_slot{job=\"consensus-validator-client-job\"}",
+          "expr": "beacon_head_slot{job=\"beacon-client-job\"}",
           "instant": true,
           "interval": "",
           "legendFormat": "head slot",
@@ -1434,7 +1434,7 @@
       "pluginVersion": "8.2.3",
       "targets": [
         {
-          "expr": "sum(validator_balance{job=\"consensus-validator-client-job\"}) - sum(validator_balance{job=\"consensus-validator-client-job\"} offset 1h != 0) - (32 * count(validator_balance{job=\"consensus-validator-client-job\"} > 16)) + (32 * count(validator_balance{job=\"consensus-validator-client-job\"} offset 1h > 16))",
+          "expr": "sum(validator_balance{job=\"beacon-client-job\"}) - sum(validator_balance{job=\"beacon-client-job\"} offset 1h != 0) - (32 * count(validator_balance{job=\"beacon-client-job\"} > 16)) + (32 * count(validator_balance{job=\"beacon-client-job\"} offset 1h > 16))",
           "instant": false,
           "interval": "",
           "intervalFactor": 3,
@@ -1515,7 +1515,7 @@
       "pluginVersion": "8.2.3",
       "targets": [
         {
-          "expr": "sum(validator_balance{job=\"consensus-validator-client-job\"}) - sum(validator_balance{job=\"consensus-validator-client-job\"} offset 1d != 0) - (32 * count(validator_balance{job=\"consensus-validator-client-job\"} > 16)) + (32 * count(validator_balance{job=\"consensus-validator-client-job\"} offset 1d > 16))",
+          "expr": "sum(validator_balance{job=\"beacon-client-job\"}) - sum(validator_balance{job=\"beacon-client-job\"} offset 1d != 0) - (32 * count(validator_balance{job=\"beacon-client-job\"} > 16)) + (32 * count(validator_balance{job=\"beacon-client-job\"} offset 1d > 16))",
           "instant": false,
           "interval": "",
           "legendFormat": "",
@@ -1595,7 +1595,7 @@
       "pluginVersion": "8.2.3",
       "targets": [
         {
-          "expr": "sum(validator_balance{job=\"consensus-validator-client-job\"}) - sum(validator_balance{job=\"consensus-validator-client-job\"} offset 7d != 0) - (32 * count(validator_balance{job=\"consensus-validator-client-job\"} > 16)) + (32 * count(validator_balance{job=\"consensus-validator-client-job\"} offset 7d > 16))",
+          "expr": "sum(validator_balance{job=\"beacon-client-job\"}) - sum(validator_balance{job=\"beacon-client-job\"} offset 7d != 0) - (32 * count(validator_balance{job=\"beacon-client-job\"} > 16)) + (32 * count(validator_balance{job=\"beacon-client-job\"} offset 7d > 16))",
           "instant": false,
           "interval": "",
           "legendFormat": "",
@@ -1675,7 +1675,7 @@
       "pluginVersion": "8.2.3",
       "targets": [
         {
-          "expr": "sum(validator_balance{job=\"consensus-validator-client-job\"}) - sum(validator_balance{job=\"consensus-validator-client-job\"} offset 30d != 0) - (32 * count(validator_balance{job=\"consensus-validator-client-job\"} > 16)) + (32 * count(validator_balance{job=\"consensus-validator-client-job\"} offset 30d > 16))",
+          "expr": "sum(validator_balance{job=\"beacon-client-job\"}) - sum(validator_balance{job=\"beacon-client-job\"} offset 30d != 0) - (32 * count(validator_balance{job=\"beacon-client-job\"} > 16)) + (32 * count(validator_balance{job=\"beacon-client-job\"} offset 30d > 16))",
           "instant": false,
           "interval": "",
           "legendFormat": "",
@@ -1732,21 +1732,21 @@
       "pluginVersion": "8.2.3",
       "targets": [
         {
-          "expr": "validator_count{state=\"Active\",job=\"consensus-validator-client-job\"} ",
+          "expr": "validator_count{state=\"Active\",job=\"beacon-client-job\"} ",
           "instant": true,
           "interval": "",
           "legendFormat": "active",
           "refId": "C"
         },
         {
-          "expr": "validator_count{state=\"Slashed\",job=\"consensus-validator-client-job\"} ",
+          "expr": "validator_count{state=\"Slashed\",job=\"beacon-client-job\"} ",
           "instant": true,
           "interval": "",
           "legendFormat": "slashed",
           "refId": "B"
         },
         {
-          "expr": "validator_count{state=\"Exited\",job=\"consensus-validator-client-job\"} ",
+          "expr": "validator_count{state=\"Exited\",job=\"beacon-client-job\"} ",
           "instant": true,
           "interval": "",
           "legendFormat": "exited",
@@ -1825,25 +1825,25 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "validator_count{state=\"Pending\",job=\"consensus-validator-client-job\"}",
+          "expr": "validator_count{state=\"Pending\",job=\"beacon-client-job\"}",
           "interval": "",
           "legendFormat": "pending",
           "refId": "B"
         },
         {
-          "expr": "validator_count{state=\"Exiting\",job=\"consensus-validator-client-job\"}",
+          "expr": "validator_count{state=\"Exiting\",job=\"beacon-client-job\"}",
           "interval": "",
           "legendFormat": "exiting",
           "refId": "A"
         },
         {
-          "expr": "validator_count{state=\"Slashing\",job=\"consensus-validator-client-job\"}",
+          "expr": "validator_count{state=\"Slashing\",job=\"beacon-client-job\"}",
           "interval": "",
           "legendFormat": "slashing",
           "refId": "C"
         },
         {
-          "expr": "validator_count{job=\"consensus-validator-client-job\", state=\"Active\"}",
+          "expr": "validator_count{job=\"beacon-client-job\", state=\"Active\"}",
           "interval": "",
           "legendFormat": "active validators",
           "refId": "D"
@@ -1933,14 +1933,14 @@
       "pluginVersion": "8.2.3",
       "targets": [
         {
-          "expr": "validator_count{state=\"Pending\",job=\"consensus-validator-client-job\"}",
+          "expr": "validator_count{state=\"Pending\",job=\"beacon-client-job\"}",
           "instant": true,
           "interval": "",
           "legendFormat": "pending",
           "refId": "B"
         },
         {
-          "expr": "validator_count{state=\"Exiting\",job=\"consensus-validator-client-job\"}",
+          "expr": "validator_count{state=\"Exiting\",job=\"beacon-client-job\"}",
           "instant": true,
           "interval": "",
           "legendFormat": "exiting",
@@ -2020,7 +2020,7 @@
       "pluginVersion": "8.2.3",
       "targets": [
         {
-          "expr": "((sum(validator_balance{job=\"consensus-validator-client-job\"}) - sum(validator_balance{job=\"consensus-validator-client-job\"} offset 1h != 0) - (32 * count(validator_balance{job=\"consensus-validator-client-job\"} > 16)) +\t(32 * count(validator_balance{job=\"consensus-validator-client-job\"} offset 1h > 16)))/(32 * avg_over_time(count(validator_balance{job=\"consensus-validator-client-job\"} > 16)[1h:]))) * 365 * 24",
+          "expr": "((sum(validator_balance{job=\"beacon-client-job\"}) - sum(validator_balance{job=\"beacon-client-job\"} offset 1h != 0) - (32 * count(validator_balance{job=\"beacon-client-job\"} > 16)) +\t(32 * count(validator_balance{job=\"beacon-client-job\"} offset 1h > 16)))/(32 * avg_over_time(count(validator_balance{job=\"beacon-client-job\"} > 16)[1h:]))) * 365 * 24",
           "hide": false,
           "interval": "",
           "legendFormat": "annualized hourly return",
@@ -2100,7 +2100,7 @@
       "pluginVersion": "8.2.3",
       "targets": [
         {
-          "expr": "((sum(validator_balance{job=\"consensus-validator-client-job\"}) - sum(validator_balance{job=\"consensus-validator-client-job\"} offset 1d != 0) - (32 * count(validator_balance{job=\"consensus-validator-client-job\"} > 16)) +\t(32 * count(validator_balance{job=\"consensus-validator-client-job\"} offset 1d > 16)))/(32 * avg_over_time(count(validator_balance{job=\"consensus-validator-client-job\"} > 16)[1d:]))) * 365",
+          "expr": "((sum(validator_balance{job=\"beacon-client-job\"}) - sum(validator_balance{job=\"beacon-client-job\"} offset 1d != 0) - (32 * count(validator_balance{job=\"beacon-client-job\"} > 16)) +\t(32 * count(validator_balance{job=\"beacon-client-job\"} offset 1d > 16)))/(32 * avg_over_time(count(validator_balance{job=\"beacon-client-job\"} > 16)[1d:]))) * 365",
           "hide": false,
           "interval": "",
           "legendFormat": "annualized daily return",
@@ -2180,7 +2180,7 @@
       "pluginVersion": "8.2.3",
       "targets": [
         {
-          "expr": "((sum(validator_balance{job=\"consensus-validator-client-job\"}) - sum(validator_balance{job=\"consensus-validator-client-job\"} offset 7d != 0) - (32 * count(validator_balance{job=\"consensus-validator-client-job\"} > 16)) +\t(32 * count(validator_balance{job=\"consensus-validator-client-job\"} offset 7d > 16)))/(32 * avg_over_time(count(validator_balance{job=\"consensus-validator-client-job\"} > 16)[7d:]))) * (365/7)",
+          "expr": "((sum(validator_balance{job=\"beacon-client-job\"}) - sum(validator_balance{job=\"beacon-client-job\"} offset 7d != 0) - (32 * count(validator_balance{job=\"beacon-client-job\"} > 16)) +\t(32 * count(validator_balance{job=\"beacon-client-job\"} offset 7d > 16)))/(32 * avg_over_time(count(validator_balance{job=\"beacon-client-job\"} > 16)[7d:]))) * (365/7)",
           "hide": false,
           "interval": "",
           "legendFormat": "annualized weekly return",
@@ -2260,7 +2260,7 @@
       "pluginVersion": "8.2.3",
       "targets": [
         {
-          "expr": "((sum(validator_balance{job=\"consensus-validator-client-job\"}) - sum(validator_balance{job=\"consensus-validator-client-job\"} offset 30d != 0) - (32 * count(validator_balance{job=\"consensus-validator-client-job\"} > 16)) +\t(32 * count(validator_balance{job=\"consensus-validator-client-job\"} offset 30d > 16)))/(32 * avg_over_time(count(validator_balance{job=\"consensus-validator-client-job\"} > 16)[30d:]))) * (365/30)",
+          "expr": "((sum(validator_balance{job=\"beacon-client-job\"}) - sum(validator_balance{job=\"beacon-client-job\"} offset 30d != 0) - (32 * count(validator_balance{job=\"beacon-client-job\"} > 16)) +\t(32 * count(validator_balance{job=\"beacon-client-job\"} offset 30d > 16)))/(32 * avg_over_time(count(validator_balance{job=\"beacon-client-job\"} > 16)[30d:]))) * (365/30)",
           "hide": false,
           "interval": "",
           "legendFormat": "annualized monthly return",
@@ -2340,7 +2340,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "validators_total_balance{state=\"Active\",job=\"consensus-validator-client-job\"} / validator_count{state=\"Active\",job=\"consensus-validator-client-job\"} / 1000000000",
+          "expr": "validators_total_balance{state=\"Active\",job=\"beacon-client-job\"} / validator_count{state=\"Active\",job=\"beacon-client-job\"} / 1000000000",
           "interval": "",
           "legendFormat": "lyx",
           "refId": "A"
@@ -2394,14 +2394,14 @@
       "pluginVersion": "8.2.3",
       "targets": [
         {
-          "expr": "((validator_count{state=\"Pending\",job=\"consensus-validator-client-job\"}/4)*6.4)",
+          "expr": "((validator_count{state=\"Pending\",job=\"beacon-client-job\"}/4)*6.4)",
           "instant": true,
           "interval": "",
           "legendFormat": "pending",
           "refId": "B"
         },
         {
-          "expr": "((validator_count{state=\"Exiting\",job=\"consensus-validator-client-job\"}/4)*6.4)",
+          "expr": "((validator_count{state=\"Exiting\",job=\"beacon-client-job\"}/4)*6.4)",
           "instant": true,
           "interval": "",
           "legendFormat": "exiting",
@@ -2670,7 +2670,7 @@
       ],
       "targets": [
         {
-          "expr": "label_replace(max by(pubkey) (validator_statuses{job=\"consensus-validator-client-job\"}), \"pubkey_short\", \"$1\", \"pubkey\", \"(.{10}).*\")  ",
+          "expr": "label_replace(max by(pubkey) (validator_statuses{job=\"beacon-client-job\"}), \"pubkey_short\", \"$1\", \"pubkey\", \"(.{10}).*\")  ",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -2678,7 +2678,7 @@
           "refId": "J"
         },
         {
-          "expr": "label_replace(max by(pubkey) (validator_balance{job=\"consensus-validator-client-job\"}), \"pubkey_short\", \"$1\", \"pubkey\", \"(.{10}).*\") ",
+          "expr": "label_replace(max by(pubkey) (validator_balance{job=\"beacon-client-job\"}), \"pubkey_short\", \"$1\", \"pubkey\", \"(.{10}).*\") ",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -2686,7 +2686,7 @@
           "refId": "F"
         },
         {
-          "expr": "label_replace(max by(pubkey) (validator_successful_proposals{job=\"consensus-validator-client-job\"}), \"pubkey_short\", \"$1\", \"pubkey\", \"(.{10}).*\")  ",
+          "expr": "label_replace(max by(pubkey) (validator_successful_proposals{job=\"beacon-client-job\"}), \"pubkey_short\", \"$1\", \"pubkey\", \"(.{10}).*\")  ",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -2694,7 +2694,7 @@
           "refId": "E"
         },
         {
-          "expr": "label_replace(max by(pubkey) (validator_successful_attestations{job=\"consensus-validator-client-job\"}), \"pubkey_short\", \"$1\", \"pubkey\", \"(.{10}).*\")  ",
+          "expr": "label_replace(max by(pubkey) (validator_successful_attestations{job=\"beacon-client-job\"}), \"pubkey_short\", \"$1\", \"pubkey\", \"(.{10}).*\")  ",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -2702,7 +2702,7 @@
           "refId": "A"
         },
         {
-          "expr": "label_replace(max by(pubkey) (validator_successful_aggregations{job=\"consensus-validator-client-job\"}), \"pubkey_short\", \"$1\", \"pubkey\", \"(.{10}).*\") ",
+          "expr": "label_replace(max by(pubkey) (validator_successful_aggregations{job=\"beacon-client-job\"}), \"pubkey_short\", \"$1\", \"pubkey\", \"(.{10}).*\") ",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -2710,7 +2710,7 @@
           "refId": "C"
         },
         {
-          "expr": "label_replace(max by(pubkey) (validator_failed_attestations{job=\"consensus-validator-client-job\"}), \"pubkey_short\", \"$1\", \"pubkey\", \"(.{10}).*\") ",
+          "expr": "label_replace(max by(pubkey) (validator_failed_attestations{job=\"beacon-client-job\"}), \"pubkey_short\", \"$1\", \"pubkey\", \"(.{10}).*\") ",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -2718,7 +2718,7 @@
           "refId": "B"
         },
         {
-          "expr": "label_replace(max by(pubkey) (validator_failed_aggregations{job=\"consensus-validator-client-job\"}), \"pubkey_short\", \"$1\", \"pubkey\", \"(.{10}).*\") ",
+          "expr": "label_replace(max by(pubkey) (validator_failed_aggregations{job=\"beacon-client-job\"}), \"pubkey_short\", \"$1\", \"pubkey\", \"(.{10}).*\") ",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -2726,7 +2726,7 @@
           "refId": "D"
         },
         {
-          "expr": "label_replace(max by(pubkey) (validator_inactivity_score{job=\"consensus-validator-client-job\"}), \"pubkey_short\", \"$1\", \"pubkey\", \"(.{10}).*\")  ",
+          "expr": "label_replace(max by(pubkey) (validator_inactivity_score{job=\"beacon-client-job\"}), \"pubkey_short\", \"$1\", \"pubkey\", \"(.{10}).*\")  ",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -2874,7 +2874,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "p2p_peer_count{state=\"Connected\",job=\"consensus-validator-client-job\"}",
+          "expr": "p2p_peer_count{state=\"Connected\",job=\"beacon-client-job\"}",
           "interval": "",
           "legendFormat": "peers",
           "refId": "A"
@@ -2989,14 +2989,14 @@
       "pluginVersion": "8.2.3",
       "targets": [
         {
-          "expr": "(time()-process_start_time_seconds{job=\"consensus-validator-client-job\"})/3600",
+          "expr": "(time()-process_start_time_seconds{job=\"beacon-client-job\"})/3600",
           "instant": true,
           "interval": "",
           "legendFormat": "beacon chain",
           "refId": "A"
         },
         {
-          "expr": "(time()-process_start_time_seconds{job=\"consensus-validator-client-job\"})/3600",
+          "expr": "(time()-process_start_time_seconds{job=\"beacon-client-job\"})/3600",
           "instant": true,
           "interval": "",
           "legendFormat": "validator",
@@ -3066,14 +3066,14 @@
       "pluginVersion": "8.2.3",
       "targets": [
         {
-          "expr": "sum(rate(log_entries_total{job=\"consensus-validator-client-job\", level=\"error\"}[$__range]))*3600",
+          "expr": "sum(rate(log_entries_total{job=\"beacon-client-job\", level=\"error\"}[$__range]))*3600",
           "instant": false,
           "interval": "",
           "legendFormat": "errors",
           "refId": "A"
         },
         {
-          "expr": "sum(rate(log_entries_total{job=\"consensus-validator-client-job\", level=\"warning\"}[$__range]))*3600",
+          "expr": "sum(rate(log_entries_total{job=\"beacon-client-job\", level=\"warning\"}[$__range]))*3600",
           "instant": false,
           "interval": "",
           "legendFormat": "warnings",
@@ -3206,14 +3206,14 @@
       "pluginVersion": "8.2.3",
       "targets": [
         {
-          "expr": "sum(rate(log_entries_total{job=\"consensus-validator-client-job\", level=\"error\"}[$__range]))*3600",
+          "expr": "sum(rate(log_entries_total{job=\"beacon-client-job\", level=\"error\"}[$__range]))*3600",
           "instant": false,
           "interval": "",
           "legendFormat": "errors",
           "refId": "B"
         },
         {
-          "expr": "sum(rate(log_entries_total{job=\"consensus-validator-client-job\", level=\"warning\"}[$__range]))*3600",
+          "expr": "sum(rate(log_entries_total{job=\"beacon-client-job\", level=\"warning\"}[$__range]))*3600",
           "interval": "",
           "legendFormat": "warnings",
           "refId": "A"
@@ -3376,13 +3376,13 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "process_resident_memory_bytes{job=\"consensus-validator-client-job\"}",
+          "expr": "process_resident_memory_bytes{job=\"beacon-client-job\"}",
           "interval": "",
           "legendFormat": "beacon memory",
           "refId": "F"
         },
         {
-          "expr": "process_resident_memory_bytes{job=\"consensus-validator-client-job\"}",
+          "expr": "process_resident_memory_bytes{job=\"beacon-client-job\"}",
           "interval": "",
           "legendFormat": "validator memory",
           "refId": "G"
@@ -4319,7 +4319,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "up{job=\"consensus-validator-client-job\"}",
+          "expr": "up{job=\"beacon-client-job\"}",
           "hide": false,
           "interval": "",
           "intervalFactor": 1,
@@ -4462,7 +4462,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "up{job=\"consensus-validator-client-job\"}",
+          "expr": "up{job=\"beacon-client-job\"}",
           "interval": "",
           "legendFormat": "validator",
           "refId": "A"
@@ -4746,7 +4746,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "(time()-process_start_time_seconds{job=\"consensus-validator-client-job\"})/3600",
+          "expr": "(time()-process_start_time_seconds{job=\"beacon-client-job\"})/3600",
           "interval": "",
           "legendFormat": "{{job}}",
           "refId": "A"
@@ -4888,7 +4888,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "(time()-process_start_time_seconds{job=\"consensus-validator-client-job\"})/3600",
+          "expr": "(time()-process_start_time_seconds{job=\"beacon-client-job\"})/3600",
           "interval": "",
           "legendFormat": "",
           "refId": "A"
@@ -5172,7 +5172,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "p2p_peer_count{state=\"Connected\",job=\"consensus-validator-client-job\"}",
+          "expr": "p2p_peer_count{state=\"Connected\",job=\"beacon-client-job\"}",
           "interval": "",
           "legendFormat": "peers",
           "refId": "A"

@@ -255,7 +255,7 @@
             "type": "prometheus",
             "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
           },
-          "expr": "sum(validator_balance{job=\"consensus-validator-client-job\"})",
+          "expr": "sum(validator_balance{job=\"beacon-client-job\"})",
           "instant": true,
           "interval": "",
           "legendFormat": "vbal",
@@ -339,7 +339,7 @@
             "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
           },
           "exemplar": true,
-          "expr": "sum(validator_balance{job=\"consensus-validator-client-job\"})-(count(validator_balance{job=\"consensus-validator-client-job\"} > 16 and validator_statuses{job=\"consensus-validator-client-job\"} == 3)*32)",
+          "expr": "sum(validator_balance{job=\"beacon-client-job\"})-(count(validator_balance{job=\"beacon-client-job\"} > 16 and validator_statuses{job=\"beacon-client-job\"} == 3)*32)",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -422,7 +422,7 @@
             "type": "prometheus",
             "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
           },
-          "expr": "(sum(validator_balance{job=\"consensus-validator-client-job\"}) - (count(validator_balance{job=\"consensus-validator-client-job\"} > 16 and validator_statuses{job=\"consensus-validator-client-job\"} == 3)*32))/(count(validator_balance{job=\"consensus-validator-client-job\"} > 16 and validator_statuses{job=\"consensus-validator-client-job\"} == 3)*32)  ",
+          "expr": "(sum(validator_balance{job=\"beacon-client-job\"}) - (count(validator_balance{job=\"beacon-client-job\"} > 16 and validator_statuses{job=\"beacon-client-job\"} == 3)*32))/(count(validator_balance{job=\"beacon-client-job\"} > 16 and validator_statuses{job=\"beacon-client-job\"} == 3)*32)  ",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -496,7 +496,7 @@
             "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
           },
           "exemplar": true,
-          "expr": "p2p_peer_count{state=\"Connected\",job=\"consensus-validator-client-job\"}",
+          "expr": "p2p_peer_count{state=\"Connected\",job=\"beacon-client-job\"}",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -571,7 +571,7 @@
             "type": "prometheus",
             "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
           },
-          "expr": "(beacon_prev_epoch_target_gwei{job=\"consensus-validator-client-job\"} / beacon_prev_epoch_active_gwei{job=\"consensus-validator-client-job\"} )",
+          "expr": "(beacon_prev_epoch_target_gwei{job=\"beacon-client-job\"} / beacon_prev_epoch_active_gwei{job=\"beacon-client-job\"} )",
           "interval": "",
           "legendFormat": "",
           "refId": "A"
@@ -644,7 +644,7 @@
             "type": "prometheus",
             "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
           },
-          "expr": "clamp_min((1-(4*((floor(beacon_clock_time_slot{job=\"consensus-validator-client-job\"}/32) - beacon_finalized_epoch{job=\"consensus-validator-client-job\"} - 2)/100))),0)",
+          "expr": "clamp_min((1-(4*((floor(beacon_clock_time_slot{job=\"beacon-client-job\"}/32) - beacon_finalized_epoch{job=\"beacon-client-job\"} - 2)/100))),0)",
           "interval": "",
           "legendFormat": "",
           "refId": "A"
@@ -709,7 +709,7 @@
             "type": "prometheus",
             "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
           },
-          "expr": "(beacon_prev_epoch_target_gwei{job=\"consensus-validator-client-job\"} / beacon_prev_epoch_active_gwei{job=\"consensus-validator-client-job\"} )",
+          "expr": "(beacon_prev_epoch_target_gwei{job=\"beacon-client-job\"} / beacon_prev_epoch_active_gwei{job=\"beacon-client-job\"} )",
           "interval": "",
           "legendFormat": "participation rate",
           "refId": "A"
@@ -811,7 +811,7 @@
             "type": "prometheus",
             "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
           },
-          "expr": "sum(validator_balance{job=\"consensus-validator-client-job\"})",
+          "expr": "sum(validator_balance{job=\"beacon-client-job\"})",
           "hide": false,
           "instant": true,
           "interval": "",
@@ -915,7 +915,7 @@
             "type": "prometheus",
             "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
           },
-          "expr": "sum(validator_balance{job=\"consensus-validator-client-job\"})-(count(validator_balance{job=\"consensus-validator-client-job\"} > 16 and validator_statuses{job=\"consensus-validator-client-job\"} == 3)*32)",
+          "expr": "sum(validator_balance{job=\"beacon-client-job\"})-(count(validator_balance{job=\"beacon-client-job\"} > 16 and validator_statuses{job=\"beacon-client-job\"} == 3)*32)",
           "instant": true,
           "interval": "",
           "legendFormat": "total_balance",
@@ -1174,7 +1174,7 @@
             "type": "prometheus",
             "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
           },
-          "expr": "floor(beacon_clock_time_slot{job=\"consensus-validator-client-job\"} / 32)",
+          "expr": "floor(beacon_clock_time_slot{job=\"beacon-client-job\"} / 32)",
           "instant": true,
           "interval": "",
           "legendFormat": "current",
@@ -1185,7 +1185,7 @@
             "type": "prometheus",
             "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
           },
-          "expr": "beacon_current_justified_epoch{job=\"consensus-validator-client-job\"}",
+          "expr": "beacon_current_justified_epoch{job=\"beacon-client-job\"}",
           "instant": true,
           "interval": "",
           "legendFormat": "justified",
@@ -1196,7 +1196,7 @@
             "type": "prometheus",
             "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
           },
-          "expr": "beacon_finalized_epoch {job=\"consensus-validator-client-job\"} ",
+          "expr": "beacon_finalized_epoch {job=\"beacon-client-job\"} ",
           "format": "time_series",
           "instant": true,
           "interval": "",
@@ -1256,7 +1256,7 @@
             "type": "prometheus",
             "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
           },
-          "expr": "beacon_slot{job=\"consensus-validator-client-job\"}",
+          "expr": "beacon_slot{job=\"beacon-client-job\"}",
           "instant": true,
           "interval": "",
           "legendFormat": "current slot",
@@ -1267,7 +1267,7 @@
             "type": "prometheus",
             "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
           },
-          "expr": "beacon_head_slot{job=\"consensus-validator-client-job\"}",
+          "expr": "beacon_head_slot{job=\"beacon-client-job\"}",
           "instant": true,
           "interval": "",
           "legendFormat": "head slot",
@@ -1522,7 +1522,7 @@
             "type": "prometheus",
             "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
           },
-          "expr": "sum(validator_balance{job=\"consensus-validator-client-job\"}) - sum(validator_balance{job=\"consensus-validator-client-job\"} offset 1h != 0) - (32 * count(validator_balance{job=\"consensus-validator-client-job\"} > 16)) + (32 * count(validator_balance{job=\"consensus-validator-client-job\"} offset 1h > 16))",
+          "expr": "sum(validator_balance{job=\"beacon-client-job\"}) - sum(validator_balance{job=\"beacon-client-job\"} offset 1h != 0) - (32 * count(validator_balance{job=\"beacon-client-job\"} > 16)) + (32 * count(validator_balance{job=\"beacon-client-job\"} offset 1h > 16))",
           "instant": false,
           "interval": "",
           "intervalFactor": 3,
@@ -1606,7 +1606,7 @@
             "type": "prometheus",
             "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
           },
-          "expr": "sum(validator_balance{job=\"consensus-validator-client-job\"}) - sum(validator_balance{job=\"consensus-validator-client-job\"} offset 1d != 0) - (32 * count(validator_balance{job=\"consensus-validator-client-job\"} > 16)) + (32 * count(validator_balance{job=\"consensus-validator-client-job\"} offset 1d > 16))",
+          "expr": "sum(validator_balance{job=\"beacon-client-job\"}) - sum(validator_balance{job=\"beacon-client-job\"} offset 1d != 0) - (32 * count(validator_balance{job=\"beacon-client-job\"} > 16)) + (32 * count(validator_balance{job=\"beacon-client-job\"} offset 1d > 16))",
           "instant": false,
           "interval": "",
           "legendFormat": "",
@@ -1689,7 +1689,7 @@
             "type": "prometheus",
             "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
           },
-          "expr": "sum(validator_balance{job=\"consensus-validator-client-job\"}) - sum(validator_balance{job=\"consensus-validator-client-job\"} offset 7d != 0) - (32 * count(validator_balance{job=\"consensus-validator-client-job\"} > 16)) + (32 * count(validator_balance{job=\"consensus-validator-client-job\"} offset 7d > 16))",
+          "expr": "sum(validator_balance{job=\"beacon-client-job\"}) - sum(validator_balance{job=\"beacon-client-job\"} offset 7d != 0) - (32 * count(validator_balance{job=\"beacon-client-job\"} > 16)) + (32 * count(validator_balance{job=\"beacon-client-job\"} offset 7d > 16))",
           "instant": false,
           "interval": "",
           "legendFormat": "",
@@ -1772,7 +1772,7 @@
             "type": "prometheus",
             "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
           },
-          "expr": "sum(validator_balance{job=\"consensus-validator-client-job\"}) - sum(validator_balance{job=\"consensus-validator-client-job\"} offset 30d != 0) - (32 * count(validator_balance{job=\"consensus-validator-client-job\"} > 16)) + (32 * count(validator_balance{job=\"consensus-validator-client-job\"} offset 30d > 16))",
+          "expr": "sum(validator_balance{job=\"beacon-client-job\"}) - sum(validator_balance{job=\"beacon-client-job\"} offset 30d != 0) - (32 * count(validator_balance{job=\"beacon-client-job\"} > 16)) + (32 * count(validator_balance{job=\"beacon-client-job\"} offset 30d > 16))",
           "instant": false,
           "interval": "",
           "legendFormat": "",
@@ -1834,7 +1834,7 @@
             "type": "prometheus",
             "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
           },
-          "expr": "validator_count{state=\"Active\",job=\"consensus-validator-client-job\"} ",
+          "expr": "validator_count{state=\"Active\",job=\"beacon-client-job\"} ",
           "instant": true,
           "interval": "",
           "legendFormat": "active",
@@ -1845,7 +1845,7 @@
             "type": "prometheus",
             "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
           },
-          "expr": "validator_count{state=\"Slashed\",job=\"consensus-validator-client-job\"} ",
+          "expr": "validator_count{state=\"Slashed\",job=\"beacon-client-job\"} ",
           "instant": true,
           "interval": "",
           "legendFormat": "slashed",
@@ -1856,7 +1856,7 @@
             "type": "prometheus",
             "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
           },
-          "expr": "validator_count{state=\"Exited\",job=\"consensus-validator-client-job\"} ",
+          "expr": "validator_count{state=\"Exited\",job=\"beacon-client-job\"} ",
           "instant": true,
           "interval": "",
           "legendFormat": "exited",
@@ -1940,7 +1940,7 @@
             "type": "prometheus",
             "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
           },
-          "expr": "validator_count{state=\"Pending\",job=\"consensus-validator-client-job\"}",
+          "expr": "validator_count{state=\"Pending\",job=\"beacon-client-job\"}",
           "interval": "",
           "legendFormat": "pending",
           "refId": "B"
@@ -1950,7 +1950,7 @@
             "type": "prometheus",
             "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
           },
-          "expr": "validator_count{state=\"Exiting\",job=\"consensus-validator-client-job\"}",
+          "expr": "validator_count{state=\"Exiting\",job=\"beacon-client-job\"}",
           "interval": "",
           "legendFormat": "exiting",
           "refId": "A"
@@ -1960,7 +1960,7 @@
             "type": "prometheus",
             "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
           },
-          "expr": "validator_count{state=\"Slashing\",job=\"consensus-validator-client-job\"}",
+          "expr": "validator_count{state=\"Slashing\",job=\"beacon-client-job\"}",
           "interval": "",
           "legendFormat": "slashing",
           "refId": "C"
@@ -1970,7 +1970,7 @@
             "type": "prometheus",
             "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
           },
-          "expr": "validator_count{job=\"consensus-validator-client-job\", state=\"Active\"}",
+          "expr": "validator_count{job=\"beacon-client-job\", state=\"Active\"}",
           "interval": "",
           "legendFormat": "active validators",
           "refId": "D"
@@ -2055,7 +2055,7 @@
             "type": "prometheus",
             "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
           },
-          "expr": "validator_count{state=\"Pending\",job=\"consensus-validator-client-job\"}",
+          "expr": "validator_count{state=\"Pending\",job=\"beacon-client-job\"}",
           "instant": true,
           "interval": "",
           "legendFormat": "pending",
@@ -2066,7 +2066,7 @@
             "type": "prometheus",
             "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
           },
-          "expr": "validator_count{state=\"Exiting\",job=\"consensus-validator-client-job\"}",
+          "expr": "validator_count{state=\"Exiting\",job=\"beacon-client-job\"}",
           "instant": true,
           "interval": "",
           "legendFormat": "exiting",
@@ -2149,7 +2149,7 @@
             "type": "prometheus",
             "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
           },
-          "expr": "((sum(validator_balance{job=\"consensus-validator-client-job\"}) - sum(validator_balance{job=\"consensus-validator-client-job\"} offset 1h != 0) - (32 * count(validator_balance{job=\"consensus-validator-client-job\"} > 16)) +\t(32 * count(validator_balance{job=\"consensus-validator-client-job\"} offset 1h > 16)))/(32 * avg_over_time(count(validator_balance{job=\"consensus-validator-client-job\"} > 16)[1h:]))) * 365 * 24",
+          "expr": "((sum(validator_balance{job=\"beacon-client-job\"}) - sum(validator_balance{job=\"beacon-client-job\"} offset 1h != 0) - (32 * count(validator_balance{job=\"beacon-client-job\"} > 16)) +\t(32 * count(validator_balance{job=\"beacon-client-job\"} offset 1h > 16)))/(32 * avg_over_time(count(validator_balance{job=\"beacon-client-job\"} > 16)[1h:]))) * 365 * 24",
           "hide": false,
           "interval": "",
           "legendFormat": "annualized hourly return",
@@ -2232,7 +2232,7 @@
             "type": "prometheus",
             "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
           },
-          "expr": "((sum(validator_balance{job=\"consensus-validator-client-job\"}) - sum(validator_balance{job=\"consensus-validator-client-job\"} offset 1d != 0) - (32 * count(validator_balance{job=\"consensus-validator-client-job\"} > 16)) +\t(32 * count(validator_balance{job=\"consensus-validator-client-job\"} offset 1d > 16)))/(32 * avg_over_time(count(validator_balance{job=\"consensus-validator-client-job\"} > 16)[1d:]))) * 365",
+          "expr": "((sum(validator_balance{job=\"beacon-client-job\"}) - sum(validator_balance{job=\"beacon-client-job\"} offset 1d != 0) - (32 * count(validator_balance{job=\"beacon-client-job\"} > 16)) +\t(32 * count(validator_balance{job=\"beacon-client-job\"} offset 1d > 16)))/(32 * avg_over_time(count(validator_balance{job=\"beacon-client-job\"} > 16)[1d:]))) * 365",
           "hide": false,
           "interval": "",
           "legendFormat": "annualized daily return",
@@ -2315,7 +2315,7 @@
             "type": "prometheus",
             "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
           },
-          "expr": "((sum(validator_balance{job=\"consensus-validator-client-job\"}) - sum(validator_balance{job=\"consensus-validator-client-job\"} offset 7d != 0) - (32 * count(validator_balance{job=\"consensus-validator-client-job\"} > 16)) +\t(32 * count(validator_balance{job=\"consensus-validator-client-job\"} offset 7d > 16)))/(32 * avg_over_time(count(validator_balance{job=\"consensus-validator-client-job\"} > 16)[7d:]))) * (365/7)",
+          "expr": "((sum(validator_balance{job=\"beacon-client-job\"}) - sum(validator_balance{job=\"beacon-client-job\"} offset 7d != 0) - (32 * count(validator_balance{job=\"beacon-client-job\"} > 16)) +\t(32 * count(validator_balance{job=\"beacon-client-job\"} offset 7d > 16)))/(32 * avg_over_time(count(validator_balance{job=\"beacon-client-job\"} > 16)[7d:]))) * (365/7)",
           "hide": false,
           "interval": "",
           "legendFormat": "annualized weekly return",
@@ -2398,7 +2398,7 @@
             "type": "prometheus",
             "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
           },
-          "expr": "((sum(validator_balance{job=\"consensus-validator-client-job\"}) - sum(validator_balance{job=\"consensus-validator-client-job\"} offset 30d != 0) - (32 * count(validator_balance{job=\"consensus-validator-client-job\"} > 16)) +\t(32 * count(validator_balance{job=\"consensus-validator-client-job\"} offset 30d > 16)))/(32 * avg_over_time(count(validator_balance{job=\"consensus-validator-client-job\"} > 16)[30d:]))) * (365/30)",
+          "expr": "((sum(validator_balance{job=\"beacon-client-job\"}) - sum(validator_balance{job=\"beacon-client-job\"} offset 30d != 0) - (32 * count(validator_balance{job=\"beacon-client-job\"} > 16)) +\t(32 * count(validator_balance{job=\"beacon-client-job\"} offset 30d > 16)))/(32 * avg_over_time(count(validator_balance{job=\"beacon-client-job\"} > 16)[30d:]))) * (365/30)",
           "hide": false,
           "interval": "",
           "legendFormat": "annualized monthly return",
@@ -2481,7 +2481,7 @@
             "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
           },
           "exemplar": true,
-          "expr": "validators_total_balance{state=\"Active\",job=\"consensus-validator-client-job\"} / validator_count{state=\"Active\",job=\"consensus-validator-client-job\"} / 1000000000",
+          "expr": "validators_total_balance{state=\"Active\",job=\"beacon-client-job\"} / validator_count{state=\"Active\",job=\"beacon-client-job\"} / 1000000000",
           "interval": "",
           "legendFormat": "lyx",
           "refId": "A"
@@ -2540,7 +2540,7 @@
             "type": "prometheus",
             "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
           },
-          "expr": "((validator_count{state=\"Pending\",job=\"consensus-validator-client-job\"}/4)*6.4)",
+          "expr": "((validator_count{state=\"Pending\",job=\"beacon-client-job\"}/4)*6.4)",
           "instant": true,
           "interval": "",
           "legendFormat": "pending",
@@ -2551,7 +2551,7 @@
             "type": "prometheus",
             "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
           },
-          "expr": "((validator_count{state=\"Exiting\",job=\"consensus-validator-client-job\"}/4)*6.4)",
+          "expr": "((validator_count{state=\"Exiting\",job=\"beacon-client-job\"}/4)*6.4)",
           "instant": true,
           "interval": "",
           "legendFormat": "exiting",
@@ -2814,7 +2814,7 @@
             "type": "prometheus",
             "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
           },
-          "expr": "label_replace(max by(pubkey) (validator_statuses{job=\"consensus-validator-client-job\"}), \"pubkey_short\", \"$1\", \"pubkey\", \"(.{10}).*\")  ",
+          "expr": "label_replace(max by(pubkey) (validator_statuses{job=\"beacon-client-job\"}), \"pubkey_short\", \"$1\", \"pubkey\", \"(.{10}).*\")  ",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -2826,7 +2826,7 @@
             "type": "prometheus",
             "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
           },
-          "expr": "label_replace(max by(pubkey) (validator_balance{job=\"consensus-validator-client-job\"}), \"pubkey_short\", \"$1\", \"pubkey\", \"(.{10}).*\") ",
+          "expr": "label_replace(max by(pubkey) (validator_balance{job=\"beacon-client-job\"}), \"pubkey_short\", \"$1\", \"pubkey\", \"(.{10}).*\") ",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -2838,7 +2838,7 @@
             "type": "prometheus",
             "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
           },
-          "expr": "label_replace(max by(pubkey) (validator_successful_proposals{job=\"consensus-validator-client-job\"}), \"pubkey_short\", \"$1\", \"pubkey\", \"(.{10}).*\")  ",
+          "expr": "label_replace(max by(pubkey) (validator_successful_proposals{job=\"beacon-client-job\"}), \"pubkey_short\", \"$1\", \"pubkey\", \"(.{10}).*\")  ",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -2850,7 +2850,7 @@
             "type": "prometheus",
             "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
           },
-          "expr": "label_replace(max by(pubkey) (validator_successful_attestations{job=\"consensus-validator-client-job\"}), \"pubkey_short\", \"$1\", \"pubkey\", \"(.{10}).*\")  ",
+          "expr": "label_replace(max by(pubkey) (validator_successful_attestations{job=\"beacon-client-job\"}), \"pubkey_short\", \"$1\", \"pubkey\", \"(.{10}).*\")  ",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -2862,7 +2862,7 @@
             "type": "prometheus",
             "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
           },
-          "expr": "label_replace(max by(pubkey) (validator_successful_aggregations{job=\"consensus-validator-client-job\"}), \"pubkey_short\", \"$1\", \"pubkey\", \"(.{10}).*\") ",
+          "expr": "label_replace(max by(pubkey) (validator_successful_aggregations{job=\"beacon-client-job\"}), \"pubkey_short\", \"$1\", \"pubkey\", \"(.{10}).*\") ",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -2874,7 +2874,7 @@
             "type": "prometheus",
             "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
           },
-          "expr": "label_replace(max by(pubkey) (validator_failed_attestations{job=\"consensus-validator-client-job\"}), \"pubkey_short\", \"$1\", \"pubkey\", \"(.{10}).*\") ",
+          "expr": "label_replace(max by(pubkey) (validator_failed_attestations{job=\"beacon-client-job\"}), \"pubkey_short\", \"$1\", \"pubkey\", \"(.{10}).*\") ",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -2886,7 +2886,7 @@
             "type": "prometheus",
             "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
           },
-          "expr": "label_replace(max by(pubkey) (validator_failed_aggregations{job=\"consensus-validator-client-job\"}), \"pubkey_short\", \"$1\", \"pubkey\", \"(.{10}).*\") ",
+          "expr": "label_replace(max by(pubkey) (validator_failed_aggregations{job=\"beacon-client-job\"}), \"pubkey_short\", \"$1\", \"pubkey\", \"(.{10}).*\") ",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -2898,7 +2898,7 @@
             "type": "prometheus",
             "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
           },
-          "expr": "label_replace(max by(pubkey) (validator_inactivity_score{job=\"consensus-validator-client-job\"}), \"pubkey_short\", \"$1\", \"pubkey\", \"(.{10}).*\")  ",
+          "expr": "label_replace(max by(pubkey) (validator_inactivity_score{job=\"beacon-client-job\"}), \"pubkey_short\", \"$1\", \"pubkey\", \"(.{10}).*\")  ",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -3054,7 +3054,7 @@
             "type": "prometheus",
             "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
           },
-          "expr": "p2p_peer_count{state=\"Connected\",job=\"consensus-validator-client-job\"}",
+          "expr": "p2p_peer_count{state=\"Connected\",job=\"beacon-client-job\"}",
           "interval": "",
           "legendFormat": "peers",
           "refId": "A"
@@ -3165,7 +3165,7 @@
             "type": "prometheus",
             "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
           },
-          "expr": "(time()-process_start_time_seconds{job=\"consensus-validator-client-job\"})/3600",
+          "expr": "(time()-process_start_time_seconds{job=\"beacon-client-job\"})/3600",
           "instant": true,
           "interval": "",
           "legendFormat": "beacon chain",
@@ -3176,7 +3176,7 @@
             "type": "prometheus",
             "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
           },
-          "expr": "(time()-process_start_time_seconds{job=\"consensus-validator-client-job\"})/3600",
+          "expr": "(time()-process_start_time_seconds{job=\"beacon-client-job\"})/3600",
           "instant": true,
           "interval": "",
           "legendFormat": "validator",
@@ -3250,7 +3250,7 @@
             "type": "prometheus",
             "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
           },
-          "expr": "sum(rate(log_entries_total{job=\"consensus-validator-client-job\", level=\"error\"}[$__range]))*3600",
+          "expr": "sum(rate(log_entries_total{job=\"beacon-client-job\", level=\"error\"}[$__range]))*3600",
           "instant": false,
           "interval": "",
           "legendFormat": "errors",
@@ -3261,7 +3261,7 @@
             "type": "prometheus",
             "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
           },
-          "expr": "sum(rate(log_entries_total{job=\"consensus-validator-client-job\", level=\"warning\"}[$__range]))*3600",
+          "expr": "sum(rate(log_entries_total{job=\"beacon-client-job\", level=\"warning\"}[$__range]))*3600",
           "instant": false,
           "interval": "",
           "legendFormat": "warnings",
@@ -3413,7 +3413,7 @@
             "type": "prometheus",
             "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
           },
-          "expr": "sum(rate(log_entries_total{job=\"consensus-validator-client-job\", level=\"error\"}[$__range]))*3600",
+          "expr": "sum(rate(log_entries_total{job=\"beacon-client-job\", level=\"error\"}[$__range]))*3600",
           "instant": false,
           "interval": "",
           "legendFormat": "errors",
@@ -3424,7 +3424,7 @@
             "type": "prometheus",
             "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
           },
-          "expr": "sum(rate(log_entries_total{job=\"consensus-validator-client-job\", level=\"warning\"}[$__range]))*3600",
+          "expr": "sum(rate(log_entries_total{job=\"beacon-client-job\", level=\"warning\"}[$__range]))*3600",
           "interval": "",
           "legendFormat": "warnings",
           "refId": "A"
@@ -3595,7 +3595,7 @@
             "type": "prometheus",
             "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
           },
-          "expr": "process_resident_memory_bytes{job=\"consensus-validator-client-job\"}",
+          "expr": "process_resident_memory_bytes{job=\"beacon-client-job\"}",
           "interval": "",
           "legendFormat": "beacon memory",
           "refId": "F"
@@ -3605,7 +3605,7 @@
             "type": "prometheus",
             "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
           },
-          "expr": "process_resident_memory_bytes{job=\"consensus-validator-client-job\"}",
+          "expr": "process_resident_memory_bytes{job=\"beacon-client-job\"}",
           "interval": "",
           "legendFormat": "validator memory",
           "refId": "G"
@@ -4586,7 +4586,7 @@
             "type": "prometheus",
             "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
           },
-          "expr": "up{job=\"consensus-validator-client-job\"}",
+          "expr": "up{job=\"beacon-client-job\"}",
           "hide": false,
           "interval": "",
           "intervalFactor": 1,
@@ -4864,7 +4864,7 @@
             "type": "prometheus",
             "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
           },
-          "expr": "up{job=\"consensus-validator-client-job\"}",
+          "expr": "up{job=\"beacon-client-job\"}",
           "interval": "",
           "legendFormat": "validator",
           "refId": "A"
@@ -5144,7 +5144,7 @@
             "type": "prometheus",
             "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
           },
-          "expr": "(time()-process_start_time_seconds{job=\"consensus-validator-client-job\"})/3600",
+          "expr": "(time()-process_start_time_seconds{job=\"beacon-client-job\"})/3600",
           "interval": "",
           "legendFormat": "{{job}}",
           "refId": "A"
@@ -5425,7 +5425,7 @@
             "type": "prometheus",
             "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
           },
-          "expr": "(time()-process_start_time_seconds{job=\"consensus-validator-client-job\"})/3600",
+          "expr": "(time()-process_start_time_seconds{job=\"beacon-client-job\"})/3600",
           "interval": "",
           "legendFormat": "",
           "refId": "A"
@@ -5702,7 +5702,7 @@
             "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
           },
           "exemplar": true,
-          "expr": "p2p_peer_count{state=\"Connected\",job=\"consensus-validator-client-job\"}",
+          "expr": "p2p_peer_count{state=\"Connected\",job=\"beacon-client-job\"}",
           "interval": "",
           "legendFormat": "peers",
           "refId": "A"
