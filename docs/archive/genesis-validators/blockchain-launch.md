@@ -1,6 +1,7 @@
 ---
 sidebar_label: "Blockchain Launch"
 sidebar_position: 1
+description: "Explore how LUKSO launched its blockchain—from LYXe genesis deposits and validator onboarding to mainnet initiation, supply vote, and Proof-of-Stake rollout."
 ---
 
 # Blockchain Launch
