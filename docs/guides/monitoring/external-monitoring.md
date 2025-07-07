@@ -9,9 +9,7 @@ import TabItem from '@theme/TabItem';
 
 # 8.9 External Monitoring Tools
 
-<!--TODO: finish/wrap up the introduction section-->
-
-Instead of only using local monitoring tools like [Prometheus](/docs/guides/monitoring/prometheus.md) and [Grafana](/docs/guides/monitoring/grafana.md), there are a bunch of web-based service tools that significantly help ... they mostly cover around uptime, let you check executed or missed proposals, or your earnings. This means node operators are not soley relying on local metrics and setups.
+Instead of only using local monitoring tools like [Prometheus](/docs/guides/monitoring/prometheus.md) and [Grafana](/docs/guides/monitoring/grafana.md), there are a bunch of web-based service tools that help track node performance and validator duties from anywhere. These platforms typically focus on uptime, validator proposals, reward tracking, and network participation rates. This means node operators are not solely relying on local metrics and alerts, but can also gain external insights as a second safety net.
 
 ## Execution Block Explorer
 

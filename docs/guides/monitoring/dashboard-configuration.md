@@ -121,11 +121,9 @@ You should see a green _Data source is working_ checkmark before continuing to i
 
 ## 4. Import Dashboard
 
-<!--TODO: update all template links once template page is ready-->
-
 After configuring the data source, you can continue to add the dashboard to vizualize the collected data and configure alerts. This guide already comes with a set of prebuilt Grafana templates that are ready to use. If you want, those dashboards can later be adjusted and modified to further customize your experience.
 
-1. Navigate to the 📝 [**Template**](#) section of this page
+1. Navigate to the 📝 [**Template**](/templates) section of this page
 2. Choose the **JSON File** based on your [Consensus Client](/docs/guides/monitoring/prometheus.md), [Grafana Version](/docs/guides/monitoring/grafana.md), and [Fiat Currency](/docs/guides/monitoring/json-exporter.md).
 3. Copy the raw **JSON File** contents by opening the file with a text editor
 4. Open the **Grafana Landing Page** by clicking on the logo on the top left
@@ -141,7 +139,7 @@ If you chose different **Ports** or **Prometheus Job-Names**, you will have to m
 
 1. Consensus client ports can be adjusted within the [Prometheus Dataset Configuration](/docs/guides/monitoring/prometheus.md#3-dataset-configuration).
 2. Price Conversions require updating the [JSON Explorer Configuration](/docs/guides/monitoring/json-exporter.md#3-price-configuration) and [Prometheus Dataset Configuration](/docs/guides/monitoring/prometheus.md#3-dataset-configuration).
-3. Job names of the [Prometheus Dataset Configuration](/docs/guides/monitoring/prometheus.md#3-dataset-configuration) must match the names on the [Grafana Dashboard JSON File](#).
+3. Job Names of the [Prometheus Dataset](/docs/guides/monitoring/prometheus.md#3-dataset-configuration) must match the Jobs of the [Grafana Dashboard](/templates).
 
 :::
 

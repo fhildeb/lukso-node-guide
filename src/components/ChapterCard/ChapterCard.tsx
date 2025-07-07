@@ -21,62 +21,40 @@ export function ChapterCard({
       ? `/${toKebabCase(chapter.pages[0])}`
       : "";
 
-  if (sectionName.toLowerCase() === "templates") {
-    return (
-      <div className={styles.card}>
-        <ul className={styles.pageList}>
-          {chapter.pages.map((page: string) => (
-            <li key={page}>
-              <span className={styles.downloadIcon}>↓</span>{" "}
-              <a
-                href={`/templates/${toKebabCase(page)}.json`}
-                download
-                rel="noopener noreferrer"
-              >
-                {page}
-              </a>
-            </li>
-          ))}
-        </ul>
-      </div>
-    );
-  } else {
-    // For other sections, render a chapter heading and the list of pages.
-    return (
-      <div className={styles.card}>
-        {chapter.title && (
-          <h3 className={styles.cardTitle}>
-            {sectionName.toLowerCase() === "guides" && `${chapterIndex}. `}
+  return (
+    <div className={styles.card}>
+      {chapter.title && (
+        <h3 className={styles.cardTitle}>
+          {sectionName.toLowerCase() === "guides" && `${chapterIndex}. `}
+          <Link
+            to={`/docs/${toKebabCase(
+              sectionName
+            )}${chapterPath}${firstPagePath}`}
+          >
+            {chapter.title}
+          </Link>
+        </h3>
+      )}
+      <ul className={styles.pageList}>
+        {chapter.pages.map((page: string, pageIndex: number) => (
+          <li key={page}>
+            {sectionName.toLowerCase() === "guides" && (
+              <span className={styles.numbering}>
+                {`${chapterIndex}.${pageIndex + 1} `}
+              </span>
+            )}
             <Link
               to={`/docs/${toKebabCase(
                 sectionName
-              )}${chapterPath}${firstPagePath}`}
+              )}${chapterPath}/${toKebabCase(page)}`}
             >
-              {chapter.title}
+              {page}
             </Link>
-          </h3>
-        )}
-        <ul className={styles.pageList}>
-          {chapter.pages.map((page: string, pageIndex: number) => (
-            <li key={page}>
-              {sectionName.toLowerCase() === "guides" && (
-                <span className={styles.numbering}>
-                  {`${chapterIndex}.${pageIndex + 1} `}
-                </span>
-              )}
-              <Link
-                to={`/docs/${toKebabCase(
-                  sectionName
-                )}${chapterPath}/${toKebabCase(page)}`}
-              >
-                {page}
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </div>
-    );
-  }
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
 }
 
 // Helper function for link path creation

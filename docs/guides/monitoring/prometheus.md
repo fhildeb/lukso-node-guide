@@ -213,7 +213,7 @@ scrape_configs:
     scrape_interval: 5s
     static_configs:
       - targets: ['127.0.0.1:9090']
-  - job_name: 'consensus-validator-client-job'
+  - job_name: 'beacon-client-job'
     scrape_interval: 5s
     static_configs:
       - targets: ['127.0.0.1:8008']
@@ -425,7 +425,7 @@ scrape_configs:
     scrape_interval: 5s
     static_configs:
       - targets: ['127.0.0.1:9090']
-  - job_name: 'consensus-validator-client-job'
+  - job_name: 'beacon-client-job'
     scrape_interval: 5s
     static_configs:
       - targets: ['127.0.0.1:8008']
@@ -649,17 +649,17 @@ scrape_configs:
 <details>
   <summary>Full Prometheus Job Descriptions</summary>
 
-| Job Name                         | Description                                                               |
-| -------------------------------- | ------------------------------------------------------------------------- |
-| `prometheus-job`                 | Scrapes internal metrics from the Prometheus server itself.               |
-| `consensus-client-job`           | Collects blockchain metrics from the consensus client.                    |
-| `validator-client-job`           | Pulls activity and performance data from the validator client.            |
-| `consensus-validator-client-job` | Collects blockchain metrics from the consensus and validator client.      |
-| `node-exporter-job`              | Gathers hardware and OS metrics from the node using Node Exporter.        |
-| `google-ping-job`                | Uses Blackbox Exporter to probe Google DNS.                               |
-| `cloudflare-ping-job`            | Uses Blackbox Exporter to probe Cloudflare DNS.                           |
-| `json-exporter-job`              | Gathers staking metrics and API data from the JSON Exporter.              |
-| `json`                           | Sends requests to CoinGecko API through JSON Exporter for LYX price data. |
+| Job Name               | Description                                                               |
+| ---------------------- | ------------------------------------------------------------------------- |
+| `prometheus-job`       | Scrapes internal metrics from the Prometheus server itself.               |
+| `consensus-client-job` | Collects blockchain metrics from the consensus client.                    |
+| `validator-client-job` | Pulls activity and performance data from the validator client.            |
+| `beacon-client-job`    | Collects blockchain metrics from the consensus and validator client.      |
+| `node-exporter-job`    | Gathers hardware and OS metrics from the node using Node Exporter.        |
+| `google-ping-job`      | Uses Blackbox Exporter to probe Google DNS.                               |
+| `cloudflare-ping-job`  | Uses Blackbox Exporter to probe Cloudflare DNS.                           |
+| `json-exporter-job`    | Gathers staking metrics and API data from the JSON Exporter.              |
+| `json`                 | Sends requests to CoinGecko API through JSON Exporter for LYX price data. |
 
 </details>
 

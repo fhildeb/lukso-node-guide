@@ -5889,8 +5889,8 @@
       "1d"
     ]
   },
-  "timezone": "",
-  "title": "Lukso",
-  "uid": "92og3IP7z",
-  "version": 124
+  "timezone": "browser",
+  "title": "LUKSO L16 Prysm Dashboard USD",
+  "uid": "lukso-l16-prysm-dash-usd-8",
+  "version": 1
 }

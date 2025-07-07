@@ -13,12 +13,6 @@ import { StatusCard } from "../StatusCard/StatusCard";
 export function PageRegistry() {
   const guidesSection = sections.find((s) => s.name.toLowerCase() === "guides");
   const theorySection = sections.find((s) => s.name.toLowerCase() === "theory");
-  const archiveSection = sections.find(
-    (s) => s.name.toLowerCase() === "archive"
-  );
-  const templatesSection = sections.find(
-    (s) => s.name.toLowerCase() === "templates"
-  );
 
   return (
     <div className={styles.landingGrid}>
@@ -59,26 +53,11 @@ export function PageRegistry() {
       <div className={styles.rightColumn}>
         <div className={styles.sectionContainer}>
           <h2 className={styles.sectionTitle}>
-            {templatesSection.emoji && <span className={styles.emoji}>⏱️</span>}
+            <span className={styles.emoji}>⏱️</span>
             Software
           </h2>
           <StatusCard />
         </div>
-        {templatesSection && (
-          <div className={styles.sectionContainer}>
-            <h2 className={styles.sectionTitle}>
-              {templatesSection.emoji && (
-                <span className={styles.emoji}>{templatesSection.emoji} </span>
-              )}
-              {templatesSection.name}
-            </h2>
-            <SectionGrid
-              chapters={templatesSection.chapters}
-              gridClass={styles.singleGrid}
-              sectionName={templatesSection.name}
-            />
-          </div>
-        )}
       </div>
     </div>
   );
