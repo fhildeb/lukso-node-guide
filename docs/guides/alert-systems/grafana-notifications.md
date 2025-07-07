@@ -13,7 +13,7 @@ Grafana Notifications allow you to monitor the health of your node and its compo
 
 :::tip
 
-This guide uses the default Grafana 📝 [**Templates**](#) to configure notification behaviour.
+This guide uses the default Grafana 📝 [**Templates**](/templates) to configure notification behaviour.
 
 :::
 
@@ -50,7 +50,7 @@ This section outlines every alert setup from the default dashboard. You can chec
 
 :::tip
 
-Below metric presets are based on default Grafana 📝 [**Templates**](#). If you used different service job names within the [Prometheus Dataset Configuration](/docs/guides/monitoring/prometheus.md#3-dataset-configuration), you will have to adjust the job names to match your Prometheus installation.
+Below metric presets are based on default Grafana 📝 [**Templates**](/templates). If you used different service job names within the [Prometheus Dataset Configuration](/docs/guides/monitoring/prometheus.md#3-dataset-configuration), you will have to adjust the job names to match your Prometheus installation.
 
 :::
 
