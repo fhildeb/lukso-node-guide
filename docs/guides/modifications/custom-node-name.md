@@ -1,6 +1,7 @@
 ---
 sidebar_label: "7.2 Custom Node Name"
 sidebar_position: 2
+description: "Learn how to assign a custom name to your LUKSO node for display on the execution status panel. Supports Geth, Erigon, Nethermind, Besu, and various CLI or automated setups."
 ---
 
 import Tabs from '@theme/Tabs';

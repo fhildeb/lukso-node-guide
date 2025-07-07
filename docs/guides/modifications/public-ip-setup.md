@@ -1,6 +1,7 @@
 ---
 sidebar_label: "7.4 Public IP Setup"
 sidebar_position: 4
+description: "Set or update your node's public IP address to improve peer connectivity and ensure stable participation in the LUKSO blockchain network, especially for validators."
 ---
 
 import Tabs from '@theme/Tabs';

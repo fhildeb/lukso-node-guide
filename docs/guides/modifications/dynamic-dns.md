@@ -1,6 +1,7 @@
 ---
 sidebar_label: "7.6 Dynamic DNS"
 sidebar_position: 6
+description: "Configure Dynamic DNS (DDNS) for LUKSO nodes using NO-IP to maintain reliable peer connectivity with changing IP addresses. Includes setup for Geth, Erigon, Teku, Lighthouse, Prysm, and more."
 ---
 
 import Tabs from '@theme/Tabs';

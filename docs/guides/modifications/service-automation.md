@@ -1,6 +1,7 @@
 ---
 sidebar_label: "7.7 Service Automation"
 sidebar_position: 7
+description: "Automate your LUKSO node startup using systemd to ensure validator services restart after reboots, crashes, or power outages. Includes secure password handling and permission configuration."
 ---
 
 import Tabs from '@theme/Tabs';

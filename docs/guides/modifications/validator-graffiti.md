@@ -1,6 +1,7 @@
 ---
 sidebar_label: "7.3 Validator Graffiti"
 sidebar_position: 3
+description: "Customize your validator’s graffiti to appear on LUKSO blocks. This guide shows how to add graffiti via startup flags, automation scripts, or client config files."
 ---
 
 import Tabs from '@theme/Tabs';
