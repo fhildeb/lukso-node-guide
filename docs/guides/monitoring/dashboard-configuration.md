@@ -141,7 +141,7 @@ If you chose different **Ports** or **Prometheus Job-Names**, you will have to m
 
 1. Consensus client ports can be adjusted within the [Prometheus Dataset Configuration](/docs/guides/monitoring/prometheus.md#3-dataset-configuration).
 2. Price Conversions require updating the [JSON Explorer Configuration](/docs/guides/monitoring/json-exporter.md#3-price-configuration) and [Prometheus Dataset Configuration](/docs/guides/monitoring/prometheus.md#3-dataset-configuration).
-3. Job names of the [Prometheus Dataset Configuration](/docs/guides/monitoring/prometheus.md#3-dataset-configuration) must match the names on the [Grafana Dashboard JSON File](#).
+3. Job Names of the [Prometheus Dataset](/docs/guides/monitoring/prometheus.md#3-dataset-configuration) must match the Jobs of the [Grafana Dashboard](#).
 
 :::
 

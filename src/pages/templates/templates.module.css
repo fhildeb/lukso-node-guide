@@ -1,0 +1,183 @@
+/* PAGE CONTENT */
+
+:root {
+  --ifm-container-width: 100%;
+}
+
+.containerWrapper {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+}
+
+.pageContainer {
+  display: grid;
+  grid-template-columns: minmax(0, 340px) 528px minmax(0, 340px);
+  gap: 2rem;
+  padding: 2rem;
+  max-width: 100%;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* COLUMN LAYOUT */
+
+.leftColumn,
+.rightColumn {
+  font-size: 0.95rem;
+  padding: 0;
+  border: none;
+  border-radius: 0;
+}
+
+.leftColumn .admonition {
+  margin-bottom: 0;
+}
+
+.rightColumn {
+  border-radius: 0;
+}
+
+.categorySection {
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-top: 0;
+}
+
+.categoryHeading {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.categorySection + .categorySection {
+  margin-top: 2rem;
+}
+
+.sectionBox + .sectionBox {
+  margin-top: 2rem;
+}
+
+/* BUTTON LAYOUT */
+
+.dashboardList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.softwareButton {
+  background-color: var(--button-bg);
+  border: none;
+  border-radius: 2rem;
+  padding: 0.8rem 1.2rem;
+  text-align: center;
+  display: inline-block;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+  min-width: 280px;
+  cursor: default;
+  flex: none;
+}
+
+.softwareButton:hover {
+  background-color: var(--button-bg-hover);
+}
+
+.toolInfo {
+  display: flex;
+  flex-direction: inherit;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.toolName {
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.inlineCodes {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  flex-direction: row;
+}
+
+.version {
+  background-color: #5c7784;
+  border-radius: 1rem;
+  padding: 0.3rem 0.6rem;
+  color: white;
+  font-size: 0.75rem;
+}
+
+.action {
+  cursor: pointer;
+  text-decoration: none;
+}
+
+/* RESPONSIVE LAYOUT */
+
+.conditionalRight {
+  display: none;
+}
+
+@media (max-width: 1235px) {
+  .pageContainer {
+    grid-template-columns: 1fr 2fr;
+  }
+
+  /* Show content in left column */
+  .conditionalRight {
+    display: block;
+  }
+
+  .rightColumn {
+    display: none;
+  }
+}
+
+@media (max-width: 915px) {
+  .pageContainer {
+    grid-template-columns: 1fr;
+  }
+
+  .conditionalRight {
+    display: none;
+  }
+
+  .rightColumn {
+    display: block;
+  }
+}
+
+/* Stack all code tags below the name */
+@media (max-width: 585px) {
+  .inlineCodes {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 0.5rem;
+    flex-direction: row;
+    justify-content: center;
+    flex-shrink: 0;
+    flex-grow: 0;
+    flex-basis: auto;
+    flex-wrap: wrap;
+  }
+
+  .toolInfo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+    text-align: center;
+  }
+
+  .softwareButton {
+    border-radius: 1rem;
+  }
+}
