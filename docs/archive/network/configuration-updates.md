@@ -1,6 +1,7 @@
 ---
 sidebar_label: "Configuration Updates"
 sidebar_position: 2
+description: "Track all changes to LUKSO mainnet client configuration files since genesis, including Geth, Prysm, Teku, Lighthouse, Besu, and Erigon updates."
 ---
 
 import Tabs from '@theme/Tabs';

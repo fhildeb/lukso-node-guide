@@ -1,6 +1,7 @@
 ---
 sidebar_label: "Network Forks"
 sidebar_position: 3
+description: "Overview of LUKSO mainnet forks and upgrades including Genesis, Shapella, and Dencun, aligned with Ethereum’s roadmap and protocol improvements."
 ---
 
 # Network Forks
