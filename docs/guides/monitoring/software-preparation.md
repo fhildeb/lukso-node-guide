@@ -1,6 +1,7 @@
 ---
 sidebar_label: "8.1 Software Preparation"
 sidebar_position: 1
+description: "Prepare your LUKSO node for monitoring by installing core system tools and setting up essential packages for Prometheus, Grafana, and metric exporters."
 ---
 
 import Tabs from '@theme/Tabs';

@@ -1,6 +1,7 @@
 ---
 sidebar_label: "8.5 Blackbox Exporter"
 sidebar_position: 5
+description: "Set up Blackbox Exporter on your LUKSO node to monitor DNS response times, detect network latency, and ensure reliable uptime tracking."
 ---
 
 import Tabs from '@theme/Tabs';

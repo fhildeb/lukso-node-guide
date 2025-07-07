@@ -1,6 +1,7 @@
 ---
 sidebar_label: "8.3 Node Exporter"
 sidebar_position: 3
+description: "Install and configure the Node Exporter to collect system-level metrics like CPU, memory, disk, and network usage from your LUKSO node server."
 ---
 
 import Tabs from '@theme/Tabs';

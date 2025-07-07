@@ -1,6 +1,7 @@
 ---
 sidebar_label: "8.2 Port Configuration"
 sidebar_position: 2
+description: "Review and configure the required firewall and service ports to enable secure access to Grafana, Prometheus, and LUKSO node monitoring tools."
 ---
 
 import Tabs from '@theme/Tabs';

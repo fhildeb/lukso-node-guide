@@ -1,6 +1,7 @@
 ---
 sidebar_label: "8.7 Grafana"
 sidebar_position: 7
+description: "Learn how to securely install, configure, and run Grafana as a service to visualize node metrics collected through Prometheus."
 ---
 
 import Tabs from '@theme/Tabs';
