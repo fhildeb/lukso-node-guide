@@ -1,6 +1,7 @@
 ---
 sidebar_label: "4.2 Static IP Assignment"
 sidebar_position: 2
+description: "Reserve a static IP for your LUKSO node to ensure stable remote access, reliable firewall rules, and seamless network connectivity."
 ---
 
 import Tabs from '@theme/Tabs';

@@ -1,6 +1,7 @@
 ---
 sidebar_label: "4.1 Address Checkup"
 sidebar_position: 1
+description: "Identify your node's local IP and MAC addresses to configure static routing and ensure reliable SSH access on your network."
 ---
 
 import Tabs from '@theme/Tabs';
