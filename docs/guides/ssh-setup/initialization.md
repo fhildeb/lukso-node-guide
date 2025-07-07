@@ -1,6 +1,7 @@
 ---
 sidebar_label: "5.1 Initialization"
 sidebar_position: 1
+description: "Set up your SSH client for secure access to your LUKSO node. Learn how to verify SSH installation, configure a connection alias, and test your first connection."
 ---
 
 import Tabs from '@theme/Tabs';

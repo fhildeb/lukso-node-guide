@@ -1,6 +1,7 @@
 ---
 sidebar_label: "5.2 Key Login"
 sidebar_position: 2
+description: "Enhance your LUKSO node security with SSH key authentication. Learn how to generate, secure, and deploy a key pair for passwordless login."
 ---
 
 # 5.2 Key Login
