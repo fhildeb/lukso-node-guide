@@ -1,6 +1,7 @@
 ---
 sidebar_label: "Slasher Service"
 sidebar_position: 5
+description: "Learn how LUKSO slasher services detect validator misbehavior like double-signing, and when advanced node operators should run them for network security."
 ---
 
 # Slasher Service

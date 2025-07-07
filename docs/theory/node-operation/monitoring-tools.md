@@ -1,6 +1,7 @@
 ---
 sidebar_label: "Monitoring Tools"
 sidebar_position: 8
+description: "Discover tools to monitor your LUKSO node’s health, uptime, network status, and validator performance using Prometheus, Grafana, and exporters."
 ---
 
 # Monitoring Tools

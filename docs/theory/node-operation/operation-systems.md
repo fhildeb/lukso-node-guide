@@ -1,6 +1,7 @@
 ---
 sidebar_label: "Operation Systems"
 sidebar_position: 2
+description: "Compare Ubuntu and Debian for running a LUKSO node, including server vs desktop, LTS versions, and tips for stability, security, and performance."
 ---
 
 # Operation Systems

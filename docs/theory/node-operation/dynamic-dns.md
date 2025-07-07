@@ -1,6 +1,7 @@
 ---
 sidebar_label: "Dynamic DNS"
 sidebar_position: 7
+description: "Set up Dynamic DNS for your LUKSO node to stay discoverable despite changing IPs. Improve connectivity, sync times, and peer visibility with ease."
 ---
 
 # Dynamic DNS

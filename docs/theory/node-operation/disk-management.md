@@ -1,6 +1,7 @@
 ---
 sidebar_label: "Disk Management"
 sidebar_position: 10
+description: "Learn how to manage LUKSO node storage using LVM, proper partitioning, and filesystem structure to ensure scalability, performance, and uptime."
 ---
 
 # Disk Management
