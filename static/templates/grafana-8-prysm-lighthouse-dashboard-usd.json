@@ -6126,8 +6126,8 @@
       "1d"
     ]
   },
-  "timezone": "CET",
-  "title": "LUKSO Dashboard USD",
-  "uid": "voulex",
-  "version": 126
+  "timezone": "browser",
+  "title": "LUKSO Prysm Lighthouse Dashboard USD",
+  "uid": "lukso-prysm-lh-dash-usd-8",
+  "version": 1
 }
