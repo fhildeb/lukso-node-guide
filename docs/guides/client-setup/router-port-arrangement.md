@@ -1,6 +1,7 @@
 ---
 sidebar_label: "6.2 Router Port Arrangement"
 sidebar_position: 2
+description: "Learn how to configure port forwarding on your home router to allow external peers to access your LUKSO node, ensuring seamless peer discovery and synchronization across execution and consensus clients."
 ---
 
 import Tabs from '@theme/Tabs';
