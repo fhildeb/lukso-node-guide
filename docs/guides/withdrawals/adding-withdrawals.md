@@ -1,6 +1,7 @@
 ---
 sidebar_label: "12.1 Adding Withdrawals"
 sidebar_position: 1
+description: "Learn how to update your LUKSO validator keys to enable withdrawals using BLS to ETH1 address changes and broadcast them securely via node or explorer."
 ---
 
 # 12.1 Adding Withdrawals
