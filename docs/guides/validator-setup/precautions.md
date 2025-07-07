@@ -1,6 +1,7 @@
 ---
 sidebar_label: "1.1 Precautions"
 sidebar_position: 1
+description: "Learn why generating validator keys on a secure offline machine is critical for LUKSO staking. Protect your funds with proper key setup precautions."
 ---
 
 # 1.1 Precautions

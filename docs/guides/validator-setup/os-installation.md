@@ -1,6 +1,7 @@
 ---
 sidebar_label: "1.2 OS Installation"
 sidebar_position: 2
+description: "Install Ubuntu on your offline machine to securely generate LUKSO validator keys. Follow this step-by-step setup for a minimal, safe environment."
 ---
 
 # 1.2 OS Installation

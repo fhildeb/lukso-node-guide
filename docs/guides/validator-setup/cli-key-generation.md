@@ -1,6 +1,7 @@
 ---
 sidebar_label: "1.4 CLI Key Generation"
 sidebar_position: 4
+description: "Step-by-step guide to generating LUKSO validator keys using the CLI tool for secure, offline setup—ideal for advanced users and server deployments."
 ---
 
 import Tabs from '@theme/Tabs';
