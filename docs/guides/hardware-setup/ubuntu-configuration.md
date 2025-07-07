@@ -1,6 +1,7 @@
 ---
 sidebar_label: "2.6 Ubuntu Configuration"
 sidebar_position: 6
+description: "Configure Ubuntu Server for your LUKSO node with secure system settings, disk setup using LVM, OpenSSH installation, and performance optimizations for blockchain staking environments."
 ---
 
 # 2.6 Ubuntu Configuration

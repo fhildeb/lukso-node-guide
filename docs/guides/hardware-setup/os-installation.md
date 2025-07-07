@@ -1,6 +1,7 @@
 ---
 sidebar_label: "2.4 OS Installation"
 sidebar_position: 4
+description: "Step-by-step guide to installing Ubuntu or Debian on your LUKSO node. Learn how to create a bootable USB device and configure your node's operating system for secure and stable homestaking."
 ---
 
 import Tabs from '@theme/Tabs';

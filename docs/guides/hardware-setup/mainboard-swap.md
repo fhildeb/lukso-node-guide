@@ -1,6 +1,7 @@
 ---
 sidebar_label: "2.2 Mainboard Swap"
 sidebar_position: 2
+description: "Step-by-step guide to swapping a motherboard into a passive, fanless enclosure for improved thermal efficiency and quieter LUKSO node operation."
 ---
 
 # 2.2 Mainboard Swap

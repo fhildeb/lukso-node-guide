@@ -1,6 +1,7 @@
 ---
 sidebar_label: "2.5 BIOS Setup"
 sidebar_position: 5
+description: "Configure BIOS settings to optimize energy efficiency, performance, and auto-restart behavior for your LUKSO validator node."
 ---
 
 # 2.5 BIOS Setup
