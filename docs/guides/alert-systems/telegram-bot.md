@@ -1,6 +1,7 @@
 ---
 sidebar_label: "9.1 Telegram Bot"
 sidebar_position: 1
+description: "Learn how to set up a Telegram bot to receive Grafana alerts for your LUKSO node. Follow step-by-step instructions for bot creation, group setup, and integration with Grafana."
 ---
 
 # 9.1 Telegram Bot

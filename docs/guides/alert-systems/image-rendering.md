@@ -1,6 +1,7 @@
 ---
 sidebar_label: "9.3 Image Rendering"
 sidebar_position: 3
+description: "Enable image rendering in Grafana to receive visual graph alerts for your LUKSO node. This guide covers plugin installation, configuration, and troubleshooting on your server."
 ---
 
 import Tabs from '@theme/Tabs';

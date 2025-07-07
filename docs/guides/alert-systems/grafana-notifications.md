@@ -1,6 +1,7 @@
 ---
 sidebar_label: "9.2 Grafana Notifications"
 sidebar_position: 2
+description: "Set up Grafana alerts to monitor your LUKSO node in real-time. Learn how to create custom metrics, configure thresholds, and receive Telegram, email, or Discord notifications for validator performance and uptime."
 ---
 
 import Tabs from '@theme/Tabs';
