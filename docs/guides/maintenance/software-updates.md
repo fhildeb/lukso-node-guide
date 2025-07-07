@@ -1,6 +1,7 @@
 ---
 sidebar_label: "11.1 Software Updates"
 sidebar_position: 1
+description: "Learn how to securely update system packages, perform cleanups, and maintain your LUKSO node's software stack for peak performance and reliability."
 ---
 
 import Tabs from '@theme/Tabs';

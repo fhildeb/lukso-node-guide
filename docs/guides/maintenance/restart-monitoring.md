@@ -1,6 +1,7 @@
 ---
 sidebar_label: "11.8 Reset Monitoring"
 sidebar_position: 8
+description: "Fix stalled metrics and restore accurate monitoring on your LUKSO node by restarting Prometheus, Grafana, and exporter services safely."
 ---
 
 import Tabs from '@theme/Tabs';

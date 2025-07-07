@@ -1,6 +1,7 @@
 ---
 sidebar_label: "11.2 Client Updates"
 sidebar_position: 2
+description: "Learn how to safely update your LUKSO CLI, blockchain clients, and configurations. Includes instructions for validator nodes and service automation setups."
 ---
 
 import Tabs from '@theme/Tabs';

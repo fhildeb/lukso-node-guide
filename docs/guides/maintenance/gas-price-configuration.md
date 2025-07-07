@@ -1,6 +1,7 @@
 ---
 sidebar_label: "11.6 Gas Price Configuration"
 sidebar_position: 6
+description: "Learn how to configure minimum gas prices for Geth and other execution clients in LUKSO. Includes step-by-step guides for CLI, Dappnode, Docker, and custom setups."
 ---
 
 # 11.6 Gas Price Configuration

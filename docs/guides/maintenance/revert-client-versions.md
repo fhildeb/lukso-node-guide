@@ -1,6 +1,7 @@
 ---
 sidebar_label: "11.4 Revert Client Versions"
 sidebar_position: 4
+description: "Learn how to safely downgrade LUKSO execution and consensus clients to previous versions for improved node stability and compatibility."
 ---
 
 import Tabs from '@theme/Tabs';

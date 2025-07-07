@@ -1,6 +1,7 @@
 ---
 sidebar_label: "11.3 Problem Scanning"
 sidebar_position: 3
+description: "Learn how to diagnose and fix LUKSO node issues using CLI logs, RPC interfaces, and consensus REST APIs. Covers client-specific tools, log scanning, and syncing status checks."
 ---
 
 import Tabs from '@theme/Tabs';
