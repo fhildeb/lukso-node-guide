@@ -8,7 +8,7 @@ const software = {
     {
       name: "Grafana",
       link: "https://github.com/grafana/grafana/releases",
-      version: "11.6.0",
+      version: "12.0.2",
     },
     {
       name: "Prometheus",

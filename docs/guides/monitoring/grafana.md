@@ -166,12 +166,25 @@ sudo apt-mark hold grafana
 
 **2.8 Set Binary Permissions**: Set the correct owner and access rights for the executables.
 
+<Tabs groupId="grafana">
+  <TabItem value="latest" label="Grafana Version 11+" default>
+
+```sh
+sudo chown -R grafana-server-worker:grafana-server-worker /usr/sbin/grafana-server
+sudo chmod 755 /usr/sbin/grafana-server
+```
+
+</TabItem> <TabItem value="9.5.2" label="Grafana Version 9.5.2">
+
 ```sh
 sudo chown -R grafana-server-worker:grafana-server-worker /usr/sbin/grafana
 sudo chown -R grafana-server-worker:grafana-server-worker /usr/sbin/grafana-server
 sudo chmod 755 /usr/sbin/grafana
 sudo chmod 755 /usr/sbin/grafana-server
 ```
+
+</TabItem>
+</Tabs>
 
 **2.9 Set File Permissions**: Set the correct owner and access rights for the configuration and log files.
 
