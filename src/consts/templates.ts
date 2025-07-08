@@ -7,13 +7,13 @@ export type Dashboard = {
 
 const templates: Dashboard[] = [
   {
-    filename: "grafana-11-prysm-lighthouse-dashboard-usd.json",
+    filename: "grafana-12-prysm-lighthouse-dashboard-usd.json",
     grafana: "12",
     currency: "USD",
     label: "Prysm & Lighthouse",
   },
   {
-    filename: "grafana-11-prysm-lighthouse-dashboard-eur.json",
+    filename: "grafana-12-prysm-lighthouse-dashboard-eur.json",
     grafana: "12",
     currency: "EUR",
     label: "Prysm & Lighthouse",
@@ -49,13 +49,13 @@ const templates: Dashboard[] = [
     label: "Prysm & Lighthouse",
   },
   {
-    filename: "grafana-11-teku-nimbus2-dashboard-usd.json",
+    filename: "grafana-12-teku-nimbus2-dashboard-usd.json",
     grafana: "12",
     currency: "USD",
     label: "Teku & Nimbus-Eth2",
   },
   {
-    filename: "grafana-11-teku-nimbus-dashboard-eur.json",
+    filename: "grafana-12-teku-nimbus-dashboard-eur.json",
     grafana: "12",
     currency: "EUR",
     label: "Teku & Nimbus-Eth2",

@@ -5,7 +5,7 @@
 }
 
 .containerWrapper {
-  max-width: 1280px;
+  max-width: 1450px;
   margin: 0 auto;
   display: flex;
   justify-content: center;
@@ -13,7 +13,7 @@
 
 .pageContainer {
   display: grid;
-  grid-template-columns: minmax(0, 340px) 528px minmax(0, 340px);
+  grid-template-columns: minmax(0, 400px) 578px minmax(0, 400px);
   gap: 2rem;
   padding: 2rem;
   max-width: 100%;
