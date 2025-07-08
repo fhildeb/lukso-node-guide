@@ -30,10 +30,10 @@ grafana-server -v
 **1.2 Install Render Plugin**: Use the built-in Grafana-CLI to install the suited image renderer for your Grafana installation.
 
 <Tabs groupId="grafana">
-  <TabItem value="latest" label="Latest Grafana Version" default>
+  <TabItem value="latest" label="Grafana Version 11+" default>
 
 ```sh
-sudo grafana-cli plugins install grafana-image-renderer
+sudo grafana-cli plugins install grafana-image-renderer 3.10.1
 ```
 
 </TabItem> <TabItem value="9.5.2" label="Grafana Version 9.5.2">
@@ -51,13 +51,13 @@ sudo grafana-cli plugins install grafana-image-renderer 3.7.1
   <TabItem value="vim" label="Vim" default>
 
 ```sh
-vim /etc/grafana/grafana.ini
+sudo vim /etc/grafana/grafana.ini
 ```
 
 </TabItem> <TabItem value="nano" label="Nano">
 
 ```sh
-nano /etc/grafana/grafana.ini
+sudo nano /etc/grafana/grafana.ini
 ```
 
 </TabItem>
