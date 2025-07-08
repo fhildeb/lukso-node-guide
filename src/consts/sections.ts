@@ -82,7 +82,12 @@ const sections = [
       },
       {
         title: "Alert Systems",
-        pages: ["Telegram Bot", "Grafana Notifications", "Image Rendering"],
+        pages: [
+          "Telegram Bot",
+          "Grafana Notifications",
+          "Image Rendering",
+          "Selfnode Alerts",
+        ],
       },
       {
         title: "External Access",
@@ -104,6 +109,10 @@ const sections = [
       {
         title: "Withdrawals",
         pages: ["Adding Withdrawals", "Exit Validators"],
+      },
+      {
+        title: "Reports",
+        pages: ["Validator Income"],
       },
     ],
   },
