@@ -110,6 +110,10 @@ const sections = [
         title: "Withdrawals",
         pages: ["Adding Withdrawals", "Exit Validators"],
       },
+      {
+        title: "Reports",
+        pages: ["Validator Income"],
+      },
     ],
   },
   {

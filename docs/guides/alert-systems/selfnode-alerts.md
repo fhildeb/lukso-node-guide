@@ -1,7 +1,7 @@
 ---
 sidebar_label: "9.4 Selfnodes Alerts"
 sidebar_position: 4
-description: TODO
+description: Step-by-step guide to set up Selfnode Validator alerts for LUKSO for missed attestations, performance issues, and uptime tracking.
 ---
 
 import Tabs from '@theme/Tabs';
