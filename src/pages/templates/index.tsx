@@ -6,10 +6,10 @@ import dashboards from "@site/src/consts/templates";
 
 function TemplatesPage() {
   const categorized = {
-    "Prysm & Lighthouse Dashboards": dashboards.filter(
+    "📝 Prysm & Lighthouse Dashboards": dashboards.filter(
       (d) => d.label === "Prysm & Lighthouse"
     ),
-    "Teku & Nimbus Dashboards": dashboards.filter(
+    "📝 Teku & Nimbus Dashboards": dashboards.filter(
       (d) => d.label === "Teku & Nimbus"
     ),
   };

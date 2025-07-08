@@ -81,6 +81,11 @@ const config: Config = {
           label: "Archive",
         },
         {
+          to: "/templates",
+          position: "left",
+          label: "Templates",
+        },
+        {
           type: "custom-aprButton",
           position: "right",
         },
