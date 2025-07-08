@@ -1,4 +1,47 @@
 {
+  "__inputs": [
+    {
+      "name": "DS_PROMETHEUS",
+      "label": "Prometheus",
+      "description": "",
+      "type": "datasource",
+      "pluginId": "prometheus",
+      "pluginName": "Prometheus"
+    }
+  ],
+  "__elements": {},
+  "__requires": [
+    {
+      "type": "grafana",
+      "id": "grafana",
+      "name": "Grafana",
+      "version": "12.0.2"
+    },
+    {
+      "type": "datasource",
+      "id": "prometheus",
+      "name": "Prometheus",
+      "version": "1.0.0"
+    },
+    {
+      "type": "panel",
+      "id": "stat",
+      "name": "Stat",
+      "version": ""
+    },
+    {
+      "type": "panel",
+      "id": "table",
+      "name": "Table",
+      "version": ""
+    },
+    {
+      "type": "panel",
+      "id": "timeseries",
+      "name": "Time series",
+      "version": ""
+    }
+  ],
   "annotations": {
     "list": [
       {
@@ -24,13 +67,13 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 21,
+  "id": null,
   "links": [],
   "panels": [
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
+        "uid": "${DS_PROMETHEUS}"
       },
       "description": "",
       "fieldConfig": {
@@ -106,7 +149,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
+            "uid": "${DS_PROMETHEUS}"
           },
           "expr": "1",
           "interval": "",
@@ -120,7 +163,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
+        "uid": "${DS_PROMETHEUS}"
       },
       "description": "",
       "fieldConfig": {
@@ -192,7 +235,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
+            "uid": "${DS_PROMETHEUS}"
           },
           "expr": "1",
           "instant": false,
@@ -207,7 +250,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
+        "uid": "${DS_PROMETHEUS}"
       },
       "description": "Sum of all validator balances.",
       "fieldConfig": {
@@ -256,7 +299,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
+            "uid": "${DS_PROMETHEUS}"
           },
           "expr": "sum(validator_balance{job=\"beacon-client-job\"})",
           "instant": true,
@@ -271,7 +314,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
+        "uid": "${DS_PROMETHEUS}"
       },
       "description": "Total LYX return on the initial effective stake of active local validators.",
       "fieldConfig": {
@@ -340,7 +383,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
+            "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
           "expr": "sum(validator_balance{job=\"beacon-client-job\"})-(count(validator_balance{job=\"beacon-client-job\"} > 16 and validator_statuses{job=\"beacon-client-job\"} == 3)*32)",
@@ -356,7 +399,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
+        "uid": "${DS_PROMETHEUS}"
       },
       "description": "Total percentage return on the initial effective stake of active local validators. Excess deposits will be reflected as earnings.",
       "fieldConfig": {
@@ -425,7 +468,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
+            "uid": "${DS_PROMETHEUS}"
           },
           "expr": "(sum(validator_balance{job=\"beacon-client-job\"}) - (count(validator_balance{job=\"beacon-client-job\"} > 16 and validator_statuses{job=\"beacon-client-job\"} == 3)*32))/(count(validator_balance{job=\"beacon-client-job\"} > 16 and validator_statuses{job=\"beacon-client-job\"} == 3)*32)  ",
           "instant": true,
@@ -440,7 +483,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
+        "uid": "${DS_PROMETHEUS}"
       },
       "description": "Number of beacon nodes to which this node is connected.",
       "fieldConfig": {
@@ -500,7 +543,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
+            "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
           "expr": "p2p_peer_count{state=\"Connected\",job=\"beacon-client-job\"}",
@@ -516,7 +559,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
+        "uid": "${DS_PROMETHEUS}"
       },
       "description": "The percentage of LYX balances expected to attest that are actually attesting.",
       "fieldConfig": {
@@ -577,7 +620,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
+            "uid": "${DS_PROMETHEUS}"
           },
           "expr": "(beacon_prev_epoch_target_gwei{job=\"beacon-client-job\"} / beacon_prev_epoch_active_gwei{job=\"beacon-client-job\"} )",
           "interval": "",
@@ -591,7 +634,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
+        "uid": "${DS_PROMETHEUS}"
       },
       "description": "A metric expressing the distance between the current finalized epoch and the expected finalized epoch based on the genesis time. 100% means the expected and current finalized epochs are the same. The metric reaches 0% when the finalized epoch is 25 epochs behind the expected epoch.",
       "fieldConfig": {
@@ -652,7 +695,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
+            "uid": "${DS_PROMETHEUS}"
           },
           "expr": "clamp_min((1-(4*((floor(beacon_clock_time_slot{job=\"beacon-client-job\"}/32) - beacon_finalized_epoch{job=\"beacon-client-job\"} - 2)/100))),0)",
           "interval": "",
@@ -666,7 +709,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
+        "uid": "${DS_PROMETHEUS}"
       },
       "description": "The percentage of LYX balances expected to attest that are actually attesting.",
       "fieldConfig": {
@@ -753,7 +796,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
+            "uid": "${DS_PROMETHEUS}"
           },
           "expr": "(beacon_prev_epoch_target_gwei{job=\"beacon-client-job\"} / beacon_prev_epoch_active_gwei{job=\"beacon-client-job\"} )",
           "interval": "",
@@ -767,7 +810,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
+        "uid": "${DS_PROMETHEUS}"
       },
       "description": "Sum of all validator balances multiplied by the price of LYX in EUR.",
       "fieldConfig": {
@@ -815,7 +858,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
+            "uid": "${DS_PROMETHEUS}"
           },
           "expr": "lyxeur",
           "hide": false,
@@ -827,7 +870,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
+            "uid": "${DS_PROMETHEUS}"
           },
           "expr": "sum(validator_balance{job=\"beacon-client-job\"})",
           "hide": false,
@@ -862,7 +905,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
+        "uid": "${DS_PROMETHEUS}"
       },
       "description": "Total earnings in EUR.",
       "fieldConfig": {
@@ -932,7 +975,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
+            "uid": "${DS_PROMETHEUS}"
           },
           "expr": "sum(validator_balance{job=\"beacon-client-job\"})-(count(validator_balance{job=\"beacon-client-job\"} > 16 and validator_statuses{job=\"beacon-client-job\"} == 3)*32)",
           "instant": true,
@@ -943,7 +986,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
+            "uid": "${DS_PROMETHEUS}"
           },
           "expr": "lyxeur",
           "instant": true,
@@ -977,7 +1020,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
+        "uid": "${DS_PROMETHEUS}"
       },
       "description": "Price of Lyx in EUR.",
       "fieldConfig": {
@@ -1039,7 +1082,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
+            "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
           "expr": "lyxeur",
@@ -1074,7 +1117,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
+        "uid": "${DS_PROMETHEUS}"
       },
       "description": "Current maximum inactvity score across all validators.",
       "fieldConfig": {
@@ -1133,7 +1176,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
+            "uid": "${DS_PROMETHEUS}"
           },
           "expr": "max(validator_inactivity_score)",
           "instant": true,
@@ -1148,7 +1191,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
+        "uid": "${DS_PROMETHEUS}"
       },
       "description": "Current, justified, and finalized epochs. In this order, these three values should be sequentially decreasing.",
       "fieldConfig": {
@@ -1195,7 +1238,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
+            "uid": "${DS_PROMETHEUS}"
           },
           "expr": "floor(beacon_clock_time_slot{job=\"beacon-client-job\"} / 32)",
           "instant": true,
@@ -1206,7 +1249,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
+            "uid": "${DS_PROMETHEUS}"
           },
           "expr": "beacon_current_justified_epoch{job=\"beacon-client-job\"}",
           "instant": true,
@@ -1217,7 +1260,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
+            "uid": "${DS_PROMETHEUS}"
           },
           "expr": "beacon_finalized_epoch {job=\"beacon-client-job\"} ",
           "format": "time_series",
@@ -1233,7 +1276,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
+        "uid": "${DS_PROMETHEUS}"
       },
       "description": "Current slot and head slot",
       "fieldConfig": {
@@ -1278,7 +1321,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
+            "uid": "${DS_PROMETHEUS}"
           },
           "expr": "beacon_slot{job=\"beacon-client-job\"}",
           "instant": true,
@@ -1289,7 +1332,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
+            "uid": "${DS_PROMETHEUS}"
           },
           "expr": "beacon_head_slot{job=\"beacon-client-job\"}",
           "instant": true,
@@ -1304,7 +1347,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -1379,7 +1422,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
+            "uid": "${DS_PROMETHEUS}"
           },
           "expr": "1",
           "interval": "",
@@ -1393,7 +1436,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -1464,7 +1507,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
+            "uid": "${DS_PROMETHEUS}"
           },
           "expr": "1",
           "interval": "",
@@ -1478,7 +1521,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
+        "uid": "${DS_PROMETHEUS}"
       },
       "description": "Increase in all local validator balances over the last hour",
       "fieldConfig": {
@@ -1547,7 +1590,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
+            "uid": "${DS_PROMETHEUS}"
           },
           "expr": "sum(validator_balance{job=\"beacon-client-job\"}) - sum(validator_balance{job=\"beacon-client-job\"} offset 1h != 0) - (32 * count(validator_balance{job=\"beacon-client-job\"} > 16)) + (32 * count(validator_balance{job=\"beacon-client-job\"} offset 1h > 16))",
           "instant": false,
@@ -1563,7 +1606,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
+        "uid": "${DS_PROMETHEUS}"
       },
       "description": "Increase in all local validator balances over the last day",
       "fieldConfig": {
@@ -1632,7 +1675,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
+            "uid": "${DS_PROMETHEUS}"
           },
           "expr": "sum(validator_balance{job=\"beacon-client-job\"}) - sum(validator_balance{job=\"beacon-client-job\"} offset 1d != 0) - (32 * count(validator_balance{job=\"beacon-client-job\"} > 16)) + (32 * count(validator_balance{job=\"beacon-client-job\"} offset 1d > 16))",
           "instant": false,
@@ -1647,7 +1690,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
+        "uid": "${DS_PROMETHEUS}"
       },
       "description": "Increase in all local validator balances over the last week",
       "fieldConfig": {
@@ -1716,7 +1759,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
+            "uid": "${DS_PROMETHEUS}"
           },
           "expr": "sum(validator_balance{job=\"beacon-client-job\"}) - sum(validator_balance{job=\"beacon-client-job\"} offset 7d != 0) - (32 * count(validator_balance{job=\"beacon-client-job\"} > 16)) + (32 * count(validator_balance{job=\"beacon-client-job\"} offset 7d > 16))",
           "instant": false,
@@ -1731,7 +1774,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
+        "uid": "${DS_PROMETHEUS}"
       },
       "description": "Increase in all local validator balances over the last month",
       "fieldConfig": {
@@ -1800,7 +1843,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
+            "uid": "${DS_PROMETHEUS}"
           },
           "expr": "sum(validator_balance{job=\"beacon-client-job\"}) - sum(validator_balance{job=\"beacon-client-job\"} offset 30d != 0) - (32 * count(validator_balance{job=\"beacon-client-job\"} > 16)) + (32 * count(validator_balance{job=\"beacon-client-job\"} offset 30d > 16))",
           "instant": false,
@@ -1815,7 +1858,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
+        "uid": "${DS_PROMETHEUS}"
       },
       "description": "Counts of active, slashed and exited validators.",
       "fieldConfig": {
@@ -1864,7 +1907,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
+            "uid": "${DS_PROMETHEUS}"
           },
           "expr": "validator_count{state=\"Active\",job=\"beacon-client-job\"} ",
           "instant": true,
@@ -1875,7 +1918,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
+            "uid": "${DS_PROMETHEUS}"
           },
           "expr": "validator_count{state=\"Slashed\",job=\"beacon-client-job\"} ",
           "instant": true,
@@ -1886,7 +1929,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
+            "uid": "${DS_PROMETHEUS}"
           },
           "expr": "validator_count{state=\"Exited\",job=\"beacon-client-job\"} ",
           "instant": true,
@@ -1901,7 +1944,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
+        "uid": "${DS_PROMETHEUS}"
       },
       "description": "Number of pending and existing validators over time. Pending validators are shown as positive values, while exiting validators are shown as negative values.",
       "fieldConfig": {
@@ -2140,7 +2183,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
+            "uid": "${DS_PROMETHEUS}"
           },
           "expr": "validator_count{state=\"Pending\",job=\"beacon-client-job\"}",
           "interval": "",
@@ -2150,7 +2193,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
+            "uid": "${DS_PROMETHEUS}"
           },
           "expr": "validator_count{state=\"Exiting\",job=\"beacon-client-job\"}",
           "interval": "",
@@ -2160,7 +2203,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
+            "uid": "${DS_PROMETHEUS}"
           },
           "expr": "validator_count{state=\"Slashing\",job=\"beacon-client-job\"}",
           "interval": "",
@@ -2170,7 +2213,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
+            "uid": "${DS_PROMETHEUS}"
           },
           "expr": "validator_count{job=\"beacon-client-job\", state=\"Active\"}",
           "interval": "",
@@ -2184,7 +2227,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
+        "uid": "${DS_PROMETHEUS}"
       },
       "description": "Current number of pending and exiting validators",
       "fieldConfig": {
@@ -2229,7 +2272,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
+            "uid": "${DS_PROMETHEUS}"
           },
           "expr": "validator_count{state=\"Pending\",job=\"beacon-client-job\"}",
           "instant": true,
@@ -2240,7 +2283,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
+            "uid": "${DS_PROMETHEUS}"
           },
           "expr": "validator_count{state=\"Exiting\",job=\"beacon-client-job\"}",
           "instant": true,
@@ -2255,7 +2298,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
+        "uid": "${DS_PROMETHEUS}"
       },
       "description": "Percentage increase in all local validator balances over the last hour",
       "fieldConfig": {
@@ -2324,7 +2367,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
+            "uid": "${DS_PROMETHEUS}"
           },
           "expr": "((sum(validator_balance{job=\"beacon-client-job\"}) - sum(validator_balance{job=\"beacon-client-job\"} offset 1h != 0) - (32 * count(validator_balance{job=\"beacon-client-job\"} > 16)) +\t(32 * count(validator_balance{job=\"beacon-client-job\"} offset 1h > 16)))/(32 * avg_over_time(count(validator_balance{job=\"beacon-client-job\"} > 16)[1h:]))) * 365 * 24",
           "hide": false,
@@ -2339,7 +2382,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
+        "uid": "${DS_PROMETHEUS}"
       },
       "description": "Percentage increase in all local validator balances over the last day",
       "fieldConfig": {
@@ -2408,7 +2451,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
+            "uid": "${DS_PROMETHEUS}"
           },
           "expr": "((sum(validator_balance{job=\"beacon-client-job\"}) - sum(validator_balance{job=\"beacon-client-job\"} offset 1d != 0) - (32 * count(validator_balance{job=\"beacon-client-job\"} > 16)) +\t(32 * count(validator_balance{job=\"beacon-client-job\"} offset 1d > 16)))/(32 * avg_over_time(count(validator_balance{job=\"beacon-client-job\"} > 16)[1d:]))) * 365",
           "hide": false,
@@ -2423,7 +2466,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
+        "uid": "${DS_PROMETHEUS}"
       },
       "description": "Percentage increase in all local validator balances over the last week",
       "fieldConfig": {
@@ -2492,7 +2535,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
+            "uid": "${DS_PROMETHEUS}"
           },
           "expr": "((sum(validator_balance{job=\"beacon-client-job\"}) - sum(validator_balance{job=\"beacon-client-job\"} offset 7d != 0) - (32 * count(validator_balance{job=\"beacon-client-job\"} > 16)) +\t(32 * count(validator_balance{job=\"beacon-client-job\"} offset 7d > 16)))/(32 * avg_over_time(count(validator_balance{job=\"beacon-client-job\"} > 16)[7d:]))) * (365/7)",
           "hide": false,
@@ -2507,7 +2550,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
+        "uid": "${DS_PROMETHEUS}"
       },
       "description": "Percentage increase in all local validator balances over the last month",
       "fieldConfig": {
@@ -2576,7 +2619,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
+            "uid": "${DS_PROMETHEUS}"
           },
           "expr": "((sum(validator_balance{job=\"beacon-client-job\"}) - sum(validator_balance{job=\"beacon-client-job\"} offset 30d != 0) - (32 * count(validator_balance{job=\"beacon-client-job\"} > 16)) +\t(32 * count(validator_balance{job=\"beacon-client-job\"} offset 30d > 16)))/(32 * avg_over_time(count(validator_balance{job=\"beacon-client-job\"} > 16)[30d:]))) * (365/30)",
           "hide": false,
@@ -2591,7 +2634,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
+        "uid": "${DS_PROMETHEUS}"
       },
       "description": "Average validator balance across the network",
       "fieldConfig": {
@@ -2659,7 +2702,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
+            "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
           "expr": "validators_total_balance{state=\"Active\",job=\"beacon-client-job\"} / validator_count{state=\"Active\",job=\"beacon-client-job\"} / 1000000000",
@@ -2674,7 +2717,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
+        "uid": "${DS_PROMETHEUS}"
       },
       "description": "Estimated length of time until all pending and exiting validators have cleared the queues.",
       "fieldConfig": {
@@ -2721,7 +2764,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
+            "uid": "${DS_PROMETHEUS}"
           },
           "expr": "((validator_count{state=\"Pending\",job=\"beacon-client-job\"}/4)*6.4)",
           "instant": true,
@@ -2732,7 +2775,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
+            "uid": "${DS_PROMETHEUS}"
           },
           "expr": "((validator_count{state=\"Exiting\",job=\"beacon-client-job\"}/4)*6.4)",
           "instant": true,
@@ -2747,7 +2790,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
+        "uid": "${DS_PROMETHEUS}"
       },
       "description": "validator stats by public key over the lifetime of the validator process ",
       "fieldConfig": {
@@ -3245,7 +3288,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
+            "uid": "${DS_PROMETHEUS}"
           },
           "expr": "label_replace(max by(pubkey) (validator_statuses{job=\"beacon-client-job\"}), \"pubkey_short\", \"$1\", \"pubkey\", \"(.{10}).*\")  ",
           "format": "table",
@@ -3257,7 +3300,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
+            "uid": "${DS_PROMETHEUS}"
           },
           "expr": "label_replace(max by(pubkey) (validator_balance{job=\"beacon-client-job\"}), \"pubkey_short\", \"$1\", \"pubkey\", \"(.{10}).*\") ",
           "format": "table",
@@ -3269,7 +3312,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
+            "uid": "${DS_PROMETHEUS}"
           },
           "expr": "label_replace(max by(pubkey) (validator_successful_proposals{job=\"beacon-client-job\"}), \"pubkey_short\", \"$1\", \"pubkey\", \"(.{10}).*\")  ",
           "format": "table",
@@ -3281,7 +3324,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
+            "uid": "${DS_PROMETHEUS}"
           },
           "expr": "label_replace(max by(pubkey) (validator_successful_attestations{job=\"beacon-client-job\"}), \"pubkey_short\", \"$1\", \"pubkey\", \"(.{10}).*\")  ",
           "format": "table",
@@ -3293,7 +3336,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
+            "uid": "${DS_PROMETHEUS}"
           },
           "expr": "label_replace(max by(pubkey) (validator_successful_aggregations{job=\"beacon-client-job\"}), \"pubkey_short\", \"$1\", \"pubkey\", \"(.{10}).*\") ",
           "format": "table",
@@ -3305,7 +3348,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
+            "uid": "${DS_PROMETHEUS}"
           },
           "expr": "label_replace(max by(pubkey) (validator_failed_attestations{job=\"beacon-client-job\"}), \"pubkey_short\", \"$1\", \"pubkey\", \"(.{10}).*\") ",
           "format": "table",
@@ -3317,7 +3360,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
+            "uid": "${DS_PROMETHEUS}"
           },
           "expr": "label_replace(max by(pubkey) (validator_failed_aggregations{job=\"beacon-client-job\"}), \"pubkey_short\", \"$1\", \"pubkey\", \"(.{10}).*\") ",
           "format": "table",
@@ -3329,7 +3372,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
+            "uid": "${DS_PROMETHEUS}"
           },
           "expr": "label_replace(max by(pubkey) (validator_inactivity_score{job=\"beacon-client-job\"}), \"pubkey_short\", \"$1\", \"pubkey\", \"(.{10}).*\")  ",
           "format": "table",
@@ -3354,7 +3397,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -3429,7 +3472,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
+            "uid": "${DS_PROMETHEUS}"
           },
           "expr": "1",
           "interval": "",
@@ -3443,7 +3486,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
+        "uid": "${DS_PROMETHEUS}"
       },
       "description": "The number of peers to which the beacon chain is connected",
       "fieldConfig": {
@@ -3529,7 +3572,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
+            "uid": "${DS_PROMETHEUS}"
           },
           "expr": "p2p_peer_count{state=\"Connected\",job=\"beacon-client-job\"}",
           "interval": "",
@@ -3543,7 +3586,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
+        "uid": "${DS_PROMETHEUS}"
       },
       "description": "The length of time the beacon chain and validator processes have been running.",
       "fieldConfig": {
@@ -3612,7 +3655,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
+            "uid": "${DS_PROMETHEUS}"
           },
           "expr": "(time()-process_start_time_seconds{job=\"beacon-client-job\"})/3600",
           "instant": true,
@@ -3623,7 +3666,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
+            "uid": "${DS_PROMETHEUS}"
           },
           "expr": "(time()-process_start_time_seconds{job=\"beacon-client-job\"})/3600",
           "instant": true,
@@ -3638,7 +3681,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
+        "uid": "${DS_PROMETHEUS}"
       },
       "description": "Average number of log messages received per hour over the selected time range",
       "fieldConfig": {
@@ -3698,7 +3741,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
+            "uid": "${DS_PROMETHEUS}"
           },
           "expr": "sum(rate(log_entries_total{job=\"beacon-client-job\", level=\"error\"}[$__range]))*3600",
           "instant": false,
@@ -3709,7 +3752,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
+            "uid": "${DS_PROMETHEUS}"
           },
           "expr": "sum(rate(log_entries_total{job=\"beacon-client-job\", level=\"warning\"}[$__range]))*3600",
           "instant": false,
@@ -3724,7 +3767,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
+        "uid": "${DS_PROMETHEUS}"
       },
       "description": "Versions of the currently running Prysm clients.",
       "fieldConfig": {
@@ -3770,7 +3813,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
+            "uid": "${DS_PROMETHEUS}"
           },
           "expr": "max(prysm_version) by (job, version)",
           "format": "table",
@@ -3800,7 +3843,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
+        "uid": "${DS_PROMETHEUS}"
       },
       "description": "Average number of log messages received per hour over the selected time range",
       "fieldConfig": {
@@ -3861,7 +3904,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
+            "uid": "${DS_PROMETHEUS}"
           },
           "expr": "sum(rate(log_entries_total{job=\"beacon-client-job\", level=\"error\"}[$__range]))*3600",
           "instant": false,
@@ -3872,7 +3915,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
+            "uid": "${DS_PROMETHEUS}"
           },
           "expr": "sum(rate(log_entries_total{job=\"beacon-client-job\", level=\"warning\"}[$__range]))*3600",
           "interval": "",
@@ -3886,7 +3929,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -3961,7 +4004,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
+            "uid": "${DS_PROMETHEUS}"
           },
           "expr": "1",
           "interval": "",
@@ -3975,7 +4018,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
+        "uid": "${DS_PROMETHEUS}"
       },
       "description": "Beacon chain and validator memory usage on the server.",
       "fieldConfig": {
@@ -4342,7 +4385,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
+            "uid": "${DS_PROMETHEUS}"
           },
           "expr": "process_resident_memory_bytes{job=\"beacon-client-job\"}",
           "interval": "",
@@ -4352,7 +4395,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
+            "uid": "${DS_PROMETHEUS}"
           },
           "expr": "process_resident_memory_bytes{job=\"beacon-client-job\"}",
           "interval": "",
@@ -4366,7 +4409,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
+        "uid": "${DS_PROMETHEUS}"
       },
       "description": "Processor usage on the server",
       "fieldConfig": {
@@ -4617,7 +4660,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
+            "uid": "${DS_PROMETHEUS}"
           },
           "expr": "sum(irate(node_cpu_seconds_total{mode=\"system\",job=\"node-exporter-job\"}[5m])) or sum(irate(node_cpu{mode=\"system\",job=\"node-exporter-job\"}[5m]))",
           "hide": false,
@@ -4629,7 +4672,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
+            "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
           "expr": "sum(irate(node_cpu_seconds_total{mode=\"user\",job=\"node-exporter-job\"}[5m])) or sum(irate(node_cpu{mode=\"user\",job=\"node-exporter-job\"}[5m]))",
@@ -4642,7 +4685,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
+            "uid": "${DS_PROMETHEUS}"
           },
           "expr": "sum(irate(node_cpu_seconds_total{mode=\"nice\",job=\"node-exporter-job\"}[5m])) or sum(irate(node_cpu{mode=\"nice\",job=\"node-exporter-job\"}[5m]))",
           "interval": "",
@@ -4653,7 +4696,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
+            "uid": "${DS_PROMETHEUS}"
           },
           "expr": "sum(irate(node_cpu_seconds_total{mode=\"iowait\",job=\"node-exporter-job\"}[5m])) or sum(irate(node_cpu{mode=\"iowait\",job=\"node-exporter-job\"}[5m]))",
           "interval": "",
@@ -4664,7 +4707,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
+            "uid": "${DS_PROMETHEUS}"
           },
           "expr": "sum(irate(node_cpu_seconds_total{mode=\"steal\",job=\"node-exporter-job\"}[5m])) or sum(irate(node_cpu{mode=\"steal\",job=\"node-exporter-job\"}[5m]))",
           "interval": "",
@@ -4675,7 +4718,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
+            "uid": "${DS_PROMETHEUS}"
           },
           "expr": "sum(irate(node_cpu_seconds_total{mode=\"idle\",job=\"node-exporter-job\"}[5m])) or sum(irate(node_cpu{mode=\"idle\",job=\"node-exporter-job\"}[5m]))",
           "interval": "",
@@ -4686,7 +4729,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
+            "uid": "${DS_PROMETHEUS}"
           },
           "expr": "sum(irate(node_cpu_seconds_total{mode=\"irq\",job=\"node-exporter-job\"}[5m])) or sum(irate(node_cpu{mode=\"irq\",job=\"node-exporter-job\"}[5m]))",
           "interval": "",
@@ -4697,7 +4740,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
+            "uid": "${DS_PROMETHEUS}"
           },
           "expr": "sum(irate(node_cpu_seconds_total{mode=\"softirq\",job=\"node-exporter-job\"}[5m])) or sum(irate(node_cpu{mode=\"softirq\",job=\"node-exporter-job\"}[5m]))",
           "interval": "",
@@ -4708,7 +4751,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
+            "uid": "${DS_PROMETHEUS}"
           },
           "expr": "sum(irate(node_cpu_seconds_total{mode=\"guest\",job=\"node-exporter-job\"}[5m])) or sum(irate(node_cpu{mode=\"guest\",job=\"node-exporter-job\"}[5m]))",
           "interval": "",
@@ -4723,7 +4766,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
+        "uid": "${DS_PROMETHEUS}"
       },
       "description": "Network transmission (tx) and reception (rx) rates",
       "fieldConfig": {
@@ -4930,7 +4973,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
+            "uid": "${DS_PROMETHEUS}"
           },
           "expr": "irate(node_network_transmit_bytes_total{job=\"node-exporter-job\",device='enp1s0'}[5m])*8 or irate(node_network_transmit_bytes{job=\"node-exporter-job\",device='enp1s0'}[5m])*8 or irate(node_network_transmit_bytes_total{job=\"node-exporter-job\",device='eno1'}[5m])*8 or irate(node_network_transmit_bytes{job=\"node-exporter-job\",device='eno1'}[5m])*8",
           "interval": "",
@@ -4941,7 +4984,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
+            "uid": "${DS_PROMETHEUS}"
           },
           "expr": "irate(node_network_receive_bytes_total{job=\"node-exporter-job\",device='enp1s0'}[5m])*8 or irate(node_network_receive_bytes{job=\"node-exporter-job\",device='enp1s0'}[5m])*8 or irate(node_network_receive_bytes_total{job=\"node-exporter-job\",device='eno1'}[5m])*8 or irate(node_network_receive_bytes{job=\"node-exporter-job\",device='eno1'}[5m])*8",
           "interval": "",
@@ -4956,7 +4999,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
+        "uid": "${DS_PROMETHEUS}"
       },
       "description": "",
       "fieldConfig": {
@@ -5044,7 +5087,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
+            "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
           "expr": "(sum(node_filesystem_size_bytes{job=\"node-exporter-job\"})-sum(node_filesystem_avail_bytes{job=\"node-exporter-job\"}))/sum(node_filesystem_size_bytes{job=\"node-exporter-job\"})",
@@ -5059,7 +5102,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
+        "uid": "${DS_PROMETHEUS}"
       },
       "description": "Memory usage on the server",
       "fieldConfig": {
@@ -5426,7 +5469,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
+            "uid": "${DS_PROMETHEUS}"
           },
           "expr": "( node_memory_MemTotal_bytes{job=\"node-exporter-job\"} - node_memory_MemFree_bytes{job=\"node-exporter-job\"} - node_memory_Buffers_bytes{job=\"node-exporter-job\"} - node_memory_Cached_bytes{job=\"node-exporter-job\"} - node_memory_SwapCached_bytes{job=\"node-exporter-job\"} - node_memory_Slab_bytes{job=\"node-exporter-job\"} - node_memory_PageTables_bytes{job=\"node-exporter-job\"} - node_memory_VmallocUsed_bytes{job=\"node-exporter-job\"} ) or ( node_memory_MemTotal{job=\"node-exporter-job\"} - node_memory_MemFree{job=\"node-exporter-job\"} - node_memory_Buffers{job=\"node-exporter-job\"} - node_memory_Cached{job=\"node-exporter-job\"} - node_memory_SwapCached{job=\"node-exporter-job\"} - node_memory_Slab{job=\"node-exporter-job\"} - node_memory_PageTables{job=\"node-exporter-job\"} - node_memory_VmallocUsed{job=\"node-exporter-job\"} )",
           "hide": false,
@@ -5438,7 +5481,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
+            "uid": "${DS_PROMETHEUS}"
           },
           "expr": "node_memory_Buffers_bytes{job=\"node-exporter-job\"} or node_memory_Buffers{job=\"node-exporter-job\"}",
           "interval": "",
@@ -5449,7 +5492,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
+            "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
           "expr": "node_memory_Cached_bytes{job=\"node-exporter-job\"} or node_memory_Cached{job=\"node-exporter-job\"}",
@@ -5461,7 +5504,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
+            "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
           "expr": "node_memory_MemFree_bytes{job=\"node-exporter-job\"} or node_memory_MemFree{job=\"node-exporter-job\"}",
@@ -5472,7 +5515,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
+            "uid": "${DS_PROMETHEUS}"
           },
           "expr": "node_memory_Slab_bytes{job=\"node-exporter-job\"} or node_memory_Slab{job=\"node-exporter-job\"}",
           "interval": "",
@@ -5486,7 +5529,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -5570,7 +5613,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
+            "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
           "expr": "node_hwmon_temp_celsius{chip=\"platform_coretemp_0\",job=\"node-exporter-job\",sensor=\"temp1\"}",
@@ -5586,7 +5629,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -5792,7 +5835,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
+            "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
           "expr": "probe_duration_seconds{job=\"google-ping-job\"}",
@@ -5804,7 +5847,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
+            "uid": "${DS_PROMETHEUS}"
           },
           "expr": "probe_duration_seconds{job=\"cloudflare-ping-job\"}",
           "interval": "",
@@ -5819,7 +5862,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -5894,7 +5937,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
+            "uid": "${DS_PROMETHEUS}"
           },
           "expr": "1",
           "interval": "",
@@ -5908,7 +5951,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -5992,7 +6035,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
+            "uid": "${DS_PROMETHEUS}"
           },
           "expr": "up{job=\"beacon-client-job\"}",
           "hide": false,
@@ -6008,7 +6051,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -6092,7 +6135,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
+            "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
           "expr": "(node_memory_MemFree_bytes{job=\"node-exporter-job\"} or node_memory_MemFree{job=\"node-exporter-job\"}) + (node_memory_Cached_bytes{job=\"node-exporter-job\"} or node_memory_Cached{job=\"node-exporter-job\"})",
@@ -6109,7 +6152,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -6193,7 +6236,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
+            "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
           "expr": "sum(validator_balance) - sum(validator_balance offset 1h) - count(validator_balance > 16)*32 + count(validator_balance offset 1h > 0)*32",
@@ -6210,7 +6253,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
+        "uid": "${DS_PROMETHEUS}"
       },
       "description": "",
       "fieldConfig": {
@@ -6297,7 +6340,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
+            "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
           "expr": "sum(irate(node_cpu_seconds_total{mode=\"user\",job=\"node-exporter-job\"}[5m])) or sum(irate(node_cpu{mode=\"user\",job=\"node-exporter-job\"}[5m]))",
@@ -6314,7 +6357,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
+        "uid": "${DS_PROMETHEUS}"
       },
       "description": "",
       "fieldConfig": {
@@ -6400,7 +6443,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
+            "uid": "${DS_PROMETHEUS}"
           },
           "expr": "(time()-process_start_time_seconds{job=\"beacon-client-job\"})/3600",
           "interval": "",
@@ -6414,7 +6457,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
+        "uid": "${DS_PROMETHEUS}"
       },
       "description": "",
       "fieldConfig": {
@@ -6500,7 +6543,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
+            "uid": "${DS_PROMETHEUS}"
           },
           "expr": "(time()-process_start_time_seconds{job=\"beacon-client-job\"})/3600",
           "interval": "",
@@ -6514,7 +6557,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -6598,7 +6641,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
+            "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
           "expr": "node_hwmon_temp_celsius{chip=\"platform_coretemp_0\",job=\"node-exporter-job\",sensor=\"temp1\"}",
@@ -6615,7 +6658,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -6699,7 +6742,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
+            "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
           "expr": "probe_duration_seconds{job=\"google-ping-job\"}",
@@ -6716,7 +6759,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -6800,7 +6843,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
+            "uid": "${DS_PROMETHEUS}"
           },
           "expr": "beacon_clock_time_slot-beacon_head_slot",
           "interval": "",
@@ -6814,7 +6857,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -6901,7 +6944,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
+            "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
           "expr": "(sum(node_filesystem_size_bytes{job=\"node-exporter-job\"})-sum(node_filesystem_avail_bytes{job=\"node-exporter-job\"}))/sum(node_filesystem_size_bytes{job=\"node-exporter-job\"})",
@@ -6918,7 +6961,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -7002,7 +7045,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
+            "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
           "expr": "beacon_prev_epoch_target_gwei/beacon_prev_epoch_active_gwei*100",
@@ -7019,7 +7062,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -7103,7 +7146,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
+            "uid": "${DS_PROMETHEUS}"
           },
           "expr": "up{job=\"beacon-client-job\"}",
           "interval": "",
@@ -7117,7 +7160,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -7201,7 +7244,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "dfd149a1-ce28-491a-858e-6489e5e22951"
+            "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
           "expr": "p2p_peer_count{state=\"Connected\",job=\"beacon-client-job\"}",
@@ -7241,5 +7284,6 @@
   "timezone": "browser",
   "title": "LUKSO Teku Nimbus-Eth2 Dashboard EUR",
   "uid": "lukso-teku-nim-dash-eur-12",
-  "version": 1
+  "version": 1,
+  "weekStart": ""
 }
