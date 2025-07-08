@@ -82,7 +82,12 @@ const sections = [
       },
       {
         title: "Alert Systems",
-        pages: ["Telegram Bot", "Grafana Notifications", "Image Rendering"],
+        pages: [
+          "Telegram Bot",
+          "Grafana Notifications",
+          "Image Rendering",
+          "Selfnode Alerts",
+        ],
       },
       {
         title: "External Access",
