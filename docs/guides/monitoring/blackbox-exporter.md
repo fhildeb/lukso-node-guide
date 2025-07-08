@@ -195,6 +195,12 @@ sudo nano /etc/systemd/system/blackbox_exporter.service
 
 **5.2 Add Configuration**: Paste the following content using your preferred logging tool, then save and exit the file.
 
+:::tip
+
+Further details on Journal and System Logging can be found on the [**Utility Tools**](/docs/theory/node-operation/utility-tools.md) page in the the 🧠 [**Theory**](/docs/theory/preparations/node-specifications.md) section.
+
+:::
+
 <Tabs groupId="logging-tool">
 <TabItem value="journal" label="Journal Logging" default>
 

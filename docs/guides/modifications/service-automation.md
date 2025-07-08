@@ -468,6 +468,12 @@ sudo nano /etc/systemd/system/lukso-validator.service
 
 Then continue to write down or paste the service properties and descriptions for your preferred logging tool.
 
+:::tip
+
+Further details on Journal and System Logging can be found on the [**Utility Tools**](/docs/theory/node-operation/utility-tools.md) page in the the 🧠 [**Theory**](/docs/theory/preparations/node-specifications.md) section.
+
+:::
+
 <Tabs groupId="logging-tool">
   <TabItem value="journal" label="Journal Logging" default>
 
