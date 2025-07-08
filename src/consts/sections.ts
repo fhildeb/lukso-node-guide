@@ -86,6 +86,7 @@ const sections = [
           "Telegram Bot",
           "Grafana Notifications",
           "Image Rendering",
+          "Custom Messages",
           "Selfnode Alerts",
         ],
       },

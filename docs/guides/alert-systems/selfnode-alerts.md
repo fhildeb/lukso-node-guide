@@ -1,13 +1,13 @@
 ---
-sidebar_label: "9.4 Selfnodes Alerts"
-sidebar_position: 4
+sidebar_label: "9.5 Selfnodes Alerts"
+sidebar_position: 5
 description: Step-by-step guide to set up Selfnode Validator alerts for LUKSO for missed attestations, performance issues, and uptime tracking.
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-# 9.4 Selfnode Alerts
+# 9.5 Selfnode Alerts
 
 The [Selfnode Validator Monitoring](https://www.selfnodes.com/validatormonitoring) is a free and user-friendly alerting service that helps LUKSO validators monitor the performance and health of their nodes. Unlike setting up a custom alerting system using [Grafana Notifications](/docs/guides/alert-systems/grafana-notifications.md) and a [Telegram Bot](/docs/guides/alert-systems/telegram-bot.md), Selfnode does not requires any advanced setup. Once you provide your validator indices, the service automatically tracks events and sends you alerts via various channels. It’s ideal for homestakers who prefer simplicity and reliability without the overhead.
 

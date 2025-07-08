@@ -106,7 +106,7 @@ up{job="beacon-client-job"}
 </TabItem> 
 </Tabs>
 
-**Alert Consensus Process Restarted**
+**Alert: Consensus Process Restarted**
 
 ```text
 1:   Process up
