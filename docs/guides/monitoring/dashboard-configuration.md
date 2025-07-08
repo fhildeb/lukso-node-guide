@@ -11,6 +11,8 @@ import TabItem from '@theme/TabItem';
 
 A Grafana dashboard is a powerful interface for visualizing real-time metrics, allowing node operators to monitor client performance, hardware usage, validator income, and network health. This guide will cover how to configure the dashboard interface after previously setting up the Prometheus data collector and exporter services.
 
+![Dashboard Preview](/img/guides/monitoring/dashboard.jpeg)
+
 :::tip
 
 Further details about node analytics can be found on the [**Monitoring Tools**](/docs/theory/node-operation/monitoring-tools.md) page in the 🧠 [**Theory**](/docs/theory/preparations/node-specifications.md) section.

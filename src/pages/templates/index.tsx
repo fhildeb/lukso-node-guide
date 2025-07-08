@@ -9,8 +9,8 @@ function TemplatesPage() {
     "📝 Prysm & Lighthouse Dashboards": dashboards.filter(
       (d) => d.label === "Prysm & Lighthouse"
     ),
-    "📝 Teku & Nimbus Dashboards": dashboards.filter(
-      (d) => d.label === "Teku & Nimbus"
+    "📝 Teku & Nimbus-Eth2 Dashboards": dashboards.filter(
+      (d) => d.label === "Teku & Nimbus-Eth2"
     ),
   };
 
@@ -74,6 +74,14 @@ function TemplatesPage() {
                       <Link to="/templates">Grafana Dashboard</Link>.
                     </li>
                   </ol>
+                </div>
+              </div>
+            </div>
+            <div className={styles.sectionBox}>
+              <div className="admonition admonition-tip alert alert--success">
+                <div className="admonition-heading">
+                  <h2>Preview</h2>
+                  <img src="/img/guides/monitoring/dashboard.jpeg"></img>
                 </div>
               </div>
             </div>

@@ -21,6 +21,10 @@
   margin: 0 auto;
 }
 
+img {
+  border-radius: 0.5rem;
+}
+
 /* COLUMN LAYOUT */
 
 .leftColumn,
