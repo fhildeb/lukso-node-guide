@@ -7239,7 +7239,7 @@
     ]
   },
   "timezone": "browser",
-  "title": "LUKSO Prysm Lighthouse Dashboard USD",
-  "uid": "lukso-prysm-lh-dash-eur-12",
+  "title": "LUKSO Teku Nimbus-Eth2 Dashboard USD",
+  "uid": "lukso-teku-nim-dash-usd-12",
   "version": 1
 }
