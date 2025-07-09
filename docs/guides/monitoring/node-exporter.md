@@ -129,7 +129,7 @@ sudo vim /etc/systemd/system/node_exporter.service
 </TabItem> <TabItem value="nano" label="Nano">
 
 ```sh
-nano vim /etc/systemd/system/node_exporter.service
+sudo nano /etc/systemd/system/node_exporter.service
 ```
 
 </TabItem>
