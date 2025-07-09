@@ -64,6 +64,7 @@ const sections = [
           "Peer Count Limits",
           "Dynamic DNS",
           "Service Automation",
+          "Execution Dashboard",
         ],
       },
       {

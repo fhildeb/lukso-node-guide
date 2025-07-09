@@ -1,15 +1,21 @@
 ---
-sidebar_label: "7.2 Custom Node Name"
-sidebar_position: 2
-description: "Learn how to assign a custom name to your LUKSO node for display on the execution status panel. Supports Geth, Erigon, Nethermind, Besu, and various CLI or automated setups."
+sidebar_label: "7.8 Execution Dashboard"
+sidebar_position: 8
+description: "TODO"
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-# 7.2 Custom Node Name
+# 7.8 Execution Dashboard
 
-To personalize your node's appearance, you can assign a custom name thats publically displayed on the [execution status panel](https://stats.execution.mainnet.lukso.network/).
+To list your node on an [Execution Status Page](/docs/guides/monitoring/external-monitoring.md#execution-status-page), you can add a ETHStats secret to your execution client to monitor versions, latencies, peers, synced blocks, and pending transactions based on their current [gas price configuration](/docs/guides/maintenance/gas-price-configuration.md). You node will then begin to synchronize data with the dashboard service, so the service can be monitored from any device.
+
+| Dashboard                                                                                | Maintainer | Access  | Credentials                                                                                                                                |
+| ---------------------------------------------------------------------------------------- | ---------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
+| [Mainnet Execution Status Page ↗](https://stats.execution.mainnet.lukso.network/)        | LUKSO Team | Private | **Server:** `stats.execution.mainnet.lukso.network` <br/> **Secret**: _Apply as core contributors via [Discord](https://discord.gg/lukso)_ |
+| [Testnet Execution Status Page ↗](https://stats.execution.testnet.lukso.network/)        | LUKSO Team | Private | **Server:** `stats.execution.testnet.lukso.network` <br/> **Secret**: _Apply as Testnet operator via [Discord](https://discord.gg/lukso)_  |
+| [Stakingverse Status Page ↗](https://https://community.stats.execution.stakingverse.io/) | Community  | Public  | **Server:** `community.stats.execution.stakingverse.io` <br/> **Secret**: `Stakingverse-JordyDutch-69420`                                  |
 
 :::info
 
@@ -19,7 +25,7 @@ The following steps are performed on your 📟 **node server**.
 
 ## 1. Stop Node Operation
 
-Depending on your setup method, there are different ways to stop your node before setting a custom name.
+Depending on your setup method, there are different ways to stop your node before listing your node on a dashboard.
 
 <Tabs groupId="setup">
   <TabItem value="cli" label="LUKSO CLI" default>
@@ -109,19 +115,19 @@ sudo pkill validator
 
 </details>
 
-## 2. Add Node Name
+## 2. Add ETHStats Secret
 
-You can either set the node name via startup flags or persistently within the configuration files of your execution client. If you want to set a temporary name, using the flag is recommended, as it will only persist until the next restart of the node.
+You can either set your dashboard credentials via startup flags or persistently within the configuration files of your execution client. If you only want to check your node temporarily, using the flag is recommended, as it will only persist until the next restart of the node.
 
 <Tabs groupId="configuration">
   <TabItem value="flag" label="Setting a Startup Flag" default>
 
-Depending on your setup method, there are different ways to pass down the name flag using the [LUKSO CLI](https://github.com/lukso-network/tools-lukso-cli).
+Depending on your setup method, there are different ways to pass down the ETHStats flag using the [LUKSO CLI](https://github.com/lukso-network/tools-lukso-cli).
 
 <Tabs groupId="setup">
 <TabItem value="clinode" label="LUKSO CLI Node" default>
 
-Every execution client has a individual flag to set the node name during startup.
+Every execution client has a individual flag to set the ETHStats Secret during startup.
 
 <Tabs>
 <TabItem value="geth" label="Geth">
@@ -129,11 +135,11 @@ Every execution client has a individual flag to set the node name during startup
 ```sh
 cd <lukso-working-directory>
 
-# Start the Mainnet Node with Custom Name
-lukso start --checkpoint-sync --geth-identity "<your-node-name>"
+# Start the Mainnet Node with a ETHStats Secret
+lukso start --checkpoint-sync --geth-ethstats "<your-dashboard-name>:<ethstats-secret>@<ethstats-server>"
 
-# Start the Testnet Node with Custom Name
-lukso start --testnet --checkpoint-sync --geth-identity "<your-node-name>"
+# Start the Testnet Node with a ETHStats Secret
+lukso start --testnet --checkpoint-sync --geth-ethstats "<your-dashboard-name>:<ethstats-secret>@<ethstats-server>"
 ```
 
 </TabItem> <TabItem value="erigon" label="Erigon">
@@ -141,11 +147,11 @@ lukso start --testnet --checkpoint-sync --geth-identity "<your-node-name>"
 ```sh
 cd <lukso-working-directory>
 
-# Start the Mainnet Node with Custom Name
-lukso start --checkpoint-sync --erigon-identity "<your-node-name>"
+# Start the Mainnet Node with a ETHStats Secret
+lukso start --checkpoint-sync --erigon-ethstats "<your-dashboard-name>:<ethstats-secret>@<ethstats-server>"
 
-# Start the Testnet Node with Custom Name
-lukso start --testnet --checkpoint-sync --erigon-identity "<your-node-name>"
+# Start the Testnet Node with a ETHStats Secret
+lukso start --testnet --checkpoint-sync --erigon-ethstats "<your-dashboard-name>:<ethstats-secret>@<ethstats-server>"
 ```
 
 </TabItem> <TabItem value="nethermind" label="Nethermind">
@@ -154,10 +160,10 @@ lukso start --testnet --checkpoint-sync --erigon-identity "<your-node-name>"
 cd <lukso-working-directory>
 
 # Start the Mainnet Node with Custom Name
-lukso start --checkpoint-sync --nethermind-ethstats-name "<your-node-name>"
+lukso start --checkpoint-sync --nethermind-ethstats-enabled=true --nethermind-ethstats-name "<your-dashboard-name>" --nethermind-ethstats-secret "<ethstats-secret>" --ethstats-server "wss://<ethstats-server>"
 
 # Start the Testnet Node with Custom Name
-lukso start --testnet --checkpoint-sync --nethermind-ethstats-name "<your-node-name>"
+lukso start --testnet --checkpoint-sync --nethermind-ethstats-enabled=true --nethermind-ethstats-name "<your-dashboard-name>" --nethermind-ethstats-secret "<ethstats-secret>" --nethermind-ethstats-server "wss://<ethstats-server>"
 ```
 
 </TabItem> <TabItem value="besu" label="Besu">
@@ -165,18 +171,12 @@ lukso start --testnet --checkpoint-sync --nethermind-ethstats-name "<your-node-n
 ```sh
 cd <lukso-working-directory>
 
-# Start the Mainnet Node with Custom Name
-lukso start --checkpoint-sync --besu-ethstats="<your-node-name>:<ethstats-secret>@<ethstats-server-url>"
+# Start the Mainnet Node with a ETHStats Secret
+lukso start --checkpoint-sync --besu-ethstats "<your-dashboard-name>:<ethstats-secret>@<ethstats-server>"
 
-# Start the Testnet Node with Custom Name
-lukso start --testnet --checkpoint-sync --besu-ethstats="<your-node-name>:<ethstats-secret>@<ethstats-server-url>"
+# Start the Testnet Node with a ETHStats Secret
+lukso start --testnet --checkpoint-sync --besu-ethstats "<your-dashboard-name>:<ethstats-secret>@<ethstats-server>"
 ```
-
-:::warning
-
-The Besu client embeds the node name directly within the Eth-Stats connection string, meaning you must also exchange and provide the `<ethstats-secret>` and `<ethstats-server-url>` as a flag. Other execution clients have those set separately within their config files.
-
-:::
 
 </TabItem>
 </Tabs>
@@ -186,7 +186,9 @@ The Besu client embeds the node name directly within the Eth-Stats connection st
 The following properties need to be exchanged:
 
 - `<lukso-working-directory>` with the path of the node folder
-- `<your-node-name>` with the custom description or name of the node
+- `<your-dashboard-name>` with the node name to show up on the dashboard
+- `ethstats-secret` with the actual secret of your dashboard server
+- `ethstats-server` with the address of your dashboard server
 
 :::
 
@@ -198,7 +200,7 @@ sudo lukso status
 
 </TabItem> <TabItem value="clivalidator" label="LUKSO CLI Validator" default>
 
-Every execution client has a individual flag to set the node name during startup.
+Every execution client has a individual flag to set the EthStats Secret during startup.
 
 <Tabs>
 <TabItem value="geth" label="Geth">
@@ -207,10 +209,10 @@ Every execution client has a individual flag to set the node name during startup
 cd <lukso-working-directory>
 
 # Start the Mainnet Validator Node with Custom Name
-lukso start --validator --transaction-fee-recipient "<your-fee-recipient-address>" --checkpoint-sync --geth-identity "<your-node-name>"
+lukso start --validator --transaction-fee-recipient "<your-fee-recipient-address>" --checkpoint-sync --geth-ethstats "<your-dashboard-name>:<ethstats-secret>@<ethstats-server>"
 
 # Start the Testnet Validator Node with Custom Name
-lukso start --testnet --validator --transaction-fee-recipient "<your-fee-recipient-address>" --checkpoint-sync  --geth-identity "<your-node-name>"
+lukso start --testnet --validator --transaction-fee-recipient "<your-fee-recipient-address>" --checkpoint-sync  --geth-ethstats "<your-dashboard-name>:<ethstats-secret>@<ethstats-server>"
 ```
 
 </TabItem> <TabItem value="erigon" label="Erigon">
@@ -219,10 +221,10 @@ lukso start --testnet --validator --transaction-fee-recipient "<your-fee-recipie
 cd <lukso-working-directory>
 
 # Start the Mainnet Validator Node with Custom Name
-lukso start --validator --transaction-fee-recipient "<your-fee-recipient-address>" --checkpoint-sync --erigon-identity "<your-node-name>"
+lukso start --validator --transaction-fee-recipient "<your-fee-recipient-address>" --checkpoint-sync --erigon-ethstats "<your-dashboard-name>:<ethstats-secret>@<ethstats-server>"
 
 # Start the Testnet Validator Node with Custom Name
-lukso start --testnet --validator --transaction-fee-recipient "<your-fee-recipient-address>" --checkpoint-sync --erigon-identity "<your-node-name>"
+lukso start --testnet --validator --transaction-fee-recipient "<your-fee-recipient-address>" --checkpoint-sync --erigon-ethstats "<your-dashboard-name>:<ethstats-secret>@<ethstats-server>"
 ```
 
 </TabItem> <TabItem value="nethermind" label="Nethermind">
@@ -231,10 +233,10 @@ lukso start --testnet --validator --transaction-fee-recipient "<your-fee-recipie
 cd <lukso-working-directory>
 
 # Start the Mainnet Validator Node with Custom Name
-lukso start --validator --transaction-fee-recipient "<your-fee-recipient-address>" --checkpoint-sync --nethermind-ethstats-name "<your-node-name>"
+lukso start --validator --transaction-fee-recipient "<your-fee-recipient-address>" --checkpoint-sync --nethermind-ethstats-enabled=true --nethermind-ethstats-name "<your-dashboard-name>" --nethermind-ethstats-secret "<ethstats-secret>" --nethermind-ethstats-server "wss://<ethstats-server>"
 
 # Start the Testnet Validator Node with Custom Name
-lukso start --testnet --validator --transaction-fee-recipient "<your-fee-recipient-address>" --checkpoint-sync --nethermind-ethstats-name "<your-node-name>"
+lukso start --testnet --validator --transaction-fee-recipient "<your-fee-recipient-address>" --checkpoint-sync --nethermind-ethstats-enabled=true --nethermind-ethstats-name "<your-dashboard-name>" --nethermind-ethstats-secret "<ethstats-secret>" --nethermind-ethstats-server "wss://<ethstats-server>"
 ```
 
 </TabItem> <TabItem value="besu" label="Besu">
@@ -243,17 +245,11 @@ lukso start --testnet --validator --transaction-fee-recipient "<your-fee-recipie
 cd <lukso-working-directory>
 
 # Start the Mainnet Validator Node with Custom Name
-lukso start --validator --transaction-fee-recipient "<your-fee-recipient-address>" --checkpoint-sync --besu-ethstats="<your-node-name>:<ethstats-secret>@<ethstats-server-url>"
+lukso start --validator --transaction-fee-recipient "<your-fee-recipient-address>" --checkpoint-sync --besu-ethstats "<your-dashboard-name>:<ethstats-secret>@<ethstats-server>"
 
 # Start the Testnet Validator Node with Custom Name
-lukso start --testnet --validator --transaction-fee-recipient "<your-fee-recipient-address>" --checkpoint-sync --besu-ethstats="<your-node-name>:<ethstats-secret>@<ethstats-server-url>"
+lukso start --testnet --validator --transaction-fee-recipient "<your-fee-recipient-address>" --checkpoint-sync --besu-ethstats "<your-dashboard-name>:<ethstats-secret>@<ethstats-server>"
 ```
-
-:::warning
-
-The Besu client embeds the node name directly within the Eth-Stats connection string, meaning you must also exchange and provide the `<ethstats-secret>` and `<ethstats-server-url>` as a flag. Other execution clients have those set separately within their config files.
-
-:::
 
 </TabItem>
 </Tabs>
@@ -264,7 +260,9 @@ The following properties need to be exchanged:
 
 - `<lukso-working-directory>` with the path of the node folder
 - `<your-fee-recipient-address>` with the wallet address receiving staking profits
-- `<your-node-name>` with the custom description or name of the node
+- `<your-dashboard-name>` with the node name to show up on the dashboard
+- `ethstats-secret` with the actual secret of your dashboard server
+- `ethstats-server` with the address of your dashboard server
 
 :::
 
@@ -300,7 +298,7 @@ Exchange `<lukso-working-directory>` with the path to the node folder.
 
 :::
 
-Add the name flag new line to the start command, then save and exit the file.
+Add the ETHStats flag new line to the start command, then save and exit the file.
 
 <Tabs>
 <TabItem value="geth" label="Geth">
@@ -311,7 +309,7 @@ exec /usr/local/bin/lukso start \
         --validator-wallet-password ./static/<your-generic-password-file> \
         --transaction-fee-recipient "<your-fee-recipient-address>" \
         --checkpoint-sync \
-        --geth-identity "<your-node-name>"
+        --geth-ethstats "<your-dashboard-name>:<ethstats-secret>@<ethstats-server>"
 ```
 
 </TabItem> <TabItem value="erigon" label="Erigon">
@@ -322,7 +320,7 @@ exec /usr/local/bin/lukso start \
         --validator-wallet-password ./static/<your-generic-password-file> \
         --transaction-fee-recipient "<your-fee-recipient-address>" \
         --checkpoint-sync \
-        --erigon-identity "<your-node-name>"
+        --erigon-ethstats "<your-dashboard-name>:<ethstats-secret>@<ethstats-server>"
 ```
 
 </TabItem> <TabItem value="nethermind" label="Nethermind">
@@ -333,7 +331,10 @@ exec /usr/local/bin/lukso start \
         --validator-wallet-password ./static/<your-generic-password-file> \
         --transaction-fee-recipient "<your-fee-recipient-address>" \
         --checkpoint-sync \
-        --nethermind-ethstats-name "<your-node-name>"
+        --nethermind-ethstats-enabled=true \
+        --nethermind-ethstats-name   "<your-dashboard-name>" \
+        --nethermind-ethstats-secret "<ethstats-secret>" \
+        --nethermind-ethstats-server "wss://<ethstats-server>" \
 ```
 
 </TabItem> <TabItem value="besu" label="Besu">
@@ -344,14 +345,8 @@ exec /usr/local/bin/lukso start \
         --validator-wallet-password ./static/<your-generic-password-file> \
         --transaction-fee-recipient "<your-fee-recipient-address>" \
         --checkpoint-sync \
-        --besu-ethstats="<your-node-name>:<ethstats-secret>@<ethstats-server-url>"
+        --besu-ethstats "<your-dashboard-name>:<ethstats-secret>@<ethstats-server>"
 ```
-
-:::warning
-
-The Besu client embeds the node name directly within the Eth-Stats connection string, meaning you must also exchange and provide the `<ethstats-secret>` and `<ethstats-server-url>` as a flag. Other execution clients have those set separately within their config files.
-
-:::
 
 </TabItem>
 </Tabs>
@@ -362,7 +357,9 @@ The following properties need to be exchanged:
 
 - `<your-generic-password-file>` with the name of your validator password file
 - `<your-fee-recipient-address>` with the wallet address receiving staking profits
-- `<your-node-name>` with the actual node name
+- `<your-dashboard-name>` with the node name to show up on the dashboard
+- `ethstats-secret` with the actual secret of your dashboard server
+- `ethstats-server` with the address of your dashboard server
 
 :::
 
@@ -377,7 +374,7 @@ sudo systemctl start lukso-validator
 
 </TabItem> <TabItem value="file" label="Modifying the Client Configuration">
 
-Depending on your execution client, the name can be set with different properties.
+Depending on your execution client, the ETHStats Secret can be set with different properties.
 
 <Tabs groupId="client">
 <TabItem value="geth" label="Geth">
@@ -480,24 +477,24 @@ The following properties need to be exchanged:
 
 :::
 
-Add the node name as a new line within the settings, then save and exit the file.
+Add the ETHStats Secret as a new line within the settings, then save and exit the file.
 
 <Tabs groupId="client">
 <TabItem value="geth" label="Geth">
 
-Search for the _Node_ section and add the _UserIdent_ property under it.
+Search for the _Ethstats_ section, then add and uncomment the _URL_ property under it.
 
 ```text
-[Node]
-UserIdent = "<your-node-name>"
+[Ethstats]
+URL = "<your-dashboard-name>:<ethstats-secret>@<ethstats-server>"
 ```
 
 </TabItem> <TabItem value="erigon" label="Erigon">
 
-Set the _identity_ property at the end of the file.
+Set and uncomment the _ethstats_ property at the end of the file.
 
 ```text
-"identity" = "<your-node-name>"
+"ethstats" = "<your-dashboard-name>:<ethstats-secret>@<ethstats-server>"
 ```
 
 </TabItem> <TabItem value="nethermind" label="Nethermind">
@@ -506,7 +503,10 @@ Set the _EthStats_ object and _Name_ property at the ending bracket of the _Netw
 
 ```text
 "EthStats": {
-  "Name": "<your-node-name>"
+  "Enabled": true,
+  "Name": "<your-dashboard-name>",
+  "Secret": "<ethstats-secret>",
+  "Server": "wss://<ethstats-server>"
 }
 ```
 
@@ -515,21 +515,19 @@ Set the _EthStats_ object and _Name_ property at the ending bracket of the _Netw
 Set the _ethstats_ property at the end of the file.
 
 ```text
-'ethstats'='<your-node-name>:<secret>@<server-url>'
+'ethstats'='<your-dashboard-name>:<ethstats-secret>@<ethstats-server>'
 ```
-
-:::warning
-
-The Besu client embeds the node name directly within the Eth-Stats connection string, meaning you must also exchange and provide the `<ethstats-secret>` and `<ethstats-server-url>` as a flag. Other execution clients have those set separately within their config files.
-
-:::
 
 </TabItem>
 </Tabs>
 
 :::info
 
-Exchange `<your-node-name>` with the custom description or name of the node
+The following properties need to be exchanged:
+
+- `<your-dashboard-name>` with the node name to show up on the dashboard
+- `ethstats-secret` with the actual secret of your dashboard server
+- `ethstats-server` with the address of your dashboard server
 
 :::
 
@@ -539,7 +537,7 @@ Ensure there are no missing spaces, characters or unintended linebreaks before s
 
 :::
 
-Depending on your setup method, there are different ways to start your node after setting the node name.
+Depending on your setup method, there are different ways to start your node after setting the ETHStats Secret.
 
 <Tabs groupId="setup">
   <TabItem value="clinode" label="LUKSO CLI Node" default>

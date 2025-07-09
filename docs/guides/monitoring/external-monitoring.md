@@ -26,12 +26,19 @@ The Execution Status Page is crucial for tracking your node's overall health and
 
 - [Mainnet Execution Status Page ↗](https://stats.execution.mainnet.lukso.network/)
 - [Testnet Execution Status Page ↗](https://stats.execution.testnet.lukso.network/)
+- [Stakingverse Status Page ↗](https://community.stats.execution.stakingverse.io/)
 
 ![Execution Status Page](/img/guides/monitoring/explorer-pages-2.png)
 
+:::tip
+
+A guide on how to list your node on an Execution Status Page can be found on the [Execution Dashboard](/docs/guides/modifications/execution-dashboard.md) page.
+
+:::
+
 :::info
 
-If you want to list your node as core contributor, get in contact with the Network Team on the [**LUKSO Discord Server**](https://discord.gg/lukso).
+Both, the LUKSO Community and the LUKSO Team are running Execution Status Pages. While the community dashboard is open for everyone, the LUKSO Team only list nodes of core contributors that got in contact via the [**LUKSO Discord Server**](https://discord.gg/lukso).
 
 :::
 
