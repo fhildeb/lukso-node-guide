@@ -60,27 +60,6 @@ For further details about slots, epochs, and status types, look at the [**Proof 
 
 :::
 
-## Consensus Status Page
-
-The Consensus Status Page is a tool for monitoring your node's operation. If you received an ETH2Stats secret from the LUKSO Team prior to the Mainnet Launch, the service provides details such as the node's name, consensus client type, it's current consensus peers, attestations, head slot, justified slot, and finalized slot. On top, it also displays the memory usage on the node.
-
-- [Mainnet Consensus Status Page ↗](https://stats.consensus.mainnet.lukso.network/)
-- [Testnet Consensus Status Page ↗](https://stats.consensus.testnet.lukso.network/)
-
-![Consensus Status Page](/img/guides/monitoring/explorer-pages-4.png)
-
-:::tip
-
-For further details about slots, epochs, and status types, look at the [**Proof of Stake**](/docs/theory/blockchain-knowledge/proof-of-stake.md) page in the 🧠 [**Theory**](/docs/theory/preparations/node-specifications.md) section.
-
-:::
-
-:::info
-
-If you want to list your node as core contributor, get in contact with the Network Team on the [**LUKSO Discord Server**](https://discord.gg/lukso).
-
-:::
-
 ## External Validator Checks
 
 The consensus explorer is considered the main status page for validators when it comes to monitoring uptime, withdrawals, block proposals, and earnings. While you can search for single validator indecies, the service also offers to **build a personalized validator status page** from an URL. This link can then be bookmarked in your browser to access a consolidated overview of all your validators at any time.
