@@ -15,7 +15,7 @@ To list your node on an [Execution Status Page](/docs/guides/monitoring/external
 | ---------------------------------------------------------------------------------------- | ---------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
 | [Mainnet Execution Status Page ↗](https://stats.execution.mainnet.lukso.network/)        | LUKSO Team | Private | **Server:** `stats.execution.mainnet.lukso.network` <br/> **Secret**: _Apply as core contributors via [Discord](https://discord.gg/lukso)_ |
 | [Testnet Execution Status Page ↗](https://stats.execution.testnet.lukso.network/)        | LUKSO Team | Private | **Server:** `stats.execution.testnet.lukso.network` <br/> **Secret**: _Apply as Testnet operator via [Discord](https://discord.gg/lukso)_  |
-| [Stakingverse Status Page ↗](https://https://community.stats.execution.stakingverse.io/) | Community  | Public  | **Server:** `community.stats.execution.stakingverse.io` <br/> **Secret**: `Stakingverse-JordyDutch-69420`                                  |
+| [Stakingverse Status Page ↗](https://community.stats.execution.stakingverse.io/) | Community  | Public  | **Server:** `community.stats.execution.stakingverse.io` <br/> **Secret**: `Stakingverse-JordyDutch-69420`                                  |
 
 :::info
 
