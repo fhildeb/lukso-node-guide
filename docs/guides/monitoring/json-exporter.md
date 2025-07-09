@@ -74,7 +74,7 @@ wget https://github.com/prometheus-community/json_exporter/releases/download/v0.
 **2.2 Extract Files**: Unpack the archive using Ubuntu’s archiving tool.
 
 ```sh
-tar json_exporter-0.7.0.linux-amd64.tar.gz
+tar xzfv json_exporter-0.7.0.linux-amd64.tar.gz
 ```
 
 :::info

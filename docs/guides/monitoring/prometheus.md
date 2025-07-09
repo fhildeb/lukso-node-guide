@@ -86,8 +86,9 @@ The `tar` command extracts `x` the uncompressed `z` archive from the file path `
 **2.3 Navigate into the Folder**: Move into the extracted archive to view the executables.
 
 ```sh
-sudo cd prometheus-2.53.5.linux-amd64
+cd prometheus-2.53.5.linux-amd64
 ls -al
+cd
 ```
 
 :::info
