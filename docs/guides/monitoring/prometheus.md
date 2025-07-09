@@ -202,7 +202,73 @@ All properties will later on be used within the Grafana Dashboard to fetch the t
   <TabItem value="euro" label="EUR" default>
 
 <Tabs groupId="client">
-<TabItem value="teku-nimbus" label="Teku & Nimbus-Eth2">
+<TabItem value="teku" label="Teku">
+
+```text
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+
+scrape_configs:
+  - job_name: 'prometheus-job'
+    scrape_interval: 5s
+    static_configs:
+      - targets: ['127.0.0.1:9090']
+  - job_name: 'beacon-client-job'
+    scrape_interval: 5s
+    static_configs:
+      - targets: ['127.0.0.1:8009']
+  - job_name: 'node-exporter-job'
+    scrape_interval: 5s
+    static_configs:
+      - targets: ['127.0.0.1:9100']
+  - job_name: 'google-ping-job'
+    metrics_path: /probe
+    params:
+      module: [icmp]
+    static_configs:
+      - targets:
+        - 8.8.8.8
+    relabel_configs:
+      - source_labels: [__address__]
+        target_label: __param_target
+      - source_labels: [__param_target]
+        target_label: instance
+      - target_label: __address__
+        replacement: 127.0.0.1:9115  # The blackbox exporter's real hostname:port.
+  - job_name: 'cloudflare-ping-job'
+    metrics_path: /probe
+    params:
+      module: [icmp]
+    static_configs:
+      - targets:
+        - 1.1.1.1
+    relabel_configs:
+      - source_labels: [__address__]
+        target_label: __param_target
+      - source_labels: [__param_target]
+        target_label: instance
+      - target_label: __address__
+        replacement: 127.0.0.1:9115  # The blackbox exporter's real hostname:port.
+  - job_name: 'json-exporter-job'
+    static_configs:
+    - targets:
+      - 127.0.0.1:7979
+  - job_name: 'json'
+    metrics_path: /probe
+    static_configs:
+    - targets:
+      - https://api.coingecko.com/api/v3/simple/price?ids=lukso-token&vs_currencies=eur
+    relabel_configs:
+    - source_labels: [__address__]
+      target_label: __param_target
+    - source_labels: [__param_target]
+      target_label: instance
+    - target_label: __address__
+      replacement: 127.0.0.1:7979
+```
+
+</TabItem> <TabItem value="nimbus" label="Nimbus-Eth2">
 
 ```text
 global:
@@ -291,7 +357,7 @@ scrape_configs:
   - job_name: 'validator-client-job'
     scrape_interval: 5s
     static_configs:
-      - targets: ['127.0.0.1:5064']
+      - targets: ['127.0.0.1:5057']
   - job_name: 'google-ping-job'
     metrics_path: /probe
     params:
@@ -414,7 +480,73 @@ scrape_configs:
 </TabItem> <TabItem value="usd" label="USD">
 
 <Tabs groupId="client">
-<TabItem value="teku-nimbus" label="Teku & Nimbus-Eth2">
+<TabItem value="teku" label="Teku">
+
+```text
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+
+scrape_configs:
+  - job_name: 'prometheus-job'
+    scrape_interval: 5s
+    static_configs:
+      - targets: ['127.0.0.1:9090']
+  - job_name: 'beacon-client-job'
+    scrape_interval: 5s
+    static_configs:
+      - targets: ['127.0.0.1:8009']
+  - job_name: 'node-exporter-job'
+    scrape_interval: 5s
+    static_configs:
+      - targets: ['127.0.0.1:9100']
+  - job_name: 'google-ping-job'
+    metrics_path: /probe
+    params:
+      module: [icmp]
+    static_configs:
+      - targets:
+        - 8.8.8.8
+    relabel_configs:
+      - source_labels: [__address__]
+        target_label: __param_target
+      - source_labels: [__param_target]
+        target_label: instance
+      - target_label: __address__
+        replacement: 127.0.0.1:9115  # The blackbox exporter's real hostname:port.
+  - job_name: 'cloudflare-ping-job'
+    metrics_path: /probe
+    params:
+      module: [icmp]
+    static_configs:
+      - targets:
+        - 1.1.1.1
+    relabel_configs:
+      - source_labels: [__address__]
+        target_label: __param_target
+      - source_labels: [__param_target]
+        target_label: instance
+      - target_label: __address__
+        replacement: 127.0.0.1:9115  # The blackbox exporter's real hostname:port.
+  - job_name: 'json-exporter-job'
+    static_configs:
+    - targets:
+      - 127.0.0.1:7979
+  - job_name: 'json'
+    metrics_path: /probe
+    static_configs:
+    - targets:
+      - https://api.coingecko.com/api/v3/simple/price?ids=lukso-token&vs_currencies=usd
+    relabel_configs:
+    - source_labels: [__address__]
+      target_label: __param_target
+    - source_labels: [__param_target]
+      target_label: instance
+    - target_label: __address__
+      replacement: 127.0.0.1:7979
+```
+
+</TabItem> <TabItem value="nimbus" label="Nimbus-Eth2">
 
 ```text
 global:
@@ -503,7 +635,7 @@ scrape_configs:
   - job_name: 'validator-client-job'
     scrape_interval: 5s
     static_configs:
-      - targets: ['127.0.0.1:5064']
+      - targets: ['127.0.0.1:5057']
   - job_name: 'google-ping-job'
     metrics_path: /probe
     params:

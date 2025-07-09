@@ -136,14 +136,14 @@ function TemplatesPage() {
                     </li>
                     <li>
                       <strong>Validator Interfaces</strong>: <br />{" "}
-                      <code>5064: Lighthouse</code> <br />
+                      <code>5057: Lighthouse</code> <br />
                       <code>8081: Prysm</code>
                     </li>
                     <li>
                       <strong>Combined Interfaces</strong>: <br />{" "}
                       <code>8008: Nimbus-Eth2</code>
                       <br />
-                      <code>8008: Teku</code>
+                      <code>8009: Teku</code>
                     </li>
                   </ul>
                 </div>
@@ -255,14 +255,14 @@ function TemplatesPage() {
                     </li>
                     <li>
                       <strong>Validator Interfaces</strong>: <br />{" "}
-                      <code>5064: Lighthouse</code> <br />
+                      <code>5057: Lighthouse</code> <br />
                       <code>8081: Prysm</code>
                     </li>
                     <li>
                       <strong>Combined Interfaces</strong>: <br />{" "}
                       <code>8008: Nimbus-Eth2</code>
                       <br />
-                      <code>8008: Teku</code>
+                      <code>8009: Teku</code>
                     </li>
                   </ul>
                 </div>

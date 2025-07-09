@@ -19,18 +19,21 @@ Similar to [checking peers](/docs/guides/modifications/peer-count-limits.md#1-ch
 
 ## Monitoring Ports
 
-Consensus blockchain clients have default monitoring ports that allow Prometheus to gather metrics.
+Consensus blockchain clients have different monitoring ports that allow Prometheus to gather metrics.
 
-| PORT | CLIENT                         | DESCRIPTION                      | TCP | External |
-| ---- | ------------------------------ | -------------------------------- | --- | -------- |
-| 3500 | [Prysm] ↗                      | Consensus and Validator REST API | ✔️  | ❌       |
-| 5051 | [Teku] ↗                       | Consensus and Validator REST API | ✔️  | ❌       |
-| 5052 | [Nimbus-Eth2] ↗                | Consensus and Validator REST API | ✔️  | ❌       |
-| 5054 | [Lighthouse] ↗                 | Consensus Metrics                | ✔️  | ❌       |
-| 5064 | [Lighthouse] ↗                 | Validator Metrics                | ✔️  | ❌       |
-| 8008 | [Teku] ↗ <br/> [Nimbus-Eth2] ↗ | Consensus and Validator Metrics  | ✔️  | ❌       |
-| 8080 | [Prysm] ↗                      | Consensus Metrics                | ✔️  | ❌       |
-| 8081 | [Prysm] ↗                      | Validator Metrics                | ✔️  | ❌       |
+| LUKSO CLI PORT | CLIENT          | DESCRIPTION                      | TCP | External |
+| -------------- | --------------- | -------------------------------- | --- | -------- |
+| 4000           | [Lighthouse] ↗  | Consensus REST API               | ✔️  | ❌       |
+| 5062           | [Lighthouse] ↗  | Validator REST API               | ✔️  | ❌       |
+| 3500           | [Prysm] ↗       | Consensus and Validator REST API | ✔️  | ❌       |
+| 5051           | [Teku] ↗        | Consensus and Validator REST API | ✔️  | ❌       |
+| 5052           | [Nimbus-Eth2] ↗ | Consensus and Validator REST API | ✔️  | ❌       |
+| 5054           | [Lighthouse] ↗  | Consensus Metrics                | ✔️  | ❌       |
+| 5057           | [Lighthouse] ↗  | Validator Metrics                | ✔️  | ❌       |
+| 8008           | [Nimbus-Eth2] ↗ | Consensus and Validator Metrics  | ✔️  | ❌       |
+| 8009           | [Teku] ↗        | Consensus and Validator Metrics  | ✔️  | ❌       |
+| 8080           | [Prysm] ↗       | Consensus Metrics                | ✔️  | ❌       |
+| 8081           | [Prysm] ↗       | Validator Metrics                | ✔️  | ❌       |
 
 Service ports also come with default ports to bundle and present data.
 
@@ -41,6 +44,15 @@ Service ports also come with default ports to bundle and present data.
 | 9090 | [Prometheus] ↗        | Data Analytics       | ✔️  | ✅       |
 | 9100 | [Node-Exporter] ↗     | Hardware Metrics     | ✔️  | ❌       |
 | 9115 | [Blackbox-Exporter] ↗ | Connectivity Metrics | ✔️  | ❌       |
+
+:::warning
+
+The [**LUKSO Network Configuration**](https://github.com/lukso-network/network-configs/tree/main) changed the following client ports:
+
+- **Lighthouse**: Validator Metrics from Port `5064` to `5057`
+- **Teku**: Consensus and Validator Metrics from Port `8008` to `8009`
+
+:::
 
 :::tip
 
