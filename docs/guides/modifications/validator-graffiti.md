@@ -352,6 +352,16 @@ exec /usr/local/bin/lukso start \
 </TabItem>
 </Tabs>
 
+:::info
+
+The following properties need to be exchanged:
+
+- `<your-generic-password-file>` with the name of your validator password file
+- `<your-fee-recipient-address>` with the wallet address receiving staking profits
+- `<your-graffiti>` with the actual graffiti description of your node
+
+:::
+
 After the startup script was updated, you can restart the node by executing the related service.
 
 ```sh
