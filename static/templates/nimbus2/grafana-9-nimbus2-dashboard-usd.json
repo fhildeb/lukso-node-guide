@@ -6366,8 +6366,8 @@
     ]
   },
   "timezone": "browser",
-  "title": "LUKSO Teku Nimbus-Eth2 Dashboard USD",
-  "uid": "lukso-teku-nim-dash-usd-9",
+  "title": "LUKSO Nimbus-Eth2 Dashboard USD",
+  "uid": "lukso-nim-dash-usd-9",
   "version": 1,
   "weekStart": ""
 }

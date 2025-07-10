@@ -308,7 +308,7 @@
           "refId": "A"
         }
       ],
-      "title": "Total Validator Balance (Lyx)",
+      "title": "Total Validator Balance (LYX)",
       "type": "stat"
     },
     {
@@ -812,7 +812,7 @@
         "type": "prometheus",
         "uid": "${DS_PROMETHEUS}"
       },
-      "description": "Sum of all validator balances multiplied by the price of LYX in USD.",
+      "description": "Sum of all validator balances multiplied by the price of LYX in EUR.",
       "fieldConfig": {
         "defaults": {
           "decimals": 2,
@@ -826,7 +826,7 @@
               }
             ]
           },
-          "unit": "currencyUSD"
+          "unit": "currencyEUR"
         },
         "overrides": []
       },
@@ -860,11 +860,11 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "lyxusd",
+          "expr": "lyxeur",
           "hide": false,
           "instant": true,
           "interval": "",
-          "legendFormat": "lyxusd",
+          "legendFormat": "lyxeur",
           "refId": "A"
         },
         {
@@ -880,14 +880,14 @@
           "refId": "B"
         }
       ],
-      "title": "Total Validator Balance (USD)",
+      "title": "Total Validator Balance (EUR)",
       "transformations": [
         {
           "id": "calculateField",
           "options": {
             "alias": "total_validator_value",
             "binary": {
-              "left": "lyxusd",
+              "left": "lyxeur",
               "operator": "*",
               "reducer": "sum",
               "right": "balance"
@@ -907,7 +907,7 @@
         "type": "prometheus",
         "uid": "${DS_PROMETHEUS}"
       },
-      "description": "Total earnings in USD.",
+      "description": "Total earnings in EUR.",
       "fieldConfig": {
         "defaults": {
           "decimals": 2,
@@ -939,7 +939,7 @@
               }
             ]
           },
-          "unit": "currencyUSD"
+          "unit": "currencyEUR"
         },
         "overrides": []
       },
@@ -988,24 +988,24 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "lyxusd",
+          "expr": "lyxeur",
           "instant": true,
           "interval": "",
-          "legendFormat": "lyxusd",
+          "legendFormat": "lyxeur",
           "refId": "B"
         }
       ],
-      "title": "Total Earnings (USD)",
+      "title": "Total Earnings (EUR)",
       "transformations": [
         {
           "id": "calculateField",
           "options": {
-            "alias": "Total Earnings (USD)",
+            "alias": "Total Earnings (EUR)",
             "binary": {
               "left": "total_balance",
               "operator": "*",
               "reducer": "sum",
-              "right": "lyxusd"
+              "right": "lyxeur"
             },
             "mode": "binary",
             "reduce": {
@@ -1022,7 +1022,7 @@
         "type": "prometheus",
         "uid": "${DS_PROMETHEUS}"
       },
-      "description": "Price of Lyx in USD.",
+      "description": "Price of LYX in EUR.",
       "fieldConfig": {
         "defaults": {
           "decimals": 2,
@@ -1046,7 +1046,7 @@
               }
             ]
           },
-          "unit": "currencyUSD"
+          "unit": "currencyEUR"
         },
         "overrides": []
       },
@@ -1085,14 +1085,14 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
-          "expr": "lyxusd",
+          "expr": "lyxeur",
           "instant": true,
           "interval": "",
-          "legendFormat": "lyxusd",
+          "legendFormat": "lyxeur",
           "refId": "B"
         }
       ],
-      "title": "LYX Price (USD)",
+      "title": "LYX Price (EUR)",
       "type": "stat"
     },
     {
@@ -7238,7 +7238,6 @@
       "type": "timeseries"
     }
   ],
-  "preload": false,
   "refresh": "30s",
   "schemaVersion": 41,
   "tags": [],
@@ -7263,8 +7262,8 @@
     ]
   },
   "timezone": "browser",
-  "title": "LUKSO Prysm Lighthouse Dashboard USD",
-  "uid": "lukso-prysm-lh-dash-usd-12",
+  "title": "LUKSO Prysm Dashboard EUR",
+  "uid": "lukso-prysm-dash-eur-12",
   "version": 1,
   "weekStart": ""
 }

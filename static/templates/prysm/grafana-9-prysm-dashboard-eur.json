@@ -305,7 +305,7 @@
           "refId": "A"
         }
       ],
-      "title": "Total Validator Balance (Lyx)",
+      "title": "Total Validator Balance (LYX)",
       "type": "stat"
     },
     {
@@ -1003,7 +1003,7 @@
         "type": "prometheus",
         "uid": "${DS_PROMETHEUS}"
       },
-      "description": "Price of Lyx in EUR.",
+      "description": "Price of LYX in EUR.",
       "fieldConfig": {
         "defaults": {
           "decimals": 2,
@@ -6366,8 +6366,8 @@
     ]
   },
   "timezone": "browser",
-  "title": "LUKSO Prysm Lighthouse Dashboard EUR",
-  "uid": "lukso-prysm-lh-dash-eur-9",
+  "title": "LUKSO Prysm Dashboard EUR",
+  "uid": "lukso-prysm-dash-eur-9",
   "version": 1,
   "weekStart": ""
 }

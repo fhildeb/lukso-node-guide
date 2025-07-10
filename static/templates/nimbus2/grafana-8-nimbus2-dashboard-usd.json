@@ -719,7 +719,7 @@
     },
     {
       "datasource": "Prometheus",
-      "description": "Sum of all validator balances multiplied by the price of LYX in EUR.",
+      "description": "Sum of all validator balances multiplied by the price of LYX in USD.",
       "fieldConfig": {
         "defaults": {
           "decimals": 2,
@@ -734,7 +734,7 @@
               }
             ]
           },
-          "unit": "currencyEUR"
+          "unit": "currencyUSD"
         },
         "overrides": []
       },
@@ -761,11 +761,11 @@
       "pluginVersion": "8.2.3",
       "targets": [
         {
-          "expr": "lyxeur",
+          "expr": "lyxusd",
           "hide": false,
           "instant": true,
           "interval": "",
-          "legendFormat": "lyxeur",
+          "legendFormat": "lyxusd",
           "refId": "A"
         },
         {
@@ -779,14 +779,14 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Total Validator Balance (EUR)",
+      "title": "Total Validator Balance (USD)",
       "transformations": [
         {
           "id": "calculateField",
           "options": {
             "alias": "total_validator_value",
             "binary": {
-              "left": "lyxeur",
+              "left": "lyxusd",
               "operator": "*",
               "reducer": "sum",
               "right": "balance"
@@ -804,7 +804,7 @@
     {
       "cacheTimeout": null,
       "datasource": null,
-      "description": "Total earnings in EUR.",
+      "description": "Total earnings in USD.",
       "fieldConfig": {
         "defaults": {
           "decimals": 2,
@@ -837,7 +837,7 @@
               }
             ]
           },
-          "unit": "currencyEUR"
+          "unit": "currencyUSD"
         },
         "overrides": []
       },
@@ -877,26 +877,26 @@
           "refId": "A"
         },
         {
-          "expr": "lyxeur",
+          "expr": "lyxusd",
           "instant": true,
           "interval": "",
-          "legendFormat": "lyxeur",
+          "legendFormat": "lyxusd",
           "refId": "B"
         }
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Total Earnings (EUR)",
+      "title": "Total Earnings (USD)",
       "transformations": [
         {
           "id": "calculateField",
           "options": {
-            "alias": "Total Earnings (EUR)",
+            "alias": "Total Earnings (USD)",
             "binary": {
               "left": "total_balance",
               "operator": "*",
               "reducer": "sum",
-              "right": "lyxeur"
+              "right": "lyxusd"
             },
             "mode": "binary",
             "reduce": {
@@ -911,7 +911,7 @@
     {
       "cacheTimeout": null,
       "datasource": null,
-      "description": "Price of LYX in EUR.",
+      "description": "Price of LYX in USD.",
       "fieldConfig": {
         "defaults": {
           "decimals": 2,
@@ -936,7 +936,7 @@
               }
             ]
           },
-          "unit": "currencyEUR"
+          "unit": "currencyUSD"
         },
         "overrides": []
       },
@@ -970,16 +970,16 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "lyxeur",
+          "expr": "lyxusd",
           "instant": true,
           "interval": "",
-          "legendFormat": "lyxeur",
+          "legendFormat": "lyxusd",
           "refId": "B"
         }
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "LYX Price (EUR)",
+      "title": "LYX Price (USD)",
       "type": "stat"
     },
     {
@@ -6108,7 +6108,7 @@
     ]
   },
   "timezone": "browser",
-  "title": "LUKSO Teku Nimbus-Eth2 Dashboard EUR",
-  "uid": "lukso-teku-nim-dash-eur-8",
+  "title": "LUKSO Nimbus-Eth2 Dashboard USD",
+  "uid": "lukso-nim-dash-usd-8",
   "version": 1
 }
