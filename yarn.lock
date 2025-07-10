@@ -3777,6 +3777,13 @@ dns-packet@^5.2.2:
   dependencies:
     "@leichtgewicht/ip-codec" "^2.0.1"
 
+docusaurus-plugin-generate-llms-txt@^0.0.1:
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/docusaurus-plugin-generate-llms-txt/-/docusaurus-plugin-generate-llms-txt-0.0.1.tgz#e2104a73bdf59ea9f576f319e73e7d9c664e6ea8"
+  integrity sha512-XlUeQ23anYc85I1k9pO61fWcMWcUs8Tx7n3zqIus/1wjZ1mjezm0lOX9jymu9Y2MAi3/YQbDxsfo4kZrMf5q6A==
+  dependencies:
+    js-yaml "^4.1.0"
+
 dom-converter@^0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/dom-converter/-/dom-converter-0.2.0.tgz#6721a9daee2e293682955b6afe416771627bb768"

@@ -212,6 +212,12 @@ const config: Config = {
    * elements from long page content.
    */
   plugins: [
+    [
+      "docusaurus-plugin-generate-llms-txt",
+      {
+        outputFile: "llms.txt",
+      },
+    ],
     function customWebpackPlugin() {
       return {
         name: "custom-webpack-plugin",
