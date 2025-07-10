@@ -1093,25 +1093,6 @@
         }
       ],
       "title": "LYX Price (EUR)",
-      "transformations": [
-        {
-          "id": "calculateField",
-          "options": {
-            "alias": "Total Earnings (EUR)",
-            "binary": {
-              "left": "total_balance",
-              "operator": "*",
-              "reducer": "sum",
-              "right": "lyxeur"
-            },
-            "mode": "binary",
-            "reduce": {
-              "reducer": "sum"
-            },
-            "replaceFields": true
-          }
-        }
-      ],
       "type": "stat"
     },
     {
