@@ -1093,25 +1093,6 @@
         }
       ],
       "title": "LYX Price (USD)",
-      "transformations": [
-        {
-          "id": "calculateField",
-          "options": {
-            "alias": "Total Earnings (USD)",
-            "binary": {
-              "left": "total_balance",
-              "operator": "*",
-              "reducer": "sum",
-              "right": "lyxusd"
-            },
-            "mode": "binary",
-            "reduce": {
-              "reducer": "sum"
-            },
-            "replaceFields": true
-          }
-        }
-      ],
       "type": "stat"
     },
     {
