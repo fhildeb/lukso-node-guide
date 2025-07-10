@@ -308,7 +308,7 @@
           "refId": "A"
         }
       ],
-      "title": "Total Validator Balance (Lyx)",
+      "title": "Total Validator Balance (LYX)",
       "type": "stat"
     },
     {
@@ -1022,7 +1022,7 @@
         "type": "prometheus",
         "uid": "${DS_PROMETHEUS}"
       },
-      "description": "Price of Lyx in USD.",
+      "description": "Price of LYX in USD.",
       "fieldConfig": {
         "defaults": {
           "decimals": 2,

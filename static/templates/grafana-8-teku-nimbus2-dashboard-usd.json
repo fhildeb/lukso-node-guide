@@ -249,7 +249,7 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Total Validator Balance (Lyx)",
+      "title": "Total Validator Balance (LYX)",
       "type": "stat"
     },
     {
@@ -911,7 +911,7 @@
     {
       "cacheTimeout": null,
       "datasource": null,
-      "description": "Price of Lyx in USD.",
+      "description": "Price of LYX in USD.",
       "fieldConfig": {
         "defaults": {
           "decimals": 2,
