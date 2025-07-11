@@ -2198,7 +2198,7 @@
           },
           "expr": "validator_count{state=\"Active\",job=\"consensus-client-job\"} ",
           "interval": "",
-          "legendFormat": "active",
+          "legendFormat": "active validators",
           "refId": "D"
         }
       ],

@@ -2198,7 +2198,7 @@
           },
           "expr": "validator_count{job=\"beacon-client-job\", state=\"Active\"}",
           "interval": "",
-          "legendFormat": "active",
+          "legendFormat": "active validators",
           "refId": "D"
         }
       ],
