@@ -39,11 +39,11 @@ export function useClientDiversityData() {
 
         const aggregatedExecutionClients = aggregateClients(
           rawExecutionClients,
-          ["Prysm", "Teku", "Lighthouse"]
+          ["Prysm", "Teku", "Lighthouse", "Nimbus"]
         );
         const aggregatedConsensusClients = aggregateClients(
           rawConsensusClients,
-          ["Geth", "Erigon", "Besu"]
+          ["Geth", "Erigon", "Besu", "Nethermind"]
         );
 
         setData({
@@ -54,16 +54,16 @@ export function useClientDiversityData() {
         console.warn("Falling back to dummy data for distribution data:", err);
         setData({
           executionClients: [
-            { label: "Prysm", value: 41 },
-            { label: "Teku", value: 30 },
-            { label: "Lighthouse", value: 18 },
-            { label: "Others", value: 11 },
+            { label: "Prysm", value: 30 },
+            { label: "Teku", value: 11 },
+            { label: "Lighthouse", value: 41 },
+            { label: "Nimbus", value: 18 },
           ],
           consensusClients: [
             { label: "Geth", value: 97 },
             { label: "Erigon", value: 3 },
             { label: "Besu", value: 0 },
-            { label: "Others", value: 0 },
+            { label: "Nethermind", value: 0 },
           ],
         });
       } finally {

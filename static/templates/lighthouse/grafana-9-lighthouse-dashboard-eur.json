@@ -298,14 +298,14 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "sum(validator_balance{job=\"validator-client-job\"})",
+          "expr": "sum(validator_monitor_balance_gwei{job=\"validator-client-job\"}) / 1e9",
           "instant": true,
           "interval": "",
           "legendFormat": "vbal",
           "refId": "A"
         }
       ],
-      "title": "Total Validator Balance (Lyx)",
+      "title": "Total Validator Balance (LYX)",
       "type": "stat"
     },
     {
@@ -382,7 +382,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
-          "expr": "sum(validator_balance{job=\"validator-client-job\"})-(count(validator_balance{job=\"validator-client-job\"} > 16 and validator_statuses{job=\"validator-client-job\"} == 3)*32)",
+          "expr": "sum(validator_monitor_balance_gwei{job=\"validator-client-job\"}) / 1e9 - (32 * count(validator_monitor_status{job=\"validator-client-job\",status=\"active_ongoing\"}))",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -465,7 +465,7 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "(sum(validator_balance{job=\"validator-client-job\"}) - (count(validator_balance{job=\"validator-client-job\"} > 16 and validator_statuses{job=\"validator-client-job\"} == 3)*32))/(count(validator_balance{job=\"validator-client-job\"} > 16 and validator_statuses{job=\"validator-client-job\"} == 3)*32)  ",
+          "expr": "(sum(validator_monitor_balance_gwei{job=\"validator-client-job\"}) / 1e9 - (32 * count(validator_monitor_status{job=\"validator-client-job\",status=\"active_ongoing\"}))) / (32 * count(validator_monitor_status{job=\"validator-client-job\",status=\"active_ongoing\"}))",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -687,7 +687,7 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "clamp_min((1-(4*((floor(beacon_clock_time_slot{job=\"consensus-client-job\"}/32) - beacon_finalized_epoch{job=\"consensus-client-job\"} - 2)/100))),0)",
+          "expr": "clamp_min((1-(4*((floor(slotclock_present_slot{job=\"consensus-client-job\"}/32) - beacon_finalized_epoch{job=\"consensus-client-job\"} - 2)/100))),0)",
           "interval": "",
           "legendFormat": "",
           "refId": "A"
@@ -854,7 +854,7 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "sum(validator_balance{job=\"validator-client-job\"})",
+          "expr": "sum(validator_monitor_balance_gwei{job=\"validator-client-job\"}) / 1e9",
           "hide": false,
           "instant": true,
           "interval": "",
@@ -958,7 +958,7 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "sum(validator_balance{job=\"validator-client-job\"})-(count(validator_balance{job=\"validator-client-job\"} > 16 and validator_statuses{job=\"validator-client-job\"} == 3)*32)",
+          "expr": "sum(validator_monitor_balance_gwei{job=\"validator-client-job\"}) / 1e9 - (32 * count(validator_monitor_status{job=\"validator-client-job\",status=\"active_ongoing\"}))",
           "instant": true,
           "interval": "",
           "legendFormat": "total_balance",
@@ -1003,7 +1003,7 @@
         "type": "prometheus",
         "uid": "${DS_PROMETHEUS}"
       },
-      "description": "Price of Lyx in EUR.",
+      "description": "Price of LYX in EUR.",
       "fieldConfig": {
         "defaults": {
           "decimals": 2,
@@ -1137,7 +1137,7 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "max(validator_inactivity_score)",
+          "expr": "max(validator_monitor_inactivity_score{job=\"validator-client-job\"})",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -1198,7 +1198,7 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "floor(beacon_clock_time_slot{job=\"consensus-client-job\"} / 32)",
+          "expr": "floor(slotclock_present_slot{job=\"consensus-client-job\"} / 32)",
           "instant": true,
           "interval": "",
           "legendFormat": "current",
@@ -1280,7 +1280,7 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "beacon_slot{job=\"consensus-client-job\"}",
+          "expr": "slotclock_present_slot{job=\"consensus-client-job\"}",
           "instant": true,
           "interval": "",
           "legendFormat": "current slot",
@@ -1546,7 +1546,7 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "sum(validator_balance{job=\"validator-client-job\"}) - sum(validator_balance{job=\"validator-client-job\"} offset 1h != 0) - (32 * count(validator_balance{job=\"validator-client-job\"} > 16)) + (32 * count(validator_balance{job=\"validator-client-job\"} offset 1h > 16))",
+          "expr": "((sum(validator_monitor_balance_gwei{job=\"validator-client-job\"}) - sum(validator_monitor_balance_gwei{job=\"validator-client-job\"} offset 1h != 0)) / 1e9) - (32 * count(validator_monitor_status{job=\"validator-client-job\",status=\"active_ongoing\"})) + (32 * count(validator_monitor_status{job=\"validator-client-job\",status=\"active_ongoing\"} offset 1h))",
           "instant": false,
           "interval": "",
           "intervalFactor": 3,
@@ -1630,7 +1630,7 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "sum(validator_balance{job=\"validator-client-job\"}) - sum(validator_balance{job=\"validator-client-job\"} offset 1d != 0) - (32 * count(validator_balance{job=\"validator-client-job\"} > 16)) + (32 * count(validator_balance{job=\"validator-client-job\"} offset 1d > 16))",
+          "expr": "((sum(validator_monitor_balance_gwei{job=\"validator-client-job\"}) - sum(validator_monitor_balance_gwei{job=\"validator-client-job\"} offset 1d != 0)) / 1e9) - (32 * count(validator_monitor_status{job=\"validator-client-job\",status=\"active_ongoing\"})) + (32 * count(validator_monitor_status{job=\"validator-client-job\",status=\"active_ongoing\"} offset 1d))",
           "instant": false,
           "interval": "",
           "legendFormat": "",
@@ -1713,7 +1713,7 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "sum(validator_balance{job=\"validator-client-job\"}) - sum(validator_balance{job=\"validator-client-job\"} offset 7d != 0) - (32 * count(validator_balance{job=\"validator-client-job\"} > 16)) + (32 * count(validator_balance{job=\"validator-client-job\"} offset 7d > 16))",
+          "expr": "((sum(validator_monitor_balance_gwei{job=\"validator-client-job\"}) - sum(validator_monitor_balance_gwei{job=\"validator-client-job\"} offset 7d != 0)) / 1e9) - (32 * count(validator_monitor_status{job=\"validator-client-job\",status=\"active_ongoing\"})) + (32 * count(validator_monitor_status{job=\"validator-client-job\",status=\"active_ongoing\"} offset 7d))",
           "instant": false,
           "interval": "",
           "legendFormat": "",
@@ -1796,7 +1796,7 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "sum(validator_balance{job=\"validator-client-job\"}) - sum(validator_balance{job=\"validator-client-job\"} offset 30d != 0) - (32 * count(validator_balance{job=\"validator-client-job\"} > 16)) + (32 * count(validator_balance{job=\"validator-client-job\"} offset 30d > 16))",
+          "expr": "((sum(validator_monitor_balance_gwei{job=\"validator-client-job\"}) - sum(validator_monitor_balance_gwei{job=\"validator-client-job\"} offset 30d != 0)) / 1e9) - (32 * count(validator_monitor_status{job=\"validator-client-job\",status=\"active_ongoing\"})) + (32 * count(validator_monitor_status{job=\"validator-client-job\",status=\"active_ongoing\"} offset 30d))",
           "instant": false,
           "interval": "",
           "legendFormat": "",
@@ -1858,7 +1858,7 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "validator_count{state=\"Active\",job=\"consensus-client-job\"} ",
+          "expr": "beacon_head_state_active_validators_total{job=\"consensus-client-job\"}",
           "instant": true,
           "interval": "",
           "legendFormat": "active",
@@ -1869,7 +1869,7 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "validator_count{state=\"Slashed\",job=\"consensus-client-job\"} ",
+          "expr": "beacon_head_state_slashed_validators_total{job=\"consensus-client-job\"}",
           "instant": true,
           "interval": "",
           "legendFormat": "slashed",
@@ -1880,7 +1880,7 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "validator_count{state=\"Exited\",job=\"consensus-client-job\"} ",
+          "expr": "beacon_head_state_exited_validators_total{job=\"consensus-client-job\"}",
           "instant": true,
           "interval": "",
           "legendFormat": "exited",
@@ -1949,10 +1949,6 @@
         {
           "alias": "active validators",
           "yaxis": 2
-        },
-        {
-          "alias": "slashing",
-          "transform": "negative-Y"
         }
       ],
       "spaceLength": 10,
@@ -1964,7 +1960,7 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "validator_count{state=\"Pending\",job=\"consensus-client-job\"}",
+          "expr": "beacon_head_state_pending_validators_total{job=\"consensus-client-job\"}",
           "interval": "",
           "legendFormat": "pending",
           "refId": "B"
@@ -1974,7 +1970,7 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "validator_count{state=\"Exiting\",job=\"consensus-client-job\"}",
+          "expr": "beacon_head_state_exiting_validators_total{job=\"consensus-client-job\"}",
           "interval": "",
           "legendFormat": "exiting",
           "refId": "A"
@@ -1984,20 +1980,10 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "validator_count{state=\"Slashing\",job=\"consensus-client-job\"}",
+          "expr": "beacon_head_state_active_validators_total{job=\"consensus-client-job\"}",
           "interval": "",
-          "legendFormat": "slashing",
+          "legendFormat": "active",
           "refId": "C"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
-          },
-          "expr": "validator_count{job=\"consensus-client-job\", state=\"Active\"}",
-          "interval": "",
-          "legendFormat": "active validators",
-          "refId": "D"
         }
       ],
       "thresholds": [],
@@ -2079,7 +2065,7 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "validator_count{state=\"Pending\",job=\"consensus-client-job\"}",
+          "expr": "beacon_head_state_pending_validators_total{job=\"consensus-client-job\"}",
           "instant": true,
           "interval": "",
           "legendFormat": "pending",
@@ -2090,7 +2076,7 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "validator_count{state=\"Exiting\",job=\"consensus-client-job\"}",
+          "expr": "beacon_head_state_exiting_validators_total{job=\"consensus-client-job\"}",
           "instant": true,
           "interval": "",
           "legendFormat": "exiting",
@@ -2173,7 +2159,7 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "((sum(validator_balance{job=\"validator-client-job\"}) - sum(validator_balance{job=\"validator-client-job\"} offset 1h != 0) - (32 * count(validator_balance{job=\"validator-client-job\"} > 16)) +\t(32 * count(validator_balance{job=\"validator-client-job\"} offset 1h > 16)))/(32 * avg_over_time(count(validator_balance{job=\"validator-client-job\"} > 16)[1h:]))) * 365 * 24",
+          "expr": "(((sum(validator_monitor_balance_gwei{job=\"validator-client-job\"}) - sum(validator_monitor_balance_gwei{job=\"validator-client-job\"} offset 1h != 0)) / 1e9) - 32 * count(validator_monitor_status{job=\"validator-client-job\",status=\"active_ongoing\"}) + 32 * count(validator_monitor_status{job=\"validator-client-job\",status=\"active_ongoing\"} offset 1h)) / (32 * avg_over_time(count(validator_monitor_status{job=\"validator-client-job\",status=\"active_ongoing\"})[1h:])) * 365 * 24",
           "hide": false,
           "interval": "",
           "legendFormat": "annualized hourly return",
@@ -2256,7 +2242,7 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "((sum(validator_balance{job=\"validator-client-job\"}) - sum(validator_balance{job=\"validator-client-job\"} offset 1d != 0) - (32 * count(validator_balance{job=\"validator-client-job\"} > 16)) +\t(32 * count(validator_balance{job=\"validator-client-job\"} offset 1d > 16)))/(32 * avg_over_time(count(validator_balance{job=\"validator-client-job\"} > 16)[1d:]))) * 365",
+          "expr": "(((sum(validator_monitor_balance_gwei{job=\"validator-client-job\"}) - sum(validator_monitor_balance_gwei{job=\"validator-client-job\"} offset 1d != 0)) / 1e9) - 32 * count(validator_monitor_status{job=\"validator-client-job\",status=\"active_ongoing\"}) + 32 * count(validator_monitor_status{job=\"validator-client-job\",status=\"active_ongoing\"} offset 1d)) / (32 * avg_over_time(count(validator_monitor_status{job=\"validator-client-job\",status=\"active_ongoing\"})[1d:])) * 365",
           "hide": false,
           "interval": "",
           "legendFormat": "annualized daily return",
@@ -2339,7 +2325,7 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "((sum(validator_balance{job=\"validator-client-job\"}) - sum(validator_balance{job=\"validator-client-job\"} offset 7d != 0) - (32 * count(validator_balance{job=\"validator-client-job\"} > 16)) +\t(32 * count(validator_balance{job=\"validator-client-job\"} offset 7d > 16)))/(32 * avg_over_time(count(validator_balance{job=\"validator-client-job\"} > 16)[7d:]))) * (365/7)",
+          "expr": "(((sum(validator_monitor_balance_gwei{job=\"validator-client-job\"}) - sum(validator_monitor_balance_gwei{job=\"validator-client-job\"} offset 7d != 0)) / 1e9) - 32 * count(validator_monitor_status{job=\"validator-client-job\",status=\"active_ongoing\"}) + 32 * count(validator_monitor_status{job=\"validator-client-job\",status=\"active_ongoing\"} offset 7d)) / (32 * avg_over_time(count(validator_monitor_status{job=\"validator-client-job\",status=\"active_ongoing\"})[7d:])) * (365/7)",
           "hide": false,
           "interval": "",
           "legendFormat": "annualized weekly return",
@@ -2422,7 +2408,7 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "((sum(validator_balance{job=\"validator-client-job\"}) - sum(validator_balance{job=\"validator-client-job\"} offset 30d != 0) - (32 * count(validator_balance{job=\"validator-client-job\"} > 16)) +\t(32 * count(validator_balance{job=\"validator-client-job\"} offset 30d > 16)))/(32 * avg_over_time(count(validator_balance{job=\"validator-client-job\"} > 16)[30d:]))) * (365/30)",
+          "expr": "(((sum(validator_monitor_balance_gwei{job=\"validator-client-job\"}) - sum(validator_monitor_balance_gwei{job=\"validator-client-job\"} offset 30d != 0)) / 1e9) - 32 * count(validator_monitor_status{job=\"validator-client-job\",status=\"active_ongoing\"}) + 32 * count(validator_monitor_status{job=\"validator-client-job\",status=\"active_ongoing\"} offset 30d)) / (32 * avg_over_time(count(validator_monitor_status{job=\"validator-client-job\",status=\"active_ongoing\"})[30d:])) * (365/30)",
           "hide": false,
           "interval": "",
           "legendFormat": "annualized monthly return",
@@ -2505,7 +2491,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
-          "expr": "validators_total_balance{state=\"Active\",job=\"consensus-client-job\"} / validator_count{state=\"Active\",job=\"consensus-client-job\"} / 1000000000",
+          "expr": "beacon_head_state_total_active_balance_gwei{job=\"consensus-client-job\"} / beacon_head_state_active_validators_total{job=\"consensus-client-job\"} / 1e9",
           "interval": "",
           "legendFormat": "lyx",
           "refId": "A"
@@ -2564,7 +2550,7 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "((validator_count{state=\"Pending\",job=\"consensus-client-job\"}/4)*6.4)",
+          "expr": "((beacon_head_state_pending_validators_total{job=\"consensus-client-job\"} / 4) * 6.4)",
           "instant": true,
           "interval": "",
           "legendFormat": "pending",
@@ -2575,7 +2561,7 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "((validator_count{state=\"Exiting\",job=\"consensus-client-job\"}/4)*6.4)",
+          "expr": "((beacon_head_state_exiting_validators_total{job=\"consensus-client-job\"} / 4) * 6.4)",
           "instant": true,
           "interval": "",
           "legendFormat": "exiting",
@@ -2838,7 +2824,7 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "label_replace(max by(pubkey) (validator_statuses{job=\"validator-client-job\"}), \"pubkey_short\", \"$1\", \"pubkey\", \"(.{10}).*\")  ",
+          "expr": "label_replace(max by(pubkey) (validator_monitor_status{job=\"validator-client-job\"}), \"pubkey_short\", \"$1\", \"pubkey\", \"(.{10}).*\")",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -2850,7 +2836,7 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "label_replace(max by(pubkey) (validator_balance{job=\"validator-client-job\"}), \"pubkey_short\", \"$1\", \"pubkey\", \"(.{10}).*\") ",
+          "expr": "label_replace(max by(pubkey) (validator_monitor_balance_gwei{job=\"validator-client-job\"}), \"pubkey_short\", \"$1\", \"pubkey\", \"(.{10}).*\") / 1e9",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -2862,7 +2848,7 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "label_replace(max by(pubkey) (validator_successful_proposals{job=\"validator-client-job\"}), \"pubkey_short\", \"$1\", \"pubkey\", \"(.{10}).*\")  ",
+          "expr": "label_replace(max by(pubkey) (validator_monitor_successful_proposals_total{job=\"validator-client-job\"}), \"pubkey_short\", \"$1\", \"pubkey\", \"(.{10}).*\")",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -2874,7 +2860,7 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "label_replace(max by(pubkey) (validator_successful_attestations{job=\"validator-client-job\"}), \"pubkey_short\", \"$1\", \"pubkey\", \"(.{10}).*\")  ",
+          "expr": "label_replace(max by(pubkey) (validator_monitor_successful_attestations_total{job=\"validator-client-job\"}), \"pubkey_short\", \"$1\", \"pubkey\", \"(.{10}).*\")",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -2886,7 +2872,7 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "label_replace(max by(pubkey) (validator_successful_aggregations{job=\"validator-client-job\"}), \"pubkey_short\", \"$1\", \"pubkey\", \"(.{10}).*\") ",
+          "expr": "label_replace(max by(pubkey) (validator_monitor_successful_aggregations_total{job=\"validator-client-job\"}), \"pubkey_short\", \"$1\", \"pubkey\", \"(.{10}).*\")",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -2898,7 +2884,7 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "label_replace(max by(pubkey) (validator_failed_attestations{job=\"validator-client-job\"}), \"pubkey_short\", \"$1\", \"pubkey\", \"(.{10}).*\") ",
+          "expr": "label_replace(max by(pubkey) (validator_monitor_failed_attestations_total{job=\"validator-client-job\"}), \"pubkey_short\", \"$1\", \"pubkey\", \"(.{10}).*\")",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -2910,7 +2896,7 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "label_replace(max by(pubkey) (validator_failed_aggregations{job=\"validator-client-job\"}), \"pubkey_short\", \"$1\", \"pubkey\", \"(.{10}).*\") ",
+          "expr": "label_replace(max by(pubkey) (validator_monitor_failed_aggregations_total{job=\"validator-client-job\"}), \"pubkey_short\", \"$1\", \"pubkey\", \"(.{10}).*\")",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -2922,7 +2908,7 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "label_replace(max by(pubkey) (validator_inactivity_score{job=\"validator-client-job\"}), \"pubkey_short\", \"$1\", \"pubkey\", \"(.{10}).*\")  ",
+          "expr": "label_replace(max by(pubkey) (validator_monitor_inactivity_score{job=\"validator-client-job\"}), \"pubkey_short\", \"$1\", \"pubkey\", \"(.{10}).*\")",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -3300,7 +3286,7 @@
         "type": "prometheus",
         "uid": "${DS_PROMETHEUS}"
       },
-      "description": "Versions of the currently running Prysm clients.",
+      "description": "Versions of the currently running Lighthouse clients.",
       "fieldConfig": {
         "defaults": {
           "custom": {
@@ -3347,7 +3333,7 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "max(prysm_version) by (job, version)",
+          "expr": "max(lighthouse_info{job=\"consensus-client-job\"}) by (job, version)",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -3355,11 +3341,13 @@
           "refId": "A"
         }
       ],
-      "title": "Prysm Versions",
+      "title": "Lighthouse Versions",
       "transformations": [
         {
-          "id": "filterByRefId",
-          "options": {}
+          "id": "labelsToFields",
+          "options": {
+            "valueLabel": ""
+          }
         },
         {
           "id": "filterFieldsByName",
@@ -5999,7 +5987,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
-          "expr": "beacon_prev_epoch_target_gwei/beacon_prev_epoch_active_gwei*100",
+          "expr": "(beacon_prev_epoch_target_gwei{job=\"consensus-client-job\"} / beacon_prev_epoch_active_gwei{job=\"consensus-client-job\"}) *100",
           "hide": false,
           "interval": "",
           "intervalFactor": 1,
@@ -6137,7 +6125,7 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "beacon_clock_time_slot-beacon_head_slot",
+          "expr": "slotclock_present_slot{job=\"consensus-client-job\"} - beacon_head_slot{job=\"consensus-client-job\"}",
           "interval": "",
           "legendFormat": "node slots behind",
           "refId": "A"
@@ -6291,7 +6279,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
-          "expr": "sum(validator_balance) - sum(validator_balance offset 1h) - count(validator_balance > 16)*32 + count(validator_balance offset 1h > 0)*32",
+          "expr": "((sum(validator_monitor_balance_gwei{job=\"validator-client-job\"}) - sum(validator_monitor_balance_gwei{job=\"validator-client-job\"} offset 1h != 0)) / 1e9) - (32 * count(validator_monitor_status{job=\"validator-client-job\",status=\"active_ongoing\"})) + (32 * count(validator_monitor_status{job=\"validator-client-job\",status=\"active_ongoing\"} offset 1h))",
           "hide": false,
           "interval": "",
           "intervalFactor": 1,
@@ -6366,8 +6354,8 @@
     ]
   },
   "timezone": "browser",
-  "title": "LUKSO Prysm Lighthouse Dashboard EUR",
-  "uid": "lukso-prysm-lh-dash-eur-9",
+  "title": "LUKSO Lighthouse Dashboard EUR",
+  "uid": "lukso-lh-dash-eur-9",
   "version": 1,
   "weekStart": ""
 }

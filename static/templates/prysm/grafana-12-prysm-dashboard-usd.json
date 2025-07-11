@@ -308,7 +308,7 @@
           "refId": "A"
         }
       ],
-      "title": "Total Validator Balance (Lyx)",
+      "title": "Total Validator Balance (LYX)",
       "type": "stat"
     },
     {
@@ -812,7 +812,7 @@
         "type": "prometheus",
         "uid": "${DS_PROMETHEUS}"
       },
-      "description": "Sum of all validator balances multiplied by the price of LYX in EUR.",
+      "description": "Sum of all validator balances multiplied by the price of LYX in USD.",
       "fieldConfig": {
         "defaults": {
           "decimals": 2,
@@ -826,7 +826,7 @@
               }
             ]
           },
-          "unit": "currencyEUR"
+          "unit": "currencyUSD"
         },
         "overrides": []
       },
@@ -860,11 +860,11 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "lyxeur",
+          "expr": "lyxusd",
           "hide": false,
           "instant": true,
           "interval": "",
-          "legendFormat": "lyxeur",
+          "legendFormat": "lyxusd",
           "refId": "A"
         },
         {
@@ -880,14 +880,14 @@
           "refId": "B"
         }
       ],
-      "title": "Total Validator Balance (EUR)",
+      "title": "Total Validator Balance (USD)",
       "transformations": [
         {
           "id": "calculateField",
           "options": {
             "alias": "total_validator_value",
             "binary": {
-              "left": "lyxeur",
+              "left": "lyxusd",
               "operator": "*",
               "reducer": "sum",
               "right": "balance"
@@ -907,7 +907,7 @@
         "type": "prometheus",
         "uid": "${DS_PROMETHEUS}"
       },
-      "description": "Total earnings in EUR.",
+      "description": "Total earnings in USD.",
       "fieldConfig": {
         "defaults": {
           "decimals": 2,
@@ -939,7 +939,7 @@
               }
             ]
           },
-          "unit": "currencyEUR"
+          "unit": "currencyUSD"
         },
         "overrides": []
       },
@@ -988,24 +988,24 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "lyxeur",
+          "expr": "lyxusd",
           "instant": true,
           "interval": "",
-          "legendFormat": "lyxeur",
+          "legendFormat": "lyxusd",
           "refId": "B"
         }
       ],
-      "title": "Total Earnings (EUR)",
+      "title": "Total Earnings (USD)",
       "transformations": [
         {
           "id": "calculateField",
           "options": {
-            "alias": "Total Earnings (EUR)",
+            "alias": "Total Earnings (USD)",
             "binary": {
               "left": "total_balance",
               "operator": "*",
               "reducer": "sum",
-              "right": "lyxeur"
+              "right": "lyxusd"
             },
             "mode": "binary",
             "reduce": {
@@ -1022,7 +1022,7 @@
         "type": "prometheus",
         "uid": "${DS_PROMETHEUS}"
       },
-      "description": "Price of Lyx in EUR.",
+      "description": "Price of LYX in USD.",
       "fieldConfig": {
         "defaults": {
           "decimals": 2,
@@ -1046,7 +1046,7 @@
               }
             ]
           },
-          "unit": "currencyEUR"
+          "unit": "currencyUSD"
         },
         "overrides": []
       },
@@ -1085,14 +1085,14 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
-          "expr": "lyxeur",
+          "expr": "lyxusd",
           "instant": true,
           "interval": "",
-          "legendFormat": "lyxeur",
+          "legendFormat": "lyxusd",
           "refId": "B"
         }
       ],
-      "title": "LYX Price (EUR)",
+      "title": "LYX Price (USD)",
       "type": "stat"
     },
     {
@@ -1159,7 +1159,7 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "max(validator_inactivity_score)",
+          "expr": "max(validator_inactivity_score{job=\"validator-client-job\"})",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -2196,9 +2196,9 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "validator_count{job=\"consensus-client-job\", state=\"Active\"}",
+          "expr": "validator_count{state=\"Active\",job=\"consensus-client-job\"} ",
           "interval": "",
-          "legendFormat": "active validators",
+          "legendFormat": "active",
           "refId": "D"
         }
       ],
@@ -3796,7 +3796,7 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "max(prysm_version) by (job, version)",
+          "expr": "max(prysm_version{job=\"consensus-client-job\"}) by (job, version)",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -6220,7 +6220,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
-          "expr": "sum(validator_balance) - sum(validator_balance offset 1h) - count(validator_balance > 16)*32 + count(validator_balance offset 1h > 0)*32",
+          "expr": "sum(validator_balance{job=\"validator-client-job\"}) - sum(validator_balance{job=\"validator-client-job\"} offset 1h != 0) - (32 * count(validator_balance{job=\"validator-client-job\"} > 16)) + (32 * count(validator_balance{job=\"validator-client-job\"} offset 1h > 16))",
           "hide": false,
           "interval": "",
           "intervalFactor": 1,
@@ -6826,7 +6826,7 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "beacon_clock_time_slot-beacon_head_slot",
+          "expr": "beacon_clock_time_slot{job=\"consensus-client-job\"} - beacon_head_slot{job=\"consensus-client-job\"}",
           "interval": "",
           "legendFormat": "node slots behind",
           "refId": "A"
@@ -7029,7 +7029,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
-          "expr": "beacon_prev_epoch_target_gwei/beacon_prev_epoch_active_gwei*100",
+          "expr": "(beacon_prev_epoch_target_gwei{job=\"consensus-client-job\"} / beacon_prev_epoch_active_gwei{job=\"consensus-client-job\"}) *100",
           "hide": false,
           "interval": "",
           "intervalFactor": 1,
@@ -7238,6 +7238,7 @@
       "type": "timeseries"
     }
   ],
+  "preload": false,
   "refresh": "30s",
   "schemaVersion": 41,
   "tags": [],
@@ -7262,8 +7263,8 @@
     ]
   },
   "timezone": "browser",
-  "title": "LUKSO Prysm Lighthouse Dashboard EUR",
-  "uid": "lukso-prysm-lh-dash-eur-12",
+  "title": "LUKSO Prysm Dashboard USD",
+  "uid": "lukso-prysm-dash-usd-12",
   "version": 1,
   "weekStart": ""
 }

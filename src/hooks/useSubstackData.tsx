@@ -24,6 +24,11 @@ export function useSubstackData() {
       date: "Jun 4, 2024",
       link: "https://luksovalidators.substack.com/p/status-update-on-the-dencun-hard",
     },
+    {
+      title: "Geth update required!",
+      date: "May 6, 2024",
+      link: "https://luksovalidators.substack.com/p/geth-update-required",
+    },
   ];
 
   const [data, setData] = useState<BlogData[]>([]);

@@ -6,18 +6,20 @@ import dashboards from "@site/src/consts/templates";
 
 function TemplatesPage() {
   const categorized = {
-    "📝 Prysm & Lighthouse Dashboards": dashboards.filter(
-      (d) => d.label === "Prysm & Lighthouse"
+    "📝 Prysm Dashboards": dashboards.filter((d) => d.label === "Prysm"),
+    "📝 Lighthouse Dashboards": dashboards.filter(
+      (d) => d.label === "Lighthouse"
     ),
-    "📝 Teku & Nimbus-Eth2 Dashboards": dashboards.filter(
-      (d) => d.label === "Teku & Nimbus-Eth2"
+    "📝 Nimbus-Eth2 Dashboards": dashboards.filter(
+      (d) => d.label === "Nimbus-Eth2"
     ),
+    "📝 Teku Dashboards": dashboards.filter((d) => d.label === "Teku"),
   };
 
-  const handleDownload = (filename: string) => {
+  const handleDownload = (filepath: string) => {
     const link = document.createElement("a");
-    link.href = `/templates/${filename}`;
-    link.download = filename;
+    link.href = `/templates/${filepath}`;
+    link.download = filepath;
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -165,7 +167,7 @@ function TemplatesPage() {
                     )
                     .map((item) => (
                       <button
-                        key={item.filename}
+                        key={item.filepath}
                         className={styles.softwareButton}
                       >
                         <span className={styles.toolInfo}>
@@ -178,7 +180,7 @@ function TemplatesPage() {
                               className={`${styles.version} ${styles.action}`}
                               onClick={() =>
                                 window.open(
-                                  `/templates/${item.filename}`,
+                                  `/templates/${item.filepath}`,
                                   "_blank"
                                 )
                               }
@@ -188,7 +190,7 @@ function TemplatesPage() {
                             </code>
                             <code
                               className={`${styles.version} ${styles.action}`}
-                              onClick={() => handleDownload(item.filename)}
+                              onClick={() => handleDownload(item.filepath)}
                               title="Download JSON file"
                             >
                               📥 Download
