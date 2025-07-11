@@ -251,235 +251,6 @@
         "type": "prometheus",
         "uid": "${DS_PROMETHEUS}"
       },
-      "description": "Sum of all validator balances.",
-      "fieldConfig": {
-        "defaults": {
-          "decimals": 4,
-          "mappings": [],
-          "min": 0,
-          "noValue": "0",
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              }
-            ]
-          },
-          "unit": "LYX"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 3,
-        "w": 3,
-        "x": 0,
-        "y": 1
-      },
-      "id": 94,
-      "options": {
-        "colorMode": "value",
-        "graphMode": "area",
-        "justifyMode": "auto",
-        "orientation": "auto",
-        "reduceOptions": {
-          "calcs": ["lastNotNull"],
-          "fields": "",
-          "values": false
-        },
-        "text": {},
-        "textMode": "auto"
-      },
-      "pluginVersion": "9.5.2",
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
-          },
-          "expr": "sum(validator_balance{job=\"validator-client-job\"})",
-          "instant": true,
-          "interval": "",
-          "legendFormat": "vbal",
-          "refId": "A"
-        }
-      ],
-      "title": "Total Validator Balance (LYX)",
-      "type": "stat"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
-      },
-      "description": "Total LYX return on the initial effective stake of active local validators.",
-      "fieldConfig": {
-        "defaults": {
-          "decimals": 4,
-          "mappings": [
-            {
-              "options": {
-                "match": "null",
-                "result": {
-                  "text": "N/A"
-                }
-              },
-              "type": "special"
-            }
-          ],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "#F2495C",
-                "value": null
-              },
-              {
-                "color": "#F2CC0C",
-                "value": 0
-              },
-              {
-                "color": "#73BF69",
-                "value": 0.0001
-              }
-            ]
-          },
-          "unit": "LYX"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 3,
-        "w": 3,
-        "x": 3,
-        "y": 1
-      },
-      "id": 52,
-      "links": [],
-      "maxDataPoints": 100,
-      "options": {
-        "colorMode": "value",
-        "fieldOptions": {
-          "calcs": ["lastNotNull"]
-        },
-        "graphMode": "area",
-        "justifyMode": "auto",
-        "orientation": "horizontal",
-        "reduceOptions": {
-          "calcs": ["lastNotNull"],
-          "fields": "",
-          "values": false
-        },
-        "text": {},
-        "textMode": "auto"
-      },
-      "pluginVersion": "9.5.2",
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
-          },
-          "exemplar": true,
-          "expr": "sum(validator_balance{job=\"validator-client-job\"})-(count(validator_balance{job=\"validator-client-job\"} > 16 and validator_statuses{job=\"validator-client-job\"} == 3)*32)",
-          "instant": true,
-          "interval": "",
-          "legendFormat": "",
-          "refId": "A"
-        }
-      ],
-      "title": "Total Earnings (LYX)",
-      "type": "stat"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
-      },
-      "description": "Total percentage return on the initial effective stake of active local validators. Excess deposits will be reflected as earnings.",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "decimals": 4,
-          "mappings": [
-            {
-              "options": {
-                "match": "null",
-                "result": {
-                  "text": "N/A"
-                }
-              },
-              "type": "special"
-            }
-          ],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "#F2495C",
-                "value": null
-              },
-              {
-                "color": "#FADE2A",
-                "value": 0
-              },
-              {
-                "color": "#73BF69",
-                "value": 0.0001
-              }
-            ]
-          },
-          "unit": "percentunit"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 3,
-        "w": 3,
-        "x": 6,
-        "y": 1
-      },
-      "id": 70,
-      "links": [],
-      "maxDataPoints": 100,
-      "options": {
-        "colorMode": "value",
-        "graphMode": "area",
-        "justifyMode": "auto",
-        "orientation": "horizontal",
-        "reduceOptions": {
-          "calcs": ["lastNotNull"],
-          "fields": "",
-          "values": false
-        },
-        "text": {},
-        "textMode": "auto"
-      },
-      "pluginVersion": "9.5.2",
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
-          },
-          "expr": "(sum(validator_balance{job=\"validator-client-job\"}) - (count(validator_balance{job=\"validator-client-job\"} > 16 and validator_statuses{job=\"validator-client-job\"} == 3)*32))/(count(validator_balance{job=\"validator-client-job\"} > 16 and validator_statuses{job=\"validator-client-job\"} == 3)*32)  ",
-          "instant": true,
-          "interval": "",
-          "legendFormat": "",
-          "refId": "A"
-        }
-      ],
-      "title": "Total Return",
-      "type": "stat"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
-      },
       "description": "Number of beacon nodes to which this node is connected.",
       "fieldConfig": {
         "defaults": {
@@ -539,7 +310,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
-          "expr": "p2p_peer_count{state=\"Connected\",job=\"consensus-client-job\"}",
+          "expr": "libp2p_peers{job=\"consensus-client-job\"}",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -796,213 +567,6 @@
         "type": "prometheus",
         "uid": "${DS_PROMETHEUS}"
       },
-      "description": "Sum of all validator balances multiplied by the price of LYX in USD.",
-      "fieldConfig": {
-        "defaults": {
-          "decimals": 2,
-          "mappings": [],
-          "min": 0,
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              }
-            ]
-          },
-          "unit": "currencyUSD"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 3,
-        "w": 3,
-        "x": 0,
-        "y": 4
-      },
-      "id": 100,
-      "options": {
-        "colorMode": "value",
-        "graphMode": "area",
-        "justifyMode": "auto",
-        "orientation": "auto",
-        "reduceOptions": {
-          "calcs": ["lastNotNull"],
-          "fields": "",
-          "values": false
-        },
-        "text": {},
-        "textMode": "auto"
-      },
-      "pluginVersion": "9.5.2",
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
-          },
-          "expr": "lyxusd",
-          "hide": false,
-          "instant": true,
-          "interval": "",
-          "legendFormat": "lyxusd",
-          "refId": "A"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
-          },
-          "expr": "sum(validator_balance{job=\"validator-client-job\"})",
-          "hide": false,
-          "instant": true,
-          "interval": "",
-          "legendFormat": "balance",
-          "refId": "B"
-        }
-      ],
-      "title": "Total Validator Balance (USD)",
-      "transformations": [
-        {
-          "id": "calculateField",
-          "options": {
-            "alias": "total_validator_value",
-            "binary": {
-              "left": "lyxusd",
-              "operator": "*",
-              "reducer": "sum",
-              "right": "balance"
-            },
-            "mode": "binary",
-            "reduce": {
-              "reducer": "sum"
-            },
-            "replaceFields": true
-          }
-        }
-      ],
-      "type": "stat"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
-      },
-      "description": "Total earnings in USD.",
-      "fieldConfig": {
-        "defaults": {
-          "decimals": 2,
-          "mappings": [
-            {
-              "options": {
-                "match": "null",
-                "result": {
-                  "text": "N/A"
-                }
-              },
-              "type": "special"
-            }
-          ],
-          "min": 0,
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "light-red",
-                "value": null
-              },
-              {
-                "color": "#EAB839",
-                "value": 0
-              },
-              {
-                "color": "green",
-                "value": 0.0001
-              }
-            ]
-          },
-          "unit": "currencyUSD"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 3,
-        "w": 3,
-        "x": 3,
-        "y": 4
-      },
-      "id": 101,
-      "links": [],
-      "maxDataPoints": 100,
-      "options": {
-        "colorMode": "value",
-        "fieldOptions": {
-          "calcs": ["lastNotNull"]
-        },
-        "graphMode": "area",
-        "justifyMode": "auto",
-        "orientation": "horizontal",
-        "reduceOptions": {
-          "calcs": ["lastNotNull"],
-          "fields": "",
-          "values": false
-        },
-        "text": {},
-        "textMode": "auto"
-      },
-      "pluginVersion": "9.5.2",
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
-          },
-          "expr": "sum(validator_balance{job=\"validator-client-job\"})-(count(validator_balance{job=\"validator-client-job\"} > 16 and validator_statuses{job=\"validator-client-job\"} == 3)*32)",
-          "instant": true,
-          "interval": "",
-          "legendFormat": "total_balance",
-          "refId": "A"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
-          },
-          "expr": "lyxusd",
-          "instant": true,
-          "interval": "",
-          "legendFormat": "lyxusd",
-          "refId": "B"
-        }
-      ],
-      "title": "Total Earnings (USD)",
-      "transformations": [
-        {
-          "id": "calculateField",
-          "options": {
-            "alias": "Total Earnings (USD)",
-            "binary": {
-              "left": "total_balance",
-              "operator": "*",
-              "reducer": "sum",
-              "right": "lyxusd"
-            },
-            "mode": "binary",
-            "reduce": {
-              "reducer": "sum"
-            },
-            "replaceFields": true
-          }
-        }
-      ],
-      "type": "stat"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
-      },
       "description": "Price of LYX in USD.",
       "fieldConfig": {
         "defaults": {
@@ -1073,78 +637,6 @@
         }
       ],
       "title": "LYX Price (USD)",
-      "type": "stat"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
-      },
-      "description": "Current maximum inactvity score across all validators.",
-      "fieldConfig": {
-        "defaults": {
-          "decimals": 2,
-          "mappings": [],
-          "min": 0,
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "yellow",
-                "value": 2
-              },
-              {
-                "color": "orange",
-                "value": 3
-              },
-              {
-                "color": "red",
-                "value": 4
-              }
-            ]
-          }
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 3,
-        "w": 3,
-        "x": 9,
-        "y": 4
-      },
-      "id": 104,
-      "options": {
-        "colorMode": "value",
-        "graphMode": "none",
-        "justifyMode": "auto",
-        "orientation": "auto",
-        "reduceOptions": {
-          "calcs": ["lastNotNull"],
-          "fields": "",
-          "values": false
-        },
-        "text": {},
-        "textMode": "auto"
-      },
-      "pluginVersion": "9.5.2",
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
-          },
-          "expr": "max(validator_inactivity_score{job=\"validator-client-job\"})",
-          "instant": true,
-          "interval": "",
-          "legendFormat": "",
-          "refId": "A"
-        }
-      ],
-      "title": "Max. Inactivity Score",
       "type": "stat"
     },
     {
@@ -1478,339 +970,6 @@
         "type": "prometheus",
         "uid": "${DS_PROMETHEUS}"
       },
-      "description": "Increase in all local validator balances over the last hour",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "decimals": 4,
-          "mappings": [
-            {
-              "options": {
-                "match": "null",
-                "result": {
-                  "text": "N/A"
-                }
-              },
-              "type": "special"
-            }
-          ],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "#F2495C",
-                "value": null
-              },
-              {
-                "color": "#FADE2A",
-                "value": 0
-              },
-              {
-                "color": "#73BF69",
-                "value": 0.0001
-              }
-            ]
-          },
-          "unit": "LYX"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 3,
-        "w": 3,
-        "x": 0,
-        "y": 8
-      },
-      "id": 77,
-      "links": [],
-      "maxDataPoints": 100,
-      "options": {
-        "colorMode": "value",
-        "graphMode": "area",
-        "justifyMode": "auto",
-        "orientation": "horizontal",
-        "reduceOptions": {
-          "calcs": ["lastNotNull"],
-          "fields": "",
-          "values": false
-        },
-        "text": {},
-        "textMode": "auto"
-      },
-      "pluginVersion": "9.5.2",
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
-          },
-          "expr": "sum(validator_balance{job=\"validator-client-job\"}) - sum(validator_balance{job=\"validator-client-job\"} offset 1h != 0) - (32 * count(validator_balance{job=\"validator-client-job\"} > 16)) + (32 * count(validator_balance{job=\"validator-client-job\"} offset 1h > 16))",
-          "instant": false,
-          "interval": "",
-          "intervalFactor": 3,
-          "legendFormat": "",
-          "refId": "A"
-        }
-      ],
-      "title": "Hourly Earnings",
-      "type": "stat"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
-      },
-      "description": "Increase in all local validator balances over the last day",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "decimals": 4,
-          "mappings": [
-            {
-              "options": {
-                "match": "null",
-                "result": {
-                  "text": "N/A"
-                }
-              },
-              "type": "special"
-            }
-          ],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "light-red",
-                "value": null
-              },
-              {
-                "color": "#FADE2A",
-                "value": 0
-              },
-              {
-                "color": "#73BF69",
-                "value": 0.0001
-              }
-            ]
-          },
-          "unit": "LYX"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 3,
-        "w": 3,
-        "x": 3,
-        "y": 8
-      },
-      "id": 48,
-      "links": [],
-      "maxDataPoints": 100,
-      "options": {
-        "colorMode": "value",
-        "graphMode": "area",
-        "justifyMode": "auto",
-        "orientation": "horizontal",
-        "reduceOptions": {
-          "calcs": ["lastNotNull"],
-          "fields": "",
-          "values": false
-        },
-        "text": {},
-        "textMode": "auto"
-      },
-      "pluginVersion": "9.5.2",
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
-          },
-          "expr": "sum(validator_balance{job=\"validator-client-job\"}) - sum(validator_balance{job=\"validator-client-job\"} offset 1d != 0) - (32 * count(validator_balance{job=\"validator-client-job\"} > 16)) + (32 * count(validator_balance{job=\"validator-client-job\"} offset 1d > 16))",
-          "instant": false,
-          "interval": "",
-          "legendFormat": "",
-          "refId": "A"
-        }
-      ],
-      "title": "Daily Earnings",
-      "type": "stat"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
-      },
-      "description": "Increase in all local validator balances over the last week",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "decimals": 4,
-          "mappings": [
-            {
-              "options": {
-                "match": "null",
-                "result": {
-                  "text": "N/A"
-                }
-              },
-              "type": "special"
-            }
-          ],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "#F2495C",
-                "value": null
-              },
-              {
-                "color": "#FADE2A",
-                "value": 0
-              },
-              {
-                "color": "#73BF69",
-                "value": 0.0001
-              }
-            ]
-          },
-          "unit": "LYX"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 3,
-        "w": 3,
-        "x": 6,
-        "y": 8
-      },
-      "id": 49,
-      "links": [],
-      "maxDataPoints": 100,
-      "options": {
-        "colorMode": "value",
-        "graphMode": "area",
-        "justifyMode": "auto",
-        "orientation": "horizontal",
-        "reduceOptions": {
-          "calcs": ["lastNotNull"],
-          "fields": "",
-          "values": false
-        },
-        "text": {},
-        "textMode": "auto"
-      },
-      "pluginVersion": "9.5.2",
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
-          },
-          "expr": "sum(validator_balance{job=\"validator-client-job\"}) - sum(validator_balance{job=\"validator-client-job\"} offset 7d != 0) - (32 * count(validator_balance{job=\"validator-client-job\"} > 16)) + (32 * count(validator_balance{job=\"validator-client-job\"} offset 7d > 16))",
-          "instant": false,
-          "interval": "",
-          "legendFormat": "",
-          "refId": "A"
-        }
-      ],
-      "title": "Weekly Earnings",
-      "type": "stat"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
-      },
-      "description": "Increase in all local validator balances over the last month",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "decimals": 4,
-          "mappings": [
-            {
-              "options": {
-                "match": "null",
-                "result": {
-                  "text": "N/A"
-                }
-              },
-              "type": "special"
-            }
-          ],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "#F2495C",
-                "value": null
-              },
-              {
-                "color": "#FADE2A",
-                "value": 0
-              },
-              {
-                "color": "green",
-                "value": 0.0001
-              }
-            ]
-          },
-          "unit": "LYX"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 3,
-        "w": 3,
-        "x": 9,
-        "y": 8
-      },
-      "id": 50,
-      "links": [],
-      "maxDataPoints": 100,
-      "options": {
-        "colorMode": "value",
-        "graphMode": "area",
-        "justifyMode": "auto",
-        "orientation": "horizontal",
-        "reduceOptions": {
-          "calcs": ["lastNotNull"],
-          "fields": "",
-          "values": false
-        },
-        "text": {},
-        "textMode": "auto"
-      },
-      "pluginVersion": "9.5.2",
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
-          },
-          "expr": "sum(validator_balance{job=\"validator-client-job\"}) - sum(validator_balance{job=\"validator-client-job\"} offset 30d != 0) - (32 * count(validator_balance{job=\"validator-client-job\"} > 16)) + (32 * count(validator_balance{job=\"validator-client-job\"} offset 30d > 16))",
-          "instant": false,
-          "interval": "",
-          "legendFormat": "",
-          "refId": "A"
-        }
-      ],
-      "title": "Monthly Earnings",
-      "type": "stat"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
-      },
       "description": "Counts of active, slashed and exited validators.",
       "fieldConfig": {
         "defaults": {
@@ -1858,7 +1017,7 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "validator_count{state=\"Active\",job=\"consensus-client-job\"} ",
+          "expr": "beacon_current_active_validators{job=\"consensus-client-job\"}",
           "instant": true,
           "interval": "",
           "legendFormat": "active",
@@ -1869,7 +1028,7 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "validator_count{state=\"Slashed\",job=\"consensus-client-job\"} ",
+          "expr": "beacon_current_slashed_validators{job=\"consensus-client-job\"}",
           "instant": true,
           "interval": "",
           "legendFormat": "slashed",
@@ -1880,7 +1039,7 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "validator_count{state=\"Exited\",job=\"consensus-client-job\"} ",
+          "expr": "beacon_current_exited_validators{job=\"consensus-client-job\"}",
           "instant": true,
           "interval": "",
           "legendFormat": "exited",
@@ -1964,7 +1123,7 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "validator_count{state=\"Pending\",job=\"consensus-client-job\"}",
+          "expr": "beacon_current_pending_validators{job=\"consensus-client-job\"}",
           "interval": "",
           "legendFormat": "pending",
           "refId": "B"
@@ -1974,7 +1133,7 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "validator_count{state=\"Exiting\",job=\"consensus-client-job\"}",
+          "expr": "beacon_current_exiting_validators{job=\"consensus-client-job\"}",
           "interval": "",
           "legendFormat": "exiting",
           "refId": "A"
@@ -1994,7 +1153,7 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "validator_count{state=\"Active\",job=\"consensus-client-job\"} ",
+          "expr": "beacon_current_active_validators{job=\"consensus-client-job\"}",
           "interval": "",
           "legendFormat": "active",
           "refId": "D"
@@ -2079,7 +1238,7 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "validator_count{state=\"Pending\",job=\"consensus-client-job\"}",
+          "expr": "beacon_current_pending_validators{job=\"consensus-client-job\"}",
           "instant": true,
           "interval": "",
           "legendFormat": "pending",
@@ -2090,7 +1249,7 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "validator_count{state=\"Exiting\",job=\"consensus-client-job\"}",
+          "expr": "beacon_current_exiting_validators{job=\"consensus-client-job\"}",
           "instant": true,
           "interval": "",
           "legendFormat": "exiting",
@@ -2098,338 +1257,6 @@
         }
       ],
       "title": "Validator Queues",
-      "type": "stat"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
-      },
-      "description": "Percentage increase in all local validator balances over the last hour",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "decimals": 4,
-          "mappings": [
-            {
-              "options": {
-                "match": "null",
-                "result": {
-                  "text": "N/A"
-                }
-              },
-              "type": "special"
-            }
-          ],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "#F2495C",
-                "value": null
-              },
-              {
-                "color": "#FADE2A",
-                "value": 0
-              },
-              {
-                "color": "#73BF69",
-                "value": 0.0001
-              }
-            ]
-          },
-          "unit": "percentunit"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 3,
-        "w": 3,
-        "x": 0,
-        "y": 11
-      },
-      "id": 82,
-      "links": [],
-      "maxDataPoints": 100,
-      "options": {
-        "colorMode": "value",
-        "graphMode": "area",
-        "justifyMode": "auto",
-        "orientation": "horizontal",
-        "reduceOptions": {
-          "calcs": ["lastNotNull"],
-          "fields": "/^annualized hourly return$/",
-          "values": false
-        },
-        "text": {},
-        "textMode": "auto"
-      },
-      "pluginVersion": "9.5.2",
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
-          },
-          "expr": "((sum(validator_balance{job=\"validator-client-job\"}) - sum(validator_balance{job=\"validator-client-job\"} offset 1h != 0) - (32 * count(validator_balance{job=\"validator-client-job\"} > 16)) +\t(32 * count(validator_balance{job=\"validator-client-job\"} offset 1h > 16)))/(32 * avg_over_time(count(validator_balance{job=\"validator-client-job\"} > 16)[1h:]))) * 365 * 24",
-          "hide": false,
-          "interval": "",
-          "legendFormat": "annualized hourly return",
-          "refId": "B"
-        }
-      ],
-      "title": "Hourly Return, Annualized",
-      "type": "stat"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
-      },
-      "description": "Percentage increase in all local validator balances over the last day",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "decimals": 4,
-          "mappings": [
-            {
-              "options": {
-                "match": "null",
-                "result": {
-                  "text": "N/A"
-                }
-              },
-              "type": "special"
-            }
-          ],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "#F2495C",
-                "value": null
-              },
-              {
-                "color": "#FADE2A",
-                "value": 0
-              },
-              {
-                "color": "#73BF69",
-                "value": 0.0001
-              }
-            ]
-          },
-          "unit": "percentunit"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 3,
-        "w": 3,
-        "x": 3,
-        "y": 11
-      },
-      "id": 69,
-      "links": [],
-      "maxDataPoints": 100,
-      "options": {
-        "colorMode": "value",
-        "graphMode": "area",
-        "justifyMode": "auto",
-        "orientation": "horizontal",
-        "reduceOptions": {
-          "calcs": ["lastNotNull"],
-          "fields": "/^annualized daily return$/",
-          "values": false
-        },
-        "text": {},
-        "textMode": "auto"
-      },
-      "pluginVersion": "9.5.2",
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
-          },
-          "expr": "((sum(validator_balance{job=\"validator-client-job\"}) - sum(validator_balance{job=\"validator-client-job\"} offset 1d != 0) - (32 * count(validator_balance{job=\"validator-client-job\"} > 16)) +\t(32 * count(validator_balance{job=\"validator-client-job\"} offset 1d > 16)))/(32 * avg_over_time(count(validator_balance{job=\"validator-client-job\"} > 16)[1d:]))) * 365",
-          "hide": false,
-          "interval": "",
-          "legendFormat": "annualized daily return",
-          "refId": "B"
-        }
-      ],
-      "title": "Daily Return, Annualized",
-      "type": "stat"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
-      },
-      "description": "Percentage increase in all local validator balances over the last week",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "decimals": 4,
-          "mappings": [
-            {
-              "options": {
-                "match": "null",
-                "result": {
-                  "text": "N/A"
-                }
-              },
-              "type": "special"
-            }
-          ],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "#F2495C",
-                "value": null
-              },
-              {
-                "color": "#FADE2A",
-                "value": 0
-              },
-              {
-                "color": "#73BF69",
-                "value": 0.0001
-              }
-            ]
-          },
-          "unit": "percentunit"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 3,
-        "w": 3,
-        "x": 6,
-        "y": 11
-      },
-      "id": 83,
-      "links": [],
-      "maxDataPoints": 100,
-      "options": {
-        "colorMode": "value",
-        "graphMode": "area",
-        "justifyMode": "auto",
-        "orientation": "horizontal",
-        "reduceOptions": {
-          "calcs": ["lastNotNull"],
-          "fields": "/^annualized weekly return$/",
-          "values": false
-        },
-        "text": {},
-        "textMode": "auto"
-      },
-      "pluginVersion": "9.5.2",
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
-          },
-          "expr": "((sum(validator_balance{job=\"validator-client-job\"}) - sum(validator_balance{job=\"validator-client-job\"} offset 7d != 0) - (32 * count(validator_balance{job=\"validator-client-job\"} > 16)) +\t(32 * count(validator_balance{job=\"validator-client-job\"} offset 7d > 16)))/(32 * avg_over_time(count(validator_balance{job=\"validator-client-job\"} > 16)[7d:]))) * (365/7)",
-          "hide": false,
-          "interval": "",
-          "legendFormat": "annualized weekly return",
-          "refId": "B"
-        }
-      ],
-      "title": "Weekly Return, Annualized",
-      "type": "stat"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
-      },
-      "description": "Percentage increase in all local validator balances over the last month",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "decimals": 4,
-          "mappings": [
-            {
-              "options": {
-                "match": "null",
-                "result": {
-                  "text": "N/A"
-                }
-              },
-              "type": "special"
-            }
-          ],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "#F2495C",
-                "value": null
-              },
-              {
-                "color": "#FADE2A",
-                "value": 0
-              },
-              {
-                "color": "#73BF69",
-                "value": 0.0001
-              }
-            ]
-          },
-          "unit": "percentunit"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 3,
-        "w": 3,
-        "x": 9,
-        "y": 11
-      },
-      "id": 84,
-      "links": [],
-      "maxDataPoints": 100,
-      "options": {
-        "colorMode": "value",
-        "graphMode": "area",
-        "justifyMode": "auto",
-        "orientation": "horizontal",
-        "reduceOptions": {
-          "calcs": ["lastNotNull"],
-          "fields": "",
-          "values": false
-        },
-        "text": {},
-        "textMode": "auto"
-      },
-      "pluginVersion": "9.5.2",
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
-          },
-          "expr": "((sum(validator_balance{job=\"validator-client-job\"}) - sum(validator_balance{job=\"validator-client-job\"} offset 30d != 0) - (32 * count(validator_balance{job=\"validator-client-job\"} > 16)) +\t(32 * count(validator_balance{job=\"validator-client-job\"} offset 30d > 16)))/(32 * avg_over_time(count(validator_balance{job=\"validator-client-job\"} > 16)[30d:]))) * (365/30)",
-          "hide": false,
-          "interval": "",
-          "legendFormat": "annualized monthly return",
-          "refId": "B"
-        }
-      ],
-      "title": "Monthly Return, Annualized",
       "type": "stat"
     },
     {
@@ -2505,7 +1332,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
-          "expr": "validators_total_balance{state=\"Active\",job=\"consensus-client-job\"} / validator_count{state=\"Active\",job=\"consensus-client-job\"} / 1000000000",
+          "expr": "(beacon_prev_epoch_active_gwei{job=\"consensus-client-job\"} / 1e9) / beacon_current_active_validators{job=\"consensus-client-job\"}",
           "interval": "",
           "legendFormat": "lyx",
           "refId": "A"
@@ -2564,7 +1391,7 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "((validator_count{state=\"Pending\",job=\"consensus-client-job\"}/4)*6.4)",
+          "expr": "(beacon_current_pending_validators{job=\"consensus-client-job\"} / 4) * 6.4",
           "instant": true,
           "interval": "",
           "legendFormat": "pending",
@@ -2575,7 +1402,7 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "((validator_count{state=\"Exiting\",job=\"consensus-client-job\"}/4)*6.4)",
+          "expr": "(beacon_current_exiting_validators{job=\"consensus-client-job\"} / 4) * 6.4",
           "instant": true,
           "interval": "",
           "legendFormat": "exiting",
@@ -2850,19 +1677,7 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "label_replace(max by(pubkey) (validator_balance{job=\"validator-client-job\"}), \"pubkey_short\", \"$1\", \"pubkey\", \"(.{10}).*\") ",
-          "format": "table",
-          "instant": true,
-          "interval": "",
-          "legendFormat": "balance",
-          "refId": "F"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
-          },
-          "expr": "label_replace(max by(pubkey) (validator_successful_proposals{job=\"validator-client-job\"}), \"pubkey_short\", \"$1\", \"pubkey\", \"(.{10}).*\")  ",
+          "expr": "sum(validator_beacon_node_published_block_total{job=\"validator-client-job\"})",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -2874,7 +1689,7 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "label_replace(max by(pubkey) (validator_successful_attestations{job=\"validator-client-job\"}), \"pubkey_short\", \"$1\", \"pubkey\", \"(.{10}).*\")  ",
+          "expr": "sum(validator_beacon_node_published_attestation_total{job=\"validator-client-job\"})",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -2886,48 +1701,12 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "label_replace(max by(pubkey) (validator_successful_aggregations{job=\"validator-client-job\"}), \"pubkey_short\", \"$1\", \"pubkey\", \"(.{10}).*\") ",
-          "format": "table",
-          "instant": true,
-          "interval": "",
-          "legendFormat": "",
-          "refId": "C"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
-          },
-          "expr": "label_replace(max by(pubkey) (validator_failed_attestations{job=\"validator-client-job\"}), \"pubkey_short\", \"$1\", \"pubkey\", \"(.{10}).*\") ",
+          "expr": "sum(validator_beacon_node_published_aggregate_total{job=\"validator-client-job\"})",
           "format": "table",
           "instant": true,
           "interval": "",
           "legendFormat": "",
           "refId": "B"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
-          },
-          "expr": "label_replace(max by(pubkey) (validator_failed_aggregations{job=\"validator-client-job\"}), \"pubkey_short\", \"$1\", \"pubkey\", \"(.{10}).*\") ",
-          "format": "table",
-          "instant": true,
-          "interval": "",
-          "legendFormat": "",
-          "refId": "D"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
-          },
-          "expr": "label_replace(max by(pubkey) (validator_inactivity_score{job=\"validator-client-job\"}), \"pubkey_short\", \"$1\", \"pubkey\", \"(.{10}).*\")  ",
-          "format": "table",
-          "instant": true,
-          "interval": "",
-          "legendFormat": "",
-          "refId": "H"
         }
       ],
       "title": "Validator Process Stats",
@@ -3078,7 +1857,7 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "p2p_peer_count{state=\"Connected\",job=\"consensus-client-job\"}",
+          "expr": "libp2p_peers{job=\"consensus-client-job\"}",
           "interval": "",
           "legendFormat": "peers",
           "refId": "A"
@@ -3347,7 +2126,7 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "max(prysm_version{job=\"consensus-client-job\"}) by (job, version)",
+          "expr": "max(teku_info{job=\"consensus-client-job\"}) by (job,version)",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -3358,8 +2137,10 @@
       "title": "Teku Versions",
       "transformations": [
         {
-          "id": "filterByRefId",
-          "options": {}
+          "id": "labelsToFields",
+          "options": {
+            "valueLabel": ""
+          }
         },
         {
           "id": "filterFieldsByName",
@@ -5726,7 +4507,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
-          "expr": "p2p_peer_count{state=\"Connected\",job=\"consensus-client-job\"}",
+          "expr": "libp2p_peers{job=\"consensus-client-job\"}",
           "interval": "",
           "legendFormat": "peers",
           "refId": "A"
@@ -6175,162 +4956,6 @@
         },
         {
           "$$hashKey": "object:126",
-          "format": "short",
-          "logBase": 1,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false
-      }
-    },
-    {
-      "alert": {
-        "alertRuleTags": {},
-        "conditions": [
-          {
-            "evaluator": {
-              "params": [0.000001],
-              "type": "lt"
-            },
-            "operator": {
-              "type": "and"
-            },
-            "query": {
-              "params": ["A", "10s", "now"]
-            },
-            "reducer": {
-              "params": [],
-              "type": "last"
-            },
-            "type": "query"
-          },
-          {
-            "evaluator": {
-              "params": [-10],
-              "type": "gt"
-            },
-            "operator": {
-              "type": "and"
-            },
-            "query": {
-              "params": ["A", "10s", "now"]
-            },
-            "reducer": {
-              "params": [],
-              "type": "last"
-            },
-            "type": "query"
-          }
-        ],
-        "executionErrorState": "alerting",
-        "for": "0m",
-        "frequency": "1m",
-        "handler": 1,
-        "name": "No Hourly Earnings",
-        "noDataState": "no_data",
-        "notifications": [
-          {
-            "uid": "wNz7UJpnk"
-          }
-        ]
-      },
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": {
-        "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "links": []
-        },
-        "overrides": []
-      },
-      "fill": 1,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 1,
-        "w": 6,
-        "x": 0,
-        "y": 42
-      },
-      "hiddenSeries": false,
-      "id": 121,
-      "legend": {
-        "alignAsTable": false,
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "show": true,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "nullPointMode": "null",
-      "options": {
-        "alertThreshold": true
-      },
-      "percentage": false,
-      "pluginVersion": "9.5.2",
-      "pointradius": 2,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
-          },
-          "exemplar": true,
-          "expr": "sum(validator_balance{job=\"validator-client-job\"}) - sum(validator_balance{job=\"validator-client-job\"} offset 1h != 0) - (32 * count(validator_balance{job=\"validator-client-job\"} > 16)) + (32 * count(validator_balance{job=\"validator-client-job\"} offset 1h > 16))",
-          "hide": false,
-          "interval": "",
-          "intervalFactor": 1,
-          "legendFormat": "validators earning on 1h",
-          "refId": "A"
-        }
-      ],
-      "thresholds": [
-        {
-          "colorMode": "critical",
-          "fill": true,
-          "line": true,
-          "op": "lt",
-          "value": 0.000001,
-          "visible": true
-        }
-      ],
-      "timeRegions": [],
-      "title": "No Hourly Earnings",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "mode": "time",
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "$$hashKey": "object:299",
-          "format": "short",
-          "logBase": 1,
-          "show": true
-        },
-        {
-          "$$hashKey": "object:300",
           "format": "short",
           "logBase": 1,
           "show": true
