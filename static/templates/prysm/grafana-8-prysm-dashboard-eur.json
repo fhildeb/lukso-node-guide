@@ -1037,7 +1037,7 @@
       "pluginVersion": "8.2.3",
       "targets": [
         {
-          "expr": "max(validator_inactivity_score)",
+          "expr": "max(validator_inactivity_score{job=\"validator-client-job\"})",
           "instant": true,
           "interval": "",
           "legendFormat": "",

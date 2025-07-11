@@ -1137,7 +1137,7 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "max(validator_inactivity_score)",
+          "expr": "max(validator_inactivity_score{job=\"validator-client-job\"})",
           "instant": true,
           "interval": "",
           "legendFormat": "",

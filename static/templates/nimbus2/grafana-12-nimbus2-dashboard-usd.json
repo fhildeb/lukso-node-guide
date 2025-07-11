@@ -1159,7 +1159,7 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "max(validator_inactivity_score)",
+          "expr": "max(validator_inactivity_score{job=\"beacon-client-job\"})",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -6220,7 +6220,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
-          "expr": "sum(validator_balance{job=\"validator-client-job\"}) - sum(validator_balance{job=\"validator-client-job\"} offset 1h != 0) - (32 * count(validator_balance{job=\"validator-client-job\"} > 16)) + (32 * count(validator_balance{job=\"validator-client-job\"} offset 1h > 16))",
+          "expr": "sum(validator_balance{job=\"beacon-client-job\"}) - sum(validator_balance{job=\"beacon-client-job\"} offset 1h != 0) - (32 * count(validator_balance{job=\"beacon-client-job\"} > 16)) + (32 * count(validator_balance{job=\"beacon-client-job\"} offset 1h > 16))",
           "hide": false,
           "interval": "",
           "intervalFactor": 1,
