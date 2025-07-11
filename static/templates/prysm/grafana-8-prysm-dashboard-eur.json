@@ -3101,7 +3101,7 @@
       "pluginVersion": "8.2.3",
       "targets": [
         {
-          "expr": "max(prysm_version) by (job, version)",
+          "expr": "max(prysm_version{job=\"consensus-client-job\"}) by (job, version)",
           "format": "table",
           "instant": true,
           "interval": "",

@@ -3796,7 +3796,7 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "max(prysm_version) by (job, version)",
+          "expr": "max(prysm_version{job=\"consensus-client-job\"}) by (job, version)",
           "format": "table",
           "instant": true,
           "interval": "",
