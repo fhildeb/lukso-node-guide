@@ -21,15 +21,17 @@ export function StatusPanel() {
 
   // Fallback if client data is loading or missing
   const fallbackExecutionClients = [
-    { label: "Prysm", value: 0 },
     { label: "Lighthouse", value: 0 },
+    { label: "Prysm", value: 0 },
     { label: "Teku", value: 0 },
+    { label: "Nimbus", value: 0 },
     { label: "Others", value: 0 },
   ];
   const fallbackConsensusClients = [
     { label: "Geth", value: 0 },
     { label: "Erigon", value: 0 },
     { label: "Besu", value: 0 },
+    { label: "Nethermind", value: 0 },
     { label: "Others", value: 0 },
   ];
 
