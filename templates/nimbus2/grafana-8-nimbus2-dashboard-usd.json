@@ -3101,7 +3101,7 @@
       "pluginVersion": "8.2.3",
       "targets": [
         {
-          "expr": "max(Nimbus-Eth2_version{job=\"beacon-client-job\"}) by (job, version)",
+          "expr": "max(prysm_version{job=\"beacon-client-job\"}) by (job, version)",
           "format": "table",
           "instant": true,
           "interval": "",
