@@ -1826,7 +1826,7 @@
         {
           "expr": "validator_count{job=\"beacon node\", state=\"Active\"}",
           "interval": "",
-          "legendFormat": "active validators",
+          "legendFormat": "active",
           "refId": "D"
         }
       ],
@@ -5201,7 +5201,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "beacon_prev_epoch_target_gwei/beacon_prev_epoch_active_gwei*100",
+          "expr": "(beacon_prev_epoch_target_gwei{job=\"consensus-client-job\"} / beacon_prev_epoch_active_gwei{job=\"consensus-client-job\"}) *100",
           "hide": false,
           "interval": "",
           "intervalFactor": 1,
@@ -5487,7 +5487,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "beacon_clock_time_slot-beacon_head_slot",
+          "expr": "beacon_clock_time_slot{job=\"consensus-client-job\"} - beacon_head_slot{job=\"consensus-client-job\"}",
           "interval": "",
           "legendFormat": "node slots behind",
           "refId": "A"

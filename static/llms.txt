@@ -14002,7 +14002,7 @@ NaN:      2nd data feed (ignore metric --> 100)
 ![Participation Rate below 80% Metric](/img/guides/alert-systems/grafana-alerts-7.png)
 
 ```text
-beacon_prev_epoch_target_gwei / beacon_prev_epoch_active_gwei * 100
+(beacon_prev_epoch_target_gwei{job="consensus-client-job"} / beacon_prev_epoch_active_gwei{job="consensus-client-job"}) *100
 ```
 
 **Alert: 50 Slots Behind**
@@ -14016,7 +14016,7 @@ NaN:      Not available (likely unstable --> 51)
 ![50 Slots Behind Metric](/img/guides/alert-systems/grafana-alerts-8.png)
 
 ```text
-beacon_clock_time_slot-beacon_head_slot
+beacon_clock_time_slot{job="consensus-client-job"} - beacon_head_slot{job="consensus-client-job"}
 ```
 
 **Alert: No Hourly Earnings**
@@ -14030,7 +14030,7 @@ NaN:          Not available (likely negative rewards --> 0)
 ![No Hourly Earnings Metric](/img/guides/alert-systems/grafana-alerts-9.png)
 
 ```text
-sum(validator_balance) - sum(validator_balance offset 1h) - count(validator_balance > 16)*32 + count(validator_balance offset 1h > 0)*32
+sum(validator_balance{job="validator-client-job"}) - sum(validator_balance{job="validator-client-job"} offset 1h != 0) - (32 * count(validator_balance{job="validator-client-job"} > 16)) + (32 * count(validator_balance{job="validator-client-job"} offset 1h > 16))
 ```
 
 **Alert: Less than 2GB Free Memory**

@@ -2196,9 +2196,9 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "validator_count{job=\"consensus-client-job\", state=\"Active\"}",
+          "expr": "validator_count{state=\"Active\",job=\"consensus-client-job\"} ",
           "interval": "",
-          "legendFormat": "active validators",
+          "legendFormat": "active",
           "refId": "D"
         }
       ],
@@ -6220,7 +6220,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
-          "expr": "sum(validator_balance) - sum(validator_balance offset 1h) - count(validator_balance > 16)*32 + count(validator_balance offset 1h > 0)*32",
+          "expr": "sum(validator_balance{job=\"validator-client-job\"}) - sum(validator_balance{job=\"validator-client-job\"} offset 1h != 0) - (32 * count(validator_balance{job=\"validator-client-job\"} > 16)) + (32 * count(validator_balance{job=\"validator-client-job\"} offset 1h > 16))",
           "hide": false,
           "interval": "",
           "intervalFactor": 1,
@@ -6826,7 +6826,7 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "beacon_clock_time_slot-beacon_head_slot",
+          "expr": "beacon_clock_time_slot{job=\"consensus-client-job\"} - beacon_head_slot{job=\"consensus-client-job\"}",
           "interval": "",
           "legendFormat": "node slots behind",
           "refId": "A"
@@ -7029,7 +7029,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
-          "expr": "beacon_prev_epoch_target_gwei/beacon_prev_epoch_active_gwei*100",
+          "expr": "(beacon_prev_epoch_target_gwei{job=\"consensus-client-job\"} / beacon_prev_epoch_active_gwei{job=\"consensus-client-job\"}) *100",
           "hide": false,
           "interval": "",
           "intervalFactor": 1,
