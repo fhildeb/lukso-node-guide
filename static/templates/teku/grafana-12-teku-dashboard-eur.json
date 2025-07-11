@@ -6826,7 +6826,7 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "beacon_clock_time_slot{job=\"consensus-client-job\"} - beacon_head_slot{job=\"consensus-client-job\"}",
+          "expr": "beacon_clock_time_slot{job=\"beacon-client-job\"} - beacon_head_slot{job=\"beacon-client-job\"}",
           "interval": "",
           "legendFormat": "node slots behind",
           "refId": "A"
@@ -7029,7 +7029,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
-          "expr": "(beacon_prev_epoch_target_gwei{job=\"consensus-client-job\"} / beacon_prev_epoch_active_gwei{job=\"consensus-client-job\"}) *100",
+          "expr": "(beacon_prev_epoch_target_gwei{job=\"beacon-client-job\"} / beacon_prev_epoch_active_gwei{job=\"beacon-client-job\"}) *100",
           "hide": false,
           "interval": "",
           "intervalFactor": 1,
