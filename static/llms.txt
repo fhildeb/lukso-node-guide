@@ -14001,9 +14001,21 @@ NaN:      2nd data feed (ignore metric --> 100)
 
 ![Participation Rate below 80% Metric](/img/guides/alert-systems/grafana-alerts-7.png)
 
+<Tabs groupId="client">
+<TabItem value="lighthouse-prysm" label="Lighthouse & Prysm">
+
 ```text
 (beacon_prev_epoch_target_gwei{job="consensus-client-job"} / beacon_prev_epoch_active_gwei{job="consensus-client-job"}) *100
 ```
+
+</TabItem><TabItem value="teku-nimbus" label="Teku & Nimbus-Eth2">
+
+```text
+(beacon_prev_epoch_target_gwei{job="beacon-client-job"} / beacon_prev_epoch_active_gwei{job="beacon-client-job"}) *100
+```
+
+</TabItem> 
+</Tabs>
 
 **Alert: 50 Slots Behind**
 
@@ -14015,9 +14027,27 @@ NaN:      Not available (likely unstable --> 51)
 
 ![50 Slots Behind Metric](/img/guides/alert-systems/grafana-alerts-8.png)
 
+<Tabs groupId="client">
+<TabItem value="prysm" label="Prysm">
+
 ```text
 beacon_clock_time_slot{job="consensus-client-job"} - beacon_head_slot{job="consensus-client-job"}
 ```
+
+</TabItem><TabItem value="lighthouse" label="Lighthouse">
+
+```text
+slotclock_present_slot{job="consensus-client-job"} - beacon_head_slot{job="consensus-client-job"}
+```
+
+</TabItem><TabItem value="teku-nimbus" label="Teku & Nimbus-Eth2">
+
+```text
+beacon_clock_time_slot{job="beacon-client-job"} - beacon_head_slot{job="beacon-client-job"}
+```
+
+</TabItem> 
+</Tabs>
 
 **Alert: No Hourly Earnings**
 
@@ -14029,9 +14059,27 @@ NaN:          Not available (likely negative rewards --> 0)
 
 ![No Hourly Earnings Metric](/img/guides/alert-systems/grafana-alerts-9.png)
 
+<Tabs groupId="client">
+<TabItem value="prysm" label="Prysm">
+
 ```text
 sum(validator_balance{job="validator-client-job"}) - sum(validator_balance{job="validator-client-job"} offset 1h != 0) - (32 * count(validator_balance{job="validator-client-job"} > 16)) + (32 * count(validator_balance{job="validator-client-job"} offset 1h > 16))
 ```
+
+</TabItem><TabItem value="lighthouse" label="Lighthouse">
+
+```text
+((sum(validator_monitor_balance_gwei{job="validator-client-job"}) - sum(validator_monitor_balance_gwei{job="validator-client-job"} offset 1h != 0)) / 1e9) - (32 * count(validator_monitor_status{job="validator-client-job",status="active_ongoing"})) + (32 * count(validator_monitor_status{job="validator-client-job",status="active_ongoing"} offset 1h))
+```
+
+</TabItem><TabItem value="teku-nimbus" label="Teku & Nimbus-Eth2">
+
+```text
+sum(validator_balance{job="beacon-client-job"}) - sum(validator_balance{job="beacon-client-job"} offset 1h != 0) - (32 * count(validator_balance{job="beacon-client-job"} > 16)) + (32 * count(validator_balance{job="beacon-client-job"} offset 1h > 16))
+```
+
+</TabItem> 
+</Tabs>
 
 **Alert: Less than 2GB Free Memory**
 
