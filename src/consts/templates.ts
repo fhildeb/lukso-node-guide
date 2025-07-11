@@ -1,5 +1,5 @@
 export type Dashboard = {
-  filename: string;
+  filepath: string;
   label: string;
   grafana: string;
   currency: string;
@@ -7,82 +7,154 @@ export type Dashboard = {
 
 const templates: Dashboard[] = [
   {
-    filename: "grafana-12-prysm-lighthouse-dashboard-usd.json",
+    filepath: "/prysm/grafana-12-prysm-dashboard-usd.json",
     grafana: "12",
     currency: "USD",
-    label: "Prysm & Lighthouse",
+    label: "Prysm",
   },
   {
-    filename: "grafana-12-prysm-lighthouse-dashboard-eur.json",
+    filepath: "/prysm/grafana-12-prysm-dashboard-eur.json",
     grafana: "12",
     currency: "EUR",
-    label: "Prysm & Lighthouse",
+    label: "Prysm",
   },
   {
-    filename: "grafana-9-prysm-lighthouse-dashboard-usd.json",
+    filepath: "/prysm/grafana-9-prysm-dashboard-usd.json",
     grafana: "9",
     currency: "USD",
-    label: "Prysm & Lighthouse",
+    label: "Prysm",
   },
   {
-    filename: "grafana-9-prysm-lighthouse-dashboard-eur.json",
+    filepath: "/prysm/grafana-9-prysm-dashboard-eur.json",
     grafana: "9",
     currency: "EUR",
-    label: "Prysm & Lighthouse",
+    label: "Prysm",
   },
   {
-    filename: "grafana-8-prysm-lighthouse-dashboard-usd.json",
+    filepath: "/prysm/grafana-8-prysm-dashboard-usd.json",
     grafana: "8",
     currency: "USD",
-    label: "Prysm & Lighthouse",
+    label: "Prysm",
   },
   {
-    filename: "grafana-8-prysm-lighthouse-dashboard-eur.json",
+    filepath: "/prysm/grafana-8-prysm-dashboard-eur.json",
     grafana: "8",
     currency: "EUR",
-    label: "Prysm & Lighthouse",
+    label: "Prysm",
   },
   {
-    filename: "grafana-8-l16-prysm-dashboard-usd.json",
+    filepath: "/prysm/grafana-8-l16-prysm-dashboard-usd.json",
     grafana: "8",
     currency: "USD",
-    label: "Prysm & Lighthouse",
+    label: "Prysm",
   },
   {
-    filename: "grafana-12-teku-nimbus2-dashboard-usd.json",
+    filepath: "/lighthouse/grafana-12-lighthouse-dashboard-usd.json",
     grafana: "12",
     currency: "USD",
-    label: "Teku & Nimbus-Eth2",
+    label: "Lighthouse",
   },
   {
-    filename: "grafana-12-teku-nimbus-dashboard-eur.json",
+    filepath: "/lighthouse/grafana-12-lighthouse-dashboard-eur.json",
     grafana: "12",
     currency: "EUR",
-    label: "Teku & Nimbus-Eth2",
+    label: "Lighthouse",
   },
   {
-    filename: "grafana-9-teku-nimbus2-dashboard-usd.json",
+    filepath: "/lighthouse/grafana-9-lighthouse-dashboard-usd.json",
     grafana: "9",
     currency: "USD",
-    label: "Teku & Nimbus-Eth2",
+    label: "Lighthouse",
   },
   {
-    filename: "grafana-9-teku-nimbus2-dashboard-eur.json",
+    filepath: "/lighthouse/grafana-9-lighthouse-dashboard-eur.json",
     grafana: "9",
     currency: "EUR",
-    label: "Teku & Nimbus-Eth2",
+    label: "Lighthouse",
   },
   {
-    filename: "grafana-8-teku-nimbus2-dashboard-usd.json",
+    filepath: "/lighthouse/grafana-8-lighthouse-dashboard-usd.json",
     grafana: "8",
     currency: "USD",
-    label: "Teku & Nimbus-Eth2",
+    label: "Lighthouse",
   },
   {
-    filename: "grafana-8-teku-nimbus2-dashboard-eur.json",
+    filepath: "/lighthouse/grafana-8-lighthouse-dashboard-eur.json",
     grafana: "8",
     currency: "EUR",
-    label: "Teku & Nimbus-Eth2",
+    label: "Lighthouse",
+  },
+  {
+    filepath: "/nimbus2/grafana-12-nimbus2-dashboard-usd.json",
+    grafana: "12",
+    currency: "USD",
+    label: "Nimbus-Eth2",
+  },
+  {
+    filepath: "/nimbus2/grafana-12-nimbus2-dashboard-eur.json",
+    grafana: "12",
+    currency: "EUR",
+    label: "Nimbus-Eth2",
+  },
+  {
+    filepath: "/nimbus2/grafana-9-nimbus2-dashboard-usd.json",
+    grafana: "9",
+    currency: "USD",
+    label: "Nimbus-Eth2",
+  },
+  {
+    filepath: "/nimbus2/grafana-9-nimbus2-dashboard-eur.json",
+    grafana: "9",
+    currency: "EUR",
+    label: "Nimbus-Eth2",
+  },
+  {
+    filepath: "/nimbus2/grafana-8-nimbus2-dashboard-usd.json",
+    grafana: "8",
+    currency: "USD",
+    label: "Nimbus-Eth2",
+  },
+  {
+    filepath: "/nimbus2/grafana-8-nimbus2-dashboard-eur.json",
+    grafana: "8",
+    currency: "EUR",
+    label: "Nimbus-Eth2",
+  },
+  {
+    filepath: "/teku/grafana-12-teku-dashboard-usd.json",
+    grafana: "12",
+    currency: "USD",
+    label: "Teku",
+  },
+  {
+    filepath: "/teku/grafana-12-teku-dashboard-eur.json",
+    grafana: "12",
+    currency: "EUR",
+    label: "Teku",
+  },
+  {
+    filepath: "/teku/grafana-9-teku-dashboard-usd.json",
+    grafana: "9",
+    currency: "USD",
+    label: "Teku",
+  },
+  {
+    filepath: "/teku/grafana-9-teku-dashboard-eur.json",
+    grafana: "9",
+    currency: "EUR",
+    label: "Teku",
+  },
+  {
+    filepath: "/teku/grafana-8-teku-dashboard-usd.json",
+    grafana: "8",
+    currency: "USD",
+    label: "Teku",
+  },
+  {
+    filepath: "/teku/grafana-8-teku-dashboard-eur.json",
+    grafana: "8",
+    currency: "EUR",
+    label: "Teku",
   },
 ];
 
