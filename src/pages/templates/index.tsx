@@ -135,17 +135,17 @@ function TemplatesPage() {
                       <strong>Consensus Interfaces</strong>: <br />{" "}
                       <code>5054: Lighthouse</code> <br />
                       <code>8080: Prysm</code>
+                      <code>8008: Teku</code>
                     </li>
                     <li>
                       <strong>Validator Interfaces</strong>: <br />{" "}
                       <code>5057: Lighthouse</code> <br />
                       <code>8081: Prysm</code>
+                      <code>8009: Teku</code>
                     </li>
                     <li>
                       <strong>Combined Interfaces</strong>: <br />{" "}
                       <code>8008: Nimbus-Eth2</code>
-                      <br />
-                      <code>8009: Teku</code>
                     </li>
                   </ul>
                 </div>
@@ -254,17 +254,17 @@ function TemplatesPage() {
                       <strong>Consensus Interfaces</strong>: <br />{" "}
                       <code>5054: Lighthouse</code> <br />
                       <code>8080: Prysm</code>
+                      <code>8008: Teku</code>
                     </li>
                     <li>
                       <strong>Validator Interfaces</strong>: <br />{" "}
                       <code>5057: Lighthouse</code> <br />
                       <code>8081: Prysm</code>
+                      <code>8009: Teku</code>
                     </li>
                     <li>
                       <strong>Combined Interfaces</strong>: <br />{" "}
                       <code>8008: Nimbus-Eth2</code>
-                      <br />
-                      <code>8009: Teku</code>
                     </li>
                   </ul>
                 </div>
