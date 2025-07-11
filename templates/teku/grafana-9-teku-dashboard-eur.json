@@ -1238,7 +1238,7 @@
           },
           "expr": "beacon_current_active_validators{job=\"consensus-client-job\"}",
           "interval": "",
-          "legendFormat": "active",
+          "legendFormat": "active validators",
           "refId": "D"
         }
       ],

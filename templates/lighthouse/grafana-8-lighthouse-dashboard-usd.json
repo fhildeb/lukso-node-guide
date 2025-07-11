@@ -1816,7 +1816,7 @@
         {
           "expr": "beacon_head_state_active_validators_total{job=\"consensus-client-job\"}",
           "interval": "",
-          "legendFormat": "active",
+          "legendFormat": "active validators",
           "refId": "C"
         }
       ],
