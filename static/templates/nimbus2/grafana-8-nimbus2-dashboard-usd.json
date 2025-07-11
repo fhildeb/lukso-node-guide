@@ -3068,7 +3068,7 @@
     },
     {
       "datasource": null,
-      "description": "Versions of the currently running Prysm clients.",
+      "description": "Versions of the currently running Nimbus-Eth2 clients.",
       "fieldConfig": {
         "defaults": {
           "custom": {
@@ -3101,7 +3101,7 @@
       "pluginVersion": "8.2.3",
       "targets": [
         {
-          "expr": "max(prysm_version) by (job, version)",
+          "expr": "max(Nimbus-Eth2_version{job=\"beacon-client-job\"}) by (job, version)",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -3111,7 +3111,7 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Prysm Versions",
+      "title": "Nimbus-Eth2 Versions",
       "transformations": [
         {
           "id": "filterByRefId",

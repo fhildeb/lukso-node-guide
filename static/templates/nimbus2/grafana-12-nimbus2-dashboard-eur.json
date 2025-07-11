@@ -3750,7 +3750,7 @@
         "type": "prometheus",
         "uid": "${DS_PROMETHEUS}"
       },
-      "description": "Versions of the currently running Prysm clients.",
+      "description": "Versions of the currently running Nimbus-Eth2 clients.",
       "fieldConfig": {
         "defaults": {
           "custom": {
@@ -3796,7 +3796,7 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "max(prysm_version) by (job, version)",
+          "expr": "max(Nimbus-Eth2_version{job=\"beacon-client-job\"}) by (job, version)",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -3804,7 +3804,7 @@
           "refId": "A"
         }
       ],
-      "title": "Prysm Versions",
+      "title": "Nimbus-Eth2 Versions",
       "transformations": [
         {
           "id": "filterByRefId",
