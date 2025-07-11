@@ -64,7 +64,7 @@
   border: 5px solid var(--blog-container-border);
   border-radius: 5px;
   margin-top: 15px;
-  min-height: 145px;
+  min-height: 185px;
 }
 
 .blogPost {
