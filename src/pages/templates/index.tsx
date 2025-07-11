@@ -87,6 +87,46 @@ function TemplatesPage() {
                 </div>
               </div>
             </div>
+            <div className={`${styles.sectionBox}`}>
+              <div className="admonition admonition-warning alert alert--warning">
+                <div className="admonition-heading">
+                  <h2>Differences</h2>
+                  <p>
+                    The <strong>Metrics</strong> and <strong>Dashboards</strong>{" "}
+                    differ across clients, as they expose various lables.
+                  </p>
+                  <ul>
+                    <li>
+                      <strong>Prysm:</strong> Exposes all data streams from
+                      validators and consensus clients.
+                    </li>
+                    <li>
+                      <strong>Teku:</strong> Does not show slashing validators,
+                      failed attestations and aggregations, inactivity scores,
+                      or validator balances, statuses, returns, and earnings.
+                    </li>
+                    <li>
+                      <strong>Nimbus-Eth2: </strong> Does not show slashing
+                      validators or separated validator logs for memory usage,
+                      uptime, restarts, errors, and warnings.
+                    </li>
+                    <li>
+                      <strong>Lighthouse:</strong> Does not expose slashing
+                      validators.
+                    </li>
+                  </ul>
+                  <p>
+                    The <strong>Nimbus-Eth2</strong> client requires to set the{" "}
+                    <br></br> validator monitoring flag, as described on the{" "}
+                    {/* TODO: Add monitoring settings guide link */}
+                    <Link to="#">
+                      <strong>Monitoring Settings</strong>
+                    </Link>{" "}
+                    page.
+                  </p>
+                </div>
+              </div>
+            </div>
             <div className={`${styles.sectionBox} ${styles.conditionalRight}`}>
               <div className="admonition admonition-info alert alert--info">
                 <div className="infoBlock">

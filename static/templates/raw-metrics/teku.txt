@@ -33,7 +33,6 @@ UNCHANGED METRICS FROM PRYSM DASHBOARD
 - Validator Process Restarted:          "expr": "(time()-process_start_time_seconds{job=\"validator-client-job\"})/3600",
 - Participation Rate Below 80%:         "expr": "(beacon_prev_epoch_target_gwei{job=\"consensus-client-job\"} / beacon_prev_epoch_active_gwei{job=\"consensus-client-job\"}) *100",
 - 50 Slots Behind:                      "expr": "beacon_clock_time_slot{job=\"consensus-client-job\"} - beacon_head_slot{job=\"consensus-client-job\"}",
-- Slashing Validators:                  "expr": "validator_count{state=\"Slashing\",job=\"consensus-client-job\"}",
 - Beacon Log Errors per Hour:           "expr": "sum(rate(log_entries_total{job=\"consensus-client-job\", level=\"error\"}[$__range]))*3600",
 - Beacon Log Warnings per Hour:         "expr": "sum(rate(log_entries_total{job=\"consensus-client-job\", level=\"warning\"}[$__range]))*3600",
 - Validator Log Errors per Hour:        "expr": "sum(rate(log_entries_total{job=\"validator-client-job\", level=\"error\"}[$__range]))*3600",
@@ -58,3 +57,4 @@ REMOVED METRICS FROM PRYSM DASHBOARD (NOT EXPOSED IN TEKU)
 - Daily Return Annualized:              "expr": "((sum(validator_balance{job=\"validator-client-job\"}) - sum(validator_balance{job=\"validator-client-job\"} offset 1d != 0) - (32 * count(validator_balance{job=\"validator-client-job\"} > 16)) +\t(32 * count(validator_balance{job=\"validator-client-job\"} offset 1d > 16)))/(32 * avg_over_time(count(validator_balance{job=\"validator-client-job\"} > 16)[1d:]))) * 365",
 - Weekly Return Annualized:             "expr": "((sum(validator_balance{job=\"validator-client-job\"}) - sum(validator_balance{job=\"validator-client-job\"} offset 7d != 0) - (32 * count(validator_balance{job=\"validator-client-job\"} > 16)) +\t(32 * count(validator_balance{job=\"validator-client-job\"} offset 7d > 16)))/(32 * avg_over_time(count(validator_balance{job=\"validator-client-job\"} > 16)[7d:]))) * (365/7)",
 - Monthly Return Annualized:            "expr": "((sum(validator_balance{job=\"validator-client-job\"}) - sum(validator_balance{job=\"validator-client-job\"} offset 30d != 0) - (32 * count(validator_balance{job=\"validator-client-job\"} > 16)) +\t(32 * count(validator_balance{job=\"validator-client-job\"} offset 30d > 16)))/(32 * avg_over_time(count(validator_balance{job=\"validator-client-job\"} > 16)[30d:]))) * (365/30)",
+- Slashing Validators:                  "expr": "validator_count{state=\"Slashing\",job=\"consensus-client-job\"}",
