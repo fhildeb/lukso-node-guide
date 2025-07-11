@@ -214,14 +214,18 @@ scrape_configs:
     scrape_interval: 5s
     static_configs:
       - targets: ['127.0.0.1:9090']
-  - job_name: 'beacon-client-job'
+  - job_name: 'consensus-client-job'
     scrape_interval: 5s
     static_configs:
-      - targets: ['127.0.0.1:8009']
+      - targets: ['127.0.0.1:8008']
   - job_name: 'node-exporter-job'
     scrape_interval: 5s
     static_configs:
       - targets: ['127.0.0.1:9100']
+  - job_name: 'validator-client-job'
+    scrape_interval: 5s
+    static_configs:
+      - targets: ['127.0.0.1:8009']
   - job_name: 'google-ping-job'
     metrics_path: /probe
     params:
@@ -492,14 +496,18 @@ scrape_configs:
     scrape_interval: 5s
     static_configs:
       - targets: ['127.0.0.1:9090']
-  - job_name: 'beacon-client-job'
+  - job_name: 'consensus-client-job'
     scrape_interval: 5s
     static_configs:
-      - targets: ['127.0.0.1:8009']
+      - targets: ['127.0.0.1:8008']
   - job_name: 'node-exporter-job'
     scrape_interval: 5s
     static_configs:
       - targets: ['127.0.0.1:9100']
+  - job_name: 'validator-client-job'
+    scrape_interval: 5s
+    static_configs:
+      - targets: ['127.0.0.1:8009']
   - job_name: 'google-ping-job'
     metrics_path: /probe
     params:
@@ -760,7 +768,7 @@ scrape_configs:
 
 :::tip
 
-**Teku** and **Nimbus-Eth2** expose the consensus and validator data through one single port. Therefore their Prometheus configuration combines both, the `consensus-client-job` and the `validator-client-job` into a single job.
+As shown in the [**Port Configuration**](/docs/guides/monitoring/port-configuration.md), **Nimbus-Eth2** exposes the consensus and validator data through one single port. Therefore the Prometheus configuration combines both, the `consensus-client-job` and the `validator-client-job` into a single `beacon-client-job` instance.
 
 :::
 

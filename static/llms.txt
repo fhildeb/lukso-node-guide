@@ -10368,7 +10368,8 @@ Consensus blockchain clients have different monitoring ports that allow Promethe
 | 5054           | [Lighthouse] ↗  | Consensus Metrics                | ✔️  | ❌       |
 | 5057           | [Lighthouse] ↗  | Validator Metrics                | ✔️  | ❌       |
 | 8008           | [Nimbus-Eth2] ↗ | Consensus and Validator Metrics  | ✔️  | ❌       |
-| 8009           | [Teku] ↗        | Consensus and Validator Metrics  | ✔️  | ❌       |
+| 8008           | [Teku] ↗        | Consensus Metrics                | ✔️  | ❌       |
+| 8009           | [Teku] ↗        | Validator Metrics                | ✔️  | ❌       |
 | 8080           | [Prysm] ↗       | Consensus Metrics                | ✔️  | ❌       |
 | 8081           | [Prysm] ↗       | Validator Metrics                | ✔️  | ❌       |
 

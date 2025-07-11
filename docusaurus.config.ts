@@ -203,14 +203,6 @@ const config: Config = {
       darkTheme: prismThemes.dracula,
     },
   } satisfies Preset.ThemeConfig,
-
-  /**
-   * Disable Cache for Production Builds
-   * Uncomment for Local Testing
-   *
-   * Causes warnings due to high buffer
-   * elements from long page content.
-   */
   plugins: [
     [
       "docusaurus-plugin-generate-llms-txt",
@@ -218,16 +210,23 @@ const config: Config = {
         outputFile: "llms.txt",
       },
     ],
-    function customWebpackPlugin() {
-      return {
-        name: "custom-webpack-plugin",
-        configureWebpack() {
-          return {
-            cache: false,
-          };
-        },
-      };
-    },
+    /**
+     * Disable Cache for Production Builds
+     * Uncomment for Local Testing
+     *
+     * Causes warnings due to high buffer
+     * elements from long page content.
+     */
+    // function customWebpackPlugin() {
+    //   return {
+    //     name: "custom-webpack-plugin",
+    //     configureWebpack() {
+    //       return {
+    //         cache: false,
+    //       };
+    //     },
+    //   };
+    // },
   ],
 };
 

@@ -31,7 +31,8 @@ Consensus blockchain clients have different monitoring ports that allow Promethe
 | 5054           | [Lighthouse] ↗  | Consensus Metrics                | ✔️  | ❌       |
 | 5057           | [Lighthouse] ↗  | Validator Metrics                | ✔️  | ❌       |
 | 8008           | [Nimbus-Eth2] ↗ | Consensus and Validator Metrics  | ✔️  | ❌       |
-| 8009           | [Teku] ↗        | Consensus and Validator Metrics  | ✔️  | ❌       |
+| 8008           | [Teku] ↗        | Consensus Metrics                | ✔️  | ❌       |
+| 8009           | [Teku] ↗        | Validator Metrics                | ✔️  | ❌       |
 | 8080           | [Prysm] ↗       | Consensus Metrics                | ✔️  | ❌       |
 | 8081           | [Prysm] ↗       | Validator Metrics                | ✔️  | ❌       |
 
@@ -50,7 +51,7 @@ Service ports also come with default ports to bundle and present data.
 The [**LUKSO Network Configuration**](https://github.com/lukso-network/network-configs/tree/main) changed the following client ports:
 
 - **Lighthouse**: Validator Metrics from Port `5064` to `5057`
-- **Teku**: Consensus and Validator Metrics from Port `8008` to `8009`
+- **Teku**: Validator Metrics from Port `8008` to `8009`
 
 :::
 
