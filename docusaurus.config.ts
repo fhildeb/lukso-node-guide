@@ -217,16 +217,16 @@ const config: Config = {
      * Causes warnings due to high buffer
      * elements from long page content.
      */
-    // function customWebpackPlugin() {
-    //   return {
-    //     name: "custom-webpack-plugin",
-    //     configureWebpack() {
-    //       return {
-    //         cache: false,
-    //       };
-    //     },
-    //   };
-    // },
+    function customWebpackPlugin() {
+      return {
+        name: "custom-webpack-plugin",
+        configureWebpack() {
+          return {
+            cache: false,
+          };
+        },
+      };
+    },
   ],
 };
 
