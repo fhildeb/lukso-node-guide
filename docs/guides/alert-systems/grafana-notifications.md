@@ -66,13 +66,13 @@ Below metric presets are based on default Grafana 📝 [**Templates**](/template
 ![Consensus Process Down Metric](/img/guides/alert-systems/grafana-alerts-2.png)
 
 <Tabs groupId="client">
-<TabItem value="lighthouse-prysm" label="Lighthouse & Prysm">
+<TabItem value="lighthouse-prysm-teku" label="Lighthouse, Prysm, Teku">
 
 ```text
 up{job="consensus-client-job"}
 ```
 
-</TabItem><TabItem value="teku-nimbus" label="Teku & Nimbus-Eth2">
+</TabItem><TabItem value="nimbus" label="Nimbus-Eth2">
 
 ```text
 up{job="beacon-client-job"}
@@ -91,13 +91,13 @@ up{job="beacon-client-job"}
 ![Validator Process Down Metric](/img/guides/alert-systems/grafana-alerts-3.png)
 
 <Tabs groupId="client">
-<TabItem value="lighthouse-prysm" label="Lighthouse & Prysm">
+<TabItem value="lighthouse-prysm-teku" label="Lighthouse, Prysm, Teku">
 
 ```text
 up{job="validator-client-job"}
 ```
 
-</TabItem><TabItem value="teku-nimbus" label="Teku & Nimbus-Eth2">
+</TabItem><TabItem value="nimbus" label="Nimbus-Eth2">
 
 ```text
 up{job="beacon-client-job"}
@@ -117,13 +117,13 @@ NaN: Not available (likely down --> 0)
 ![Consensus Process Restarted Metric](/img/guides/alert-systems/grafana-alerts-4.png)
 
 <Tabs groupId="client">
-<TabItem value="lighthouse-prysm" label="Lighthouse & Prysm">
+<TabItem value="lighthouse-prysm-teku" label="Lighthouse, Prysm, Teku">
 
 ```text
 (time()-process_start_time_seconds{job="consensus-client-job"})/3600
 ```
 
-</TabItem><TabItem value="teku-nimbus" label="Teku & Nimbus-Eth2">
+</TabItem><TabItem value="nimbus" label="Nimbus-Eth2">
 
 ```text
 (time()-process_start_time_seconds{job="beacon-client-job"})/3600
@@ -143,13 +143,13 @@ NaN: Not available (likely down --> 0)
 ![Validator Process Restarted Metric](/img/guides/alert-systems/grafana-alerts-5.png)
 
 <Tabs groupId="client">
-<TabItem value="lighthouse-prysm" label="Lighthouse & Prysm">
+<TabItem value="lighthouse-prysm-teku" label="Lighthouse, Prysm, Teku">
 
 ```text
 (time()-process_start_time_seconds{job="validator-client-job"})/3600
 ```
 
-</TabItem><TabItem value="teku-nimbus" label="Teku & Nimbus-Eth2">
+</TabItem><TabItem value="nimbus" label="Nimbus-Eth2">
 
 ```text
 (time()-process_start_time_seconds{job="beacon-client-job"})/3600
@@ -175,7 +175,13 @@ NaN:      Not available (no connections --> 0)
 p2p_peer_count{state="Connected",job="consensus-client-job"}
 ```
 
-</TabItem><TabItem value="teku-nimbus" label="Teku & Nimbus-Eth2">
+</TabItem><TabItem value="teku" label="Teku">
+
+```text
+libp2p_peers{job="consensus-client-job"}
+```
+
+</TabItem><TabItem value="nimbus" label="Nimbus-Eth2">
 
 ```text
 p2p_peer_count{state="Connected",job="beacon-client-job"}
@@ -195,13 +201,13 @@ NaN:      2nd data feed (ignore metric --> 100)
 ![Participation Rate below 80% Metric](/img/guides/alert-systems/grafana-alerts-7.png)
 
 <Tabs groupId="client">
-<TabItem value="lighthouse-prysm" label="Lighthouse & Prysm">
+<TabItem value="lighthouse-prysm-teku" label="Lighthouse, Prysm, Teku">
 
 ```text
 (beacon_prev_epoch_target_gwei{job="consensus-client-job"} / beacon_prev_epoch_active_gwei{job="consensus-client-job"}) *100
 ```
 
-</TabItem><TabItem value="teku-nimbus" label="Teku & Nimbus-Eth2">
+</TabItem><TabItem value="teku-nimbus" label="Nimbus-Eth2">
 
 ```text
 (beacon_prev_epoch_target_gwei{job="beacon-client-job"} / beacon_prev_epoch_active_gwei{job="beacon-client-job"}) *100
@@ -221,7 +227,7 @@ NaN:      Not available (likely unstable --> 51)
 ![50 Slots Behind Metric](/img/guides/alert-systems/grafana-alerts-8.png)
 
 <Tabs groupId="client">
-<TabItem value="prysm" label="Prysm">
+<TabItem value="prysm-teku" label="Prysm & Teku">
 
 ```text
 beacon_clock_time_slot{job="consensus-client-job"} - beacon_head_slot{job="consensus-client-job"}
@@ -233,7 +239,7 @@ beacon_clock_time_slot{job="consensus-client-job"} - beacon_head_slot{job="conse
 slotclock_present_slot{job="consensus-client-job"} - beacon_head_slot{job="consensus-client-job"}
 ```
 
-</TabItem><TabItem value="teku-nimbus" label="Teku & Nimbus-Eth2">
+</TabItem><TabItem value="nimbus" label="Nimbus-Eth2">
 
 ```text
 beacon_clock_time_slot{job="beacon-client-job"} - beacon_head_slot{job="beacon-client-job"}
@@ -265,7 +271,7 @@ sum(validator_balance{job="validator-client-job"}) - sum(validator_balance{job="
 ((sum(validator_monitor_balance_gwei{job="validator-client-job"}) - sum(validator_monitor_balance_gwei{job="validator-client-job"} offset 1h != 0)) / 1e9) - (32 * count(validator_monitor_status{job="validator-client-job",status="active_ongoing"})) + (32 * count(validator_monitor_status{job="validator-client-job",status="active_ongoing"} offset 1h))
 ```
 
-</TabItem><TabItem value="teku-nimbus" label="Teku & Nimbus-Eth2">
+</TabItem><TabItem value="nimbus" label="Nimbus-Eth2">
 
 ```text
 sum(validator_balance{job="beacon-client-job"}) - sum(validator_balance{job="beacon-client-job"} offset 1h != 0) - (32 * count(validator_balance{job="beacon-client-job"} > 16)) + (32 * count(validator_balance{job="beacon-client-job"} offset 1h > 16))
@@ -273,6 +279,12 @@ sum(validator_balance{job="beacon-client-job"}) - sum(validator_balance{job="bea
 
 </TabItem> 
 </Tabs>
+
+:::warning
+
+The **Hourly Earnings Alert** does not exist for **Teku**, as it's client does not expose any **Validator Balance Metrics**.
+
+:::
 
 **Alert: Less than 2GB Free Memory**
 
