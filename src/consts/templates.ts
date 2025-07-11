@@ -43,12 +43,6 @@ const templates: Dashboard[] = [
     label: "Prysm",
   },
   {
-    filepath: "/prysm/grafana-8-l16-prysm-dashboard-usd.json",
-    grafana: "8",
-    currency: "USD",
-    label: "Prysm",
-  },
-  {
     filepath: "/lighthouse/grafana-12-lighthouse-dashboard-usd.json",
     grafana: "12",
     currency: "USD",
