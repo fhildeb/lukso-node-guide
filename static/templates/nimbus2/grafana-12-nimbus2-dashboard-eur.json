@@ -3230,7 +3230,7 @@
         ]
       },
       "gridPos": {
-        "h": 12,
+        "h": 10,
         "w": 12,
         "x": 0,
         "y": 14
@@ -3518,7 +3518,7 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 7,
+        "h": 6,
         "w": 6,
         "x": 12,
         "y": 15
@@ -3559,90 +3559,6 @@
         "type": "prometheus",
         "uid": "${DS_PROMETHEUS}"
       },
-      "description": "The length of time the beacon chain and validator processes have been running.",
-      "fieldConfig": {
-        "defaults": {
-          "decimals": 1,
-          "mappings": [
-            {
-              "options": {
-                "match": "null",
-                "result": {
-                  "text": "N/A"
-                }
-              },
-              "type": "special"
-            }
-          ],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "#F2495C"
-              },
-              {
-                "color": "rgba(237, 129, 40, 0.89)",
-                "value": 48
-              },
-              {
-                "color": "green",
-                "value": 96
-              }
-            ]
-          },
-          "unit": "h"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 4,
-        "w": 6,
-        "x": 18,
-        "y": 15
-      },
-      "id": 45,
-      "maxDataPoints": 100,
-      "options": {
-        "colorMode": "value",
-        "fieldOptions": {
-          "calcs": ["lastNotNull"]
-        },
-        "graphMode": "none",
-        "justifyMode": "center",
-        "orientation": "auto",
-        "percentChangeColorMode": "standard",
-        "reduceOptions": {
-          "calcs": ["lastNotNull"],
-          "fields": "",
-          "values": false
-        },
-        "showPercentChange": false,
-        "text": {},
-        "textMode": "auto",
-        "wideLayout": true
-      },
-      "pluginVersion": "12.0.2",
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
-          },
-          "expr": "(time() - process_start_time_seconds{job=\"beacon-client-job\"}) / 3600",
-          "instant": true,
-          "interval": "",
-          "legendFormat": "beacon chain",
-          "refId": "A"
-        }
-      ],
-      "title": "Process Uptimes",
-      "type": "stat"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
-      },
       "description": "Average number of log messages received per hour over the selected time range",
       "fieldConfig": {
         "defaults": {
@@ -3677,7 +3593,7 @@
         "h": 3,
         "w": 6,
         "x": 18,
-        "y": 19
+        "y": 15
       },
       "id": 79,
       "options": {
@@ -3752,10 +3668,10 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 4,
+        "h": 3,
         "w": 6,
-        "x": 12,
-        "y": 22
+        "x": 18,
+        "y": 18
       },
       "id": 108,
       "options": {
@@ -3801,6 +3717,90 @@
         }
       ],
       "type": "table"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
+      },
+      "description": "The length of time the beacon chain and validator processes have been running.",
+      "fieldConfig": {
+        "defaults": {
+          "decimals": 1,
+          "mappings": [
+            {
+              "options": {
+                "match": "null",
+                "result": {
+                  "text": "N/A"
+                }
+              },
+              "type": "special"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "#F2495C"
+              },
+              {
+                "color": "rgba(237, 129, 40, 0.89)",
+                "value": 48
+              },
+              {
+                "color": "green",
+                "value": 96
+              }
+            ]
+          },
+          "unit": "h"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 12,
+        "x": 12,
+        "y": 21
+      },
+      "id": 45,
+      "maxDataPoints": 100,
+      "options": {
+        "colorMode": "value",
+        "fieldOptions": {
+          "calcs": ["lastNotNull"]
+        },
+        "graphMode": "none",
+        "justifyMode": "center",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": ["lastNotNull"],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "text": {},
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "12.0.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "expr": "(time() - process_start_time_seconds{job=\"beacon-client-job\"}) / 3600",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "beacon chain",
+          "refId": "A"
+        }
+      ],
+      "title": "Process Uptimes",
+      "type": "stat"
     },
     {
       "datasource": {
@@ -3855,7 +3855,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 26
+        "y": 24
       },
       "id": 58,
       "maxDataPoints": 100,
@@ -4239,7 +4239,7 @@
         "h": 6,
         "w": 6,
         "x": 0,
-        "y": 27
+        "y": 25
       },
       "id": 99,
       "options": {
@@ -4504,7 +4504,7 @@
         "h": 6,
         "w": 6,
         "x": 6,
-        "y": 27
+        "y": 25
       },
       "id": 20,
       "options": {
@@ -4817,7 +4817,7 @@
         "h": 6,
         "w": 6,
         "x": 12,
-        "y": 27
+        "y": 25
       },
       "id": 14,
       "options": {
@@ -4931,7 +4931,7 @@
         "h": 6,
         "w": 6,
         "x": 18,
-        "y": 27
+        "y": 25
       },
       "id": 92,
       "options": {
@@ -5313,7 +5313,7 @@
         "h": 6,
         "w": 6,
         "x": 0,
-        "y": 33
+        "y": 31
       },
       "id": 17,
       "options": {
@@ -5457,7 +5457,7 @@
         "h": 6,
         "w": 6,
         "x": 6,
-        "y": 33
+        "y": 31
       },
       "id": 90,
       "options": {
@@ -5679,7 +5679,7 @@
         "h": 6,
         "w": 12,
         "x": 12,
-        "y": 33
+        "y": 31
       },
       "id": 81,
       "options": {
@@ -5778,7 +5778,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 39
+        "y": 37
       },
       "id": 111,
       "maxDataPoints": 100,
@@ -5879,7 +5879,7 @@
         "h": 5,
         "w": 4,
         "x": 0,
-        "y": 40
+        "y": 38
       },
       "id": 113,
       "options": {
@@ -5979,7 +5979,7 @@
         "h": 5,
         "w": 4,
         "x": 4,
-        "y": 40
+        "y": 38
       },
       "id": 122,
       "options": {
@@ -6080,7 +6080,7 @@
         "h": 5,
         "w": 4,
         "x": 8,
-        "y": 40
+        "y": 38
       },
       "id": 121,
       "options": {
@@ -6184,7 +6184,7 @@
         "h": 5,
         "w": 4,
         "x": 12,
-        "y": 40
+        "y": 38
       },
       "id": 123,
       "options": {
@@ -6287,7 +6287,7 @@
         "h": 5,
         "w": 4,
         "x": 16,
-        "y": 40
+        "y": 38
       },
       "id": 110,
       "options": {
@@ -6369,6 +6369,206 @@
             "mode": "absolute",
             "steps": [
               {
+                "color": "red"
+              },
+              {
+                "color": "transparent",
+                "value": 40
+              }
+            ]
+          },
+          "unit": "short"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 4,
+        "x": 20,
+        "y": 38
+      },
+      "id": 119,
+      "options": {
+        "alertThreshold": true,
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "multi",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "12.0.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "exemplar": true,
+          "expr": "sum(connected_libp2p_peers{job=\"beacon-client-job\"})",
+          "interval": "",
+          "legendFormat": "peers",
+          "refId": "A"
+        }
+      ],
+      "title": "Below 40 Peers",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "line+area"
+            }
+          },
+          "links": [],
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "red"
+              },
+              {
+                "color": "transparent",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "short"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 4,
+        "x": 0,
+        "y": 43
+      },
+      "id": 120,
+      "options": {
+        "alertThreshold": true,
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "multi",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "12.0.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "exemplar": true,
+          "expr": "(beacon_prev_epoch_target_gwei{job=\"beacon-client-job\"} / beacon_prev_epoch_active_gwei{job=\"beacon-client-job\"}) *100",
+          "hide": false,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "title": "Participation Rate below 80%",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "line+area"
+            }
+          },
+          "links": [],
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
                 "color": "transparent"
               },
               {
@@ -6385,7 +6585,7 @@
         "h": 5,
         "w": 4,
         "x": 4,
-        "y": 45
+        "y": 43
       },
       "id": 125,
       "options": {
@@ -6486,7 +6686,7 @@
         "h": 5,
         "w": 4,
         "x": 8,
-        "y": 45
+        "y": 43
       },
       "id": 126,
       "options": {
@@ -6587,7 +6787,7 @@
         "h": 5,
         "w": 4,
         "x": 12,
-        "y": 45
+        "y": 43
       },
       "id": 117,
       "options": {
@@ -6688,7 +6888,7 @@
         "h": 5,
         "w": 4,
         "x": 16,
-        "y": 45
+        "y": 43
       },
       "id": 124,
       "options": {
@@ -6723,209 +6923,8 @@
       ],
       "title": "Disk Usage above 60%",
       "type": "timeseries"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "axisBorderShow": false,
-            "axisCenteredZero": false,
-            "axisColorMode": "text",
-            "axisLabel": "",
-            "axisPlacement": "auto",
-            "barAlignment": 0,
-            "barWidthFactor": 0.6,
-            "drawStyle": "line",
-            "fillOpacity": 10,
-            "gradientMode": "none",
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            },
-            "insertNulls": false,
-            "lineInterpolation": "linear",
-            "lineWidth": 1,
-            "pointSize": 5,
-            "scaleDistribution": {
-              "type": "linear"
-            },
-            "showPoints": "never",
-            "spanNulls": false,
-            "stacking": {
-              "group": "A",
-              "mode": "none"
-            },
-            "thresholdsStyle": {
-              "mode": "line+area"
-            }
-          },
-          "links": [],
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "red"
-              },
-              {
-                "color": "transparent",
-                "value": 80
-              }
-            ]
-          },
-          "unit": "short"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 5,
-        "w": 4,
-        "x": 0,
-        "y": 50
-      },
-      "id": 120,
-      "options": {
-        "alertThreshold": true,
-        "legend": {
-          "calcs": [],
-          "displayMode": "list",
-          "placement": "bottom",
-          "showLegend": true
-        },
-        "tooltip": {
-          "hideZeros": false,
-          "mode": "multi",
-          "sort": "none"
-        }
-      },
-      "pluginVersion": "12.0.2",
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
-          },
-          "exemplar": true,
-          "expr": "(beacon_prev_epoch_target_gwei{job=\"beacon-client-job\"} / beacon_prev_epoch_active_gwei{job=\"beacon-client-job\"}) *100",
-          "hide": false,
-          "interval": "",
-          "intervalFactor": 1,
-          "legendFormat": "",
-          "refId": "A"
-        }
-      ],
-      "title": "Participation Rate below 80%",
-      "type": "timeseries"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "axisBorderShow": false,
-            "axisCenteredZero": false,
-            "axisColorMode": "text",
-            "axisLabel": "",
-            "axisPlacement": "auto",
-            "barAlignment": 0,
-            "barWidthFactor": 0.6,
-            "drawStyle": "line",
-            "fillOpacity": 10,
-            "gradientMode": "none",
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            },
-            "insertNulls": false,
-            "lineInterpolation": "linear",
-            "lineWidth": 1,
-            "pointSize": 5,
-            "scaleDistribution": {
-              "type": "linear"
-            },
-            "showPoints": "never",
-            "spanNulls": false,
-            "stacking": {
-              "group": "A",
-              "mode": "none"
-            },
-            "thresholdsStyle": {
-              "mode": "line+area"
-            }
-          },
-          "links": [],
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "red"
-              },
-              {
-                "color": "transparent",
-                "value": 40
-              }
-            ]
-          },
-          "unit": "short"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 5,
-        "w": 4,
-        "x": 8,
-        "y": 50
-      },
-      "id": 119,
-      "options": {
-        "alertThreshold": true,
-        "legend": {
-          "calcs": [],
-          "displayMode": "list",
-          "placement": "bottom",
-          "showLegend": true
-        },
-        "tooltip": {
-          "hideZeros": false,
-          "mode": "multi",
-          "sort": "none"
-        }
-      },
-      "pluginVersion": "12.0.2",
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
-          },
-          "exemplar": true,
-          "expr": "sum(connected_libp2p_peers{job=\"beacon-client-job\"})",
-          "interval": "",
-          "legendFormat": "peers",
-          "refId": "A"
-        }
-      ],
-      "title": "Below 40 Peers",
-      "type": "timeseries"
     }
   ],
-  "preload": false,
   "refresh": "30s",
   "schemaVersion": 41,
   "tags": [],
