@@ -382,14 +382,14 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
-          "expr": "(sum(validator_monitor_balance_gwei{job=\"beacon-client-job\"}) / 1e9 + sum_over_time(abs(clamp_max(idelta(validator_monitor_balance_gwei{job=\"beacon-client-job\"}[1h]), 0))[30d:]) / 1e9 - 32 * count(validator_monitor_status{job=\"beacon-client-job\",status=\"active_ongoing\"})) or on() vector(0)",
+          "expr": "((sum(validator_monitor_balance_gwei{job=\"beacon-client-job\"}) / 1e9) - (32 * count(validator_monitor_status{job=\"beacon-client-job\",status=\"active_ongoing\"})))",
           "instant": true,
           "interval": "",
           "legendFormat": "",
           "refId": "A"
         }
       ],
-      "title": "Total Earnings (LYX)",
+      "title": "Withdrawal Earnings (LYX)",
       "type": "stat"
     },
     {
@@ -465,14 +465,14 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "((sum(validator_monitor_balance_gwei{job=\"beacon-client-job\"}) / 1e9 + sum_over_time(abs(clamp_max(idelta(validator_monitor_balance_gwei{job=\"beacon-client-job\"}[1h]), 0))[30d:]) / 1e9 - 32 * count(validator_monitor_status{job=\"beacon-client-job\",status=\"active_ongoing\"})) or on() vector(0)) / (32 * count(validator_monitor_status{job=\"beacon-client-job\",status=\"active_ongoing\"}) or scalar(1))",
+          "expr": "(((sum(validator_monitor_balance_gwei{job=\"beacon-client-job\"}) / 1e9) - (32 * count(validator_monitor_status{job=\"beacon-client-job\",status=\"active_ongoing\"})))) / (32 * count(validator_monitor_status{job=\"beacon-client-job\",status=\"active_ongoing\"}))",
           "instant": true,
           "interval": "",
           "legendFormat": "",
           "refId": "A"
         }
       ],
-      "title": "Total Return",
+      "title": "Withdrawal Return",
       "type": "stat"
     },
     {
@@ -889,7 +889,7 @@
         "type": "prometheus",
         "uid": "${DS_PROMETHEUS}"
       },
-      "description": "Total earnings in USD.",
+      "description": "Withdrawal Earnings in USD.",
       "fieldConfig": {
         "defaults": {
           "decimals": 2,
@@ -958,7 +958,7 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "(sum(validator_monitor_balance_gwei{job=\"beacon-client-job\"}) / 1e9 + sum_over_time(abs(clamp_max(idelta(validator_monitor_balance_gwei{job=\"beacon-client-job\"}[1h]), 0))[30d:]) / 1e9 - 32 * count(validator_monitor_status{job=\"beacon-client-job\",status=\"active_ongoing\"})) or on() vector(0)",
+          "expr": "((sum(validator_monitor_balance_gwei{job=\"beacon-client-job\"}) / 1e9) - (32 * count(validator_monitor_status{job=\"beacon-client-job\",status=\"active_ongoing\"})))",
           "instant": true,
           "interval": "",
           "legendFormat": "total_balance",
@@ -976,12 +976,12 @@
           "refId": "B"
         }
       ],
-      "title": "Total Earnings (USD)",
+      "title": "Withdrawal Earnings (USD)",
       "transformations": [
         {
           "id": "calculateField",
           "options": {
-            "alias": "Total Earnings (USD)",
+            "alias": "Withdrawal Earnings (USD)",
             "binary": {
               "left": "total_balance",
               "operator": "*",
