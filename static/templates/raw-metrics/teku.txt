@@ -8,7 +8,6 @@ RAW TEKU METRICS CALCULATION
 - Exiting Validators:                   "expr": "beacon_current_exiting_validators{job=\"consensus-client-job\"}",
 - Pending Queue Length:                 "expr": "(beacon_current_pending_validators{job=\"consensus-client-job\"} / 4) * 6.4",
 - Exiting Queue Length:                 "expr": "(beacon_current_exiting_validators{job=\"consensus-client-job\"} / 4) * 6.4",
-- Average Balance:                      "expr": "(beacon_prev_epoch_active_gwei{job=\"consensus-client-job\"} / 1e9) / beacon_current_active_validators{job=\"consensus-client-job\"}",
 - Successful Validator Proposals:       "expr": "sum(validator_beacon_node_published_block_total{job=\"validator-client-job\"})",
 - Successful Validator Attestations:    "expr": "sum(validator_beacon_node_published_attestation_total{job=\"validator-client-job\"})",
 - Successful Validator Aggregations:    "expr": "sum(validator_beacon_node_published_aggregate_total{job=\"validator-client-job\"})",
@@ -16,13 +15,20 @@ RAW TEKU METRICS CALCULATION
 
 UNCHANGED METRICS FROM PRYSM DASHBOARD
 
+- Beacon Log Errors per Hour:           "expr": "sum(rate(log_entries_total{job=\"consensus-client-job\", level=\"error\"}[$__range]))*3600",
+- Beacon Log Warnings per Hour:         "expr": "sum(rate(log_entries_total{job=\"consensus-client-job\", level=\"warning\"}[$__range]))*3600",
+- Validator Log Errors per Hour:        "expr": "sum(rate(log_entries_total{job=\"validator-client-job\", level=\"error\"}[$__range]))*3600",
+- Validator Log Warnings per Hour:      "expr": "sum(rate(log_entries_total{job=\"validator-client-job\", level=\"warning\"}[$__range]))*3600",
+- Average Balance:                      "expr": "(beacon_prev_epoch_active_gwei{job=\"consensus-client-job\"} / 1e9) / beacon_current_active_validators{job=\"consensus-client-job\"}",
+- Participation Rate Below 80%:         "expr": "(beacon_prev_epoch_target_gwei{job=\"consensus-client-job\"} / beacon_prev_epoch_active_gwei{job=\"consensus-client-job\"}) *100",
 - Participation Rate:                   "expr": "(beacon_prev_epoch_target_gwei{job=\"consensus-client-job\"} / beacon_prev_epoch_active_gwei{job=\"consensus-client-job\"} )",
 - Network Liveness:                     "expr": "clamp_min((1-(4*((floor(beacon_clock_time_slot{job=\"consensus-client-job\"}/32) - beacon_finalized_epoch{job=\"consensus-client-job\"} - 2)/100))),0)",
-- Current Epoch:                        "expr": "floor(beacon_clock_time_slot{job=\"consensus-client-job\"} / 32)",
-- Current Slot:                         "expr": "beacon_slot{job=\"consensus-client-job\"}",
-- Head Slot:                            "expr": "beacon_head_slot{job=\"consensus-client-job\"}",
-- Justified Epoch:                      "expr": "beacon_current_justified_epoch{job=\"consensus-client-job\"}",
+- 50 Slots Behind:                      "expr": "beacon_clock_time_slot{job=\"consensus-client-job\"} - beacon_head_slot{job=\"consensus-client-job\"}",
 - Finalized Epoch:                      "expr": "beacon_finalized_epoch {job=\"consensus-client-job\"} ",
+- Current Epoch:                        "expr": "floor(beacon_clock_time_slot{job=\"consensus-client-job\"} / 32)",
+- Justified Epoch:                      "expr": "beacon_current_justified_epoch{job=\"consensus-client-job\"}",
+- Head Slot:                            "expr": "beacon_head_slot{job=\"consensus-client-job\"}",
+- Current Slot:                         "expr": "beacon_slot{job=\"consensus-client-job\"}",
 - Beacon Process Uptime:                "expr": "(time()-process_start_time_seconds{job=\"consensus-client-job\"})/3600",
 - Validator Process Uptime:             "expr": "(time()-process_start_time_seconds{job=\"validator-client-job\"})/3600",
 - Consensus Memory Usage:               "expr": "process_resident_memory_bytes{job=\"consensus-client-job\"}",
@@ -31,12 +37,6 @@ UNCHANGED METRICS FROM PRYSM DASHBOARD
 - Validator Process Down:               "expr": "up{job=\"validator-client-job\"}",
 - Consensus Process Restarted:          "expr": "(time()-process_start_time_seconds{job=\"consensus-client-job\"})/3600",
 - Validator Process Restarted:          "expr": "(time()-process_start_time_seconds{job=\"validator-client-job\"})/3600",
-- Participation Rate Below 80%:         "expr": "(beacon_prev_epoch_target_gwei{job=\"consensus-client-job\"} / beacon_prev_epoch_active_gwei{job=\"consensus-client-job\"}) *100",
-- 50 Slots Behind:                      "expr": "beacon_clock_time_slot{job=\"consensus-client-job\"} - beacon_head_slot{job=\"consensus-client-job\"}",
-- Beacon Log Errors per Hour:           "expr": "sum(rate(log_entries_total{job=\"consensus-client-job\", level=\"error\"}[$__range]))*3600",
-- Beacon Log Warnings per Hour:         "expr": "sum(rate(log_entries_total{job=\"consensus-client-job\", level=\"warning\"}[$__range]))*3600",
-- Validator Log Errors per Hour:        "expr": "sum(rate(log_entries_total{job=\"validator-client-job\", level=\"error\"}[$__range]))*3600",
-- Validator Log Warnings per Hour:      "expr": "sum(rate(log_entries_total{job=\"validator-client-job\", level=\"warning\"}[$__range]))*3600",
 
 REMOVED METRICS FROM PRYSM DASHBOARD (NOT EXPOSED IN TEKU)
 
