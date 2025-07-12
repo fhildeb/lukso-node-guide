@@ -323,7 +323,7 @@
       "pluginVersion": "8.2.3",
       "targets": [
         {
-          "expr": "(beacon_prev_epoch_target_gwei{job=\"consensus-client-job\"} / beacon_prev_epoch_active_gwei{job=\"consensus-client-job\"} )",
+          "expr": "(beacon_prev_epoch_target_gwei{job=\"consensus-client-job\"}) / (beacon_prev_epoch_active_gwei{job=\"consensus-client-job\"})",
           "interval": "",
           "legendFormat": "",
           "refId": "A"
@@ -391,7 +391,7 @@
       "pluginVersion": "8.2.3",
       "targets": [
         {
-          "expr": "clamp_min((1-(4*((floor(beacon_clock_time_slot{job=\"consensus-client-job\"}/32) - beacon_finalized_epoch{job=\"consensus-client-job\"} - 2)/100))),0)",
+          "expr": "clamp_min(1 - 4 * ((floor((beacon_clock_time_slot{job=\"consensus-client-job\"}) / 32) - (beacon_finalized_epoch{job=\"consensus-client-job\"}) - 2) / 100),0)",
           "interval": "",
           "legendFormat": "",
           "refId": "A"
@@ -451,7 +451,7 @@
       "steppedLine": true,
       "targets": [
         {
-          "expr": "(beacon_prev_epoch_target_gwei{job=\"consensus-client-job\"} / beacon_prev_epoch_active_gwei{job=\"consensus-client-job\"} )",
+          "expr": "(beacon_prev_epoch_target_gwei{job=\"consensus-client-job\"}) / (beacon_prev_epoch_active_gwei{job=\"consensus-client-job\"})",
           "interval": "",
           "legendFormat": "participation rate",
           "refId": "A"
@@ -1198,7 +1198,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "(beacon_prev_epoch_active_gwei{job=\"consensus-client-job\"} / 1e9) / beacon_current_active_validators{job=\"consensus-client-job\"}",
+          "expr": "((beacon_prev_epoch_active_gwei{job=\"consensus-client-job\"}) / 1e9) / (beacon_current_active_validators{job=\"consensus-client-job\"})",
           "interval": "",
           "legendFormat": "lyx",
           "refId": "A"
@@ -1528,7 +1528,7 @@
       ],
       "targets": [
         {
-          "expr": "label_replace(max by(pubkey) (validator_statuses{job=\"validator-client-job\"}), \"pubkey_short\", \"$1\", \"pubkey\", \"(.{10}).*\")  ",
+          "expr": "label_replace(up{job=\"validator-client-job\"}, \"pubkey_short\", \"$1\", \"pubkey\", \"(.{10}).*\")  ",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -1536,7 +1536,7 @@
           "refId": "J"
         },
         {
-          "expr": "sum(validator_beacon_node_published_block_total{job=\"validator-client-job\"})",
+          "expr": "sum(validator_beacon_node_requests_total{job=\"validator-client-job\",type=\"PUBLISH_BLOCK\",status=\"SUCCESS\"})",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -1544,7 +1544,7 @@
           "refId": "E"
         },
         {
-          "expr": "sum(validator_beacon_node_published_attestation_total{job=\"validator-client-job\"})",
+          "expr": "sum(validator_beacon_node_requests_total{job=\"validator-client-job\",type=\"PUBLISH_ATTESTATION\",status=\"SUCCESS\"})",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -1552,7 +1552,7 @@
           "refId": "A"
         },
         {
-          "expr": "sum(validator_beacon_node_published_aggregate_total{job=\"validator-client-job\"})",
+          "expr": "sum(validator_beacon_node_requests_total{job=\"validator-client-job\",type=~\"PUBLISH_AGGREGATE|SYNC_CONTRIBUTION\",status=\"SUCCESS\"})",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -1946,7 +1946,7 @@
       "pluginVersion": "8.2.3",
       "targets": [
         {
-          "expr": "max(teku_info{job=\"consensus-client-job\"}) by (job,version)",
+          "expr": "max(teku_build_info{job=\"consensus-client-job\"}) by (version)",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -4285,7 +4285,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "(beacon_prev_epoch_target_gwei{job=\"consensus-client-job\"} / beacon_prev_epoch_active_gwei{job=\"consensus-client-job\"}) *100",
+          "expr": "(beacon_prev_epoch_target_gwei{job=\"consensus-client-job\"} / beacon_prev_epoch_active_gwei{job=\"consensus-client-job\"}) * 100",
           "hide": false,
           "interval": "",
           "intervalFactor": 1,
@@ -4571,7 +4571,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "beacon_clock_time_slot{job=\"consensus-client-job\"} - beacon_head_slot{job=\"consensus-client-job\"}",
+          "expr": "(beacon_clock_time_slot{job=\"consensus-client-job\"} - beacon_head_slot{job=\"consensus-client-job\"})",
           "interval": "",
           "legendFormat": "node slots behind",
           "refId": "A"
