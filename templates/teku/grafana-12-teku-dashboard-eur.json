@@ -389,7 +389,7 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "(beacon_prev_epoch_target_gwei{job=\"consensus-client-job\"} / beacon_prev_epoch_active_gwei{job=\"consensus-client-job\"} )",
+          "expr": "(beacon_prev_epoch_target_gwei{job=\"consensus-client-job\"}) / (beacon_prev_epoch_active_gwei{job=\"consensus-client-job\"})",
           "interval": "",
           "legendFormat": "",
           "refId": "A"
@@ -464,7 +464,7 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "clamp_min((1-(4*((floor(beacon_clock_time_slot{job=\"consensus-client-job\"}/32) - beacon_finalized_epoch{job=\"consensus-client-job\"} - 2)/100))),0)",
+          "expr": "clamp_min(1 - 4 * ((floor((beacon_clock_time_slot{job=\"consensus-client-job\"}) / 32) - (beacon_finalized_epoch{job=\"consensus-client-job\"}) - 2) / 100),0)",
           "interval": "",
           "legendFormat": "",
           "refId": "A"
@@ -565,7 +565,7 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "(beacon_prev_epoch_target_gwei{job=\"consensus-client-job\"} / beacon_prev_epoch_active_gwei{job=\"consensus-client-job\"} )",
+          "expr": "(beacon_prev_epoch_target_gwei{job=\"consensus-client-job\"}) / (beacon_prev_epoch_active_gwei{job=\"consensus-client-job\"})",
           "interval": "",
           "legendFormat": "participation rate",
           "refId": "A"
@@ -1486,7 +1486,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
-          "expr": "(beacon_prev_epoch_active_gwei{job=\"consensus-client-job\"} / 1e9) / beacon_current_active_validators{job=\"consensus-client-job\"}",
+          "expr": "((beacon_prev_epoch_active_gwei{job=\"consensus-client-job\"}) / 1e9) / (beacon_current_active_validators{job=\"consensus-client-job\"})",
           "interval": "",
           "legendFormat": "lyx",
           "refId": "A"
@@ -2071,7 +2071,7 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "label_replace(max by(pubkey) (validator_statuses{job=\"validator-client-job\"}), \"pubkey_short\", \"$1\", \"pubkey\", \"(.{10}).*\")  ",
+          "expr": "label_replace(up{job=\"validator-client-job\"}, \"pubkey_short\", \"$1\", \"pubkey\", \"(.{10}).*\")  ",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -2083,7 +2083,7 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "sum(validator_beacon_node_published_block_total{job=\"validator-client-job\"})",
+          "expr": "sum(validator_beacon_node_requests_total{job=\"validator-client-job\",type=\"PUBLISH_BLOCK\",status=\"SUCCESS\"})",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -2095,7 +2095,7 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "sum(validator_beacon_node_published_attestation_total{job=\"validator-client-job\"})",
+          "expr": "sum(validator_beacon_node_requests_total{job=\"validator-client-job\",type=\"PUBLISH_ATTESTATION\",status=\"SUCCESS\"})",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -2107,7 +2107,7 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "sum(validator_beacon_node_published_aggregate_total{job=\"validator-client-job\"})",
+          "expr": "sum(validator_beacon_node_requests_total{job=\"validator-client-job\",type=~\"PUBLISH_AGGREGATE|SYNC_CONTRIBUTION\",status=\"SUCCESS\"})",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -2548,7 +2548,7 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "max(teku_info{job=\"consensus-client-job\"}) by (job,version)",
+          "expr": "max(teku_build_info{job=\"consensus-client-job\"}) by (version)",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -5479,7 +5479,7 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "beacon_clock_time_slot{job=\"consensus-client-job\"} - beacon_head_slot{job=\"consensus-client-job\"}",
+          "expr": "(beacon_clock_time_slot{job=\"consensus-client-job\"} - beacon_head_slot{job=\"consensus-client-job\"})",
           "interval": "",
           "legendFormat": "node slots behind",
           "refId": "A"
@@ -5682,7 +5682,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
-          "expr": "(beacon_prev_epoch_target_gwei{job=\"consensus-client-job\"} / beacon_prev_epoch_active_gwei{job=\"consensus-client-job\"}) *100",
+          "expr": "(beacon_prev_epoch_target_gwei{job=\"consensus-client-job\"} / beacon_prev_epoch_active_gwei{job=\"consensus-client-job\"}) * 100",
           "hide": false,
           "interval": "",
           "intervalFactor": 1,
