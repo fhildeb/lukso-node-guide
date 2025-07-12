@@ -386,14 +386,14 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
-          "expr": "((sum(validator_balance{job=\"validator-client-job\"}) + sum_over_time(abs(clamp_max(idelta(validator_balance{job=\"validator-client-job\"}[1h]), 0))[30d:]) - (count(validator_balance{job=\"validator-client-job\"} > 16) * 32)) or on() vector(0))",
+          "expr": "sum(validator_balance{job=\"validator-client-job\"}) - (count(validator_balance{job=\"validator-client-job\"} > 16) * 32)",
           "instant": true,
           "interval": "",
           "legendFormat": "",
           "refId": "A"
         }
       ],
-      "title": "Total Earnings (LYX)",
+      "title": "Withdrawal Earnings (LYX)",
       "type": "stat"
     },
     {
@@ -470,14 +470,14 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "((sum(validator_balance{job=\"validator-client-job\"}) +sum_over_time(abs(clamp_max(idelta(validator_balance{job=\"validator-client-job\"}[1h]), 0))[30d:]) - (count(validator_balance{job=\"validator-client-job\"} > 16) * 32)) / (count(validator_balance{job=\"validator-client-job\"} > 16) * 32) or on() vector(0))",
+          "expr": "(sum(validator_balance{job=\"validator-client-job\"}) - (count(validator_balance{job=\"validator-client-job\"} > 16) * 32)) / (count(validator_balance{job=\"validator-client-job\"} > 16) * 32) ",
           "instant": true,
           "interval": "",
           "legendFormat": "",
           "refId": "A"
         }
       ],
-      "title": "Total Return",
+      "title": "Withdrawal Return",
       "type": "stat"
     },
     {
@@ -907,7 +907,7 @@
         "type": "prometheus",
         "uid": "${DS_PROMETHEUS}"
       },
-      "description": "Total earnings in EUR.",
+      "description": "Withdrawal Earnings in EUR.",
       "fieldConfig": {
         "defaults": {
           "decimals": 2,
@@ -977,7 +977,7 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "((sum(validator_balance{job=\"validator-client-job\"}) + sum_over_time(abs(clamp_max(idelta(validator_balance{job=\"validator-client-job\"}[1h]), 0))[30d:]) - (count(validator_balance{job=\"validator-client-job\"} > 16) * 32)) or on() vector(0))",
+          "expr": "sum(validator_balance{job=\"validator-client-job\"}) - (count(validator_balance{job=\"validator-client-job\"} > 16) * 32)",
           "instant": true,
           "interval": "",
           "legendFormat": "total_balance",
@@ -995,12 +995,12 @@
           "refId": "B"
         }
       ],
-      "title": "Total Earnings (EUR)",
+      "title": "Withdrawal Earnings (EUR)",
       "transformations": [
         {
           "id": "calculateField",
           "options": {
-            "alias": "Total Earnings (EUR)",
+            "alias": "Withdrawal Earnings (EUR)",
             "binary": {
               "left": "total_balance",
               "operator": "*",

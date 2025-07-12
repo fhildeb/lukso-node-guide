@@ -321,7 +321,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "(sum(validator_monitor_balance_gwei{job=\"validator-client-job\"}) / 1e9 + sum_over_time(abs(clamp_max(idelta(validator_monitor_balance_gwei{job=\"validator-client-job\"}[1h]), 0))[30d:]) / 1e9 - 32 * count(validator_monitor_status{job=\"validator-client-job\",status=\"active_ongoing\"})) or on() vector(0)",
+          "expr": "((sum(validator_monitor_balance_gwei{job=\"validator-client-job\"}) / 1e9) - (32 * count(validator_monitor_status{job=\"validator-client-job\",status=\"active_ongoing\"}))) ",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -330,7 +330,7 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Total Earnings (LYX)",
+      "title": "Withdrawal Earnings (LYX)",
       "type": "stat"
     },
     {
@@ -401,7 +401,7 @@
       "pluginVersion": "8.2.3",
       "targets": [
         {
-          "expr": "((sum(validator_monitor_balance_gwei{job=\"validator-client-job\"}) / 1e9 + sum_over_time(abs(clamp_max(idelta(validator_monitor_balance_gwei{job=\"validator-client-job\"}[1h]), 0))[30d:]) / 1e9 - 32 * count(validator_monitor_status{job=\"validator-client-job\",status=\"active_ongoing\"})) or on() vector(0)) / (32 * count(validator_monitor_status{job=\"validator-client-job\",status=\"active_ongoing\"}) or scalar(1))",
+          "expr": "(((sum(validator_monitor_balance_gwei{job=\"validator-client-job\"}) / 1e9) - (32 * count(validator_monitor_status{job=\"validator-client-job\",status=\"active_ongoing\"})))) / (32 * count(validator_monitor_status{job=\"validator-client-job\",status=\"active_ongoing\"}))",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -410,7 +410,7 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Total Return",
+      "title": "Withdrawal Return",
       "type": "stat"
     },
     {
@@ -804,7 +804,7 @@
     {
       "cacheTimeout": null,
       "datasource": null,
-      "description": "Total earnings in EUR.",
+      "description": "Withdrawal Earnings in EUR.",
       "fieldConfig": {
         "defaults": {
           "decimals": 2,
@@ -870,7 +870,7 @@
       "pluginVersion": "8.2.3",
       "targets": [
         {
-          "expr": "(sum(validator_monitor_balance_gwei{job=\"validator-client-job\"}) / 1e9 + sum_over_time(abs(clamp_max(idelta(validator_monitor_balance_gwei{job=\"validator-client-job\"}[1h]), 0))[30d:]) / 1e9 - 32 * count(validator_monitor_status{job=\"validator-client-job\",status=\"active_ongoing\"})) or on() vector(0)",
+          "expr": "((sum(validator_monitor_balance_gwei{job=\"validator-client-job\"}) / 1e9) - (32 * count(validator_monitor_status{job=\"validator-client-job\",status=\"active_ongoing\"}))) ",
           "instant": true,
           "interval": "",
           "legendFormat": "total_balance",
@@ -886,12 +886,12 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Total Earnings (EUR)",
+      "title": "Withdrawal Earnings (EUR)",
       "transformations": [
         {
           "id": "calculateField",
           "options": {
-            "alias": "Total Earnings (EUR)",
+            "alias": "Withdrawal Earnings (EUR)",
             "binary": {
               "left": "total_balance",
               "operator": "*",
