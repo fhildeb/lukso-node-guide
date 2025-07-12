@@ -45,7 +45,7 @@ function TemplatesPage() {
                     <strong>Jobs</strong>, you will have to modify and match all
                     configuration files.
                   </p>
-                  <ol>
+                  <ul>
                     <li>
                       <Link to="/docs/guides/monitoring/port-configuration">
                         Consensus Client Ports
@@ -75,7 +75,7 @@ function TemplatesPage() {
                       must match the Jobs in the{" "}
                       <Link to="/templates">Grafana Dashboard</Link>.
                     </li>
-                  </ol>
+                  </ul>
                 </div>
               </div>
             </div>
@@ -84,6 +84,46 @@ function TemplatesPage() {
                 <div className="admonition-heading">
                   <h2>Preview</h2>
                   <img src="/img/guides/monitoring/dashboard.jpeg"></img>
+                </div>
+              </div>
+            </div>
+            <div className={`${styles.sectionBox}`}>
+              <div className="admonition admonition-warning alert alert--warning">
+                <div className="admonition-heading">
+                  <h2>Differences</h2>
+                  <p>
+                    The <strong>Metrics</strong> and <strong>Dashboards</strong>{" "}
+                    differ across clients, as they expose various lables.
+                  </p>
+                  <ul>
+                    <li>
+                      <strong>Prysm:</strong> Exposes all data streams from
+                      validators and consensus clients.
+                    </li>
+                    <li>
+                      <strong>Teku:</strong> Does not show slashing validators,
+                      failed attestations and aggregations, inactivity scores,
+                      or validator balances, statuses, returns, and earnings.
+                    </li>
+                    <li>
+                      <strong>Nimbus-Eth2: </strong> Does not show slashing
+                      validators or separated validator logs for memory usage,
+                      uptime, restarts, errors, and warnings.
+                    </li>
+                    <li>
+                      <strong>Lighthouse:</strong> Does not expose slashing
+                      validators.
+                    </li>
+                  </ul>
+                  <p>
+                    The <strong>Nimbus-Eth2</strong> client requires to set the{" "}
+                    <br></br> validator monitoring flag, as described on the{" "}
+                    {/* TODO: Add monitoring settings guide link */}
+                    <Link to="#">
+                      <strong>Monitoring Settings</strong>
+                    </Link>{" "}
+                    page.
+                  </p>
                 </div>
               </div>
             </div>
@@ -134,13 +174,13 @@ function TemplatesPage() {
                     <li>
                       <strong>Consensus Interfaces</strong>: <br />{" "}
                       <code>5054: Lighthouse</code> <br />
-                      <code>8080: Prysm</code>
+                      <code>8080: Prysm</code> <br />
                       <code>8008: Teku</code>
                     </li>
                     <li>
                       <strong>Validator Interfaces</strong>: <br />{" "}
                       <code>5057: Lighthouse</code> <br />
-                      <code>8081: Prysm</code>
+                      <code>8081: Prysm</code> <br />
                       <code>8009: Teku</code>
                     </li>
                     <li>
@@ -253,13 +293,13 @@ function TemplatesPage() {
                     <li>
                       <strong>Consensus Interfaces</strong>: <br />{" "}
                       <code>5054: Lighthouse</code> <br />
-                      <code>8080: Prysm</code>
+                      <code>8080: Prysm</code> <br />
                       <code>8008: Teku</code>
                     </li>
                     <li>
                       <strong>Validator Interfaces</strong>: <br />{" "}
                       <code>5057: Lighthouse</code> <br />
-                      <code>8081: Prysm</code>
+                      <code>8081: Prysm</code> <br />
                       <code>8009: Teku</code>
                     </li>
                     <li>

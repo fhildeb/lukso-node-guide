@@ -1143,20 +1143,10 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "validator_count{state=\"Slashing\",job=\"consensus-client-job\"}",
-          "interval": "",
-          "legendFormat": "slashing",
-          "refId": "C"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
-          },
           "expr": "beacon_current_active_validators{job=\"consensus-client-job\"}",
           "interval": "",
           "legendFormat": "active validators",
-          "refId": "D"
+          "refId": "C"
         }
       ],
       "thresholds": [],

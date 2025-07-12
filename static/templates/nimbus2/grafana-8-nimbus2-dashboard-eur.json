@@ -240,7 +240,7 @@
       "pluginVersion": "8.2.3",
       "targets": [
         {
-          "expr": "sum(validator_balance{job=\"beacon-client-job\"})",
+          "expr": "sum(validator_monitor_balance_gwei{job=\"beacon-client-job\"}) / 1e9",
           "instant": true,
           "interval": "",
           "legendFormat": "vbal",
@@ -321,7 +321,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "sum(validator_balance{job=\"beacon-client-job\"})-(count(validator_balance{job=\"beacon-client-job\"} > 16 and validator_statuses{job=\"beacon-client-job\"} == 3)*32)",
+          "expr": "(sum(validator_monitor_balance_gwei{job=\"beacon-client-job\"}) - sum(validator_monitor_balance_gwei{job=\"beacon-client-job\"} offset 1s)) / 1e9",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -401,7 +401,7 @@
       "pluginVersion": "8.2.3",
       "targets": [
         {
-          "expr": "(sum(validator_balance{job=\"beacon-client-job\"}) - (count(validator_balance{job=\"beacon-client-job\"} > 16 and validator_statuses{job=\"beacon-client-job\"} == 3)*32))/(count(validator_balance{job=\"beacon-client-job\"} > 16 and validator_statuses{job=\"beacon-client-job\"} == 3)*32)  ",
+          "expr": "((sum(validator_monitor_balance_gwei{job=\"beacon-client-job\"}) / 1e9) - (32 * count(validator_monitor_status{job=\"beacon-client-job\",status=\"active_ongoing\\\"}))) / (32 * count(validator_monitor_status{job=\"beacon-client-job\",status=\"active_ongoing\"}))",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -470,7 +470,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "p2p_peer_count{state=\"Connected\",job=\"beacon-client-job\"}",
+          "expr": "sum(connected_libp2p_peers{job=\"beacon-client-job\"})",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -541,7 +541,7 @@
       "pluginVersion": "8.2.3",
       "targets": [
         {
-          "expr": "(beacon_prev_epoch_target_gwei{job=\"beacon-client-job\"} / beacon_prev_epoch_active_gwei{job=\"beacon-client-job\"} )",
+          "expr": "(beacon_prev_epoch_target_gwei{job=\"beacon-client-job\"} / beacon_prev_epoch_active_gwei{job=\"beacon-client-job\"})",
           "interval": "",
           "legendFormat": "",
           "refId": "A"
@@ -609,7 +609,7 @@
       "pluginVersion": "8.2.3",
       "targets": [
         {
-          "expr": "clamp_min((1-(4*((floor(beacon_clock_time_slot{job=\"beacon-client-job\"}/32) - beacon_finalized_epoch{job=\"beacon-client-job\"} - 2)/100))),0)",
+          "expr": "clamp_min(1 - 4*((floor(beacon_clock_time_slot{job=\"beacon-client-job\"}/32) - beacon_finalized_epoch{job=\"beacon-client-job\"} - 2)/100), 0)",
           "interval": "",
           "legendFormat": "",
           "refId": "A"
@@ -669,7 +669,7 @@
       "steppedLine": true,
       "targets": [
         {
-          "expr": "(beacon_prev_epoch_target_gwei{job=\"beacon-client-job\"} / beacon_prev_epoch_active_gwei{job=\"beacon-client-job\"} )",
+          "expr": "(beacon_prev_epoch_target_gwei{job=\"beacon-client-job\"} / beacon_prev_epoch_active_gwei{job=\"beacon-client-job\"})",
           "interval": "",
           "legendFormat": "participation rate",
           "refId": "A"
@@ -769,7 +769,7 @@
           "refId": "A"
         },
         {
-          "expr": "sum(validator_balance{job=\"beacon-client-job\"})",
+          "expr": "sum(validator_monitor_balance_gwei{job=\"beacon-client-job\"}) / 1e9",
           "hide": false,
           "instant": true,
           "interval": "",
@@ -870,7 +870,7 @@
       "pluginVersion": "8.2.3",
       "targets": [
         {
-          "expr": "sum(validator_balance{job=\"beacon-client-job\"})-(count(validator_balance{job=\"beacon-client-job\"} > 16 and validator_statuses{job=\"beacon-client-job\"} == 3)*32)",
+          "expr": "(sum(validator_monitor_balance_gwei{job=\"beacon-client-job\"}) - sum(validator_monitor_balance_gwei{job=\"beacon-client-job\"} offset 1s)) / 1e9",
           "instant": true,
           "interval": "",
           "legendFormat": "total_balance",
@@ -1037,7 +1037,7 @@
       "pluginVersion": "8.2.3",
       "targets": [
         {
-          "expr": "max(validator_inactivity_score{job=\"beacon-client-job\"})",
+          "expr": "max(validator_monitor_inactivity_score{job=\"beacon-client-job\"})",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -1107,7 +1107,7 @@
           "refId": "C"
         },
         {
-          "expr": "beacon_finalized_epoch {job=\"beacon-client-job\"} ",
+          "expr": "beacon_finalized_epoch{job=\"beacon-client-job\"}",
           "format": "time_series",
           "instant": true,
           "interval": "",
@@ -1415,7 +1415,7 @@
       "pluginVersion": "8.2.3",
       "targets": [
         {
-          "expr": "sum(validator_balance{job=\"beacon-client-job\"}) - sum(validator_balance{job=\"beacon-client-job\"} offset 1h != 0) - (32 * count(validator_balance{job=\"beacon-client-job\"} > 16)) + (32 * count(validator_balance{job=\"beacon-client-job\"} offset 1h > 16))",
+          "expr": "((sum(validator_monitor_balance_gwei{job=\"beacon-client-job\"}) - sum(validator_monitor_balance_gwei{job=\"beacon-client-job\"} offset 1h != 0)) / 1e9) - 32 * count(validator_monitor_status{job=\"beacon-client-job\",status=\"active_ongoing\"}) + 32 * count(validator_monitor_status{job=\"beacon-client-job\",status=\"active_ongoing\"} offset 1h)",
           "instant": false,
           "interval": "",
           "intervalFactor": 3,
@@ -1496,7 +1496,7 @@
       "pluginVersion": "8.2.3",
       "targets": [
         {
-          "expr": "sum(validator_balance{job=\"beacon-client-job\"}) - sum(validator_balance{job=\"beacon-client-job\"} offset 1d != 0) - (32 * count(validator_balance{job=\"beacon-client-job\"} > 16)) + (32 * count(validator_balance{job=\"beacon-client-job\"} offset 1d > 16))",
+          "expr": "((sum(validator_monitor_balance_gwei{job=\"beacon-client-job\"}) - sum(validator_monitor_balance_gwei{job=\"beacon-client-job\"} offset 1d != 0)) / 1e9) - 32 * count(validator_monitor_status{job=\"beacon-client-job\",status=\"active_ongoing\"}) + 32 * count(validator_monitor_status{job=\"beacon-client-job\",status=\"active_ongoing\"} offset 1d)",
           "instant": false,
           "interval": "",
           "legendFormat": "",
@@ -1576,7 +1576,7 @@
       "pluginVersion": "8.2.3",
       "targets": [
         {
-          "expr": "sum(validator_balance{job=\"beacon-client-job\"}) - sum(validator_balance{job=\"beacon-client-job\"} offset 7d != 0) - (32 * count(validator_balance{job=\"beacon-client-job\"} > 16)) + (32 * count(validator_balance{job=\"beacon-client-job\"} offset 7d > 16))",
+          "expr": "((sum(validator_monitor_balance_gwei{job=\"beacon-client-job\"}) - sum(validator_monitor_balance_gwei{job=\"beacon-client-job\"} offset 7d != 0)) / 1e9) - 32 * count(validator_monitor_status{job=\"beacon-client-job\",status=\"active_ongoing\"}) + 32 * count(validator_monitor_status{job=\"beacon-client-job\",status=\"active_ongoing\"} offset 7d)",
           "instant": false,
           "interval": "",
           "legendFormat": "",
@@ -1656,7 +1656,7 @@
       "pluginVersion": "8.2.3",
       "targets": [
         {
-          "expr": "sum(validator_balance{job=\"beacon-client-job\"}) - sum(validator_balance{job=\"beacon-client-job\"} offset 30d != 0) - (32 * count(validator_balance{job=\"beacon-client-job\"} > 16)) + (32 * count(validator_balance{job=\"beacon-client-job\"} offset 30d > 16))",
+          "expr": "((sum(validator_monitor_balance_gwei{job=\"beacon-client-job\"}) - sum(validator_monitor_balance_gwei{job=\"beacon-client-job\"} offset 30d != 0)) / 1e9) - 32 * count(validator_monitor_status{job=\"beacon-client-job\",status=\"active_ongoing\"}) + 32 * count(validator_monitor_status{job=\"beacon-client-job\",status=\"active_ongoing\"} offset 30d)",
           "instant": false,
           "interval": "",
           "legendFormat": "",
@@ -1713,21 +1713,21 @@
       "pluginVersion": "8.2.3",
       "targets": [
         {
-          "expr": "validator_count{state=\"Active\",job=\"beacon-client-job\"} ",
+          "expr": "beacon_current_active_validators{job=\"beacon-client-job\"}",
           "instant": true,
           "interval": "",
           "legendFormat": "active",
           "refId": "C"
         },
         {
-          "expr": "validator_count{state=\"Slashed\",job=\"beacon-client-job\"} ",
+          "expr": "beacon_current_slashed_validators{job=\"beacon-client-job\"}",
           "instant": true,
           "interval": "",
           "legendFormat": "slashed",
           "refId": "B"
         },
         {
-          "expr": "validator_count{state=\"Exited\",job=\"beacon-client-job\"} ",
+          "expr": "beacon_current_exited_validators{job=\"beacon-client-job\"}",
           "instant": true,
           "interval": "",
           "legendFormat": "exited",
@@ -1806,28 +1806,22 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "validator_count{state=\"Pending\",job=\"beacon-client-job\"}",
+          "expr": "beacon_current_pending_validators{job=\"beacon-client-job\"}",
           "interval": "",
           "legendFormat": "pending",
           "refId": "B"
         },
         {
-          "expr": "validator_count{state=\"Exiting\",job=\"beacon-client-job\"}",
+          "expr": "beacon_current_exiting_validators{job=\"beacon-client-job\"}",
           "interval": "",
           "legendFormat": "exiting",
           "refId": "A"
         },
         {
-          "expr": "validator_count{state=\"Slashing\",job=\"beacon-client-job\"}",
-          "interval": "",
-          "legendFormat": "slashing",
-          "refId": "C"
-        },
-        {
           "expr": "validator_count{job=\"beacon-client-job\", state=\"Active\"}",
           "interval": "",
           "legendFormat": "active validators",
-          "refId": "D"
+          "refId": "C"
         }
       ],
       "thresholds": [],
@@ -1914,14 +1908,14 @@
       "pluginVersion": "8.2.3",
       "targets": [
         {
-          "expr": "validator_count{state=\"Pending\",job=\"beacon-client-job\"}",
+          "expr": "beacon_current_pending_validators{job=\"beacon-client-job\"}",
           "instant": true,
           "interval": "",
           "legendFormat": "pending",
           "refId": "B"
         },
         {
-          "expr": "validator_count{state=\"Exiting\",job=\"beacon-client-job\"}",
+          "expr": "beacon_current_exiting_validators{job=\"beacon-client-job\"}",
           "instant": true,
           "interval": "",
           "legendFormat": "exiting",
@@ -2001,7 +1995,7 @@
       "pluginVersion": "8.2.3",
       "targets": [
         {
-          "expr": "((sum(validator_balance{job=\"beacon-client-job\"}) - sum(validator_balance{job=\"beacon-client-job\"} offset 1h != 0) - (32 * count(validator_balance{job=\"beacon-client-job\"} > 16)) +\t(32 * count(validator_balance{job=\"beacon-client-job\"} offset 1h > 16)))/(32 * avg_over_time(count(validator_balance{job=\"beacon-client-job\"} > 16)[1h:]))) * 365 * 24",
+          "expr": "(((sum(validator_monitor_balance_gwei{job=\"beacon-client-job\"}) - sum(validator_monitor_balance_gwei{job=\"beacon-client-job\"} offset 1h != 0)) / 1e9) - 32 * count(validator_monitor_status{job=\"beacon-client-job\",status=\"active_ongoing\"}) + 32 * count(validator_monitor_status{job=\"beacon-client-job\",status=\"active_ongoing\"} offset 1h)) / (32 * avg_over_time(count(validator_monitor_status{job=\"beacon-client-job\",status=\"active_ongoing\"})[1h:])) * 365 * 24",
           "hide": false,
           "interval": "",
           "legendFormat": "annualized hourly return",
@@ -2081,7 +2075,7 @@
       "pluginVersion": "8.2.3",
       "targets": [
         {
-          "expr": "((sum(validator_balance{job=\"beacon-client-job\"}) - sum(validator_balance{job=\"beacon-client-job\"} offset 1d != 0) - (32 * count(validator_balance{job=\"beacon-client-job\"} > 16)) +\t(32 * count(validator_balance{job=\"beacon-client-job\"} offset 1d > 16)))/(32 * avg_over_time(count(validator_balance{job=\"beacon-client-job\"} > 16)[1d:]))) * 365",
+          "expr": "(((sum(validator_monitor_balance_gwei{job=\"beacon-client-job\"}) - sum(validator_monitor_balance_gwei{job=\"beacon-client-job\"} offset 1d != 0)) / 1e9) - 32 * count(validator_monitor_status{job=\"beacon-client-job\",status=\"active_ongoing\"}) + 32 * count(validator_monitor_status{job=\"beacon-client-job\",status=\"active_ongoing\"} offset 1d)) / (32 * avg_over_time(count(validator_monitor_status{job=\"beacon-client-job\",status=\"active_ongoing\"})[1d:])) * 365",
           "hide": false,
           "interval": "",
           "legendFormat": "annualized daily return",
@@ -2161,7 +2155,7 @@
       "pluginVersion": "8.2.3",
       "targets": [
         {
-          "expr": "((sum(validator_balance{job=\"beacon-client-job\"}) - sum(validator_balance{job=\"beacon-client-job\"} offset 7d != 0) - (32 * count(validator_balance{job=\"beacon-client-job\"} > 16)) +\t(32 * count(validator_balance{job=\"beacon-client-job\"} offset 7d > 16)))/(32 * avg_over_time(count(validator_balance{job=\"beacon-client-job\"} > 16)[7d:]))) * (365/7)",
+          "expr": "(((sum(validator_monitor_balance_gwei{job=\"beacon-client-job\"}) - sum(validator_monitor_balance_gwei{job=\"beacon-client-job\"} offset 7d != 0)) / 1e9) - 32 * count(validator_monitor_status{job=\"beacon-client-job\",status=\"active_ongoing\"}) + 32 * count(validator_monitor_status{job=\"beacon-client-job\",status=\"active_ongoing\"} offset 7d)) / (32 * avg_over_time(count(validator_monitor_status{job=\"beacon-client-job\",status=\"active_ongoing\"})[7d:])) * (365/7)",
           "hide": false,
           "interval": "",
           "legendFormat": "annualized weekly return",
@@ -2241,7 +2235,7 @@
       "pluginVersion": "8.2.3",
       "targets": [
         {
-          "expr": "((sum(validator_balance{job=\"beacon-client-job\"}) - sum(validator_balance{job=\"beacon-client-job\"} offset 30d != 0) - (32 * count(validator_balance{job=\"beacon-client-job\"} > 16)) +\t(32 * count(validator_balance{job=\"beacon-client-job\"} offset 30d > 16)))/(32 * avg_over_time(count(validator_balance{job=\"beacon-client-job\"} > 16)[30d:]))) * (365/30)",
+          "expr": "(((sum(validator_monitor_balance_gwei{job=\"beacon-client-job\"}) - sum(validator_monitor_balance_gwei{job=\"beacon-client-job\"} offset 30d != 0)) / 1e9) - 32 * count(validator_monitor_status{job=\"beacon-client-job\",status=\"active_ongoing\"}) + 32 * count(validator_monitor_status{job=\"beacon-client-job\",status=\"active_ongoing\"} offset 30d)) / (32 * avg_over_time(count(validator_monitor_status{job=\"beacon-client-job\",status=\"active_ongoing\"})[30d:])) * (365/30)",
           "hide": false,
           "interval": "",
           "legendFormat": "annualized monthly return",
@@ -2321,7 +2315,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "validators_total_balance{state=\"Active\",job=\"beacon-client-job\"} / validator_count{state=\"Active\",job=\"beacon-client-job\"} / 1000000000",
+          "expr": "(beacon_prev_epoch_active_gwei{job=\"beacon-client-job\"} / 1e9) / beacon_current_active_validators{job=\"beacon-client-job\"}",
           "interval": "",
           "legendFormat": "lyx",
           "refId": "A"
@@ -2375,14 +2369,14 @@
       "pluginVersion": "8.2.3",
       "targets": [
         {
-          "expr": "((validator_count{state=\"Pending\",job=\"beacon-client-job\"}/4)*6.4)",
+          "expr": "(beacon_current_pending_validators{job=\"beacon-client-job\"} / 4) * 6.4",
           "instant": true,
           "interval": "",
           "legendFormat": "pending",
           "refId": "B"
         },
         {
-          "expr": "((validator_count{state=\"Exiting\",job=\"beacon-client-job\"}/4)*6.4)",
+          "expr": "(beacon_current_exiting_validators{job=\"beacon-client-job\"} / 4) * 6.4",
           "instant": true,
           "interval": "",
           "legendFormat": "exiting",
@@ -2651,7 +2645,7 @@
       ],
       "targets": [
         {
-          "expr": "label_replace(max by(pubkey) (validator_statuses{job=\"beacon-client-job\"}), \"pubkey_short\", \"$1\", \"pubkey\", \"(.{10}).*\")  ",
+          "expr": "label_replace(max by(pubkey) (validator_monitor_status{job=\"beacon-client-job\"}), \"pubkey_short\", \"$1\", \"pubkey\", \"(.{10}).*\" )",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -2659,7 +2653,7 @@
           "refId": "J"
         },
         {
-          "expr": "label_replace(max by(pubkey) (validator_balance{job=\"beacon-client-job\"}), \"pubkey_short\", \"$1\", \"pubkey\", \"(.{10}).*\") ",
+          "expr": "label_replace(max by(pubkey) (validator_monitor_balance_gwei{job=\"beacon-client-job\"}), \"pubkey_short\", \"$1\", \"pubkey\", \"(.{10}).*\") / 1e9",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -2667,7 +2661,7 @@
           "refId": "F"
         },
         {
-          "expr": "label_replace(max by(pubkey) (validator_successful_proposals{job=\"beacon-client-job\"}), \"pubkey_short\", \"$1\", \"pubkey\", \"(.{10}).*\")  ",
+          "expr": "label_replace(max by(pubkey)(validator_monitor_block_hit{job=\"beacon-client-job\"}), \"pubkey_short\", \"$1\", \"pubkey\", \"(.{10}).*\")",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -2675,7 +2669,7 @@
           "refId": "E"
         },
         {
-          "expr": "label_replace(max by(pubkey) (validator_successful_attestations{job=\"beacon-client-job\"}), \"pubkey_short\", \"$1\", \"pubkey\", \"(.{10}).*\")  ",
+          "expr": "label_replace(max by(pubkey) (validator_monitor_prev_epoch_on_chain_attester_hit{job=\"beacon-client-job\"}), \"pubkey_short\", \"$1\", \"pubkey\", \"(.{10}).*\")",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -2683,7 +2677,7 @@
           "refId": "A"
         },
         {
-          "expr": "label_replace(max by(pubkey) (validator_successful_aggregations{job=\"beacon-client-job\"}), \"pubkey_short\", \"$1\", \"pubkey\", \"(.{10}).*\") ",
+          "expr": "label_replace(max by(pubkey) (validator_monitor_prev_epoch_on_chain_target_attester_hit{job=\"beacon-client-job\"}), \"pubkey_short\", \"$1\", \"pubkey\", \"(.{10}).*\")",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -2691,7 +2685,7 @@
           "refId": "C"
         },
         {
-          "expr": "label_replace(max by(pubkey) (validator_failed_attestations{job=\"beacon-client-job\"}), \"pubkey_short\", \"$1\", \"pubkey\", \"(.{10}).*\") ",
+          "expr": "label_replace(max by(pubkey)(validator_monitor_attestation_miss{job=\"beacon-client-job\"}), \"pubkey_short\", \"$1\", \"pubkey\", \"(.{10}).*\")",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -2699,7 +2693,7 @@
           "refId": "B"
         },
         {
-          "expr": "label_replace(max by(pubkey) (validator_failed_aggregations{job=\"beacon-client-job\"}), \"pubkey_short\", \"$1\", \"pubkey\", \"(.{10}).*\") ",
+          "expr": "label_replace(max by(pubkey) (validator_monitor_prev_epoch_on_chain_target_attester_miss{job=\"beacon-client-job\"}), \"pubkey_short\", \"$1\", \"pubkey\", \"(.{10}).*\")",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -2707,7 +2701,7 @@
           "refId": "D"
         },
         {
-          "expr": "label_replace(max by(pubkey) (validator_inactivity_score{job=\"beacon-client-job\"}), \"pubkey_short\", \"$1\", \"pubkey\", \"(.{10}).*\")  ",
+          "expr": "label_replace(max by(pubkey) (validator_monitor_inactivity_score{job=\"beacon-client-job\"}), \"pubkey_short\", \"$1\", \"pubkey\", \"(.{10}).*\")",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -2855,7 +2849,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "p2p_peer_count{state=\"Connected\",job=\"beacon-client-job\"}",
+          "expr": "sum(connected_libp2p_peers{job=\"beacon-client-job\"})",
           "interval": "",
           "legendFormat": "peers",
           "refId": "A"
@@ -2970,18 +2964,11 @@
       "pluginVersion": "8.2.3",
       "targets": [
         {
-          "expr": "(time()-process_start_time_seconds{job=\"beacon-client-job\"})/3600",
+          "expr": "(time() - process_start_time_seconds{job=\"beacon-client-job\"}) / 3600",
           "instant": true,
           "interval": "",
           "legendFormat": "beacon chain",
           "refId": "A"
-        },
-        {
-          "expr": "(time()-process_start_time_seconds{job=\"beacon-client-job\"})/3600",
-          "instant": true,
-          "interval": "",
-          "legendFormat": "validator",
-          "refId": "B"
         }
       ],
       "timeFrom": null,
@@ -3047,14 +3034,14 @@
       "pluginVersion": "8.2.3",
       "targets": [
         {
-          "expr": "sum(rate(log_entries_total{job=\"beacon-client-job\", level=\"error\"}[$__range]))*3600",
+          "expr": "sum(rate(log_entries_total{job=\"beacon-client-job\", level=\"error\"}[$__range])) * 3600",
           "instant": false,
           "interval": "",
           "legendFormat": "errors",
           "refId": "A"
         },
         {
-          "expr": "sum(rate(log_entries_total{job=\"beacon-client-job\", level=\"warning\"}[$__range]))*3600",
+          "expr": "sum(rate(log_entries_total{job=\"beacon-client-job\", level=\"warning\"}[$__range])) * 3600",
           "instant": false,
           "interval": "",
           "legendFormat": "warnings",
@@ -3101,7 +3088,7 @@
       "pluginVersion": "8.2.3",
       "targets": [
         {
-          "expr": "max(prysm_version{job=\"beacon-client-job\"}) by (job, version)",
+          "expr": "max(nim_runtime_info{job=\"beacon-client-job\"}) by (job, version)",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -3114,8 +3101,10 @@
       "title": "Nimbus-Eth2 Versions",
       "transformations": [
         {
-          "id": "filterByRefId",
-          "options": {}
+          "id": "labelsToFields",
+          "options": {
+            "valueLabel": ""
+          }
         },
         {
           "id": "filterFieldsByName",
@@ -3127,83 +3116,6 @@
         }
       ],
       "type": "table"
-    },
-    {
-      "cacheTimeout": null,
-      "datasource": null,
-      "description": "Average number of log messages received per hour over the selected time range",
-      "fieldConfig": {
-        "defaults": {
-          "mappings": [
-            {
-              "options": {
-                "match": "null",
-                "result": {
-                  "text": "N/A"
-                }
-              },
-              "type": "special"
-            }
-          ],
-          "noValue": "0",
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 0.001
-              }
-            ]
-          },
-          "unit": "/hr"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 3,
-        "w": 3,
-        "x": 21,
-        "y": 18
-      },
-      "id": 76,
-      "links": [],
-      "options": {
-        "colorMode": "value",
-        "graphMode": "none",
-        "justifyMode": "center",
-        "orientation": "auto",
-        "reduceOptions": {
-          "calcs": ["last"],
-          "fields": "",
-          "values": false
-        },
-        "text": {},
-        "textMode": "auto"
-      },
-      "pluginVersion": "8.2.3",
-      "targets": [
-        {
-          "expr": "sum(rate(log_entries_total{job=\"beacon-client-job\", level=\"error\"}[$__range]))*3600",
-          "instant": false,
-          "interval": "",
-          "legendFormat": "errors",
-          "refId": "B"
-        },
-        {
-          "expr": "sum(rate(log_entries_total{job=\"beacon-client-job\", level=\"warning\"}[$__range]))*3600",
-          "interval": "",
-          "legendFormat": "warnings",
-          "refId": "A"
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Validator Logs",
-      "type": "stat"
     },
     {
       "cacheTimeout": null,
@@ -3361,12 +3273,6 @@
           "interval": "",
           "legendFormat": "beacon memory",
           "refId": "F"
-        },
-        {
-          "expr": "process_resident_memory_bytes{job=\"beacon-client-job\"}",
-          "interval": "",
-          "legendFormat": "validator memory",
-          "refId": "G"
         }
       ],
       "thresholds": [],
@@ -4366,147 +4272,6 @@
         "conditions": [
           {
             "evaluator": {
-              "params": [0.9],
-              "type": "lt"
-            },
-            "operator": {
-              "type": "and"
-            },
-            "query": {
-              "params": ["A", "5m", "now"]
-            },
-            "reducer": {
-              "params": [],
-              "type": "avg"
-            },
-            "type": "query"
-          }
-        ],
-        "executionErrorState": "alerting",
-        "for": "5m",
-        "frequency": "1m",
-        "handler": 1,
-        "message": "Validator process is down for more than 5 minutes",
-        "name": "Validator Process Down",
-        "noDataState": "no_data",
-        "notifications": [
-          {
-            "uid": "wNz7UJpnk"
-          }
-        ]
-      },
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "Prometheus",
-      "fieldConfig": {
-        "defaults": {
-          "links": []
-        },
-        "overrides": []
-      },
-      "fill": 1,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 1,
-        "w": 6,
-        "x": 0,
-        "y": 35
-      },
-      "hiddenSeries": false,
-      "id": 113,
-      "legend": {
-        "alignAsTable": false,
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "show": true,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "nullPointMode": "null",
-      "options": {
-        "alertThreshold": true
-      },
-      "percentage": false,
-      "pluginVersion": "8.2.3",
-      "pointradius": 2,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "expr": "up{job=\"beacon-client-job\"}",
-          "interval": "",
-          "legendFormat": "validator",
-          "refId": "A"
-        }
-      ],
-      "thresholds": [
-        {
-          "colorMode": "critical",
-          "fill": true,
-          "line": true,
-          "op": "lt",
-          "value": 0.9,
-          "visible": true
-        }
-      ],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "Validator Process Down",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "$$hashKey": "object:299",
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        },
-        {
-          "$$hashKey": "object:300",
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "alert": {
-        "alertRuleTags": {},
-        "conditions": [
-          {
-            "evaluator": {
               "params": [2147483648],
               "type": "lt"
             },
@@ -4727,7 +4492,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "(time()-process_start_time_seconds{job=\"beacon-client-job\"})/3600",
+          "expr": "(time() - process_start_time_seconds{job=\"beacon-client-job\"}) / 3600",
           "interval": "",
           "legendFormat": "{{job}}",
           "refId": "A"
@@ -4747,148 +4512,6 @@
       "timeRegions": [],
       "timeShift": null,
       "title": "Consensus Process Restarted",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "$$hashKey": "object:243",
-          "decimals": 1,
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        },
-        {
-          "$$hashKey": "object:244",
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "alert": {
-        "alertRuleTags": {},
-        "conditions": [
-          {
-            "evaluator": {
-              "params": [0.1],
-              "type": "lt"
-            },
-            "operator": {
-              "type": "and"
-            },
-            "query": {
-              "params": ["A", "10s", "now"]
-            },
-            "reducer": {
-              "params": [],
-              "type": "last"
-            },
-            "type": "query"
-          }
-        ],
-        "executionErrorState": "alerting",
-        "for": "0m",
-        "frequency": "1m",
-        "handler": 1,
-        "message": "Validator Process Restarted",
-        "name": "Validator Process Restarted",
-        "noDataState": "no_data",
-        "notifications": [
-          {
-            "uid": "wNz7UJpnk"
-          }
-        ]
-      },
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "Prometheus",
-      "description": "",
-      "fieldConfig": {
-        "defaults": {
-          "links": []
-        },
-        "overrides": []
-      },
-      "fill": 1,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 1,
-        "w": 6,
-        "x": 0,
-        "y": 36
-      },
-      "hiddenSeries": false,
-      "id": 110,
-      "legend": {
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "show": true,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "nullPointMode": "null",
-      "options": {
-        "alertThreshold": true
-      },
-      "percentage": false,
-      "pluginVersion": "8.2.3",
-      "pointradius": 2,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "expr": "(time()-process_start_time_seconds{job=\"beacon-client-job\"})/3600",
-          "interval": "",
-          "legendFormat": "",
-          "refId": "A"
-        }
-      ],
-      "thresholds": [
-        {
-          "colorMode": "critical",
-          "fill": true,
-          "line": true,
-          "op": "lt",
-          "value": 0.1,
-          "visible": true
-        }
-      ],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "Validator Process Restarted",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -5153,7 +4776,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "p2p_peer_count{state=\"Connected\",job=\"beacon-client-job\"}",
+          "expr": "sum(connected_libp2p_peers{job=\"beacon-client-job\"})",
           "interval": "",
           "legendFormat": "peers",
           "refId": "A"
@@ -6022,7 +5645,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "sum(validator_balance{job=\"beacon-client-job\"}) - sum(validator_balance{job=\"beacon-client-job\"} offset 1h != 0) - (32 * count(validator_balance{job=\"beacon-client-job\"} > 16)) + (32 * count(validator_balance{job=\"beacon-client-job\"} offset 1h > 16))",
+          "expr": "((sum(validator_monitor_balance_gwei{job=\"beacon-client-job\"}) - sum(validator_monitor_balance_gwei{job=\"beacon-client-job\"} offset 1h != 0)) / 1e9) - 32 * count(validator_monitor_status{job=\"beacon-client-job\",status=\"active_ongoing\"}) + 32 * count(validator_monitor_status{job=\"beacon-client-job\",status=\"active_ongoing\"} offset 1h)",
           "hide": false,
           "interval": "",
           "intervalFactor": 1,
