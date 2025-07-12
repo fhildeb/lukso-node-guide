@@ -321,7 +321,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "(sum(validator_monitor_balance_gwei{job=\"beacon-client-job\"}) - sum(validator_monitor_balance_gwei{job=\"beacon-client-job\"} offset 1s)) / 1e9",
+          "expr": "(sum(validator_monitor_balance_gwei{job=\"beacon-client-job\"}) / 1e9 + sum_over_time(abs(clamp_max(idelta(validator_monitor_balance_gwei{job=\"beacon-client-job\"}[1h]), 0))[30d:]) / 1e9 - 32 * count(validator_monitor_status{job=\"beacon-client-job\",status=\"active_ongoing\"})) or on() vector(0)",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -401,7 +401,7 @@
       "pluginVersion": "8.2.3",
       "targets": [
         {
-          "expr": "((sum(validator_monitor_balance_gwei{job=\"beacon-client-job\"}) / 1e9) - (32 * count(validator_monitor_status{job=\"beacon-client-job\",status=\"active_ongoing\\\"}))) / (32 * count(validator_monitor_status{job=\"beacon-client-job\",status=\"active_ongoing\"}))",
+          "expr": "((sum(validator_monitor_balance_gwei{job=\"beacon-client-job\"}) / 1e9 + sum_over_time(abs(clamp_max(idelta(validator_monitor_balance_gwei{job=\"beacon-client-job\"}[1h]), 0))[30d:]) / 1e9 - 32 * count(validator_monitor_status{job=\"beacon-client-job\",status=\"active_ongoing\"})) or on() vector(0)) / (32 * count(validator_monitor_status{job=\"beacon-client-job\",status=\"active_ongoing\"}) or scalar(1))",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -870,7 +870,7 @@
       "pluginVersion": "8.2.3",
       "targets": [
         {
-          "expr": "(sum(validator_monitor_balance_gwei{job=\"beacon-client-job\"}) - sum(validator_monitor_balance_gwei{job=\"beacon-client-job\"} offset 1s)) / 1e9",
+          "expr": "(sum(validator_monitor_balance_gwei{job=\"beacon-client-job\"}) / 1e9 + sum_over_time(abs(clamp_max(idelta(validator_monitor_balance_gwei{job=\"beacon-client-job\"}[1h]), 0))[30d:]) / 1e9 - 32 * count(validator_monitor_status{job=\"beacon-client-job\",status=\"active_ongoing\"})) or on() vector(0)",
           "instant": true,
           "interval": "",
           "legendFormat": "total_balance",
