@@ -18,6 +18,12 @@
       "version": "9.5.2"
     },
     {
+      "type": "panel",
+      "id": "graph",
+      "name": "Graph (old)",
+      "version": ""
+    },
+    {
       "type": "datasource",
       "id": "prometheus",
       "name": "Prometheus",
@@ -37,8 +43,8 @@
     },
     {
       "type": "panel",
-      "id": "timeseries",
-      "name": "Time series",
+      "id": "table-old",
+      "name": "Table (old)",
       "version": ""
     }
   ],
@@ -251,6 +257,83 @@
         "type": "prometheus",
         "uid": "${DS_PROMETHEUS}"
       },
+      "description": "Price of LYX in USD.",
+      "fieldConfig": {
+        "defaults": {
+          "decimals": 2,
+          "mappings": [
+            {
+              "options": {
+                "match": "null",
+                "result": {
+                  "text": "N/A"
+                }
+              },
+              "type": "special"
+            }
+          ],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "currencyUSD"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 6,
+        "x": 0,
+        "y": 1
+      },
+      "id": 102,
+      "links": [],
+      "maxDataPoints": 100,
+      "options": {
+        "colorMode": "value",
+        "fieldOptions": {
+          "calcs": ["lastNotNull"]
+        },
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": ["lastNotNull"],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "9.5.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "exemplar": true,
+          "expr": "lyxusd",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "lyxusd",
+          "refId": "B"
+        }
+      ],
+      "title": "LYX Price (USD)",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
+      },
       "description": "Number of beacon nodes to which this node is connected.",
       "fieldConfig": {
         "defaults": {
@@ -284,8 +367,8 @@
       },
       "gridPos": {
         "h": 3,
-        "w": 3,
-        "x": 9,
+        "w": 6,
+        "x": 6,
         "y": 1
       },
       "id": 98,
@@ -567,50 +650,63 @@
         "type": "prometheus",
         "uid": "${DS_PROMETHEUS}"
       },
-      "description": "Price of LYX in USD.",
       "fieldConfig": {
         "defaults": {
-          "decimals": 2,
+          "color": {
+            "mode": "thresholds"
+          },
           "mappings": [
+            {
+              "options": {
+                "1": {
+                  "text": ""
+                }
+              },
+              "type": "value"
+            },
             {
               "options": {
                 "match": "null",
                 "result": {
-                  "text": "N/A"
+                  "text": ""
                 }
               },
               "type": "special"
             }
           ],
-          "min": 0,
           "thresholds": {
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
+                "color": "#FA6400",
                 "value": null
+              },
+              {
+                "color": "#FA6400",
+                "value": 0
+              },
+              {
+                "color": "#FA6400",
+                "value": 0
               }
             ]
           },
-          "unit": "currencyUSD"
+          "unit": "none"
         },
         "overrides": []
       },
       "gridPos": {
-        "h": 3,
-        "w": 3,
-        "x": 6,
+        "h": 1,
+        "w": 12,
+        "x": 0,
         "y": 4
       },
-      "id": 102,
+      "id": 96,
       "links": [],
       "maxDataPoints": 100,
       "options": {
-        "colorMode": "value",
-        "fieldOptions": {
-          "calcs": ["lastNotNull"]
-        },
-        "graphMode": "area",
+        "colorMode": "background",
+        "graphMode": "none",
         "justifyMode": "auto",
         "orientation": "horizontal",
         "reduceOptions": {
@@ -628,15 +724,13 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "exemplar": true,
-          "expr": "lyxusd",
-          "instant": true,
+          "expr": "1",
           "interval": "",
-          "legendFormat": "lyxusd",
-          "refId": "B"
+          "legendFormat": "",
+          "refId": "A"
         }
       ],
-      "title": "LYX Price (USD)",
+      "title": "Local Validators",
       "type": "stat"
     },
     {
@@ -794,92 +888,314 @@
       "type": "stat"
     },
     {
+      "columns": [],
       "datasource": {
         "type": "prometheus",
         "uid": "${DS_PROMETHEUS}"
       },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "mappings": [
-            {
-              "options": {
-                "1": {
-                  "text": ""
-                }
-              },
-              "type": "value"
-            },
-            {
-              "options": {
-                "match": "null",
-                "result": {
-                  "text": ""
-                }
-              },
-              "type": "special"
-            }
-          ],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "#FA6400",
-                "value": null
-              },
-              {
-                "color": "#FA6400",
-                "value": 0
-              },
-              {
-                "color": "#FA6400",
-                "value": 0
-              }
-            ]
-          },
-          "unit": "none"
-        },
-        "overrides": []
-      },
+      "description": "validator stats by public key over the lifetime of the validator process ",
+      "fontSize": "100%",
       "gridPos": {
-        "h": 1,
+        "h": 12,
         "w": 12,
         "x": 0,
-        "y": 7
+        "y": 5
       },
-      "id": 96,
+      "id": 54,
+      "interval": "",
       "links": [],
-      "maxDataPoints": 100,
-      "options": {
-        "colorMode": "background",
-        "graphMode": "none",
-        "justifyMode": "auto",
-        "orientation": "horizontal",
-        "reduceOptions": {
-          "calcs": ["lastNotNull"],
-          "fields": "",
-          "values": false
-        },
-        "text": {},
-        "textMode": "auto"
+      "pluginVersion": "6.5.1",
+      "showHeader": true,
+      "sort": {
+        "col": 4,
+        "desc": true
       },
-      "pluginVersion": "9.5.2",
+      "styles": [
+        {
+          "alias": "Time",
+          "align": "auto",
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "pattern": "Time",
+          "type": "hidden"
+        },
+        {
+          "alias": "",
+          "align": "auto",
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 2,
+          "mappingType": 1,
+          "pattern": "job",
+          "thresholds": [],
+          "type": "hidden",
+          "unit": "short"
+        },
+        {
+          "alias": "public key",
+          "align": "auto",
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "decimals": 2,
+          "link": false,
+          "linkTargetBlank": false,
+          "linkTooltip": "",
+          "linkUrl": "",
+          "pattern": "pubkey",
+          "thresholds": [],
+          "type": "hidden",
+          "unit": "short"
+        },
+        {
+          "alias": "",
+          "align": "auto",
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 2,
+          "mappingType": 1,
+          "pattern": "instance",
+          "thresholds": [],
+          "type": "hidden",
+          "unit": "short"
+        },
+        {
+          "alias": "",
+          "align": "auto",
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 2,
+          "mappingType": 1,
+          "pattern": "__name__",
+          "thresholds": [],
+          "type": "hidden",
+          "unit": "short"
+        },
+        {
+          "alias": "attested",
+          "align": "auto",
+          "colors": ["#F2495C", "#FF9830", "#73BF69"],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 0,
+          "mappingType": 1,
+          "pattern": "Value #A",
+          "thresholds": [],
+          "type": "number",
+          "unit": "short"
+        },
+        {
+          "alias": "aggregated",
+          "align": "auto",
+          "colors": ["#F2495C", "#FF9830", "#73BF69"],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 0,
+          "mappingType": 1,
+          "pattern": "Value #C",
+          "thresholds": [],
+          "type": "number",
+          "unit": "short"
+        },
+        {
+          "alias": "proposed",
+          "align": "auto",
+          "colors": ["#F2495C", "#FF9830", "#73BF69"],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 0,
+          "mappingType": 1,
+          "pattern": "Value #E",
+          "thresholds": [],
+          "type": "number",
+          "unit": "short"
+        },
+        {
+          "alias": "failed attestations",
+          "align": "auto",
+          "colorMode": "value",
+          "colors": ["#F2495C", "#FF9830", "#73BF69"],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 0,
+          "mappingType": 1,
+          "pattern": "Value #B",
+          "thresholds": [],
+          "type": "number",
+          "unit": "short"
+        },
+        {
+          "alias": "failed aggregations",
+          "align": "auto",
+          "colorMode": "value",
+          "colors": ["#F2495C", "#FF9830", "#73BF69"],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 0,
+          "mappingType": 1,
+          "pattern": "Value #D",
+          "thresholds": [],
+          "type": "number",
+          "unit": "short"
+        },
+        {
+          "alias": "balance",
+          "align": "auto",
+          "colorMode": "value",
+          "colors": ["#F2495C", "#FF9830", "#73BF69"],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 4,
+          "link": false,
+          "linkTargetBlank": false,
+          "linkTooltip": "",
+          "linkUrl": "",
+          "mappingType": 1,
+          "pattern": "Value #F",
+          "thresholds": ["165", "32"],
+          "type": "number",
+          "unit": "short"
+        },
+        {
+          "alias": "pubkey",
+          "align": "auto",
+          "colors": ["#F2495C", "#FF9830", "#73BF69"],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 2,
+          "link": true,
+          "linkTargetBlank": true,
+          "linkTooltip": "explorer",
+          "linkUrl": "https://explorer.consensus.mainnet.lukso.network/validator/${__cell_1:raw}",
+          "mappingType": 1,
+          "pattern": "pubkey_short",
+          "thresholds": [],
+          "type": "string",
+          "unit": "short"
+        },
+        {
+          "alias": "inactivity score",
+          "align": "auto",
+          "colors": ["#F2495C", "#FF9830", "#73BF69"],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 0,
+          "mappingType": 1,
+          "pattern": "Value #H",
+          "thresholds": [""],
+          "type": "number",
+          "unit": "short"
+        },
+        {
+          "alias": "status",
+          "align": "auto",
+          "colors": ["#F2495C", "#FF9830", "#73BF69"],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 0,
+          "mappingType": 1,
+          "pattern": "Value #J",
+          "thresholds": [],
+          "type": "string",
+          "unit": "none",
+          "valueMaps": [
+            {
+              "text": "unknown",
+              "value": "0"
+            },
+            {
+              "text": "deposited",
+              "value": "1"
+            },
+            {
+              "text": "pending",
+              "value": "2"
+            },
+            {
+              "text": "active",
+              "value": "3"
+            },
+            {
+              "text": "exiting",
+              "value": "4"
+            },
+            {
+              "text": "slashing",
+              "value": "5"
+            },
+            {
+              "text": "exited",
+              "value": "6"
+            }
+          ]
+        }
+      ],
       "targets": [
         {
           "datasource": {
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "1",
+          "expr": "label_replace(up{job=\"validator-client-job\"}, \"pubkey_short\", \"$1\", \"pubkey\", \"(.{10}).*\")  ",
+          "format": "table",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "J"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "expr": "sum(validator_beacon_node_requests_total{job=\"validator-client-job\",type=\"PUBLISH_BLOCK\",status=\"SUCCESS\"})",
+          "format": "table",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "E"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "expr": "sum(validator_beacon_node_requests_total{job=\"validator-client-job\",type=\"PUBLISH_ATTESTATION\",status=\"SUCCESS\"})",
+          "format": "table",
+          "instant": true,
           "interval": "",
           "legendFormat": "",
           "refId": "A"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "expr": "sum(validator_beacon_node_requests_total{job=\"validator-client-job\",type=~\"PUBLISH_AGGREGATE|SYNC_CONTRIBUTION\",status=\"SUCCESS\"})",
+          "format": "table",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "B"
         }
       ],
-      "title": "Local Validators",
-      "type": "stat"
+      "title": "Validator Process Stats",
+      "transform": "table",
+      "transformations": [
+        {
+          "id": "joinByField",
+          "options": {
+            "byField": "pubkey_short",
+            "mode": "outer"
+          }
+        }
+      ],
+      "type": "table-old"
     },
     {
       "datasource": {
@@ -1403,307 +1719,6 @@
       "type": "stat"
     },
     {
-      "columns": [],
-      "datasource": {
-        "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
-      },
-      "description": "validator stats by public key over the lifetime of the validator process ",
-      "fontSize": "100%",
-      "gridPos": {
-        "h": 7,
-        "w": 12,
-        "x": 0,
-        "y": 14
-      },
-      "id": 54,
-      "interval": "",
-      "links": [],
-      "pluginVersion": "6.5.1",
-      "showHeader": true,
-      "sort": {
-        "col": 4,
-        "desc": true
-      },
-      "styles": [
-        {
-          "alias": "Time",
-          "align": "auto",
-          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "pattern": "Time",
-          "type": "hidden"
-        },
-        {
-          "alias": "",
-          "align": "auto",
-          "colors": [
-            "rgba(245, 54, 54, 0.9)",
-            "rgba(237, 129, 40, 0.89)",
-            "rgba(50, 172, 45, 0.97)"
-          ],
-          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "decimals": 2,
-          "mappingType": 1,
-          "pattern": "job",
-          "thresholds": [],
-          "type": "hidden",
-          "unit": "short"
-        },
-        {
-          "alias": "public key",
-          "align": "auto",
-          "colors": [
-            "rgba(245, 54, 54, 0.9)",
-            "rgba(237, 129, 40, 0.89)",
-            "rgba(50, 172, 45, 0.97)"
-          ],
-          "decimals": 2,
-          "link": false,
-          "linkTargetBlank": false,
-          "linkTooltip": "",
-          "linkUrl": "",
-          "pattern": "pubkey",
-          "thresholds": [],
-          "type": "hidden",
-          "unit": "short"
-        },
-        {
-          "alias": "",
-          "align": "auto",
-          "colors": [
-            "rgba(245, 54, 54, 0.9)",
-            "rgba(237, 129, 40, 0.89)",
-            "rgba(50, 172, 45, 0.97)"
-          ],
-          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "decimals": 2,
-          "mappingType": 1,
-          "pattern": "instance",
-          "thresholds": [],
-          "type": "hidden",
-          "unit": "short"
-        },
-        {
-          "alias": "",
-          "align": "auto",
-          "colors": [
-            "rgba(245, 54, 54, 0.9)",
-            "rgba(237, 129, 40, 0.89)",
-            "rgba(50, 172, 45, 0.97)"
-          ],
-          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "decimals": 2,
-          "mappingType": 1,
-          "pattern": "__name__",
-          "thresholds": [],
-          "type": "hidden",
-          "unit": "short"
-        },
-        {
-          "alias": "attested",
-          "align": "auto",
-          "colors": ["#F2495C", "#FF9830", "#73BF69"],
-          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "decimals": 0,
-          "mappingType": 1,
-          "pattern": "Value #A",
-          "thresholds": [],
-          "type": "number",
-          "unit": "short"
-        },
-        {
-          "alias": "aggregated",
-          "align": "auto",
-          "colors": ["#F2495C", "#FF9830", "#73BF69"],
-          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "decimals": 0,
-          "mappingType": 1,
-          "pattern": "Value #C",
-          "thresholds": [],
-          "type": "number",
-          "unit": "short"
-        },
-        {
-          "alias": "proposed",
-          "align": "auto",
-          "colors": ["#F2495C", "#FF9830", "#73BF69"],
-          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "decimals": 0,
-          "mappingType": 1,
-          "pattern": "Value #E",
-          "thresholds": [],
-          "type": "number",
-          "unit": "short"
-        },
-        {
-          "alias": "failed attestations",
-          "align": "auto",
-          "colorMode": "value",
-          "colors": ["#F2495C", "#FF9830", "#73BF69"],
-          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "decimals": 0,
-          "mappingType": 1,
-          "pattern": "Value #B",
-          "thresholds": [],
-          "type": "number",
-          "unit": "short"
-        },
-        {
-          "alias": "failed aggregations",
-          "align": "auto",
-          "colorMode": "value",
-          "colors": ["#F2495C", "#FF9830", "#73BF69"],
-          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "decimals": 0,
-          "mappingType": 1,
-          "pattern": "Value #D",
-          "thresholds": [],
-          "type": "number",
-          "unit": "short"
-        },
-        {
-          "alias": "balance",
-          "align": "auto",
-          "colorMode": "value",
-          "colors": ["#F2495C", "#FF9830", "#73BF69"],
-          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "decimals": 4,
-          "link": false,
-          "linkTargetBlank": false,
-          "linkTooltip": "",
-          "linkUrl": "",
-          "mappingType": 1,
-          "pattern": "Value #F",
-          "thresholds": ["165", "32"],
-          "type": "number",
-          "unit": "short"
-        },
-        {
-          "alias": "pubkey",
-          "align": "auto",
-          "colors": ["#F2495C", "#FF9830", "#73BF69"],
-          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "decimals": 2,
-          "link": true,
-          "linkTargetBlank": true,
-          "linkTooltip": "explorer",
-          "linkUrl": "https://explorer.consensus.mainnet.lukso.network/validator/${__cell_1:raw}",
-          "mappingType": 1,
-          "pattern": "pubkey_short",
-          "thresholds": [],
-          "type": "string",
-          "unit": "short"
-        },
-        {
-          "alias": "inactivity score",
-          "align": "auto",
-          "colors": ["#F2495C", "#FF9830", "#73BF69"],
-          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "decimals": 0,
-          "mappingType": 1,
-          "pattern": "Value #H",
-          "thresholds": [""],
-          "type": "number",
-          "unit": "short"
-        },
-        {
-          "alias": "status",
-          "align": "auto",
-          "colors": ["#F2495C", "#FF9830", "#73BF69"],
-          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "decimals": 0,
-          "mappingType": 1,
-          "pattern": "Value #J",
-          "thresholds": [],
-          "type": "string",
-          "unit": "none",
-          "valueMaps": [
-            {
-              "text": "unknown",
-              "value": "0"
-            },
-            {
-              "text": "deposited",
-              "value": "1"
-            },
-            {
-              "text": "pending",
-              "value": "2"
-            },
-            {
-              "text": "active",
-              "value": "3"
-            },
-            {
-              "text": "exiting",
-              "value": "4"
-            },
-            {
-              "text": "slashing",
-              "value": "5"
-            },
-            {
-              "text": "exited",
-              "value": "6"
-            }
-          ]
-        }
-      ],
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
-          },
-          "expr": "label_replace(up{job=\"validator-client-job\"}, \"pubkey_short\", \"$1\", \"pubkey\", \"(.{10}).*\")  ",
-          "format": "table",
-          "instant": true,
-          "interval": "",
-          "legendFormat": "",
-          "refId": "J"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
-          },
-          "expr": "sum(validator_beacon_node_requests_total{job=\"validator-client-job\",type=\"PUBLISH_BLOCK\",status=\"SUCCESS\"})",
-          "format": "table",
-          "instant": true,
-          "interval": "",
-          "legendFormat": "",
-          "refId": "E"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
-          },
-          "expr": "sum(validator_beacon_node_requests_total{job=\"validator-client-job\",type=\"PUBLISH_ATTESTATION\",status=\"SUCCESS\"})",
-          "format": "table",
-          "instant": true,
-          "interval": "",
-          "legendFormat": "",
-          "refId": "A"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
-          },
-          "expr": "sum(validator_beacon_node_requests_total{job=\"validator-client-job\",type=~\"PUBLISH_AGGREGATE|SYNC_CONTRIBUTION\",status=\"SUCCESS\"})",
-          "format": "table",
-          "instant": true,
-          "interval": "",
-          "legendFormat": "",
-          "refId": "B"
-        }
-      ],
-      "title": "Validator Process Stats",
-      "transform": "table",
-      "type": "table-old"
-    },
-    {
       "datasource": {
         "type": "prometheus",
         "uid": "${DS_PROMETHEUS}"
@@ -1928,7 +1943,7 @@
       },
       "gridPos": {
         "h": 3,
-        "w": 3,
+        "w": 6,
         "x": 18,
         "y": 15
       },
@@ -1984,91 +1999,6 @@
         "type": "prometheus",
         "uid": "${DS_PROMETHEUS}"
       },
-      "description": "Average number of log messages received per hour over the selected time range",
-      "fieldConfig": {
-        "defaults": {
-          "mappings": [
-            {
-              "options": {
-                "match": "null",
-                "result": {
-                  "text": "N/A"
-                }
-              },
-              "type": "special"
-            }
-          ],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 0.001
-              }
-            ]
-          },
-          "unit": "/hr"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 3,
-        "w": 3,
-        "x": 21,
-        "y": 15
-      },
-      "id": 79,
-      "links": [],
-      "options": {
-        "colorMode": "value",
-        "graphMode": "area",
-        "justifyMode": "center",
-        "orientation": "auto",
-        "reduceOptions": {
-          "calcs": ["last"],
-          "fields": "",
-          "values": false
-        },
-        "text": {},
-        "textMode": "auto"
-      },
-      "pluginVersion": "9.5.2",
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
-          },
-          "expr": "sum(rate(log_entries_total{job=\"consensus-client-job\", level=\"error\"}[$__range]))*3600",
-          "instant": false,
-          "interval": "",
-          "legendFormat": "errors",
-          "refId": "A"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
-          },
-          "expr": "sum(rate(log_entries_total{job=\"consensus-client-job\", level=\"warning\"}[$__range]))*3600",
-          "instant": false,
-          "interval": "",
-          "legendFormat": "warnings",
-          "refId": "B"
-        }
-      ],
-      "title": "Beacon Logs",
-      "type": "stat"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
-      },
       "description": "Versions of the currently running Teku clients.",
       "fieldConfig": {
         "defaults": {
@@ -2093,10 +2023,10 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 3,
-        "w": 3,
-        "x": 18,
-        "y": 18
+        "h": 4,
+        "w": 6,
+        "x": 0,
+        "y": 17
       },
       "id": 108,
       "options": {
@@ -2181,10 +2111,10 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 3,
-        "w": 3,
-        "x": 21,
-        "y": 18
+        "h": 4,
+        "w": 6,
+        "x": 6,
+        "y": 17
       },
       "id": 76,
       "links": [],
@@ -2226,6 +2156,91 @@
         }
       ],
       "title": "Validator Logs",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
+      },
+      "description": "Average number of log messages received per hour over the selected time range",
+      "fieldConfig": {
+        "defaults": {
+          "mappings": [
+            {
+              "options": {
+                "match": "null",
+                "result": {
+                  "text": "N/A"
+                }
+              },
+              "type": "special"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 0.001
+              }
+            ]
+          },
+          "unit": "/hr"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 6,
+        "x": 18,
+        "y": 18
+      },
+      "id": 79,
+      "links": [],
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "center",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": ["last"],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "9.5.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "expr": "sum(rate(log_entries_total{job=\"consensus-client-job\", level=\"error\"}[$__range]))*3600",
+          "instant": false,
+          "interval": "",
+          "legendFormat": "errors",
+          "refId": "A"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "expr": "sum(rate(log_entries_total{job=\"consensus-client-job\", level=\"warning\"}[$__range]))*3600",
+          "instant": false,
+          "interval": "",
+          "legendFormat": "warnings",
+          "refId": "B"
+        }
+      ],
+      "title": "Beacon Logs",
       "type": "stat"
     },
     {
@@ -3114,7 +3129,7 @@
       "fillGradient": 4,
       "gridPos": {
         "h": 6,
-        "w": 6,
+        "w": 12,
         "x": 12,
         "y": 28
       },
@@ -3237,7 +3252,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "rgb(105, 70, 0)"
+                "color": "rgb(105, 70, 0)",
+                "value": null
               },
               {
                 "color": "rgb(105, 70, 0)",
@@ -3343,8 +3359,8 @@
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
-        "h": 1,
-        "w": 6,
+        "h": 5,
+        "w": 4,
         "x": 0,
         "y": 35
       },
@@ -3481,9 +3497,9 @@
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
-        "h": 1,
-        "w": 6,
-        "x": 6,
+        "h": 5,
+        "w": 4,
+        "x": 4,
         "y": 35
       },
       "hiddenSeries": false,
@@ -3575,14 +3591,14 @@
         "conditions": [
           {
             "evaluator": {
-              "params": [0.9],
-              "type": "lt"
+              "params": [10],
+              "type": "gt"
             },
             "operator": {
               "type": "and"
             },
             "query": {
-              "params": ["A", "5m", "now"]
+              "params": ["A", "10s", "now"]
             },
             "reducer": {
               "params": [],
@@ -3592,17 +3608,12 @@
           }
         ],
         "executionErrorState": "alerting",
-        "for": "5m",
+        "for": "0m",
         "frequency": "1m",
         "handler": 1,
-        "message": "Validator process is down for more than 5 minutes",
-        "name": "Validator Process Down",
+        "name": "Google Ping above 10ms",
         "noDataState": "no_data",
-        "notifications": [
-          {
-            "uid": "wNz7UJpnk"
-          }
-        ]
+        "notifications": []
       },
       "aliasColors": {},
       "bars": false,
@@ -3621,13 +3632,13 @@
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
-        "h": 1,
-        "w": 6,
-        "x": 0,
-        "y": 36
+        "h": 5,
+        "w": 4,
+        "x": 8,
+        "y": 35
       },
       "hiddenSeries": false,
-      "id": 127,
+      "id": 126,
       "legend": {
         "alignAsTable": false,
         "avg": false,
@@ -3659,9 +3670,12 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "up{job=\"validator-client-job\"}",
+          "exemplar": true,
+          "expr": "probe_duration_seconds{job=\"google-ping-job\"}",
+          "hide": false,
           "interval": "",
-          "legendFormat": "validator",
+          "intervalFactor": 1,
+          "legendFormat": "",
           "refId": "A"
         }
       ],
@@ -3670,13 +3684,13 @@
           "colorMode": "critical",
           "fill": true,
           "line": true,
-          "op": "lt",
-          "value": 0.9,
+          "op": "gt",
+          "value": 10,
           "visible": true
         }
       ],
       "timeRegions": [],
-      "title": "Validator Process Down",
+      "title": "Google Ping above 10ms",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -3691,7 +3705,8 @@
       "yaxes": [
         {
           "$$hashKey": "object:299",
-          "format": "short",
+          "format": "s",
+          "label": "",
           "logBase": 1,
           "show": true
         },
@@ -3758,10 +3773,10 @@
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
-        "h": 1,
-        "w": 6,
-        "x": 6,
-        "y": 36
+        "h": 5,
+        "w": 4,
+        "x": 12,
+        "y": 35
       },
       "hiddenSeries": false,
       "id": 123,
@@ -3902,10 +3917,10 @@
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
-        "h": 1,
-        "w": 6,
-        "x": 0,
-        "y": 37
+        "h": 5,
+        "w": 4,
+        "x": 16,
+        "y": 35
       },
       "hiddenSeries": false,
       "id": 110,
@@ -3993,14 +4008,14 @@
         "conditions": [
           {
             "evaluator": {
-              "params": [0.6],
-              "type": "gt"
+              "params": [0.9],
+              "type": "lt"
             },
             "operator": {
               "type": "and"
             },
             "query": {
-              "params": ["A", "12h", "now"]
+              "params": ["A", "5m", "now"]
             },
             "reducer": {
               "params": [],
@@ -4010,10 +4025,11 @@
           }
         ],
         "executionErrorState": "alerting",
-        "for": "12h",
+        "for": "5m",
         "frequency": "1m",
         "handler": 1,
-        "name": "Disk Usage above 60%",
+        "message": "Validator process is down for more than 5 minutes",
+        "name": "Validator Process Down",
         "noDataState": "no_data",
         "notifications": [
           {
@@ -4038,13 +4054,13 @@
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
-        "h": 1,
-        "w": 6,
-        "x": 6,
-        "y": 37
+        "h": 5,
+        "w": 4,
+        "x": 20,
+        "y": 35
       },
       "hiddenSeries": false,
-      "id": 124,
+      "id": 127,
       "legend": {
         "alignAsTable": false,
         "avg": false,
@@ -4076,12 +4092,9 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "exemplar": true,
-          "expr": "(sum(node_filesystem_size_bytes{job=\"node-exporter-job\"})-sum(node_filesystem_avail_bytes{job=\"node-exporter-job\"}))/sum(node_filesystem_size_bytes{job=\"node-exporter-job\"})",
-          "hide": false,
+          "expr": "up{job=\"validator-client-job\"}",
           "interval": "",
-          "intervalFactor": 1,
-          "legendFormat": "",
+          "legendFormat": "validator",
           "refId": "A"
         }
       ],
@@ -4090,13 +4103,13 @@
           "colorMode": "critical",
           "fill": true,
           "line": true,
-          "op": "gt",
-          "value": 0.6,
+          "op": "lt",
+          "value": 0.9,
           "visible": true
         }
       ],
       "timeRegions": [],
-      "title": "Disk Usage above 60%",
+      "title": "Validator Process Down",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -4111,12 +4124,8 @@
       "yaxes": [
         {
           "$$hashKey": "object:299",
-          "decimals": 1,
-          "format": "percentunit",
-          "label": "",
+          "format": "short",
           "logBase": 1,
-          "max": "1",
-          "min": "0",
           "show": true
         },
         {
@@ -4183,10 +4192,10 @@
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
-        "h": 1,
-        "w": 6,
+        "h": 5,
+        "w": 4,
         "x": 0,
-        "y": 38
+        "y": 40
       },
       "hiddenSeries": false,
       "id": 128,
@@ -4319,10 +4328,10 @@
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
-        "h": 1,
-        "w": 6,
-        "x": 6,
-        "y": 38
+        "h": 5,
+        "w": 4,
+        "x": 4,
+        "y": 40
       },
       "hiddenSeries": false,
       "id": 125,
@@ -4459,10 +4468,10 @@
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
-        "h": 1,
-        "w": 6,
-        "x": 0,
-        "y": 39
+        "h": 5,
+        "w": 4,
+        "x": 8,
+        "y": 40
       },
       "hiddenSeries": false,
       "id": 119,
@@ -4550,14 +4559,14 @@
         "conditions": [
           {
             "evaluator": {
-              "params": [10],
+              "params": [50],
               "type": "gt"
             },
             "operator": {
               "type": "and"
             },
             "query": {
-              "params": ["A", "10s", "now"]
+              "params": ["A", "5m", "now"]
             },
             "reducer": {
               "params": [],
@@ -4567,12 +4576,17 @@
           }
         ],
         "executionErrorState": "alerting",
-        "for": "0m",
+        "for": "0",
         "frequency": "1m",
         "handler": 1,
-        "name": "Google Ping above 10ms",
-        "noDataState": "no_data",
-        "notifications": []
+        "message": "More than 50 slots behind than the chain's head",
+        "name": "NODE: 50 Slots Behind",
+        "noDataState": "ok",
+        "notifications": [
+          {
+            "uid": "wNz7UJpnk"
+          }
+        ]
       },
       "aliasColors": {},
       "bars": false,
@@ -4591,13 +4605,148 @@
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
-        "h": 1,
-        "w": 6,
-        "x": 6,
-        "y": 39
+        "h": 5,
+        "w": 4,
+        "x": 12,
+        "y": 40
       },
       "hiddenSeries": false,
-      "id": 126,
+      "id": 117,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "9.5.2",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "expr": "(beacon_clock_time_slot{job=\"consensus-client-job\"} - beacon_head_slot{job=\"consensus-client-job\"})",
+          "interval": "",
+          "legendFormat": "node slots behind",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [
+        {
+          "colorMode": "critical",
+          "fill": true,
+          "line": true,
+          "op": "gt",
+          "value": 50,
+          "visible": true
+        }
+      ],
+      "timeRegions": [],
+      "title": "50 Slots Behind",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "mode": "time",
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "$$hashKey": "object:125",
+          "format": "short",
+          "logBase": 1,
+          "show": true
+        },
+        {
+          "$$hashKey": "object:126",
+          "format": "short",
+          "logBase": 1,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false
+      }
+    },
+    {
+      "alert": {
+        "alertRuleTags": {},
+        "conditions": [
+          {
+            "evaluator": {
+              "params": [0.6],
+              "type": "gt"
+            },
+            "operator": {
+              "type": "and"
+            },
+            "query": {
+              "params": ["A", "12h", "now"]
+            },
+            "reducer": {
+              "params": [],
+              "type": "avg"
+            },
+            "type": "query"
+          }
+        ],
+        "executionErrorState": "alerting",
+        "for": "12h",
+        "frequency": "1m",
+        "handler": 1,
+        "name": "Disk Usage above 60%",
+        "noDataState": "no_data",
+        "notifications": [
+          {
+            "uid": "wNz7UJpnk"
+          }
+        ]
+      },
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "links": []
+        },
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 5,
+        "w": 4,
+        "x": 16,
+        "y": 40
+      },
+      "hiddenSeries": false,
+      "id": 124,
       "legend": {
         "alignAsTable": false,
         "avg": false,
@@ -4630,7 +4779,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
-          "expr": "probe_duration_seconds{job=\"google-ping-job\"}",
+          "expr": "(sum(node_filesystem_size_bytes{job=\"node-exporter-job\"})-sum(node_filesystem_avail_bytes{job=\"node-exporter-job\"}))/sum(node_filesystem_size_bytes{job=\"node-exporter-job\"})",
           "hide": false,
           "interval": "",
           "intervalFactor": 1,
@@ -4644,12 +4793,12 @@
           "fill": true,
           "line": true,
           "op": "gt",
-          "value": 10,
+          "value": 0.6,
           "visible": true
         }
       ],
       "timeRegions": [],
-      "title": "Google Ping above 10ms",
+      "title": "Disk Usage above 60%",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -4664,9 +4813,12 @@
       "yaxes": [
         {
           "$$hashKey": "object:299",
-          "format": "s",
+          "decimals": 1,
+          "format": "percentunit",
           "label": "",
           "logBase": 1,
+          "max": "1",
+          "min": "0",
           "show": true
         },
         {
@@ -4731,9 +4883,9 @@
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
-        "h": 1,
-        "w": 6,
-        "x": 0,
+        "h": 5,
+        "w": 4,
+        "x": 20,
         "y": 40
       },
       "hiddenSeries": false,
@@ -4818,142 +4970,6 @@
       "yaxis": {
         "align": false
       }
-    },
-    {
-      "alert": {
-        "alertRuleTags": {},
-        "conditions": [
-          {
-            "evaluator": {
-              "params": [50],
-              "type": "gt"
-            },
-            "operator": {
-              "type": "and"
-            },
-            "query": {
-              "params": ["A", "5m", "now"]
-            },
-            "reducer": {
-              "params": [],
-              "type": "avg"
-            },
-            "type": "query"
-          }
-        ],
-        "executionErrorState": "alerting",
-        "for": "0",
-        "frequency": "1m",
-        "handler": 1,
-        "message": "More than 50 slots behind than the chain's head",
-        "name": "NODE: 50 Slots Behind",
-        "noDataState": "ok",
-        "notifications": [
-          {
-            "uid": "wNz7UJpnk"
-          }
-        ]
-      },
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": {
-        "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "links": []
-        },
-        "overrides": []
-      },
-      "fill": 1,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 1,
-        "w": 6,
-        "x": 0,
-        "y": 41
-      },
-      "hiddenSeries": false,
-      "id": 117,
-      "legend": {
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "show": true,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "nullPointMode": "null",
-      "options": {
-        "alertThreshold": true
-      },
-      "percentage": false,
-      "pluginVersion": "9.5.2",
-      "pointradius": 2,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
-          },
-          "expr": "(beacon_clock_time_slot{job=\"consensus-client-job\"} - beacon_head_slot{job=\"consensus-client-job\"})",
-          "interval": "",
-          "legendFormat": "node slots behind",
-          "refId": "A"
-        }
-      ],
-      "thresholds": [
-        {
-          "colorMode": "critical",
-          "fill": true,
-          "line": true,
-          "op": "gt",
-          "value": 50,
-          "visible": true
-        }
-      ],
-      "timeRegions": [],
-      "title": "50 Slots Behind",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "mode": "time",
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "$$hashKey": "object:125",
-          "format": "short",
-          "logBase": 1,
-          "show": true
-        },
-        {
-          "$$hashKey": "object:126",
-          "format": "short",
-          "logBase": 1,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false
-      }
     }
   ],
   "refresh": "30s",
@@ -4983,6 +4999,6 @@
   "timezone": "browser",
   "title": "LUKSO Teku Dashboard USD",
   "uid": "lukso-teku-dash-usd-9",
-  "version": 1,
+  "version": 2,
   "weekStart": ""
 }

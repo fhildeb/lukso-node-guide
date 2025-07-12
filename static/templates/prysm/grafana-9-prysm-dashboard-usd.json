@@ -18,6 +18,12 @@
       "version": "9.5.2"
     },
     {
+      "type": "panel",
+      "id": "graph",
+      "name": "Graph (old)",
+      "version": ""
+    },
+    {
       "type": "datasource",
       "id": "prometheus",
       "name": "Prometheus",
@@ -37,8 +43,8 @@
     },
     {
       "type": "panel",
-      "id": "timeseries",
-      "name": "Time series",
+      "id": "table-old",
+      "name": "Table (old)",
       "version": ""
     }
   ],
@@ -2594,7 +2600,7 @@
       "description": "validator stats by public key over the lifetime of the validator process ",
       "fontSize": "100%",
       "gridPos": {
-        "h": 7,
+        "h": 12,
         "w": 12,
         "x": 0,
         "y": 14
@@ -2932,6 +2938,15 @@
       ],
       "title": "Validator Process Stats",
       "transform": "table",
+      "transformations": [
+        {
+          "id": "joinByField",
+          "options": {
+            "byField": "pubkey_short",
+            "mode": "outer"
+          }
+        }
+      ],
       "type": "table-old"
     },
     {
@@ -3041,7 +3056,7 @@
       "fill": 1,
       "fillGradient": 4,
       "gridPos": {
-        "h": 6,
+        "h": 7,
         "w": 6,
         "x": 12,
         "y": 15
@@ -3158,8 +3173,8 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 3,
-        "w": 3,
+        "h": 4,
+        "w": 6,
         "x": 18,
         "y": 15
       },
@@ -3248,9 +3263,9 @@
       },
       "gridPos": {
         "h": 3,
-        "w": 3,
-        "x": 21,
-        "y": 15
+        "w": 6,
+        "x": 18,
+        "y": 19
       },
       "id": 79,
       "links": [],
@@ -3324,10 +3339,10 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 3,
-        "w": 3,
-        "x": 18,
-        "y": 18
+        "h": 4,
+        "w": 6,
+        "x": 12,
+        "y": 22
       },
       "id": 108,
       "options": {
@@ -3410,10 +3425,10 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 3,
-        "w": 3,
-        "x": 21,
-        "y": 18
+        "h": 4,
+        "w": 6,
+        "x": 18,
+        "y": 22
       },
       "id": 76,
       "links": [],
@@ -3490,8 +3505,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "rgb(105, 70, 0)",
-                "value": null
+                "color": "rgb(105, 70, 0)"
               },
               {
                 "color": "rgb(105, 70, 0)",
@@ -3511,7 +3525,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 21
+        "y": 26
       },
       "id": 58,
       "links": [],
@@ -3570,7 +3584,7 @@
         "h": 6,
         "w": 6,
         "x": 0,
-        "y": 22
+        "y": 27
       },
       "hiddenSeries": false,
       "id": 99,
@@ -3693,7 +3707,7 @@
         "h": 6,
         "w": 6,
         "x": 6,
-        "y": 22
+        "y": 27
       },
       "hiddenSeries": false,
       "id": 20,
@@ -3885,7 +3899,7 @@
         "h": 6,
         "w": 6,
         "x": 12,
-        "y": 22
+        "y": 27
       },
       "hiddenSeries": false,
       "id": 14,
@@ -3993,7 +4007,7 @@
         "h": 6,
         "w": 6,
         "x": 18,
-        "y": 22
+        "y": 27
       },
       "hiddenSeries": false,
       "id": 92,
@@ -4095,7 +4109,7 @@
         "h": 6,
         "w": 6,
         "x": 0,
-        "y": 28
+        "y": 33
       },
       "hiddenSeries": false,
       "id": 17,
@@ -4250,7 +4264,7 @@
         "h": 6,
         "w": 6,
         "x": 6,
-        "y": 28
+        "y": 33
       },
       "hiddenSeries": false,
       "id": 90,
@@ -4343,9 +4357,9 @@
       "fillGradient": 4,
       "gridPos": {
         "h": 6,
-        "w": 6,
+        "w": 12,
         "x": 12,
-        "y": 28
+        "y": 33
       },
       "hiddenSeries": false,
       "id": 81,
@@ -4486,7 +4500,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 34
+        "y": 39
       },
       "id": 111,
       "links": [],
@@ -4572,10 +4586,10 @@
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
-        "h": 1,
-        "w": 6,
+        "h": 5,
+        "w": 4,
         "x": 0,
-        "y": 35
+        "y": 40
       },
       "hiddenSeries": false,
       "id": 113,
@@ -4710,10 +4724,10 @@
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
-        "h": 1,
-        "w": 6,
-        "x": 6,
-        "y": 35
+        "h": 5,
+        "w": 4,
+        "x": 4,
+        "y": 40
       },
       "hiddenSeries": false,
       "id": 122,
@@ -4804,28 +4818,44 @@
         "conditions": [
           {
             "evaluator": {
-              "params": [0.9],
+              "params": [0.000001],
               "type": "lt"
             },
             "operator": {
               "type": "and"
             },
             "query": {
-              "params": ["A", "5m", "now"]
+              "params": ["A", "10s", "now"]
             },
             "reducer": {
               "params": [],
-              "type": "avg"
+              "type": "last"
+            },
+            "type": "query"
+          },
+          {
+            "evaluator": {
+              "params": [-10],
+              "type": "gt"
+            },
+            "operator": {
+              "type": "and"
+            },
+            "query": {
+              "params": ["A", "10s", "now"]
+            },
+            "reducer": {
+              "params": [],
+              "type": "last"
             },
             "type": "query"
           }
         ],
         "executionErrorState": "alerting",
-        "for": "5m",
+        "for": "0m",
         "frequency": "1m",
         "handler": 1,
-        "message": "Validator process is down for more than 5 minutes",
-        "name": "Validator Process Down",
+        "name": "No Hourly Earnings",
         "noDataState": "no_data",
         "notifications": [
           {
@@ -4850,13 +4880,13 @@
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
-        "h": 1,
-        "w": 6,
-        "x": 0,
-        "y": 36
+        "h": 5,
+        "w": 4,
+        "x": 8,
+        "y": 40
       },
       "hiddenSeries": false,
-      "id": 127,
+      "id": 121,
       "legend": {
         "alignAsTable": false,
         "avg": false,
@@ -4888,9 +4918,12 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "up{job=\"validator-client-job\"}",
+          "exemplar": true,
+          "expr": "sum(validator_balance{job=\"validator-client-job\"}) - sum(validator_balance{job=\"validator-client-job\"} offset 1h != 0) - (32 * count(validator_balance{job=\"validator-client-job\"} > 16)) + (32 * count(validator_balance{job=\"validator-client-job\"} offset 1h > 16))",
+          "hide": false,
           "interval": "",
-          "legendFormat": "validator",
+          "intervalFactor": 1,
+          "legendFormat": "validators earning on 1h",
           "refId": "A"
         }
       ],
@@ -4900,12 +4933,12 @@
           "fill": true,
           "line": true,
           "op": "lt",
-          "value": 0.9,
+          "value": 0.000001,
           "visible": true
         }
       ],
       "timeRegions": [],
-      "title": "Validator Process Down",
+      "title": "No Hourly Earnings",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -4987,10 +5020,10 @@
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
-        "h": 1,
-        "w": 6,
-        "x": 6,
-        "y": 36
+        "h": 5,
+        "w": 4,
+        "x": 12,
+        "y": 40
       },
       "hiddenSeries": false,
       "id": 123,
@@ -5131,10 +5164,10 @@
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
-        "h": 1,
-        "w": 6,
-        "x": 0,
-        "y": 37
+        "h": 5,
+        "w": 4,
+        "x": 16,
+        "y": 40
       },
       "hiddenSeries": false,
       "id": 110,
@@ -5222,149 +5255,6 @@
         "conditions": [
           {
             "evaluator": {
-              "params": [0.6],
-              "type": "gt"
-            },
-            "operator": {
-              "type": "and"
-            },
-            "query": {
-              "params": ["A", "12h", "now"]
-            },
-            "reducer": {
-              "params": [],
-              "type": "avg"
-            },
-            "type": "query"
-          }
-        ],
-        "executionErrorState": "alerting",
-        "for": "12h",
-        "frequency": "1m",
-        "handler": 1,
-        "name": "Disk Usage above 60%",
-        "noDataState": "no_data",
-        "notifications": [
-          {
-            "uid": "wNz7UJpnk"
-          }
-        ]
-      },
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": {
-        "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "links": []
-        },
-        "overrides": []
-      },
-      "fill": 1,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 1,
-        "w": 6,
-        "x": 6,
-        "y": 37
-      },
-      "hiddenSeries": false,
-      "id": 124,
-      "legend": {
-        "alignAsTable": false,
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "show": true,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "nullPointMode": "null",
-      "options": {
-        "alertThreshold": true
-      },
-      "percentage": false,
-      "pluginVersion": "9.5.2",
-      "pointradius": 2,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
-          },
-          "exemplar": true,
-          "expr": "(sum(node_filesystem_size_bytes{job=\"node-exporter-job\"})-sum(node_filesystem_avail_bytes{job=\"node-exporter-job\"}))/sum(node_filesystem_size_bytes{job=\"node-exporter-job\"})",
-          "hide": false,
-          "interval": "",
-          "intervalFactor": 1,
-          "legendFormat": "",
-          "refId": "A"
-        }
-      ],
-      "thresholds": [
-        {
-          "colorMode": "critical",
-          "fill": true,
-          "line": true,
-          "op": "gt",
-          "value": 0.6,
-          "visible": true
-        }
-      ],
-      "timeRegions": [],
-      "title": "Disk Usage above 60%",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "mode": "time",
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "$$hashKey": "object:299",
-          "decimals": 1,
-          "format": "percentunit",
-          "label": "",
-          "logBase": 1,
-          "max": "1",
-          "min": "0",
-          "show": true
-        },
-        {
-          "$$hashKey": "object:300",
-          "format": "short",
-          "logBase": 1,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false
-      }
-    },
-    {
-      "alert": {
-        "alertRuleTags": {},
-        "conditions": [
-          {
-            "evaluator": {
               "params": [0.1],
               "type": "lt"
             },
@@ -5412,10 +5302,10 @@
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
-        "h": 1,
-        "w": 6,
+        "h": 5,
+        "w": 4,
         "x": 0,
-        "y": 38
+        "y": 45
       },
       "hiddenSeries": false,
       "id": 128,
@@ -5548,10 +5438,10 @@
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
-        "h": 1,
-        "w": 6,
-        "x": 6,
-        "y": 38
+        "h": 5,
+        "w": 4,
+        "x": 4,
+        "y": 45
       },
       "hiddenSeries": false,
       "id": 125,
@@ -5643,142 +5533,6 @@
         "conditions": [
           {
             "evaluator": {
-              "params": [40],
-              "type": "lt"
-            },
-            "operator": {
-              "type": "and"
-            },
-            "query": {
-              "params": ["A", "5m", "now"]
-            },
-            "reducer": {
-              "params": [],
-              "type": "avg"
-            },
-            "type": "query"
-          }
-        ],
-        "executionErrorState": "alerting",
-        "for": "5m",
-        "frequency": "1m",
-        "handler": 1,
-        "name": "Below 40 Peers",
-        "noDataState": "no_data",
-        "notifications": [
-          {
-            "uid": "wNz7UJpnk"
-          }
-        ]
-      },
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": {
-        "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "links": []
-        },
-        "overrides": []
-      },
-      "fill": 1,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 1,
-        "w": 6,
-        "x": 0,
-        "y": 39
-      },
-      "hiddenSeries": false,
-      "id": 119,
-      "legend": {
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "show": true,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "nullPointMode": "null",
-      "options": {
-        "alertThreshold": true
-      },
-      "percentage": false,
-      "pluginVersion": "9.5.2",
-      "pointradius": 2,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
-          },
-          "exemplar": true,
-          "expr": "p2p_peer_count{state=\"Connected\",job=\"consensus-client-job\"}",
-          "interval": "",
-          "legendFormat": "peers",
-          "refId": "A"
-        }
-      ],
-      "thresholds": [
-        {
-          "colorMode": "critical",
-          "fill": true,
-          "line": true,
-          "op": "lt",
-          "value": 40,
-          "visible": true
-        }
-      ],
-      "timeRegions": [],
-      "title": "Below 40 Peers",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "mode": "time",
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "$$hashKey": "object:125",
-          "format": "short",
-          "logBase": 1,
-          "show": true
-        },
-        {
-          "$$hashKey": "object:126",
-          "format": "short",
-          "logBase": 1,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false
-      }
-    },
-    {
-      "alert": {
-        "alertRuleTags": {},
-        "conditions": [
-          {
-            "evaluator": {
               "params": [10],
               "type": "gt"
             },
@@ -5820,10 +5574,10 @@
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
-        "h": 1,
-        "w": 6,
-        "x": 6,
-        "y": 39
+        "h": 5,
+        "w": 4,
+        "x": 8,
+        "y": 45
       },
       "hiddenSeries": false,
       "id": 126,
@@ -5915,6 +5669,285 @@
         "conditions": [
           {
             "evaluator": {
+              "params": [50],
+              "type": "gt"
+            },
+            "operator": {
+              "type": "and"
+            },
+            "query": {
+              "params": ["A", "5m", "now"]
+            },
+            "reducer": {
+              "params": [],
+              "type": "avg"
+            },
+            "type": "query"
+          }
+        ],
+        "executionErrorState": "alerting",
+        "for": "0",
+        "frequency": "1m",
+        "handler": 1,
+        "message": "More than 50 slots behind than the chain's head",
+        "name": "NODE: 50 Slots Behind",
+        "noDataState": "ok",
+        "notifications": [
+          {
+            "uid": "wNz7UJpnk"
+          }
+        ]
+      },
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "links": []
+        },
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 5,
+        "w": 4,
+        "x": 12,
+        "y": 45
+      },
+      "hiddenSeries": false,
+      "id": 117,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "9.5.2",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "expr": "beacon_clock_time_slot{job=\"consensus-client-job\"} - beacon_head_slot{job=\"consensus-client-job\"}",
+          "interval": "",
+          "legendFormat": "node slots behind",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [
+        {
+          "colorMode": "critical",
+          "fill": true,
+          "line": true,
+          "op": "gt",
+          "value": 50,
+          "visible": true
+        }
+      ],
+      "timeRegions": [],
+      "title": "50 Slots Behind",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "mode": "time",
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "$$hashKey": "object:125",
+          "format": "short",
+          "logBase": 1,
+          "show": true
+        },
+        {
+          "$$hashKey": "object:126",
+          "format": "short",
+          "logBase": 1,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false
+      }
+    },
+    {
+      "alert": {
+        "alertRuleTags": {},
+        "conditions": [
+          {
+            "evaluator": {
+              "params": [0.6],
+              "type": "gt"
+            },
+            "operator": {
+              "type": "and"
+            },
+            "query": {
+              "params": ["A", "12h", "now"]
+            },
+            "reducer": {
+              "params": [],
+              "type": "avg"
+            },
+            "type": "query"
+          }
+        ],
+        "executionErrorState": "alerting",
+        "for": "12h",
+        "frequency": "1m",
+        "handler": 1,
+        "name": "Disk Usage above 60%",
+        "noDataState": "no_data",
+        "notifications": [
+          {
+            "uid": "wNz7UJpnk"
+          }
+        ]
+      },
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "links": []
+        },
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 5,
+        "w": 4,
+        "x": 16,
+        "y": 45
+      },
+      "hiddenSeries": false,
+      "id": 124,
+      "legend": {
+        "alignAsTable": false,
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "9.5.2",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "exemplar": true,
+          "expr": "(sum(node_filesystem_size_bytes{job=\"node-exporter-job\"})-sum(node_filesystem_avail_bytes{job=\"node-exporter-job\"}))/sum(node_filesystem_size_bytes{job=\"node-exporter-job\"})",
+          "hide": false,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [
+        {
+          "colorMode": "critical",
+          "fill": true,
+          "line": true,
+          "op": "gt",
+          "value": 0.6,
+          "visible": true
+        }
+      ],
+      "timeRegions": [],
+      "title": "Disk Usage above 60%",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "mode": "time",
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "$$hashKey": "object:299",
+          "decimals": 1,
+          "format": "percentunit",
+          "label": "",
+          "logBase": 1,
+          "max": "1",
+          "min": "0",
+          "show": true
+        },
+        {
+          "$$hashKey": "object:300",
+          "format": "short",
+          "logBase": 1,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false
+      }
+    },
+    {
+      "alert": {
+        "alertRuleTags": {},
+        "conditions": [
+          {
+            "evaluator": {
               "params": [80],
               "type": "lt"
             },
@@ -5960,10 +5993,10 @@
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
-        "h": 1,
-        "w": 6,
+        "h": 5,
+        "w": 4,
         "x": 0,
-        "y": 40
+        "y": 50
       },
       "hiddenSeries": false,
       "id": 120,
@@ -6054,8 +6087,8 @@
         "conditions": [
           {
             "evaluator": {
-              "params": [50],
-              "type": "gt"
+              "params": [0.9],
+              "type": "lt"
             },
             "operator": {
               "type": "and"
@@ -6071,163 +6104,11 @@
           }
         ],
         "executionErrorState": "alerting",
-        "for": "0",
+        "for": "5m",
         "frequency": "1m",
         "handler": 1,
-        "message": "More than 50 slots behind than the chain's head",
-        "name": "NODE: 50 Slots Behind",
-        "noDataState": "ok",
-        "notifications": [
-          {
-            "uid": "wNz7UJpnk"
-          }
-        ]
-      },
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": {
-        "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "links": []
-        },
-        "overrides": []
-      },
-      "fill": 1,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 1,
-        "w": 6,
-        "x": 0,
-        "y": 41
-      },
-      "hiddenSeries": false,
-      "id": 117,
-      "legend": {
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "show": true,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "nullPointMode": "null",
-      "options": {
-        "alertThreshold": true
-      },
-      "percentage": false,
-      "pluginVersion": "9.5.2",
-      "pointradius": 2,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
-          },
-          "expr": "beacon_clock_time_slot{job=\"consensus-client-job\"} - beacon_head_slot{job=\"consensus-client-job\"}",
-          "interval": "",
-          "legendFormat": "node slots behind",
-          "refId": "A"
-        }
-      ],
-      "thresholds": [
-        {
-          "colorMode": "critical",
-          "fill": true,
-          "line": true,
-          "op": "gt",
-          "value": 50,
-          "visible": true
-        }
-      ],
-      "timeRegions": [],
-      "title": "50 Slots Behind",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "mode": "time",
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "$$hashKey": "object:125",
-          "format": "short",
-          "logBase": 1,
-          "show": true
-        },
-        {
-          "$$hashKey": "object:126",
-          "format": "short",
-          "logBase": 1,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false
-      }
-    },
-    {
-      "alert": {
-        "alertRuleTags": {},
-        "conditions": [
-          {
-            "evaluator": {
-              "params": [0.000001],
-              "type": "lt"
-            },
-            "operator": {
-              "type": "and"
-            },
-            "query": {
-              "params": ["A", "10s", "now"]
-            },
-            "reducer": {
-              "params": [],
-              "type": "last"
-            },
-            "type": "query"
-          },
-          {
-            "evaluator": {
-              "params": [-10],
-              "type": "gt"
-            },
-            "operator": {
-              "type": "and"
-            },
-            "query": {
-              "params": ["A", "10s", "now"]
-            },
-            "reducer": {
-              "params": [],
-              "type": "last"
-            },
-            "type": "query"
-          }
-        ],
-        "executionErrorState": "alerting",
-        "for": "0m",
-        "frequency": "1m",
-        "handler": 1,
-        "name": "No Hourly Earnings",
+        "message": "Validator process is down for more than 5 minutes",
+        "name": "Validator Process Down",
         "noDataState": "no_data",
         "notifications": [
           {
@@ -6252,13 +6133,13 @@
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
-        "h": 1,
-        "w": 6,
-        "x": 0,
-        "y": 42
+        "h": 5,
+        "w": 4,
+        "x": 4,
+        "y": 50
       },
       "hiddenSeries": false,
-      "id": 121,
+      "id": 127,
       "legend": {
         "alignAsTable": false,
         "avg": false,
@@ -6290,12 +6171,9 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "exemplar": true,
-          "expr": "sum(validator_balance{job=\"validator-client-job\"}) - sum(validator_balance{job=\"validator-client-job\"} offset 1h != 0) - (32 * count(validator_balance{job=\"validator-client-job\"} > 16)) + (32 * count(validator_balance{job=\"validator-client-job\"} offset 1h > 16))",
-          "hide": false,
+          "expr": "up{job=\"validator-client-job\"}",
           "interval": "",
-          "intervalFactor": 1,
-          "legendFormat": "validators earning on 1h",
+          "legendFormat": "validator",
           "refId": "A"
         }
       ],
@@ -6305,12 +6183,12 @@
           "fill": true,
           "line": true,
           "op": "lt",
-          "value": 0.000001,
+          "value": 0.9,
           "visible": true
         }
       ],
       "timeRegions": [],
-      "title": "No Hourly Earnings",
+      "title": "Validator Process Down",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -6331,6 +6209,142 @@
         },
         {
           "$$hashKey": "object:300",
+          "format": "short",
+          "logBase": 1,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false
+      }
+    },
+    {
+      "alert": {
+        "alertRuleTags": {},
+        "conditions": [
+          {
+            "evaluator": {
+              "params": [40],
+              "type": "lt"
+            },
+            "operator": {
+              "type": "and"
+            },
+            "query": {
+              "params": ["A", "5m", "now"]
+            },
+            "reducer": {
+              "params": [],
+              "type": "avg"
+            },
+            "type": "query"
+          }
+        ],
+        "executionErrorState": "alerting",
+        "for": "5m",
+        "frequency": "1m",
+        "handler": 1,
+        "name": "Below 40 Peers",
+        "noDataState": "no_data",
+        "notifications": [
+          {
+            "uid": "wNz7UJpnk"
+          }
+        ]
+      },
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "links": []
+        },
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 5,
+        "w": 4,
+        "x": 8,
+        "y": 50
+      },
+      "hiddenSeries": false,
+      "id": 119,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "9.5.2",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "exemplar": true,
+          "expr": "p2p_peer_count{state=\"Connected\",job=\"consensus-client-job\"}",
+          "interval": "",
+          "legendFormat": "peers",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [
+        {
+          "colorMode": "critical",
+          "fill": true,
+          "line": true,
+          "op": "lt",
+          "value": 40,
+          "visible": true
+        }
+      ],
+      "timeRegions": [],
+      "title": "Below 40 Peers",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "mode": "time",
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "$$hashKey": "object:125",
+          "format": "short",
+          "logBase": 1,
+          "show": true
+        },
+        {
+          "$$hashKey": "object:126",
           "format": "short",
           "logBase": 1,
           "show": true
