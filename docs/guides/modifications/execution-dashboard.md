@@ -11,11 +11,11 @@ import TabItem from '@theme/TabItem';
 
 To list your node on an [Execution Status Page](/docs/guides/monitoring/external-monitoring.md#execution-status-page), you can add a ETHStats secret to your execution client to monitor versions, latencies, peers, synced blocks, and pending transactions based on their current [gas price configuration](/docs/guides/maintenance/gas-price-configuration.md). You node will then begin to synchronize data with the dashboard service, so the service can be monitored from any device.
 
-| Dashboard                                                                         | Maintainer | Access  | Credentials                                                                                                                                |
-| --------------------------------------------------------------------------------- | ---------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
-| [Mainnet Execution Status Page ↗](https://stats.execution.mainnet.lukso.network/) | LUKSO Team | Private | **Server:** `stats.execution.mainnet.lukso.network` <br/> **Secret**: _Apply as core contributors via [Discord](https://discord.gg/lukso)_ |
-| [Testnet Execution Status Page ↗](https://stats.execution.testnet.lukso.network/) | LUKSO Team | Private | **Server:** `stats.execution.testnet.lukso.network` <br/> **Secret**: _Apply as Testnet operator via [Discord](https://discord.gg/lukso)_  |
-| [Stakingverse Status Page ↗](https://community.stats.execution.stakingverse.io/)  | Community  | Public  | **Server:** `community.stats.execution.stakingverse.io` <br/> **Secret**: `Stakingverse-JordyDutch-69420`                                  |
+| Dashboard                                                                         | Maintainer | Access  | Credentials                                                                                                                               |
+| --------------------------------------------------------------------------------- | ---------- | ------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
+| [Mainnet Execution Status Page ↗](https://stats.execution.mainnet.lukso.network/) | LUKSO Team | Private | **Server:** `stats.execution.mainnet.lukso.network` <br/> **Secret**: _Apply as core contributor via [Discord](https://discord.gg/lukso)_ |
+| [Testnet Execution Status Page ↗](https://stats.execution.testnet.lukso.network/) | LUKSO Team | Private | **Server:** `stats.execution.testnet.lukso.network` <br/> **Secret**: _Apply as Testnet operator via [Discord](https://discord.gg/lukso)_ |
+| [Stakingverse Status Page ↗](https://community.stats.execution.stakingverse.io/)  | Community  | Public  | **Server:** `community.stats.execution.stakingverse.io` <br/> **Secret**: `Stakingverse-JordyDutch-69420`                                 |
 
 :::info
 
@@ -586,3 +586,29 @@ sudo lukso status
 
 </TabItem>
 </Tabs>
+
+## 🎨 DAppNode
+
+On a DAppNode setup, the Geth client can be adjusted from the user interface.
+
+**1. Stop Node Operation**: Stop the execution and consensus client within the _Node Operation View_.
+
+**2. Navigate to Staker Menu**: Open the _LUKSO Stakers_ menu and move into the _Lukso Geth Package_.
+
+**3. Adjust Slasher Value**: Navigate to the _Configs_ window and add the ETHStats flag in the _EXTRA_OPTS_ field.
+
+```sh
+--ethstats "<your-dashboard-name>:<ethstats-secret>@<ethstats-server>"
+```
+
+:::info
+
+The following properties need to be exchanged:
+
+- `<your-dashboard-name>` with the node name to show up on the dashboard
+- `ethstats-secret` with the actual secret of your dashboard server
+- `ethstats-server` with the address of your dashboard server
+
+:::
+
+**4. Restart the Node**: Restart the execution and consensus client within the _Node Operation View_.

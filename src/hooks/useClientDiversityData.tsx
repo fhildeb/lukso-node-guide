@@ -56,8 +56,8 @@ export function useClientDiversityData() {
           executionClients: [
             { label: "Prysm", value: 42 },
             { label: "Lighthouse", value: 37 },
-            { label: "Nimbus", value: 12 },
-            { label: "Teku", value: 9 },
+            { label: "Teku", value: 12 },
+            { label: "Nimbus", value: 9 },
             { label: "Others", value: 0 },
           ],
           consensusClients: [

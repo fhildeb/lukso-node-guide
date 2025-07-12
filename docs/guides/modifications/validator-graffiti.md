@@ -575,3 +575,25 @@ sudo lukso status
 
 </TabItem>
 </Tabs>
+
+## 🎨 DAppNode
+
+On a DAppNode setup, the Prysm client can be adjusted from the user interface.
+
+**1. Stop Node Operation**: Stop the execution and consensus client within the _Node Operation View_.
+
+**2. Navigate to Staker Menu**: Open the _LUKSO Stakers_ menu and move into the _Lukso Prysm Package_.
+
+**3. Adjust Slasher Value**: Navigate to the _Configs_ window and add the graffiti flag in the _EXTRA_OPTS_ field.
+
+```sh
+--graffiti "<your-graffiti>"
+```
+
+:::info
+
+Exchange `<your-graffiti>` with the custom graffiti of your node.
+
+:::
+
+**4. Restart the Node**: Restart the execution and consensus client within the _Node Operation View_.

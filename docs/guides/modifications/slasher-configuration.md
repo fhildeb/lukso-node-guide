@@ -128,7 +128,7 @@ The **Teku** and **Nimbus-Eth2** clients do not have separate [slasher services]
 :::
 
 <Tabs groupId="slasher">
-  <TabItem value="disable" label="Disable Slasher for Validators" default>
+  <TabItem value="disable" label="Disable Slasher for Validator Node" default>
 
 Depending on your setup method, there are different ways to start your staking node without the slasher service.
 
@@ -200,7 +200,7 @@ sudo systemctl start lukso-validator
 </TabItem>
 </Tabs>
 
-</TabItem> <TabItem value="activate" label="Activate Slasher for Regular Nodes">
+</TabItem> <TabItem value="activate" label="Activate Slasher for Regular Node">
 
 Depending on your setup method, there are different ways to start your regular node with the slasher service flags. The custom flags provided during startup will be passed down from the [LUKSO CLI](https://github.com/lukso-network/tools-lukso-cli) to the consensus clients.
 
@@ -334,3 +334,31 @@ rm -rf /testnet-data/consensus/beaconchaindata/slasher.db
 Exchange `<lukso-working-directory>` with the path to the node folder.
 
 :::
+
+## 🎨 DAppNode
+
+On a DAppNode setup, the Prysm client can be adjusted from the user interface.
+
+**1. Stop Node Operation**: Stop the execution and consensus client within the _Node Operation View_.
+
+**2. Navigate to Staker Menu**: Open the _LUKSO Stakers_ menu and move into the _Lukso Prysm Package_.
+
+**3. Adjust Slasher Value**: Navigate to the _Configs_ window and add the slasher flag in the _EXTRA_OPTS_ field.
+
+<Tabs groupId="slasher">
+  <TabItem value="disable" label="Disable Slasher for Validator Node" default>
+
+```sh
+--no-slasher
+```
+
+</TabItem> <TabItem value="activate" label="Activate Slasher for Regular Node">
+
+```sh
+--slasher
+```
+
+</TabItem>
+</Tabs>
+
+**4. Restart the Node**: Restart the execution and consensus client within the _Node Operation View_.
