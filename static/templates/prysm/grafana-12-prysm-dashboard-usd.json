@@ -386,7 +386,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
-          "expr": "sum(validator_balance{job=\"validator-client-job\"})-(count(validator_balance{job=\"validator-client-job\"} > 16 and validator_statuses{job=\"validator-client-job\"} == 3)*32)",
+          "expr": "((sum(validator_balance{job=\"validator-client-job\"}) + sum_over_time(abs(clamp_max(idelta(validator_balance{job=\"validator-client-job\"}[1h]), 0))[30d:]) - (count(validator_balance{job=\"validator-client-job\"} > 16) * 32)) or on() vector(0))",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -470,7 +470,7 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "(sum(validator_balance{job=\"validator-client-job\"}) - (count(validator_balance{job=\"validator-client-job\"} > 16 and validator_statuses{job=\"validator-client-job\"} == 3)*32))/(count(validator_balance{job=\"validator-client-job\"} > 16 and validator_statuses{job=\"validator-client-job\"} == 3)*32)  ",
+          "expr": "((sum(validator_balance{job=\"validator-client-job\"}) +sum_over_time(abs(clamp_max(idelta(validator_balance{job=\"validator-client-job\"}[1h]), 0))[30d:]) - (count(validator_balance{job=\"validator-client-job\"} > 16) * 32)) / (count(validator_balance{job=\"validator-client-job\"} > 16) * 32) or on() vector(0))",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -977,7 +977,7 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "sum(validator_balance{job=\"validator-client-job\"})-(count(validator_balance{job=\"validator-client-job\"} > 16 and validator_statuses{job=\"validator-client-job\"} == 3)*32)",
+          "expr": "((sum(validator_balance{job=\"validator-client-job\"}) + sum_over_time(abs(clamp_max(idelta(validator_balance{job=\"validator-client-job\"}[1h]), 0))[30d:]) - (count(validator_balance{job=\"validator-client-job\"} > 16) * 32)) or on() vector(0))",
           "instant": true,
           "interval": "",
           "legendFormat": "total_balance",
