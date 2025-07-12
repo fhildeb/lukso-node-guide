@@ -1,10 +1,14 @@
 # lukso-node-guide
 
-This repository features all information needed to build, set up, and run a node for EVM Proof-of-Stake blockchains like [LUKSO](https://docs.lukso.tech/). It is the essence of running a node at home and should act as a Wiki if you need detailed information about any possible step.
+This repository contains all the necessary information to build, set up, and run a node for EVM Proof-of-Stake blockchains, such as [LUKSO](https://docs.lukso.tech/). It is the essence of running a node at home and should act as a Wiki if you need detailed information about any possible step.
 
 - 📖 **More than 80 Pages of Theory and Best Practice**
 - 🌍 **Compiled from a dozen Guides, Forums, and Wikis**
 - 🚀 **Beginner-Friendly Step-by-Step Documentation**
+- 📝 **Plug-and-Play Grafana Dashboards**
+
+_If the guide helped you, I would be pleased about a donation:_
+`0xE8DFceC1B3637226f05E6828F56815f6417a6116`
 
 ## Preview
 
@@ -12,15 +16,15 @@ This repository features all information needed to build, set up, and run a node
 
 ## Description
 
-The repository includes theory pages and guides regarding network and consensus, validator deposits, node builds, system setups, the client installation and their the configuration, as well as operating staking and monitoring software. Within the archive section, network updates, applied forks, and historical guides are listed. The pages in the repository are split into multiple sections.
+The repository includes theory pages and guides on network and consensus, validator deposits, node builds, system setups, client installation and configuration, as well as operating staking and monitoring software. Within the archive section, network updates, applied forks, and historical guides are listed. The pages in the repository are split into multiple sections.
 
-> ⚠️ _Pages are for informational purposes only. We do not warrant its accuracy or completeness and shall not be liable for any direct, indirect, incidental, or consequential damages arising out of or in connection with the use of this guide. The disclaimed warranty also applies to business interruption, data loss, or financial loss._
+> ⚠️ _Pages are for informational purposes only. Contributors do not warrant the guide's accuracy or completeness. Developers shall not be liable for any direct, indirect, incidental, or consequential damages arising out of or in connection with the use of this guide. The disclaimer of warranty also applies to business interruption, data loss, or financial loss._
 
 ### 🧠 Theory
 
 - [`preparations`](/docs/theory/preparations/): Node and Router Specifications, Network Demand
-- [`blockchain-knowledge`](/docs/theory/blockchain-knowledge/): Proof of Stake, Tokenomics, Peer Networks, Slashing and Panalties, Clients
-- [`node-operation`](/docs/theory/node-operation/): Setup Types, OS, Validator Credentials, DDNS, SSH and VPN, Utility Tools
+- [`blockchain-knowledge`](/docs/theory/blockchain-knowledge/): Proof of Stake, Tokenomics, Peer Networks, Slashing and Penalties, Clients
+- [`node-operation`](/docs/theory/node-operation/): Setup Types, OS, Validator Credentials, DDNS, SSH, and VPN, Utility Tools
 
 ### 📖 Guides
 
