@@ -1,7 +1,7 @@
 ---
 sidebar_label: "11.6 Gas Price Configuration"
 sidebar_position: 6
-description: "Learn how to configure minimum gas prices for Geth and other execution clients in LUKSO. Includes step-by-step guides for CLI, Dappnode, Docker, and custom setups."
+description: "Learn how to configure minimum gas prices for Geth and other execution clients for LUKSO. Includes step-by-step guides for CLI, Dappnode, Docker, and custom setups."
 ---
 
 # 11.6 Gas Price Configuration
@@ -297,9 +297,9 @@ Save the file and exit the editor.
 
 **3. Restart the Node**: _Restart the execution and consensus services._
 
-</TabItem> <TabItem value="flag" label="Flag Custumization">
+</TabItem> <TabItem value="flag" label="Flag Customization">
 
-**2. Custom Restarte**: Restart the Geth service and attach a customization flag for your gasprice setting.
+**2. Custom Restart**: Restart the Geth service and attach a customization flag for your gasprice setting.
 
 ```sh
   --miner.gasprice 1000000

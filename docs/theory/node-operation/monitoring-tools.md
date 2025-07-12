@@ -77,10 +77,8 @@ The **Metrics** and **Dashboards** differ across clients, as they expose various
 
 :::
 
-<!--TODO: Add guide link-->
-
 :::tip
 
-The **Nimbus-Eth2** client requires to set the `--validator-monitor-details` flag to expose regular blockchain metrics. Further details can be found on the [**Monitoring Settings**](#) page of the 📖 [**Guide**](/docs/guides/validator-setup/precautions.md) section.
+The **Nimbus-Eth2** client is not supported for Staking within the [**LUKSO CLI**](https://github.com/lukso-network/tools-lukso-cli). Additionally, the consensus client requires a custom `--validator-monitor-details` flag to expose regular blockchain metrics. When using the LUKSO CLI, the dashboard will still lack metrics until staking is fully supported. Further details can be found on the [**Monitoring Settings**](/docs/guides/maintenance/monitoring-settings.md) page of the 📖 [**Guide**](/docs/guides/validator-setup/precautions.md) section.
 
 :::

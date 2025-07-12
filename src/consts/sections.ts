@@ -105,6 +105,7 @@ const sections = [
           "Switch Clients",
           "Gas Price Configuration",
           "Reset Blockchain State",
+          "Monitoring Settings",
           "Restart Monitoring",
         ],
       },

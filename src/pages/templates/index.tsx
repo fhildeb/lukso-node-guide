@@ -10,10 +10,10 @@ function TemplatesPage() {
     "📝 Lighthouse Dashboards": dashboards.filter(
       (d) => d.label === "Lighthouse"
     ),
+    "📝 Teku Dashboards": dashboards.filter((d) => d.label === "Teku"),
     "📝 Nimbus-Eth2 Dashboards": dashboards.filter(
       (d) => d.label === "Nimbus-Eth2"
     ),
-    "📝 Teku Dashboards": dashboards.filter((d) => d.label === "Teku"),
   };
 
   const handleDownload = (filepath: string) => {
@@ -116,11 +116,15 @@ function TemplatesPage() {
                     </li>
                   </ul>
                   <p>
-                    The <strong>Nimbus-Eth2</strong> client requires to set the{" "}
-                    <br></br> validator monitoring flag, as described on the{" "}
-                    {/* TODO: Add monitoring settings guide link */}
-                    <Link to="#">
-                      <strong>Monitoring Settings</strong>
+                    The <strong>Nimbus-Eth2</strong> client is not supported for
+                    Staking within the{" "}
+                    <Link to="https://github.com/lukso-network/tools-lukso-cli">
+                      LUKSO CLI
+                    </Link>{" "}
+                    and requires a validator monitoring flag, as described on
+                    the{" "}
+                    <Link to="/docs/guides/maintenance/monitoring-settings">
+                      Monitoring Settings
                     </Link>{" "}
                     page.
                   </p>

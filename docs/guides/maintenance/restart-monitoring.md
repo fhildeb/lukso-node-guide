@@ -1,13 +1,13 @@
 ---
-sidebar_label: "11.8 Reset Monitoring"
-sidebar_position: 8
+sidebar_label: "11.9 Restart Monitoring"
+sidebar_position: 9
 description: "Fix stalled metrics and restore accurate monitoring on your LUKSO node by restarting Prometheus, Grafana, and exporter services safely."
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-# 11.8 Reset Monitoring
+# 11.9 Restart Monitoring
 
 Monitoring services collect and display important performance, health, and status metrics of your node. While these services are designed to start automatically with the system, issues like stalled exporters, configuration changes, or failed updates can require a manual restart. Resetting ensures metrics are refreshed, dashboards are populated correctly, and alerts are based on accurate data.
 
