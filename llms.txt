@@ -19731,6 +19731,34 @@ The table only shows the node's most important datapoints configured within the 
 
 :::
 
+## Client Metrics
+
+Each blockchain client comes with at least one built-in endpoint metrics endpoint to let Prometheus scrape and observe chain progression, peer connectivity, syncronization lag, and validator performance and returns in real-time.
+
+| Client Type                         | Description                                                                                                                                                                                                                                                                                   |
+| ----------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| <nobr> **Consensus Client** </nobr> | Consensus clients typically expose metrics for chain synchronization, finality, slot and epoch tracking, peer count, memory usage, and log events. Key metrics include the current head slot, network liveness and participation rate, and peer connections.                                  |
+| <nobr> **Validator Client** </nobr> | Validator clients usually provide detailed telemetry on validator-specific behavior like earnings, return rates, successful or failed duties, inactivity scores, and slashing status. Often, they also monitory the average balance or the number of currently exiting or pending validators. |
+
+:::warning Differences
+
+The **Metrics** and **Dashboards** differ across clients, as they expose various lables.
+
+- **Prysm**: Exposes all data streams from validators and consensus clients.
+- **Teku**: Does not show slashing validators, failed attestations and aggregations, <br/> inactivity scores, or validator balances, statuses, returns, and earnings.
+- **Nimbus-Eth2**: Does not show slashing validators or separated validator <br/> logs for memory usage, uptime, restarts, errors, and warnings.
+- **Lighthouse**: Does not expose slashing validators.
+
+:::
+
+<!--TODO: Add guide link-->
+
+:::tip
+
+The **Nimbus-Eth2** client requires to set the `--validator-monitor-details` flag to expose regular blockchain metrics. Further details can be found on the [**Monitoring Settings**](#) page of the 📖 [**Guide**](/docs/guides/validator-setup/precautions.md) section.
+
+:::
+
 ---
 
 // File: theory/node-operation/ssh-and-vpn-tunnel

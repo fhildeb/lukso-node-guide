@@ -1021,16 +1021,10 @@
           "refId": "A"
         },
         {
-          "expr": "validator_count{state=\"Slashing\",job=\"consensus-client-job\"}",
-          "interval": "",
-          "legendFormat": "slashing",
-          "refId": "C"
-        },
-        {
           "expr": "beacon_current_active_validators{job=\"consensus-client-job\"}",
           "interval": "",
           "legendFormat": "active validators",
-          "refId": "D"
+          "refId": "C"
         }
       ],
       "thresholds": [],
