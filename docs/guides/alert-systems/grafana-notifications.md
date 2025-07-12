@@ -97,14 +97,14 @@ up{job="beacon-client-job"}
 up{job="validator-client-job"}
 ```
 
-</TabItem><TabItem value="nimbus" label="Nimbus-Eth2">
-
-```text
-up{job="beacon-client-job"}
-```
-
-</TabItem> 
+</TabItem>
 </Tabs>
+
+:::warning
+
+The **Validator Proccess Down Alert** does not exist for **Nimbus-Eth2**, as it uses a single **Beacon Proccess**.
+
+:::
 
 **Alert: Consensus Process Restarted**
 
@@ -149,14 +149,14 @@ NaN: Not available (likely down --> 0)
 (time()-process_start_time_seconds{job="validator-client-job"})/3600
 ```
 
-</TabItem><TabItem value="nimbus" label="Nimbus-Eth2">
-
-```text
-(time()-process_start_time_seconds{job="beacon-client-job"})/3600
-```
-
-</TabItem> 
+</TabItem>
 </Tabs>
+
+:::warning
+
+The **Validator Proccess Restarted Alert** does not exist for **Nimbus-Eth2**, as it uses a single **Beacon Proccess**.
+
+:::
 
 **Alert: Below 40 Peers**
 
@@ -184,7 +184,7 @@ libp2p_peers{job="consensus-client-job"}
 </TabItem><TabItem value="nimbus" label="Nimbus-Eth2">
 
 ```text
-p2p_peer_count{state="Connected",job="beacon-client-job"}
+connected_libp2p_peers{job="beacon-client-job"}
 ```
 
 </TabItem> 
@@ -274,7 +274,7 @@ sum(validator_balance{job="validator-client-job"}) - sum(validator_balance{job="
 </TabItem><TabItem value="nimbus" label="Nimbus-Eth2">
 
 ```text
-sum(validator_balance{job="beacon-client-job"}) - sum(validator_balance{job="beacon-client-job"} offset 1h != 0) - (32 * count(validator_balance{job="beacon-client-job"} > 16)) + (32 * count(validator_balance{job="beacon-client-job"} offset 1h > 16))
+((sum(validator_monitor_balance_gwei{job="beacon-client-job"}) - sum(validator_monitor_balance_gwei{job="beacon-client-job"} offset 1h != 0)) / 1e9) - 32 * count(validator_monitor_status{job="beacon-client-job",status="active_ongoing"}) + 32 * count(validator_monitor_status{job="beacon-client-job",status="active_ongoing"} offset 1h)
 ```
 
 </TabItem> 
