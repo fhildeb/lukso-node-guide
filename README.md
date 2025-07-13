@@ -51,27 +51,40 @@ The repository includes theory pages and guides on network and consensus, valida
 
 - [`templates`](/static/templates/): Grafana Dashboard Presets for LYXt & LYX Staking
 
-## Development
+## Installation
 
 ```sh
-# Installation
 yarn
+```
 
-# Live Runtime
+## Enable Caching
+
+1. Open the [`docusaurus.config.ts`](/docusaurus.config.ts) file
+2. Comment out the `customWebpackPlugin` setup
+
+```ts
+// function customWebpackPlugin() {
+//       return {
+//         name: "custom-webpack-plugin",
+//         configureWebpack() {
+//           return {
+//             cache: false,
+//           };
+//         },
+//       };
+//     },
+```
+
+## Local Runtime
+
+```sh
 yarn start
 ```
 
 ## Deployment
 
 ```sh
-# Local Build
 yarn build
-
-# SSH Deployment
-USE_SSH=true yarn deploy
-
-# GitHub Pages Branch Deployment
-GIT_USER=<Your GitHub username> yarn deploy
 ```
 
 ## Tools
