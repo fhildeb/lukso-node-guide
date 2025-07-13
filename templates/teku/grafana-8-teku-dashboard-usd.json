@@ -1,4 +1,52 @@
 {
+  "__inputs": [
+    {
+      "name": "DS_PROMETHEUS",
+      "label": "Prometheus",
+      "description": "",
+      "type": "datasource",
+      "pluginId": "prometheus",
+      "pluginName": "Prometheus"
+    }
+  ],
+  "__requires": [
+    {
+      "type": "grafana",
+      "id": "grafana",
+      "name": "Grafana",
+      "version": "8.2.3"
+    },
+    {
+      "type": "panel",
+      "id": "graph",
+      "name": "Graph (old)",
+      "version": ""
+    },
+    {
+      "type": "datasource",
+      "id": "prometheus",
+      "name": "Prometheus",
+      "version": "1.0.0"
+    },
+    {
+      "type": "panel",
+      "id": "stat",
+      "name": "Stat",
+      "version": ""
+    },
+    {
+      "type": "panel",
+      "id": "table",
+      "name": "Table",
+      "version": ""
+    },
+    {
+      "type": "panel",
+      "id": "table-old",
+      "name": "Table (old)",
+      "version": ""
+    }
+  ],
   "annotations": {
     "list": [
       {
@@ -22,7 +70,7 @@
   "fiscalYearStartMonth": 0,
   "gnetId": null,
   "graphTooltip": 0,
-  "id": 2,
+  "id": null,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -196,6 +244,80 @@
       "type": "stat"
     },
     {
+      "cacheTimeout": null,
+      "datasource": null,
+      "description": "Price of LYX in USD.",
+      "fieldConfig": {
+        "defaults": {
+          "decimals": 2,
+          "mappings": [
+            {
+              "options": {
+                "match": "null",
+                "result": {
+                  "text": "N/A"
+                }
+              },
+              "type": "special"
+            }
+          ],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "currencyUSD"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 6,
+        "x": 0,
+        "y": 1
+      },
+      "id": 102,
+      "interval": null,
+      "links": [],
+      "maxDataPoints": 100,
+      "options": {
+        "colorMode": "value",
+        "fieldOptions": {
+          "calcs": ["lastNotNull"]
+        },
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": ["lastNotNull"],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "8.2.3",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "lyxusd",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "lyxusd",
+          "refId": "B"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "LYX Price (USD)",
+      "type": "stat"
+    },
+    {
       "datasource": null,
       "description": "Number of beacon nodes to which this node is connected.",
       "fieldConfig": {
@@ -230,8 +352,8 @@
       },
       "gridPos": {
         "h": 3,
-        "w": 3,
-        "x": 9,
+        "w": 6,
+        "x": 6,
         "y": 1
       },
       "id": 98,
@@ -502,51 +624,64 @@
     {
       "cacheTimeout": null,
       "datasource": null,
-      "description": "Price of LYX in USD.",
       "fieldConfig": {
         "defaults": {
-          "decimals": 2,
+          "color": {
+            "mode": "thresholds"
+          },
           "mappings": [
+            {
+              "options": {
+                "1": {
+                  "text": ""
+                }
+              },
+              "type": "value"
+            },
             {
               "options": {
                 "match": "null",
                 "result": {
-                  "text": "N/A"
+                  "text": ""
                 }
               },
               "type": "special"
             }
           ],
-          "min": 0,
           "thresholds": {
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
+                "color": "#FA6400",
                 "value": null
+              },
+              {
+                "color": "#FA6400",
+                "value": 0
+              },
+              {
+                "color": "#FA6400",
+                "value": 0
               }
             ]
           },
-          "unit": "currencyUSD"
+          "unit": "none"
         },
         "overrides": []
       },
       "gridPos": {
-        "h": 3,
-        "w": 3,
-        "x": 6,
+        "h": 1,
+        "w": 12,
+        "x": 0,
         "y": 4
       },
-      "id": 102,
+      "id": 96,
       "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
-        "colorMode": "value",
-        "fieldOptions": {
-          "calcs": ["lastNotNull"]
-        },
-        "graphMode": "area",
+        "colorMode": "background",
+        "graphMode": "none",
         "justifyMode": "auto",
         "orientation": "horizontal",
         "reduceOptions": {
@@ -560,17 +695,15 @@
       "pluginVersion": "8.2.3",
       "targets": [
         {
-          "exemplar": true,
-          "expr": "lyxusd",
-          "instant": true,
+          "expr": "1",
           "interval": "",
-          "legendFormat": "lyxusd",
-          "refId": "B"
+          "legendFormat": "",
+          "refId": "A"
         }
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "LYX Price (USD)",
+      "title": "Local Validators",
       "type": "stat"
     },
     {
@@ -706,89 +839,299 @@
       "type": "stat"
     },
     {
-      "cacheTimeout": null,
+      "columns": [],
       "datasource": null,
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "mappings": [
-            {
-              "options": {
-                "1": {
-                  "text": ""
-                }
-              },
-              "type": "value"
-            },
-            {
-              "options": {
-                "match": "null",
-                "result": {
-                  "text": ""
-                }
-              },
-              "type": "special"
-            }
-          ],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "#FA6400",
-                "value": null
-              },
-              {
-                "color": "#FA6400",
-                "value": 0
-              },
-              {
-                "color": "#FA6400",
-                "value": 0
-              }
-            ]
-          },
-          "unit": "none"
-        },
-        "overrides": []
-      },
+      "description": "validator stats by public key over the lifetime of the validator process ",
+      "fontSize": "100%",
       "gridPos": {
-        "h": 1,
+        "h": 12,
         "w": 12,
         "x": 0,
-        "y": 7
+        "y": 5
       },
-      "id": 96,
-      "interval": null,
+      "id": 54,
+      "interval": "",
       "links": [],
-      "maxDataPoints": 100,
-      "options": {
-        "colorMode": "background",
-        "graphMode": "none",
-        "justifyMode": "auto",
-        "orientation": "horizontal",
-        "reduceOptions": {
-          "calcs": ["lastNotNull"],
-          "fields": "",
-          "values": false
-        },
-        "text": {},
-        "textMode": "auto"
+      "pageSize": null,
+      "pluginVersion": "6.5.1",
+      "showHeader": true,
+      "sort": {
+        "col": 4,
+        "desc": true
       },
-      "pluginVersion": "8.2.3",
+      "styles": [
+        {
+          "alias": "Time",
+          "align": "auto",
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "pattern": "Time",
+          "type": "hidden"
+        },
+        {
+          "alias": "",
+          "align": "auto",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 2,
+          "mappingType": 1,
+          "pattern": "job",
+          "thresholds": [],
+          "type": "hidden",
+          "unit": "short"
+        },
+        {
+          "alias": "public key",
+          "align": "auto",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "decimals": 2,
+          "link": false,
+          "linkTargetBlank": false,
+          "linkTooltip": "",
+          "linkUrl": "",
+          "pattern": "pubkey",
+          "thresholds": [],
+          "type": "hidden",
+          "unit": "short"
+        },
+        {
+          "alias": "",
+          "align": "auto",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 2,
+          "mappingType": 1,
+          "pattern": "instance",
+          "thresholds": [],
+          "type": "hidden",
+          "unit": "short"
+        },
+        {
+          "alias": "",
+          "align": "auto",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 2,
+          "mappingType": 1,
+          "pattern": "__name__",
+          "thresholds": [],
+          "type": "hidden",
+          "unit": "short"
+        },
+        {
+          "alias": "attested",
+          "align": "auto",
+          "colorMode": null,
+          "colors": ["#F2495C", "#FF9830", "#73BF69"],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 0,
+          "mappingType": 1,
+          "pattern": "Value #A",
+          "thresholds": [],
+          "type": "number",
+          "unit": "short"
+        },
+        {
+          "alias": "aggregated",
+          "align": "auto",
+          "colorMode": null,
+          "colors": ["#F2495C", "#FF9830", "#73BF69"],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 0,
+          "mappingType": 1,
+          "pattern": "Value #C",
+          "thresholds": [],
+          "type": "number",
+          "unit": "short"
+        },
+        {
+          "alias": "proposed",
+          "align": "auto",
+          "colorMode": null,
+          "colors": ["#F2495C", "#FF9830", "#73BF69"],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 0,
+          "mappingType": 1,
+          "pattern": "Value #E",
+          "thresholds": [],
+          "type": "number",
+          "unit": "short"
+        },
+        {
+          "alias": "failed attestations",
+          "align": "auto",
+          "colorMode": "value",
+          "colors": ["#F2495C", "#FF9830", "#73BF69"],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 0,
+          "mappingType": 1,
+          "pattern": "Value #B",
+          "thresholds": [],
+          "type": "number",
+          "unit": "short"
+        },
+        {
+          "alias": "failed aggregations",
+          "align": "auto",
+          "colorMode": "value",
+          "colors": ["#F2495C", "#FF9830", "#73BF69"],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 0,
+          "mappingType": 1,
+          "pattern": "Value #D",
+          "thresholds": [],
+          "type": "number",
+          "unit": "short"
+        },
+        {
+          "alias": "balance",
+          "align": "auto",
+          "colorMode": "value",
+          "colors": ["#F2495C", "#FF9830", "#73BF69"],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 4,
+          "link": false,
+          "linkTargetBlank": false,
+          "linkTooltip": "",
+          "linkUrl": "",
+          "mappingType": 1,
+          "pattern": "Value #F",
+          "thresholds": ["165", "32"],
+          "type": "number",
+          "unit": "short"
+        },
+        {
+          "alias": "pubkey",
+          "align": "auto",
+          "colorMode": null,
+          "colors": ["#F2495C", "#FF9830", "#73BF69"],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 2,
+          "link": true,
+          "linkTargetBlank": true,
+          "linkTooltip": "explorer",
+          "linkUrl": "https://explorer.consensus.mainnet.lukso.network/validator/${__cell_1:raw}",
+          "mappingType": 1,
+          "pattern": "pubkey_short",
+          "thresholds": [],
+          "type": "string",
+          "unit": "short"
+        },
+        {
+          "alias": "inactivity score",
+          "align": "auto",
+          "colorMode": null,
+          "colors": ["#F2495C", "#FF9830", "#73BF69"],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 0,
+          "mappingType": 1,
+          "pattern": "Value #H",
+          "thresholds": [""],
+          "type": "number",
+          "unit": "short"
+        },
+        {
+          "alias": "status",
+          "align": "auto",
+          "colorMode": null,
+          "colors": ["#F2495C", "#FF9830", "#73BF69"],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 0,
+          "mappingType": 1,
+          "pattern": "Value #J",
+          "thresholds": [],
+          "type": "string",
+          "unit": "none",
+          "valueMaps": [
+            {
+              "text": "unknown",
+              "value": "0"
+            },
+            {
+              "text": "deposited",
+              "value": "1"
+            },
+            {
+              "text": "pending",
+              "value": "2"
+            },
+            {
+              "text": "active",
+              "value": "3"
+            },
+            {
+              "text": "exiting",
+              "value": "4"
+            },
+            {
+              "text": "slashing",
+              "value": "5"
+            },
+            {
+              "text": "exited",
+              "value": "6"
+            }
+          ]
+        }
+      ],
       "targets": [
         {
-          "expr": "1",
+          "expr": "label_replace(up{job=\"validator-client-job\"}, \"pubkey_short\", \"$1\", \"pubkey\", \"(.{10}).*\")  ",
+          "format": "table",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "J"
+        },
+        {
+          "expr": "sum(validator_beacon_node_requests_total{job=\"validator-client-job\",type=\"PUBLISH_BLOCK\",status=\"SUCCESS\"})",
+          "format": "table",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "E"
+        },
+        {
+          "expr": "sum(validator_beacon_node_requests_total{job=\"validator-client-job\",type=\"PUBLISH_ATTESTATION\",status=\"SUCCESS\"})",
+          "format": "table",
+          "instant": true,
           "interval": "",
           "legendFormat": "",
           "refId": "A"
+        },
+        {
+          "expr": "sum(validator_beacon_node_requests_total{job=\"validator-client-job\",type=~\"PUBLISH_AGGREGATE|SYNC_CONTRIBUTION\",status=\"SUCCESS\"})",
+          "format": "table",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "B"
         }
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Local Validators",
-      "type": "stat"
+      "title": "Validator Process Stats",
+      "transform": "table",
+      "type": "table-old"
     },
     {
       "cacheTimeout": null,
@@ -1272,301 +1615,6 @@
       "type": "stat"
     },
     {
-      "columns": [],
-      "datasource": null,
-      "description": "validator stats by public key over the lifetime of the validator process ",
-      "fontSize": "100%",
-      "gridPos": {
-        "h": 7,
-        "w": 12,
-        "x": 0,
-        "y": 14
-      },
-      "id": 54,
-      "interval": "",
-      "links": [],
-      "pageSize": null,
-      "pluginVersion": "6.5.1",
-      "showHeader": true,
-      "sort": {
-        "col": 4,
-        "desc": true
-      },
-      "styles": [
-        {
-          "alias": "Time",
-          "align": "auto",
-          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "pattern": "Time",
-          "type": "hidden"
-        },
-        {
-          "alias": "",
-          "align": "auto",
-          "colorMode": null,
-          "colors": [
-            "rgba(245, 54, 54, 0.9)",
-            "rgba(237, 129, 40, 0.89)",
-            "rgba(50, 172, 45, 0.97)"
-          ],
-          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "decimals": 2,
-          "mappingType": 1,
-          "pattern": "job",
-          "thresholds": [],
-          "type": "hidden",
-          "unit": "short"
-        },
-        {
-          "alias": "public key",
-          "align": "auto",
-          "colorMode": null,
-          "colors": [
-            "rgba(245, 54, 54, 0.9)",
-            "rgba(237, 129, 40, 0.89)",
-            "rgba(50, 172, 45, 0.97)"
-          ],
-          "decimals": 2,
-          "link": false,
-          "linkTargetBlank": false,
-          "linkTooltip": "",
-          "linkUrl": "",
-          "pattern": "pubkey",
-          "thresholds": [],
-          "type": "hidden",
-          "unit": "short"
-        },
-        {
-          "alias": "",
-          "align": "auto",
-          "colorMode": null,
-          "colors": [
-            "rgba(245, 54, 54, 0.9)",
-            "rgba(237, 129, 40, 0.89)",
-            "rgba(50, 172, 45, 0.97)"
-          ],
-          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "decimals": 2,
-          "mappingType": 1,
-          "pattern": "instance",
-          "thresholds": [],
-          "type": "hidden",
-          "unit": "short"
-        },
-        {
-          "alias": "",
-          "align": "auto",
-          "colorMode": null,
-          "colors": [
-            "rgba(245, 54, 54, 0.9)",
-            "rgba(237, 129, 40, 0.89)",
-            "rgba(50, 172, 45, 0.97)"
-          ],
-          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "decimals": 2,
-          "mappingType": 1,
-          "pattern": "__name__",
-          "thresholds": [],
-          "type": "hidden",
-          "unit": "short"
-        },
-        {
-          "alias": "attested",
-          "align": "auto",
-          "colorMode": null,
-          "colors": ["#F2495C", "#FF9830", "#73BF69"],
-          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "decimals": 0,
-          "mappingType": 1,
-          "pattern": "Value #A",
-          "thresholds": [],
-          "type": "number",
-          "unit": "short"
-        },
-        {
-          "alias": "aggregated",
-          "align": "auto",
-          "colorMode": null,
-          "colors": ["#F2495C", "#FF9830", "#73BF69"],
-          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "decimals": 0,
-          "mappingType": 1,
-          "pattern": "Value #C",
-          "thresholds": [],
-          "type": "number",
-          "unit": "short"
-        },
-        {
-          "alias": "proposed",
-          "align": "auto",
-          "colorMode": null,
-          "colors": ["#F2495C", "#FF9830", "#73BF69"],
-          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "decimals": 0,
-          "mappingType": 1,
-          "pattern": "Value #E",
-          "thresholds": [],
-          "type": "number",
-          "unit": "short"
-        },
-        {
-          "alias": "failed attestations",
-          "align": "auto",
-          "colorMode": "value",
-          "colors": ["#F2495C", "#FF9830", "#73BF69"],
-          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "decimals": 0,
-          "mappingType": 1,
-          "pattern": "Value #B",
-          "thresholds": [],
-          "type": "number",
-          "unit": "short"
-        },
-        {
-          "alias": "failed aggregations",
-          "align": "auto",
-          "colorMode": "value",
-          "colors": ["#F2495C", "#FF9830", "#73BF69"],
-          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "decimals": 0,
-          "mappingType": 1,
-          "pattern": "Value #D",
-          "thresholds": [],
-          "type": "number",
-          "unit": "short"
-        },
-        {
-          "alias": "balance",
-          "align": "auto",
-          "colorMode": "value",
-          "colors": ["#F2495C", "#FF9830", "#73BF69"],
-          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "decimals": 4,
-          "link": false,
-          "linkTargetBlank": false,
-          "linkTooltip": "",
-          "linkUrl": "",
-          "mappingType": 1,
-          "pattern": "Value #F",
-          "thresholds": ["165", "32"],
-          "type": "number",
-          "unit": "short"
-        },
-        {
-          "alias": "pubkey",
-          "align": "auto",
-          "colorMode": null,
-          "colors": ["#F2495C", "#FF9830", "#73BF69"],
-          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "decimals": 2,
-          "link": true,
-          "linkTargetBlank": true,
-          "linkTooltip": "explorer",
-          "linkUrl": "https://explorer.consensus.mainnet.lukso.network/validator/${__cell_1:raw}",
-          "mappingType": 1,
-          "pattern": "pubkey_short",
-          "thresholds": [],
-          "type": "string",
-          "unit": "short"
-        },
-        {
-          "alias": "inactivity score",
-          "align": "auto",
-          "colorMode": null,
-          "colors": ["#F2495C", "#FF9830", "#73BF69"],
-          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "decimals": 0,
-          "mappingType": 1,
-          "pattern": "Value #H",
-          "thresholds": [""],
-          "type": "number",
-          "unit": "short"
-        },
-        {
-          "alias": "status",
-          "align": "auto",
-          "colorMode": null,
-          "colors": ["#F2495C", "#FF9830", "#73BF69"],
-          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "decimals": 0,
-          "mappingType": 1,
-          "pattern": "Value #J",
-          "thresholds": [],
-          "type": "string",
-          "unit": "none",
-          "valueMaps": [
-            {
-              "text": "unknown",
-              "value": "0"
-            },
-            {
-              "text": "deposited",
-              "value": "1"
-            },
-            {
-              "text": "pending",
-              "value": "2"
-            },
-            {
-              "text": "active",
-              "value": "3"
-            },
-            {
-              "text": "exiting",
-              "value": "4"
-            },
-            {
-              "text": "slashing",
-              "value": "5"
-            },
-            {
-              "text": "exited",
-              "value": "6"
-            }
-          ]
-        }
-      ],
-      "targets": [
-        {
-          "expr": "label_replace(up{job=\"validator-client-job\"}, \"pubkey_short\", \"$1\", \"pubkey\", \"(.{10}).*\")  ",
-          "format": "table",
-          "instant": true,
-          "interval": "",
-          "legendFormat": "",
-          "refId": "J"
-        },
-        {
-          "expr": "sum(validator_beacon_node_requests_total{job=\"validator-client-job\",type=\"PUBLISH_BLOCK\",status=\"SUCCESS\"})",
-          "format": "table",
-          "instant": true,
-          "interval": "",
-          "legendFormat": "",
-          "refId": "E"
-        },
-        {
-          "expr": "sum(validator_beacon_node_requests_total{job=\"validator-client-job\",type=\"PUBLISH_ATTESTATION\",status=\"SUCCESS\"})",
-          "format": "table",
-          "instant": true,
-          "interval": "",
-          "legendFormat": "",
-          "refId": "A"
-        },
-        {
-          "expr": "sum(validator_beacon_node_requests_total{job=\"validator-client-job\",type=~\"PUBLISH_AGGREGATE|SYNC_CONTRIBUTION\",status=\"SUCCESS\"})",
-          "format": "table",
-          "instant": true,
-          "interval": "",
-          "legendFormat": "",
-          "refId": "B"
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Validator Process Stats",
-      "transform": "table",
-      "type": "table-old"
-    },
-    {
       "cacheTimeout": null,
       "datasource": null,
       "fieldConfig": {
@@ -1788,7 +1836,7 @@
       },
       "gridPos": {
         "h": 3,
-        "w": 3,
+        "w": 6,
         "x": 18,
         "y": 15
       },
@@ -1835,83 +1883,6 @@
       "type": "stat"
     },
     {
-      "cacheTimeout": null,
-      "datasource": null,
-      "description": "Average number of log messages received per hour over the selected time range",
-      "fieldConfig": {
-        "defaults": {
-          "mappings": [
-            {
-              "options": {
-                "match": "null",
-                "result": {
-                  "text": "N/A"
-                }
-              },
-              "type": "special"
-            }
-          ],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 0.001
-              }
-            ]
-          },
-          "unit": "/hr"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 3,
-        "w": 3,
-        "x": 21,
-        "y": 15
-      },
-      "id": 79,
-      "links": [],
-      "options": {
-        "colorMode": "value",
-        "graphMode": "area",
-        "justifyMode": "center",
-        "orientation": "auto",
-        "reduceOptions": {
-          "calcs": ["last"],
-          "fields": "",
-          "values": false
-        },
-        "text": {},
-        "textMode": "auto"
-      },
-      "pluginVersion": "8.2.3",
-      "targets": [
-        {
-          "expr": "sum(rate(log_entries_total{job=\"consensus-client-job\", level=\"error\"}[$__range]))*3600",
-          "instant": false,
-          "interval": "",
-          "legendFormat": "errors",
-          "refId": "A"
-        },
-        {
-          "expr": "sum(rate(log_entries_total{job=\"consensus-client-job\", level=\"warning\"}[$__range]))*3600",
-          "instant": false,
-          "interval": "",
-          "legendFormat": "warnings",
-          "refId": "B"
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Beacon Logs",
-      "type": "stat"
-    },
-    {
       "datasource": null,
       "description": "Versions of the currently running Teku clients.",
       "fieldConfig": {
@@ -1934,10 +1905,10 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 3,
-        "w": 3,
-        "x": 18,
-        "y": 18
+        "h": 4,
+        "w": 6,
+        "x": 0,
+        "y": 17
       },
       "id": 108,
       "options": {
@@ -2011,10 +1982,10 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 3,
-        "w": 3,
-        "x": 21,
-        "y": 18
+        "h": 4,
+        "w": 6,
+        "x": 6,
+        "y": 17
       },
       "id": 76,
       "links": [],
@@ -2050,6 +2021,83 @@
       "timeFrom": null,
       "timeShift": null,
       "title": "Validator Logs",
+      "type": "stat"
+    },
+    {
+      "cacheTimeout": null,
+      "datasource": null,
+      "description": "Average number of log messages received per hour over the selected time range",
+      "fieldConfig": {
+        "defaults": {
+          "mappings": [
+            {
+              "options": {
+                "match": "null",
+                "result": {
+                  "text": "N/A"
+                }
+              },
+              "type": "special"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 0.001
+              }
+            ]
+          },
+          "unit": "/hr"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 6,
+        "x": 18,
+        "y": 18
+      },
+      "id": 79,
+      "links": [],
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "center",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": ["last"],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "8.2.3",
+      "targets": [
+        {
+          "expr": "sum(rate(log_entries_total{job=\"consensus-client-job\", level=\"error\"}[$__range]))*3600",
+          "instant": false,
+          "interval": "",
+          "legendFormat": "errors",
+          "refId": "A"
+        },
+        {
+          "expr": "sum(rate(log_entries_total{job=\"consensus-client-job\", level=\"warning\"}[$__range]))*3600",
+          "instant": false,
+          "interval": "",
+          "legendFormat": "warnings",
+          "refId": "B"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Beacon Logs",
       "type": "stat"
     },
     {
@@ -2887,7 +2935,7 @@
       "fillGradient": 4,
       "gridPos": {
         "h": 6,
-        "w": 6,
+        "w": 12,
         "x": 12,
         "y": 28
       },
@@ -3103,7 +3151,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "Prometheus",
+      "datasource": "${DS_PROMETHEUS}",
       "fieldConfig": {
         "defaults": {
           "links": []
@@ -3246,7 +3294,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "Prometheus",
+      "datasource": "${DS_PROMETHEUS}",
       "fieldConfig": {
         "defaults": {
           "links": []
@@ -3386,7 +3434,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "Prometheus",
+      "datasource": "${DS_PROMETHEUS}",
       "fieldConfig": {
         "defaults": {
           "links": []
@@ -3530,7 +3578,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "Prometheus",
+      "datasource": "${DS_PROMETHEUS}",
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -3672,7 +3720,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "Prometheus",
+      "datasource": "${DS_PROMETHEUS}",
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -3813,7 +3861,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "Prometheus",
+      "datasource": "${DS_PROMETHEUS}",
       "fieldConfig": {
         "defaults": {
           "links": []
@@ -3956,7 +4004,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "Prometheus",
+      "datasource": "${DS_PROMETHEUS}",
       "fieldConfig": {
         "defaults": {
           "links": []
@@ -4096,7 +4144,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "Prometheus",
+      "datasource": "${DS_PROMETHEUS}",
       "fieldConfig": {
         "defaults": {
           "links": []
@@ -4240,7 +4288,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "Prometheus",
+      "datasource": "${DS_PROMETHEUS}",
       "fieldConfig": {
         "defaults": {
           "links": []
@@ -4383,7 +4431,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "Prometheus",
+      "datasource": "${DS_PROMETHEUS}",
       "fieldConfig": {
         "defaults": {
           "links": []
@@ -4528,7 +4576,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "Prometheus",
+      "datasource": "${DS_PROMETHEUS}",
       "fieldConfig": {
         "defaults": {
           "links": []
@@ -4663,7 +4711,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "Prometheus",
+      "datasource": "${DS_PROMETHEUS}",
       "fieldConfig": {
         "defaults": {
           "links": []
