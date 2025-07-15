@@ -67,18 +67,6 @@ const templates: Dashboard[] = [
     label: "Lighthouse",
   },
   {
-    filepath: "/lighthouse/grafana-8-lighthouse-dashboard-usd.json",
-    grafana: "8",
-    currency: "USD",
-    label: "Lighthouse",
-  },
-  {
-    filepath: "/lighthouse/grafana-8-lighthouse-dashboard-eur.json",
-    grafana: "8",
-    currency: "EUR",
-    label: "Lighthouse",
-  },
-  {
     filepath: "/nimbus2/grafana-12-nimbus2-dashboard-usd.json",
     grafana: "12",
     currency: "USD",
@@ -103,18 +91,6 @@ const templates: Dashboard[] = [
     label: "Nimbus-Eth2",
   },
   {
-    filepath: "/nimbus2/grafana-8-nimbus2-dashboard-usd.json",
-    grafana: "8",
-    currency: "USD",
-    label: "Nimbus-Eth2",
-  },
-  {
-    filepath: "/nimbus2/grafana-8-nimbus2-dashboard-eur.json",
-    grafana: "8",
-    currency: "EUR",
-    label: "Nimbus-Eth2",
-  },
-  {
     filepath: "/teku/grafana-12-teku-dashboard-usd.json",
     grafana: "12",
     currency: "USD",
@@ -135,18 +111,6 @@ const templates: Dashboard[] = [
   {
     filepath: "/teku/grafana-9-teku-dashboard-eur.json",
     grafana: "9",
-    currency: "EUR",
-    label: "Teku",
-  },
-  {
-    filepath: "/teku/grafana-8-teku-dashboard-usd.json",
-    grafana: "8",
-    currency: "USD",
-    label: "Teku",
-  },
-  {
-    filepath: "/teku/grafana-8-teku-dashboard-eur.json",
-    grafana: "8",
     currency: "EUR",
     label: "Teku",
   },
