@@ -1,13 +1,21 @@
 RAW TEKU METRICS CALCULATION
 
 - Peer Count:                           "expr": "libp2p_peers{job=\"consensus-client-job\"}",
-- Active Validators:                    "expr": "beacon_current_active_validators{job=\"consensus-client-job\"}",
+- Active Validators:                    "expr": "beacon_current_active_validators{job=\"consensus-client-job\", state=\"active\"}",
 - Local Validators:                     "expr": "sum(validator_local_validator_count{job=\"validator-client-job\"})"
 - Total Validator Balance               "expr": "sum(validator_local_validator_count{job=\"validator-client-job\"})*32"
 - Published Blocks                      "expr": "sum(validator_beacon_node_requests_total{job=\"validator-client-job\",method=\"publish_block\",outcome=\"success\"})"
 - Published Attestations                "expr": "sum(validator_beacon_node_requests_total{job=\"validator-client-job\",method=\"publish_attestation\",outcome=\"success\"})"
 - Published Aggregates                  "expr": "sum(validator_beacon_node_requests_total{job=\"validator-client-job\",method=\"publish_aggregate_and_proofs\",outcome=\"success\"})"
 - Successful Attestations:              "expr": "validator_performance_included_sync_committee_messages{job=\"validator-client-job\"} / validator_performance_expected_sync_committee_messages{job=\"validator-client-job\"}",  
+
+- Included Attestations:                "expr": "validator_performance_included_attestations{instance=~\"$system\"} / validator_performance_expected_attestations{instance=~\"$system\"}",
+- Correct Head Block:                   "expr": "validator_performance_correct_head_block_count{instance=~\"$system\"} / validator_performance_included_attestations{instance=~\"$system\"}",
+- Correct Target Count:                 "expr": "validator_performance_correct_target_count{instance=~\"$system\"} / validator_performance_included_attestations{instance=~\"$system\"}",
+- Attestation Reward Earned:             "expr": "\n(\nvalidator_performance_correct_head_block_count{instance=~\"$system\"} - (validator_performance_expected_attestations{instance=~\"$system\"} - validator_performance_correct_head_block_count{instance=~\"$system\"}) +\nvalidator_performance_correct_target_count{instance=~\"$system\"} - (validator_performance_expected_attestations{instance=~\"$system\"} - validator_performance_correct_target_count{instance=~\"$system\"}) +\nvalidator_performance_included_attestations{instance=~\"$system\"} - (validator_performance_expected_attestations{instance=~\"$system\"} - validator_performance_included_attestations{instance=~\"$system\"}) +\n(0.875  * validator_performance_included_attestations{instance=~\"$system\"} / validator_performance_inclusion_distance_average{instance=~\"$system\"})\n) / validator_performance_expected_attestations{instance=~\"$system\"} / 3.875",
+- Included Signatures:                  "expr": "validator_performance_included_sync_committee_messages{instance=~\"$system\"} / validator_performance_expected_sync_committee_messages{instance=~\"$system\"}",
+- Produced Signatures:                  "expr": "validator_performance_produced_sync_committee_messages{instance=~\"$system\"} / validator_performance_expected_sync_committee_messages{instance=~\"$system\"}",
+- Correct Signatures:                   "expr": "validator_performance_correct_sync_committee_messages{instance=~\"$system\"} / validator_performance_produced_sync_committee_messages{instance=~\"$system\"}",
 
 UNCHANGED METRICS FROM PRYSM DASHBOARD
 

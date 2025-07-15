@@ -248,7 +248,7 @@
       "description": "Number of local Validators.",
       "fieldConfig": {
         "defaults": {
-          "decimals": 2,
+          "decimals": 0,
           "mappings": [],
           "min": 0,
           "thresholds": {
@@ -311,7 +311,7 @@
       "description": "Sum of all validator balances.",
       "fieldConfig": {
         "defaults": {
-          "decimals": 4,
+          "decimals": 0,
           "mappings": [],
           "min": 0,
           "noValue": "0",
@@ -865,7 +865,7 @@
       "description": "Number of published blocks.",
       "fieldConfig": {
         "defaults": {
-          "decimals": 2,
+          "decimals": 0,
           "mappings": [],
           "min": 0,
           "thresholds": {
@@ -928,7 +928,7 @@
       "description": "Number of published attestations.",
       "fieldConfig": {
         "defaults": {
-          "decimals": 2,
+          "decimals": 0,
           "mappings": [],
           "min": 0,
           "thresholds": {
@@ -991,7 +991,7 @@
       "description": "Number of published aggregates.",
       "fieldConfig": {
         "defaults": {
-          "decimals": 2,
+          "decimals": 0,
           "mappings": [],
           "min": 0,
           "thresholds": {
@@ -1429,9 +1429,9 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "validator_performance_included_attestations{job=\"validator-client-job\"} / validator_performance_expected_attestations{job=\"validator-client-job\"}",
+          "expr": "validator_performance_included_attestations{instance=~\"$system\"} / validator_performance_expected_attestations{instance=~\"$system\"}",
           "interval": "",
-          "legendFormat": "Included Attestation",
+          "legendFormat": "{{instance}} Included",
           "refId": "C"
         },
         {
@@ -1439,9 +1439,9 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "validator_performance_correct_head_block_count{job=\"validator-client-job\"} / validator_performance_included_attestations{job=\"validator-client-job\"}",
+          "expr": "validator_performance_correct_head_block_count{instance=~\"$system\"} / validator_performance_included_attestations{instance=~\"$system\"}",
           "interval": "",
-          "legendFormat": "Correct Head",
+          "legendFormat": "{{instance}} Correct Head",
           "refId": "A"
         },
         {
@@ -1449,9 +1449,9 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "validator_performance_correct_target_count{job=\"validator-client-job\"} / validator_performance_included_attestations{job=\"validator-client-job\"}",
+          "expr": "validator_performance_correct_target_count{instance=~\"$system\"} / validator_performance_included_attestations{instance=~\"$system\"}",
           "interval": "",
-          "legendFormat": "Correct Target",
+          "legendFormat": "{{instance}} Correct Target",
           "refId": "B"
         },
         {
@@ -1460,9 +1460,9 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
-          "expr": "\n(\nvalidator_performance_correct_head_block_count{job=\"validator-client-job\"} - (validator_performance_expected_attestations{job=\"validator-client-job\"} - validator_performance_correct_head_block_count{job=\"validator-client-job\"}) +\nvalidator_performance_correct_target_count{job=\"validator-client-job\"} - (validator_performance_expected_attestations{job=\"validator-client-job\"} - validator_performance_correct_target_count{job=\"validator-client-job\"}) +\nvalidator_performance_included_attestations{job=\"validator-client-job\"} - (validator_performance_expected_attestations{job=\"validator-client-job\"} - validator_performance_included_attestations{job=\"validator-client-job\"}) +\n(0.875  * validator_performance_included_attestations{job=\"validator-client-job\"} / validator_performance_inclusion_distance_average{job=\"validator-client-job\"})\n) / validator_performance_expected_attestations{job=\"validator-client-job\"} / 3.875",
+          "expr": "\n(\nvalidator_performance_correct_head_block_count{instance=~\"$system\"} - (validator_performance_expected_attestations{instance=~\"$system\"} - validator_performance_correct_head_block_count{instance=~\"$system\"}) +\nvalidator_performance_correct_target_count{instance=~\"$system\"} - (validator_performance_expected_attestations{instance=~\"$system\"} - validator_performance_correct_target_count{instance=~\"$system\"}) +\nvalidator_performance_included_attestations{instance=~\"$system\"} - (validator_performance_expected_attestations{instance=~\"$system\"} - validator_performance_included_attestations{instance=~\"$system\"}) +\n(0.875  * validator_performance_included_attestations{instance=~\"$system\"} / validator_performance_inclusion_distance_average{instance=~\"$system\"})\n) / validator_performance_expected_attestations{instance=~\"$system\"} / 3.875",
           "interval": "",
-          "legendFormat": "Attestation Rewards Earned",
+          "legendFormat": "{{instance}} Attestation Rewards Earned",
           "refId": "D"
         },
         {
@@ -1471,10 +1471,10 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
-          "expr": "validator_performance_included_sync_committee_messages{job=\"validator-client-job\"} / validator_performance_expected_sync_committee_messages{job=\"validator-client-job\"}",
+          "expr": "validator_performance_included_sync_committee_messages{instance=~\"$system\"} / validator_performance_expected_sync_committee_messages{instance=~\"$system\"}",
           "hide": false,
           "interval": "",
-          "legendFormat": "Included Signatures",
+          "legendFormat": "{{instance}} Included Signatures",
           "refId": "E"
         },
         {
@@ -1483,10 +1483,10 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
-          "expr": "validator_performance_produced_sync_committee_messages{job=\"validator-client-job\"} / validator_performance_expected_sync_committee_messages{job=\"validator-client-job\"}",
+          "expr": "validator_performance_produced_sync_committee_messages{instance=~\"$system\"} / validator_performance_expected_sync_committee_messages{instance=~\"$system\"}",
           "hide": false,
           "interval": "",
-          "legendFormat": "Produced Signatures",
+          "legendFormat": "{{instance}} Produced Signatures",
           "refId": "F"
         },
         {
@@ -1495,10 +1495,10 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
-          "expr": "validator_performance_correct_sync_committee_messages{job=\"validator-client-job\"} / validator_performance_produced_sync_committee_messages{job=\"validator-client-job\"}",
+          "expr": "validator_performance_correct_sync_committee_messages{instance=~\"$system\"} / validator_performance_produced_sync_committee_messages{instance=~\"$system\"}",
           "hide": false,
           "interval": "",
-          "legendFormat": "Correct Signatures",
+          "legendFormat": "{{instance}} Correct Signatures",
           "refId": "G"
         }
       ],
@@ -1588,7 +1588,7 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "beacon_current_active_validators{job=\"consensus-client-job\"}",
+          "expr": "beacon_current_active_validators{job=\"consensus-client-job\", state=\"active\"}",
           "instant": true,
           "interval": "",
           "legendFormat": "active",
@@ -1672,7 +1672,7 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "beacon_current_active_validators{job=\"consensus-client-job\"}",
+          "expr": "beacon_current_active_validators{job=\"consensus-client-job\", state=\"active\"}",
           "interval": "",
           "legendFormat": "active validators",
           "refId": "A"
