@@ -80,6 +80,9 @@ sudo apt install python3 python3-pip python3-venv
 
 First, clone the repository and set up a Python virtual environment to keep dependencies isolated.
 
+<Tabs groupId="os">
+  <TabItem value="windows" label="Windows" default>
+
 ```sh
 # Clone the Repository
 git clone https://github.com/fhildeb/validator-income-reporter.git
@@ -88,11 +91,30 @@ git clone https://github.com/fhildeb/validator-income-reporter.git
 cd validator-income-reporter
 
 # Create a Virtual Python Environment
-python3 -m venv income-reporter-tool
+python -m venv reporter-environment
 
 # Install Necessary Dependencies
-pip3 install requests install pandas fpdf
+pip install requests pandas fpdf
 ```
+
+</TabItem> <TabItem value="mac-linux" label="Mac and Linux">
+
+```sh
+# Clone the Repository
+git clone https://github.com/fhildeb/validator-income-reporter.git
+
+# Move into Directory
+cd validator-income-reporter
+
+# Create a Virtual Python Environment
+python3 -m venv reporter-environment
+
+# Install Necessary Dependencies
+pip3 install requests pandas fpdf
+```
+
+</TabItem>
+</Tabs>
 
 ## 3. Configuration
 
@@ -139,17 +161,17 @@ Once the software has been installed and configured, you can run the report scri
 
 ```bash
 # Activate the Virtual Python Environment
-source income-reporter-tool\Scripts\activate
+source report-environment\Scripts\activate
 
 # Run Income Reporter Script
-python3 income_reporter.py
+python income_reporter.py
 ```
 
 </TabItem> <TabItem value="mac-linux" label="Mac and Linux">
 
 ```bash
 # Activate the Virtual Python Environment
-source income-reporter-tool/bin/activate
+source report-environment/bin/activate
 
 # Run Income Reporter Script
 python3 income_reporter.py
