@@ -57,4 +57,4 @@ REMOVED METRICS FROM PRYSM DASHBOARD (COMBINED NIMBUS-ETH2 PORT USAGE)
 
 REMOVED METRICS FROM PRYSM DASHBOARD (NOT EXPOSED IN NIMBUS-ETH2)
 
-- Slashing Validators:                 "expr": "validator_count{state=\"Slashing\",job=\"beacon-client-job\"}",        
+- Slashing Validators:                  "expr": "validator_count{state=\"Slashing\",job=\"beacon-client-job\"}",        
