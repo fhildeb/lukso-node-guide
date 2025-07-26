@@ -25,7 +25,7 @@ The [Validator Income Reporter](https://github.com/fhildeb/validator-income-repo
 
 :::info
 
-CoinMarketCap typically offers a free Hobbyist API tier for one month every year, sufficient for annual report generation.
+CoinMarketCap typically offers a free Hobbyist API tier for one month every year, sufficient for annual report generation. If you **dont want to use the CoinMarketCap API**, you can optionally use the `--dry-run` flag to run the reporter **with a local CSV** file of daily median LYX prices. A sample file for EUR is attached to the repository.
 
 :::
 
@@ -159,6 +159,9 @@ Once the software has been installed and configured, you can run the report scri
 <Tabs groupId="os">
   <TabItem value="windows" label="Windows" default>
 
+<Tabs groupId="prices">
+  <TabItem value="api" label="CoinMarketCap API" default>
+
 ```bash
 # Activate the Virtual Python Environment
 source report-environment\Scripts\activate
@@ -167,7 +170,23 @@ source report-environment\Scripts\activate
 python income_reporter.py
 ```
 
+</TabItem> <TabItem value="local" label="Local CSV">
+
+```bash
+# Activate the Virtual Python Environment
+source report-environment\Scripts\activate
+
+# Run Income Reporter Script
+python income_reporter.py --dry-run ./price-data/median_lyx_prices_eur.csv
+```
+
+</TabItem>
+</Tabs>
+
 </TabItem> <TabItem value="mac-linux" label="Mac and Linux">
+
+<Tabs groupId="prices">
+  <TabItem value="api" label="CoinMarketCap API" default>
 
 ```bash
 # Activate the Virtual Python Environment
@@ -176,6 +195,19 @@ source report-environment/bin/activate
 # Run Income Reporter Script
 python3 income_reporter.py
 ```
+
+</TabItem> <TabItem value="local" label="Local CSV">
+
+```bash
+# Activate the Virtual Python Environment
+source report-environment/bin/activate
+
+# Run Income Reporter Script
+python3 income_reporter.py --dry-run ./price-data/median_lyx_prices_eur.csv
+```
+
+</TabItem>
+</Tabs>
 
 </TabItem>
 </Tabs>
