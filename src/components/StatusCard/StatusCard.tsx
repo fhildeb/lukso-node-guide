@@ -6,7 +6,7 @@ export function StatusCard() {
   return (
     <div className={styles.card}>
       <div>
-        This guide was last updated and tested on July 8, 2025 using the
+        This guide was last updated and tested on July 30, 2025 using the
         following software:
       </div>
       {Object.entries(software).map(([category, tools]) => (
