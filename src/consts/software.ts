@@ -3,7 +3,7 @@ const software = {
     {
       name: "LUKSO CLI",
       link: "https://github.com/lukso-network/tools-lukso-cli/releases",
-      version: "0.24.1",
+      version: "0.25.0",
     },
     {
       name: "Grafana",
@@ -56,44 +56,44 @@ const software = {
     {
       name: "Besu",
       link: "https://github.com/hyperledger/besu/releases",
-      version: "24.12.2",
+      version: "25.7.0",
     },
     {
       name: "Lighthouse",
       link: "https://github.com/sigp/lighthouse/releases",
-      version: "6.0.1",
+      version: "7.0.1",
     },
     {
       name: "Nethermind",
       link: "https://github.com/NethermindEth/nethermind/releases",
-      version: "1.30.3",
+      version: "1.32.2",
     },
 
     {
       name: "Prysm",
       link: "https://github.com/OffchainLabs/prysm/releases",
-      version: "5.2.0",
+      version: "6.0.4",
     },
     {
       name: "Geth",
       link: "https://github.com/ethereum/go-ethereum/releases",
-      version: "1.14.13",
+      version: "1.16.1",
     },
     {
       name: "Teku",
       link: "https://github.com/Consensys/teku/releases",
-      version: "24.12.1",
+      version: "25.6.0",
     },
 
     {
       name: "Nimbus-Eth2",
       link: "https://github.com/status-im/nimbus-eth2/releases",
-      version: "24.12.0",
+      version: "25.5.0",
     },
     {
       name: "Erigon",
       link: "https://github.com/erigontech/erigon/releases",
-      version: "2.61.0",
+      version: "3.0.12",
     },
   ],
 };
