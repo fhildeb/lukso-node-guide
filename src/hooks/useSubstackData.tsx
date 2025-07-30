@@ -10,24 +10,24 @@ export interface BlogData {
 export function useSubstackData() {
   const staticData: BlogData[] = [
     {
+      title: "LUKSO Pectra Hard Fork",
+      date: "Jul, 2025",
+      link: "https://luksovalidators.substack.com/p/lukso-pectra-hard-fork",
+    },
+    {
       title: "LUKSO Dencun Hard Fork - MAINNET",
-      date: "Oct 3, 2024",
+      date: "Oct, 2024",
       link: "https://luksovalidators.substack.com/p/lukso-dencun-hard-fork-mainnet",
     },
     {
       title: "LUKSO Dencun Hard Fork - TESTNET",
-      date: "Sep 2, 2024",
+      date: "Sep, 2024",
       link: "https://luksovalidators.substack.com/p/lukso-dencun-hard-fork-testnet",
     },
     {
       title: "Status Update on the Dencun Fork",
-      date: "Jun 4, 2024",
+      date: "Jun, 2024",
       link: "https://luksovalidators.substack.com/p/status-update-on-the-dencun-hard",
-    },
-    {
-      title: "Geth update required!",
-      date: "May 6, 2024",
-      link: "https://luksovalidators.substack.com/p/geth-update-required",
     },
   ];
 

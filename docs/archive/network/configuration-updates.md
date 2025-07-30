@@ -24,7 +24,7 @@ Client-specific blockchain configurations can be updated on a node setup by:
 
 :::info
 
-The page was last updated on May 30, 2025.
+The page was last updated on July 30, 2025. Up-to-date until commit [#150](https://github.com/lukso-network/network-configs/pull/150/).
 
 :::
 
@@ -105,6 +105,9 @@ nano erigon/erigon.toml
 | 5 Jul 2023  | added   | `"private.api.addr" = "127.0.0.1:9098"` | [#118](https://github.com/lukso-network/network-configs/pull/118/files) |
 | 27 Dec 2023 | added   | `"db.size.limit" = "8TB"`               | [#129](https://github.com/lukso-network/network-configs/pull/129/files) |
 | 17 Jul 2024 | added   | `"maxpeers" = 100`                      | [#138](https://github.com/lukso-network/network-configs/pull/138/files) |
+| 30 Jul 2025 | removed | `"snapshots" = false`                   | [#149](https://github.com/lukso-network/network-configs/pull/149/files) |
+| 30 Jul 2025 | removed | `"prune" = "htc"`                       | [#149](https://github.com/lukso-network/network-configs/pull/149/files) |
+| 30 Jul 2025 | added   | `"prune.mode" = "full"`                 | [#149](https://github.com/lukso-network/network-configs/pull/149/files) |
 
 ## Lighthouse File
 
@@ -196,3 +199,30 @@ nano teku/config.yaml
 | 2 Oct 2024  | added   | `MIN_EPOCHS_FOR_BLOB_SIDECARS_REQUESTS: 4096` | [#142](https://github.com/lukso-network/network-configs/pull/142/files) |
 | 2 Oct 2024  | added   | `BLOB_SIDECAR_SUBNET_COUNT: 6`                | [#142](https://github.com/lukso-network/network-configs/pull/142/files) |
 | 6 Feb 2025  | added   | `MAX_BLOBS_PER_BLOCK: 6`                      | [#146](https://github.com/lukso-network/network-configs/pull/146/files) |
+| 29 Jul 2025 | added   | `ELECTRA_FORK_VERSION: 0x42000006`            | [#148](https://github.com/lukso-network/network-configs/pull/148/files) |
+| 29 Jul 2025 | added   | `ELECTRA_FORK_EPOCH: 190800`                  | [#148](https://github.com/lukso-network/network-configs/pull/148/files) |
+
+## Nimbus File
+
+<Tabs groupId="editor">
+  <TabItem value="vim" label="Vim" default>
+
+```sh
+cd <lukso-working-directory>/configs/<network>
+vim nimbus2/config.yaml
+```
+
+</TabItem> <TabItem value="nano" label="Nano">
+
+```sh
+cd <lukso-working-directory>/configs/<network>
+nano nimbus2/config.yaml
+```
+
+</TabItem>
+</Tabs>
+
+| Date        | Action | Property                           | Commit                                                                  |
+| ----------- | ------ | ---------------------------------- | ----------------------------------------------------------------------- |
+| 29 Jul 2025 | added  | `ELECTRA_FORK_VERSION: 0x42000006` | [#148](https://github.com/lukso-network/network-configs/pull/148/files) |
+| 29 Jul 2025 | added  | `ELECTRA_FORK_EPOCH: 190800`       | [#148](https://github.com/lukso-network/network-configs/pull/148/files) |
