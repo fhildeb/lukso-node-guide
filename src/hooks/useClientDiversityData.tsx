@@ -54,10 +54,10 @@ export function useClientDiversityData() {
         console.warn("Falling back to dummy data for distribution data:", err);
         setData({
           executionClients: [
-            { label: "Prysm", value: 42 },
-            { label: "Lighthouse", value: 37 },
+            { label: "Lighthouse", value: 39 },
+            { label: "Prysm", value: 38 },
             { label: "Teku", value: 12 },
-            { label: "Nimbus", value: 9 },
+            { label: "Nimbus", value: 12 },
             { label: "Others", value: 0 },
           ],
           consensusClients: [
