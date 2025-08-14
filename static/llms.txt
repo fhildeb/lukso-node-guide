@@ -4821,7 +4821,7 @@ The [LUKSO CLI](https://github.com/lukso-network/tools-lukso-cli) is officially 
 
 :::note Flags and Runtime
 
-The clients started from the CLI run in the `/usr/local/` directory of the operating system:
+The clients started from the CLI run in the `/usr/local/bin` directory of the operating system:
 
 - All client flags and additional configurations can be passed down to the services.
 - The CLI is bound to the operating system, meaning only a single node can be operated on one device.
@@ -16279,34 +16279,50 @@ sudo pkill validator
 
 </details>
 
+Then move into the node directory:
+
+```sh
+cd
+cd <lukso-working-directory>
+```
+
+:::info
+
+Exchange `<lukso-working-directory>` with the actual folder name of your node setup.
+
+:::
+
 ## 2. Install Custom Version
 
 Custom client versions can be installed using the regular installation command with additional flags. The terminal interface will give you the option to choose your execution and consensus client and will download the specified version from the flags. Multiple flags can be attached to install a custom consensus and execution client version simultaneously.
 
 ```sh
-# Overwrite default Geth Version
-lukso install --geth-tag 1.12.2 --geth-commit-hash bed84606
+# Overwrite default Geth Version after Pectra
+sudo lukso install --geth-tag 1.15.11 --geth-commit-hash 36b2371c
+
+# Overwrite default Geth Version before Pectra
+sudo lukso install --geth-tag 1.14.3 --geth-commit-hash ab48ba42
 
 # Overwrite default Erigon Version
-lukso install --erigon-tag 2.52.1
+sudo lukso install --erigon-tag 2.52.1
 
 # Overwrite default Besu Version
-lukso install --besu-tag 24.5.1
+sudo lukso install --besu-tag 24.5.1
 
 # Overwrite default Nethermind Version
-lukso install --nethermind-tag v1.22.0 --nethermind-commit-hash ae444a4
+sudo lukso install --nethermind-tag v1.22.0 --nethermind-commit-hash ae444a4
 
 # Overwrite default Prysm Version
-lukso install --prysm-tag v4.0.8
+sudo lukso install --prysm-tag v4.0.8
 
 # Overwrite default Lighthouse Version
-lukso install --lighthouse-tag v4.1.0
+sudo lukso install --lighthouse-tag v4.1.0
 
 # Overwrite default Teku Version
-lukso install --teku-tag v23.10.0
+sudo lukso install --teku-tag v23.10.0
 
 # Overwrite default Nimbus-Eth2 Version
-lukso install --nimbus2-tag v24.2.1 --nimbus2-commit-hash 7fe43fc
+sudo lukso install --nimbus2-tag v24.2.1 --nimbus2-commit-hash 7fe43fc
 ```
 
 :::tip
@@ -16326,6 +16342,7 @@ Each release tag has different version formatting. Ensure you are using the corr
 Version numbers and commit hashes can be derived from the client repositories:
 
 - [Geth Releases](https://github.com/ethereum/go-ethereum/releases)
+- [Geth Commit Hashes](https://geth.ethereum.org/downloads)
 - [Erigon Releases](https://github.com/ledgerwatch/erigon/releases)
 - [Besu Releases](https://github.com/hyperledger/besu/releases)
 - [Nethermind Releases](https://github.com/nethermindeth/nethermind/releases)

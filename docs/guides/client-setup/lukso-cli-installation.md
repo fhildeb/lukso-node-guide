@@ -28,7 +28,7 @@ The [LUKSO CLI](https://github.com/lukso-network/tools-lukso-cli) is officially 
 
 :::note Flags and Runtime
 
-The clients started from the CLI run in the `/usr/local/` directory of the operating system:
+The clients started from the CLI run in the `/usr/local/bin` directory of the operating system:
 
 - All client flags and additional configurations can be passed down to the services.
 - The CLI is bound to the operating system, meaning only a single node can be operated on one device.
