@@ -4980,7 +4980,7 @@ The [LUKSO CLI](https://github.com/lukso-network/tools-lukso-cli) is officially 
 
 :::note Flags and Runtime
 
-The clients started from the CLI run in the `/usr/local/` directory of the operating system:
+The clients started from the CLI run in the `/usr/local/bin` directory of the operating system:
 
 - All client flags and additional configurations can be passed down to the services.
 - The CLI is bound to the operating system, meaning only a single node can be operated on one device.
@@ -16456,8 +16456,11 @@ Exchange `<lukso-working-directory>` with the actual folder name of your node se
 Custom client versions can be installed using the regular installation command with additional flags. The terminal interface will give you the option to choose your execution and consensus client and will download the specified version from the flags. Multiple flags can be attached to install a custom consensus and execution client version simultaneously.
 
 ```sh
-# Overwrite default Geth Version
-sudo lukso install --geth-tag 1.15.11 --geth-commit-hash 36b2371
+# Overwrite default Geth Version after Pectra
+sudo lukso install --geth-tag 1.15.11 --geth-commit-hash 36b2371c
+
+# Overwrite default Geth Version before Pectra
+sudo lukso install --geth-tag 1.14.3 --geth-commit-hash ab48ba42
 
 # Overwrite default Erigon Version
 sudo lukso install --erigon-tag 2.52.1
