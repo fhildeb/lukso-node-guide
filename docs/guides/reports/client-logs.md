@@ -15,9 +15,9 @@ Clients automatically generate log files that record important operational data,
 
 Log files can expose sensitive data. Only share log files with trusted people or modify them before sharing at own risk.
 
-- **Execution Logs**: Exposes client name, version, folder structure, operator name, IP, and DDNS address.
-- **Consensus Logs**: Reveals client name, version, IPs, ENRs, and RPC configuration.
-- **Validator Logs**: Records validator indices, attestations and proposals, and graffitis.
+- **Execution Logs**: Expose client name, version, folder path, operator name, and IP or DDNS address.
+- **Consensus Logs**: Reveal client name, version, IP, ENRs, and RPC configuration.
+- **Validator Logs**: Record validator indices, attestations, proposals, and graffitis.
 
 :::
 
