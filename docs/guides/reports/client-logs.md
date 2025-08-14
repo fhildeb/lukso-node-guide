@@ -60,7 +60,7 @@ Exchange `<lukso-working-directory>` with the name of your node folder.
 
 Since log files are typically owned by a specific user and SSH sessions cannot elevate directly to superuser for file transfers, its best to copy the files to a temporary folder where you have full permissions. This ensures the original logs remain untouched and the node does not have to be stopped.
 
-```bash
+```sh
 # Retrieve Current File Path
 pwd
 
@@ -119,6 +119,6 @@ The following step is performed on your 📟 **node server**.
 
 :::
 
-```bash
+```sh
 rm -rf /tmp/client-logs
 ```

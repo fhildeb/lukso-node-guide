@@ -126,7 +126,7 @@ pip3 install requests pandas fpdf
 
 **3.2 Create Config File**: Create your personal configuration file based on the default template.
 
-```bash
+```sh
 cp config-sample.py config.py
 ```
 
@@ -162,7 +162,7 @@ Once the software has been installed and configured, you can run the report scri
 <Tabs groupId="prices">
   <TabItem value="api" label="CoinMarketCap API" default>
 
-```bash
+```sh
 # Activate the Virtual Python Environment
 source report-environment\Scripts\activate
 
@@ -172,7 +172,7 @@ python income_reporter.py
 
 </TabItem> <TabItem value="local" label="Local CSV">
 
-```bash
+```sh
 # Activate the Virtual Python Environment
 source report-environment\Scripts\activate
 
@@ -188,7 +188,7 @@ python income_reporter.py --dry-run ./price-data/median_lyx_prices_eur.csv
 <Tabs groupId="prices">
   <TabItem value="api" label="CoinMarketCap API" default>
 
-```bash
+```sh
 # Activate the Virtual Python Environment
 source report-environment/bin/activate
 
@@ -198,7 +198,7 @@ python3 income_reporter.py
 
 </TabItem> <TabItem value="local" label="Local CSV">
 
-```bash
+```sh
 # Activate the Virtual Python Environment
 source report-environment/bin/activate
 
@@ -222,7 +222,7 @@ The script's run-time will depend on the number of validators. If you have 10 va
 
 After the tool finished sucessfully, you will see the generated CSV and PDF files within the folder. They are both called income report and include the year and your address within the file name. After the files have been generated, the virtual environment can be deactivated.
 
-```bash
+```sh
 # Deactivate the Virtual Python Environment
 deactivate
 ```
