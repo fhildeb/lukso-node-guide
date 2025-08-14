@@ -16501,6 +16501,7 @@ Each release tag has different version formatting. Ensure you are using the corr
 Version numbers and commit hashes can be derived from the client repositories:
 
 - [Geth Releases](https://github.com/ethereum/go-ethereum/releases)
+- [Geth Commit Hashes](https://geth.ethereum.org/downloads)
 - [Erigon Releases](https://github.com/ledgerwatch/erigon/releases)
 - [Besu Releases](https://github.com/hyperledger/besu/releases)
 - [Nethermind Releases](https://github.com/nethermindeth/nethermind/releases)
