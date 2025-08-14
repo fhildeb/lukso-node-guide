@@ -115,7 +115,7 @@ const sections = [
       },
       {
         title: "Reports",
-        pages: ["Validator Income"],
+        pages: ["Validator Income", "Client Logs"],
       },
     ],
   },
