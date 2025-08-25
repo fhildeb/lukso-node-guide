@@ -7,7 +7,7 @@ export interface AprState {
 
 // Hook that fetches the APR from the LUKSO Launchpad
 export function useLaunchpadData() {
-  const staticData = { apr: 7.3, raw: "7,3%" };
+  const staticData = { apr: 7, raw: "7%" };
   const [data, setData] = useState<AprState>({ apr: null, raw: null });
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);

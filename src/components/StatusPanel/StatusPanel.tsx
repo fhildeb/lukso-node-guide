@@ -98,7 +98,7 @@ export function StatusPanel() {
         <div className={styles.statusMessage}>
           {networkStatusMessage}
           <a
-            href="https://clientdiversity.lukso.network/"
+            href="https://clientdiversity.lukso.network/#distribution"
             target="_blank"
             rel="noreferrer"
           >
