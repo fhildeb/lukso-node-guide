@@ -34,7 +34,7 @@ Any Ethereum client can be set up to join the open LUKSO Network effectively. Th
 
 :::tip Verified Support
 
-Within the [LUKSO CLI v 0.25.0](https://github.com/lukso-network/tools-lukso-cli) the following clients are officially tested and supported by the LUKSO Network Team.
+Within the [LUKSO CLI v 0.25.1](https://github.com/lukso-network/tools-lukso-cli) the following clients are officially tested and supported by the LUKSO Network Team.
 
 :::
 
@@ -49,7 +49,7 @@ Within the [LUKSO CLI v 0.25.0](https://github.com/lukso-network/tools-lukso-cli
 | --------------------------------------------------------- | ------- | ------------------------------------------------- | ------------------------------------------------------------------ | ------------------------------------------------------ | ---------------------- | -------- |
 | [**Besu**](https://hyperledger.org/use/besu)              | 25.7.0  | [🔗](https://github.com/hyperledger/besu/)        | [📘](https://besu.hyperledger.org/en/stable/)                      | [💬](https://discord.com/invite/hyperledger)           | Linux, Win, macOS      | Java     |
 | [**Erigon**](https://github.com/erigontech/erigon#erigon) | 3.0.12  | [🔗](https://github.com/erigontech/erigon)        | [📘](https://docs.erigon.tech/)                                    | [💬](https://github.com/erigontech/erigon/discussions) | Linux, Win, macOS, ARM | Go       |
-| [**Geth**](https://geth.ethereum.org/)                    | 1.16.1  | [🔗](https://github.com/ethereum/go-ethereum)     | [📘](https://geth.ethereum.org/docs/)                              | [💬](https://discord.com/invite/nthXNEv)               | Linux, Win, macOS, ARM | Go       |
+| [**Geth**](https://geth.ethereum.org/)                    | 1.15.11 | [🔗](https://github.com/ethereum/go-ethereum)     | [📘](https://geth.ethereum.org/docs/)                              | [💬](https://discord.com/invite/nthXNEv)               | Linux, Win, macOS, ARM | Go       |
 | [**Nethermind**](http://nethermind.io/)                   | 1.32.2  | [🔗](https://github.com/NethermindEth/nethermind) | [📘](https://docs.nethermind.io/get-started/installing-nethermind) | [💬](https://discord.com/invite/PaCMRFdvWT)            | Linux, Win, macOS, ARM | .NET     |
 
 :::warning Further Assistance

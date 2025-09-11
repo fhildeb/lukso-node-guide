@@ -3,7 +3,7 @@ const software = {
     {
       name: "LUKSO CLI",
       link: "https://github.com/lukso-network/tools-lukso-cli/releases",
-      version: "0.25.0",
+      version: "0.25.1",
     },
     {
       name: "Grafana",
@@ -77,7 +77,7 @@ const software = {
     {
       name: "Geth",
       link: "https://github.com/ethereum/go-ethereum/releases",
-      version: "1.16.1",
+      version: "1.15.11",
     },
     {
       name: "Teku",
