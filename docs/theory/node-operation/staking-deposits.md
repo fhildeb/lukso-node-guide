@@ -19,7 +19,7 @@ Further details about staking in general can be found on the [**Proof of Stake**
 
 ## Validator Operation
 
-Each validator requires a **fixed stake of 32 LYX** on mainnet or **32 LYXt** on testnet. While both mainnet and testnet mirror the same blockchain protocol and apply equal updates, their validator deposit processes differ in access, value, and purpose. While the mainnet is a fully public permissionless blockchain, the testnet uses a curated list of long-term operators to ensure stable validation and reliable testing for developers.
+Each validator requires a **fixed stake of 32 - 2048 LYX** on mainnet or **32 - 2048 LYXt** on testnet. While both mainnet and testnet mirror the same blockchain protocol and apply equal updates, their validator deposit processes differ in access, value, and purpose. While the mainnet is a fully public permissionless blockchain, the testnet uses a curated list of long-term operators to ensure stable validation and reliable testing for developers.
 
 | Category                              | LUKSO Mainnet                                                  | LUKSO Testnet                                                                                |
 | ------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
@@ -49,7 +49,7 @@ Setting up a validator involves multiple careful steps. Below is an overview of 
 6. [**Validator Configuration**](/docs/guides/client-setup/validator-configuration.md): _Transfer generated keys to your staking node_
 7. [**Validator Configuration**](/docs/guides/client-setup/validator-configuration.md) _Import validator keys into your node's consensus client_
 8. [**Validator Configuration**](/docs/guides/client-setup/validator-configuration.md): _Start the staking node in idle mode until deposit is confirmed_
-9. [**Deposit Stake**](/docs/guides/validator-setup/launchpad-walkthrough.md): _Deposit 32 LYX to each validator using the Mainnet Launchpad_
+9. [**Deposit Stake**](/docs/guides/validator-setup/launchpad-walkthrough.md): _Deposit 32 - 2048 LYX to each validator using the Mainnet Launchpad_
 10. _Wait for the validator to activate_
 
 </TabItem>
@@ -65,7 +65,7 @@ Setting up a validator involves multiple careful steps. Below is an overview of 
 7. [**Validator Configuration**](/docs/guides/client-setup/validator-configuration.md): _Transfer generated keys to your staking node_
 8. [**Validator Configuration**](/docs/guides/client-setup/validator-configuration.md) _Import validator keys into your node's consensus client_
 9. [**Validator Configuration**](/docs/guides/client-setup/validator-configuration.md): _Start the staking node in idle mode until deposit is confirmed_
-10. [**Deposit Stake**](/docs/guides/validator-setup/launchpad-walkthrough.md): _Deposit 32 LYX to each validator using the Testnet Launchpad_
+10. [**Deposit Stake**](/docs/guides/validator-setup/launchpad-walkthrough.md): _Deposit 32 - 2048 LYX to each validator using the Testnet Launchpad_
 11. _Wait for the validator to activate_
 
 </TabItem>

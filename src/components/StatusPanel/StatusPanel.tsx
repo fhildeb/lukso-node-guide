@@ -47,21 +47,21 @@ export function StatusPanel() {
   // Network Status Message
   let networkStatusMessage = "";
   if (clientLoading) {
-    networkStatusMessage = "Loading client distribution data from ";
+    networkStatusMessage = "loading client distribution data from ";
   } else if (clientError) {
-    networkStatusMessage = "Could not fetch client distribution data from ";
+    networkStatusMessage = "could not fetch client distribution from ";
   } else {
-    networkStatusMessage = "Retrieved from ";
+    networkStatusMessage = "retrieved from ";
   }
 
   // Blog Status Message
   let blogStatusMessage = "";
   if (blogLoading) {
-    blogStatusMessage = "Loading latest blog data from ";
+    blogStatusMessage = "loading latest blog data from ";
   } else if (blogError) {
-    blogStatusMessage = "Could not fetch latest blog data from ";
+    blogStatusMessage = "could not fetch latest blog data from ";
   } else {
-    blogStatusMessage = "Retrieved from ";
+    blogStatusMessage = "retrieved from ";
   }
 
   return (

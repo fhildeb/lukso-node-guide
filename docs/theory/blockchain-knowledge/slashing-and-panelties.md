@@ -97,5 +97,5 @@ Once ejected, the validator is immediately placed in an exit queue and gets subt
 
 :::tip
 
-A healthy validator should maintain a balance above 32 LYX or LYXt and ensure stable uptimes for good participation rates.
+A healthy validator should maintain a balance at his deposit balance of 32 - 2048 LYX or LYXt and ensure stable uptimes for good participation rates.
 :::

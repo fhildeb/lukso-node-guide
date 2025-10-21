@@ -250,6 +250,12 @@ beacon_clock_time_slot{job="beacon-client-job"} - beacon_head_slot{job="beacon-c
 
 **Alert: No Hourly Earnings**
 
+:::warning
+
+The metrics for node earnings use a fixed value of 32 LYX. Since the [Pectra Fork](https://luksovalidators.substack.com/p/lukso-pectra-hard-fork), a single validator key can hold up to 2048 LYX. If your validators stake with a higher amount than 32 LYX, please adjust the values manually.
+
+:::
+
 ```text
 above 0,0001: Earning rewards
 below 0,0001: Syncing or negative rewards

@@ -11,7 +11,7 @@ import TabItem from '@theme/TabItem';
 
 In case you did not attach a [withdrawal address](/docs/theory/node-operation/validator-credentials.md) while [generating your validator keys](/docs/guides/validator-setup/precautions.md), the earnings of your validator will not be paid out to any address and you won't be able to access your staked funds while [exiting your validators](/docs/guides/withdrawals/exit-validators.md) from the network.
 
-The following guide will teach you how to update your plain BLS Validator Key to reference an ETH1 Address, so your validator keys are able to withdraw staked funds and earnings. If an ETH1 Address is referenced to the BLS Key, the validator's stake can be exited to any wallet. Once enabled, all validator earnings above the 32 LYX or LYXt threshold will be periodically withdrawn to your ETH1 Address every few days.
+The following guide will teach you how to update your plain BLS Validator Key to reference an ETH1 Address, so your validator keys are able to withdraw staked funds and earnings. If an ETH1 Address is referenced to the BLS Key, the validator's stake can be exited to any wallet. Once enabled, all validator earnings above the validator deposit of 32 to 2048 LYX or LYXt will be periodically withdrawn to your ETH1 Address every few days.
 
 | **Name**                          | **Description**                                                                                                                                           | <nobr> **Network Layer** </nobr> |
 | --------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------- |
