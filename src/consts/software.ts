@@ -42,9 +42,9 @@ const software = {
       version: "1.8.4",
     },
     {
-      name: "LUKSO Key Gen CLI",
+      name: "LUKSO Key Gen CLI V2",
       link: "https://github.com/lukso-network/tools-key-gen-cli/releases",
-      version: "2.5.8",
+      version: "2.6.0",
     },
     {
       name: "Tailscale",

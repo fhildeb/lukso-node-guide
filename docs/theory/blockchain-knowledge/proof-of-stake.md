@@ -31,7 +31,7 @@ Unlike Proof of Work on Bitcoin or previous generations of Ethereum, requiring m
 
 ## Roles and Services
 
-Running a validator can be thought of as providing infrastructure in exchange for protocol‑level rewards. To participate you deposit the network’s native token of 32 LYX or LYXt into a one‑way validator key and spin up the following software. Stake can only be [withdrawn](/docs/theory/node-operation/validator-credentials.md) once the [validator exists](/docs/guides/withdrawals/exit-validators.md) the network.
+Running a validator can be thought of as providing infrastructure in exchange for protocol‑level rewards. To participate you deposit the network’s native token of 32 - 2048 LYX or LYXt into a one‑way validator key and spin up the following software. Stake can only be [withdrawn](/docs/theory/node-operation/validator-credentials.md) once the [validator exists](/docs/guides/withdrawals/exit-validators.md) the network.
 
 | Layer                 | Network Role                                                                       |
 | --------------------- | ---------------------------------------------------------------------------------- |
