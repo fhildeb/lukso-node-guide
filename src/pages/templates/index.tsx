@@ -195,6 +195,24 @@ function TemplatesPage() {
                 </div>
               </div>
             </div>
+            <div className={`${styles.sectionBox} ${styles.conditionalRight}`}>
+              <div className="admonition admonition-info alert alert--info">
+                <div className="infoBlock">
+                  <h2>Default Deposits</h2>
+                  <p>
+                    The dashboards use default validator deposit amounts of{" "}
+                    <strong>32 LYX</strong>. If you set up your validator keys
+                    after the{" "}
+                    <Link to="https://luksovalidators.substack.com/p/lukso-pectra-hard-fork">
+                      Pectra Fork
+                    </Link>{" "}
+                    and deposited between <strong> 32 - 2048 LYX</strong> per
+                    key, please adjust the metric formulas within the{" "}
+                    <strong>JSON file</strong> to match your total stake.
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
 
           {/* Middle Column */}
@@ -311,6 +329,24 @@ function TemplatesPage() {
                       <code>8008: Nimbus-Eth2</code>
                     </li>
                   </ul>
+                </div>
+              </div>
+            </div>
+            <div className={`${styles.sectionBox}`}>
+              <div className="admonition admonition-info alert alert--info">
+                <div className="infoBlock">
+                  <h2>Default Deposits</h2>
+                  <p>
+                    The dashboards use default validator deposit amounts of{" "}
+                    <strong>32 LYX</strong>. If you set up your validator keys
+                    after the{" "}
+                    <Link to="https://luksovalidators.substack.com/p/lukso-pectra-hard-fork">
+                      Pectra Fork
+                    </Link>{" "}
+                    and deposited between <strong> 32 - 2048 LYX</strong> per
+                    key, please adjust the metric formulas within the{" "}
+                    <strong>JSON file</strong> to match your total stake.
+                  </p>
                 </div>
               </div>
             </div>
