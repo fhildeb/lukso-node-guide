@@ -18,7 +18,6 @@ const config: Config = {
   projectName: "lukso-node-guide", // Usually your repo name.
 
   onBrokenLinks: "throw",
-  onBrokenMarkdownLinks: "throw",
 
   // Even if you don't use internationalization, you can use this field to set
   // useful metadata like html lang. For example, if your site is Chinese, you
@@ -169,7 +168,9 @@ const config: Config = {
         },
       ],
       copyright: `
-    © ${new Date().getFullYear()} Felix Hildebrandt&nbsp;
+    <a href="/legal">
+    © ${new Date().getFullYear()} Felix Hildebrandt&nbsp; - Legal & Privacy
+    </a>
     <br />
     <a href="https://profile.link/voulex@0F41"
        target="_blank" rel="noopener"
