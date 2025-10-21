@@ -14354,6 +14354,12 @@ beacon_clock_time_slot{job="beacon-client-job"} - beacon_head_slot{job="beacon-c
 
 **Alert: No Hourly Earnings**
 
+:::warning
+
+The metrics for node earnings use a fixed value of 32 LYX. Since the [Pectra Fork](https://luksovalidators.substack.com/p/lukso-pectra-hard-fork), a single validator key can hold up to 2048 LYX. If your validators stake with a higher amount than 32 LYX, please adjust the values manually.
+
+:::
+
 ```text
 above 0,0001: Earning rewards
 below 0,0001: Syncing or negative rewards
@@ -18349,7 +18355,7 @@ import TabItem from '@theme/TabItem';
 
 In case you did not attach a [withdrawal address](/docs/theory/node-operation/validator-credentials.md) while [generating your validator keys](/docs/guides/validator-setup/precautions.md), the earnings of your validator will not be paid out to any address and you won't be able to access your staked funds while [exiting your validators](/docs/guides/withdrawals/exit-validators.md) from the network.
 
-The following guide will teach you how to update your plain BLS Validator Key to reference an ETH1 Address, so your validator keys are able to withdraw staked funds and earnings. If an ETH1 Address is referenced to the BLS Key, the validator's stake can be exited to any wallet. Once enabled, all validator earnings above the 32 LYX or LYXt threshold will be periodically withdrawn to your ETH1 Address every few days.
+The following guide will teach you how to update your plain BLS Validator Key to reference an ETH1 Address, so your validator keys are able to withdraw staked funds and earnings. If an ETH1 Address is referenced to the BLS Key, the validator's stake can be exited to any wallet. Once enabled, all validator earnings above the validator deposit of 32 to 2048 LYX or LYXt will be periodically withdrawn to your ETH1 Address every few days.
 
 | **Name**                          | **Description**                                                                                                                                           | <nobr> **Network Layer** </nobr> |
 | --------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------- |
@@ -19069,7 +19075,7 @@ Unlike Proof of Work on Bitcoin or previous generations of Ethereum, requiring m
 
 ## Roles and Services
 
-Running a validator can be thought of as providing infrastructure in exchange for protocol‑level rewards. To participate you deposit the network’s native token of 32 LYX or LYXt into a one‑way validator key and spin up the following software. Stake can only be [withdrawn](/docs/theory/node-operation/validator-credentials.md) once the [validator exists](/docs/guides/withdrawals/exit-validators.md) the network.
+Running a validator can be thought of as providing infrastructure in exchange for protocol‑level rewards. To participate you deposit the network’s native token of 32 - 2048 LYX or LYXt into a one‑way validator key and spin up the following software. Stake can only be [withdrawn](/docs/theory/node-operation/validator-credentials.md) once the [validator exists](/docs/guides/withdrawals/exit-validators.md) the network.
 
 | Layer                 | Network Role                                                                       |
 | --------------------- | ---------------------------------------------------------------------------------- |
@@ -19497,7 +19503,7 @@ Once ejected, the validator is immediately placed in an exit queue and gets subt
 
 :::tip
 
-A healthy validator should maintain a balance above 32 LYX or LYXt and ensure stable uptimes for good participation rates.
+A healthy validator should maintain a balance at his deposit balance of 32 - 2048 LYX or LYXt and ensure stable uptimes for good participation rates.
 :::
 
 ---
@@ -20008,7 +20014,7 @@ Further details about staking in general can be found on the [**Proof of Stake**
 
 ## Validator Operation
 
-Each validator requires a **fixed stake of 32 LYX** on mainnet or **32 LYXt** on testnet. While both mainnet and testnet mirror the same blockchain protocol and apply equal updates, their validator deposit processes differ in access, value, and purpose. While the mainnet is a fully public permissionless blockchain, the testnet uses a curated list of long-term operators to ensure stable validation and reliable testing for developers.
+Each validator requires a **fixed stake of 32 - 2048 LYX** on mainnet or **32 - 2048 LYXt** on testnet. While both mainnet and testnet mirror the same blockchain protocol and apply equal updates, their validator deposit processes differ in access, value, and purpose. While the mainnet is a fully public permissionless blockchain, the testnet uses a curated list of long-term operators to ensure stable validation and reliable testing for developers.
 
 | Category                              | LUKSO Mainnet                                                  | LUKSO Testnet                                                                                |
 | ------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
@@ -20038,7 +20044,7 @@ Setting up a validator involves multiple careful steps. Below is an overview of 
 6. [**Validator Configuration**](/docs/guides/client-setup/validator-configuration.md): _Transfer generated keys to your staking node_
 7. [**Validator Configuration**](/docs/guides/client-setup/validator-configuration.md) _Import validator keys into your node's consensus client_
 8. [**Validator Configuration**](/docs/guides/client-setup/validator-configuration.md): _Start the staking node in idle mode until deposit is confirmed_
-9. [**Deposit Stake**](/docs/guides/validator-setup/launchpad-walkthrough.md): _Deposit 32 LYX to each validator using the Mainnet Launchpad_
+9. [**Deposit Stake**](/docs/guides/validator-setup/launchpad-walkthrough.md): _Deposit 32 - 2048 LYX to each validator using the Mainnet Launchpad_
 10. _Wait for the validator to activate_
 
 </TabItem>
@@ -20054,7 +20060,7 @@ Setting up a validator involves multiple careful steps. Below is an overview of 
 7. [**Validator Configuration**](/docs/guides/client-setup/validator-configuration.md): _Transfer generated keys to your staking node_
 8. [**Validator Configuration**](/docs/guides/client-setup/validator-configuration.md) _Import validator keys into your node's consensus client_
 9. [**Validator Configuration**](/docs/guides/client-setup/validator-configuration.md): _Start the staking node in idle mode until deposit is confirmed_
-10. [**Deposit Stake**](/docs/guides/validator-setup/launchpad-walkthrough.md): _Deposit 32 LYX to each validator using the Testnet Launchpad_
+10. [**Deposit Stake**](/docs/guides/validator-setup/launchpad-walkthrough.md): _Deposit 32 - 2048 LYX to each validator using the Testnet Launchpad_
 11. _Wait for the validator to activate_
 
 </TabItem>
