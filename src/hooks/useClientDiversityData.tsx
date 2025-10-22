@@ -57,7 +57,7 @@ export function useClientDiversityData() {
             { label: "Lighthouse", value: 74 },
             { label: "Prysm", value: 26 },
             { label: "Teku", value: 0 },
-            { label: "Nimbus", value: 12 },
+            { label: "Nimbus", value: 0 },
             { label: "Others", value: 0 },
           ],
           consensusClients: [
