@@ -39,7 +39,7 @@ const software = {
     {
       name: "LUKSO Wagyu Key Gen",
       link: "https://github.com/lukso-network/tools-wagyu-key-gen/releases/",
-      version: "1.8.4",
+      version: "1.9.0",
     },
     {
       name: "LUKSO Key Gen CLI V2",
