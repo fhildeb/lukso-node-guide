@@ -25,7 +25,7 @@ The [Validator Income Reporter](https://github.com/fhildeb/validator-income-repo
 
 :::info
 
-CoinMarketCap typically offers a free Hobbyist API tier for one month every year, sufficient for annual report generation. If you **dont want to use the CoinMarketCap API**, you can optionally use the `--dry-run` flag to run the reporter **with a local CSV** file of daily median LYX prices. A sample file for EUR is attached to the repository.
+CoinMarketCap typically offers a free Startup API tier for one month every year, sufficient for annual report generation. If you **dont want to use the CoinMarketCap API**, you can optionally use the `--dry-run` flag to run the reporter **with a local CSV** file of daily median LYX prices in EUR or USD. A sample file for EUR is attached to the repository.
 
 :::
 
