@@ -61,8 +61,8 @@ export function useClientDiversityData() {
             { label: "Others", value: 0 },
           ],
           consensusClients: [
-            { label: "Geth", value: 60 },
-            { label: "Besu", value: 40 },
+            { label: "Geth", value: 63 },
+            { label: "Besu", value: 37 },
             { label: "Erigon", value: 0 },
             { label: "Nethermind", value: 0 },
             { label: "Others", value: 0 },
