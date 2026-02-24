@@ -2766,7 +2766,7 @@
           "link": true,
           "linkTargetBlank": true,
           "linkTooltip": "explorer",
-          "linkUrl": "https://explorer.consensus.mainnet.lukso.network/validator/${__cell_1:raw}",
+          "linkUrl": "https://dora.explorer.mainnet.lukso.network/validator/${__cell_1:raw}",
           "mappingType": 1,
           "pattern": "pubkey_short",
           "thresholds": [],
