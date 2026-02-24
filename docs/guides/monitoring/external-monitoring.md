@@ -46,15 +46,13 @@ Both, the LUKSO Community and the LUKSO Team are running Execution Status Pages.
 
 The Consensus Block Explorer offers comprehensive insights into the current consensus status. It displays the present epoch, slot, active and pending validator counts, the total staked LYX, and the average balance. For each slot, the explorer provides information about the proposer, the sync participation, time, and status. On top, the explorer also allows for an in-depth examination of each block, revealing the proposer's graffiti and all associated metadata.
 
-From the validator's perspective, it provides critical information about attestations and deposits, the validators' status and effectiveness, and their balance. Validators can even check for slashed nodes, and execute their network exits while using the broadcast tool and checking their status on the withdrawals screen.
+From the validator's perspective, it provides critical information about attestations and deposits, the validators' status and effectiveness, and their balance. Validators can even check for slashed nodes, and check the withdrawal status.
 
 - [Mainnet Consensus Explorer ↗](https://explorer.consensus.mainnet.lukso.network/)
-- [Mainnet Consensus Broadcast Tool ↗](https://explorer.consensus.mainnet.lukso.network/tools/broadcast)
 - [Mainnet Consensus Slashing Board ↗](https://explorer.consensus.mainnet.lukso.network/validators/slashings)
 - [Mainnet Consensus Withdrawals and BLS Changes ↗](https://explorer.consensus.mainnet.lukso.network/validators/withdrawals)
 - [Mainnet Consensus Slot Inspector ↗](https://explorer.consensus.mainnet.lukso.network/slots)
 - [Testnet Consensus Explorer ↗](https://explorer.consensus.testnet.lukso.network/)
-- [Testnet Consensus Broadcast Tool ↗](https://explorer.consensus.testnet.lukso.network/tools/broadcast)
 - [Testnet Consensus Slashing Board ↗](https://explorer.consensus.testnet.lukso.network/validators/slashings)
 - [Testnet Consensus Withdrawals and BLS Changes ↗](https://explorer.consensus.testnet.lukso.network/validators/withdrawals)
 - [Testnet Consensus Slot Inspector ↗](https://explorer.consensus.testnet.lukso.network/slots)
