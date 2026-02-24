@@ -212,14 +212,14 @@ For [Genesis Validators](/docs/archive/genesis-validators/blockchain-launch.md),
 </TabItem>
 <TabItem value="testnet" label="Testnet Validators">
 
-For Testnet Validators, the [LUKSO Testnet Consensus Explorer](https://explorer.consensus.testnet.lukso.network/) will display the deposit transactions.
+For Testnet Validators, the [LUKSO Testnet Consensus Explorer](https://dora.explorer.testnet.lukso.network/) will display the deposit transactions.
 
 ![Testnet Beacon Chain Deposit](/img/guides/validator-setup/testnet-deposit-screen.png)
 
 </TabItem>
 <TabItem value="mainnet" label="Mainnet Validators">
 
-For Mainnet Validators, the [LUKSO Mainnet Consensus Explorer](https://explorer.consensus.mainnet.lukso.network/) will display the deposit transactions.
+For Mainnet Validators, the [LUKSO Mainnet Consensus Explorer](https://dora.explorer.mainnet.lukso.network/) will display the deposit transactions.
 
 ![Testnet Beacon Chain Deposit](/img/guides/validator-setup/testnet-deposit-screen.png)
 

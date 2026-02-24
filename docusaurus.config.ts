@@ -145,7 +145,7 @@ const config: Config = {
             },
             {
               label: "Consensus Explorer",
-              href: "https://explorer.consensus.mainnet.lukso.network/",
+              href: "https://dora.explorer.mainnet.lukso.network/",
             },
           ],
         },

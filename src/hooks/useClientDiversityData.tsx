@@ -39,11 +39,11 @@ export function useClientDiversityData() {
 
         const aggregatedExecutionClients = aggregateClients(
           rawExecutionClients,
-          ["Prysm", "Teku", "Lighthouse", "Nimbus"]
+          ["Prysm", "Teku", "Lighthouse", "Nimbus"],
         );
         const aggregatedConsensusClients = aggregateClients(
           rawConsensusClients,
-          ["Geth", "Erigon", "Besu", "Nethermind"]
+          ["Geth", "Erigon", "Besu", "Nethermind"],
         );
 
         setData({
@@ -54,15 +54,15 @@ export function useClientDiversityData() {
         console.warn("Falling back to dummy data for distribution data:", err);
         setData({
           executionClients: [
-            { label: "Prysm", value: 46 },
-            { label: "Lighthouse", value: 30 },
+            { label: "Prysm", value: 47 },
+            { label: "Lighthouse", value: 29 },
             { label: "Teku", value: 24 },
             { label: "Nimbus", value: 0 },
             { label: "Others", value: 0 },
           ],
           consensusClients: [
-            { label: "Geth", value: 63 },
-            { label: "Besu", value: 37 },
+            { label: "Geth", value: 61 },
+            { label: "Besu", value: 39 },
             { label: "Erigon", value: 0 },
             { label: "Nethermind", value: 0 },
             { label: "Others", value: 0 },
@@ -111,7 +111,7 @@ function extractClientData(root: Element | null): ClientData[] {
  */
 function aggregateClients(
   clients: ClientData[],
-  allowed: string[]
+  allowed: string[],
 ): ClientData[] {
   const result: { [label: string]: number } = {};
   // Initialize all allowed labels with zero

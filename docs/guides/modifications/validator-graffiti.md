@@ -9,7 +9,7 @@ import TabItem from '@theme/TabItem';
 
 # 7.3 Validator Graffiti
 
-To personalize your validator's appearance, you can assign a custom graffiti thats publically displayed on the [consensus slot page](https://explorer.consensus.mainnet.lukso.network/slots). Adding graffiti to a block gives validators a unique way to mark their contributions to the network. The content of the graffiti can vary greatly. Some validators might use this space to include their validator name or identifier, while others might use it for fun.
+To personalize your validator's appearance, you can assign a custom graffiti thats publically displayed on the [consensus slot page](https://dora.explorer.mainnet.lukso.network/slots). Adding graffiti to a block gives validators a unique way to mark their contributions to the network. The content of the graffiti can vary greatly. Some validators might use this space to include their validator name or identifier, while others might use it for fun.
 
 Within an EVM-blockchain, the graffiti refers to a customizable field where validators can inscribe a short message of up to 32 bytes into the block's metadata. These messages are permanently stored on the blockchain. Each ASCII character uses 1 byte, but special characters or emojis can up take more.
 

@@ -3046,7 +3046,7 @@
                   {
                     "targetBlank": true,
                     "title": "explorer",
-                    "url": "https://explorer.consensus.mainnet.lukso.network/validator/${__cell_1:raw}"
+                    "url": "https://dora.explorer.mainnet.lukso.network/validator/${__cell_1:raw}"
                   }
                 ]
               },

@@ -78,7 +78,7 @@ If the balance falls below 16 LYX or LYXt, the validator is **automatically ejec
 
 :::note
 
-On LUKSO, it will approximately take [2 Years and 4 Months](https://explorer.consensus.testnet.lukso.network/validator/903e80371518c7a3e7cb1a4705437f19329f75f0f20f5688ec9bbe38d23870e8e210fdbde332e78f988e67372918dfd7#charts) of downtime until the validator's stake will drop below 50%.
+On LUKSO, it will approximately take [2 Years and 4 Months](https://dora.explorer.testnet.lukso.network/validator/903e80371518c7a3e7cb1a4705437f19329f75f0f20f5688ec9bbe38d23870e8e210fdbde332e78f988e67372918dfd7#charts) of downtime until the validator's stake will drop below 50%.
 
 :::
 

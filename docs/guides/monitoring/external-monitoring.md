@@ -46,18 +46,16 @@ Both, the LUKSO Community and the LUKSO Team are running Execution Status Pages.
 
 The Consensus Block Explorer offers comprehensive insights into the current consensus status. It displays the present epoch, slot, active and pending validator counts, the total staked LYX, and the average balance. For each slot, the explorer provides information about the proposer, the sync participation, time, and status. On top, the explorer also allows for an in-depth examination of each block, revealing the proposer's graffiti and all associated metadata.
 
-From the validator's perspective, it provides critical information about attestations and deposits, the validators' status and effectiveness, and their balance. Validators can even check for slashed nodes, and execute their network exits while using the broadcast tool and checking their status on the withdrawals screen.
+From the validator's perspective, it provides critical information about attestations and deposits, the validators' status and effectiveness, and their balance. Validators can even check for slashed nodes and withdrawal status.
 
-- [Mainnet Consensus Explorer ↗](https://explorer.consensus.mainnet.lukso.network/)
-- [Mainnet Consensus Broadcast Tool ↗](https://explorer.consensus.mainnet.lukso.network/tools/broadcast)
-- [Mainnet Consensus Slashing Board ↗](https://explorer.consensus.mainnet.lukso.network/validators/slashings)
-- [Mainnet Consensus Withdrawals and BLS Changes ↗](https://explorer.consensus.mainnet.lukso.network/validators/withdrawals)
-- [Mainnet Consensus Slot Inspector ↗](https://explorer.consensus.mainnet.lukso.network/slots)
-- [Testnet Consensus Explorer ↗](https://explorer.consensus.testnet.lukso.network/)
-- [Testnet Consensus Broadcast Tool ↗](https://explorer.consensus.testnet.lukso.network/tools/broadcast)
-- [Testnet Consensus Slashing Board ↗](https://explorer.consensus.testnet.lukso.network/validators/slashings)
-- [Testnet Consensus Withdrawals and BLS Changes ↗](https://explorer.consensus.testnet.lukso.network/validators/withdrawals)
-- [Testnet Consensus Slot Inspector ↗](https://explorer.consensus.testnet.lukso.network/slots)
+- [Mainnet Consensus Explorer ↗](https://dora.explorer.mainnet.lukso.network/)
+- [Mainnet Consensus Slashing Board ↗](https://dora.explorer.mainnet.lukso.network/validators/slashings)
+- [Mainnet Consensus Withdrawals and BLS Changes ↗](https://dora.explorer.mainnet.lukso.network/validators/withdrawals)
+- [Mainnet Consensus Slot Inspector ↗](https://dora.explorer.mainnet.lukso.network/slots)
+- [Testnet Consensus Explorer ↗](https://dora.explorer.testnet.lukso.network/)
+- [Testnet Consensus Slashing Board ↗](https://dora.explorer.testnet.lukso.network/validators/slashings)
+- [Testnet Consensus Withdrawals and BLS Changes ↗](https://dora.explorer.testnet.lukso.network/validators/withdrawals)
+- [Testnet Consensus Slot Inspector ↗](https://dora.explorer.testnet.lukso.network/slots)
 
 ![Consensus Block Explorer](/img/guides/monitoring/explorer-pages-3.png)
 
@@ -69,11 +67,11 @@ For further details about slots, epochs, and status types, look at the [**Proof 
 
 ## External Validator Checks
 
-The consensus explorer is considered the main status page for validators when it comes to monitoring uptime, withdrawals, block proposals, and earnings. While you can search for single validator indecies, the service also offers to **build a personalized validator status page** from an URL. This link can then be bookmarked in your browser to access a consolidated overview of all your validators at any time.
+The consensus explorer is considered the main status page for validators when it comes to monitoring uptime, withdrawals, block proposals, and earnings. While you can search for single validator indecies, the service also offers the [**Dora API**](https://dora.explorer.testnet.lukso.network/api/swagger/index.html) to **fetch validator status** from an URL. This link can then be bookmarked in your browser to access a consolidated overview of all your validators in an **JSON** format.
 
 :::tip
 
-Up to 250 validator keys can be added in a single URL. If exceeded, you must split keys across multiple links.
+Up to 100 validator keys can be added in a single URL. If exceeded, you must split keys across multiple links.
 
 :::
 
@@ -136,13 +134,13 @@ find . -type f -name "*validator*" -printf "%T@ %p\n" | sort -n | tail -1 | awk 
   <TabItem value="mainnet" label="Mainnet" default>
 
 ```sh
-cat <validator-log.log> | grep -o 'index=[0-9]* ' | awk -F'=' '{printf "%s,", $2}' | sed 's/,$//' | tr -d ' ' | awk '{print "https://explorer.consensus.mainnet.lukso.network/dashboard?validators=" $0}'
+cat <validator-log.log> | grep -o 'index=[0-9]* ' | awk -F'=' '{printf "%s,", $2}' | sed 's/,$//' | tr -d ' ' | awk '{print "https://dora.explorer.mainnet.lukso.network/api/v1/validator/" $0}'
 ```
 
 </TabItem> <TabItem value="testnet" label="Testnet">
 
 ```sh
-cat <validator-log.log> | grep -o 'index=[0-9]* ' | awk -F'=' '{printf "%s,", $2}' | sed 's/,$//' | tr -d ' ' | awk '{print "https://explorer.consensus.testnet.lukso.network/dashboard?validators=" $0}'
+cat <validator-log.log> | grep -o 'index=[0-9]* ' | awk -F'=' '{printf "%s,", $2}' | sed 's/,$//' | tr -d ' ' | awk '{print "https://dora.explorer.testnet.lukso.network/api/v1/validator/" $0}'
 ```
 
 </TabItem>
@@ -171,12 +169,63 @@ Exchange `<validator-log.log>` with the actual filename of the most recent valid
 The output will look similar to this one, having all your index numbers:
 
 ```text
-https://explorer.consensus.mainnet.lukso.network/dashboard?validators=111,222,888
+https://dora.explorer.mainnet.lukso.network/api/v1/validator/111,222,888
 ```
 
-**4. Access Validator Page**: Copy and open the link to gather uptime, proposal, and withdrawal metrics of your node.
+**4. Access Validator Page**: Copy and open the link to gather the JSON file with uptime, proposal, and withdrawal metrics.
 
-![Validator Overview](/img/guides/monitoring/explorer-pages-5.png)
+```json
+{
+  "status": "OK",
+  "data": [
+    {
+      "activationeligibilityepoch": 0,
+      "activationepoch": 0,
+      "balance": 32003585657,
+      "effectivebalance": 32000000000,
+      "exitepoch": 1.8446744073709552e19,
+      "isonline": true,
+      "name": "",
+      "pubkey": "0xb0e97973ba0b1c4aeba97ba24da85364a6265b546013a53e0543f350242f1dbfcbaeec6c2856b2aa990cb37ed14f8bcc",
+      "slashed": false,
+      "status": "active_ongoing",
+      "validatorindex": 111,
+      "withdrawableepoch": 1.8446744073709552e19,
+      "withdrawalcredentials": "0x0100000000000000000000008032f01f712c942520dfb9598153c4edb7c39b85"
+    },
+    {
+      "activationeligibilityepoch": 0,
+      "activationepoch": 0,
+      "balance": 32003596620,
+      "effectivebalance": 32000000000,
+      "exitepoch": 1.8446744073709552e19,
+      "isonline": true,
+      "name": "",
+      "pubkey": "0xb093abb88a6197d483ad4e3a53fd237aa3f7c7ca42dff9a59d32f6cfe1445a3dcbd68585d41b2df45d8d6c4180985d33",
+      "slashed": false,
+      "status": "active_ongoing",
+      "validatorindex": 222,
+      "withdrawableepoch": 1.8446744073709552e19,
+      "withdrawalcredentials": "0x010000000000000000000000f7d385bc2d5173f2f013d694e8d9e8c3440638d9"
+    },
+    {
+      "activationeligibilityepoch": 0,
+      "activationepoch": 0,
+      "balance": 0,
+      "effectivebalance": 0,
+      "exitepoch": 216010,
+      "isonline": false,
+      "name": "",
+      "pubkey": "0xabdefc3e8610fe49f071be6b4d9e8ce3c5492913f735ed11c58436b9e31ab62892ae3eae5760dc343fb392b972dcf737",
+      "slashed": false,
+      "status": "withdrawal_done",
+      "validatorindex": 888,
+      "withdrawableepoch": 216266,
+      "withdrawalcredentials": "0x0100000000000000000000003c54dbe1b541cf91b83e2fad541c87121b4556e9"
+    }
+  ]
+}
+```
 
 :::tip
 
