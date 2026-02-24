@@ -82,8 +82,8 @@ A maximum of 16 validator updates can be included per block. It might take sever
 
 **2.1 Open Consensus Explorer**: Open the Validator withdrawal page of the consensus explorer.
 
-- [LUKSO Mainnet Validator withdrawals](https://explorer.consensus.mainnet.lukso.network/validators/withdrawals)
-- [LUKSO Testnet Validator withdrawals](https://explorer.consensus.testnet.lukso.network/validators/withdrawals)
+- [LUKSO Mainnet Validator withdrawals](https://dora.explorer.mainnet.lukso.network/validators/withdrawals)
+- [LUKSO Testnet Validator withdrawals](https://dora.explorer.testnet.lukso.network/validators/withdrawals)
 
 **2.2 Search Validator**: Input your validator's public key or index as described on the [Adding Withdrawals](/docs/guides/withdrawals/adding-withdrawals.md) page.
 

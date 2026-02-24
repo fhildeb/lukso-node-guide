@@ -48,14 +48,14 @@ The Consensus Block Explorer offers comprehensive insights into the current cons
 
 From the validator's perspective, it provides critical information about attestations and deposits, the validators' status and effectiveness, and their balance. Validators can even check for slashed nodes, and check the withdrawal status.
 
-- [Mainnet Consensus Explorer ↗](https://explorer.consensus.mainnet.lukso.network/)
-- [Mainnet Consensus Slashing Board ↗](https://explorer.consensus.mainnet.lukso.network/validators/slashings)
-- [Mainnet Consensus Withdrawals and BLS Changes ↗](https://explorer.consensus.mainnet.lukso.network/validators/withdrawals)
-- [Mainnet Consensus Slot Inspector ↗](https://explorer.consensus.mainnet.lukso.network/slots)
-- [Testnet Consensus Explorer ↗](https://explorer.consensus.testnet.lukso.network/)
-- [Testnet Consensus Slashing Board ↗](https://explorer.consensus.testnet.lukso.network/validators/slashings)
-- [Testnet Consensus Withdrawals and BLS Changes ↗](https://explorer.consensus.testnet.lukso.network/validators/withdrawals)
-- [Testnet Consensus Slot Inspector ↗](https://explorer.consensus.testnet.lukso.network/slots)
+- [Mainnet Consensus Explorer ↗](https://dora.explorer.mainnet.lukso.network/)
+- [Mainnet Consensus Slashing Board ↗](https://dora.explorer.mainnet.lukso.network/validators/slashings)
+- [Mainnet Consensus Withdrawals and BLS Changes ↗](https://dora.explorer.mainnet.lukso.network/validators/withdrawals)
+- [Mainnet Consensus Slot Inspector ↗](https://dora.explorer.mainnet.lukso.network/slots)
+- [Testnet Consensus Explorer ↗](https://dora.explorer.testnet.lukso.network/)
+- [Testnet Consensus Slashing Board ↗](https://dora.explorer.testnet.lukso.network/validators/slashings)
+- [Testnet Consensus Withdrawals and BLS Changes ↗](https://dora.explorer.testnet.lukso.network/validators/withdrawals)
+- [Testnet Consensus Slot Inspector ↗](https://dora.explorer.testnet.lukso.network/slots)
 
 ![Consensus Block Explorer](/img/guides/monitoring/explorer-pages-3.png)
 
@@ -134,13 +134,13 @@ find . -type f -name "*validator*" -printf "%T@ %p\n" | sort -n | tail -1 | awk 
   <TabItem value="mainnet" label="Mainnet" default>
 
 ```sh
-cat <validator-log.log> | grep -o 'index=[0-9]* ' | awk -F'=' '{printf "%s,", $2}' | sed 's/,$//' | tr -d ' ' | awk '{print "https://explorer.consensus.mainnet.lukso.network/dashboard?validators=" $0}'
+cat <validator-log.log> | grep -o 'index=[0-9]* ' | awk -F'=' '{printf "%s,", $2}' | sed 's/,$//' | tr -d ' ' | awk '{print "https://dora.explorer.mainnet.lukso.network/dashboard?validators=" $0}'
 ```
 
 </TabItem> <TabItem value="testnet" label="Testnet">
 
 ```sh
-cat <validator-log.log> | grep -o 'index=[0-9]* ' | awk -F'=' '{printf "%s,", $2}' | sed 's/,$//' | tr -d ' ' | awk '{print "https://explorer.consensus.testnet.lukso.network/dashboard?validators=" $0}'
+cat <validator-log.log> | grep -o 'index=[0-9]* ' | awk -F'=' '{printf "%s,", $2}' | sed 's/,$//' | tr -d ' ' | awk '{print "https://dora.explorer.testnet.lukso.network/dashboard?validators=" $0}'
 ```
 
 </TabItem>
@@ -169,7 +169,7 @@ Exchange `<validator-log.log>` with the actual filename of the most recent valid
 The output will look similar to this one, having all your index numbers:
 
 ```text
-https://explorer.consensus.mainnet.lukso.network/dashboard?validators=111,222,888
+https://dora.explorer.mainnet.lukso.network/dashboard?validators=111,222,888
 ```
 
 **4. Access Validator Page**: Copy and open the link to gather uptime, proposal, and withdrawal metrics of your node.

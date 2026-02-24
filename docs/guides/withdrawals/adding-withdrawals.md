@@ -65,8 +65,8 @@ If you've never updated your validator withdrawals after the initial deposit, yo
 
 **1.2 Consensus Index**: Search for your validator by searching for the public key in the consensus explorer.
 
-    - [LUKSO Mainnet Consensus Explorer](https://explorer.consensus.mainnet.lukso.network/)
-    - [LUKSO Testnet Consensus Explorer](https://explorer.consensus.testnet.lukso.network/)
+    - [LUKSO Mainnet Consensus Explorer](https://dora.explorer.mainnet.lukso.network/)
+    - [LUKSO Testnet Consensus Explorer](https://dora.explorer.testnet.lukso.network/)
 
 **1.3 Withdrawal Entries**: View the validator’s details and open the withdrawals section
 
@@ -87,8 +87,8 @@ To update your withdrawals, you have to specify the on-chain indices for each of
 
 **2.2 Validator Lookup**: Search for your validator by entering its public key into the search bar of the consensus explorer.
 
-- [LUKSO Mainnet Consensus Explorer](https://explorer.consensus.mainnet.lukso.network/)
-- [LUKSO Testnet Consensus Explorer](https://explorer.consensus.testnet.lukso.network/)
+- [LUKSO Mainnet Consensus Explorer](https://dora.explorer.mainnet.lukso.network/)
+- [LUKSO Testnet Consensus Explorer](https://dora.explorer.testnet.lukso.network/)
 
 **2.3 Copy the Index**: Search for the validator index number within the top heading, like _8910_ or _236189_.
 
@@ -293,8 +293,8 @@ A maximum of 16 validator updates can be included per block. It might take sever
 
 **6.1 Open Consensus Explorer**: Open the validator withdrawal page.
 
-    - [LUKSO Mainnet Validator Withdrawals](https://explorer.consensus.mainnet.lukso.network/validators/withdrawals)
-    - [LUKSO Testnet Validator Withdrawals](https://explorer.consensus.testnet.lukso.network/validators/withdrawals)
+    - [LUKSO Mainnet Validator Withdrawals](https://dora.explorer.mainnet.lukso.network/validators/withdrawals)
+    - [LUKSO Testnet Validator Withdrawals](https://dora.explorer.testnet.lukso.network/validators/withdrawals)
 
 **6.2 Search Address Changes**: Scroll down to the list of recent _Address Changes_ that happend on the network.
 

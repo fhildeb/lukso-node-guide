@@ -73,10 +73,10 @@ Both addresses are ordinary _Externally Owned Accounts_ that can be generated fr
 
 A maximum of **16 consensus payouts** to the withdrawal address can be processed per block.
 
-| Network                                                            | Active Validators | Daily Blocks | Payout Interval |
-| ------------------------------------------------------------------ | ----------------- | ------------ | --------------- |
-| [LUKSO Mainnet](https://explorer.consensus.mainnet.lukso.network/) | ~140.000          | ~7.200       |  29 Hours       |
-| [LUKSO Testnet](https://explorer.consensus.testnet.lukso.network/) | ~4.000            | ~7.200       |  50 Minutes     |
+| Network                                                       | Active Validators | Daily Blocks | Payout Interval |
+| ------------------------------------------------------------- | ----------------- | ------------ | --------------- |
+| [LUKSO Mainnet](https://dora.explorer.mainnet.lukso.network/) | ~140.000          | ~7.200       |  29 Hours       |
+| [LUKSO Testnet](https://dora.explorer.testnet.lukso.network/) | ~4.000            | ~7.200       |  50 Minutes     |
 
 ## Semi‑Deflationary Supply
 
