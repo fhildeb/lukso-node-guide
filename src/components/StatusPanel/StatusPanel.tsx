@@ -30,8 +30,8 @@ export function StatusPanel() {
   const fallbackConsensusClients = [
     { label: "Geth", value: 0 },
     { label: "Erigon", value: 0 },
-    { label: "Besu", value: 0 },
     { label: "Nethermind", value: 0 },
+    { label: "Besu", value: 0 },
     { label: "Others", value: 0 },
   ];
 
