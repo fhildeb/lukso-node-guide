@@ -87,6 +87,12 @@ yarn start
 yarn build
 ```
 
+## Update
+
+```sh
+yarn upgrade
+```
+
 ## Tools
 
 - [Docusaurus](https://docusaurus.io/)
