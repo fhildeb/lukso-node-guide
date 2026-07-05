@@ -13765,7 +13765,17 @@ For further details about slots, epochs, and status types, look at the [**Proof 
 
 ## External Validator Checks
 
-The consensus explorer is considered the main status page for validators when it comes to monitoring uptime, withdrawals, block proposals, and earnings. While you can search for single validator indecies, the service also offers the [**Dora API**](https://dora.explorer.testnet.lukso.network/api/swagger/index.html) to **fetch validator status** from an URL. This link can then be bookmarked in your browser to access a consolidated overview of all your validators in an **JSON** format.
+The consensus explorer is considered the main status page for validators when it comes to monitoring uptime, withdrawals, block proposals, and earnings. You can either use the
+
+- [**Dora Withdrawal Dashboard:**](https://dora.explorer.mainnet.lukso.network/api/swagger/index.html) Summarized overview for all validators linked to the same withdrawal address.
+- [**Dora Validators API:**](https://dora.explorer.mainnet.lukso.network/api/swagger/index.html) Detailed validator incices analytics in **JSON** format.
+
+The links of both versions can be bookmarked in your browser to access validator statuses at any time.
+
+<Tabs groupId="validator-checks">
+  <TabItem value="dashboard" label="Withdrawal Dashboard" default>
+
+</TabItem> <TabItem value="api" label="Validator API">
 
 :::tip
 
@@ -13924,6 +13934,9 @@ https://dora.explorer.mainnet.lukso.network/api/v1/validator/111,222,888
   ]
 }
 ```
+
+</TabItem>
+</Tabs>
 
 :::tip
 
