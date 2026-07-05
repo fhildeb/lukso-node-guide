@@ -20,8 +20,8 @@ Staking returns are typically expressed as **Annual Percentage Rate**, assuming 
 
 :::info APR May 2025
 
-- The [LUKSO Mainnet](https://deposit.mainnet.lukso.network) has an APR of around **7%**
-- The [LUKSO Testnet](https://deposit.testnet.lukso.network) has an APR of around **42%**
+- The [LUKSO Mainnet](https://deposit.mainnet.lukso.network) has an APR of around **6%**
+- The [LUKSO Testnet](https://deposit.testnet.lukso.network) has an APR of around **41%**
 
 :::
 
