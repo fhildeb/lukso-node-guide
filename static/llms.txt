@@ -13767,13 +13767,35 @@ For further details about slots, epochs, and status types, look at the [**Proof 
 
 The consensus explorer is considered the main status page for validators when it comes to monitoring uptime, withdrawals, block proposals, and earnings. You can either use the
 
-- [**Dora Withdrawal Dashboard:**](https://dora.explorer.mainnet.lukso.network/api/swagger/index.html) Summarized overview for all validators linked to the same withdrawal address.
-- [**Dora Validators API:**](https://dora.explorer.mainnet.lukso.network/api/swagger/index.html) Detailed validator incices analytics in **JSON** format.
+- [**Withdrawal Dashboard:**](https://explorer.consensus.mainnet.lukso.network/validators/withdrawal-dashboard) Summarized overview for all validators linked to the same withdrawal address.
+- [**Validators API:**](https://dora.explorer.mainnet.lukso.network/api/swagger/index.html) Detailed validator incices analytics in **JSON** format.
 
-The links of both versions can be bookmarked in your browser to access validator statuses at any time.
+The links of both versions can be bookmarked in your browser.
 
 <Tabs groupId="validator-checks">
   <TabItem value="dashboard" label="Withdrawal Dashboard" default>
+
+  <Tabs groupId="network">
+  <TabItem value="mainnet" label="Mainnet" default>
+
+Open the LUKSO Mainnet's [**Dora Explorer**](https://explorer.consensus.mainnet.lukso.network/validators/withdrawal-dashboard) and input your withdrawal address too see all linked validators, their total uptime rate and balance, and various withdrawal metrics.
+
+![Dora Withdrawal Overview](/img/guides/monitoring/explorer-pages-4.png)
+
+</TabItem> <TabItem value="testnet" label="Testnet">
+
+Open the LUKSO Testnet's [**Dora Explorer**](https://explorer.consensus.testnet.lukso.network/validators/withdrawal-dashboard) and input your withdrawal address too see all linked validators, their total uptime rate and balance, and various withdrawal metrics.
+
+![Dora Withdrawal Overview](/img/guides/monitoring/explorer-pages-4.png)
+
+</TabItem>
+</Tabs>
+
+:::info
+
+If you have multiple withdrawal addresses, open another window and repeat the process.
+
+:::
 
 </TabItem> <TabItem value="api" label="Validator API">
 
@@ -19098,8 +19120,8 @@ Staking returns are typically expressed as **Annual Percentage Rate**, assuming 
 
 :::info APR May 2025
 
-- The [LUKSO Mainnet](https://deposit.mainnet.lukso.network) has an APR of around **7%**
-- The [LUKSO Testnet](https://deposit.testnet.lukso.network) has an APR of around **42%**
+- The [LUKSO Mainnet](https://deposit.mainnet.lukso.network) has an APR of around **6%**
+- The [LUKSO Testnet](https://deposit.testnet.lukso.network) has an APR of around **41%**
 
 :::
 
